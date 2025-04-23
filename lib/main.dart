@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timetocode/pages/daftar_level_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,6 +10,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return MaterialApp(
+      title: 'TimetoCode',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.blue,
+        fontFamily: 'Roboto',
+      ),
+      home: const DaftarLevelPage(),
+    );
   }
 }
