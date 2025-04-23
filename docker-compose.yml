@@ -1,0 +1,9 @@
+services:
+  flutter_dev:
+    build: .
+    network_mode: host
+    privileged: true
+    volumes:
+      - ~/.android:/root/.android
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
