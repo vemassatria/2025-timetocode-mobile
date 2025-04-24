@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pengaturan.dart';
 
 class DaftarLevelPage extends StatefulWidget {
   const DaftarLevelPage({super.key});
@@ -11,24 +12,29 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 1) {
+      // Navigasi ke halaman Pengaturan
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const PengaturanPage()),
+      );
+    }
+    // Tetap di halaman ini jika index == 0
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color(0xFF0B0E2A),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        selectedLabelStyle: TextStyle(
+        selectedLabelStyle: const TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.bold,
         ),
-        unselectedLabelStyle: TextStyle(fontSize: 12),
-        backgroundColor: Colors.black,
+        unselectedLabelStyle: const TextStyle(fontSize: 12),
+        backgroundColor: const Color(0xFF0B0E2A),
         selectedItemColor: Colors.blueAccent,
         unselectedItemColor: Colors.white,
         items: const [
@@ -48,10 +54,7 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
           padding: const EdgeInsets.all(16),
           child: ListView(
             children: [
-              Text(
-                'Konsep pemrograman',
-                style: TextStyle(fontSize: 24, color: Colors.white),
-              ),
+              Text('Konsep pemrograman', style: TextStyle()),
               const SizedBox(height: 8),
               Row(
                 children: [
