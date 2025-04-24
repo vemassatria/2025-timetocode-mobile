@@ -1,120 +1,135 @@
 import 'package:flutter/material.dart';
+import 'package:timetocode/themes/colors.dart';
 
 class AppTypography {
   static const String _fontFamily = 'Comic Neue';
 
   // === Heading ===
-  static const TextStyle heading1 = TextStyle(
+  static TextStyle heading1({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
     fontSize: 56,
     height: 61.6 / 56,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle heading2 = TextStyle(
+  static TextStyle heading2({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
     fontSize: 48,
     height: 52.8 / 48,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle heading3 = TextStyle(
+  static TextStyle heading3({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
     fontSize: 40,
     height: 44 / 40,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle heading4 = TextStyle(
+  static TextStyle heading4({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
     fontSize: 32,
     height: 35.2 / 32,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle heading5 = TextStyle(
+  static TextStyle heading5({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
     fontSize: 24,
     height: 26.4 / 24,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle heading6 = TextStyle(
+  static TextStyle heading6({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
     fontSize: 20,
     height: 22 / 20,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
   // === Body (Bold) ===
-  static const TextStyle largeBold = TextStyle(
+  static TextStyle largeBold({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
     fontSize: 20,
     height: 28 / 20,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle mediumBold = TextStyle(
+  static TextStyle mediumBold({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
     fontSize: 18,
     height: 25.2 / 18,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle normalBold = TextStyle(
+  static TextStyle normalBold({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
     fontSize: 16,
     height: 22.4 / 16,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle smallBold = TextStyle(
+  static TextStyle smallBold({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
     fontSize: 14,
     height: 19.6 / 14,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
   // === Body ===
-  static const TextStyle large = TextStyle(
+  static TextStyle large({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.normal,
     fontSize: 20,
     height: 28 / 20,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle medium = TextStyle(
+  static TextStyle medium({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.normal,
     fontSize: 18,
     height: 25.2 / 18,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle normal = TextStyle(
+  static TextStyle normal({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.normal,
     fontSize: 16,
     height: 22.4 / 16,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 
-  static const TextStyle small = TextStyle(
+  static TextStyle small({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.normal,
     fontSize: 14,
     height: 19.6 / 14,
     letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
   );
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timetocode/pages/daftar_level_page.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:timetocode/themes/app_themes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); // ini wajib untuk memanggil async di main()
@@ -24,11 +25,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TimetoCode',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.blue,
-        fontFamily: 'Roboto',
-      ),
+      themeMode: ThemeMode.dark,
+      darkTheme: AppThemes.darkTheme,
       home: const DaftarLevelPage(),
     );
   }

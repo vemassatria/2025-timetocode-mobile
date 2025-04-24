@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+import 'package:timetocode/themes/colors.dart';
+import 'package:timetocode/themes/typography.dart';
+
+class AppThemes {
+  static ThemeData darkTheme = ThemeData(
+    // === Colors ===
+    scaffoldBackgroundColor: AppColors.darkBackground,
+    primaryColor: AppColors.technoBlue,
+    cardColor: AppColors.surfaceDark,
+    dividerColor: AppColors.primaryText,
+
+    // === AppBar Theme ===
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.surfaceDark,
+      elevation: 8,
+      titleTextStyle: AppTypography.heading5(),
+    ),
+
+    // === Bottom Navigation Bar Theme ===
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.surfaceDark,
+      selectedItemColor: AppColors.skyByte,
+      unselectedItemColor: AppColors.primaryText,
+      selectedLabelStyle: AppTypography.small(color: AppColors.skyByte),
+      unselectedLabelStyle: AppTypography.small(color: AppColors.primaryText),
+    ),
+
+    // === Text Theme ===
+    textTheme: TextTheme(
+      displayLarge: AppTypography.heading1(),
+      displayMedium: AppTypography.heading2(),
+      displaySmall: AppTypography.heading3(),
+
+      headlineLarge: AppTypography.heading4(),
+      headlineMedium: AppTypography.heading5(),
+      headlineSmall: AppTypography.heading6(),
+
+      titleLarge: AppTypography.mediumBold(),
+      titleMedium: AppTypography.normalBold(),
+      titleSmall: AppTypography.smallBold(),
+
+      bodyLarge: AppTypography.large(),
+      bodyMedium: AppTypography.normal(),
+      bodySmall: AppTypography.small(),
+
+      labelLarge: AppTypography.medium(),
+      labelMedium: AppTypography.normal(),
+      labelSmall: AppTypography.small(),
+    ),
+  );
+}
