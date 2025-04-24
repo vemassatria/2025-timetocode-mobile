@@ -48,7 +48,10 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
           padding: const EdgeInsets.all(16),
           child: ListView(
             children: [
-              Text('Konsep pemrograman', style: TextStyle()),
+              Text(
+                'Konsep pemrograman',
+                style: TextStyle(fontSize: 24, color: Colors.white),
+              ),
               const SizedBox(height: 8),
               Row(
                 children: [
