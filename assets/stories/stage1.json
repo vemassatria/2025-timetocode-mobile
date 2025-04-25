@@ -1,0 +1,29 @@
+{
+  "level": 1,
+  "dialogs": [
+    {
+      "id": "intro",
+      "character1": "Adrien",
+      "character2": "Tino",
+      "text": [
+        "Bro, aku bingung deh. Kuliah di informatika tuh berat banget. Materi langsung susah-susah!",
+        "Iya, aku dulu juga gitu. Tapi kamu bakal paham kok, asal kamu konsisten belajar.",
+        "Iya sih. Cuma aku sering denger soal \"variabel\" dan \"operator\", itu apaan sih?",
+        "Oke, gini. Variabel itu tempat nyimpen data dalam program, kayak kotak yang bisa berubah isinya. Misalnya, kamu mau nyimpen umur orang, kamu bikin variabel \"umur\" dan kasih nilai tertentu, misalnya \"umur = 21\".",
+        "Oh, jadi variabel itu buat nyimpen data yang bisa berubah gitu ya?",
+        "Betul. Nah, operator itu alat buat ngelakuin operasi, kayak penjumlahan, pengurangan, perkalian, pembagian. Misalnya, kalau kamu mau nambahin umur dengan 5, kamu bisa pakai operator \"+\", jadi \"hasil = umur + 5;\". Ada juga operator-operator lain kayak - buat pengurangan, * buat perkalian, dan \/ buat pembagian. Jadi, operator itu buat ngelakuin operasi matematika dasar dalam program kamu.",
+        "Oh, jadi operator ini gak cuma buat nambahin, tapi juga ngurangin, ngaliin, dan bagi gitu ya?",
+        " Iya, bener banget. Semua operasi matematika dasar pake operator itu. Dan, operator ini penting banget, karena tanpa operator, program kamu gak bisa ngelakuin perhitungan atau manipulasi data dengan bener."
+      ]
+    },
+    {
+      "id": "quest_start",
+      "character": "Jenny",
+      "text": "Kamu bisa membantuku mengumpulkan bahan bakar roket?",
+      "choices": [
+        {"text": "Tentu!", "next": "quest_accept"},
+        {"text": "Nanti saja", "next": "quest_decline"}
+      ]
+    }
+  ]
+}
