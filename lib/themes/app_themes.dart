@@ -13,8 +13,9 @@ class AppThemes {
     // === AppBar Theme ===
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.surfaceDark,
-      elevation: 8,
+      elevation: 0,
       titleTextStyle: AppTypography.heading5(),
+      toolbarHeight: 64,
     ),
 
     // === Bottom Navigation Bar Theme ===
@@ -24,6 +25,7 @@ class AppThemes {
       unselectedItemColor: AppColors.primaryText,
       selectedLabelStyle: AppTypography.small(color: AppColors.skyByte),
       unselectedLabelStyle: AppTypography.small(color: AppColors.primaryText),
+      elevation: 0,
     ),
 
     // === Text Theme ===
