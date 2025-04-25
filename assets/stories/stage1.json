@@ -58,12 +58,12 @@
         "next": "soal"
       }
     ],
-    "rangkuman": {
-      "variabel": "Variabel adalah tempat menyimpan data yang nilainya bisa berubah selama program berjalan. Contohnya, int umur = 21; menyimpan nilai umur.",
-      "operator": "Operator digunakan untuk melakukan operasi pada data, seperti:\nAritmatika: +, -, *, \/ untuk perhitungan.\nPembanding: ==, !=, >, < untuk membandingkan nilai.\nLogika: && (AND), || (OR) untuk menggabungkan kondisi.\nPenugasan: = untuk memberi nilai, +=, -= untuk operasi dan penugasan bersamaan.",
-      "input_output": "Input/output adalah cara untuk mengambil input dari pengguna dan menampilkan output ke layar.\nGunakan scanf untuk input data dari pengguna dan printf untuk menampilkan hasil ke layar.",
-      "Tipe_data": "Tipe data menentukan jenis nilai yang bisa disimpan dalam variabel, seperti int untuk angka bulat, float untuk angka pecahan, dan char untuk karakter."
-    }
+    "rangkuman": [
+      "Variabel adalah tempat menyimpan data yang nilainya bisa berubah selama program berjalan. Contohnya, int umur = 21; menyimpan nilai umur.",
+      "Operator digunakan untuk melakukan operasi pada data, seperti:\nAritmatika: +, -, *, \/ untuk perhitungan.\nPembanding: ==, !=, >, < untuk membandingkan nilai.\nLogika: && (AND), || (OR) untuk menggabungkan kondisi.\nPenugasan: = untuk memberi nilai, +=, -= untuk operasi dan penugasan bersamaan.",
+      "Input/output adalah cara untuk mengambil input dari pengguna dan menampilkan output ke layar.\nGunakan scanf untuk input data dari pengguna dan printf untuk menampilkan hasil ke layar.",
+      "Tipe data menentukan jenis nilai yang bisa disimpan dalam variabel, seperti int untuk angka bulat, float untuk angka pecahan, dan char untuk karakter."
+    ]
   },
   {
     "level": 2,
@@ -121,14 +121,374 @@
           "Oh iya"
         ],
         "next": "soal"
+      }
+    ],
+    "rangkuman": [
+      "if digunakan untuk memeriksa satu kondisi. Jika kondisi tersebut benar, maka aksi atau kode yang ada di dalam bkamuk if akan dijalankan.",
+        "else if digunakan ketika ada lebih dari satu kondisi yang perkamu diperiksa. Jika kondisi pertama salah, maka kondisi berikutnya akan dicek. Ini memungkinkan pengecekan beberapa kondisi dalam urutan yang terstruktur.",
+        "switch digunakan ketika ada banyak pilihan atau kondisi yang mirip. Dengan switch, kamu bisa memeriksa nilai dari suatu variabel terhadap beberapa kemungkinan nilai dan menjalankan aksi berdasarkan nilai yang cocok."
+    ]
+  },
+  {
+    "level": 3,
+    "dialogs": [
+      {
+        "id": "preDialog",
+        "text": "Siang itu, Suminem sudah menunggu di café sejak jam 3, menatap layar ponselnya dengan muram. Jam dinding sudah menunjukkan pukul 4, dan Adrien belum juga muncul. Suminem mulai gelisah, berpikir tentang tugas yang harus diselesaikan dan deadline yang semakin dekat. Ia memesan secangkir kopi, berharap bisa segera mulai berdiskusi dan menyelesaikan tugas. Sambil menunggu, ia melirik ke pintu berkali-kali, berharap temannya segera datang.",
+        "next": "intro"
       },
       {
-        "id": "rangkuman",
-        "if": "if digunakan untuk memeriksa satu kondisi. Jika kondisi tersebut benar, maka aksi atau kode yang ada di dalam bkamuk if akan dijalankan.",
-        "else if": "else if digunakan ketika ada lebih dari satu kondisi yang perkamu diperiksa. Jika kondisi pertama salah, maka kondisi berikutnya akan dicek. Ini memungkinkan pengecekan beberapa kondisi dalam urutan yang terstruktur.",
-        "switch": "switch digunakan ketika ada banyak pilihan atau kondisi yang mirip. Dengan switch, kamu bisa memeriksa nilai dari suatu variabel terhadap beberapa kemungkinan nilai dan menjalankan aksi berdasarkan nilai yang cocok."
+        "id": "intro",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": [
+          "Oiiiiii, katanya janjiannya jam 3, kenapa kamu baru dateng jam 4? aku udah nungguin di sini dari tadi. Udah lama banget, deh!",
+          "Ah, maaf banget, Nem! tadi macet hehe. jadi mana yang mau kamu tanyain?",
+          "ini tentang perulangan, gimana?",
+          "Jadi gini, Nem, kalau kamu pengen ngulangin sesuatu berkali-kali, kamu bisa pake for loop. For itu cocok kalau kamu udah tahu berapa kali perulangan yang harus dilakukan. Misalnya, kamu pengen nulis angka dari 1 sampai 5. Jadi kamu tentuin mulai dari mana, sampai mana, dan tiap kali kamu ngulangin, kamu tambahin angkanya. Kamu udah paham belum?",
+          "Ah, oke, jadi for itu kalau udah tahu berapa kali ngulangin ya?",
+          "Betul! Nah, kalau while loop itu lebih fleksibel. Kamu bisa pake while kalau kamu belum tahu pasti berapa kali perulangan yang diperkamukan, tapi kamu punya kondisi yang harus dicek dukamu. Jadi selama kondisi itu bener, dia akan terus ngulangin. Jadi lebih ke ngecek dukamu, baru ngulangin. Paham, kan?",
+          "Jadi, while itu ngecek dukamu baru ngulang kan?",
+          "Iya, bener banget! Sekarang, yang terakhir ada do while. Nah, bedanya dengan while, kalau do while itu ngejalanin perulangan setidaknya sekali dulu, baru kemudian ngecek kondisi. Jadi meskipun kondisi awalnya nggak bener, dia tetap jalanin sekali dukamu, baru cek kondisinya. gimana paham ga?",
+          "ih paham paham kayak kak gem aja kamu! paham lahhh!!! Jadi do while itu jalan sekali dulu, baru cek kondisinya, kan?",
+          "Betul, Nem! Jadi, kalau kamu udah tahu pasti jumlah perulangannya, pakai for. Kalau kamu harus ngecek kondisi dukamu baru ngulang, pakai while atau do while tergantung kamu butuh perulangan yang jalan minimal sekali dukamu atau nggak. Biar kamu lebih paham coba kerjain soal ini, kalau kamu bener aku traktir makan deh"
+        ],
+        "next": "soal"
+      },
+      {
+        "id": "soal",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": "#include <stdio.h>\nint main() {\n    for (int i = 1; i <= 3; i++) {\n        printf(\"Hai \");\n    }\n    return 0;\n}",
+        "choices": [
+          {"text": "Hai", "next": "salah"},
+          {"text": "HaiHaiHai", "next": "salah"},
+          {"text": "Hai\nHai\nHai", "next": "salah"},
+          {"text": "Hai Hai Hai", "next": "benar"}
+        ]
+      },
+      {
+        "id": "benar",
+        "character1": "Adrien",
+        "character2": "Suminem",
+        "text": [
+          "Yoi, bener Rak. Jawabannya Hai Hai Hai. Loop-nya jalan tiga kali, makanya 'Hai ' dicetak tiga kali. Pas banget, Nem.",
+          "Akhirnya ngerti juga soal for kamuop ini, makasih Adrien.",
+          "yaudah sekarang mending kamu pesen makan dah, keburu janji makan gratis aku expired nih.",
+          "IYA SAAAAAAAAAAAAAAAAAAAAA"
+        ],
+        "next": null
+      },
+      {
+        "id": "salah",
+        "character1": "Adrien",
+        "character2": "Suminem",
+        "text": [
+          "HAHAHAHA, gitu doang ga bisa. Coba pikir lagi deh.",
+          "... YEEEEEEEEEEEEE"
+        ],
+        "next": null
       }
+    ],
+    "rangkuman": [
+      "Perulangan dalam pemrograman digunakan untuk menjalankan kode yang sama berulang kali. Ada tiga jenis perulangan utama: for, while, dan do while.",
+      "Perulangan for digunakan saat kita sudah tahu berapa kali ingin mengulang. Misalnya, ingin mencetak sesuatu 5 kali, kita bisa langsung menentukan awal, batas akhir, dan kenaikan angkanya.",
+      "Kalau while, dipakai ketika kita belum tahu pasti berapa kali perulangan dilakukan, tapi kita punya kondisi tertentu. Program akan terus mengulang selama kondisi itu masih benar. Jadi, sebelum mengulang, kondisi dicek terlebih dahulu.",
+      "Sedangkan do while mirip dengan while, tapi sedikit berbeda. Di sini, program akan menjalankan perulangan minimal satu kali, baru kemudian mengecek kondisinya. Cocok digunakan kalau kita ingin memastikan isi perulangan dijalankan setidaknya sekali."
+    ]
+  },
+  {
+    "level": 4,
+    "dialogs": [
+      {
+        "id": "intro",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": [
+          "Wih, makasih ya Ad udah traktir. kamumayan banget, perut kenyang, otak juga nambah isinya.",
+          "Aman Nem, yang penting lu paham dan udah bisa ngerjain soal selanjutnya.",
+          "OIYA! aku lupa, ternyata ada tugas perulangan yang satunya aduhh...aku kira udah selesai, eh ternyata masih ada yang namanya nested loop, terus ada juga perintah break, continue, sama exit",
+          "WKWKWKWKWK ok tenang tenang ini aku jelasin satu per satu",
+          "Oke, jadi gini, nested loop itu sebenernya cuma loop di dalam loop. Misalnya, kamu lagi mau ngeprint tabel atau matriks. Jadi, loop pertama jalan, dan dalam loop pertama itu ada loop kedua yang jalan terus.",
+          "Ohh, jadi gitu ya. Jadi loop dalam loop gitu, buat bikin tabel atau pola gitu ya?",
+          "Iya betul banget! Nah, kalau kamu mau keluar dari loop lebih cepat, kamu bisa pake break. Jadi, misalnya, kalau kamu udah nemuin angka yang kamu cari, kamu gak perkamu ngejalanin sisanya. Lo pake break biar langsung keluar dari loop itu",
+          "Tapi gimana kalau aku cuma mau skip satu iterasi aja, ga keluar sama sekali?",
+          "Nah, kalo kasusnya kayak gitu, bisa pake continue! Jadi, kalau kamu pake continue, dia bakal nge-skip iterasi yang lagi jalan dan langsung lanjut ke iterasi berikutnya. Terus ada lagi nih, kalau kamu mau keluar dari program secara langsung, kamu bisa pake exit",
+          "Wih kacauuu, ternyata banyak banget ya cara ngatur loop dan kontrol program!",
+          "Iya, memang! Makanya penting banget buat ngerti setiap kontrol yang ada biar perulangan kamu lebih fleksibel. Nah, sekarang coba kerjain soal kamu itu, biar kamu bisa nerapin semuanya"
+        ],
+        "next":"soal"
+      },
+      {
+        "id": "soal",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": "#include <stdio.h>\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 3) break;\n        printf(\"%d \", i);\n    }\n    return 0;\n}",
+        "choices": [
+          {"text": "Saat i == 3, output: 1 2", "next": "benar"},
+          {"text": "Saat i == 2, output: 1", "next": "salah"},
+          {"text": "Tidak ada break, output: 1 2 3 4 5", "next": "salah"},
+          {"text": "Output: 3 4 5", "next": "salah"}
+        ]
+      },
+      {
+        "id": "benar",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": [
+          "Wihhh, jawabanku benar nih!",
+          "Yoiii, mantap bro! Berarti lu udah paham konsep break. Pas kondisi i == 3, program langsung keluar dari loop, jadi yang sempat dicetak cuma 1 dan 2.",
+          "Wah keren juga ya. Jadi tergantung situasi, kita bisa pilih mau keluar dari loop atau cuma skip sementara.",
+          "Persis! Kamu udah nangkep banget nih. Sekarang tinggal asah lagi pake nested loop biar makin jago!",
+          "Oke deh bro, langsung aku ulik yang nested loop. Biar selain perut kenyang, otak juga makin nambah!",
+          "Gaskeun!"
+        ],
+        "next": null
+      },
+      {
+        "id": "salah",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": [
+          "HMMMM..... Jawabanmu kok gitu sih? makanya belajar yang benar",
+          "Oh iya, aduhhhhh",
+          "kerjain ulang deh, gass"
+        ],
+        "next": "soal"
+      }
+    ],
+    "rangkuman": [
+      "Nested loop adalah perulangan yang berada di dalam perulangan lain. Biasanya digunakan untuk menyusun data dua dimensi seperti tabel, matriks, atau pola bintang. Loop luar akan mengontrol baris, sedangkan loop dalam mengontrol kolom.",
+      "Break digunakan untuk menghentikan proses perulangan secara paksa sebelum kondisinya selesai. Biasanya dipakai saat kondisi tertentu sudah terpenuhi, misalnya saat menemukan data yang dicari, sehingga tidak perlu melanjutkan perulangan.",
+      "Continue digunakan untuk melewati satu siklus iterasi dan langsung lanjut ke iterasi berikutnya. Perintah setelah continue tidak akan dijalankan pada iterasi tersebut. Cocok digunakan jika ingin mengabaikan kondisi tertentu tanpa keluar dari loop.",
+      "Exit adalah perintah untuk menghentikan seluruh program, bukan hanya loop. Digunakan saat terjadi kondisi kritis atau kesalahan yang membuat program tidak bisa dilanjutkan. Biasanya ditulis sebagai exit(0); dan membutuhkan #include <stdlib.h>."
+    ]
+  },
+  {
+    "level": 5,
+    "dialogs": [
+      {
+        "id": "preDialog",
+        "text": "Di ruang kelas, Adrien sedang duduk di bangku depan, sementara Pak Rengga sedang berdiri di depan papan tulis, siap memberikan materi baru tentang Jenis Fungsi dalam pemrograman. Suasana kelas cukup tenang dan penuh perhatian."
+      },
+      {
+        "id": "intro",
+        "character1": "Pak Rengga",
+        "character2": "Adrien",
+        "text": [
+          "okeh anak2 hari ini kita akan bahas Jenis Fungsi. Fungsi dibagi jadi dua: yang memiliki return value dan yang tidak.",
+          "Pak, saya mau tanya, fungsi itu apa, ya?",
+          "jadi fungsi adalah sekumpulan kode untuk tugas tertentu. Fungsi bisa mengembalikan nilai, disebut return value, atau tidak mengembalikan nilai.",
+          "Oh, jadi ada fungsi yang ngasih hasil, ada yang nggak ya?",
+          "Betul. Fungsi dengan return vakamue mengembalikan nilai setelah dieksekusi. Misalnya, fungsi penjumlahan yang mengembalikan hasil. Fungsi tambah mengembalikan hasil penjumlahan yang bisa disimpan di variabel.",
+          "Jadi, fungsi yang ada return vakamue-nya ngasih hasil ke tempat lain ya?",
+          "Benar! Sekarang, fungsi yang tidak memiliki return value, seperti void. Fungsi void digunakan ketika kita tidak perkamu mengembalikan nilai, misalnya untuk menampilkan pesan.",
+          "berarti fungsi void hanya melakukan aksi seperti mencetak pesan atau mengubah data pak?",
+          "Betul! singkatnya return value mengembalikan hasil, sedangkan void hanya melakukan aksi tanpa memberikan hasil.",
+          "Oh paham pak!",
+          "ok kamu jawab pertanyaan fungsi return value dan void di laptopmu. Untuk cek pemahaman kamu, bapak kirim soalnya di kamu!"
+        ],
+        "next": "soal"
+      },
+      {
+        "id": "soal",
+        "character1": "Pak Rengga",
+        "character2": "Adrien",
+        "text": "#include <stdio.h>\n\nint hitungLuas(int panjang, int lebar) {\n    return panjang * lebar;\n}\n\nvoid tampilkanPesan() {\n    printf(\"Menghitung luas persegi panjang...\\n\");\n}\n\nint main() {\n    tampilkanPesan();\n    int hasil = hitungLuas(5, 3);\n    printf(\"Luas: %d\\n\", hasil);\n    return 0;\n}",
+        "choices": [
+          {"text": "tampilkanPesan()", "next": "salah"},
+          {"text": "printf()", "next": "salah"},
+          {"text": "hitungLuas()", "next": "benar"},
+          {"text": "main()", "next": "salah"}
+        ]
+      },
+      {
+        "id": "benar",
+        "character1": "Pak Rengga",
+        "character2": "Adrien",
+        "text": [
+          "Wih mantap! Kamu udah mulai paham yaa. Jadi fungsi hitungLuas() mengembalikan hasil perkalian panjang dan lebar, makanya dia punya return value. Nah kalau tampilkanPesan() itu cuma jalanin aksi aja ya, nggak ngasih nilai apa-apa",
+          "Paham pak! Kayaknya saya udah mulai bisa bedain jenis-jenis fungsi sekarang.",
+          "Bagus! Kalau udah paham, siap-siap latihan soal berikutnya ya!"
+        ],
+        "next": null
+      },
+      {
+        "id": "salah",
+        "character1": "Pak Rengga",
+        "character2": "Adrien",
+        "text": [
+          "maaf nak, jawabanmu masih belum tepat, silahkan dilihat lebih teliti soalnya",
+          "baik pak"
+        ],
+        "next": "soal"
+      }
+    ],
+    "rangkuman": [
+      "Fungsi dengan return value mengembalikan nilai setelah dieksekusi. Nilai tersebut bisa disimpan dalam variabel dan digunakan di bagian lain program. Contoh: int hitungLuas(int panjang, int lebar), yang mengembalikan hasil perkalian panjang dan lebar.",
+      "Fungsi void Biasanya digunakan untuk melakukan aksi, seperti menampilkan pesan atau mengubah data. Contoh: void tampilkanPesan(), yang hanya mencetak pesan tanpa mengembalikan hasil."
+    ]
+  },
+  {
+    "level": 6,
+    "dialogs": [
+      {
+        "id": "preDialog",
+        "text": "Kantin kampus hari itu cukup ramai, Adrien duduk di meja pojok sambil nunggu makanan datang. Tiba-tiba, Sukinem, yang duduk di meja sebelah, datang dan ikut duduk bareng. Mereka udah kenal lama, tapi kali ini suasananya agak lebih santai karena udah mulai sering ngobrol."
+      },
+      {
+        "id": "intro",
+        "character1": "Adrien",
+        "character2": "Suminem",
+        "text": [
+          "Eh, kamu lagi apa? Kok nggak ikut tugas kelompok yang tadi?",
+          "Lagi santai aja, makan siang. Tugas udah selesai kok. Eh, ngomong-ngomong, aku tadi ngeliat kamu lagi ngulang materi tentang variabel, ya? Lagi belajar soal penggolongan variabel?",
+          "Iya, nih. aku lagi belajar tentang penggolongan variabel berdasarkan kelas penyimpanan. Pusing juga sih, banyak jenis variabelnya.",
+          "Oh, yang itu. Jadi, ada beberapa jenis variabel berdasarkan gimana cara dia disimpen di memori, kan? aku bisa jelasin kalau kamu mau.",
+          "Serius? Boleh banget deh, biar nggak pusing",
+          "Oke, jadi gini. Pertama, ada variabel lokal/auto. Ini variabel yang cuma ada dalam fungsi tempat dia dideklarasikan. Biasanya sih, variabel kamukal ini hanya berlaku di dalam fungsi itu aja dan langsung hilang setelah fungsi selesai dieksekusi. Nah coba kamu jawab soal sederhana ini."
+        ],
+        "next": "soal"
+      },
+      {
+        "id": "soal",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": "#include <stdio.h>\n\nvoid contoh() {\n    int angka = 10;\n    printf(\"%d\", angka);\n}",
+        "choices": [
+          {"text": "contoh", "next": "salah"},
+          {"text": "printf", "next": "salah"},
+          {"text": "angka", "next": "benar"},
+          {"text": "int", "next": "salah"}
+        ]
+      },
+      {
+        "id": "benar",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": [
+          "Nah, si angka ini hanya bisa dipake di dalam fungsi contoh aja, gitu.",
+          "Ooh, jadi lokal itu cuma bisa dipake di dalam fungsi itu aja, ya?",
+          "Iya, bener banget! Lanjut, ada juga variabel global/eksternal. Ini kebalikan dari yang lokal. Variabel global itu bisa diakses di mana aja dalam program, asal udah dideklarasikan di luar fungsi."
+        ],
+        "next": "soal2"
+      },
+      {
+        "id": "soal2",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": "#include <stdio.h>\n\nint angka = 10;\n\nvoid fungsi() {\n    printf(\"%d\", angka);\n}",
+        "choices": [
+          {"text": "fungsi, karena dia bisa dipanggil dari mana saja.", "next": "salah2"},
+          {"text": "printf, karena digunakan di dalam fungsi untuk menampilkan nilai.", "next": "salah2"},
+          {"text": "angka, karena dideklarasikan di luar fungsi dan bisa diakses dari dalam fungsi.", "next": "benar2"},
+          {"text": "int, karena semua variabel bertipe int pasti global.", "next": "salah2"}
+        ]
+      },
+      {
+        "id": "benar2",
+        "character1": "Suminem",
+        "character2":"Adrien",
+        "text": [
+          "Nah pinterr benerr, si angka bisa diakses di dalam fungsi manapun, karena dia dideklarasikan di luar semua fungsi.",
+          "Oh, berarti global itu bisa dipake di banyak tempat dalam program, ya?",
+          "Iya, bener banget! Nah, selanjutnya ada variabel statis. Variabel statis ini punya sifat yang unik. Meskipun dia dideklarasikan dalam fungsi, nilainya gak hilang meskipun fungsi udah selesai. Jadi, dia tetap menyimpan nilai terakhir saat fungsi tersebut dipanggil lagi."
+        ],
+        "next":"soal3"
+      },
+      {
+        "id": "soal3",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": "#include <stdio.h>\n\nvoid fungsi() {\n    static int angka = 0;\n    angka++;\n    printf(\"%d\\n\", angka);\n}\n\nint main() {\n    fungsi();\n    fungsi();\n    fungsi();\n    return 0;\n}",
+        "choices": [
+          {"text": "1 1 1", "next": "salah3"},
+          {"text": "0 1 2", "next": "salah3"},
+          {"text": "1 2 2", "next": "salah3"},
+          {"text": "1 2 3", "next": "benar3"}
+        ]
+      },
+      {
+        "id": "benar3",
+        "character1": "Adrien",
+        "character2": "Suminem",
+        "text": [
+          "Lihat, meskipun fungsi itu dipanggil berkali-kali, nilai angka tetap bertambah karena dia statis, gak di-reset setiap kali fungsi dipanggil. Jadi, variabel statis itu nyimpen nilai antar pemanggilan fungsi, ya?",
+          "Betul! Terakhir, ada variabel register. Variabel ini jarang dipakai langsung oleh programmer, tapi dia dikhususkan buat disimpan di register CPU, bukan di RAM. Ini supaya akses data jadi lebih cepat. Biasanya dipakai untuk variabel yang sering diakses, seperti counter atau indeks dalam loop. Tapi, penggunaan register ini bergantung sama arsitektur komputer yang dipakai."
+        ],
+        "next": "soal4"
+      },
+      {
+        "id": "soal4",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": "#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5;\n    register int i;\n    for (i = 0; i < 3; i++) {\n        angka++;\n        printf(\"Angka: %d, i: %d\\n\", angka, i);\n    }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}",
+        "choices": [
+          {"text": "angka adalah variabel register, i adalah variabel statis", "next": "salah4"},
+          {"text": "angka adalah variabel statis, i adalah variabel register.", "next": "benar4"},
+          {"text": "angka dan i keduanya variabel register.", "next": "salah4"},
+          {"text": "angka dan i keduanya variabel statis.", "next": "salah4"}
+        ]
+      },
+      {
+        "id": "benar4",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": [
+          "Nah, udah bisa sekarang yaa. Jadi register itu buat variabel yang perkamu akses cepat, intinya ada 4 jenis variabel berdasarkan tempat penyimpanannya, yang pertama ada variabel lokal terletak di dalam fungsi, yang kedua ada variabel global terletak di luar fungsi, yang ketiga ada statis terletak pada nilai yang dipertahankan antar pemanggilan fungsi, dan yang terakhir ada register dengan akses cepat karena disimpan di CPU.",
+          "Wah, jadi gitu ya! Makasih banget, akhirnya aku jadi ngerti! Nggak pusing lagi deh soal penggokamungan variabel.",
+          "Sama-sama, senang bisa bantu. Kalau masih bingung, tinggal tanya aja.",
+          "Hehe, iya nih, nanti aku tanya lagi deh. Terima kasih ya!"
+        ],
+        "next": null
+      },
+      {
+        "id": "salah",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": [
+          "Pelan pelan jawabnya, salah deh.",
+          "iya iya :\\"
+        ],
+        "next":"soal"
+      },
+      {
+        "id": "salah2",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": [
+          "Pelan pelan jawabnya, salah deh.",
+          "iya iya :\\"
+        ],
+        "next":"soal2"
+      },
+      {
+        "id": "salah3",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": [
+          "Pelan pelan jawabnya, salah deh.",
+          "iya iya :\\"
+        ],
+        "next":"soal3"
+      },
+      {
+        "id": "salah4",
+        "character1": "Suminem",
+        "character2": "Adrien",
+        "text": [
+          "Pelan pelan jawabnya, salah deh.",
+          "iya iya :\\"
+        ],
+        "next":"soal4"
+      }
+    ],
+    "rangkuman": [
+      "Variabel lokal adalah variabel yang dideklarasikan di dalam sebuah fungsi. Variabel ini hanya bisa diakses dan digunakan selama fungsi itu berjalan. Setelah fungsi selesai dieksekusi, variabel ini akan hilang dari memori. Secara default, semua variabel yang dibuat di dalam fungsi bersifat lokal, meskipun kita tidak menuliskan kata auto secara eksplisit. Misalnya, jika kita menulis int x = 5; di dalam fungsi, itu sudah otomatis menjadi variabel lokal.",
+      "variabel global dideklarasikan di luar semua fungsi dan bisa diakses oleh semua fungsi yang ada di dalam program. Karena itu, variabel ini sering digunakan untuk menyimpan data yang dibutuhkan oleh banyak bagian dalam program. Namun, penggunaannya juga harus hati-hati karena perubahan nilai dari satu fungsi akan berdampak ke fungsi lainnya.",
+      "Variabel statis memiliki keunikan karena meskipun dideklarasikan di dalam fungsi, nilainya tidak akan hilang setelah fungsi selesai dijalankan. Variabel ini akan menyimpan nilai terakhirnya, dan ketika fungsi dipanggil lagi, variabel tersebut akan melanjutkan dari nilai sebelumnya. Kita bisa membuat variabel statis dengan menambahkan keyword static di depan deklarasinya.",
+      "Variabel register adalah jenis variabel yang disarankan untuk disimpan langsung di register CPU agar aksesnya lebih cepat. Ini biasanya digunakan untuk variabel yang sering diakses dalam program, seperti counter dalam perulangan. Untuk mendeklarasikan variabel ini, kita menggunakan keyword register. Namun, penyimpanannya tergantung pada kemampuan arsitektur komputer, dan tidak semua permintaan register akan dipenuhi oleh compiler."
     ]
   }
-]
+  ]
 }
