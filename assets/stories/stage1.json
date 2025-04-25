@@ -1,29 +1,134 @@
 {
-  "level": 1,
-  "dialogs": [
-    {
-      "id": "intro",
-      "character1": "Adrien",
-      "character2": "Tino",
-      "text": [
-        "Bro, aku bingung deh. Kuliah di informatika tuh berat banget. Materi langsung susah-susah!",
-        "Iya, aku dulu juga gitu. Tapi kamu bakal paham kok, asal kamu konsisten belajar.",
-        "Iya sih. Cuma aku sering denger soal \"variabel\" dan \"operator\", itu apaan sih?",
-        "Oke, gini. Variabel itu tempat nyimpen data dalam program, kayak kotak yang bisa berubah isinya. Misalnya, kamu mau nyimpen umur orang, kamu bikin variabel \"umur\" dan kasih nilai tertentu, misalnya \"umur = 21\".",
-        "Oh, jadi variabel itu buat nyimpen data yang bisa berubah gitu ya?",
-        "Betul. Nah, operator itu alat buat ngelakuin operasi, kayak penjumlahan, pengurangan, perkalian, pembagian. Misalnya, kalau kamu mau nambahin umur dengan 5, kamu bisa pakai operator \"+\", jadi \"hasil = umur + 5;\". Ada juga operator-operator lain kayak - buat pengurangan, * buat perkalian, dan \/ buat pembagian. Jadi, operator itu buat ngelakuin operasi matematika dasar dalam program kamu.",
-        "Oh, jadi operator ini gak cuma buat nambahin, tapi juga ngurangin, ngaliin, dan bagi gitu ya?",
-        " Iya, bener banget. Semua operasi matematika dasar pake operator itu. Dan, operator ini penting banget, karena tanpa operator, program kamu gak bisa ngelakuin perhitungan atau manipulasi data dengan bener."
-      ]
-    },
-    {
-      "id": "quest_start",
-      "character": "Jenny",
-      "text": "Kamu bisa membantuku mengumpulkan bahan bakar roket?",
-      "choices": [
-        {"text": "Tentu!", "next": "quest_accept"},
-        {"text": "Nanti saja", "next": "quest_decline"}
-      ]
+  "levels": [{
+    "level": 1,
+    "dialogs": [
+      {
+        "id": "intro",
+        "character1": "Adrien",
+        "character2": "Tino",
+        "text": [
+          "Mas, aku bingung deh. Kuliah di informatika tuh berat banget. Materi langsung susah-susah!",
+          "Iya, aku dulu juga gitu. Tapi kamu bakal paham kok, asal kamu konsisten belajar.",
+          "Iya sih. Cuma aku sering denger soal \"variabel\" dan \"operator\", itu apaan sih?",
+          "Oke, gini. Variabel itu tempat nyimpen data dalam program, kayak kotak yang bisa berubah isinya. Misalnya, kamu mau nyimpen umur orang, kamu bikin variabel \"umur\" dan kasih nilai tertentu, misalnya \"umur = 21\". nah, data yang kamu simpen di variabel itu bisa macem-macem, kayak angka(integer, float, double), huruf(char), atau kalimat(string).",
+          "Oh, jadi variabel itu buat nyimpen data gitu ya, dan datanya macam-macam?",
+          "Betul. Nah, operator itu alat buat ngelakuin operasi, kayak penjumlahan, pengurangan, perkalian, pembagian. Misalnya, kalau kamu mau nambahin umur dengan 5, kamu bisa pakai operator \"+\", jadi \"hasil = umur + 5;\". Ada juga operator-operator lain kayak - buat pengurangan, * buat perkalian, dan \/ buat pembagian. Jadi, operator itu buat ngelakuin operasi matematika dasar dalam program kamu.",
+          "Oh, jadi operator ini gak cuma buat nambahin, tapi juga ngurangin, ngaliin, dan bagi gitu ya?",
+          "Iya, bener banget. Semua operasi matematika dasar pake operator itu. Dan, operator ini penting banget, karena tanpa operator, program kamu gak bisa ngelakuin perhitungan atau manipulasi data dengan bener.",
+          "Nah kalau buat nampilin variabel itu gimana?",
+          "buat ngambil input dari user atau nampilin hasil ke layar, kamu bisa pake operasi input/output. Misalnya di bahasa c, pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus, kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\".",
+          "Oh, jadi operator ini penting banget buat ngelakuin berbagai perhitungan, dan input output itu fungsinya buat ngambil input sama nampilin outputnya ke layar ya?",
+          "Iya banget! Operator itu bikin program bisa fleksibel dan ngelakuin tugas yang kamu inginkan. Selain itu, ada operator \"!=\" yang artinya tidak sama dengan. Terus, ada juga operator logika kayak \"&&\" yang artinya \"AND\", dan \"||\" yang artinya \"OR\" itu buat ngecek kondisi lebih dari satu. Paham kan?",
+          "Paham! aku mulai ngerti. Variabel buat nyimpen data, operator buat ngitung, bandingin, dan ngelakuin logika, terus input output buat ngambil input dan nampilin output.",
+          "Nah, buat uji pemahaman kamu, aku kasih soal sederhana, kamu coba jawab deh!"
+        ],
+        "next": "soal"
+      },
+      {
+        "id": "soal",
+        "character1": "Adrien",
+        "character2": "Tino",
+        "text": "#include <stdio.h>\nint main() {\n    int a = 5;\n    a += 3 * 2;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
+        "choices": [
+          {"text": "16", "next": "salah"},
+          {"text": "11", "next": "benar"},
+          {"text": "13", "next": "salah"},
+          {"text": "10", "next": "salah"}
+        ]
+      },
+      
+      {
+        "id": "benar",
+        "character1": "Tino",
+        "character2": "Adrien",
+        "text": [
+          "Nahh, iya itu udah benar! Gampang kan? Variabel buat nyimpen data, operator buat ngelakuin operasi matematika, terus input & output buat ngambil sama nampilin variabel.",
+          "Siap Mas, udah MAASUK BANGET INI KE RONGGA!"
+        ],
+        "next": null
+      },
+      {
+        "id": "salah",
+        "character1": "Tino",
+        "character2": "Adrien",
+        "text": [
+          "Hmm, jawaban kamu salah. Coba pikir lagi deh.",
+          "Oh iya"
+        ],
+        "next": "soal"
+      }
+    ],
+    "rangkuman": {
+      "variabel": "Variabel adalah tempat menyimpan data yang nilainya bisa berubah selama program berjalan. Contohnya, int umur = 21; menyimpan nilai umur.",
+      "operator": "Operator digunakan untuk melakukan operasi pada data, seperti:\nAritmatika: +, -, *, \/ untuk perhitungan.\nPembanding: ==, !=, >, < untuk membandingkan nilai.\nLogika: && (AND), || (OR) untuk menggabungkan kondisi.\nPenugasan: = untuk memberi nilai, +=, -= untuk operasi dan penugasan bersamaan.",
+      "input_output": "Input/output adalah cara untuk mengambil input dari pengguna dan menampilkan output ke layar.\nGunakan scanf untuk input data dari pengguna dan printf untuk menampilkan hasil ke layar.",
+      "Tipe_data": "Tipe data menentukan jenis nilai yang bisa disimpan dalam variabel, seperti int untuk angka bulat, float untuk angka pecahan, dan char untuk karakter."
     }
-  ]
+  },
+  {
+    "level": 2,
+    "dialogs": [
+      {
+        "id": "preDialog",
+        "text": "Setelah pulang kuliah, aku masuk rumah dan langsung menuju ruang tamu. Di sana, aku lihat laptop kakakku terbuka, dan di layarnya ada materi yang judul highlightnya if, else if, switch yang asing banget buatku. Karena penasaran, akhirnya aku nanya ke kakak.",
+        "next": "intro"
+      },
+      {
+        "id": "intro",
+        "character1": "Adrien",
+        "character2": "Kakak",
+        "text": [
+          "Ini materi apaan kak?",
+          "Oh ini materiku waktu semester satu. eh btw harusnya kamu udah diajarin materi ini kan?",
+          "Hah apaan? aku belum diajarin. eh tapi gapapa ajarin aku sekarang aja kak buat persiapan nanti menyambut kesenangan kuliah informatika",
+          "jangan sarkas gitu dong, okee jadi ini tuh if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan.",
+          "Ooh, trus kalau else if gimana?",
+          "else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Nah, satu lagi nih, kalau pilihan kamu banyak banget, dan kondisinya mirip, kamu bisa pake switch",
+          "Ooh jadi gini, if untuk cek satu kondisi, else if untuk cek jika mempunyai lebih dari satu kondisi, dan switch untuk cek jika mempunyai pilihan banyak banget dan kondisinya mirip. bener ga kak?",
+          "BEHHHH KACAU! mantep tuh, eh nih coba kamu lihat, kalau ini masuk ke kondisi apa"
+        ],
+        "next": "soal" 
+      },
+      {
+        "id": "soal",
+        "character1": "Adrien",
+        "character2": "Kakak",
+        "text": "#include <stdio.h>\n\nint main() {\n    int x = 10;\n\n    if (x > 5)\n        printf(\"A\\n\");\n    else\n        printf(\"B\\n\");\n\n    return 0;\n}",
+        "choices": [
+          {"text": "Kondisi if, output: B", "next": "salah"},
+          {"text": "Kondisi if-else, output: B", "next": "salah"},
+          {"text": "Kondisi if-else, output: A", "next": "benar"},
+          {"text": "Kondisi switch, output: A", "next": "salah"}
+        ]
+      },
+      {
+        "id": "benar",
+        "character1": "Kakak",
+        "character2": "Adrien",
+        "text": [
+          "Beh, pinter banget. kamu udah ngerti cara kerja if, else if, dan switch, jadi gampang nanti kalau kamu ngadepin materi kondisi dalam program.",
+          "Asik, semoga saat aku ketemu materi kondisi dalam konsep pemrogarman ga bakal bingung lagi ya. Makasih banyak, Kak!",
+          "Iya, siap! Nanti kamu bakal sering ketemu ini di soal-soal. Kalau ada yang bingung lagi, langsung tanya aja!"
+        ],
+        "next": null
+      },
+      {
+        "id": "salah",
+        "character1": "Kakak",
+        "character2": "Adrien",
+        "text": [
+          "Hmm, jawaban kamu DEK DEK. makanya jangan banyak main hp mulu :p.",
+          "Oh iya"
+        ],
+        "next": "soal"
+      },
+      {
+        "id": "rangkuman",
+        "if": "if digunakan untuk memeriksa satu kondisi. Jika kondisi tersebut benar, maka aksi atau kode yang ada di dalam bkamuk if akan dijalankan.",
+        "else if": "else if digunakan ketika ada lebih dari satu kondisi yang perkamu diperiksa. Jika kondisi pertama salah, maka kondisi berikutnya akan dicek. Ini memungkinkan pengecekan beberapa kondisi dalam urutan yang terstruktur.",
+        "switch": "switch digunakan ketika ada banyak pilihan atau kondisi yang mirip. Dengan switch, kamu bisa memeriksa nilai dari suatu variabel terhadap beberapa kemungkinan nilai dan menjalankan aksi berdasarkan nilai yang cocok."
+      }
+    ]
+  }
+]
 }

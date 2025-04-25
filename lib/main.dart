@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:timetocode/pages/end_game_page.dart';
+import 'package:timetocode/pages/daftar_level_page.dart';
+import 'package:flame_audio/flame_audio.dart';
+import 'package:timetocode/themes/app_themes.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized(); // ini wajib untuk memanggil async di main()
+  FlameAudio.bgm.initialize();
+  FlameAudio.bgm.play('music/bg_music.mp3');
   runApp(const MyApp());
+}
+
+void playMusic(bool value) {
+  if (value) {
+    FlameAudio.bgm.play('music/bg_music.mp3');
+  } else {
+    FlameAudio.bgm.stop();
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -11,12 +24,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Time to Code',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.black, // Sesuaikan background
-      ),
-      home: const EndGameScreen(),
+      title: 'TimetoCode',
+      themeMode: ThemeMode.dark,
+      darkTheme: AppThemes.darkTheme,
+      home: const DaftarLevelPage(),
     );
   }
 }
