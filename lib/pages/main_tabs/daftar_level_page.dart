@@ -1,0 +1,96 @@
+import 'package:flutter/material.dart';
+import 'package:timetocode/components/card.dart';
+import 'package:timetocode/themes/colors.dart';
+
+class DaftarLevelPage extends StatelessWidget {
+  const DaftarLevelPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    int totalLevel = 6;
+    int completedLevel = 1;
+    final double progress = completedLevel / totalLevel;
+
+    return Scaffold(
+      body: Stack(
+        children: [
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: ListView(
+                children: [
+                  AppBar(
+                    title: const Text(
+                      'Konsep Pemrograman',
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    actions: [
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: CircularProgressIndicator(
+                              value: progress,
+                              color: AppColors.deepAzure,
+                              backgroundColor: AppColors.gray1,
+                              padding: EdgeInsets.all(4),
+                            ),
+                          ),
+                          Text(
+                            '$completedLevel/$totalLevel',
+                            style: const TextStyle(color: AppColors.white),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  LevelCard(
+                    image: Image.asset('assets/images/TEMP.jpg'),
+                    title: "Level 1 - Pengenalan Pemrograman",
+                    status: CardStatus.completed,
+                    onStartPressed: () {
+                      debugPrint("Start button pressed");
+                    },
+                    onInfoPressed: () {
+                      debugPrint("Info button pressed");
+                    },
+                  ),
+                  LevelCard(
+                    image: Image.asset('assets/images/TEMP.jpg'),
+                    title: "Level 1 - Pengenalan Pemrograman",
+                    status: CardStatus.unlocked,
+                    onStartPressed: () {
+                      debugPrint("Start button pressed");
+                    },
+                    onInfoPressed: () {
+                      debugPrint("Info button pressed");
+                    },
+                  ),
+                  LevelCard(
+                    image: Image.asset('assets/images/TEMP.jpg'),
+                    title: "Level 1 - Pengenalan Pemrograman",
+                    status: CardStatus.locked,
+                    onStartPressed: () {
+                      debugPrint("Start button pressed");
+                    },
+                    onInfoPressed: () {
+                      debugPrint("Info button pressed");
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
