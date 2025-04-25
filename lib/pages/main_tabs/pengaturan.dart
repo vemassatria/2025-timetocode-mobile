@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:timetocode/main.dart';
-import 'package:timetocode/pages/daftar_level_page.dart';
 
 class PengaturanPage extends StatefulWidget {
   const PengaturanPage({super.key});
@@ -12,18 +11,6 @@ class PengaturanPage extends StatefulWidget {
 class _PengaturanPageState extends State<PengaturanPage> {
   bool _efekSuara = false;
   bool _musikLatar = true;
-  int _selectedIndex = 1; // index 1 untuk halaman Pengaturan
-
-  void _onItemTapped(int index) {
-    if (index == 0) {
-      // Navigasi ke halaman DaftarLevelPage
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const DaftarLevelPage()),
-      );
-    }
-    // index 1 tetap di halaman ini
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +22,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
         centerTitle: true,
         title: const Text(
           'Pengaturan',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
       body: Padding(
@@ -48,10 +32,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
           children: [
             const Text(
               'Pengaturan Aplikasi',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.white,
-              ),
+              style: TextStyle(fontSize: 16, color: Colors.white),
             ),
             const SizedBox(height: 16),
             _buildSettingTile(
@@ -78,28 +59,6 @@ class _PengaturanPageState extends State<PengaturanPage> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedLabelStyle: const TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-        ),
-        unselectedLabelStyle: const TextStyle(fontSize: 12),
-        backgroundColor: const Color(0xFF0B0E2A),
-        selectedItemColor: Colors.blueAccent,
-        unselectedItemColor: Colors.white,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Pembelajaran',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Pengaturan',
-          ),
-        ],
       ),
     );
   }

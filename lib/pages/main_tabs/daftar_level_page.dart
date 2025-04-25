@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:timetocode/components/card.dart';
 import 'package:timetocode/themes/colors.dart';
-import 'pengaturan.dart';
 
 class DaftarLevelPage extends StatelessWidget {
   const DaftarLevelPage({Key? key}) : super(key: key);
@@ -89,28 +88,6 @@ class DaftarLevelPage extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
-      ),
-
-      // bottom nav tanpa state
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) {
-          if (index == 1) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (_) => const PengaturanPage()),
-            );
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Pembelajaran',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Pengaturan',
           ),
         ],
       ),
