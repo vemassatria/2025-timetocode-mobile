@@ -23,8 +23,10 @@ class AppThemes {
       backgroundColor: AppColors.surfaceDark,
       selectedItemColor: AppColors.skyByte,
       unselectedItemColor: AppColors.primaryText,
-      selectedLabelStyle: AppTypography.small(color: AppColors.skyByte),
+      selectedLabelStyle: AppTypography.smallBold(color: AppColors.skyByte),
       unselectedLabelStyle: AppTypography.small(color: AppColors.primaryText),
+      selectedIconTheme: const IconThemeData(size: 32),
+      unselectedIconTheme: const IconThemeData(size: 32),
       elevation: 0,
     ),
 
