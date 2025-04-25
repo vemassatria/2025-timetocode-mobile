@@ -1,42 +1,94 @@
 import 'package:flutter/material.dart';
+import 'package:timetocode/themes/colors.dart';
 import 'pengaturan.dart';
 
-class DaftarLevelPage extends StatefulWidget {
-  const DaftarLevelPage({super.key});
-
-  @override
-  State<DaftarLevelPage> createState() => _DaftarLevelPageState();
-}
-
-class _DaftarLevelPageState extends State<DaftarLevelPage> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    if (index == 1) {
-      // Navigasi ke halaman Pengaturan
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const PengaturanPage()),
-      );
-    }
-    // Tetap di halaman ini jika index == 0
-  }
+class DaftarLevelPage extends StatelessWidget {
+  const DaftarLevelPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    int totalLevel = 6;
+    int completedLevel = 1;
+    final double progress = completedLevel / totalLevel;
+
     return Scaffold(
-      backgroundColor: const Color(0xFF0B0E2A),
+      // backgroundImage
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset('assets/images/bg.png', fit: BoxFit.cover),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: ListView(
+                children: [
+                  AppBar(
+                    title: const Text(
+                      'Konsep Pemrograman',
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    actions: [
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: CircularProgressIndicator(
+                              value: progress,
+                              color: AppColors.deepAzure,
+                              backgroundColor: AppColors.gray1,
+                              padding: EdgeInsets.all(4),
+                            ),
+                          ),
+                          Text(
+                            '$completedLevel/$totalLevel',
+                            style: const TextStyle(color: AppColors.white),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  _buildLevelCard(
+                    context,
+                    imagePath: 'assets/images/level1.jpg',
+                    level: "Level 1 pengenalan pemrograman",
+                    buttonText: "Mulai",
+                    status: "Belum Selesai",
+                    statusColor: AppColors.gray1,
+                  ),
+                  const SizedBox(height: 20),
+                  _buildLevelCard(
+                    context,
+                    imagePath: 'assets/images/level2.jpg',
+                    level: "Level 2 pengenalan pemrograman",
+                    buttonText: "Mulai",
+                    status: "Belum Selesai",
+                    statusColor: AppColors.gray1,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+
+      // bottom nav tanpa state
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedLabelStyle: const TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-        ),
-        unselectedLabelStyle: const TextStyle(fontSize: 12),
-        backgroundColor: const Color(0xFF0B0E2A),
-        selectedItemColor: Colors.blueAccent,
-        unselectedItemColor: Colors.white,
+        onTap: (index) {
+          if (index == 1) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => const PengaturanPage()),
+            );
+          }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
@@ -48,59 +100,6 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
           ),
         ],
       ),
-
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: ListView(
-            children: [
-              Text('Konsep pemrograman', style: TextStyle()),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  const Spacer(),
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      const SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: CircularProgressIndicator(
-                          value: 0.4,
-                          color: Colors.blueAccent,
-                          backgroundColor: Colors.blueGrey,
-                        ),
-                      ),
-                      Text('2/5', style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-
-              _buildLevelCard(
-                context,
-                imagePath: 'assets/images/level1.jpg',
-                level: "Level 1 pengenalan pemrograman",
-                buttonText: "Mulai",
-                status: "Belum Selesai",
-                statusColor: Colors.grey[200],
-              ),
-
-              const SizedBox(height: 16),
-
-              _buildLevelCard(
-                context,
-                imagePath: 'assets/images/level2.jpg',
-                level: "Level 2 pengenalan pemrograman",
-                buttonText: "Mulai",
-                status: "Belum Selesai",
-                statusColor: Colors.grey[200],
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 
@@ -109,13 +108,13 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
     required String imagePath,
     required String level,
     String? status,
-    Color? statusColor,
-    String buttonText = "mulai",
+    Color statusColor = AppColors.xpGreen,
+    String buttonText = "Mulai",
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF1E1E1E),
-        borderRadius: BorderRadius.circular(16),
+        color: const Color.fromARGB(255, 0, 32, 79),
+        borderRadius: BorderRadius.circular(8),
       ),
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -142,14 +141,14 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                       horizontal: 5,
                     ),
                     decoration: BoxDecoration(
-                      color: statusColor ?? Colors.green,
+                      color: statusColor,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Row(
-                      children: const [
-                        Icon(Icons.check, color: Colors.white, size: 16),
+                    child: const Row(
+                      children: [
+                        Icon(Icons.check, color: AppColors.white, size: 16),
                         SizedBox(width: 4),
-                        Text('Done', style: TextStyle(color: Colors.white)),
+                        Text('Done', style: TextStyle(color: AppColors.white)),
                       ],
                     ),
                   ),
@@ -160,7 +159,7 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
           Text(
             level,
             style: const TextStyle(
-              color: Colors.white,
+              color: AppColors.white,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
@@ -171,71 +170,74 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
               Expanded(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: AppColors.technoBlue,
+                    foregroundColor: AppColors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
+
                   onPressed: () {},
                   child: Text(buttonText),
                 ),
               ),
               const SizedBox(width: 8),
               IconButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder:
-                        (context) => Dialog(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(1),
-                            side: const BorderSide(
-                              color: Colors.white,
-                              width: 2,
+                icon: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.royalIndigo,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.all(8),
+                  child: const Icon(Icons.info, color: AppColors.black1),
+                ),
+                onPressed:
+                    () => showDialog(
+                      context: context,
+                      builder:
+                          (_) => Dialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
+                              side: const BorderSide(
+                                color: AppColors.white,
+                                width: 2,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    'Informasi Level',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: AppColors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  const Text(
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+                                    'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: AppColors.white),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: const Text('Ok'),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Informasi Level',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-                                  'Sed do eiusmod tempor incididunt ut labore et dolore '
-                                  'magna aliqua. Ut enim ad minim veniam, quis nostrud '
-                                  'exercitation ullamco laboris nisi ut aliquip ex ea '
-                                  'commodo consequat. Duis aute irure dolor in reprehenderit '
-                                  'in voluptate velit esse cillum dolore eu fugiat nulla '
-                                  'pariatur. Excepteur sint occaecat cupidatat non proident, '
-                                  'sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                const SizedBox(height: 16),
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                  child: TextButton(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: const Text('Ok'),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                  );
-                },
-                icon: const Icon(Icons.info, color: Colors.deepPurple),
+                    ),
               ),
             ],
           ),
