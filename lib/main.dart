@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:timetocode/pages/daftar_level_page.dart';
+import 'package:timetocode/pages/main_navigation.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:timetocode/themes/app_themes.dart';
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'TimetoCode',
       themeMode: ThemeMode.dark,
       darkTheme: AppThemes.darkTheme,
-      home: const DaftarLevelPage(),
+      home: const MainNavigation(),
     );
   }
 }
