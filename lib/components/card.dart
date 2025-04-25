@@ -106,8 +106,8 @@ class LevelCard extends StatelessWidget {
 
   Widget _buildCompletedBadge() {
     return Positioned(
-      top: 32,
-      right: 32,
+      top: 28,
+      right: 24,
       child: Chip(
         label: Text(
           "Selesai",
@@ -146,7 +146,7 @@ class LevelCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: isLocked ? AppColors.black3 : AppColors.surfaceDark,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: AppColors.primaryText),
+            border: Border.all(color: AppColors.white, width: 2),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
