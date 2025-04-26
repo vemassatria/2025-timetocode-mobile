@@ -6,13 +6,13 @@ import 'package:timetocode/themes/typography.dart';
 class InfoPopup extends StatelessWidget {
   final String title;
   final String description;
-  final VoidCallback onClose;
+  final VoidCallback onPressed;
 
   const InfoPopup({
     super.key,
     required this.title,
     required this.description,
-    required this.onClose,
+    required this.onPressed,
   });
 
   Widget _buildTitle() {
@@ -34,7 +34,7 @@ class InfoPopup extends StatelessWidget {
   Widget _buildCloseButton() {
     return CustomButton(
       label: "Tutup",
-      onPressed: onClose,
+      onPressed: onPressed,
       widthMode: ButtonWidthMode.fill,
     );
   }
