@@ -56,7 +56,15 @@ class LevelCard extends StatelessWidget {
                   Colors.transparent,
                   BlendMode.multiply,
                 ),
-        child: image,
+        child: SizedBox(
+          height: 170,
+          width: double.infinity,
+          child: FittedBox(
+            fit: BoxFit.cover,
+            clipBehavior: Clip.hardEdge,
+            child: image,
+          ),
+        ),
       ),
     );
   }
