@@ -2,18 +2,18 @@ import 'package:flutter/widgets.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 
-enum GameStatsType { correct, skipped, wrong }
+enum GameStatsType { correct, retry, wrong }
 
 class GameStats extends StatelessWidget {
   final int correct;
-  final int skipped;
+  final int retry;
   final int wrong;
   final int total;
 
   const GameStats({
     super.key,
     required this.correct,
-    required this.skipped,
+    required this.retry,
     required this.wrong,
     required this.total,
   });
@@ -35,7 +35,7 @@ class GameStats extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(title, style: AppTypography.normalBold()),
+          Text(title, style: AppTypography.smallBold()),
           const SizedBox(height: 4),
           Container(
             width: double.infinity,
@@ -64,8 +64,8 @@ class GameStats extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         _buildStatCard(
-          title: 'Dilewati',
-          count: skipped,
+          title: 'Ulang Materi',
+          count: retry,
           total: total,
           primaryColor: AppColors.secondaryText,
           secondaryColor: AppColors.black3,
