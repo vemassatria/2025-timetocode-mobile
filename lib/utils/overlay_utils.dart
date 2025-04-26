@@ -5,7 +5,10 @@ void showPopupOverlay(BuildContext context, Widget popupContent) {
 
   final overlayEntry = OverlayEntry(
     builder: (context) {
-      return Positioned(top: 200, child: popupContent);
+      return Material(
+        color: Color(0x80000000),
+        child: Center(child: popupContent),
+      );
     },
   );
 
