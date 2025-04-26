@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:timetocode/themes/colors.dart';
+import 'package:timetocode/utils/screen_utils.dart';
 
 class BasePopup extends StatelessWidget {
   final Widget child;
@@ -10,6 +11,7 @@ class BasePopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 328 / 360 * ScreenUtils.screenWidth(context),
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
         color: AppColors.surfaceDark,
