@@ -1,29 +1,12 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-import 'package:timetocode/games/end_game.dart';
-import 'package:timetocode/components/end_game_component.dart';
 
 class EndGameScreen extends StatelessWidget {
   const EndGameScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final endGame = EndGame();
-
-    return Scaffold(
-      body: Stack(
-        children: [
-          GameWidget(
-            game: endGame..add(EndGameComponent()),
-            overlayBuilderMap: {
-              'endGameUI': (context, game) => const EndGameOverlay(),
-            },
-            initialActiveOverlays: const ['endGameUI'],
-          ),
-        ],
-      ),
-    );
+    return EndGameOverlay();
   }
 }
 
