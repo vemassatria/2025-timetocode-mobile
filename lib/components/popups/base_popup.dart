@@ -18,7 +18,7 @@ class BasePopup extends StatelessWidget {
         border: Border.all(color: borderColor ?? AppColors.white, width: 2),
         borderRadius: BorderRadius.circular(8),
       ),
-      child: child,
+      child: IntrinsicHeight(child: child),
     );
   }
 }
