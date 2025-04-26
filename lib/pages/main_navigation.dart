@@ -20,7 +20,6 @@ class _MainNavigationState extends State<MainNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    // Build pages list here, so we can use widget.game
     final pages = <Widget>[
       DaftarLevelPage(game: widget.game),
       PengaturanPage(),

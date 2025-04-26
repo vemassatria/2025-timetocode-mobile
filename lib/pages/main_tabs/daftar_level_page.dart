@@ -14,6 +14,41 @@ class DaftarLevelPage extends StatelessWidget {
     final double progress = completedLevel / totalLevel;
 
     return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        title: const Text(
+          'Konsep Pemrograman',
+          style: TextStyle(
+            color: AppColors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 16.0),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: CircularProgressIndicator(
+                    value: progress,
+                    color: AppColors.deepAzure,
+                    backgroundColor: AppColors.gray1,
+                    padding: EdgeInsets.all(4),
+                  ),
+                ),
+                Text(
+                  '$completedLevel/$totalLevel',
+                  style: const TextStyle(color: AppColors.white),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           SafeArea(
@@ -21,49 +56,13 @@ class DaftarLevelPage extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: ListView(
                 children: [
-                  AppBar(
-                    title: const Text(
-                      'Konsep Pemrograman',
-                      style: TextStyle(
-                        color: AppColors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    actions: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: CircularProgressIndicator(
-                              value: progress,
-                              color: AppColors.deepAzure,
-                              backgroundColor: AppColors.gray1,
-                              padding: EdgeInsets.all(4),
-                            ),
-                          ),
-                          Text(
-                            '$completedLevel/$totalLevel',
-                            style: const TextStyle(color: AppColors.white),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
                   LevelCard(
                     image: Image.asset('assets/images/TEMP.jpg'),
                     title: "Level 1 - Pengenalan Pemrograman",
                     status: CardStatus.completed,
                     onStartPressed: () {
-                      game.overlays.remove(
-                        'GameUI',
-                      ); // kalau perlu sembunyikan nav bar dulu
-                      game.overlays.add(
-                        'EndGame',
-                      ); // munculkan overlay EndGameOverlay
+                      game.overlays.remove('GameUI');
+                      game.overlays.add('EndGame');
                     },
                     onInfoPressed: () {
                       debugPrint("Info button pressed");
