@@ -1,18 +1,11 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:timetocode/games/background.dart';
 
 class EndGameScreen extends StatelessWidget {
-  const EndGameScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return EndGameOverlay();
-  }
-}
-
-// Widget overlay untuk UI akhir game
-class EndGameOverlay extends StatelessWidget {
-  const EndGameOverlay({super.key});
+  final FlameGame game;
+  const EndGameScreen({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +58,7 @@ class EndGameOverlay extends StatelessWidget {
               ),
               child: TextButton.icon(
                 onPressed: () {
+                  (game as Background).changeScene('lab');
                   rangkumanDialog(context);
                 },
                 icon: const Icon(Icons.chrome_reader_mode, color: Colors.white),
@@ -112,7 +106,12 @@ class EndGameOverlay extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  game.overlays.remove(
+                    'EndGame',
+                  ); // kalau perlu sembunyikan nav bar dulu
+                  game.overlays.add('GameUI');
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 112, 183, 255),
                   alignment: Alignment.center,

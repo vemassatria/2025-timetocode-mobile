@@ -1,12 +1,13 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:timetocode/games/background.dart';
+import 'package:timetocode/pages/end_game_page.dart';
 import 'package:timetocode/pages/main_navigation.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:timetocode/themes/app_themes.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized(); // ini wajib untuk memanggil async di main()
+  WidgetsFlutterBinding.ensureInitialized();
   FlameAudio.bgm.initialize();
   FlameAudio.bgm.play('music/bg_music.mp3');
   runApp(const MyApp());
@@ -31,10 +32,11 @@ class MyApp extends StatelessWidget {
       title: 'TimetoCode',
       themeMode: ThemeMode.dark,
       darkTheme: AppThemes.darkTheme,
-      home: GameWidget(
+      home: GameWidget<Background>(
         game: background,
         overlayBuilderMap: {
-          'GameUI': (context, game) => const MainNavigation(),
+          'GameUI': (context, game) => MainNavigation(game: game),
+          'EndGame': (context, game) => EndGameScreen(game: game),
         },
         initialActiveOverlays: const ['GameUI'],
       ),

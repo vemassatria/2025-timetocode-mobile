@@ -1,9 +1,11 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:timetocode/pages/main_tabs/daftar_level_page.dart';
 import 'package:timetocode/pages/main_tabs/pengaturan.dart';
 
 class MainNavigation extends StatefulWidget {
-  const MainNavigation({super.key});
+  final FlameGame game;
+  const MainNavigation({Key? key, required this.game}) : super(key: key);
 
   @override
   State<MainNavigation> createState() => _MainNavigationState();
@@ -12,16 +14,21 @@ class MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = const [DaftarLevelPage(), PengaturanPage()];
-
   void _onItemTapped(int index) {
     setState(() => _selectedIndex = index);
   }
 
   @override
   Widget build(BuildContext context) {
+    // Build pages list here, so we can use widget.game
+    final pages = <Widget>[
+      DaftarLevelPage(game: widget.game),
+      PengaturanPage(),
+    ];
+
     return Scaffold(
-      body: _pages[_selectedIndex],
+      backgroundColor: Colors.transparent,
+      body: pages[_selectedIndex],
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }

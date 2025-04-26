@@ -1,9 +1,11 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:timetocode/components/card.dart';
 import 'package:timetocode/themes/colors.dart';
 
 class DaftarLevelPage extends StatelessWidget {
-  const DaftarLevelPage({Key? key}) : super(key: key);
+  final FlameGame game;
+  const DaftarLevelPage({Key? key, required this.game}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,12 @@ class DaftarLevelPage extends StatelessWidget {
                     title: "Level 1 - Pengenalan Pemrograman",
                     status: CardStatus.completed,
                     onStartPressed: () {
-                      debugPrint("Start button pressed");
+                      game.overlays.remove(
+                        'GameUI',
+                      ); // kalau perlu sembunyikan nav bar dulu
+                      game.overlays.add(
+                        'EndGame',
+                      ); // munculkan overlay EndGameOverlay
                     },
                     onInfoPressed: () {
                       debugPrint("Info button pressed");

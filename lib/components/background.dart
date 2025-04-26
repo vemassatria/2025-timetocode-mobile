@@ -1,28 +1,34 @@
-// Buat class untuk mengelola background scene
 import 'dart:ui';
 
 import 'package:flame/components.dart';
+import 'package:flame/game.dart';
 
-class SceneBackgroundComponent extends Component {
+class SceneBackgroundComponent extends SpriteComponent {
   String currentScene;
-  late Sprite backgroundSprite;
-  Vector2 size;
+  late final FlameGame game;
 
-  SceneBackgroundComponent({this.currentScene = "default", required this.size});
+  SceneBackgroundComponent({
+    this.currentScene = "default",
+    required Vector2 size,
+  }) : super(size: size, position: Vector2.zero(), anchor: Anchor.topLeft);
 
   @override
   Future<void> onLoad() async {
+    game = findGame()!;
+    await super.onLoad();
     await loadScene(currentScene);
-    return super.onLoad();
   }
 
   Future<void> loadScene(String sceneName) async {
-    currentScene = sceneName;
-    backgroundSprite = await Sprite.load('background/$sceneName.webp');
-  }
+    final image = await game.images.load('background/$sceneName.webp');
+    sprite = Sprite(image);
 
-  @override
-  void render(Canvas canvas) {
-    backgroundSprite.render(canvas, size: size);
+    size = game.size;
+
+    sprite!.paint =
+        Paint()
+          ..filterQuality = FilterQuality.high
+          ..isAntiAlias = true
+          ..shader = null;
   }
 }
