@@ -5,9 +5,9 @@ import 'package:timetocode/components/setting_item.dart';
 import 'package:timetocode/themes/typography.dart';
 
 class SettingPopup extends StatefulWidget {
-  final VoidCallback onPressed;
+  final VoidCallback onGoBack;
 
-  const SettingPopup({super.key, required this.onPressed});
+  const SettingPopup({super.key, required this.onGoBack});
 
   @override
   State<SettingPopup> createState() => _SettingPopupState();
@@ -59,7 +59,7 @@ class _SettingPopupState extends State<SettingPopup> {
   Widget _buildButton() {
     return CustomButton(
       label: "Kembali",
-      onPressed: widget.onPressed,
+      onPressed: widget.onGoBack,
       widthMode: ButtonWidthMode.fill,
     );
   }

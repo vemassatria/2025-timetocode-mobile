@@ -8,7 +8,7 @@ class ConfirmPopup extends StatelessWidget {
   final String description;
   final String confirmLabel;
   final VoidCallback onPrimaryButtonPressed;
-  final VoidCallback onSecondaryButtonPressed;
+  final VoidCallback onGoBack;
 
   const ConfirmPopup({
     super.key,
@@ -16,7 +16,7 @@ class ConfirmPopup extends StatelessWidget {
     required this.description,
     required this.confirmLabel,
     required this.onPrimaryButtonPressed,
-    required this.onSecondaryButtonPressed,
+    required this.onGoBack,
   });
 
   Widget _buildTitle() {
@@ -50,7 +50,7 @@ class ConfirmPopup extends StatelessWidget {
         Expanded(
           child: CustomButton(
             label: "Batal",
-            onPressed: onSecondaryButtonPressed,
+            onPressed: onGoBack,
             widthMode: ButtonWidthMode.fill,
             type: ButtonType.outline,
             color: ButtonColor.none,

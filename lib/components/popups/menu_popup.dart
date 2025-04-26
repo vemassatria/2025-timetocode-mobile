@@ -1,0 +1,117 @@
+import 'package:flutter/material.dart';
+import 'package:timetocode/components/button.dart';
+import 'package:timetocode/components/popups/base_popup.dart';
+import 'package:timetocode/components/popups/confirm_popup.dart';
+import 'package:timetocode/components/popups/setting_popup.dart';
+import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
+
+class MenuPopup extends StatelessWidget {
+  final VoidCallback onRestart;
+  final VoidCallback onExit;
+  final VoidCallback onClose;
+  final VoidCallback onGoBack;
+
+  const MenuPopup({
+    super.key,
+    required this.onRestart,
+    required this.onExit,
+    required this.onClose,
+    required this.onGoBack,
+  });
+
+  Widget _buildTitle() {
+    return Text(
+      "Menu",
+      style: AppTypography.heading4(),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  Widget _buildMenuButtons(BuildContext context) {
+    return Column(
+      children: [
+        CustomButton(
+          label: "Lanjutkan",
+          onPressed: () {
+            onClose();
+          },
+          widthMode: ButtonWidthMode.fill,
+        ),
+        const SizedBox(height: 16),
+        CustomButton(
+          label: "Mulai Ulang",
+          onPressed: () {
+            showPopupOverlay(
+              context,
+              ConfirmPopup(
+                title: "Mulai Ulang?",
+                description:
+                    "Progress hilang dan permainan dimulai dari awal sekarang.",
+                confirmLabel: "Mulai Ulang",
+                onPrimaryButtonPressed: onRestart,
+                onGoBack: () {
+                  onGoBack();
+                },
+              ),
+            );
+          },
+          widthMode: ButtonWidthMode.fill,
+        ),
+        const SizedBox(height: 16),
+        CustomButton(
+          label: "Pengaturan",
+          onPressed: () {
+            showPopupOverlay(
+              context,
+              SettingPopup(
+                onGoBack: () {
+                  onGoBack();
+                },
+              ),
+            );
+          },
+          widthMode: ButtonWidthMode.fill,
+        ),
+        const SizedBox(height: 16),
+        CustomButton(
+          label: "Keluar",
+          onPressed: () {
+            showPopupOverlay(
+              context,
+              ConfirmPopup(
+                title: "Keluar?",
+                description:
+                    "Progress akan hilang dan level diulang dari awal saat dimainkan kembali.",
+                confirmLabel: "Tetap Keluar",
+                onPrimaryButtonPressed: onExit,
+                onGoBack: () {
+                  onGoBack();
+                },
+              ),
+            );
+          },
+          widthMode: ButtonWidthMode.fill,
+          color: ButtonColor.purple,
+        ),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BasePopup(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _buildTitle(),
+          const SizedBox(height: 8),
+          const Divider(thickness: 3),
+          const SizedBox(height: 32),
+          _buildMenuButtons(context),
+        ],
+      ),
+    );
+  }
+}
