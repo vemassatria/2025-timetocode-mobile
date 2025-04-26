@@ -1,9 +1,10 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:timetocode/games/background.dart';
+import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/pages/end_game_page.dart';
 import 'package:timetocode/pages/main_navigation.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:timetocode/pages/story.dart';
 import 'package:timetocode/themes/app_themes.dart';
 
 void main() {
@@ -26,16 +27,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Background background = Background();
+    final GameEngine gameEngine = GameEngine();
 
     return MaterialApp(
       title: 'TimetoCode',
       themeMode: ThemeMode.dark,
       darkTheme: AppThemes.darkTheme,
-      home: GameWidget<Background>(
-        game: background,
+      home: GameWidget<GameEngine>(
+        game: gameEngine,
         overlayBuilderMap: {
           'GameUI': (context, game) => MainNavigation(game: game),
+          'Story': (context, game) => StoryPage(game: game),
           'EndGame': (context, game) => EndGameScreen(game: game),
         },
         initialActiveOverlays: const ['GameUI'],

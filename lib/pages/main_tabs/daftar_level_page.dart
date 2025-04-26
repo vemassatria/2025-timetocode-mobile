@@ -1,6 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:timetocode/components/card.dart';
+import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/themes/colors.dart';
 
 class DaftarLevelPage extends StatelessWidget {
@@ -61,8 +62,10 @@ class DaftarLevelPage extends StatelessWidget {
                     title: "Level 1 - Pengenalan Pemrograman",
                     status: CardStatus.completed,
                     onStartPressed: () {
+                      (game as GameEngine).changeScene('lab');
+                      (game as GameEngine).loadCharacter('kakak', 'kating');
                       game.overlays.remove('GameUI');
-                      game.overlays.add('EndGame');
+                      game.overlays.add('Story');
                     },
                     onInfoPressed: () {
                       debugPrint("Info button pressed");

@@ -1,7 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-import 'package:timetocode/games/background.dart';
+import 'package:timetocode/games/game_engine.dart';
 
 class EndGameScreen extends StatelessWidget {
   final FlameGame game;
@@ -58,7 +58,7 @@ class EndGameScreen extends StatelessWidget {
               ),
               child: TextButton.icon(
                 onPressed: () {
-                  (game as Background).changeScene('lab');
+                  (game as GameEngine).changeScene('lab');
                   rangkumanDialog(context);
                 },
                 icon: const Icon(Icons.chrome_reader_mode, color: Colors.white),
@@ -107,9 +107,7 @@ class EndGameScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.9,
               child: TextButton(
                 onPressed: () {
-                  game.overlays.remove(
-                    'EndGame',
-                  ); // kalau perlu sembunyikan nav bar dulu
+                  game.overlays.remove('EndGame');
                   game.overlays.add('GameUI');
                 },
                 style: TextButton.styleFrom(
