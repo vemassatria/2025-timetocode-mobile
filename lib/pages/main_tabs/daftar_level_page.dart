@@ -177,8 +177,7 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                             'kating',
                             'kakak',
                           );
-                          widget.game.overlays.remove('GameUI');
-                          widget.game.overlays.add('Story');
+                          (widget.game as GameEngine).startDialogue(index);
                         } else {
                           debugPrint(
                             "Start button pressed for level ${index + 1}",
