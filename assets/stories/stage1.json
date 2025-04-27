@@ -7,20 +7,11 @@
         "character1": "Adrien",
         "character2": "Tino",
         "text": [
-          "Mas, aku bingung deh. Kuliah di informatika tuh berat banget. Materi langsung susah-susah!",
-          "Iya, aku dulu juga gitu. Tapi kamu bakal paham kok, asal kamu konsisten belajar.",
-          "Iya sih. Cuma aku sering denger soal \"variabel\" dan \"operator\", itu apaan sih?",
-          "Oke, gini. Variabel itu tempat nyimpen data dalam program, kayak kotak yang bisa berubah isinya. Misalnya, kamu mau nyimpen umur orang, kamu bikin variabel \"umur\" dan kasih nilai tertentu, misalnya \"umur = 21\". nah, data yang kamu simpen di variabel itu bisa macem-macem, kayak angka(integer, float, double), huruf(char), atau kalimat(string).",
-          "Oh, jadi variabel itu buat nyimpen data gitu ya, dan datanya macam-macam?",
-          "Betul. Nah, operator itu alat buat ngelakuin operasi, kayak penjumlahan, pengurangan, perkalian, pembagian. Misalnya, kalau kamu mau nambahin umur dengan 5, kamu bisa pakai operator \"+\", jadi \"hasil = umur + 5;\". Ada juga operator-operator lain kayak - buat pengurangan, * buat perkalian, dan \/ buat pembagian. Jadi, operator itu buat ngelakuin operasi matematika dasar dalam program kamu.",
-          "Oh, jadi operator ini gak cuma buat nambahin, tapi juga ngurangin, ngaliin, dan bagi gitu ya?",
-          "Iya, bener banget. Semua operasi matematika dasar pake operator itu. Dan, operator ini penting banget, karena tanpa operator, program kamu gak bisa ngelakuin perhitungan atau manipulasi data dengan bener.",
-          "Nah kalau buat nampilin variabel itu gimana?",
-          "buat ngambil input dari user atau nampilin hasil ke layar, kamu bisa pake operasi input/output. Misalnya di bahasa c, pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus, kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\".",
-          "Oh, jadi operator ini penting banget buat ngelakuin berbagai perhitungan, dan input output itu fungsinya buat ngambil input sama nampilin outputnya ke layar ya?",
-          "Iya banget! Operator itu bikin program bisa fleksibel dan ngelakuin tugas yang kamu inginkan. Selain itu, ada operator \"!=\" yang artinya tidak sama dengan. Terus, ada juga operator logika kayak \"&&\" yang artinya \"AND\", dan \"||\" yang artinya \"OR\" itu buat ngecek kondisi lebih dari satu. Paham kan?",
-          "Paham! aku mulai ngerti. Variabel buat nyimpen data, operator buat ngitung, bandingin, dan ngelakuin logika, terus input output buat ngambil input dan nampilin output.",
-          "Nah, buat uji pemahaman kamu, aku kasih soal sederhana, kamu coba jawab deh!"
+          "Mas, aku bingung deh kuliah di Informatika tuh berat banget. Materi langsung susah-susah!",
+          "Iya aku dulu juga gitu. Tapi kamu bakal paham kok, asal konsisten belajar.",
+          "Iya sih. Nah kemarin pelajaran pertama itu aku dapat tentang \"variabel\" dan \"operator\", itu apaan sih mas? aku masih bingung soalnya",
+          "Nah sebelum masuk ke situ aku jelasin dulu soal tipe data ya biar kamu makin paham. Pertama ada int, biasanya dipake buat nyimpen angka bulat. Kayak umur, jumlah barang, tahun, pokoknya angka yang gak ada komanya.\n Kedua ada float, buat angka yang ada komanya. Misal kayak berat badan 55.5 kg, tinggi badan 160.3 cm, atau nilai ujian 89.75. Pokoknya yang ada pecahannya gitu.\n Ketiga ada char buat nyimpen satu huruf aja. Misal huruf awal nama kamu, kayak 'A' buat Adrien.\n Lalu kalau buat nama panjang kamu bisa pakai string, dimana string itu buat nyimpen deretan karakter alias tulisan panjang.\n Terakhir ada bool alias boolean buat nyimpen dua pilihan aja: true atau false. Misal status \"Lulus\" atau \"Belum Lulus\", \"Sudah Login\" atau \"Belum Login\".\n",
+          "Gila ternyata tiap tipe data itu banyak ya dan ada gunanya masing-masing."
         ],
         "next": "soal"
       },
@@ -28,12 +19,12 @@
         "id": "soal",
         "character1": "Adrien",
         "character2": "Tino",
-        "text": "#include <stdio.h>\nint main() {\n    int a = 5;\n    a += 3 * 2;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
+        "text": "Nama mahasiswa itu adalah \"Andi\", usianya 20 tahun, berat badannya 70.5 kg, dan dia sudah lulus ujian dengan nilai 85.  Pilih tipe data yang tepat untuk masing-masing data tersebut:\n",
         "choices": [
-          {"text": "16", "next": "salah"},
-          {"text": "11", "next": "benar"},
-          {"text": "13", "next": "salah"},
-          {"text": "10", "next": "salah"}
+          {"text": "Nama: string, Usia: float, Berat badan: int, Nilai ujian: bool, Status lulus: char", "next": "salah"},
+          {"text": "Nama: string, Usia: int, Berat badan: float, Nilai ujian: int, Status lulus: bool", "next": "benar"},
+          {"text": "Nama: char, Usia: bool, Berat badan: string, Nilai ujian: float, Status lulus: int", "next": "salah"},
+          {"text": "Nama: int, Usia: float, Berat badan: string, Nilai ujian: bool, Status lulus: float", "next": "salah"}
         ]
       },
       
@@ -42,8 +33,7 @@
         "character1": "Tino",
         "character2": "Adrien",
         "text": [
-          "Nahh, iya itu udah benar! Gampang kan? Variabel buat nyimpen data, operator buat ngelakuin operasi matematika, terus input & output buat ngambil sama nampilin variabel.",
-          "Siap Mas, udah MAASUK BANGET INI KE RONGGA!"
+          "Mantap! Nah sekarang kita lanjut ke variabel! Variabel itu tempat buat nyimpen data. Jadi bayangin aja kamu punya wadah atau kotak yang bisa berubah isinya.",
         ],
         "next": null
       },
@@ -79,8 +69,8 @@
         "character2": "Kakak",
         "text": [
           "Ini materi apaan kak?",
-          "Oh ini materiku waktu semester satu. eh btw harusnya kamu udah diajarin materi ini kan?",
-          "Hah apaan? aku belum diajarin. eh tapi gapapa ajarin aku sekarang aja kak buat persiapan nanti menyambut kesenangan kuliah informatika",
+          "Oh ini materi konsep pemrogamanku waktu semester satu pas diajarin sama Pak Rusdi. Eh btw harusnya kamu udah diajarin materi ini kan?\n",
+          "Lah sama kak, aku konsep perograman yang ngajar juga Pak Rusdi tapi aku belum diajarin materi itu. Coba dong kak aajarin aku sekarang buat persiapan materi nanti.\n",
           "jangan sarkas gitu dong, okee jadi ini tuh if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan.",
           "Ooh, trus kalau else if gimana?",
           "else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Nah, satu lagi nih, kalau pilihan kamu banyak banget, dan kondisinya mirip, kamu bisa pake switch",
@@ -125,8 +115,8 @@
     ],
     "rangkuman": [
       "if digunakan untuk memeriksa satu kondisi. Jika kondisi tersebut benar, maka aksi atau kode yang ada di dalam bkamuk if akan dijalankan.",
-        "else if digunakan ketika ada lebih dari satu kondisi yang perkamu diperiksa. Jika kondisi pertama salah, maka kondisi berikutnya akan dicek. Ini memungkinkan pengecekan beberapa kondisi dalam urutan yang terstruktur.",
-        "switch digunakan ketika ada banyak pilihan atau kondisi yang mirip. Dengan switch, kamu bisa memeriksa nilai dari suatu variabel terhadap beberapa kemungkinan nilai dan menjalankan aksi berdasarkan nilai yang cocok."
+      "else if digunakan ketika ada lebih dari satu kondisi yang perkamu diperiksa. Jika kondisi pertama salah, maka kondisi berikutnya akan dicek. Ini memungkinkan pengecekan beberapa kondisi dalam urutan yang terstruktur.",
+      "switch digunakan ketika ada banyak pilihan atau kondisi yang mirip. Dengan switch, kamu bisa memeriksa nilai dari suatu variabel terhadap beberapa kemungkinan nilai dan menjalankan aksi berdasarkan nilai yang cocok."
     ]
   },
   {
