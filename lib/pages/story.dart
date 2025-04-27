@@ -32,6 +32,40 @@ class StoryPage extends StatelessWidget {
               },
               child: const Text('Mulai'),
             ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                game.changeCharacter(1, "crush");
+              },
+              child: const Text('ganti karakter 1'),
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                game.activeCharacter(1);
+              },
+              child: const Text('mc bicara'),
+            ),
+
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                game.activeCharacter(2);
+              },
+              child: const Text('lawan bicara'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                game.normalCharacters(1);
+              },
+              child: const Text('normalkan karakter(mc selesai bicara)'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                game.normalCharacters(2);
+              },
+              child: const Text('normalkan karakter(lawan selesai bicara)'),
+            ),
           ],
         ),
       ),

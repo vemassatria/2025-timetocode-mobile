@@ -63,7 +63,7 @@ class DaftarLevelPage extends StatelessWidget {
                     status: CardStatus.completed,
                     onStartPressed: () {
                       (game as GameEngine).changeScene('lab');
-                      (game as GameEngine).loadCharacter('kakak', 'kating');
+                      (game as GameEngine).loadCharacter('kating', 'kakak');
                       game.overlays.remove('GameUI');
                       game.overlays.add('Story');
                     },

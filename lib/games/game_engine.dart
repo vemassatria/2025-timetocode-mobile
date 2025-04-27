@@ -31,4 +31,28 @@ class GameEngine extends FlameGame {
     storyCharacters!.removeFromParent();
     storyCharacters = null;
   }
+
+  void changeCharacter(int indexCharacter, String characterNewPath) async {
+    await storyCharacters!.changeCharacter(indexCharacter, characterNewPath);
+  }
+
+  void activeCharacter(int indexCharacter) async {
+    await storyCharacters!.activeCharacter(indexCharacter);
+  }
+
+  void enchancedCharacter(int indexCharacter) async {
+    await storyCharacters!.enhancedCharacter(indexCharacter);
+  }
+
+  void normalMCCharacter(int indexCharacter) async {
+    await storyCharacters!.normalMCCharacter(indexCharacter);
+  }
+
+  void normalSecondCharacter(int indexCharacter) async {
+    await storyCharacters!.normalSecondCharacter(indexCharacter);
+  }
+
+  void normalCharacters(int indexCharacter) async {
+    await storyCharacters!.normalCharacters(indexCharacter);
+  }
 }
