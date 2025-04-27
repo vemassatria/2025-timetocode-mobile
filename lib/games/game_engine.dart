@@ -1,18 +1,49 @@
+import 'dart:convert';
+
 import 'package:flame/game.dart';
+import 'package:flutter/services.dart';
 import 'package:timetocode/components/flame_engine/background.dart';
 import 'package:timetocode/components/flame_engine/character.dart';
+import 'package:timetocode/games/models/level_model.dart';
 
 class GameEngine extends FlameGame {
   late SceneBackgroundComponent sceneBackground;
   StoryCharactersComponent? storyCharacters;
 
+  late final List<LevelModel> levels;
+  List<String> _currentDialogs = [];
+
   @override
   Future<void> onLoad() async {
+    await _loadLevels();
     images.prefix = 'assets/';
     await super.onLoad();
     sceneBackground = SceneBackgroundComponent(size: size);
     add(sceneBackground);
   }
+
+  Future<void> _loadLevels() async {
+    final jsonStr = await rootBundle.loadString('assets/stories/stage1.json');
+    final data = json.decode(jsonStr) as Map<String, dynamic>;
+    levels =
+        (data['levels'] as List)
+            .map((j) => LevelModel.fromJson(j as Map<String, dynamic>))
+            .toList();
+  }
+
+  /// Mulai dialog intro untuk sebuah level
+  void startDialogue(int levelIndex) {
+    final intro =
+        levels[levelIndex].dialogs.firstWhere((d) => d.id == 'intro').text;
+    _currentDialogs = intro;
+    // show the overlay once
+    overlays
+      ..remove('GameUI')
+      ..add('Story')
+      ..add('DialogueBox');
+  }
+
+  List<String> get currentDialogs => _currentDialogs;
 
   Future<void> changeScene(String sceneName) async {
     images.prefix = 'assets/';

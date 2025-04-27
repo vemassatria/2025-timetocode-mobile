@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:timetocode/components/menu_button.dart';
 import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
 
 class StoryPage extends StatelessWidget {
   final GameEngine game;
-  const StoryPage({Key? key, required this.game}) : super(key: key);
+  final VoidCallback? onNext;
+  const StoryPage({Key? key, required this.game, this.onNext})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +24,7 @@ class StoryPage extends StatelessWidget {
             game.changeScene('default');
             game.removeStory();
             game.overlays.add('GameUI');
+            closePopupOverlay();
           },
         ),
       ),
