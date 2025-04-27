@@ -174,8 +174,8 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                         if (index == 0) {
                           (widget.game as GameEngine).changeScene('lab');
                           (widget.game as GameEngine).loadCharacter(
-                            'kakak',
                             'kating',
+                            'kakak',
                           );
                           widget.game.overlays.remove('GameUI');
                           widget.game.overlays.add('Story');
