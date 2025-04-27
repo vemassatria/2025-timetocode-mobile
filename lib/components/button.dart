@@ -8,7 +8,7 @@ enum ButtonColor { purple, yellow, blue, green, red, none }
 
 enum ButtonWidthMode { fill, hug, fixed }
 
-class Button extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final String? label;
   final VoidCallback? onPressed;
   final ButtonType type;
@@ -19,7 +19,7 @@ class Button extends StatelessWidget {
   final double? height;
   final ButtonWidthMode widthMode;
 
-  const Button({
+  const CustomButton({
     super.key,
     required this.label,
     required this.onPressed,
@@ -32,7 +32,6 @@ class Button extends StatelessWidget {
     this.widthMode = ButtonWidthMode.hug,
   });
 
-  // Helper functions to get color values
   Color _getFillBgColor(ButtonColor color) {
     switch (color) {
       case ButtonColor.purple:

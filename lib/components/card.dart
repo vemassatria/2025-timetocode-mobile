@@ -91,7 +91,7 @@ class LevelCard extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: Button(
+          child: CustomButton(
             label: label,
             onPressed: onStartPressed,
             type: ButtonType.filled,
@@ -100,7 +100,7 @@ class LevelCard extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-        Button(
+        CustomButton(
           icon: const Icon(Icons.info_outline),
           onPressed: onInfoPressed,
           type: ButtonType.icon,
