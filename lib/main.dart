@@ -6,24 +6,14 @@ import 'package:timetocode/components/cerita/intro.dart';
 import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/pages/end_game_page.dart';
 import 'package:timetocode/pages/main_navigation.dart';
-import 'package:flame_audio/flame_audio.dart';
 import 'package:timetocode/pages/story.dart';
 import 'package:timetocode/themes/app_themes.dart';
+import 'package:timetocode/SFX/music_service.dart';
 
-void main() {
-  debugPaintBaselinesEnabled = false;
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FlameAudio.bgm.initialize();
-  FlameAudio.bgm.play('music/bg_music.mp3');
+  await MusicService.init();
   runApp(const MyApp());
-}
-
-void playMusic(bool value) {
-  if (value) {
-    FlameAudio.bgm.play('music/bg_music.mp3');
-  } else {
-    FlameAudio.bgm.stop();
-  }
 }
 
 class MyApp extends StatelessWidget {
