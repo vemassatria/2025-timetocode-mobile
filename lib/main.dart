@@ -2,7 +2,9 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:timetocode/components/cerita/dialogue.dart';
+import 'package:timetocode/components/cerita/intro.dart';
 import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/pages/end_game_page.dart';
 import 'package:timetocode/pages/main_navigation.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:timetocode/pages/story.dart';
@@ -40,17 +42,26 @@ class MyApp extends StatelessWidget {
         overlayBuilderMap: {
           'GameUI': (_, game) => MainNavigation(game: game),
           'DialogueBox':
-              (_, GameEngine game) => DialogueBoxWidget(
+              (_, game) => DialogueBoxWidget(
                 dialoguesText: game.currentDialogs,
                 onNext: () {
-                  // when the widget has shown all its lines:
+                  game.changeScene('default');
                   game.overlays
                     ..remove('DialogueBox')
-                    ..add('Story');
+                    ..add('EndGame');
                 },
               ),
           'Story': (_, game) => StoryPage(game: game),
-          // …
+          'Intro':
+              (_, game) => IntroBoxWidget(
+                introText: game.preDialogue,
+                onNext: () {
+                  game.overlays
+                    ..remove('Intro')
+                    ..add('DialogueBox');
+                },
+              ),
+          'EndGame': (_, game) => EndGameScreen(game: gameEngine),
         },
         initialActiveOverlays: const ['GameUI'],
       ),

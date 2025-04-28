@@ -25,25 +25,17 @@ class EndGameScreen extends StatelessWidget {
               unselectedColor: const Color.fromRGBO(255, 255, 255, 0.498),
               height: 300,
               width: 300,
-              child: const Center(
+              child: Center(
                 child: Text(
                   '3/5',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 64,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
               ),
             ),
             const SizedBox(height: 32),
-            const Text(
+            Text(
               'Level 3 Selesai',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
             Container(
               margin: const EdgeInsets.only(top: 16),
@@ -194,14 +186,7 @@ class EndGameScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          Text(title, style: Theme.of(context).textTheme.labelLarge),
           const SizedBox(height: 8),
           SizedBox(
             width: 70,
@@ -214,11 +199,7 @@ class EndGameScreen extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 text,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
             ),

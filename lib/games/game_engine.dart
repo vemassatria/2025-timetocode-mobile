@@ -11,7 +11,10 @@ class GameEngine extends FlameGame {
   StoryCharactersComponent? storyCharacters;
 
   late final List<LevelModel> levels;
+  late String _preDialogue;
   List<String> _currentDialogs = [];
+  List<String> get currentDialogs => _currentDialogs;
+  String get preDialogue => _preDialogue;
 
   @override
   Future<void> onLoad() async {
@@ -31,19 +34,27 @@ class GameEngine extends FlameGame {
             .toList();
   }
 
+  void startPreDialogue(int levelIndex) {
+    final intro = levels[levelIndex].preDialog?.text;
+    startDialogue(levelIndex);
+    _preDialogue = intro!;
+    overlays
+      ..remove('GameUI')
+      ..add('Story')
+      ..add('Intro');
+  }
+
   /// Mulai dialog intro untuk sebuah level
   void startDialogue(int levelIndex) {
     final intro =
         levels[levelIndex].dialogs.firstWhere((d) => d.id == 'intro').text;
     _currentDialogs = intro;
-    // show the overlay once
-    overlays
-      ..remove('GameUI')
-      ..add('Story')
-      ..add('DialogueBox');
+    // // show the overlay once
+    // overlays
+    //   ..remove('GameUI')
+    //   ..add('Story')
+    //   ..add('DialogueBox');
   }
-
-  List<String> get currentDialogs => _currentDialogs;
 
   Future<void> changeScene(String sceneName) async {
     images.prefix = 'assets/';

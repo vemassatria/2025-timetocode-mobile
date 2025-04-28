@@ -67,12 +67,12 @@
   },
   {
     "level": 2,
-    "dialogs": [
-      {
+    "preDialog": {
         "id": "preDialog",
         "text": "Setelah pulang kuliah, aku masuk rumah dan langsung menuju ruang tamu. Di sana, aku lihat laptop kakakku terbuka, dan di layarnya ada materi yang judul highlightnya if, else if, switch yang asing banget buatku. Karena penasaran, akhirnya aku nanya ke kakak.",
         "next": "intro"
-      },
+    },
+    "dialogs": [
       {
         "id": "intro",
         "character1": "Adrien",
