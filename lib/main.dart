@@ -1,6 +1,5 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:timetocode/components/cerita/dialogue.dart';
 import 'package:timetocode/components/cerita/intro.dart';
 import 'package:timetocode/games/game_engine.dart';

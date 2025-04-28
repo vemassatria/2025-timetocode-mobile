@@ -12,6 +12,7 @@ Isi bagian `[]` sesuai dengan kebutuhan.
 - [6. AnswerPopup](#6-answerpopup)
 - [7. ConfirmPopup](#7-confirmpopup)
 - [8. InfoPopup](#8-infopopup)
+- [9. CodeBox](#9-codebox)
 
 ---
 
@@ -207,5 +208,19 @@ showPopupOverlay(
      closePopupOverlay();
    },
  )
+)
+```
+
+<br>
+
+## [9] CodeBox
+
+### Template:
+
+```dart
+CodeBox(
+  code: '''
+[CODE]
+'''
 )
 ```
