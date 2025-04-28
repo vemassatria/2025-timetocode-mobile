@@ -16,6 +16,7 @@ class CodeText extends StatelessWidget {
   static final _keywordStyle = TextStyle(color: Color(0xFF569CD6));
   static final _typeStyle = TextStyle(color: Color(0xFF4EC9B0));
   static final _variableStyle = TextStyle(color: Color(0xFF9CDCFE));
+  static final _functionStyle = _baseStyle;
   static final _stringStyle = TextStyle(color: Color(0xFFCE9178));
   static final _numberStyle = TextStyle(color: Color(0xFFB5CEA8));
   static final _controlFlowStyle = TextStyle(color: Color(0xFFC586C0));
@@ -83,6 +84,7 @@ class CodeText extends StatelessWidget {
     final lines = source.split('\n');
     bool inVariableDeclaration = false;
     final definedVariables = <String>{};
+    final definedFunctions = <String>{};
 
     for (int lineIndex = 0; lineIndex < lines.length; lineIndex++) {
       String line = lines[lineIndex];
@@ -155,6 +157,15 @@ class CodeText extends StatelessWidget {
           final word = line.substring(position, end);
           TextStyle? style;
 
+          bool isFunction = false;
+          if (end < line.length && line[end] == '(') {
+            isFunction = true;
+            if (inVariableDeclaration) {
+              definedFunctions.add(word);
+              inVariableDeclaration = false;
+            }
+          }
+
           if (_keywords.contains(word)) {
             style = _keywordStyle;
           } else if (_types.contains(word)) {
@@ -162,12 +173,16 @@ class CodeText extends StatelessWidget {
             inVariableDeclaration = true;
           } else if (_controlFlow.contains(word)) {
             style = _controlFlowStyle;
+          } else if (isFunction) {
+            style = _functionStyle;
           } else if (inVariableDeclaration) {
             style = _variableStyle;
             definedVariables.add(word);
             inVariableDeclaration = false;
           } else if (definedVariables.contains(word)) {
             style = _variableStyle;
+          } else if (definedFunctions.contains(word)) {
+            style = _functionStyle;
           }
 
           spans.add(
