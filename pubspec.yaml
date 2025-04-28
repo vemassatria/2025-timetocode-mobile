@@ -39,6 +39,7 @@ dependencies:
   mix: ^1.6.0
   flame_audio: ^2.11.5
   step_progress_indicator: ^1.0.2
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +62,7 @@ flutter:
     - assets/background/
     - assets/character/
     - assets/stories/
+    - assets/audio/music/
 
   fonts:
     - family: Comic Neue
