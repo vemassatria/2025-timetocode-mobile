@@ -7,21 +7,21 @@
         "character1": "Adrien",
         "character2": "Mas Tino",
         "text": [
-          "Mas, aku bingung deh. Kuliah di informatika tuh berat banget. Materi langsung susah-susah, apalagi konsep pemrograman",
-          "Iya, aku dulu juga gitu. Tapi kamu bakal paham kok, asal kamu konsisten belajar. Ngomong-ngomong dosen konsep pemrogaman kamu Pak Rongga bukan?",
-          "Iya bener banget! Kok kakak tau sih?",
-          "Haha, ya tau lah. Pak Rusdi tuh legend di mata kuliah itu. Santai aja, beliau emang tegas tapi ngajarnya jelas kok. Oiya, kamu udah mulai denger-denger soal \"variabel\" dan \"operator\" belum?",
-          "Nah iya tuh! Aku sering denger soal \"variabel\" dan \"operator\", itu apaan sih?",
-          "Oh iya, aku sebelum masuk kesitu, aku jelasin dikit soal tipe data dulu ya biar kamu makin paham. Pertama ada tipe data int, itu biasanya dipake buat nyimpen angka bulat. Kayak umur, jumlah barang, tahun, pokoknya angka yang gak ada komanya.",
-          "Ooh, jadi kayak 18, 2025, 100 gitu ya kak?",
-          "Iya bener banget  Nah, kalau float, itu buat angka yang ada komanya. Misal kayak berat badan 55.5 kg, tinggi badan 160.3 cm, atau nilai ujian 89.75. Pokoknya yang ada pecahannya gitu.",
-          "Berarti kalo pake float bisa lebih akurat ya kalo ada koma-koma gitu?",
-          "Yap! Akurat buat angka-angka yang gak bulat. Terus, char buat nyimpen satu huruf aja. Misal huruf awal nama kamu, kayak 'Y' buat Yudistion.",
+          "Mas kuliah di informatika tuh berat banget. Materi langsung susah-susah, apalagi konsep pemrograman",
+          "Iya aku dulu juga gitu. Tapi kamu bakal paham kok, asal konsisten belajar. Ngomong-ngomong dosen konsep pemrogaman kamu Pak Rongga bukan?",
+          "Iya bener banget! Kok mas ta?",
+          "Haha ya tau lah. Pak Rongga tuh legend di mata kuliah itu. Santai aja, beliau emang tegas tapi ngajarnya jelas kok. Oiya kalau pelajaran pertama harusnya tentang \"variabel\" dan \"operator\" ga sih?",
+          "Iya bener mas! Tapi aku masih bingung, \"variabel\" dan \"operator\" itu apaan sih?",
+          "Nah sebelum masuk kesitu lebih baik aku jelasin dulu soal tipe data biar kamu makin paham. Pertama ada tipe data int, biasanya dipake buat nyimpen angka bulat. Kayak umur, jumlah barang, tahun, pokoknya angka yang gak ada komanya.",
+          "Ooh jadi kayak 18, 2025, 100 gitu ya kak?",
+          "Bener. Kedua ada float, itu buat angka yang ada komanya. Kayak berat badan 55.5 kg, tinggi badan 160.3 cm, atau nilai ujian 89.75. Pokoknya yang ada pecahannya gitu.",
+          "Berarti kalo yang ada koma-koma gitu lebih akurat pake float ya mas?",
+          "Yap! Akurat buat angka-angka yang gak bulat. Ketiga ada char buat nyimpen satu huruf aja. Misal huruf awal nama kamu, kayak 'A' buat Adrien.",
           "Kalau nama lengkap?",
-          "Kalau nama lengkap, kayak \"Yofi Yudistion\", itu udah panjang, jadi kamu pake string. String itu buat nyimpen deretan karakter alias tulisan panjang.",
-          "Okee, aku kebayang!",
+          "Kalau nama lengkap, kayak \"Adrien Yudistion\", itu kamu pake string. String itu buat nyimpen deretan karakter alias tulisan panjang.",
+          "Okee aku kebayang!",
           "Terakhir, bool alias boolean. Itu buat nyimpen dua pilihan aja: true atau false. Misal status \"Lulus\" atau \"Belum Lulus\", \"Sudah Login\" atau \"Belum Login\".",
-          "Wuihh, ternyata tiap tipe data ada gunanya masing-masing ya.",
+          "Wuihh, ternyata tipe data banyak jenisnya ya dan ada gunanya masing-masing.",
           "Yoi! Karena kalo kamu salah pilih tipe data, program bisa error atau hasilnya gak sesuai. Makanya penting ngerti dari sekarang!  Coba deh buat tes pemahaman, kamu jawab soal ini ya!"
         ],
         "next": "soal1_1"
@@ -30,14 +30,14 @@
         "id": "soal1_1",
         "character1": "Adrien",
         "character2": "Tino",
-        "text": "Misalnya, kamu punya data tentang seorang mahasiswa. Nama mahasiswa itu adalah \"Andi\", usianya 20 tahun, berat badannya 70.5 kg, dan dia sudah lulus ujian dengan nilai 85. Pilih tipe data yang tepat untuk masing-masing data tersebut:\n* Nama: \"Andi\"\n* Usia: 20\n* Berat badan: 70.5\n* Nilai ujian: 85\n* Status lulus: true",
+        "text": "Terdapat data seorang mahasiswa. Nama mahasiswa itu adalah \"Andi\", usianya 20 tahun, berat badannya 70.5 kg, dan dia sudah lulus ujian dengan nilai 85. Pilih tipe data yang tepat untuk masing-masing data tersebut:\n* Nama: \"Andi\"\n* Usia: 20\n* Berat badan: 70.5\n* Nilai ujian: 85\n* Status lulus: true",
         "choices": [
           {"text": "Nama: string, Usia: float, Berat badan: int, Nilai ujian: bool, Status lulus: char",
-          "next": {
-            "retry": "soal1_1",
-            "review": "salah1_1"
-          }
-        },
+            "next": {
+              "retry": "soal1_1",
+              "review": "salah1_1"
+            }
+          },
           {"text": "Nama: string, Usia: int, Berat badan: float, Nilai ujian: int, Status lulus: bool", "next": "materi1_2"},
           {
             "text": "Nama: char, Usia: bool, Berat badan: string, Nilai ujian: float, Status lulus: int",
@@ -45,13 +45,13 @@
               "retry": "soal1_1",
               "review": "salah1_1"
             }
-          },          
-          {"text": "Nama: int, Usia: float, Berat badan: string, Nilai ujian: bool, Status lulus: float",  
-          "next": {
-            "retry": "soal1_1",
-            "review": "salah1_1"
+          },
+          {"text": "Nama: int, Usia: float, Berat badan: string, Nilai ujian: bool, Status lulus: float",
+            "next": {
+              "retry": "soal1_1",
+              "review": "salah1_1"
+            }
           }
-        }
         ]
       },
       {
@@ -59,20 +59,21 @@
         "character1": "Mas Tino",
         "character2": "Adrien",
         "text": [
-          "Wah, jawaban untuk tipe data kamu belum tepat.",
+          "Waduh jawaban untuk tipe data kamu belum tepat.",
           "Yah salah ya..",
-          "Hmm, sepertinya ada beberapa hal yang perlu kita perhatikan di sini. Ayo kita bahas satu per satu, ya?",
-          "Oke, Adrien. Mari kita bahas soal tipe data ini satu per satu. Untuk Nama, biasanya kita pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat. Sekarang, untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
+          "Hmm sepertinya ada beberapa hal yang perlu kita perhatikan di sini. Ayo kita bahas satu per satu ya?",
+          "Oke Adrien mari kita bahas soal tipe data ini satu per satu. Pertama untuk Nama biasanya pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat. Kedua untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
           "Usia itu kan angka bulat, jadi mungkin tipe data float?",
-          "Hmm, float biasanya digunakan untuk angka yang ada desimalnya, seperti berat badan atau pengukuran yang presisi. Kalau Usia hanya angka bulat, mungkin tipe data yang lebih tepat adalah yang bisa menyimpan angka bulat saja.",
-          "Oke, aku paham. Jadi mungkin int ya?",
-          "Betul! int itu untuk angka bulat. Lanjut, sekarang ke Berat badan. Berat badan itu biasanya ada angka desimalnya, kan? Jadi kita butuh tipe data yang bisa menyimpan angka dengan desimal. Apa yang kamu pikirkan?",
-          "Ah, kalau gitu float, ya? Karena ada desimalnya.",
-          "Betul sekali! float memang untuk angka desimal. Sekarang, untuk Nilai ujian, ini kan biasanya berupa angka bulat, kan? Jadi, apa yang tepat untuk tipe data ini?",
-          "Berarti, kalau begitu, tipe data yang tepat untuk Nilai ujian adalah int.",
-          "Betul! Nilai ujian itu angka bulat, jadi int cocok. Terakhir, Status lulus. Ini cuma punya dua kemungkinan, lulus atau tidak. Tipe data apa yang bisa mewakili dua pilihan seperti itu?",
-          "Kayaknya itu bool, ya? Karena hanya ada dua nilai: benar atau salah.",
+          "Hmm float biasanya digunakan untuk angka yang ada desimalnya, seperti berat badan atau pengukuran yang presisi. Kalau Usia hanya angka bulat jadi tipe data yang tepat adalah tipe data yang bisa menyimpan angka bulat saja.",
+          "Oh int ya?!",
+          "Betul! int itu untuk angka bulat. Lanjut ketiga sekarang ke Berat badan. Berat badan itu biasanya ada angka desimalnya kan? Jadi kita butuh tipe data yang bisa menyimpan angka dengan desimal. Apa yang kamu pikirkan?",
+          "Ah kalau gitu float ya? Karena ada desimalnya.",
+          "Betul sekali! float memang untuk angka desimal. Keempat untuk Nilai ujian, ini kan biasanya berupa angka bulat, ya? Jadi apa yang tepat untuk tipe data ini?",
+          "Kalau begitu tipe data yang tepat untuk Nilai ujian adalah int.",
+          "Betul! Nilai ujian itu angka bulat jadi int memang cocok. Terakhir, Status lulus. Ini cuma punya dua kemungkinan, lulus atau tidak. Tipe data apa yang bisa mewakili dua pilihan seperti itu?",
+          "Kayaknya itu bool ya? Karena hanya ada dua nilai: benar atau salah.",
           "Betul! bool memang tepat untuk dua kemungkinan seperti itu. Nah, sekarang kamu coba pikirkan lagi, apakah semua pilihanmu sudah pas?"
+
 
         ],
         "next": "soal1_1"
@@ -82,12 +83,12 @@
         "character1": "Mas Tino",
         "character2": "Adrien",
         "text": [
-          "Wah, jawabannya bener! Kamu udah mulai paham banget soal tipe data. Kacau, cepet banget ngeh-nya! Jadi, kalau ada program yang butuh nyimpen angka, tinggal pilih aja tipe datanya.",
-          "Wah mantep dah, udah siap banget buat nerima soal dari Pak Rongga nih.",
-          "Nah, sekarang kita lanjut ke variabel! Kalau kamu udah paham tipe data, variabel itu sebenarnya gampang banget. Variabel itu tempat buat nyimpen data. Jadi, bayangin aja kamu punya wadah atau kotak yang bisa berubah isinya.",
-          "Oh, jadi variabel itu kayak kotak buat nyimpen data gitu? Tapi apa bedanya sama tipe data?",
-          "Iya bener banget! Tipe data itu ngejelasin jenis datanya, misalnya angka, teks, atau logika.Nah, variabel itu nama dari kotaknya. Jadi misalnya, kamu pengen nyimpen umur seseorang, kamu bikin variabel namanya umur, dan tipe datanya int karena umur itu angka bulat.",
-          "Ohhhh pahammm, berarti nama variabel itu penting banget ya! Biar nanti gampang ngerti dan gak bingung pas ngoding.",
+          "Wah jawabannya bener! Kamu udah mulai paham banget soal tipe data. Kacau, cepet banget pahamnya! Jadi, kalau ada program yang butuh nyimpen angka, tinggal pilih aja tipe datanya.",
+          "Wih mantep dah, udah siap banget buat nerima soal dari Pak Rongga nih.",
+          "Nah sekarang kita lanjut ke variabel! Kalau kamu udah paham tipe data, variabel itu sebenarnya gampang banget. Variabel adalah tempat buat nyimpen data. Jadi bayangin aja kamu punya wadah atau kotak yang bisa berubah isinya.",
+          "Oh jadi variabel itu kayak kotak buat nyimpen data gitu? Tapi apa bedanya sama tipe data?",
+          "Iya bener banget! Tipe data itu ngejelasin jenis datanya, misalnya angka, teks, atau logika. Nah variabel itu nama dari kotaknya. Jadi misalnya, kamu pengen nyimpen umur seseorang, kamu bikin variabel namanya umur, dan tipe datanya int karena umur itu angka bulat.",
+          "Ohhhh pahammm!",
           "Ah paham-paham mulu, coba kamu jawab soal ini kalo emang paham."
         ],
         "next": "soal1_2"
@@ -99,21 +100,21 @@
         "text": "Kalau kamu mau buat variabel beratBadan untuk nyimpen berat 55.5 kilogram, deklarasi yang BENAR adalah...",
         "choices": [
           {"text": "int berat.Badan = 55.5;", "next": {
-              "review": "salah1_2",
-              "retry": "soal1_2"
+            "review": "salah1_2",
+            "retry": "soal1_2"
           }
-         },
+          },
           {"text": "float beratBadan = 55.5;", "next": "materi1_3"},
           {"text": "string beratBadan = 55.5;", "next": {
-              "review": "salah1_2",
-              "retry": "soal1_2"
-            }
+            "review": "salah1_2",
+            "retry": "soal1_2"
+          }
           },
           {"text": "bool beratBadan = \"true\";", "next": {
             "review": "salah1_2",
             "retry": "soal1_2"
           }
-        }
+          }
         ]
       },
       {
@@ -122,15 +123,15 @@
         "character2": "Adrien",
         "text": [
           "Aduh aku kena virus kesalahan berpikir nih",
-          "Wahahahaha, gapapa, kita kerjain bareng-bareng",
+          "Wahahahaha, gapapa kita kerjain bareng-bareng",
           "Aduhh kacauu sih",
           "Aku jelasin ulang yaa, jadi, int itu biasanya dipakai buat angka bulat, kayak 10, 25, atau 100. Tapi kalau berat badan itu ada desimalnya, kayak 55.5, kira-kira cocok nggak kalau pakai tipe data buat angka bulat?",
-          "Hmm, berarti... kurang cocok ya?",
+          "Hmm... kurang cocok sih",
           "Yap. Karena 55.5 itu ada koma-nya, harus cari tipe data yang bisa nampung angka pecahan.",
           "Kalau bool itu gimana ya, aku lupa peraturannya",
-          "bool itu tipe data yang isinya cuma dua kemungkinan: true atau false. Biasanya dipakai buat nyimpen status, bukan angka. Nah, berat badan itu berupa angka, kan? Bukan status lulus atau tidak.",
+          "Bool itu tipe data yang isinya cuma dua kemungkinan: true atau false. Biasanya dipakai buat nyimpen status, bukan angka. Nah berat badan itu berupa angka, kan? Bukan status lulus atau tidak.",
           "Ohh aku paham sekarang",
-          "Nah, Coba cek lagi pilihan lain yang lebih cocok."
+          "Nah coba cek lagi pilihan lain yang lebih cocok."
         ],
         "next": "soal1_2"
       },
@@ -139,17 +140,17 @@
         "character1": "Mas Tino",
         "character2": "Adrien",
         "text": [
-        "Nah adrien mulai jago nih, takut banget kena bantai konsep pemrogaman deh",
-        "Kalau berat badan, berarti pake float ya kak, kayak float beratBadan = 55.5; gitu kan?",
-        "Wah bener banget! Kamu udah mulai paham nih. Nah, sekarang bayangin ya, kamu udah punya data berat badan itu. Terus kamu mau ngolah datanya, misal mau nambahin 5 kilo, atau mau bagi dua buat simulasi diet. Nah, buat ngelakuin perubahan kayak gitu, kamu butuh yang namanya operator.",
-        "Ohhh... operator tuh kayak alat buat ngubah data gitu ya, kak?",
-        "Operator itu alat buat ngelakuin operasi kayak tambah, kurang, kali, dan bagi. Misal, mau nambahin umur 5 tahun, tinggal pakai \"+\": int hasil = umur + 5;. Kalau ngurangin pakai \"-\", perkalian pakai \"*\", dan pembagian pakai \"/\". Operator ini penting banget buat semua operasi dasar di program.",
-        "Oalaaah, jadi kayak alat buat ngatur angka-angka gitu ya, Kak! Pantesan semua contoh kodingan pasti ada operatornya.",
-        "Iya, bener banget. Semua operasi matematika dasar pake operator itu. Dan, operator ini penting banget, karena tanpa operator, program kamu gak bisa ngelakuin perhitungan atau manipulasi data dengan bener. Oh ya, buat ngambil input dari user atau nampilin hasil ke layar, kamu bisa pake operasi input output. Misalnya, pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus, kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\"",
-        "Oh, jadi operator ini penting banget buat ngelakuin berbagai perhitungan, dan input output itu fungsinya buat ngambil input sama nampilin outputnya ke layar ya?",
-        "Iya banget! Operator itu bikin program bisa fleksibel dan ngelakuin tugas yang kamu inginkan. Selain itu, ada operator \"!=\" yang artinya tidak sama dengan. Terus, ada juga operator logika kayak \"&&\" yang artinya \"AND\", dan \"||\" yang artinya \"OR\" itu buat ngecek kondisi lebih dari satu. Paham kan?",
-        "Paham! aku mulai ngerti. Variabel buat nyimpen data, operator buat ngitung, bandingin, dan ngelakuin logika, terus input output buat ngambil input dan nampilin output.",
-        "Nah, buat uji pemahaman kamu, aku kasih soal sederhana, kamu coba jawab deh!"
+          "Beh Adrien mulai jago nih, takut banget kena bantai konsep pemrogaman deh",
+          "Kalau berat badan berarti pake float ya mas, kayak float beratBadan = 55.5; gitu kan?",
+          "Wah bener banget, kamu udah mulai paham nih! Nah sekarang bayangin ya, kamu udah punya data berat badan itu. Terus kamu mau ngolah datanya, misal mau nambahin 5 kilo, atau mau bagi dua buat simulasi diet. Buat ngelakuin perubahan kayak gitu, kamu butuh yang namanya operator.",
+          "Ohhh... operator tuh kayak alat buat ngubah data gitu ya mas?",
+          "Operator itu alat buat ngelakuin operasi kayak tambah, kurang, kali, dan bagi. Misal, mau nambahin umur 5 tahun, tinggal pakai \"+\": int hasil = umur + 5;. Kalau ngurangin pakai \"-\", perkalian pakai \"*\", dan pembagian pakai \"/\". Operator ini penting banget buat semua operasi dasar di program.",
+          "Oalaaah jadi kayak alat buat ngatur angka-angka gitu ya. Pantesan semua contoh kodingan pasti ada operatornya.",
+          "Iya bener banget. Semua operasi matematika dasar pake operator itu. Karena tanpa operator, program gak bisa ngelakuin perhitungan atau manipulasi data dengan bener. Oh ya buat ngambil input dari user atau nampilin output ke layar, kamu bisa pake operasi input output. Misal pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\"",
+          "Oh jadi operator buat ngelakuin berbagai perhitungan dan input output buat ngambil input sama nampilin outputnya ke layar ya?",
+          "Iya banget! Operator itu bikin program bisa fleksibel dan ngelakuin tugas yang kamu inginkan. Selain itu, ada operator \"!=\" yang artinya tidak sama dengan, \"&&\" yang artinya \"AND\", dan \"||\" yang artinya \"OR\" itu buat ngecek kondisi lebih dari satu. Paham kan?",
+          "Paham! Variabel buat nyimpen data, operator buat ngitung, bandingin, dan ngelakuin logika, terus input output buat ngambil input dan nampilin output.",
+          "Nah buat uji pemahaman kamu, aku kasih soal sederhana coba jawab deh!"
         ],
         "next": "soal1_3"
       },
@@ -159,44 +160,44 @@
         "character2": "Mas Tino",
         "text": "#include <stdio.h>\nint main() {\n    int a = 5;\n    a += 3 * 2;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
         "choices": [
-          {"text": "16", 
-          "next": {
+          {"text": "16",
+            "next": {
               "review": "salah1_3",
               "retry": "soal1_3"
             }
           },
           {"text": "11", "next": "benar1_last"},
-          {"text": "13",  
-          "next": {
+          {"text": "13",
+            "next": {
               "review": "salah1_3",
               "retry": "soal1_2"
             }
           },
-          {"text": "10", 
-          "next": {
-            "review": "salah1_3",
-            "retry": "soal1_2"
+          {"text": "10",
+            "next": {
+              "review": "salah1_3",
+              "retry": "soal1_2"
+            }
           }
-        }
         ]
-       },
-       {  
+      },
+      {
         "id": "salah1_3",
         "character1": "Mas Tino",
         "character2": "Adrien",
         "text": [
-          "Sepertinya jawaban tentang Operator masih keliru. Tenang, baca lagi perlahan-lahan ya!",
+          "Sepertinya jawaban tentang Operator masih keliru. Tenang, baca lagi perlahan-lahan ya...",
           "Yahh okedehhh"
         ],
         "next": "materi1_3"
       },
-       {
+      {
         "id": "benar1_last",
         "character1": "Mas Tino",
         "character2": "Adrien",
         "text": [
-       "Nahh, iya itu udah benar! Gampang kan? Lo mulai paham sekarang, ya? Nih aku kasih rangkuman tentang tipe data, variabel dan operator. kamu bisa baca rangkumannya untuk memerdalam pengetahuan kamu soal ini.",
-       "Siap mas Tin! Makasih, Mas!"
+          "Nahh iya itu udah benar! Gampang kan? Nih aku kasih rangkuman tentang tipe data, variabel, dan operator. Kamu bisa baca rangkumannya untuk memperdalam pengetahuan kamu soal ini.",
+          "Siap Mas Tin! Makasih Mas!"
         ],
         "next": null
       },
@@ -206,1021 +207,1005 @@
         "character2": "Adrien",
         "text": [
           "Yaelah jawabanku salah",
-          "Oke, sebentar yaa. Jadi gini, di soal tadi ada operasi a += 3 * 2. Kita harus inget kalau di C itu ada aturan prioritas operator. Perkalian (*) dikerjain dulu sebelum penjumlahan (+). Jadi bukan langsung dijumlah dari kiri ke kanan ya. Setelah hasil perkaliannya ketemu, baru deh ditambah ke a yang awalnya 5. Ini penting supaya nggak salah hitung. Coba kamu cek lagi deh pelan-pelan, mana yang dikerjain dulu."
+          "Oke kita bedah pelan-pelan yaa. Jadi gini, di soal tadi ada operasi a += 3 * 2. Kita harus inget kalau ada aturan prioritas operator. Perkalian (*) dikerjain dulu sebelum penjumlahan (+). Jadi bukan langsung dijumlah dari kiri ke kanan ya. Setelah hasil perkaliannya ketemu, baru deh ditambah ke a yang awalnya 5. Coba kamu cek lagi deh pelan-pelan mana yang dikerjain dulu."
         ],
         "next": "soal1_3"
       }
     ],
     "rangkuman": [
-      "Tipe Data: Tipe data menentukan jenis nilai yang bisa disimpan dalam variabel, seperti int untuk angka bulat, float untuk angka pecahan, dan char untuk karakter.",
-      "Variabel: Variabel adalah tempat menyimpan data yang nilainya bisa berubah selama program berjalan. Contohnya, int umur = 21; menyimpan nilai umur.",
-      "Operator: Operator digunakan untuk melakukan operasi pada data, seperti:\nAritmatika: +, -, *, \/ untuk perhitungan.\nPembanding: ==, !=, >, < untuk membandingkan nilai.\nLogika: && (AND), || (OR) untuk menggabungkan kondisi.\nPenugasan: = untuk memberi nilai, +=, -= untuk operasi dan penugasan bersamaan.",
-      "I/O (Input/Output): Gunakan scanf untuk input data dari pengguna dan printf untuk menampilkan hasil ke layar."
+      "Tipe Data: menentukan jenis nilai yang bisa disimpan dalam variabel, seperti int untuk angka bulat, float untuk angka pecahan, dan char untuk karakter.",
+      "Variabel: tempat menyimpan data yang nilainya bisa berubah selama program berjalan. Contohnya, int umur = 21; menyimpan nilai umur.",
+      "Operator: melakukan operasi pada data, seperti:\nAritmatika: +, -, *, \/ untuk perhitungan.\n ==, !=, >, < untuk membandingkan nilai.\nLogika: && (AND), || (OR) untuk menggabungkan kondisi.\nPenugasan: = untuk memberi nilai, +=, -= untuk operasi dan penugasan bersamaan.",
+      "I/O (Input/Output): Gunakan scanf untuk input data dari user dan printf untuk menampilkan output ke layar."
     ]
   },
 
-  {
-    "level": 2,
-    "dialogs": [
-      {
-        "id": "preDialog",
-        "text": "Setelah pulang kuliah, aku masuk rumah dan langsung menuju ruang tamu. Di sana, aku lihat laptop kakakku terbuka, dan di layarnya ada materi yang judul highlightnya if, else if, switch yang asing banget buatku. Karena penasaran, akhirnya aku nanya ke kakak.",
-        "next": "intro2"
-      },
-      {
-        "id": "intro2",
-        "character1": "Adrien",
-        "character2": "Kakak",
-        "text": [
-          "Ini materi apaan kak?",
-          "Oh ini materi konsep pemrogamanku waktu semester satu pas diajarin sama Pak Rongga. eh btw harusnya kamu udah diajarin materi ini kan?",
-          "Lah sama kak, aku juga konsep perograman yang ngajar juga pak rusdi, tapi aku belum diajarin materi itu. eh tapi coba dong kak aajarin aku sekarang buat persiapan materi nanti.",
-          "jangan sarkas gitu dong, okee jadi ini tuh if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan.",
-          "okee jadi ini tuh materi kondisi yaitu if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan. coba kalau ini if atau bukan"
-        ],
-        "next": "soal2_1" 
-      },
-      {
-        "id": "soal2_1",
-        "character1": "Adrien",
-        "character2": "Tino",
-        "text": "Misalnya kamu bikin program buat cek apakah suhu ruangan lebih dari 30°C. Kalau iya, tampilkan \"Ruangan Panas\". Kalau enggak, program gak perlu ngapa-ngapain. Kira-kira, struktur kondisi yang paling tepat buat program ini apa?",
-        "choices": [
-          {"text": "if, karena cuma perlu ngecek satu kondisi aja.", "next": "materi2_2"},
-          {"text": "else, karena cuma butuh dua kemungkinan.", 
-          "next": {
-            "review": "salah2_1",
-            "retry": "soal2_1"
-          }},
-          {"text": "if dan else, karena ada dua kondisi yang harus dipilih.", 
-          "next": {
-            "review": "salah2_1",
-            "retry": "soal2_1"
-          }},
-          {"text": "Tidak perlu kondisi, cukup tampilkan saja.", 
-          "next": {
-            "review": "salah2_1",
-            "retry": "soal2_1"
-          }}
-        ]
-       },
-       {  
-        "id": "salah2_1",
-        "character1": "Kakak",
-        "character2": "Adrien",
-        "text": [
-          "Hehe, aduh, salah lagi, Adrien! Tapi santai aja, ya. Kalau dipikir-pikir, soal tadi kan cuma minta cek satu kondisi: 'suhu lebih dari 30 derajat atau nggak'. Jadi sebenarnya, kita cukup pakai satu pengecekan aja tanpa harus pilih-pilih ke kemungkinan lain.",
-          "Ohh, jadi maksudnya nggak perlu ada opsi lain ya, cukup cek doang?",
-          "Yap, benar banget! Kalau kondisi itu terpenuhi, baru kita lakuin sesuatu. Kalau nggak, ya udah, program diem aja. Jadi intinya: kalau cuma mau ngecek satu hal, satu syarat, kita cukup pakai satu kondisi sederhana.",
-          "Oooh, paham sekarang! Aku coba pikir lagi deh!"
-        ],
-        "next": "soal2_1"
-      },
-       {
-        "id": "materi2_2",
-        "character1": "Kakak",
-        "character2": "Adrien",
-        "text": [
-          "wih mantap bener tuh, ok sekarang kita lanjut ke materi else if",
-          "nah else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Misalnya, kamu lagi ngecek usia seseorang, apakah dia remaja, dewasa, atau lanjut usia. Kalau remaja, akan ada aksi tertentu, kalau dewasa, aksi yang berbeda, dan kalau lanjut usia, aksi yang lain lagi. contohnya kayak code ini sama sekalian deh kamu tebak outputnya"
-        ],
-        "next": "soal2_2"
-      },
-      {
-        "id": "soal2_2",
-        "character1": "Kakak",
-        "character2": "Adrien",
-        "text": "int umur = 25;\nif (umur < 18) {\nprintf(\"Kamu masih remaja\");\n} else if (umur >= 18 && umur <= 60) {\n    printf(\"Kamu dewasa\");\n} else {\n    printf(\"Kamu lanjut usia\");\n}",
-        "choices": [
-          {"text": "Kamu masih remaja", 
-            "next": {
-              "review": "salah2_2",
-              "retry": "soal2_2"
-            }
-          },
-          {"text": "Kamu dewasa", "next": "materi2_3"}, 
-            {"text": "Kamu lanjut usia", 
-            "next": {
-              "review": "salah2_2",
-              "retry": "soal2_2"
-            }
-          },
-          {"text": "Tidak ada output", 
-            "next": {
-              "review": "salah2_2",
-              "retry": "soal2_2"
-            }
-          }
-        ]
-       },
-       {  
-        "id": "salah2_2",
-        "character1": "Adrien",
-        "character2": "Kakak",
-        "text": [
-          "Aduh Kak, aku salah lagi jawabnya...",
-          "Gapapa Rin, yang penting ngerti kenapa salah ya! Nih aku bantu jelasin dikit.",
-          "Siap Kak!",
-          "Di soal tadi, keliatan kan ada kombinasi tanda >=, <=, dan &&. Nah, && itu artinya dan, jadi dua syarat harus benar semua.",
-          "Ooh berarti nggak cukup satu syarat aja ya?",
-          "Yap, bener! Jadi kalau mau masuk ke kondisi printf(\"Kamu dewasa\"), umur harus lebih dari atau sama dengan 18 dan kurang dari atau sama dengan 60. Dua-duanya harus terpenuhi.",
-          "Kalau cuma satu syarat doang yang bener, berarti lompat ke else ya?",
-          "Betul! Kalau dua-duanya nggak pas juga, dia baru masuk ke blok else. Makanya penting banget liat operator kayak &&, ||, dan tanda-tanda perbandingan >, <, >=, <= itu beneran dipahami.",
-          "Wah iya iya Kak! Aku kadang suka kelewat liat operatornya.",
-          "Hehehe santai, makin sering latihan makin peka kok. Yuk lanjut biar makin jago!"
-        ],
-        "next": "soal2_2"
-      },
-       {
-        "id": "materi2_3",
-        "character1": "Kakak",
-        "character2": "Adrien",
-        "text": [
-          "beh mantep, lanjut nih materi terakhir, switch",
-          "jadi switch digunakan untuk memilih aksi berdasarkan nilai yang ada. Misalnya, kamu punya pilihan menu di restoran, dan tiap pilihan punya nomor tertentu. Berdasarkan nomor yang dipilih, menu yang berbeda akan muncul. sekarang tebak nih output yang muncul apa"
-        ],
-        "next": "soal2_3"
-      },
-      {
-        "id": "soal2_3",
-        "character1": "Adrien",
-        "character2": "Tino",
-        "text": "int pilihanMenu = 2;\nswitch (pilihanMenu) {\n    case 1:\n        printf(\"Pilihan menu: Nasi Goreng\");\n        break;\n    case 2:\n        printf(\"Pilihan menu: Mie Ayam\");\n        break;\n    case 3:\n        printf(\"Pilihan menu: Soto\");\n        break;\n    default:\n        printf(\"Pilihan menu tidak valid\");\n}",
-        "choices": [
-          {"text": "Pilihan menu: Nasi Goreng", 
-          "next": {
-              "review": "salah2_3",
-              "retry": "soal2_3"
-            }
-          },
-          {"text": "Pilihan menu: Mie Ayam", "next": "benar2_last"},
-          {"text": "Pilihan menu: Soto", 
-          "next": {
-              "review": "salah2_3",
-              "retry": "soal2_3"
-            }
-          },
-          {"text": "Pilihan menu tidak valid", 
-          "next": {
-              "review": "salah2_3",
-              "retry": "soal2_3"
-            }
-          }
-        ]
-       },
-       {  
-        "id": "salah2_3",
-        "character1": "Kakak",
-        "character2": "Adrien",
-        "text": [
-          "Eits, switch-case itu cocok buat banyak pilihan tetap, bukan buat kondisi yang fleksibel banget. Tadi jawabannya kayak masih salah kaprah nih.",
-          "Ooooh gitu! Aku kira switch itu kayak if-else, bisa buat cek suhu lebih besar atau lebih kecil.",
-          "Nah itu dia bedanya, kalau mau cek kondisi fleksibel kayak lebih besar atau lebih kecil, itu baru pakai if. Kalau switch-case, harus nilai pastinya yang dibandingin. Misal, suhu == 30, suhu == 40, gitu.",
-          "Aaaah paham sekarang. Jadi switch tuh kayak ngecek daftar pilihan yang pasti-pasti aja ya?",
-          "Betul! Kalau yang sifatnya perbandingan atau kondisi kompleks, mending tetap pakai if-else.",
-          "Woke siap Kak, abis ini aku baca ulang deh biar makin mantap!",
-          "Semangat terus ya! Sedikit lagi ilmunya makin nancep nih!"
-        ],
-        "next": "soal2_3"
-      },
-       {
-        "id": "benar2_last",
-        "character1": "Kakak",
-        "character2": "Adrien",
-        "text": [
-          "asik, pinter banget kamu. sekarang udah ngerti kan cara kerja if, else if, dan switch, jadi gampang nanti kalau kamu ngadepin materi kondisi dalam program.",
-          "Asik, semoga saat aku ketemu materi kondisi dalam konsep pemrogarman ga bakal bingung lagi ya. Makasih banyak, Kak!",
-          "Iya, siap! Nanti kamu bakal sering ketemu ini di soal-soal. Kalau ada yang bingung lagi, langsung tanya aja!",
-          "Siap kak! Aku mau lanjut belajar materi selanjutnya, for while dan do while. Besok siang aku sama raka mau ke cafe buat diskusi materi for, while, dan do while, ngerjain tugas bareng juga",
-          "Oke deh! Semangat terus ya konsep pemrogamannya"
-        ],
-        "next": null
-      }
-    ],
-    "rangkuman": [
-      "if digunakan untuk memeriksa satu kondisi. Jika kondisi tersebut benar, maka aksi atau kode yang ada di dalam blok if akan dijalankan.",
-      "else if digunakan ketika ada lebih dari satu kondisi yang perlu diperiksa. Jika kondisi pertama salah, maka kondisi berikutnya akan dicek. Ini memungkinkan pengecekan beberapa kondisi dalam urutan yang terstruktur.",
-      "switch digunakan ketika ada banyak pilihan atau kondisi yang mirip. Dengan switch, kamu bisa memeriksa nilai dari suatu variabel terhadap beberapa kemungkinan nilai dan menjalankan aksi berdasarkan nilai yang cocok."
-    ]
-  },
 
-  {
-    "level": 3,
-    "dialogs": [
-      {
-        "id": "preDialog",
-        "text": "Siang itu, Rusdi sudah menunggu di café sejak jam 3, menatap layar ponselnya dengan muram. Jam dinding sudah menunjukkan pukul 4, dan MC belum juga muncul. Rusdi mulai gelisah, berpikir tentang tugas yang harus diselesaikan dan deadline yang semakin dekat. Ia memesan secangkir kopi, berharap bisa segera mulai berdiskusi dan menyelesaikan tugas. Sambil menunggu, ia melirik ke pintu berkali-kali, berharap temannya segera datang.",
-        "next": "intro3"
-      },
-      {
-        "id": "intro3",
-        "character1": "Rusdi",
-        "character2": "Adrien",
-        "text": [
-          "Bro, katanya janjiannya jam 3, kenapa kamu baru dateng jam 4? aku udah nungguin di sini dari tadi. Kamu naik siput ya pasti, lama banget, deh!",
-          "Waduh, Mas Rusdi ngamuk lho rek! Sorry-sorry broo macet banget di jalan. jadi mana yang mau kamu tanyain?",
-          "ini tentang perulangan, gimana?",
-          "Eh, kemarin aku diajarin nih soal if-else sama kakakku, jadi sekarang aku udah ngerti cara ngecek kondisi di program. Sekarang kita bahas yang lebih seru nih, perulangan!",
-          "Ah yakin seru! Seru darimananya coba? Haduh baru denger materinya udah bikin pusing deh",
-          "Aduh Rusdinato tolong deh, jangan pusing dulu. Jadi gini, di, kalau kamu pengen ngulangin sesuatu berkali-kali, kamu bisa pake for loop. For itu cocok kalau kamu udah tahu berapa kali perulangan yang harus dilakukan. Misalnya, kamu pengen nulis angka dari 1 sampai 5. Jadi kamu tentuin mulai dari mana, sampai mana, dan tiap kali kamu ngulangin, kamu tambahin angkanya. Kamu udah paham belum?",
-          "Ah, oke, jadi for itu kalau udah tahu berapa kali ngulangin ya?",
-          "Betul, Rak! Nah, aku jelasin pelan-pelan ya soal for loop ini. Ada tiga bagian utama di dalamnya. Yang pertama, ada yang namanya inisialisasi. Jadi, sebelum perulangan dimulai, kita harus tentuin nilai awalnya. Misalnya, kamu mau mulai dari angka 1, jadi kita tulis int i = 1;. Itu artinya kita mulai dari angka 1.",
-          "Jadi, inisialisasi itu kayak nentuin angka pertama yang mau dipakai, ya?",
-          "Yup, tepat banget! Sekarang, yang kedua, ada bagian yang disebut kondisi. Ini yang bakal dicek setiap kali perulangan berlangsung. Misalnya, kita mau perulangan terus berjalan selama angka i itu masih lebih kecil atau sama dengan 5. Jadi, kita tulis i <= 5;. Artinya, selama i lebih kecil atau sama dengan 5, perulangannya terus jalan.",  
-          "Ooh, jadi kondisi itu buat nentuin kapan perulangannya berhenti, ya?",
-          "Betul banget, Rak! Nah, terakhir ada yang namanya increment atau decrement. Ini buat nambahin atau ngurangin nilai setelah setiap perulangan selesai. Kalau kamu mau nambahin nilai i, kamu tulis i++. Itu artinya, setelah tiap perulangan, angka i akan bertambah 1.",
-          "Jadi, increment itu buat nambahin nilai i tiap kali perulangan, ya? Kalau mau ngurangin, pakai i-- gitu?",
-          "Iya, persis banget, Rak! Jadi, tiga bagian itu: inisialisasi buat mulai dari mana, kondisi buat ngecek kapan berhentinya, dan increment buat nambahin atau ngurangin nilai.",
-          "Kayanya aku mulai paham nih",
-          "Nah sip, sekarang aku kasih tantangan buat kamu. Coba kamu jawab soal ini ya!"
-           
-        ],
-        "next": "soal3_1"
-      },
-      {
-        "id": "soal3_1 ",
-        "character1": "Mas Tino",
-        "character2": "Adrien",
-        "text": "Kamu diminta untuk membuat program yang mencetak angka dari 1 sampai 10. Bagaimana cara kamu menggunakan for loop untuk melakukan ini?",
-        "choices": [
-          {
-            "text": "for (int i = 1; i < 10; i++) { printf(\"%d \", i); }",
-            "next": {
-              "retry": "soal3_1",
-              "review": "salah3_1"
+    {
+      "level": 2,
+      "dialogs": [
+        {
+          "id": "preDialog",
+          "text": "Setelah pulang kuliah, aku masuk rumah dan langsung menuju ruang tamu. Di sana, aku lihat laptop kakakku terbuka dan di layarnya ada materi yang judul highlightnya if, else if, switch yang asing banget buatku. Karena penasaran akhirnya aku nanya ke kakak.",
+          "next": "intro2"
+        },
+        {
+          "id": "intro2",
+          "character1": "Adrien",
+          "character2": "Kakak",
+          "text": [
+            "Ini materi apaan kak?",
+            "Oh ini materi konsep pemrogamanku waktu semester satu pas diajarin sama Pak Rongga. Eh harusnya kamu udah diajarin materi ini kan?",
+            "Lah sama kak, aku juga konsep perograman yang ngajar juga Pak Rongga tapi aku belum diajarin materi itu. Ajarin aja deh kak sekalian buat persiapan gitu.",
+            "Okee jadi ini tuh if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Misal kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan. Coba tebak kalau ini if atau bukan?"
+          ],
+          "next": "soal2_1"
+        },
+        {
+          "id": "soal2_1",
+          "character1": "Adrien",
+          "character2": "Tino",
+          "text": "Terdapat program buat cek apakah suhu ruangan lebih dari 30°C. Kalau iya, tampilkan \"Ruangan Panas\". Kalau enggak, program gak perlu ngapa-ngapain. Kira-kira struktur kondisi apa yang paling tepat buat program ini?",
+          "choices": [
+            {"text": "if, karena cuma perlu ngecek satu kondisi aja.", "next": "materi2_2"},
+            {"text": "else, karena cuma butuh dua kemungkinan.",
+              "next": {
+                "review": "salah2_1",
+                "retry": "soal2_1"
+              }},
+            {"text": "if dan else, karena ada dua kondisi yang harus dipilih.",
+              "next": {
+                "review": "salah2_1",
+                "retry": "soal2_1"
+              }},
+            {"text": "Tidak perlu kondisi, cukup tampilkan saja.",
+              "next": {
+                "review": "salah2_1",
+                "retry": "soal2_1"
+              }}
+          ]
+        },
+        {
+          "id": "salah2_1",
+          "character1": "Kakak",
+          "character2": "Adrien",
+          "text": [
+            "Aduh salah lagi! Coba pikir lagi, soal tadi kan cuma minta cek satu kondisi: 'suhu lebih dari 30 derajat atau nggak'. Jadi sebenarnya kita cukup pakai satu pengecekan aja tanpa harus pilih-pilih ke kemungkinan lain.",
+            "Ohh jadi maksudnya nggak perlu ada opsi lain ya, cukup cek doang?",
+            "Yap benar banget! Kalau kondisi itu terpenuhi, baru kita lakuin sesuatu. Kalau nggak, ya udah program diem aja. Jadi intinya: kalau cuma mau ngecek satu hal atau satu syarat, kita cukup pakai satu kondisi sederhana.",
+            "Oooh paham sekarang! Aku coba pikir lagi deh!"
+          ],
+          "next": "soal2_1"
+        },
+        {
+          "id": "materi2_2",
+          "character1": "Kakak",
+          "character2": "Adrien",
+          "text": [
+            "iWh mantap bener tuh, ok sekarang kita lanjut ke materi else if",
+            "else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Misalnya, kamu lagi ngecek usia seseorang apakah dia remaja, dewasa, atau lanjut usia. Kalau remaja, akan ada aksi tertentu, kalau dewasa, aksi yang berbeda, dan kalau lanjut usia, aksi yang lain lagi. Contohnya kayak code ini sama sekalian deh kamu tebak outputnya"
+          ],
+          "next": "soal2_2"
+        },
+        {
+          "id": "soal2_2",
+          "character1": "Kakak",
+          "character2": "Adrien",
+          "text": "int umur = 25;\nif (umur < 18) {\nprintf(\"Kamu masih remaja\");\n} else if (umur >= 18 && umur <= 60) {\n    printf(\"Kamu dewasa\");\n} else {\n    printf(\"Kamu lanjut usia\");\n}",
+          "choices": [
+            {"text": "Kamu masih remaja",
+              "next": {
+                "review": "salah2_2",
+                "retry": "soal2_2"
+              }
+            },
+            {"text": "Kamu dewasa", "next": "materi2_3"},
+            {"text": "Kamu lanjut usia",
+              "next": {
+                "review": "salah2_2",
+                "retry": "soal2_2"
+              }
+            },
+            {"text": "Tidak ada output",
+              "next": {
+                "review": "salah2_2",
+                "retry": "soal2_2"
+              }
             }
-          },
-          {
-            "text": "for (int i = 1; i <= 10; i++) { printf(\"%d \", i); }",
-            "next": {
-              "retry": "soal3_1",
-              "review": "salah3_1"
+          ]
+        },
+        {
+          "id": "salah2_2",
+          "character1": "Adrien",
+          "character2": "Kakak",
+          "text": [
+            "Aduh kak, aku salah lagi jawabnya...",
+            "Gapapa yang penting ngerti kenapa salah ya. Nih aku bantu jelasin dikit.",
+            "Siap Kak!",
+            "Di soal tadi, keliatan kan ada kombinasi tanda >=, <=, dan &&. Nah && artinya dan, jadi dua syarat harus benar semua.",
+            "Ooh berarti nggak cukup satu syarat aja ya?",
+            "Iya. Jadi kalau mau masuk ke kondisi printf(\"Kamu dewasa\"), umur harus lebih dari atau sama dengan 18 dan kurang dari atau sama dengan 60. Dua-duanya harus terpenuhi.",
+            "Kalau cuma satu syarat doang yang bener, berarti lompat ke else ya?",
+            "Betul! Kalau dua-duanya nggak pas juga, baru masuk ke blok else. Makanya penting banget liat operator kayak &&, ||, dan tanda-tanda perbandingan >, <, >=, <= itu beneran dipahami.",
+            "Wah iya iya Kak! Aku kadang suka kelewat liat operatornya hehe.",
+            "Santai, makin sering latihan makin peka kok. Yuk lanjut biar makin jago!"
+          ],
+          "next": "soal2_2"
+        },
+        {
+          "id": "materi2_3",
+          "character1": "Kakak",
+          "character2": "Adrien",
+          "text": [
+            "Beh mantep, lanjut nih materi terakhir, switch",
+            "Switch digunakan untuk memilih aksi berdasarkan nilai yang ada. Misal kamu punya pilihan menu di restoran dan tiap pilihan punya nomor tertentu. Berdasarkan nomor yang dipilih, menu yang berbeda akan muncul. Sekarang tebak nih output yang muncul apa"
+          ],
+          "next": "soal2_3"
+        },
+        {
+          "id": "soal2_3",
+          "character1": "Adrien",
+          "character2": "Tino",
+          "text": "int pilihanMenu = 2;\nswitch (pilihanMenu) {\n    case 1:\n        printf(\"Pilihan menu: Nasi Goreng\");\n        break;\n    case 2:\n        printf(\"Pilihan menu: Mie Ayam\");\n        break;\n    case 3:\n        printf(\"Pilihan menu: Soto\");\n        break;\n    default:\n        printf(\"Pilihan menu tidak valid\");\n}",
+          "choices": [
+            {"text": "Pilihan menu: Nasi Goreng",
+              "next": {
+                "review": "salah2_3",
+                "retry": "soal2_3"
+              }
+            },
+            {"text": "Pilihan menu: Mie Ayam", "next": "benar2_last"},
+            {"text": "Pilihan menu: Soto",
+              "next": {
+                "review": "salah2_3",
+                "retry": "soal2_3"
+              }
+            },
+            {"text": "Pilihan menu tidak valid",
+              "next": {
+                "review": "salah2_3",
+                "retry": "soal2_3"
+              }
             }
-          },
-          {
-            "text": "for (int i = 0; i < 10; i++) { printf(\"%d \", i); }",
-            "next": {
-              "retry": "soal3_1",
-              "review": "salah3_1"
-            }
-          },
-          {
-            "text": "for (int i = 1; i < 11; i++) { printf(\"%d \", i); }",
-            "next": "materi3_2"
-          }
-        ]
-      },      
-      {
-        "id": "salah3_1",
-        "character1": "Adrien",
-        "character2": "Rusdi",
-        "text": [
-          "Yah, salah jawabanku lagi, Rien! Kenapa ya for loop yang tadi aku buat gak jalan? Kayaknya ada yang salah deh.",
-          "Hehe, gak apa-apa, Di. Coba kita cek lagi deh. Jadi gini, kalau kamu pake i < 10, loopingnya berhenti waktu i udah 10. Artinya, angka 10 gak kebaca. Kalau kamu mau sampai angka 10, harus pake i <= 10.",
-          "Ah, gitu ya! Jadi kalau pake < 10, cuma sampe angka 9 dong?",
-          "Iya bener! Makanya, biar bisa nyetak 1 sampe 10, kita perlu ngecek i <= 10 supaya kondisi loopingnya jalan terus sampe 10. Kalau pake i < 10, dia berhenti di 9.",
-          "Oh, jadi masalahnya ada di operator perbandingannya, ya? Kalau gitu, aku harus hati-hati banget nih, biar gak salah lagi.",
-          "Betul! Jadi perhatiin syaratnya dengan seksama. Kalau lo pengen nyetak sampai 10, jangan lupa pake <= 10. Kecil sih, tapi ngaruh besar hasilnya.",
-          "Oooh, sekarang baru paham. Thanks banget, Rin, jadi ngerti nih!",
-          "Sama-sama, Rus! Makanya, kita harus lebih teliti di setiap bagian kode. Latihan terus ya!"
-        ],
-        "next": "soal3_1"
-      },
-      {
-        "id": "materi3_2",
-        "character1": "Adrien",
-        "character2": "Rusdi",
-        "text": [
-          "Nah itu kamu bisa, jawabanmu udah bener banget, Di! Nah, sekarang kita lanjut ke while loop, ya. Kalau tadi kan for loop, sekarang kamu bakal belajar bagaimana while bisa lebih fleksibel, karena dia fokus ke kondisi yang harus dipenuhi.",
-           "Aduh, ada berapa ini materinya.. Kapan selesainya",
-           "Sabar, kita belajar pelan-pelan rak biar materi bisa masuk. Nah, kalau while loop itu lebih fleksibel. Kamu bisa pake while kalau kamu belum tahu pasti berapa kali perulangan yang diperlukan, tapi kamu punya kondisi yang harus dicek dukamu. Jadi selama kondisi itu bener, dia akan terus ngulangin. Jadi lebih ke ngecek dulu, baru ngulangin. Paham, kan?",
-           "Jadi, while itu ngecek dulu baru ngulang kan?",
-           "Iya, bener banget! Sekarang, yang terakhir ada do while. Nah, bedanya dengan while, kalau do while itu ngejalanin perulangan setidaknya sekali dulu, baru kemudian ngecek kondisi. Jadi meskipun kondisi awalnya nggak bener, dia tetap jalanin sekali dulu, baru cek kondisinya. gimana paham ga?",
-           "ih paham paham kayak kak gem aja kamu! paham lahhh!!! Jadi do while itu jalan sekali dulu, baru cek kondisinya, kan?",
-           "Betul, Rak! Jadi, kalau kamu udah tahu pasti jumlah perulangannya, pakai for. Kalau kamu harus ngecek kondisi dulu baru ngulang, pakai while atau do while tergantung kamu butuh perulangan yang jalan minimal sekali dulu atau nggak. Biar kamu lebih paham coba kerjain soal ini, kalau kamu bener aku traktir makan deh"
-        ],
-        "next": "soal3_2"
-      },
-      {
-        "id": "soal3_2",
-        "character1": "Adrien",
-        "character2": "Rusdi",
-        "text": "Perhatikan potongan kode berikut:\n\n#include <stdio.h>\nint main() {\n    for (int i = 1; i <= 3; i++) {\n        printf(\"Hai \");\n    }\n    return 0;\n}\n\nApa output yang dihasilkan?",
-        "choices": [
-          {
-            "text": "Hai",
-            "next": {
-              "retry": "soal3_2",
-              "review": "salah3_2"
-            }
-          },
-          {
-            "text": "Hai Hai Hai",
-            "next": "bener3_last"
-          },
-          {
-            "text": "HaiHaiHai",
-            "next": {
-              "retry": "soal3_2",
-              "review": "salah3_2"
-            }
-          },
-          {
-            "text": "HaiHai",
-            "next": {
-              "retry": "soal3_2",
-              "review": "salah3_2"
-            }
-          }
-        ]
-      },      
-      {
-        "id": "bener3_last",
-        "character1": "Adrien",
-        "character2": "Rusdi",
-        "text": [
-          "Yoi, bener Rak. Jawabannya C. Loop-nya jalan tiga kali, makanya 'Hai' dicetak tiga kali. Pas banget, bro.",
-          "Akhirnya ngerti juga soal for kamuop ini, makasih Adrien.",
-          "yaudah sekarang mending kamu pesen makan dah, keburu janji makan gratis aku expired nih.",
-          "iya ini aku mau pesen sandwich"
-        ],
-        "next": null
-      },
-      {
-        "id": "salah3_2",
-        "character1": "Adrien",
-        "character2": "Rusdi",
-        "text": [
-          "Ah, salah lagi nih!",
-          "Hehe, gak apa-apa, Rus. Kita cek bareng-bareng. Jadi gini, di dalam loop for, kamu udah nulis i <= 3, artinya program akan nge-loop sebanyak 3 kali. Setiap kali looping, dia bakal nge-print Hai dan dilanjut ke perulangan berikutnya.",
-          "Betul, terus kenapa hasilnya bisa cuma satu, ya?",
-          "Ooooh, maksud kamu itu tadi di jawabannya yang salah kan, di soal. Kalau kamu lihat di pilihan jawabannya, yang benar tuh adalah Hai Hai Hai karena memang output-nya bakal muncul 3 kali, kan?",
-          "Oh! Jadi jawabannya Hai Hai Hai ya, karena diulang tiga kali sesuai dengan perulangan for?",
-          "Iya, bener banget! Jangan lupa juga, kalau gak dipisah spasi atau dipake \n, outputnya bakal langsung nempel kayak HaiHaiHai. Jadi perlu perhatiin juga formatnya.",
-          "Wah, paham sekarang! Jadi kalau mau hasilnya ada spasi antar 'Hai', harus pakai spasi dalam printf ya?",
-          "Betul! Begitu, Rus. Jangan lupa, perhatikan juga kapan ada perulangan dan bagaimana outputnya dicetak.",
-          "Thanks, Rin! Sekarang baru ngeh! Aku bakal coba lagi!"
-        ],
-        "next": "materi3_2"
-      }
-    ],
-    "rangkuman": [
-      "Perulangan atau looping dalam pemrograman digunakan untuk menjalankan kode yang sama berulang kali.",
-      "Ada tiga jenis perulangan utama: for, while, dan do while.",
-      "Perulangan for digunakan saat kita sudah tahu berapa kali ingin mengulang.",
-      "Contoh:",
-      "#include <stdio.h>\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        printf(\"Perulangan ke-%d\\n\", i);\n    }\n    return 0;\n}",
-      "Penjelasan:\nfor (int i = 1; i <= 5; i++): Mulai dari i = 1, akan terus berulang selama i <= 5, dan setiap iterasi i akan bertambah satu.",
-      "Kalau while, dipakai ketika kita belum tahu pasti berapa kali perulangan dilakukan, tapi kita punya kondisi tertentu. Program akan terus mengulang selama kondisi itu masih benar.",
-      "Contoh:",
-      "#include <stdio.h>\n\nint main() {\n    int i = 1;\n    while (i <= 5) {\n        printf(\"Perulangan ke-%d\\n\", i);\n        i++;\n    }\n    return 0;\n}",
-      "Penjelasan:\nwhile (i <= 5): Selama nilai i kurang dari atau sama dengan 5, perulangan akan terus dilakukan.",
-      "Sedangkan do while mirip dengan while, tapi sedikit berbeda. Di sini, program akan menjalankan perulangan minimal satu kali, baru kemudian mengecek kondisinya.",
-      "Contoh:",
-      "#include <stdio.h>\n\nint main() {\n    int i = 1;\n    do {\n        printf(\"Perulangan ke-%d\\n\", i);\n        i++;\n    } while (i <= 5);\n    return 0;\n}",
-      "Penjelasan:\ndo { ... } while (i <= 5): Program ini akan menjalankan perulangan minimal satu kali, meskipun i awalnya lebih besar dari 5 (karena kondisi diperiksa setelah perulangan)."
-    ]
-  },
+          ]
+        },
+        {
+          "id": "salah2_3",
+          "character1": "Kakak",
+          "character2": "Adrien",
+          "text": [
+            "Eits, switch-case itu cocok buat banyak pilihan tetap, bukan buat kondisi yang fleksibel banget. Jawaban kamu masih salah kaprah nih.",
+            "Ooooh gitu... Aku kira switch itu kayak if-else bisa buat cek suhu lebih besar atau lebih kecil.",
+            "Nah itu dia bedanya! Kalau mau cek kondisi fleksibel kayak lebih besar atau lebih kecil baru pakai if. Kalau switch-case, harus nilai pastinya yang dibandingin. Misal, suhu == 30, suhu == 40, gitu.",
+            "Aaaah paham sekarang. Jadi switch tuh kayak ngecek daftar pilihan yang pasti-pasti aja ya?",
+            "Betul! Kalau yang sifatnya perbandingan atau kondisi kompleks, mending tetap pakai if-else.",
+            "Woke siap Kak, abis ini aku baca ulang deh biar makin mantap!",
+            "Semangat terus ya!"
+          ],
+          "next": "soal2_3"
+        },
+        {
+          "id": "benar2_last",
+          "character1": "Kakak",
+          "character2": "Adrien",
+          "text": [
+            "Pinter banget kamu! Sekarang udah ngerti kan cara kerja if, else if, dan switch, jadi gampang nanti kalau kamu ngadepin materi kondisi dalam program.",
+            "Semoga saat aku ketemu materi kondisi dalam konsep pemrogarman aku ga bingung lagi. Makasih banyak Kak!",
+            "Sama-sama! Nanti kamu bakal sering ketemu ini di soal-soal. Kalau ada yang bingung lagi, langsung tanya aja!",
+            "Siap kak! Aku mau lanjut belajar materi selanjutnya, for, while, dan do while. Besok siang aku sama Rusdi mau ke cafe buat diskusi materi for, while, dan do while, ngerjain tugas bareng juga",
+            "Oke deh! Semangat terus ya..."
+          ],
+          "next": null
+        }
+      ],
+      "rangkuman": [
+        "if untuk memeriksa satu kondisi. Jika kondisi tersebut benar, maka aksi atau kode yang ada di dalam blok if akan dijalankan.",
+        "else if digunakan ketika ada lebih dari satu kondisi yang perlu diperiksa. Jika kondisi pertama salah, maka kondisi berikutnya akan dicek. Hal ini memungkinkan pengecekan beberapa kondisi dalam urutan yang terstruktur.",
+        "switch digunakan ketika ada banyak pilihan atau kondisi yang mirip. Dengan switch, kamu bisa memeriksa nilai dari suatu variabel terhadap beberapa kemungkinan nilai dan menjalankan aksi berdasarkan nilai yang cocok."
+      ]
+    },
 
-  {
-    "level": 4,
-    "dialogs": [
-      {
-        "id": "intro4",
-        "character1": "Rusdi",
-        "character2": "Adrien",
-        "text": [
-          "Wih, sandwich cafe ini enak banget. makasih ya bro udah traktir. lumayan banget, perut kenyang, otak juga nambah isinya.",
-          "Aman Bro, yang penting lu paham dan udah bisa ngerjain soal selanjutnya.",
-          "OIYA! aku lupa, ternyata ada tugas perulangan yang satunya aduhh...aku kira udah selesai, eh ternyata masih ada yang namanya nested loop, terus ada juga perintah break, continue, sama exit",
-          "WKWKWKWKWK ok tenang tenang ini aku jelasin satu per satu",
-          "Jadi gini, nested loop itu sebenernya simpel banget. Intinya, itu loop di dalam loop. Maksudnya, satu perulangan di dalam perulangan lain. Biasanya dipakai kalau kamu mau ngelakuin proses yang berulang-ulang di dalam proses yang juga berulang. Misalnya nih, kamu mau ngeprint bentuk tabel atau matriks. Loop pertama itu buat barisnya, dan di dalamnya, loop kedua buat kolom-kolomnya. Jadi setiap kali barisnya ganti, kolomnya diulang dari awal.",
-           "Kayak kamu bayangin aja, setiap baris itu perlu ngulangin beberapa kolom. Makanya perlu loop di dalam loop. Coba deh biar tambah paham, aku kasih kamu soal nested loop dulu"
-        ],
-        "next":"soal4_1"
-      },
-      {
-        "id": "soal4_1",
-        "character1": "Adrien",
-        "character2": "Rusdi",
-        "text": "Perhatikan pola berikut:\n\n*\n* *\n* * *\n* * * *\n\nLoop mana yang paling tepat dipakai untuk baris (luar) dan bintang (dalam)?",
-        "choices": [
-          {
-            "text": "A. for (int i = 1; i <= 4; i++) // Loop baris\nfor (int j = 1; j <= i; j++) // Loop bintang",
-            "next": "materi4_2"
-          },
-          {
-            "text": "B. for (int i = 1; i <= 4; i++) // Loop bintang\nfor (int j = 1; j <= i; j++) // Loop baris",
-            "next": {
-              "retry": "soal4_1",
-              "review": "salah4_1"
-            }
-          },
-          {
-            "text": "C. for (int i = 1; i <= 4; i++) // Loop baris\nfor (int j = 4; j >= i; j--) // Loop bintang",
-            "next": {
-              "retry": "soal4_1",
-              "review": "salah4_1"
-            }
-          },
-          {
-            "text": "D. for (int i = 4; i >= 1; i--) // Loop baris\nfor (int j = 1; j <= i; j++) // Loop bintang",
-            "next": {
-              "retry": "soal4_1",
-              "review": "salah4_1"
-            }
-          }
-        ]
-      },      
-      {
-        "id": "salah4_1",
-        "character1": "Adrien",
-        "character2": "Rusdi",
-        "text": [
-          "Wah, jawabannya belum tepat nih, Di!",
-          "Yah, kenapa ya?",
-          "Coba ingat lagi konsep loop luar untuk baris dan loop dalam untuk bintang. Bacain lagi materinya pelan-pelan, ya. Kamu pasti bisa nemu jawabannya!",
-          "Siap, aku baca lagi deh!"
-        ],
-        "next": "materi4_1"
-      },
-      {
-        "id": "materi4_1",
-        "character1": "Adrien",
-        "character2": "Rusdi",
-        "text": [
-          "Eh Rusdi, kayaknya tadi jawabanmu kurang pas deh.",
-          "Iya ya, aku bingung pas bagian nested loop-nya...",
-          "Nah, jadi gini. Di nested loop itu, ada loop di dalam loop. Loop yang luar biasanya ngatur berapa kali si loop dalam dijalankan.",
-          "Berarti yang luar kayak buat baris, yang dalam buat isinya gitu?",
-          "Persis! Misalnya mau gambar segitiga bintang, loop luar buat barisnya, loop dalam buat jumlah bintangnya di tiap baris.",
-          "Oohh... Pantesan tadi jumlah bintangnya aneh.",
-          "Makanya harus perhatiin hubungan antara loop luar sama loop dalam. Baca lagi materinya pelan-pelan, habis itu coba latihan lagi.",
-          "Siap, makasih Adrien! Aku coba ulangin dulu deh!"
-        ],
-        "next":"soal4_1"
-      },
-      {
-        "id": "materi4_2",
-        "character1": "Rusdi",
-        "character2": "Adrien",
-        "text": [
-          "Aku pilih A, soalnya dari yang aku liat, for luarnya buat ngatur baris, for dalemnya ngatur bintangnya. Jadi kayaknya cocok!",
-          "Wuuihh mantap banget Rak!  Bener banget! Jadi for pertama itu ngatur baris, sedangkan for kedua ngatur berapa banyak bintangnya sesuai sama baris keberapa kita sekarang.",
-          "Nah, kalau kayak gitu, kamu udah mulai ngerti nested loop. Yuk, kita lanjut, tentang break yaa.",
-          "Oke Gasskeunn",
-          "Nah, kalau kamu mau keluar dari loop lebih cepat, kamu bisa pake break. Jadi, misalnya, kalau kamu udah nemuin angka yang kamu cari, kamu gak perkamu ngejalanin sisanya. Kamu pake break biar langsung keluar dari loop itu.",
-          "Tapi gimana kalau aku cuma mau skip satu iterasi aja, ga keluar sama sekali?",
-          "Nah, kalo kasusnya kayak gitu, bisa pake continue! Jadi, kalau kamu pake continue, dia bakal nge-skip iterasi yang lagi jalan dan langsung lanjut ke iterasi berikutnya. Terus ada lagi nih, kalau kamu mau keluar dari program secara langsung, kamu bisa pake exit.",
-          "Wih kacauuu, ternyata banyak banget ya cara ngatur loop dan kontrol program!",
-          "Iya, memang! Makanya penting banget buat ngerti setiap kontrol yang ada biar perulangan kamu lebih fleksibel. Nah, coba deh biar paham, kamu kerjain biar tau perbedaan break, continue dan exit.",
-          "Oke, bro! aku langsung kerjain deh."
-        ],
-        "next": "soal4_2"
-      },
-      {
-        "id": "soal4_2",
-        "character1": "Adrien",
-        "character2": "Rusdi",
-        "text": "Bayangin kamu lagi pake for buat ngeloop angka dari 1 sampai 5. Terus, di tengah-tengah loop kamu pengen:\n\nLangsung keluar dari loop kalau ketemu angka 3,\n\nLewatin aja kalau ketemu angka 2 (tapi lanjut ke angka berikutnya),\n\nKeluar dari seluruh program kalau ketemu angka 5.\n\nNah, menurutmu keyword apa aja yang harus dipakai?",
-        "choices": [
-          {
-            "text": "A. break, continue, exit",
-            "next": {
-              "retry": "soal4_2",
-              "review": "salah4_2"
-            }
-          },
-          {
-            "text": "B. continue, exit, break",
-            "next": {
-              "retry": "soal4_2",
-              "review": "salah4_2"
-            }
-          },
-          {
-            "text": "C. exit, break, continue",
-            "next": {
-              "retry": "soal4_2",
-              "review": "salah4_2"
-            }
-          },
-          {
-            "text": "D. continue, break, exit",
-            "next": "bener4_last"
-          }
-        ]
-      },      
-      {
-        "id": "salah4_2",
-        "character1": "Adrien",
-        "character2": "Rusdi",
-        "text": [
-          "Eh Rusdi, jawabannya tadi belum tepat nih.",
-          "Waduh, aku salahnya di mana ya?",
-          "Gini, coba inget dulu... Kalau mau lewati suatu angka tapi tetep lanjut ke angka berikutnya, itu perlu keyword apa? Terus, kalau mau berhenti dari loop aja, bukan dari program, itu keyword-nya beda lagi. Nah, kalau mau berhenti total sampai programnya bener-bener selesai, ada keyword lain lagi.",
-          "Jadi beda-beda ya tergantung mau ngapain?",
-          "Betul banget! Jadi fokus dulu: kamu mau lewatin angka, keluar dari loop, atau keluar dari program? Coba baca lagi materinya tentang perbedaan tiga keyword itu.",
-          "Oke, aku cek lagi deh pelan-pelan!"
-        ],
-        "next": "soal4_2"
-      },
-      {
-        "id": "benar4_last",
-        "character1": "Rusdi",
-        "character2": "Adrien",
-        "text": [
-         "Wihhh, jawabanku benar nih!",
-         "Yoiii, mantap bro! Berarti kamu udah paham konsep break.",
-         "Wah keren juga ya. Jadi tergantung situasi, kita bisa pilih mau keluar dari loop atau cuma skip sementara.",
-         "Akhirnya aku paham juga materi ini, makasih ya adrien",
-         "Aman aja di"
-        ],
-        "next": null
-      }
-    ],
-    "rangkuman": [
-     "1. Nested Loop:\nNested loop adalah perulangan yang berada di dalam perulangan lain. Biasanya digunakan untuk menyusun data dua dimensi seperti tabel, matriks, atau pola bintang.",
-    
-    "Contoh kode nested loop:",
-    "#include <stdio.h>\n\nint main() {\n    for (int i = 1; i <= 3; i++) {\n        for (int j = 1; j <= 3; j++) {\n            printf(\"i = %d, j = %d\\n\", i, j);\n        }\n    }\n    return 0;\n}",
-    
-    "Output dari program:",
-    "i = 1, j = 1\ni = 1, j = 2\ni = 1, j = 3\ni = 2, j = 1\ni = 2, j = 2\ni = 2, j = 3\ni = 3, j = 1\ni = 3, j = 2\ni = 3, j = 3",
-    
-    "Penjelasan:\n- Loop luar (i) berjalan 3 kali.\n- Setiap kali loop luar berjalan, loop dalam (j) juga berjalan 3 kali.\n- Kombinasi nilai i dan j dicetak di layar.",
 
-    "2. Break:\nBreak digunakan untuk menghentikan proses perulangan secara paksa sebelum selesai, biasanya saat kondisi tertentu terpenuhi.",
-    
-    "Contoh kode break:",
-    "#include <stdio.h>\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 3) {\n            break;\n        }\n        printf(\"Perulangan ke-%d\\n\", i);\n    }\n    return 0;\n}",
-    
-    "Output dari program:",
-    "Perulangan ke-1\nPerulangan ke-2",
-    
-    "Penjelasan:\n- Perulangan berhenti saat i == 3 karena ada break.\n- Hanya mencetak perulangan ke-1 dan ke-2.",
+    {
+      "level": 3,
+      "dialogs": [
+        {
+          "id": "preDialog",
+          "text": "Siang itu, Rusdi sudah menunggu di café sejak jam 3 sore, menatap layar ponselnya dengan muram. Jam dinding sudah menunjukkan pukul 4 dan MC belum juga muncul. Rusdi mulai gelisah, berpikir tentang tugas yang harus diselesaikan dan deadline yang semakin dekat. Ia memesan secangkir kopi, sambil menunggu MC untuk memulai diskusi dan menyelesaikan tugas. Sambil menunggu, ia melirik ke pintu berkali-kali, berharap MC segera datang.",
+          "next": "intro3"
+        },
+        {
+          "id": "intro3",
+          "character1": "Rusdi",
+          "character2": "Adrien",
+          "text": [
+            "Bro katanya janjiannya jam 3, kenapa kamu baru dateng jam 4? Aku udah nungguin di sini dari tadi. Kamu naik siput ya pasti, lama banget, deh!",
+            "Waduh Mas Rusdi ngamuk lho rek! Sorry-sorry broo macet banget di jalan. Jadi mana yang mau kamu tanyain?",
+            "Ini tentang perulangan, gimana?",
+            "Jadi gini, kalau kamu pengen ngulangin sesuatu berkali-kali, kamu bisa pake for loop. For itu cocok kalau kamu udah tahu berapa kali perulangan yang harus dilakukan. Misal kamu pengen nulis angka dari 1 sampai 5. Jadi kamu tentuin mulai dari mana, sampai mana, dan tiap kali kamu ngulangin, kamu tambahin angkanya. Kamu udah paham belum?",
+            "Ah, oke, jadi for itu kalau udah tahu berapa kali ngulangin ya?",
+            "Betul Rus! Nah aku jelasin pelan-pelan ya soal for loop ini. Ada tiga bagian utama di dalamnya. Pertama ada yang namanya inisialisasi. Jadi sebelum perulangan dimulai, kita harus tentuin nilai awalnya. Misal kamu mau mulai dari angka 1, jadi kita tulis int i = 1;. Itu artinya kita mulai dari angka 1.",
+            "Jadi inisialisasi itu kayak nentuin angka pertama yang mau dipakai, ya?",
+            "Yup tepat banget! Kedua ada bagian yang disebut kondisi. Ini yang bakal dicek setiap kali perulangan berlangsung. Misal kita mau perulangan terus berjalan selama angka i itu masih lebih kecil atau sama dengan 5. Jadi, kita tulis i <= 5;. Artinya, selama i lebih kecil atau sama dengan 5 maka perulangannya terus jalan.",
+            "Ooh jadi kondisi itu buat nentuin kapan perulangannya berhenti, ya?",
+            "Betul banget Rus! Nah terakhir ada yang namanya increment atau decrement. Ini buat nambahin atau ngurangin nilai setelah setiap perulangan selesai. Kalau kamu mau nambahin nilai i, kamu tulis i++. Itu artinya setelah tiap perulangan angka i akan bertambah 1.",
+            "Jadi increment itu buat nambahin nilai i tiap kali perulangan, ya? Kalau mau ngurangin, pakai i-- gitu?",
+            "Iya, persis banget Rus! Jadi tiga bagian itu: inisialisasi buat mulai dari mana, kondisi buat ngecek kapan berhentinya, dan increment buat nambahin atau ngurangin nilai.",
+            "Kayanya aku mulai paham nih",
+            "Nah sip, sekarang aku kasih tantangan buat kamu. Coba kamu jawab soal ini ya!"
+          ],
+          "next": "soal3_1"
+        },
+        {
+          "id": "soal3_1 ",
+          "character1": "Mas Tino",
+          "character2": "Adrien",
+          "text": "Kamu diminta untuk membuat program yang mencetak angka dari 1 sampai 10. Bagaimana cara kamu menggunakan for loop untuk melakukan ini?",
+          "choices": [
+            {
+              "text": "for (int i = 1; i < 10; i++) { printf(\"%d \", i); }",
+              "next": {
+                "retry": "soal3_1",
+                "review": "salah3_1"
+              }
+            },
+            {
+              "text": "for (int i = 1; i <= 10; i++) { printf(\"%d \", i); }",
+              "next": {
+                "retry": "soal3_1",
+                "review": "salah3_1"
+              }
+            },
+            {
+              "text": "for (int i = 0; i < 10; i++) { printf(\"%d \", i); }",
+              "next": {
+                "retry": "soal3_1",
+                "review": "salah3_1"
+              }
+            },
+            {
+              "text": "for (int i = 1; i < 11; i++) { printf(\"%d \", i); }",
+              "next": "materi3_2"
+            }
+          ]
+        },
+        {
+          "id": "salah3_1",
+          "character1": "Adrien",
+          "character2": "Rusdi",
+          "text": [
+            "Yah, salah jawabanku. Kenapa ya for loop yang tadi aku buat gak jalan? Kayaknya ada yang salah deh.",
+            "Coba kita cek lagi deh. Jadi gini, kalau kamu pake i < 10, loopingnya berhenti waktu i udah 10. Artinya angka 10 gak kebaca. Kalau kamu mau sampai angka 10 harus pake i <= 10.",
+            "Ah, gitu ya. Jadi kalau pake < 10 cuma sampe angka 9 dong?",
+            "Iya bener! Makanya biar bisa nyetak 1 sampe 10, kita perlu ngecek i <= 10 supaya kondisi loopingnya jalan terus sampe 10. Kalau pake i < 10, dia berhenti di 9.",
+            "Oh jadi masalahnya ada di operator perbandingannya ya? Kalau gitu aku harus hati-hati banget nih biar gak salah lagi.",
+            "Betul! Jadi perhatiin syaratnya dengan seksama. Kalau lo pengen nyetak sampai 10, jangan lupa pake <= 10. Kecil sih, tapi ngaruh besar hasilnya.",
+            "Oooh sekarang baru paham. Thanks banget bro jadi ngerti nih!",
+            "Sama-sama Rus! Makanya kita harus lebih teliti di setiap bagian kode. Latihan terus ya!"
+          ],
+          "next": "soal3_1"
+        },
+        {
+          "id": "materi3_2",
+          "character1": "Adrien",
+          "character2": "Rusdi",
+          "text": [
+            "Nah itu kamu bisa, jawabanmu udah bener banget, Di! Sekarang kita lanjut ke while loop. Kalau tadi kan for loop, sekarang kamu bakal belajar bagaimana while bisa lebih fleksibel karena dia fokus ke kondisi yang harus dipenuhi.",
+            "Aduh ada berapa ini materinya.. Kapan selesainya",
+            "Sabar, kita belajar pelan-pelan Rus biar materi bisa masuk. Nah kalau while loop itu lebih fleksibel. Kamu bisa pake while kalau kamu belum tahu pasti berapa kali perulangan yang diperlukan, tapi kamu punya kondisi yang harus dicek dulu. Jadi selama kondisi itu bener, dia akan terus ngulangin. Jadi lebih ke ngecek dulu, baru ngulangin. Paham, kan?",
+            "Jadi while itu ngecek dulu baru ngulang kan?",
+            "Iya bener banget! Sekarang yang terakhir ada do while. Bedanya dengan while, kalau do while itu ngejalanin perulangan setidaknya sekali dulu, baru kemudian ngecek kondisi. Jadi meskipun kondisi awalnya nggak bener, dia tetap jalanin sekali dulu, baru cek kondisinya. Gimana paham ga?",
+            "Ih paham paham kayak kak gem aja kamu! Paham lahhh!!! Jadi do while itu jalan sekali dulu, baru cek kondisinya, kan?",
+            "Betul Rus! Jadi kalau kamu udah tahu pasti jumlah perulangannya, pakai for. Kalau kamu harus ngecek kondisi dulu baru ngulang, pakai while atau do while tergantung kamu butuh perulangan yang jalan minimal sekali dulu atau nggak. Biar kamu lebih paham coba kerjain soal ini, kalau kamu bener aku traktir makan deh"
+          ],
+          "next": "soal3_2"
+        },
+        {
+          "id": "soal3_2",
+          "character1": "Adrien",
+          "character2": "Rusdi",
+          "text": "Perhatikan potongan kode berikut:\n\n#include <stdio.h>\nint main() {\n    for (int i = 1; i <= 3; i++) {\n        printf(\"Hai \");\n    }\n    return 0;\n}\n\nApa output yang dihasilkan?",
+          "choices": [
+            {
+              "text": "Hai",
+              "next": {
+                "retry": "soal3_2",
+                "review": "salah3_2"
+              }
+            },
+            {
+              "text": "Hai Hai Hai",
+              "next": "bener3_last"
+            },
+            {
+              "text": "HaiHaiHai",
+              "next": {
+                "retry": "soal3_2",
+                "review": "salah3_2"
+              }
+            },
+            {
+              "text": "HaiHai",
+              "next": {
+                "retry": "soal3_2",
+                "review": "salah3_2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "bener3_last",
+          "character1": "Adrien",
+          "character2": "Rusdi",
+          "text": [
+            "Yoi, bener Rus. Jawabannya C. Loop-nya jalan tiga kali, makanya 'Hai' dicetak tiga kali. Pas banget, bro.",
+            "Akhirnya ngerti juga soal for loop ini, makasih Adrien.",
+            "Yaudah sekarang mending kamu pesen makan dah, keburu janji makan gratis dari aku expired nih.",
+            "Iya ini aku mau pesen sandwich"
+          ],
+          "next": null
+        },
+        {
+          "id": "salah3_2",
+          "character1": "Adrien",
+          "character2": "Rusdi",
+          "text": [
+            "Ah salah lagi nih!",
+            "Gak apa-apa Rus, kita cek bareng-bareng. Jadi gini, di dalam loop for, kamu udah nulis i <= 3, artinya program akan nge-loop sebanyak 3 kali. Setiap kali looping, dia bakal mencetak Hai dan dilanjut ke perulangan berikutnya.",
+            "Iya, terus kenapa hasilnya bisa cuma satu?",
+            "Ooooh, maksud kamu itu tadi di jawabannya yang salah kan, di soal. Kalau kamu lihat di pilihan jawabannya, yang benar tuh adalah Hai Hai Hai karena memang output-nya bakal muncul 3 kali.",
+            "Oh! Jadi jawabannya Hai Hai Hai ya, karena diulang tiga kali sesuai dengan perulangan for?",
+            "Iya bener banget! Jangan lupa juga, kalau gak dipisah spasi atau dipake \n, outputnya bakal langsung nempel kayak HaiHaiHai. Jadi perlu perhatiin juga formatnya.",
+            "Wah paham sekarang! Jadi kalau mau hasilnya ada spasi antar 'Hai', harus pakai spasi dalam printf ya?",
+            "Betul! Jangan lupa, perhatikan juga kapan ada perulangan dan bagaimana outputnya dicetak.",
+            "Thanks bro! Sekarang baru ngeh! Aku bakal coba lagi!"
+          ],
+          "next": "materi3_2"
+        }
+      ],
+      "rangkuman": [
+        "Perulangan atau looping dalam pemrograman digunakan untuk menjalankan kode yang sama berulang kali.",
+        "Ada tiga jenis perulangan utama: for, while, dan do while.",
+        "Perulangan for digunakan saat sudah tahu berapa kali ingin mengulang.",
+        "Contoh:",
+        "#include <stdio.h>\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        printf(\"Perulangan ke-%d\\n\", i);\n    }\n    return 0;\n}",
+        "Penjelasan:\nfor (int i = 1; i <= 5; i++): Mulai dari i = 1, akan terus berulang selama i <= 5, dan setiap iterasi i akan bertambah satu.",
+        "Kalau while, dipakai ketika belum tahu pasti berapa kali perulangan dilakukan, tapi mempunyai kondisi tertentu. Program akan terus mengulang selama kondisi itu masih benar.",
+        "Contoh:",
+        "#include <stdio.h>\n\nint main() {\n    int i = 1;\n    while (i <= 5) {\n        printf(\"Perulangan ke-%d\\n\", i);\n        i++;\n    }\n    return 0;\n}",
+        "Penjelasan:\nwhile (i <= 5): Selama nilai i kurang dari atau sama dengan 5, perulangan akan terus dilakukan.",
+        "Sedangkan do while mirip dengan while, tapi sedikit berbeda. Di sini, program akan menjalankan perulangan minimal satu kali, baru kemudian mengecek kondisinya.",
+        "Contoh:",
+        "#include <stdio.h>\n\nint main() {\n    int i = 1;\n    do {\n        printf(\"Perulangan ke-%d\\n\", i);\n        i++;\n    } while (i <= 5);\n    return 0;\n}",
+        "Penjelasan:\ndo { ... } while (i <= 5): Program ini akan menjalankan perulangan minimal satu kali, meskipun i awalnya lebih besar dari 5 (karena kondisi diperiksa setelah perulangan)."
+      ]
+    },
 
-    "3. Continue:\nContinue digunakan untuk melewati satu iterasi perulangan dan langsung lanjut ke iterasi berikutnya tanpa keluar dari loop.",
-    
-    "Contoh kode continue:",
-    "#include <stdio.h>\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 3) {\n            continue;\n        }\n        printf(\"Perulangan ke-%d\\n\", i);\n    }\n    return 0;\n}",
-    
-    "Output dari program:",
-    "Perulangan ke-1\nPerulangan ke-2\nPerulangan ke-4\nPerulangan ke-5",
-    
-    "Penjelasan:\n- Saat i == 3, continue membuat program melewatkan print.\n- Perulangan ke-3 tidak dicetak.",
 
-    "4. Exit:\nExit digunakan untuk menghentikan seluruh program, bukan hanya perulangan. Biasanya digunakan saat kondisi kritis terjadi.",
-    
-    "Contoh kode exit:",
-    "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 4) {\n            printf(\"Keluar dari program\\n\");\n            exit(0);\n        }\n        printf(\"Perulangan ke-%d\\n\", i);\n    }\n    return 0;\n}",
-    
-    "Output dari program:",
-    "Perulangan ke-1\nPerulangan ke-2\nPerulangan ke-3\nKeluar dari program",
-    
-    "Penjelasan:\n- Program berhenti total saat i == 4.\n- Tidak ada perulangan ke-4 dan ke-5 karena exit menghentikan program."
-    ]
-  },
+    {
+      "level": 4,
+      "dialogs": [
+        {
+          "id": "intro4",
+          "character1": "Rusdi",
+          "character2": "Adrien",
+          "text": [
+            "Hm sandwich cafe ini enak banget! Makasih ya bro udah traktir. Lumayan banget, perut kenyang, otak juga nambah isinya.",
+            "Aman Bro, yang penting lu paham dan udah bisa ngerjain soal selanjutnya.",
+            "OIYA! Aku lupa ternyata ada tugas perulangan yang satunya, aduhh...aku kira udah selesai, eh ternyata masih ada yang namanya nested loop, terus ada juga perintah break, continue, sama exit",
+            "WKWKWKWKWK ok tenang tenang sini aku jelasin satu per satu",
+            "Jadi nested loop itu sebenernya simpel banget. Intinya, itu loop di dalam loop. Maksudnya, satu perulangan di dalam perulangan lain. Biasanya dipakai kalau mau ngelakuin proses yang berulang-ulang di dalam proses yang juga berulang. Misal kamu mau mencetak bentuk tabel atau matriks. Loop pertama itu buat barisnya, dan di dalamnya, loop kedua buat kolom-kolomnya. Jadi setiap kali barisnya ganti, kolomnya diulang dari awal.",
+            "Kayak kamu bayangin aja, setiap baris itu perlu ngulangin beberapa kolom. Makanya perlu loop di dalam loop. Biar tambah paham, aku kasih kamu soal nested loop dulu"
+          ],
+          "next":"soal4_1"
+        },
+        {
+          "id": "soal4_1",
+          "character1": "Adrien",
+          "character2": "Rusdi",
+          "text": "Perhatikan pola berikut:\n\n*\n* *\n* * *\n* * * *\n\nLoop mana yang paling tepat dipakai untuk baris (luar) dan bintang (dalam)?",
+          "choices": [
+            {
+              "text": "for (int i = 1; i <= 4; i++) // Loop baris\nfor (int j = 1; j <= i; j++) // Loop bintang",
+              "next": "materi4_2"
+            },
+            {
+              "text": "for (int i = 1; i <= 4; i++) // Loop bintang\nfor (int j = 1; j <= i; j++) // Loop baris",
+              "next": {
+                "retry": "soal4_1",
+                "review": "salah4_1"
+              }
+            },
+            {
+              "text": "for (int i = 1; i <= 4; i++) // Loop baris\nfor (int j = 4; j >= i; j--) // Loop bintang",
+              "next": {
+                "retry": "soal4_1",
+                "review": "salah4_1"
+              }
+            },
+            {
+              "text": "for (int i = 4; i >= 1; i--) // Loop baris\nfor (int j = 1; j <= i; j++) // Loop bintang",
+              "next": {
+                "retry": "soal4_1",
+                "review": "salah4_1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "salah4_1",
+          "character1": "Adrien",
+          "character2": "Rusdi",
+          "text": [
+            "Hmm jawabannya belum tepat nih, Di!",
+            "Yah kenapa ya?",
+            "Coba ingat lagi konsep loop luar untuk baris dan loop dalam untuk bintang. Bacain lagi materinya pelan-pelan, kamu pasti bisa nemu jawabannya!",
+            "Siap, aku baca lagi deh!"
+          ],
+          "next": "materi4_1"
+        },
+        {
+          "id": "materi4_1",
+          "character1": "Adrien",
+          "character2": "Rusdi",
+          "text": [
+            "Eh Rusdi, kayaknya tadi jawabanmu kurang pas deh.",
+            "Iya ya, aku bingung pas bagian nested loop-nya",
+            "Jadi gini, di nested loop ada loop di dalam loop. Loop yang luar biasanya ngatur berapa kali si loop dalam dijalankan.",
+            "Berarti yang luar kayak buat baris, yang dalam buat isinya gitu?",
+            "Persis! Misalnya mau gambar segitiga bintang, loop luar buat barisnya, loop dalam buat jumlah bintangnya di tiap baris.",
+            "Oohh... Pantesan tadi jumlah bintangnya aneh.",
+            "Makanya harus perhatiin hubungan antara loop luar sama loop dalam. Baca lagi materinya pelan-pelan, habis itu coba latihan lagi.",
+            "Siap, makasih Adrien! Aku coba ulangin dulu deh."
+          ],
+          "next":"soal4_1"
+        },
+        {
+          "id": "materi4_2",
+          "character1": "Rusdi",
+          "character2": "Adrien",
+          "text": [
+            "Aku pilih A, soalnya dari yang aku liat for luarnya buat ngatur baris, for dalemnya ngatur bintangnya. Jadi kayaknya cocok!",
+            "Wuuihh mantap banget Rus!  Bener banget! Jadi for pertama itu ngatur baris, sedangkan for kedua ngatur berapa banyak bintangnya sesuai sama baris keberapa kita sekarang.",
+            "Nah kalau kayak gitu kamu udah mulai ngerti nested loop. Yuk kita lanjut tentang break yaa.",
+            "Oke Gasskeunn",
+            "Nah kalau kamu mau keluar dari loop lebih cepat, kamu bisa pake break. Misal kalau kamu udah nemuin angka yang kamu cari, kamu gak perlu ngejalanin sisanya. Kamu pake break biar langsung keluar dari loop itu.",
+            "Tapi gimana kalau aku cuma mau skip satu iterasi aja, ga keluar sama sekali?",
+            "Kalau kasusnya kayak gitu bisa pake continue. Jadi kalau kamu pake continue maka bakal nge-skip iterasi yang lagi jalan dan langsung lanjut ke iterasi berikutnya. Terus ada lagi nih, kalau kamu mau keluar dari program secara langsung, kamu bisa pake exit.",
+            "Wih kacauuu! Ternyata banyak banget ya cara ngatur loop dan kontrol program.",
+            "Iya memang. Makanya penting banget buat ngerti setiap kontrol yang ada biar perulangan kamu lebih fleksibel. Biar tau perbedaan break, continue, dan exit coba kerjain soal ini.",
+            "Oke, bro! aku langsung kerjain deh."
+          ],
+          "next": "soal4_2"
+        },
+        {
+          "id": "soal4_2",
+          "character1": "Adrien",
+          "character2": "Rusdi",
+          "text": "Bayangin kamu lagi pake for buat ngeloop angka dari 1 sampai 5. Terus di tengah-tengah loop kamu pengen:\n\nLangsung keluar dari loop kalau ketemu angka 3,\n\nLewatin aja kalau ketemu angka 2 (tapi lanjut ke angka berikutnya),\n\nKeluar dari seluruh program kalau ketemu angka 5.\n\nNah menurutmu keyword apa aja yang harus dipakai?",
+          "choices": [
+            {
+              "text": "break, continue, exit",
+              "next": {
+                "retry": "soal4_2",
+                "review": "salah4_2"
+              }
+            },
+            {
+              "text": "continue, exit, break",
+              "next": {
+                "retry": "soal4_2",
+                "review": "salah4_2"
+              }
+            },
+            {
+              "text": "exit, break, continue",
+              "next": {
+                "retry": "soal4_2",
+                "review": "salah4_2"
+              }
+            },
+            {
+              "text": "continue, break, exit",
+              "next": "bener4_last"
+            }
+          ]
+        },
+        {
+          "id": "salah4_2",
+          "character1": "Adrien",
+          "character2": "Rusdi",
+          "text": [
+            "Eh Rusdi jawabannya tadi belum tepat nih.",
+            "Waduh aku salahnya di mana ya?",
+            "Gini, coba inget dulu... Kalau mau lewati suatu angka tapi tetep lanjut ke angka berikutnya, itu perlu keyword apa? Terus kalau mau berhenti dari loop aja, bukan dari program, itu keyword-nya beda lagi. Nah kalau mau berhenti total sampai programnya bener-bener selesai, ada keyword lain lagi.",
+            "Jadi beda-beda ya tergantung mau ngapain?",
+            "Betul banget! Jadi fokus dulu: kamu mau lewatin angka, keluar dari loop, atau keluar dari program? Coba baca lagi materinya tentang perbedaan tiga keyword itu.",
+            "Oke, aku cek lagi deh pelan-pelan."
+          ],
+          "next": "soal4_2"
+        },
+        {
+          "id": "benar4_last",
+          "character1": "Rusdi",
+          "character2": "Adrien",
+          "text": [
+            "Wihhh, jawabanku benar nih!",
+            "Yoiii, mantap bro! Berarti kamu udah paham konsep break.",
+            "Wah keren juga ya. Jadi tergantung situasi, kita bisa pilih mau keluar dari loop atau cuma skip sementara.",
+            "Akhirnya aku paham juga materi ini, makasih ya Adrien",
+            "Aman aja Di"
+          ],
+          "next": null
+        }
+      ],
+      "rangkuman": [
+        "1. Nested Loop:\nNested loop adalah perulangan yang berada di dalam perulangan lain. Biasanya digunakan untuk menyusun data dua dimensi seperti tabel, matriks, atau pola bintang.",
+        "Contoh kode nested loop:",
+        "#include <stdio.h>\n\nint main() {\n    for (int i = 1; i <= 3; i++) {\n        for (int j = 1; j <= 3; j++) {\n            printf(\"i = %d, j = %d\\n\", i, j);\n        }\n    }\n    return 0;\n}",
+        "Output dari program:",
+        "i = 1, j = 1\ni = 1, j = 2\ni = 1, j = 3\ni = 2, j = 1\ni = 2, j = 2\ni = 2, j = 3\ni = 3, j = 1\ni = 3, j = 2\ni = 3, j = 3",
+        "Penjelasan:\n- Loop luar (i) berjalan 3 kali.\n- Setiap kali loop luar berjalan, loop dalam (j) juga berjalan 3 kali.\n- Kombinasi nilai i dan j dicetak di layar.",
+        "2. Break:\nBreak untuk menghentikan proses perulangan secara paksa sebelum selesai, biasanya saat kondisi tertentu terpenuhi.",
+        "Contoh kode break:",
+        "#include <stdio.h>\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 3) {\n            break;\n        }\n        printf(\"Perulangan ke-%d\\n\", i);\n    }\n    return 0;\n}",
+        "Output dari program:",
+        "Perulangan ke-1\nPerulangan ke-2",
+        "Penjelasan:\n- Perulangan berhenti saat i == 3 karena ada break.\n- Hanya mencetak perulangan ke-1 dan ke-2.",
+        "3. Continue:\nContinue untuk melewati satu iterasi perulangan dan langsung lanjut ke iterasi berikutnya tanpa keluar dari loop.",
+        "Contoh kode continue:",
+        "#include <stdio.h>\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 3) {\n            continue;\n        }\n        printf(\"Perulangan ke-%d\\n\", i);\n    }\n    return 0;\n}",
+        "Output dari program:",
+        "Perulangan ke-1\nPerulangan ke-2\nPerulangan ke-4\nPerulangan ke-5",
+        "Penjelasan:\n- Saat i == 3, continue membuat program melewatkan print.\n- Perulangan ke-3 tidak dicetak.",
+        "4. Exit:\nExit untuk menghentikan seluruh program, bukan hanya perulangan. Biasanya digunakan saat kondisi kritis terjadi.",
+        "Contoh kode exit:",
+        "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        if (i == 4) {\n            printf(\"Keluar dari program\\n\");\n            exit(0);\n        }\n        printf(\"Perulangan ke-%d\\n\", i);\n    }\n    return 0;\n}",
+        "Output dari program:",
+        "Perulangan ke-1\nPerulangan ke-2\nPerulangan ke-3\nKeluar dari program",
+        "Penjelasan:\n- Program berhenti total saat i == 4.\n- Tidak ada perulangan ke-4 dan ke-5 karena exit menghentikan program."
+      ]
+    },
 
-  {
-    "level": 5,
-    "dialogs": [
-      {
-        "id": "preDialog",
-        "text": "Di ruang kelas, MC sedang duduk di bangku depan, sementara Dosen sedang berdiri di depan papan tulis, siap memberikan materi baru tentang Jenis Fungsi dalam pemrograman. Suasana kelas cukup tenang dan penuh perhatian."
-      },
-      {
-        "id": "intro5",
-        "character1": "Pak Rengga",
-        "character2": "Adrien",
-        "text": [
-         "okeh anak2 hari ini kita akan bahas Jenis Fungsi. Fungsi dibagi jadi dua: yang memiliki return value dan yang tidak.",
-         "Pak, saya mau bertanya, fungsi itu apa, ya? Kenapa ada yang punya return value, ada yang nggak?",
-         "jadi fungsi adalah sekumpulan kode untuk tugas tertentu. Fungsi bisa mengembalikan nilai, disebut return value, atau tidak mengembalikan nilai",
-         "Oh, jadi ada fungsi yang ngasih hasil, ada yang nggak ya?",
-         "Betul. Fungsi dengan return value mengembalikan nilai setelah dieksekusi. Misalnya, fungsi penjumlahan yang mengembalikan hasil. Fungsi tambah mengembalikan hasil penjumlahan yang bisa disimpan di variabel. Sekarang fungsi tambah pada kode ini termasuk jenis fungsi apa?"
-        ],
-        "next": "soal5_1"
-      },
-      {
-        "id": "soal5_1",
-        "character1": "Pak Rengga",
-        "character2": "Adrien",
-        "text": "Coba lihat kode ini:\n\n#include <stdio.h>\n\nint tambah(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int hasil = tambah(4, 5);\n    printf(\"Hasil: %d\\n\", hasil);\n    return 0;\n}\n\nNah, tipe fungsi 'tambah' ini termasuk kategori apa ya?",
-        "choices": [
-          {
-            "text": "A. Fungsi dengan return value",
-            "next": "materi5_2"
-          },
-          {
-            "text": "B. Fungsi void",
-            "next": {
-              "retry": "soal5_1",
-              "review": "salah5_1"
-            }
-          },
-          {
-            "text": "C. Fungsi dengan parameter",
-            "next": {
-              "retry": "soal5_1",
-              "review": "salah5_1"
-            }
-          },
-          {
-            "text": "D. Fungsi tanpa parameter",
-            "next": {
-              "retry": "soal5_1",
-              "review": "salah5_1"
-            }
-          }
-        ]
-      },
-      {
-        "id": "salah5_1",
-        "character1": "Pak Rengga",
-        "character2": "Adrien",
-        "text": [
-         "Jawabanmu kurang tepat, Adrien.",
-         "Wah, maaf Pak, saya masih bingung.",
-         "Ngga masalah, Adrien. Coba perhatikan lagi. Fungsi itu bisa mengembalikan nilai ke pemanggilnya. Dalam kasus ini, fungsi tambah menggunakan return untuk mengembalikan hasil.",
-         "Baik pak, akan saya coba lebih teliti lagi",
-         "Jadi, tipe fungsi itu berdasarkan apakah dia mengembalikan nilai atau tidak. Fungsi seperti ini memerlukan tipe data di depan nama fungsi yang menunjukkan nilai yang akan dikembalikan.",
-         "Baik pak, akan saya coba lagi",
-         "Semoga ini membantu. Coba pikirkan lagi, ya!"
-        ],
-        "next": "soal5_1"
-      },
-      {
-        "id": "materi5_2",
-        "character1": "Pak Rengga",
-        "character2": "Adrien",
-        "text": [
-          "Benar! Sekarang, fungsi yang tidak memiliki return value, seperti void.",
-          "Wah, ada fungsi void juga ya pak? Fungsi void itu yang seperti apa pak?",
-          "Fungsi void digunakan ketika kita tidak perkamu mengembalikan nilai, misalnya untuk menampilkan pesan. Coba lihat titik-titik itu, itu seharusnya diisi apa?"
-        ],
-        "next": "soal5_2"
-      },
-      {
-        "id": "soal5_2",
-        "character1": "Pak Rengga",
-        "character2": "Adrien",
-        "text": "Coba lihat kode ini:\n\n#include <stdio.h>\n\n… sapa() {\n    printf(\"Halo, selamat pagi!\\n\");\n}\n\nint main() {\n    sapa();\n    return 0;\n}\n\nNah, tipe fungsi 'sapa' ini termasuk kategori apa ya?",
-        "choices": [
-          {
-            "text": "A. char",
-            "next": {
-              "retry": "soal5_2",
-              "review": "salah5_2"
-            }
-          },
-          {
-            "text": "B. void (benar)",
-            "next": "benar5_last"
-          },
-          {
-            "text": "C. string",
-            "next": {
-              "retry": "soal5_2",
-              "review": "salah5_2"
-            }
-          },
-          {
-            "text": "D. return",
-            "next": {
-             "retry": "soal5_2",
-            "review": "salah5_2"
-            }
-          }
-        ]
-      },      
-      {
-        "id": "salah5_2",
-        "character1": "Pak Rengga",
-        "character2": "Adrien",
-        "text": [
-          "Jawabanmu belum tepat, Adrien.",
-          "Wah, saya masih bingung, Pak.",
-          "Ngga masalah, Adrien. Coba kita bahas sedikit. Fungsi itu bisa mengembalikan nilai atau tidak. Kalau mengembalikan nilai, artinya fungsi memberikan hasil yang bisa digunakan kembali di bagian lain dari program.",
-          "Jadi, kalau fungsi tidak mengembalikan nilai, berarti apa, Pak?",
-          "Fungsi yang tidak mengembalikan nilai hanya melakukan tugas tertentu, seperti mencetak sesuatu ke layar, tanpa memberikan hasil yang bisa dipakai di tempat lain.",
-          "Oh, jadi tergantung apa yang dilakukan oleh fungsi itu ya?",
-          "Betul. Jadi, sekarang coba lihat lagi fungsi sapa. Fungsi itu cuma mencetak pesan, kan? Nah, berdasarkan itu, coba dibaca pelan-pelan soalnya, ya. Apa yang dilakukan oleh fungsi itu, dan apakah fungsi tersebut mengembalikan nilai atau tidak?"
-        ],
-        "next": "soal5_2"
-      },
-      {
-        "id": "benar5_last",
-        "character1": "Pak Rengga",
-        "character2": "Adrien",
-        "text": [
-         "Jawabanmu sudah tepat, Adrien!",
-         "Alhamdulillah, Pak. Jadi fungsi sapa itu tidak mengembalikan nilai, ya?",
-         "Betul. Fungsi sapa hanya mencetak pesan, jadi tidak ada nilai yang dikembalikan.",
-         "Oh, jadi fungsi yang mengembalikan nilai itu memberikan hasil yang bisa dipakai lagi, ya?",
-         "Persis! Fungsi dengan return value mengirimkan hasil yang bisa digunakan lagi di tempat lain dalam program, sementara fungsi tanpa return value hanya menjalankan tugas tanpa memberikan hasil."
-        ],
-        "next": null
-      }
-    ],
-    "rangkuman": [
-      "1. Fungsi dengan Return Value: Fungsi ini mengembalikan nilai setelah dieksekusi. Nilai tersebut bisa disimpan dalam variabel dan digunakan di bagian lain program.",
-      "Contoh fungsi dengan return value:",
-      "#include <stdio.h>\n\n// Fungsi yang mengembalikan hasil penjumlahan dua angka\nint tambah(int a, int b) {\n    return a + b;  // Mengembalikan hasil penjumlahan\n}\n\nint main() {\n    int hasil = tambah(3, 4);  // Memanggil fungsi dan menyimpan hasilnya\n    printf(\"Hasil penjumlahan: %d\\n\", hasil);  // Menampilkan hasil\n    return 0;\n}",
-      "Output dari program: Hasil penjumlahan: 7",
-      "Penjelasan:\n- Fungsi tambah memiliki tipe data int karena mengembalikan sebuah angka (hasil penjumlahan).\n- Fungsi tambah menerima dua parameter a dan b, dan mengembalikan hasil penjumlahan keduanya.\n- Di main, kita memanggil fungsi tambah(3, 4) dan menyimpan hasilnya dalam variabel hasil, yang kemudian ditampilkan.",
-      
-      "2. Fungsi Void: Fungsi ini tidak mengembalikan nilai apapun. Biasanya digunakan untuk melakukan aksi, seperti menampilkan pesan atau mengubah data.",
-      "Contoh fungsi void:",
-      "#include <stdio.h>\n\n// Fungsi void yang hanya mencetak pesan\nvoid cetakPesan() {\n    printf(\"Ini adalah pesan dari fungsi void.\\n\");\n}\n\nint main() {\n    cetakPesan();  // Memanggil fungsi void\n    return 0;\n}",
-      "Output dari program: Ini adalah pesan dari fungsi void.",
-      "Penjelasan:\n- Fungsi cetakPesan adalah fungsi void karena hanya melakukan aksi (mencetak pesan) dan tidak mengembalikan nilai apapun.\n- Fungsi ini dipanggil di dalam main, dan ketika dipanggil, pesan akan dicetak ke layar.",
-      "Perbedaan utama: Fungsi dengan return value mengembalikan hasil, sedangkan fungsi void hanya melakukan aksi tanpa memberikan hasil."
-    ]
-  },
-  
-  {
-    "level": 6,
-    "dialogs": [
-      {
-        "id": "preDialog",
-        "text": "Kantin kampus hari itu cukup ramai, MC duduk di meja pojok sambil nunggu makanan datang. Tiba-tiba, Crush (C), yang duduk di meja sebelah, datang dan ikut duduk bareng. Mereka udah kenal lama, tapi kali ini suasananya agak lebih santai karena udah mulai sering ngobrol."
-      },
-      {
-        "id": "intro6",
-        "character1": "Adrien",
-        "character2": "Suminem",
-        "text": [
-          "Eh, kamu lagi apa? Kok nggak ikut tugas kelompok yang tadi?",
-          "Lagi santai aja, makan siang. Tugas udah selesai kok. Eh, ngomong-ngomong, aku tadi ngeliat kamu lagi ngulang materi tentang variabel, ya? Lagi belajar soal penggolongan variabel?",
-          "Iya, nih. aku lagi belajar tentang penggolongan variabel berdasarkan kelas penyimpanan. Pusing juga sih, banyak jenis variabelnya.",
-          "Oh, yang itu. Jadi, ada beberapa jenis variabel berdasarkan gimana cara dia disimpen di memori, kan? aku bisa jelasin kalau kamu mau.",
-          "Serius? Boleh banget deh, biar nggak pusing",
-          "Oke, jadi gini. Pertama, ada variabel lokal/auto. Ini variabel yang cuma ada dalam fungsi tempat dia dideklarasikan. Biasanya sih, variabel kamukal ini hanya berlaku di dalam fungsi itu aja dan langsung hilang setelah fungsi selesai dieksekusi. Nah coba kamu jawab soal sederhana ini."
-        ],
-        "next": "soal6_1"
-      },
-      {
-        "id": "soal6_1",
-        "character1": "Jennie",
-        "character2": "Adrien",
-        "text": "Perhatikan kode ini:\n\n#include <stdio.h>\n\nvoid contoh() {\n    int angka = 10;\n    printf(\"%d\", angka);\n}\n\nMenurutmu, manakah variabel kamukal dalam kode di atas?",
-        "choices": [
-          {
-            "text": "A. contoh",
-            "next": {
-              "retry": "soal6_1",
-              "review": "salah6_1"
-            }
-          },
-          {
-            "text": "B. printf",
-            "next": {
-               "retry": "soal6_1",
-              "review": "salah6_1"
-            }
-          },
-          {
-            "text": "C. angka (benar)",
-            "next": "materi6_2"
-          },
-          {
-            "text": "D. int",
-            "next": {
-              "retry": "soal6_1",
-              "review": "salah6_1"
-            }
-          }
-        ]
-      },      
-      {
-        "id": "salah6_1",
-        "character1": "Suminem",
-        "character2": "Adrien",
-        "text": [
-          "Eh, belum tepat tuh, Adrien. ",
-          "Wah, aku salah ya? Aku kira udah bener.",
-          "Gak apa-apa kok! Nih aku kasih bocoran dikit: variabel itu biasanya yang menyimpan nilai. Coba deh perhatikan, di kode itu, mana yang kelihatan menyimpan angka 10?",
-          "Oooh... kayaknya aku mulai ngerti deh.",
-          "Yap, lihat baik-baik ya. Yang lain kayak nama fungsi dan tipe data, itu beda lagi perannya."
-        ],
-        "next":"soal6_1"
-      },
-      {
-        "id": "materi6_2",
-        "character1": "Jennie",
-        "character2": "Adrien",
-        "text": [
-          "Nah, si angka ini hanya bisa dipake di dalam fungsi contoh aja, gitu.",
-          "Ooh, jadi lokal itu cuma bisa dipake di dalam fungsi itu aja, ya?",
-          "Iya, bener banget! Lanjut, ada juga variabel global/eksternal. Ini kebalikan dari yang lokal. Variabel global itu bisa diakses di mana aja dalam program, asal udah dideklarasikan di luar fungsi. Nah coba kamu jawab soal ini deh"
-          
-        ],
-        "next": "soal6_2"
-      },
-      {
-        "id": "soal6_2",
-        "character1": "Jennie",
-        "character2": "Adrien",
-        "text": "Perhatikan potongan kode berikut:\n\nint angka = 10;\nvoid fungsi() {\n    printf(\"%d\", angka);\n}\n\nMenurutmu, manakah variabel global/eksternal dalam kode di atas?",
-        "choices": [
-          {
-            "text": "A. fungsi, karena dia bisa dipanggil dari mana saja.",
-            "next": {
-              "retry": "soal6_2",
-              "review": "salah6_2"
-            }
-          },
-          {
-            "text": "B. angka, karena dideklarasikan di luar fungsi dan bisa diakses dari dalam fungsi.",
-            "next": "materi6_3"
-          },
-          {
-            "text": "C. printf, karena digunakan di dalam fungsi untuk menampilkan nilai.",
-            "next": {
-              "retry": "soal6_2",
-              "review": "salah6_2"
-            }
-          },
-          {
-            "text": "D. int, karena semua variabel bertipe int pasti global.",
-            "next": {
-              "retry": "soal6_2",
-              "review": "salah6_2"
-            }
-          }
-        ]
-      },      
-      {
-        "id": "salah6_2",
-        "character1": "Jennie",
-        "character2":"Adrien",
-        "text": [
-          "Yah salah ya ternyata",
-         "Hmm, menarik, tapi coba kita telaah bareng lagi, ya. Variabel global itu dideklarasikan di luar fungsi dan bisa diakses dari mana saja dalam program. Jadi, coba cek mana yang ada di luar fungsi dan bisa dipakai di dalamnya.",
-         "Ooh, jadi yang di luar fungsi itu yang global, ya?",
-         "Yup! Coba lihat lagi, mana yang dideklarasikan di luar dan bisa diakses di dalam fungsi. Yuk, coba lagi!",
-         "Oke, aku coba lagi deh! Semoga benar!"
-        ],
-        "next":"soal6_2"
-      },
-      {
-        "id": "materi6_3",
-        "character1": "Jennie",
-        "character2":"Adrien",
-        "text": [
-         "Nah pinterr benerr, si angka bisa diakses di dalam fungsi manapun, karena dia dideklarasikan di luar semua fungsi",
-         "Oh, berarti global itu bisa dipake di banyak tempat dalam program, ya?",
-         "Iya, bener banget! Nah, selanjutnya ada variabel statis. Variabel statis ini punya sifat yang unik. Meskipun dia dideklarasikan dalam fungsi, nilainya gak hilang meskipun fungsi udah selesai. Jadi, dia tetap menyimpan nilai terakhir saat fungsi tersebut dipanggil lagi.",
-         "Oh, iya! Jadi variabel statis itu bedanya sama variabel biasa. Kalau variabel biasa nilainya hilang begitu fungsi selesai, tapi variabel statis ini tetap menyimpan nilai terakhirnya meskipun fungsi sudah selesai dieksekusi. Jadi misalnya, kalau kamu panggil fungsi itu lagi, dia akan langsung pakai nilai terakhir yang disimpan.",
-         "Iya, bener banget! Coba biar tambah paham, kamu kerjain soal ini deh"
-        ],
-        "next":"soal6_3"
-      },
-      {
-        "id": "soal6_3",
-        "character1": "Jennie",
-        "character2": "Adrien",
-        "text": "Perhatikan potongan kode berikut!\n\nvoid fungsi1() {\n    int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi2() {\n    static int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi3() {\n    int x = 0;\n    for(int i = 0; i < 5; i++) {\n        x++;\n    }\n    printf(\"%d\", x);\n}\n\nvoid fungsi4() {\n    int x = 0;\n    while(x < 5) {\n        x++;\n    }\n    printf(\"%d\", x);\n}\n\nManakah fungsi yang menggunakan variabel statis pada kode berikut?",
-        "choices": [
-          {
-            "text": "A. fungsi1",
-            "next": {
-              "retry": "soal6_3",
-              "review": "salah6_3"
-            }
-          },
-          {
-            "text": "B. fungsi2",
-            "next": "materi6_4"
-          },
-          {
-            "text": "C. fungsi3",
-            "next": {
-              "retry": "soal6_3",
-              "review": "salah6_3"
-            }
-          },
-          {
-            "text": "D. fungsi4",
-            "next": {
-              "retry": "soal6_3",
-              "review": "salah6_3"
-            }
-          }
-        ]
-      },
-      {
-        "id": "salah6_3",
-        "character1": "Jennie",
-        "character2":"Adrien",
-        "text": [
-         "Hmm, kamu jawabnya salah, ya? Coba pikir lagi. Variabel statis itu memiliki perilaku yang sedikit berbeda dibandingkan dengan variabel biasa.",
-         "Oh, iya? Apa yang berbeda dari variabel biasa?",
-         "Jadi, variabel statis, yang dideklarasikan dengan kata kunci 'static', akan menyimpan nilainya antara panggilan fungsi. Artinya, nilai variabel itu tetap ada meskipun fungsi dipanggil berkali-kali. Kalau variabel biasa, nilainya akan di-reset setiap kali fungsi dipanggil. Paham?",
-         "Oh, jadi variabel statis itu seperti tetap ada meskipun fungsi dipanggil lagi ya?",
-         "Iya, benar! Coba perhatikan kode mana yang menggunakan 'static' pada deklarasi variabelnya, itu yang akan memiliki sifat seperti itu.",
-         "Okedeh, aku bakal coba soalnya lagi",
-         "Oke semangat yaa adrien"
-        ],
-        "next":"soal6_3"
-      },
-      {
-        "id": "materi6_4",
-        "character1": "Jennie",
-        "character2":"Adrien",
-        "text": [
-        "Wah jawabanku bener nih",
-        "Keren Adrien! Sekarang adalagi, variabel register",
-        "Ya ampun?! Adalagi?",
-        "Iya dong masih. Jadi, variabel statis itu unik banget. Dia menyimpan nilai terakhir meskipun fungsi sudah selesai dipanggil. Terakhir, ada variabel register. Variabel ini jarang dipakai langsung oleh programmer, tapi dia dikhususkan buat disimpan di register CPU, bukan di RAM. Ini supaya akses data jadi lebih cepat. Biasanya dipakai untuk variabel yang sering diakses, seperti counter atau indeks dalam loop. Tapi, penggunaan register ini bergantung sama arsitektur komputer yang dipakai.",
-        "Ah, paham, jadi variabel register itu lebih cepat karena disimpen langsung di CPU ya?",
-        "Betul! Nah, biar lebih paham lagi, coba deh jawab soal ini. Mana yang termasuk variabel register dalam program ini?"
-        ],
-        "next":"soal6_4"
-      },
-      {
-        "id": "soal6_4",
-        "character1": "Jennie",
-        "character2": "Adrien",
-        "text": "Perhatikan potongan kode berikut:\n\n#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5; // Variabel statis\n    register int i;       // Variabel register\n    for (i = 0; i < 3; i++) {\n        angka++;\n        printf(\"Angka: %d, i: %d\\n\", angka, i);\n    }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}\n\nDalam program di atas, mana yang merupakan variabel register dan variabel statis?",
-        "choices": [
-          {
-            "text": "A. angka adalah variabel register, i adalah variabel statis.",
-            "next": {
-              "retry": "soal6_4",
-              "review": "salah6_4"
-            }
-          },
-          {
-            "text": "B. angka adalah variabel statis, i adalah variabel register.",
-            "next":  "benar6_last"
-          },
-          {
-            "text": "C. angka dan i keduanya variabel register.",
-            "next": {
-              "retry": "soal6_4",
-              "review": "salah6_4"
-            }
-          },
-          {
-            "text": "D. angka dan i keduanya variabel statis.",
-            "next": {
-              "retry": "soal6_4",
-              "review": "salah6_4"
-            }
-          }
-        ]
-      },    
-      {
-        "id": "salah6_4",
-        "character1": "Jennie",
-        "character2":"Adrien",
-        "text": [
-        "Noo, Jawabanku salah.",
-        "Oops, hampir, Adrien! Tapi, coba kita lihat lagi ya. Kalau variabel register, itu sebenarnya punya sifat yang berbeda. Variabel ini dimaksudkan agar kompilator bisa mencoba untuk menyimpannya langsung di register prosesor, supaya aksesnya lebih cepat. Jadi, variabel register nggak disimpan di memori biasa.",
-        "Ooooh, jadi register itu supaya aksesnya lebih cepat ya? Terus, kalau gitu, apa yang di kode itu yang cocok jadi register?",
-        "Tepat banget! Kompilator biasanya memilih variabel yang sering diakses dan membutuhkan kecepatan, seperti variabel dalam loop. Jadi, dalam kode ini, coba lihat lagi deh, variabel mana yang mungkin lebih sering digunakan dalam perulangan dan butuh kecepatan akses?",
-        "Ahh, sekarang aku paham! Aku akan coba jawab lagi, semoga bisa lebih tepat!",
-        "Semangat terus, Adrien! Kamu pasti bisa!"
-        ],
-        "next":"soal6_4"
-      },  
-      {
-        "id": "benar6_last",
-        "character1": "Jennie",
-        "character2": "Adrien",
-        "text": [
-         "Nah, udah bisa sekarang yaa. Jadi register itu buat variabel yang perkamu akses cepat, intinya ada 4 jenis variabel berdasarkan tempat penyimpanannya, yang pertama ada variabel lokal terletak di dalam fungsi, yang kedua ada variabel global terletak di luar fungsi, yang ketiga ada statis terletak pada nilai yang dipertahankan antar pemanggilan fungsi, dan yang terakhir ada register dengan akses cepat karena disimpan di CPU.",
-         "Wah, jadi gitu ya! Makasih banget, akhirnya aku jadi ngerti! Nggak pusing lagi deh soal penggokamungan variabel.",
-         "Sama-sama, senang bisa bantu. Kalau masih bingung, tinggal tanya aja.",
-         "Hehe, iya nih, nanti aku tanya lagi deh. Terima kasih ya!"
 
-        ],
-        "next": null
-      },
-     
-    "rangkuman": [
-      "1. Variabel Lokal (Auto): Variabel lokal adalah variabel yang dideklarasikan di dalam sebuah fungsi dan hanya bisa diakses selama fungsi tersebut berjalan. Setelah fungsi selesai, variabel lokal akan hilang dari memori. Secara default, semua variabel di dalam fungsi bersifat lokal.",
-    "Contoh variabel lokal:",
-    "#include <stdio.h>\n\nvoid contoh() {\n    int x = 10;  // Variabel lokal \n    printf(\"Nilai x: %d\\n\", x);\n}",
-    "Penjelasan:\n- Variabel x adalah variabel lokal karena dideklarasikan di dalam fungsi contoh. Nilainya hanya ada selama fungsi berjalan dan hilang setelah fungsi selesai dieksekusi.",
-    
-    "2. Variabel Global (Eksternal): Variabel global dideklarasikan di luar semua fungsi dan dapat diakses oleh semua fungsi dalam program. Variabel ini sering digunakan untuk menyimpan data yang dibutuhkan oleh banyak fungsi. Penggunaannya harus hati-hati karena perubahan nilai variabel global dapat mempengaruhi fungsi lainnya.",
-    "Contoh variabel global:",
-    "#include <stdio.h>\n\nint x = 10;  // Variabel global\n\nvoid contoh() {\n    printf(\"Nilai x: %d\\n\", x);  // Mengakses variabel global x\n}",
-    "Penjelasan:\n- Variabel x adalah variabel global karena dideklarasikan di luar fungsi dan dapat diakses di dalam fungsi contoh.",
-    
-    "3. Variabel Statis: Variabel statis dideklarasikan di dalam fungsi, namun nilainya tidak hilang setelah fungsi selesai dieksekusi. Variabel ini akan menyimpan nilai terakhir yang dimiliki dan melanjutkan dari nilai tersebut ketika fungsi dipanggil lagi.",
-    "Contoh variabel statis:",
-    "#include <stdio.h>\n\nvoid contoh() {\n    static int count = 0;  // Variabel statis\n    count++;\n    printf(\"Count: %d\\n\", count);\n}",
-    "Penjelasan:\n- Variabel count adalah variabel statis karena dideklarasikan dengan keyword static. Nilainya bertahan setelah fungsi selesai dieksekusi dan akan melanjutkan pada pemanggilan berikutnya.",
-    
-    "4. Variabel Register: Variabel register disarankan untuk disimpan di register CPU agar aksesnya lebih cepat. Biasanya digunakan untuk variabel yang sering diakses dalam program, seperti counter dalam perulangan. Penyimpanan variabel register tergantung pada kemampuan arsitektur komputer.",
-    "Contoh variabel register:",
-    "#include <stdio.h>\n\nint main() {\n    register int i;  // Variabel register\n    for (i = 0; i < 5; i++) {\n        printf(\"i: %d\\n\", i);\n    }\n    return 0;\n}",
-    "Penjelasan:\n- Variabel i adalah variabel register yang digunakan di dalam perulangan for. Compiler mencoba untuk menyimpannya di register CPU agar proses lebih cepat."
-    ]
-  }
+    {
+      "level": 5,
+      "dialogs": [
+        {
+          "id": "preDialog",
+          "text": "Di ruang kelas, MC sedang duduk di bangku depan, sementara Dosen sedang berdiri di depan papan tulis, siap memberikan materi baru tentang Jenis Fungsi dalam pemrograman. Suasana kelas cukup tenang dan penuh perhatian."
+        },
+        {
+          "id": "intro5",
+          "character1": "Pak Rongga",
+          "character2": "Adrien",
+          "text": [
+            "Baik anak-anak hari ini kita akan bahas Jenis Fungsi. Fungsi dibagi jadi dua: yang memiliki return value dan yang tidak.",
+            "Permisi pak, sebelum masuk materi saya mau bertanya terlebih dahulu fungsi itu apa, ya? Kenapa ada yang punya return value, ada yang nggak?",
+            "Jadi fungsi adalah sekumpulan kode untuk tugas tertentu. Fungsi ada 2 yaitu yang bisa mengembalikan nilai disebut return value dan yang tidak mengembalikan nilai",
+            "Oh jadi ada fungsi yang ngasih hasil, ada yang nggak.",
+            "Betul. Fungsi dengan return value mengembalikan nilai setelah dieksekusi. Misal fungsi penjumlahan yang mengembalikan hasil. Fungsi tambah mengembalikan hasil penjumlahan yang bisa disimpan di variabel. Sekarang fungsi tambah pada kode ini termasuk jenis fungsi apa?"
+          ],
+          "next": "soal5_1"
+        },
+        {
+          "id": "soal5_1",
+          "character1": "Pak Rongga",
+          "character2": "Adrien",
+          "text": "Coba lihat kode ini:\n\n#include <stdio.h>\n\nint tambah(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int hasil = tambah(4, 5);\n    printf(\"Hasil: %d\\n\", hasil);\n    return 0;\n}\n\nNah, tipe fungsi 'tambah' ini termasuk kategori apa ya?",
+          "choices": [
+            {
+              "text": "Fungsi dengan return value",
+              "next": "materi5_2"
+            },
+            {
+              "text": "Fungsi void",
+              "next": {
+                "retry": "soal5_1",
+                "review": "salah5_1"
+              }
+            },
+            {
+              "text": "Fungsi dengan parameter",
+              "next": {
+                "retry": "soal5_1",
+                "review": "salah5_1"
+              }
+            },
+            {
+              "text": "Fungsi tanpa parameter",
+              "next": {
+                "retry": "soal5_1",
+                "review": "salah5_1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "salah5_1",
+          "character1": "Pak Rongga",
+          "character2": "Adrien",
+          "text": [
+            "Jawabanmu kurang tepat Adrien.",
+            "Saya masih bingung pak",
+            "Ngga masalah, Adrien. Coba perhatikan lagi. Fungsi itu bisa mengembalikan nilai ke pemanggilnya. Dalam kasus ini fungsi tambah menggunakan return untuk mengembalikan hasil.",
+            "Baik pak akan saya coba lebih teliti lagi",
+            "Jadi tipe fungsi berdasarkan apakah dia mengembalikan nilai atau tidak. Fungsi seperti ini memerlukan tipe data di depan nama fungsi yang menunjukkan nilai yang akan dikembalikan.",
+            "Baik pak akan saya coba lagi",
+            "Semoga ini membantu. Coba pikirkan lagi, ya!"
+          ],
+          "next": "soal5_1"
+        },
+        {
+          "id": "materi5_2",
+          "character1": "Pak Rongga",
+          "character2": "Adrien",
+          "text": [
+            "Benar! Sekarang fungsi yang tidak memiliki return value, seperti void.",
+            "Fungsi void itu yang seperti apa pak?",
+            "Fungsi void digunakan ketika tidak perlu mengembalikan nilai, misal untuk menampilkan pesan. Coba lihat titik-titik itu, itu seharusnya diisi apa?"
+          ],
+          "next": "soal5_2"
+        },
+        {
+          "id": "soal5_2",
+          "character1": "Pak Rongga",
+          "character2": "Adrien",
+          "text": "Coba lihat kode ini:\n\n#include <stdio.h>\n\n… sapa() {\n    printf(\"Halo, selamat pagi!\\n\");\n}\n\nint main() {\n    sapa();\n    return 0;\n}\n\nNah, tipe fungsi 'sapa' ini termasuk kategori apa?",
+          "choices": [
+            {
+              "text": "char",
+              "next": {
+                "retry": "soal5_2",
+                "review": "salah5_2"
+              }
+            },
+            {
+              "text": "void",
+              "next": "benar5_last"
+            },
+            {
+              "text": "string",
+              "next": {
+                "retry": "soal5_2",
+                "review": "salah5_2"
+              }
+            },
+            {
+              "text": "return",
+              "next": {
+                "retry": "soal5_2",
+                "review": "salah5_2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "salah5_2",
+          "character1": "Pak Rongga",
+          "character2": "Adrien",
+          "text": [
+            "Jawabanmu belum tepat Adrien.",
+            "Wah, saya masih bingung pak.",
+            "Ngga masalah Adrien. Coba kita bahas sedikit. Fungsi itu bisa mengembalikan nilai atau tidak. Kalau mengembalikan nilai artinya fungsi memberikan hasil yang bisa digunakan kembali di bagian lain dari program.",
+            "Jadi kalau fungsi tidak mengembalikan nilai artinya apa pak?",
+            "Fungsi yang tidak mengembalikan nilai hanya melakukan tugas tertentu, seperti mencetak sesuatu ke layar tanpa memberikan hasil yang bisa dipakai di tempat lain.",
+            "Oh jadi tergantung apa yang dilakukan oleh fungsi itu ya?",
+            "Betul. Jadi, sekarang coba lihat lagi fungsi sapa. Fungsi itu cuma mencetak pesan kan? Nah berdasarkan itu, coba dibaca pelan-pelan soalnya. Apa yang dilakukan oleh fungsi itu dan apakah fungsi tersebut mengembalikan nilai atau tidak?"
+          ],
+          "next": "soal5_2"
+        },
+        {
+          "id": "benar5_last",
+          "character1": "Pak Rongga",
+          "character2": "Adrien",
+          "text": [
+            "Jawabanmu sudah tepat, Adrien!",
+            "Alhamdulillah! Jadi fungsi sapa itu tidak mengembalikan nilai, ya?",
+            "Betul. Fungsi sapa hanya mencetak pesan, tidak ada nilai yang dikembalikan.",
+            "Oh jadi fungsi yang mengembalikan nilai itu memberikan hasil yang bisa dipakai lagi, ya?",
+            "Tepat! Fungsi dengan return value mengirimkan hasil yang bisa digunakan lagi di tempat lain dalam program, sementara fungsi tanpa return value hanya menjalankan tugas tanpa memberikan hasil."
+          ],
+          "next": null
+        }
+      ],
+      "rangkuman": [
+        "1. Fungsi dengan Return Value: mengembalikan nilai setelah dieksekusi. Nilai tersebut bisa disimpan dalam variabel dan digunakan di bagian lain dalam program.",
+        "Contoh fungsi dengan return value:",
+        "#include <stdio.h>\n\n// Fungsi yang mengembalikan hasil penjumlahan dua angka\nint tambah(int a, int b) {\n    return a + b;  // Mengembalikan hasil penjumlahan\n}\n\nint main() {\n    int hasil = tambah(3, 4);  // Memanggil fungsi dan menyimpan hasilnya\n    printf(\"Hasil penjumlahan: %d\\n\", hasil);  // Menampilkan hasil\n    return 0;\n}",
+        "Output dari program: Hasil penjumlahan: 7",
+        "Penjelasan:\n- Fungsi tambah memiliki tipe data int karena mengembalikan sebuah angka (hasil penjumlahan).\n- Fungsi tambah menerima dua parameter a dan b, dan mengembalikan hasil penjumlahan keduanya.\n- Di main, kita memanggil fungsi tambah(3, 4) dan menyimpan hasilnya dalam variabel hasil, yang kemudian ditampilkan.",
+        "2. Fungsi Void: tidak mengembalikan nilai apapun. Biasanya untuk melakukan aksi, seperti menampilkan pesan atau mengubah data.",
+        "Contoh fungsi void:",
+        "#include <stdio.h>\n\n// Fungsi void yang hanya mencetak pesan\nvoid cetakPesan() {\n    printf(\"Ini adalah pesan dari fungsi void.\\n\");\n}\n\nint main() {\n    cetakPesan();  // Memanggil fungsi void\n    return 0;\n}",
+        "Output dari program: Ini adalah pesan dari fungsi void.",
+        "Penjelasan:\n- Fungsi cetakPesan adalah fungsi void karena hanya melakukan aksi (mencetak pesan) dan tidak mengembalikan nilai apapun.\n- Fungsi ini dipanggil di dalam main, dan ketika dipanggil, pesan akan dicetak ke layar.",
+        "Perbedaan utama: Fungsi dengan return value mengembalikan hasil, sedangkan fungsi void hanya melakukan aksi tanpa memberikan hasil."
+      ]
+    },
+
+
+    {
+      "level": 6,
+      "dialogs": [
+        {
+          "id": "preDialog",
+          "text": "Kantin kampus hari itu cukup ramai, MC duduk di meja pojok sambil menunggu makanan datang. Tiba-tiba, Jennie yang duduk di meja sebelah datang dan ikut duduk bersama MC."
+        },
+        {
+          "id": "intro6",
+          "character1": "Adrien",
+          "character2": "Jennie",
+          "text": [
+            "Eh kamu lagi apa? Kok nggak ikut tugas kelompok yang tadi?",
+            "Lagi santai aja, makan siang. Tugas udah selesai kok. Ngomong-ngomong aku tadi ngeliat kamu lagi ngulang materi tentang variabel, ya? Lagi belajar soal penggolongan variabel?",
+            "Iya nih aku lagi belajar tentang penggolongan variabel berdasarkan kelas penyimpanan. Pusing juga sih, banyak jenis variabelnya.",
+            "Oh yang itu. Jadi, ada beberapa jenis variabel berdasarkan gimana cara dia disimpen di memori, kan? Aku bisa jelasin kalau kamu mau.",
+            "Serius? Boleh banget deh biar nggak pusing",
+            "Oke jadi gini. Pertama ada variabel lokal/auto. Ini variabel yang cuma ada dalam fungsi tempat dia dideklarasikan. Biasanya variabel lokal hanya berlaku di dalam fungsi itu aja dan langsung hilang setelah fungsi selesai dieksekusi. Nah coba kamu jawab soal sederhana ini."
+          ],
+          "next": "soal6_1"
+        },
+        {
+          "id": "soal6_1",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": "Perhatikan kode ini:\n\n#include <stdio.h>\n\nvoid contoh() {\n    int angka = 10;\n    printf(\"%d\", angka);\n}\n\nMenurutmu, manakah variabel kamukal dalam kode di atas?",
+          "choices": [
+            {
+              "text": "contoh",
+              "next": {
+                "retry": "soal6_1",
+                "review": "salah6_1"
+              }
+            },
+            {
+              "text": "printf",
+              "next": {
+                "retry": "soal6_1",
+                "review": "salah6_1"
+              }
+            },
+            {
+              "text": "angka",
+              "next": "materi6_2"
+            },
+            {
+              "text": "int",
+              "next": {
+                "retry": "soal6_1",
+                "review": "salah6_1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "salah6_1",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": [
+            "Belum tepat tuh Adrien. ",
+            "Wah aku salah ya? Aku kira udah bener.",
+            "Gak apa-apa kok! Nih aku kasih bocoran dikit: variabel itu biasanya yang menyimpan nilai. Coba deh perhatikan di kode itu, mana yang kelihatan menyimpan angka 10?",
+            "Oooh... kayaknya aku mulai ngerti deh.",
+            "Yap, lihat baik-baik ya. Lainnya kayak nama fungsi dan tipe data, itu beda lagi perannya."
+          ],
+          "next":"soal6_1"
+        },
+        {
+          "id": "materi6_2",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": [
+            "Nah si angka ini hanya bisa dipake di dalam fungsi contoh aja gitu.",
+            "Ooh jadi lokal itu cuma bisa dipake di dalam fungsi itu aja ya?",
+            "Iya, bener banget! Lanjut, ada juga variabel global/eksternal. Ini kebalikan dari yang lokal. Variabel global itu bisa diakses dimana aja dalam program, asal udah dideklarasikan di luar fungsi. Nah coba kamu jawab soal ini deh"
+
+
+          ],
+          "next": "soal6_2"
+        },
+        {
+          "id": "soal6_2",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": "Perhatikan potongan kode berikut:\n\nint angka = 10;\nvoid fungsi() {\n    printf(\"%d\", angka);\n}\n\nMenurutmu, manakah variabel global/eksternal dalam kode di atas?",
+          "choices": [
+            {
+              "text": "fungsi, karena dia bisa dipanggil dari mana saja.",
+              "next": {
+                "retry": "soal6_2",
+                "review": "salah6_2"
+              }
+            },
+            {
+              "text": "angka, karena dideklarasikan di luar fungsi dan bisa diakses dari dalam fungsi.",
+              "next": "materi6_3"
+            },
+            {
+              "text": "printf, karena digunakan di dalam fungsi untuk menampilkan nilai.",
+              "next": {
+                "retry": "soal6_2",
+                "review": "salah6_2"
+              }
+            },
+            {
+              "text": "int, karena semua variabel bertipe int pasti global.",
+              "next": {
+                "retry": "soal6_2",
+                "review": "salah6_2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "salah6_2",
+          "character1": "Jennie",
+          "character2":"Adrien",
+          "text": [
+            "Yah salah ya ternyata",
+            "Hmm... coba kita telaah bareng lagi, ya. Variabel global itu dideklarasikan di luar fungsi dan bisa diakses dari mana saja dalam program. Jadi coba cek mana yang ada di luar fungsi dan bisa dipakai di dalamnya.",
+            "Ooh jadi yang di luar fungsi itu yang global, ya?",
+            "Yup! Coba lihat lagi mana yang dideklarasikan di luar dan bisa diakses di dalam fungsi. Yuk, coba lagi!",
+            "Oke aku coba lagi deh! Semoga benar!"
+          ],
+          "next":"soal6_2"
+        },
+        {
+          "id": "materi6_3",
+          "character1": "Jennie",
+          "character2":"Adrien",
+          "text": [
+            "Nah pinter banget, si angka bisa diakses di dalam fungsi manapun karena dia dideklarasikan di luar semua fungsi",
+            "Oh, berarti global itu bisa dipake di banyak tempat dalam program ya?",
+            "Iya, bener banget! Nah, selanjutnya ada variabel statis. Variabel statis ini punya sifat yang unik. Meskipun dia dideklarasikan dalam fungsi, nilainya gak hilang meskipun fungsi udah selesai. Jadi dia tetap menyimpan nilai terakhir saat fungsi tersebut dipanggil lagi.",
+            "Oh iya! Jadi variabel statis itu bedanya sama variabel biasa ini, kalau variabel biasa nilainya hilang begitu fungsi selesai tapi variabel statis ini tetap menyimpan nilai terakhirnya meskipun fungsi sudah selesai dieksekusi. Jadi misalnya, kalau kamu panggil fungsi itu lagi, dia akan langsung pakai nilai terakhir yang disimpan.",
+            "Iya, bener banget! Coba biar tambah paham, kamu kerjain soal ini deh"
+          ],
+          "next":"soal6_3"
+        },
+        {
+          "id": "soal6_3",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": "Perhatikan potongan kode berikut!\n\nvoid fungsi1() {\n    int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi2() {\n    static int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi3() {\n    int x = 0;\n    for(int i = 0; i < 5; i++) {\n        x++;\n    }\n    printf(\"%d\", x);\n}\n\nvoid fungsi4() {\n    int x = 0;\n    while(x < 5) {\n        x++;\n    }\n    printf(\"%d\", x);\n}\n\nManakah fungsi yang menggunakan variabel statis pada kode berikut?",
+          "choices": [
+            {
+              "text": "fungsi1",
+              "next": {
+                "retry": "soal6_3",
+                "review": "salah6_3"
+              }
+            },
+            {
+              "text": "fungsi2",
+              "next": "materi6_4"
+            },
+            {
+              "text": "fungsi3",
+              "next": {
+                "retry": "soal6_3",
+                "review": "salah6_3"
+              }
+            },
+            {
+              "text": "fungsi4",
+              "next": {
+                "retry": "soal6_3",
+                "review": "salah6_3"
+              }
+            }
+          ]
+        },
+        {
+          "id": "salah6_3",
+          "character1": "Jennie",
+          "character2":"Adrien",
+          "text": [
+            "Kamu jawabnya salah ya? Coba pikir lagi. Variabel statis itu memiliki perilaku yang sedikit berbeda dibandingkan dengan variabel biasa.",
+            "Oh iya...",
+            "Jadi variabel statis yang dideklarasikan dengan kata kunci 'static' akan menyimpan nilainya antara panggilan fungsi. Artinya nilai variabel itu tetap ada meskipun fungsi dipanggil berkali-kali. Kalau variabel biasa, nilainya akan di-reset setiap kali fungsi dipanggil. Paham?",
+            "Hmm jadi variabel statis itu seperti tetap ada meskipun fungsi dipanggil lagi ya?",
+            "Iya, benar! Coba perhatikan kode mana yang menggunakan 'static' pada deklarasi variabelnya, itu yang akan memiliki sifat seperti itu.",
+            "Oke deh, aku bakal perhatikan lebih teliti",
+            "Oke semangat yaa Adrien"
+          ],
+          "next":"soal6_3"
+        },
+        {
+          "id": "materi6_4",
+          "character1": "Jennie",
+          "character2":"Adrien",
+          "text": [
+            "Wah jawabanku bener nih",
+            "Keren Adrien! Sekarang yang terakhir ada variabel register",
+            "Ya ampun?! Ada lagi?",
+            "Iya dong masih. Terakhir kok ini yaitu variabel register! Variabel ini jarang dipakai langsung oleh programmer, tapi dia dikhususkan buat disimpan di register CPU, bukan di RAM. Ini supaya akses data jadi lebih cepat. Biasanya untuk variabel yang sering diakses, seperti counter atau indeks dalam loop. Tapi penggunaan register ini bergantung sama arsitektur komputer yang dipakai.",
+            "Ah paham, jadi variabel register itu lebih cepat karena disimpen langsung di CPU ya?",
+            "Betul! Nah, biar lebih paham lagi coba deh jawab soal ini. Mana yang termasuk variabel register dalam program ini?"
+          ],
+          "next":"soal6_4"
+        },
+        {
+          "id": "soal6_4",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": "Perhatikan potongan kode berikut:\n\n#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5; // Variabel statis\n    register int i;       // Variabel register\n    for (i = 0; i < 3; i++) {\n        angka++;\n        printf(\"Angka: %d, i: %d\\n\", angka, i);\n    }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}\n\nDalam program di atas, mana yang merupakan variabel register dan variabel statis?",
+          "choices": [
+            {
+              "text": "angka adalah variabel register, i adalah variabel statis.",
+              "next": {
+                "retry": "soal6_4",
+                "review": "salah6_4"
+              }
+            },
+            {
+              "text": "angka adalah variabel statis, i adalah variabel register.",
+              "next":  "benar6_last"
+            },
+            {
+              "text": "angka dan i keduanya variabel register.",
+              "next": {
+                "retry": "soal6_4",
+                "review": "salah6_4"
+              }
+            },
+            {
+              "text": "angka dan i keduanya variabel statis.",
+              "next": {
+                "retry": "soal6_4",
+                "review": "salah6_4"
+              }
+            }
+          ]
+        },
+        {
+          "id": "salah6_4",
+          "character1": "Jennie",
+          "character2":"Adrien",
+          "text": [
+            "Noo, Jawabanku salah.",
+            "Oops, hampir, Adrien! Coba kita lihat lagi ya. Kalau variabel register, itu sebenarnya punya sifat yang berbeda. Variabel ini dimaksudkan agar kompilator bisa mencoba untuk menyimpannya langsung di register prosesor, supaya aksesnya lebih cepat. Jadi, variabel register nggak disimpan di memori biasa.",
+            "Ooooh jadi register itu supaya aksesnya lebih cepat ya? Terus kalau gitu, apa yang di kode itu yang cocok jadi register?",
+            "Tepat banget! Kompilator biasanya memilih variabel yang sering diakses dan membutuhkan kecepatan, seperti variabel dalam loop. Jadi dalam kode ini, coba lihat lagi deh, variabel mana yang mungkin lebih sering digunakan dalam perulangan dan butuh kecepatan akses?",
+            "Ah sekarang aku paham! Aku akan coba jawab lagi, semoga bisa lebih tepat!",
+            "Semangat Adrien! Kamu pasti bisa!"
+          ],
+          "next":"soal6_4"
+        },
+        {
+          "id": "benar6_last",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": [
+            "Nah udah bisa sekarang yaa. Jadi register itu buat variabel yang perkamu akses cepat, intinya ada 4 jenis variabel berdasarkan tempat penyimpanannya, variabel lokal terletak di dalam fungsi, variabel global terletak di luar fungsi, variabel statis terletak pada nilai yang dipertahankan antar pemanggilan fungsi, dan variabel register dengan akses cepat karena disimpan di CPU.",
+            "Wah jadi gitu ya! Makasih banget, akhirnya aku jadi ngerti. Nggak pusing lagi deh soal penggolongan variabel.",
+            "Sama-sama, senang bisa bantu. Kalau masih bingung, tinggal tanya aja.",
+            "Hehe, iya nih, nanti aku tanya lagi deh. Terima kasih ya!"
+
+
+          ],
+          "next": null
+        }
+      ],
+      "rangkuman": [
+        "1. Variabel Lokal (Auto): dideklarasikan di dalam sebuah fungsi dan hanya bisa diakses selama fungsi tersebut berjalan. Setelah fungsi selesai, variabel lokal akan hilang dari memori. Secara default, semua variabel di dalam fungsi bersifat lokal.",
+        "Contoh variabel lokal:",
+        "#include <stdio.h>\n\nvoid contoh() {\n    int x = 10;  // Variabel lokal \n    printf(\"Nilai x: %d\\n\", x);\n}",
+        "Penjelasan:\n- Variabel x adalah variabel lokal karena dideklarasikan di dalam fungsi contoh. Nilainya hanya ada selama fungsi berjalan dan hilang setelah fungsi selesai dieksekusi.",
+        "2. Variabel Global (Eksternal): dideklarasikan diluar semua fungsi dan dapat diakses oleh semua fungsi dalam program. Variabel ini sering digunakan untuk menyimpan data yang dibutuhkan oleh banyak fungsi. Penggunaannya harus hati-hati karena perubahan nilai variabel global dapat mempengaruhi fungsi lainnya.",
+        "Contoh variabel global:",
+        "#include <stdio.h>\n\nint x = 10;  // Variabel global\n\nvoid contoh() {\n    printf(\"Nilai x: %d\\n\", x);  // Mengakses variabel global x\n}",
+        "Penjelasan:\n- Variabel x adalah variabel global karena dideklarasikan di luar fungsi dan dapat diakses di dalam fungsi contoh.",
+        "3. Variabel Statis: dideklarasikan di dalam fungsi, namun nilainya tidak hilang setelah fungsi selesai dieksekusi. Variabel ini akan menyimpan nilai terakhir yang dimiliki dan melanjutkan dari nilai tersebut ketika fungsi dipanggil lagi.",
+        "Contoh variabel statis:",
+        "#include <stdio.h>\n\nvoid contoh() {\n    static int count = 0;  // Variabel statis\n    count++;\n    printf(\"Count: %d\\n\", count);\n}",
+        "Penjelasan:\n- Variabel count adalah variabel statis karena dideklarasikan dengan keyword static. Nilainya bertahan setelah fungsi selesai dieksekusi dan akan melanjutkan pada pemanggilan berikutnya.",
+        "4. Variabel Register: disarankan disimpan di register CPU agar aksesnya lebih cepat. Biasanya untuk variabel yang sering diakses dalam program, seperti counter dalam perulangan. Penyimpanan variabel register tergantung pada kemampuan arsitektur komputer.",
+        "Contoh variabel register:",
+        "#include <stdio.h>\n\nint main() {\n    register int i;  // Variabel register\n    for (i = 0; i < 5; i++) {\n        printf(\"i: %d\\n\", i);\n    }\n    return 0;\n}",
+        "Penjelasan:\n- Variabel i adalah variabel register yang digunakan di dalam perulangan for. Compiler mencoba untuk menyimpannya di register CPU agar proses lebih cepat."
+      ]
+    }
   ]
 }
