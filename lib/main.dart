@@ -8,6 +8,7 @@ import 'package:timetocode/pages/end_game_page.dart';
 import 'package:timetocode/pages/main_navigation.dart';
 import 'package:timetocode/pages/story.dart';
 import 'package:timetocode/themes/app_themes.dart';
+import 'package:timetocode/widgets/question_box_widget.dart';
 import 'package:timetocode/SFX/music_service.dart';
 
 void main() async {
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
                   game.changeScene('default');
                   game.overlays
                     ..remove('DialogueBox')
-                    ..add('EndGame');
+                    ..add('QuestionBox'); // Ganti ke tanya jawab dulu
                 },
               ),
           'Story': (_, game) => StoryPage(game: game),
@@ -49,6 +50,19 @@ class MyApp extends StatelessWidget {
                   game.overlays
                     ..remove('Intro')
                     ..add('DialogueBox');
+                },
+              ),
+          'QuestionBox':
+              (_, game) => QuestionBoxWidget(
+                onCorrect: () {
+                  game.overlays
+                    ..remove('QuestionBox')
+                    ..add('EndGame'); // Misal jawab bener lanjut end
+                },
+                onWrong: () {
+                  game.overlays
+                    ..remove('QuestionBox')
+                    ..add('EndGame'); // Atau kasih punishment di sini
                 },
               ),
           'EndGame': (_, game) => EndGameScreen(game: gameEngine),
