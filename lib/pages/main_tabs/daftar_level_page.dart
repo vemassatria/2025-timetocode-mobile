@@ -173,12 +173,7 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                       onStartPressed: () {
                         if (index == 0) {
                           (widget.game as GameEngine).changeScene('lab');
-                          (widget.game as GameEngine).loadCharacter(
-                            'kakak',
-                            'kating',
-                          );
-                          widget.game.overlays.remove('GameUI');
-                          widget.game.overlays.add('Story');
+                          (widget.game as GameEngine).startPreDialogue(1);
                         } else {
                           debugPrint(
                             "Start button pressed for level ${index + 1}",
