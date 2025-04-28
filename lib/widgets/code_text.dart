@@ -76,6 +76,8 @@ class CodeText extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(style: _baseStyle, children: _parseText(data)),
+      softWrap: false,
+      overflow: TextOverflow.clip,
     );
   }
 
