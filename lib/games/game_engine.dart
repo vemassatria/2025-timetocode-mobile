@@ -4,6 +4,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/services.dart';
 import 'package:timetocode/components/flame_engine/background.dart';
 import 'package:timetocode/components/flame_engine/character.dart';
+import 'package:timetocode/games/models/dialog_model.dart';
 import 'package:timetocode/games/models/level_model.dart';
 
 class GameEngine extends FlameGame {
@@ -12,9 +13,19 @@ class GameEngine extends FlameGame {
 
   late final List<LevelModel> levels;
   late String _preDialogue;
-  List<String> _currentDialogs = [];
-  List<String> get currentDialogs => _currentDialogs;
+  late DialogModel? _currentDialogs;
   String get preDialogue => _preDialogue;
+  DialogModel get currentDialogs => _currentDialogs!;
+
+  late List<String>? _character1Path;
+  late List<String>? _character2Path;
+  List<String> get character1Path => _character1Path!;
+  List<String> get character2Path => _character2Path!;
+
+  late int character1ActivePath;
+  late int character2ActivePath;
+
+  late String activeMode;
 
   @override
   Future<void> onLoad() async {
@@ -34,26 +45,24 @@ class GameEngine extends FlameGame {
             .toList();
   }
 
-  void startPreDialogue(int levelIndex) {
-    final intro = levels[levelIndex].preDialog?.text;
-    startDialogue(levelIndex);
-    _preDialogue = intro!;
-    overlays
-      ..remove('GameUI')
-      ..add('Story')
-      ..add('Intro');
-  }
-
-  /// Mulai dialog intro untuk sebuah level
-  void startDialogue(int levelIndex) {
-    final intro =
-        levels[levelIndex].dialogs.firstWhere((d) => d.id == 'intro').text;
-    _currentDialogs = intro;
-    // // show the overlay once
-    // overlays
-    //   ..remove('GameUI')
-    //   ..add('Story')
-    //   ..add('DialogueBox');
+  void startLevel(int indexLevel) {
+    overlays.remove('GameUI');
+    overlays.add('Story');
+    changeScene(levels[indexLevel].background);
+    _character1Path = levels[indexLevel].character1Images;
+    _character2Path = levels[indexLevel].character2Images;
+    character1ActivePath = 0;
+    character2ActivePath = 0;
+    if (levels[indexLevel].typeStart == 'preDialog') {
+      final intro = levels[indexLevel].preDialog?.text;
+      _preDialogue = intro!;
+      activeMode = "intro";
+      overlays.add('Intro');
+    } else {
+      _currentDialogs = levels[indexLevel].getDialog(levels[indexLevel].start);
+      activeMode = "dialogue";
+      overlays.add('DialogueBox');
+    }
   }
 
   Future<void> changeScene(String sceneName) async {
@@ -69,7 +78,12 @@ class GameEngine extends FlameGame {
     add(storyCharacters!);
   }
 
-  void removeStory() {
+  void removeDialog() {
+    _currentDialogs = null;
+    removeCharacter();
+  }
+
+  void removeCharacter() {
     storyCharacters!.removeFromParent();
     storyCharacters = null;
   }

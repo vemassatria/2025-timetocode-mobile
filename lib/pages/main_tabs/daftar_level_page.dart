@@ -1,7 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:timetocode/components/card.dart';
-import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/themes/colors.dart';
 
 class DaftarLevelPage extends StatefulWidget {
@@ -172,8 +171,6 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                       status: levelData[index]['status'],
                       onStartPressed: () {
                         if (index == 0) {
-                          (widget.game as GameEngine).changeScene('lab');
-                          (widget.game as GameEngine).startPreDialogue(1);
                         } else {
                           debugPrint(
                             "Start button pressed for level ${index + 1}",

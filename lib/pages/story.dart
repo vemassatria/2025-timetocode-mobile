@@ -20,9 +20,15 @@ class StoryPage extends StatelessWidget {
         leading: MenuButton(
           onRestart: () {},
           onExit: () {
+            if (game.activeMode == "intro") {
+              game.removeIntro();
+            } else if (game.activeMode == "dialogue") {
+              game.removeDialog();
+            } else {
+              game.removeQuestion();
+            }
             game.overlays.remove('Story');
             game.changeScene('default');
-            game.removeStory();
             game.overlays.add('GameUI');
             closePopupOverlay();
           },
