@@ -70,12 +70,15 @@ class CodeText extends StatelessWidget {
     'await',
     'async',
     'yield',
+    '#include',
   };
 
   @override
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(style: _baseStyle, children: _parseText(data)),
+      softWrap: false,
+      overflow: TextOverflow.clip,
     );
   }
 
@@ -83,6 +86,7 @@ class CodeText extends StatelessWidget {
     final spans = <TextSpan>[];
     final lines = source.split('\n');
     bool inVariableDeclaration = false;
+    bool expectingVariableAfterComma = false;
     final definedVariables = <String>{};
     final definedFunctions = <String>{};
 
@@ -90,6 +94,7 @@ class CodeText extends StatelessWidget {
       String line = lines[lineIndex];
       int position = 0;
       inVariableDeclaration = false;
+      expectingVariableAfterComma = false;
 
       while (position < line.length) {
         if (position + 1 < line.length &&
@@ -99,12 +104,12 @@ class CodeText extends StatelessWidget {
           spans.add(
             TextSpan(text: comment, style: _baseStyle.merge(_commentStyle)),
           );
-          position = line.length;
-          continue;
+          break;
         }
 
-        if (position < line.length && line[position] == '"') {
-          int endQuote = _findClosingQuote(line, position, '"');
+        if (position < line.length &&
+            (line[position] == '"' || line[position] == "'")) {
+          int endQuote = _findClosingQuote(line, position, line[position]);
           final stringText = line.substring(position, endQuote + 1);
           spans.add(
             TextSpan(text: stringText, style: _baseStyle.merge(_stringStyle)),
@@ -113,20 +118,26 @@ class CodeText extends StatelessWidget {
           continue;
         }
 
-        if (position < line.length && line[position] == "'") {
-          int endQuote = _findClosingQuote(line, position, "'");
-          final stringText = line.substring(position, endQuote + 1);
-          spans.add(
-            TextSpan(text: stringText, style: _baseStyle.merge(_stringStyle)),
-          );
-          position = endQuote + 1;
+        if (position < line.length &&
+            line[position] == ',' &&
+            inVariableDeclaration) {
+          spans.add(TextSpan(text: ','));
+          position++;
+          expectingVariableAfterComma = true;
+          continue;
+        }
+
+        if (position < line.length && line[position] == ';') {
+          spans.add(TextSpan(text: ';'));
+          position++;
+          inVariableDeclaration = false;
+          expectingVariableAfterComma = false;
           continue;
         }
 
         if (position < line.length && isDigit(line[position])) {
           int end = position + 1;
           bool hasDecimal = false;
-
           while (end < line.length) {
             if (isDigit(line[end])) {
               end++;
@@ -137,7 +148,6 @@ class CodeText extends StatelessWidget {
               break;
             }
           }
-
           final number = line.substring(position, end);
           spans.add(
             TextSpan(text: number, style: _baseStyle.merge(_numberStyle)),
@@ -146,18 +156,16 @@ class CodeText extends StatelessWidget {
           continue;
         }
 
-        if (position < line.length && isAlpha(line[position])) {
+        if (position < line.length && isIdentifierStart(line[position])) {
           int end = position + 1;
-
-          while (end < line.length &&
-              (isAlpha(line[end]) || isDigit(line[end]) || line[end] == '_')) {
+          while (end < line.length && isIdentifierPart(line[end])) {
             end++;
           }
 
           final word = line.substring(position, end);
           TextStyle? style;
-
           bool isFunction = false;
+
           if (end < line.length && line[end] == '(') {
             isFunction = true;
             if (inVariableDeclaration) {
@@ -168,17 +176,21 @@ class CodeText extends StatelessWidget {
 
           if (_keywords.contains(word)) {
             style = _keywordStyle;
+            expectingVariableAfterComma = false;
           } else if (_types.contains(word)) {
             style = _typeStyle;
             inVariableDeclaration = true;
+            expectingVariableAfterComma = false;
           } else if (_controlFlow.contains(word)) {
             style = _controlFlowStyle;
+            expectingVariableAfterComma = false;
           } else if (isFunction) {
             style = _functionStyle;
-          } else if (inVariableDeclaration) {
+            expectingVariableAfterComma = false;
+          } else if (inVariableDeclaration || expectingVariableAfterComma) {
             style = _variableStyle;
             definedVariables.add(word);
-            inVariableDeclaration = false;
+            expectingVariableAfterComma = false;
           } else if (definedVariables.contains(word)) {
             style = _variableStyle;
           } else if (definedFunctions.contains(word)) {
@@ -195,12 +207,12 @@ class CodeText extends StatelessWidget {
           continue;
         }
 
-        spans.add(TextSpan(text: line[position].toString()));
+        spans.add(TextSpan(text: line[position]));
         position++;
       }
 
       if (lineIndex < lines.length - 1) {
-        spans.add(TextSpan(text: '\n'));
+        spans.add(const TextSpan(text: '\n'));
       }
     }
 
@@ -212,13 +224,11 @@ class CodeText extends StatelessWidget {
     while (pos < text.length) {
       if (text[pos] == '\\') {
         pos += 2;
-        continue;
-      }
-
-      if (text[pos] == quoteChar) {
+      } else if (text[pos] == quoteChar) {
         return pos;
+      } else {
+        pos++;
       }
-      pos++;
     }
     return text.length - 1;
   }
@@ -232,7 +242,14 @@ class CodeText extends StatelessWidget {
     return (char.codeUnitAt(0) >= 'a'.codeUnitAt(0) &&
             char.codeUnitAt(0) <= 'z'.codeUnitAt(0)) ||
         (char.codeUnitAt(0) >= 'A'.codeUnitAt(0) &&
-            char.codeUnitAt(0) <= 'Z'.codeUnitAt(0)) ||
-        char == '_';
+            char.codeUnitAt(0) <= 'Z'.codeUnitAt(0));
+  }
+
+  bool isIdentifierStart(String char) {
+    return isAlpha(char) || char == '_' || char == '#';
+  }
+
+  bool isIdentifierPart(String char) {
+    return isAlpha(char) || isDigit(char) || char == '_' || char == '#';
   }
 }
