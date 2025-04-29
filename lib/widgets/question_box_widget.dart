@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:timetocode/widgets/code_text.dart';
+import 'package:timetocode/components/button.dart';
 
 class QuestionBoxWidget extends StatefulWidget {
   const QuestionBoxWidget({
@@ -39,26 +41,29 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0D1117), // Dark background
-      appBar: AppBar(
-        title: const Text('Quiz Code'),
-        backgroundColor: Colors.black,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Kotak "kode"
-            Container(
-              width: double.infinity,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset('assets/background/lab.webp', fit: BoxFit.cover),
+          ),
+
+          SafeArea(
+            child: Padding(
               padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: const Color(0xFF161B22),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Text(
-                '''
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Kotak "kode"
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: const Color(
+                        0xFF161B22,
+                      ).withOpacity(0.8), // Semi-transparent background
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const CodeText('''
 int add(int a, int b) {
   return a + b;
 }
@@ -67,32 +72,27 @@ void main() {
   int result = add(3, 5); // INI COMMENTNYA PANJANG BIAR MELEBIHI BATAS
   print(result); // Output: 8
 }
-''',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'FiraCode',
-                  fontSize: 14,
-                ),
-              ),
-            ),
-            const SizedBox(height: 24),
-            // Pilihan jawaban
-            ...options.map(
-              (option) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueGrey.shade700,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+'''),
                   ),
-                  onPressed: () => checkAnswer(option),
-                  child: Text(option, style: const TextStyle(fontSize: 18)),
-                ),
+                  const SizedBox(height: 24),
+                  // Pilihan jawaban
+                  ...options.map(
+                    (option) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 6),
+
+                      child: CustomButton(
+                        onPressed: () => checkAnswer(option),
+                        type: ButtonType.outline,
+                        color: ButtonColor.blue,
+                        label: option,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
