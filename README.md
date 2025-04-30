@@ -17,6 +17,7 @@ Isi bagian `[]` sesuai dengan kebutuhan.
 - [11. ChoicesBox](#11-choicesbox)
 - [12. QuestionBox](#12-questionbox)
 - [13. QuestionBox](#13-dialogbox)
+- [14. IllustrationBox](#14-illustrationbox)
 
 ---
 
@@ -302,4 +303,14 @@ DialogBox(
   characterName: '[NAMA]',
   nameBoxColor: [WARNA NAMA],
   ),
+```
+
+<br>
+
+## [14] IllustrationBox
+
+### Template:
+
+```dart
+IllustrationBox(image: AssetImage('[PATH KE ASSET ILUSTRASI]')),
 ```
