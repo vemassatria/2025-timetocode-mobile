@@ -14,6 +14,8 @@ Isi bagian `[]` sesuai dengan kebutuhan.
 - [8. InfoPopup](#8-infopopup)
 - [9. CodeBox](#9-codebox)
 - [10. NarartionBox](#10-narrationbox)
+- [11. ChoicesBox](#11-choicesbox)
+- [12. QuestionBox](#12-questionbox)
 
 ---
 
@@ -168,11 +170,8 @@ showPopupOverlay(
  context,
  AnswerPopup(
    isCorrect: [TRUE/FALSE],
-   onPrimaryButtonPressed: () {
-     [ACTION_BUTTON_FILLED];
-   },
-   onSecondaryButtonPressed: () {
-     [ACTION_BUTTON_OUTLINE]; // (optional)
+   onPressed: () {
+     [ACTION];
    },
  )
 )
@@ -254,5 +253,34 @@ NarrationBox(
   onTap: () {
     [ACTION]
   },
-),
+)
+```
+
+<br>
+
+## [11] ChoicesBox
+
+### Template:
+
+```dart
+ChoicesBox(
+  correctAnswerIndex: [SALAH SATU DARI INDEX 0 - 3],
+  choices: ['[INDEX 0]', '[INDEX 1]', '[INDEX 2]', '[INDEX 3]'], // JUMLAHNYA BOLEH 2, 3, 4
+  onCorrect: () {
+    [ACTION BENAR]
+  },
+  onWrong: () {
+    [ACTION SALAH]
+  },
+)
+```
+
+<br>
+
+## [12] QuestionBox
+
+### Template:
+
+```dart
+QuestionBox(questionText: "[PERTANYAAN]")
 ```
