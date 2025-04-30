@@ -13,6 +13,7 @@ Isi bagian `[]` sesuai dengan kebutuhan.
 - [7. ConfirmPopup](#7-confirmpopup)
 - [8. InfoPopup](#8-infopopup)
 - [9. CodeBox](#9-codebox)
+- [10. NarartionBox](#10-narrationbox)
 
 ---
 
@@ -39,7 +40,7 @@ CustomButton(
 
 ### Variant:
 
-- **color**:
+**color**:
 
 - `ButtonColor.purple`
 - `ButtonColor.none`
@@ -48,20 +49,33 @@ CustomButton(
 - `ButtonColor.green`
 - `ButtonColor.red`
 
-- **type**:
+**type**:
 
 - `ButtonType.filled`
 - `ButtonType.icon` (Harus ada parameter icon)
 - `ButtonType.outline`
 - `ButtonType.iconLable` (Harus ada parameter icon dan label)
 
-- **widthMode**:
+**widthMode**:
 
 - `ButtonWidthMode.fill`
 - `ButtonWidthMode.hug`
-- `ButtonWidthMode.fixed`
+- `ButtonWidthMode.fixed`NarrationBox(
+  narrationText:
+  "Ini adalah teks narasi yang akan membawamu mengikuti sebuah alur cerita panjang, penuh dengan berbagai kejadian seru dan menarik. Bacalah perlahan, karena setiap bagian dari kisah ini mengandung petualangan, tantangan, dan momen-momen tak terduga yang akan membentuk perjalanan karakter utama.",
+  onTap: () {
+  showPopupOverlay(
+  context,
+  InfoPopup(
+  title: "Ini kalo diklik Narration box",
+  description: "Cihuyy",
+  onClose: closePopupOverlay,
+  ),
+  );
+  },
+  ),
 
-- **isDisabled**:
+**isDisabled**:
 
 - `true` (Variant disabled)
 - `false`
@@ -88,7 +102,8 @@ LevelCard(
 
 ### Variant:
 
-- **status** :
+**status** :
+
 - `CardStatus.unlocked`
 - `CardStatus.locked`
 - `CardStatus.completed`
@@ -165,7 +180,8 @@ showPopupOverlay(
 
 ### Variant:
 
-- **isCorrect**:
+**isCorrect**:
+
 - `true` (Variant Benar)
 - `false` (Variant Salah)
 
@@ -223,4 +239,20 @@ CodeBox(
 [CODE]
 '''
 )
+```
+
+<br>
+
+## [10] NarrationBox
+
+### Template:
+
+```dart
+NarrationBox(
+  narrationText:
+      "[TEKS]",
+  onTap: () {
+    [ACTION]
+  },
+),
 ```
