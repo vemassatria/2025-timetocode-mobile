@@ -16,7 +16,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
   bool _musikLatar = true;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _loadMusiklatar();
     _loadEfekSuara();
@@ -29,7 +29,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
     });
   }
 
-  _updateMusikLatar(bool value) async{
+  _updateMusikLatar(bool value) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('musikLatar', value);
     setState(() {
@@ -44,7 +44,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
     });
   }
 
-  void _updateEfekSuara(bool value) async{
+  void _updateEfekSuara(bool value) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('efekSuara', value);
     setState(() {
