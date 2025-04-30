@@ -9,6 +9,9 @@ class EndGameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int correctAnswer = (game as GameEngine).correctAnswer;
+    int wrongAnswer = (game as GameEngine).wrongAnswer;
+    int totalAnswer = correctAnswer + wrongAnswer;
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Center(
@@ -27,14 +30,14 @@ class EndGameScreen extends StatelessWidget {
               width: 300,
               child: Center(
                 child: Text(
-                  '3/5',
+                  '${(game as GameEngine).activeLevel}/${(game as GameEngine).levels.length}',
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
               ),
             ),
             const SizedBox(height: 32),
             Text(
-              'Level 3 Selesai',
+              'Level ${(game as GameEngine).activeLevel} Selesai',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             Container(
@@ -75,21 +78,14 @@ class EndGameScreen extends StatelessWidget {
                 informationCard(
                   context,
                   'Tepat',
-                  '7/10',
+                  '$correctAnswer/$totalAnswer',
                   const Color.fromARGB(255, 70, 215, 77),
                 ),
                 const SizedBox(width: 16),
                 informationCard(
                   context,
-                  'Dilewati',
-                  '1/10',
-                  const Color.fromARGB(255, 148, 149, 148),
-                ),
-                const SizedBox(width: 16),
-                informationCard(
-                  context,
                   'Salah',
-                  '2/10',
+                  '$wrongAnswer/$totalAnswer',
                   const Color.fromARGB(255, 215, 70, 70),
                 ),
               ],
@@ -100,7 +96,7 @@ class EndGameScreen extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   game.overlays.remove('EndGame');
-                  game.overlays.add('GameUI');
+                  (game as GameEngine).endGame();
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 112, 183, 255),
@@ -151,8 +147,8 @@ class EndGameScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 8),
-                  const Text(
-                    'Lorem ipsum dolor sit amet...',
+                  Text(
+                    '${(game as GameEngine).levels[(game as GameEngine).activeLevel].summary}',
                     style: TextStyle(color: Colors.white),
                   ),
                   const SizedBox(height: 16),
