@@ -95,6 +95,7 @@ class EndGameScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.9,
               child: TextButton(
                 onPressed: () {
+                  game.overlays.remove('EndGame');
                   (game as GameEngine).endGame();
                 },
                 style: TextButton.styleFrom(

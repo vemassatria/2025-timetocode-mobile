@@ -120,6 +120,9 @@ class GameEngine extends FlameGame {
   }
 
   void endGame() {
+    _currentDialogs = null;
+    _currentQuestion = null;
+    _preDialogue = null;
     changeScene('default');
     overlays.add('GameUI');
   }
