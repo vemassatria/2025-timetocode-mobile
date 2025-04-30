@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:timetocode/components/box/choices_box.dart';
 import 'package:timetocode/components/setting_item.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/SFX/music_service.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
 
 class PengaturanPage extends StatefulWidget {
   const PengaturanPage({super.key});
@@ -16,7 +18,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
   bool _musikLatar = true;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _loadMusiklatar();
     _loadEfekSuara();
@@ -29,7 +31,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
     });
   }
 
-  _updateMusikLatar(bool value) async{
+  _updateMusikLatar(bool value) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('musikLatar', value);
     setState(() {
@@ -44,7 +46,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
     });
   }
 
-  void _updateEfekSuara(bool value) async{
+  void _updateEfekSuara(bool value) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('efekSuara', value);
     setState(() {
@@ -67,6 +69,13 @@ class _PengaturanPageState extends State<PengaturanPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            ChoicesBox(
+              correctAnswerIndex: 2,
+              choices: ['salah', 'salah', 'benar', 'salah'],
+              onCorrect: closePopupOverlay,
+              onWrong: closePopupOverlay,
+            ),
+            const SizedBox(height: 64),
             Text('Pengaturan Aplikasi', style: AppTypography.small()),
             const SizedBox(height: 8),
             SettingItem(

@@ -36,7 +36,7 @@ class ChoicesBox extends StatelessWidget {
       context,
       AnswerPopup(
         isCorrect: isCorrect,
-        onPrimaryButtonPressed: () {
+        onPressed: () {
           if (isCorrect) {
             onCorrect?.call();
           } else {

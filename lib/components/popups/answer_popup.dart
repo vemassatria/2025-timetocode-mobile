@@ -6,14 +6,12 @@ import 'package:timetocode/themes/typography.dart';
 
 class AnswerPopup extends StatelessWidget {
   final bool isCorrect;
-  final VoidCallback onPrimaryButtonPressed;
-  final VoidCallback? onSecondaryButtonPressed;
+  final VoidCallback onPressed;
 
   const AnswerPopup({
     super.key,
     required this.isCorrect,
-    required this.onPrimaryButtonPressed,
-    this.onSecondaryButtonPressed,
+    required this.onPressed,
   });
 
   Color get _color => isCorrect ? AppColors.xpGreen : AppColors.dangerRed;
@@ -42,35 +40,12 @@ class AnswerPopup extends StatelessWidget {
   }
 
   Widget _buildButton() {
-    return isCorrect
-        ? CustomButton(
-          label: "Lanjutkan",
-          onPressed: onPrimaryButtonPressed,
-          widthMode: ButtonWidthMode.fill,
-          color: ButtonColor.green,
-        )
-        : Row(
-          children: [
-            Expanded(
-              child: CustomButton(
-                label: "Coba Lagi",
-                onPressed: onPrimaryButtonPressed,
-                widthMode: ButtonWidthMode.fill,
-                color: ButtonColor.red,
-              ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: CustomButton(
-                label: "Ulangi Materi",
-                onPressed: onSecondaryButtonPressed ?? () {},
-                widthMode: ButtonWidthMode.fill,
-                type: ButtonType.outline,
-                color: ButtonColor.none,
-              ),
-            ),
-          ],
-        );
+    return CustomButton(
+      label: "Lanjutkan",
+      onPressed: onPressed,
+      widthMode: ButtonWidthMode.fill,
+      color: isCorrect ? ButtonColor.green : ButtonColor.red,
+    );
   }
 
   @override
