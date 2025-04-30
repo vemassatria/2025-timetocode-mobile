@@ -82,6 +82,8 @@ class _DialogueBoxWidgetState extends State<DialogueBoxWidget> {
       widget.game.overlays.remove('DialogueBox');
       widget.game.removeDialog();
       if (widget.game.currentDialogs.nextType == 'soal') {
+        widget.game.setCurrentQuestion(widget.game.currentDialogs.next);
+        widget.game.activeMode = "question";
         widget.game.overlays.add('QuestionBox');
       } else {
         widget.game.overlays.add('EndGame');

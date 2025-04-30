@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:timetocode/components/cerita/dialogue.dart';
 import 'package:timetocode/components/cerita/intro.dart';
 import 'package:timetocode/games/game_engine.dart';
-import 'package:timetocode/pages/end_game_page.dart';
+import 'package:timetocode/components/cerita/end_game_page.dart';
 import 'package:timetocode/pages/main_navigation.dart';
-import 'package:timetocode/pages/story.dart';
+import 'package:timetocode/components/cerita/story.dart';
 import 'package:timetocode/themes/app_themes.dart';
-import 'package:timetocode/widgets/question_box_widget.dart';
+import 'package:timetocode/components/cerita/question_box_widget.dart';
 import 'package:timetocode/SFX/music_service.dart';
 
 void main() async {
@@ -31,39 +31,10 @@ class MyApp extends StatelessWidget {
         game: gameEngine,
         overlayBuilderMap: {
           'GameUI': (_, game) => MainNavigation(game: game),
-          'DialogueBox':
-              (_, game) => DialogueBoxWidget(
-                dialoguesText: game.currentDialogs,
-                onNext: () {
-                  game.changeScene('default');
-                  game.overlays
-                    ..remove('DialogueBox')
-                    ..add('QuestionBox'); // Ganti ke tanya jawab dulu
-                },
-              ),
           'Story': (_, game) => StoryPage(game: game),
-          'Intro':
-              (_, game) => IntroBoxWidget(
-                introText: game.preDialogue,
-                onNext: () {
-                  game.overlays
-                    ..remove('Intro')
-                    ..add('DialogueBox');
-                },
-              ),
-          'QuestionBox':
-              (_, game) => QuestionBoxWidget(
-                onCorrect: () {
-                  game.overlays
-                    ..remove('QuestionBox')
-                    ..add('EndGame'); // Misal jawab bener lanjut end
-                },
-                onWrong: () {
-                  game.overlays
-                    ..remove('QuestionBox')
-                    ..add('EndGame'); // Atau kasih punishment di sini
-                },
-              ),
+          'Intro': (_, game) => IntroBoxWidget(game: game),
+          'DialogueBox': (_, game) => DialogueBoxWidget(game: game),
+          'QuestionBox': (_, game) => QuestionBoxWidget(game: game),
           'EndGame': (_, game) => EndGameScreen(game: gameEngine),
         },
         initialActiveOverlays: const ['GameUI'],

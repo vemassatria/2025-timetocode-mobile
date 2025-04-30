@@ -21,4 +21,12 @@ class QuestionModel {
               .toList(),
     );
   }
+
+  List<String> getChoices() {
+    return choices.map((choice) => choice.text).toList();
+  }
+
+  String getCorrectAnswer() {
+    return choices.firstWhere((choice) => choice.isCorrect == true).text;
+  }
 }

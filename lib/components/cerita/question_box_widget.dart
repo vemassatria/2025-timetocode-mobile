@@ -1,24 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/widgets/code_text.dart';
 import 'package:timetocode/components/button.dart';
 
 class QuestionBoxWidget extends StatefulWidget {
-  const QuestionBoxWidget({
-    super.key,
-    required Null Function() onCorrect,
-    required Null Function() onWrong,
-  });
+  final GameEngine game;
+  const QuestionBoxWidget({super.key, required this.game});
 
   @override
   State<QuestionBoxWidget> createState() => _QuestionBoxWidgetState();
 }
 
 class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
-  final List<String> options = ['8', '6', '10', '9'];
-  final String correctAnswer = '8';
+  late String questionText;
+  late List<String> options;
+  late String correctAnswer;
+
+  @override
+  void initState() {
+    options = widget.game.currentQuestion.getChoices();
+    questionText = widget.game.currentQuestion.question;
+    correctAnswer = widget.game.currentQuestion.getCorrectAnswer();
+    super.initState();
+  }
 
   void checkAnswer(String selected) {
     final isCorrect = selected == correctAnswer;
+
+    if (isCorrect) {
+      widget.game.correctAnswer++;
+    } else {
+      widget.game.wrongAnswer++;
+    }
 
     showDialog(
       context: context,
@@ -63,16 +76,9 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
                       ).withOpacity(0.8), // Semi-transparent background
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const CodeText('''
-int add(int a, int b) {
-  return a + b;
-}
-
-void main() {
-  int result = add(3, 5); // INI COMMENTNYA PANJANG BIAR MELEBIHI BATAS
-  print(result); // Output: 8
-}
-'''),
+                    child: CodeText('''
+                    $questionText
+                    '''),
                   ),
                   const SizedBox(height: 24),
                   // Pilihan jawaban

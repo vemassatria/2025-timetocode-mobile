@@ -5,9 +5,7 @@ import 'package:timetocode/utils/overlay_utils.dart';
 
 class StoryPage extends StatelessWidget {
   final GameEngine game;
-  final VoidCallback? onNext;
-  const StoryPage({Key? key, required this.game, this.onNext})
-    : super(key: key);
+  const StoryPage({Key? key, required this.game}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +25,8 @@ class StoryPage extends StatelessWidget {
             } else {
               game.removeQuestion();
             }
+            game.endGame();
             game.overlays.remove('Story');
-            game.changeScene('default');
-            game.overlays.add('GameUI');
             closePopupOverlay();
           },
         ),
