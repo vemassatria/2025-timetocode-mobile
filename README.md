@@ -16,6 +16,7 @@ Isi bagian `[]` sesuai dengan kebutuhan.
 - [10. NarartionBox](#10-narrationbox)
 - [11. ChoicesBox](#11-choicesbox)
 - [12. QuestionBox](#12-questionbox)
+- [13. QuestionBox](#13-dialogbox)
 
 ---
 
@@ -283,4 +284,22 @@ ChoicesBox(
 
 ```dart
 QuestionBox(questionText: "[PERTANYAAN]")
+```
+
+<br>
+
+## [13] DialogBox
+
+### Template:
+
+```dart
+DialogBox(
+  dialogText:
+      "[TEKS PERCAKAPAN]",
+  onTap: () {
+    [ACTION NEXT]
+  },
+  characterName: '[NAMA]',
+  nameBoxColor: [WARNA NAMA],
+  ),
 ```
