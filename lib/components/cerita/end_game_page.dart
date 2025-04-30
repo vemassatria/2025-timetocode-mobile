@@ -30,14 +30,14 @@ class EndGameScreen extends StatelessWidget {
               width: 300,
               child: Center(
                 child: Text(
-                  '3/5',
+                  '${(game as GameEngine).activeLevel}/${(game as GameEngine).levels.length}',
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
               ),
             ),
             const SizedBox(height: 32),
             Text(
-              'Level 3 Selesai',
+              'Level ${(game as GameEngine).activeLevel} Selesai',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             Container(

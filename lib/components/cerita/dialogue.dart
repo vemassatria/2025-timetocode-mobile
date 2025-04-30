@@ -4,9 +4,7 @@ import 'package:timetocode/themes/colors.dart';
 
 class DialogueBoxWidget extends StatefulWidget {
   final GameEngine game;
-  final VoidCallback? onNext;
-  const DialogueBoxWidget({Key? key, required this.game, this.onNext})
-    : super(key: key);
+  const DialogueBoxWidget({Key? key, required this.game}) : super(key: key);
 
   @override
   State<DialogueBoxWidget> createState() => _DialogueBoxWidgetState();
@@ -79,12 +77,9 @@ class _DialogueBoxWidgetState extends State<DialogueBoxWidget> {
         widget.game.activeCharacter(2);
       }
     } else {
-      widget.game.overlays.remove('DialogueBox');
       widget.game.removeDialog();
       if (widget.game.currentDialogs.nextType == 'soal') {
         widget.game.setCurrentQuestion(widget.game.currentDialogs.next);
-        widget.game.activeMode = "question";
-        widget.game.overlays.add('QuestionBox');
       } else {
         widget.game.overlays.add('EndGame');
       }
