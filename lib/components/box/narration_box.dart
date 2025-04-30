@@ -40,8 +40,6 @@ class NarrationBoxState extends State<NarrationBox> {
       });
       _startTypingEffect();
     } else {
-      // INI YANG PERLU DIPERBAIKI!
-      // Set isTextComplete = true ketika animasi selesai secara natural
       setState(() {
         isTextComplete = true;
       });

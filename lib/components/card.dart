@@ -146,7 +146,7 @@ class LevelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    Widget content = Stack(
       children: [
         Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
@@ -171,5 +171,18 @@ class LevelCard extends StatelessWidget {
         if (isLocked) _buildLockedOverlay(),
       ],
     );
+
+    if (isLocked) {
+      return GestureDetector(
+        onTap: () {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text("Level masih terkunci")));
+        },
+        child: content,
+      );
+    }
+
+    return content;
   }
 }

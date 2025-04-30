@@ -14,6 +14,10 @@ Isi bagian `[]` sesuai dengan kebutuhan.
 - [8. InfoPopup](#8-infopopup)
 - [9. CodeBox](#9-codebox)
 - [10. NarartionBox](#10-narrationbox)
+- [11. ChoicesBox](#11-choicesbox)
+- [12. QuestionBox](#12-questionbox)
+- [13. QuestionBox](#13-dialogbox)
+- [14. IllustrationBox](#14-illustrationbox)
 
 ---
 
@@ -168,11 +172,8 @@ showPopupOverlay(
  context,
  AnswerPopup(
    isCorrect: [TRUE/FALSE],
-   onPrimaryButtonPressed: () {
-     [ACTION_BUTTON_FILLED];
-   },
-   onSecondaryButtonPressed: () {
-     [ACTION_BUTTON_OUTLINE]; // (optional)
+   onPressed: () {
+     [ACTION];
    },
  )
 )
@@ -254,5 +255,62 @@ NarrationBox(
   onTap: () {
     [ACTION]
   },
-),
+)
+```
+
+<br>
+
+## [11] ChoicesBox
+
+### Template:
+
+```dart
+ChoicesBox(
+  correctAnswerIndex: [SALAH SATU DARI INDEX 0 - 3],
+  choices: ['[INDEX 0]', '[INDEX 1]', '[INDEX 2]', '[INDEX 3]'], // JUMLAHNYA BOLEH 2, 3, 4
+  onCorrect: () {
+    [ACTION BENAR]
+  },
+  onWrong: () {
+    [ACTION SALAH]
+  },
+)
+```
+
+<br>
+
+## [12] QuestionBox
+
+### Template:
+
+```dart
+QuestionBox(questionText: "[PERTANYAAN]")
+```
+
+<br>
+
+## [13] DialogBox
+
+### Template:
+
+```dart
+DialogBox(
+  dialogText:
+      "[TEKS PERCAKAPAN]",
+  onTap: () {
+    [ACTION NEXT]
+  },
+  characterName: '[NAMA]',
+  nameBoxColor: [WARNA NAMA],
+  ),
+```
+
+<br>
+
+## [14] IllustrationBox
+
+### Template:
+
+```dart
+IllustrationBox(image: AssetImage('[PATH KE ASSET ILUSTRASI]')),
 ```
