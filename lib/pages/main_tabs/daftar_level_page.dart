@@ -145,10 +145,10 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                 // Menggunakan offset langsung pada margin untuk menghindari conflict Matrix4
                 margin: EdgeInsets.only(
                   bottom: 16,
-                  left: completedLevel >= index ? 0 : 100, // Slide effect
+                  // left: completedLevel >= index ? 0 : 100, // Slide effect
                 ),
                 child: AnimatedOpacity(
-                  opacity: completedLevel >= index ? 1.0 : 0.0,
+                  opacity: completedLevel >= index ? 1.0 : 1.0,
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.easeInOut,
                   child: LevelCard(
