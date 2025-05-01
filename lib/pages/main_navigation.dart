@@ -2,6 +2,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:timetocode/pages/main_tabs/daftar_level_page.dart';
 import 'package:timetocode/pages/main_tabs/pengaturan.dart';
+import 'package:timetocode/SFX/music_service.dart';
 
 class MainNavigation extends StatefulWidget {
   final FlameGame game;
@@ -15,6 +16,7 @@ class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
+    MusicService.sfxButtonClick();
     setState(() => _selectedIndex = index);
   }
 

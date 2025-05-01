@@ -3,6 +3,7 @@ import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/SFX/music_service.dart';
 
 class AnswerPopup extends StatelessWidget {
   final bool isCorrect;
@@ -42,7 +43,10 @@ class AnswerPopup extends StatelessWidget {
   Widget _buildButton() {
     return CustomButton(
       label: "Lanjutkan",
-      onPressed: onPressed,
+      onPressed: () {
+              MusicService.sfxButtonClick();
+              onPressed();
+            },
       widthMode: ButtonWidthMode.fill,
       color: isCorrect ? ButtonColor.green : ButtonColor.red,
     );

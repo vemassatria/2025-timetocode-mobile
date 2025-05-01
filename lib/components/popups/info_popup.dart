@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/SFX/music_service.dart';
 
 class InfoPopup extends StatelessWidget {
   final String title;
@@ -34,7 +35,10 @@ class InfoPopup extends StatelessWidget {
   Widget _buildCloseButton() {
     return CustomButton(
       label: "Tutup",
-      onPressed: onClose,
+      onPressed: () {
+        MusicService.sfxNegativeClick();
+        onClose();
+      },
       widthMode: ButtonWidthMode.fill,
     );
   }

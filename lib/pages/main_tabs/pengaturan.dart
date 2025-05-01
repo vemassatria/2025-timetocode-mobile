@@ -78,6 +78,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
                   _efekSuara = value;
                   _updateEfekSuara(value);
                 });
+                MusicService.sfxButtonClick();
               },
             ),
             const SizedBox(height: 8),
@@ -90,6 +91,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
                   _musikLatar = value;
                   _updateMusikLatar(value);
                 });
+                MusicService.sfxButtonClick();
                 MusicService.updateMusikLatar(value);
               },
             ),
