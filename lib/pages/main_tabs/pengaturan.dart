@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/setting_item.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -58,17 +59,15 @@ class _PengaturanPageState extends State<PengaturanPage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('Pengaturan', style: AppTypography.heading5()),
-        elevation: 15,
-        shadowColor: Color(0x4D000000),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        toolbarHeight: 64.h,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
+        padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Pengaturan Aplikasi', style: AppTypography.small()),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             SettingItem(
               icon: Icon(Icons.volume_up),
               label: "Efek Suara",
@@ -78,10 +77,9 @@ class _PengaturanPageState extends State<PengaturanPage> {
                   _efekSuara = value;
                   _updateEfekSuara(value);
                 });
-                MusicService.sfxButtonClick();
               },
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             SettingItem(
               icon: Icon(Icons.music_note_sharp),
               label: "Musik Latar",
@@ -91,7 +89,6 @@ class _PengaturanPageState extends State<PengaturanPage> {
                   _musikLatar = value;
                   _updateMusikLatar(value);
                 });
-                MusicService.sfxButtonClick();
                 MusicService.updateMusikLatar(value);
               },
             ),

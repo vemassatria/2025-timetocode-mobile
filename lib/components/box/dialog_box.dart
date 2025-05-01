@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:timetocode/utils/screen_utils.dart';
 
 class DialogBox extends StatefulWidget {
   final GameEngine game;
@@ -157,7 +157,7 @@ class _DialogBoxState extends State<DialogBox> {
             onTap: _handleTap,
             child: Container(
               padding: const EdgeInsets.fromLTRB(16, 36, 16, 16),
-              width: ScreenUtils.screenWidth(context),
+              width: 1.sw,
               height: 306,
               decoration: BoxDecoration(
                 color: AppColors.backgroundTransparent,

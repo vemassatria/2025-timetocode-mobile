@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
-import 'package:timetocode/utils/screen_utils.dart';
 
 class IllustrationBox extends StatelessWidget {
   final ImageProvider image;
@@ -10,7 +10,7 @@ class IllustrationBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 328 / 360 * ScreenUtils.screenWidth(context),
+      width: 328.w,
       height: 325,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(

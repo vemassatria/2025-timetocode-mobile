@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/widgets/code_text.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/utils/screen_utils.dart';
@@ -10,10 +11,11 @@ class CodeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
     final ScrollController scrollController = ScrollController();
 
     return Container(
-      width: 328 / 360 * ScreenUtils.screenWidth(context),
+      width: 328.w,
       padding: const EdgeInsets.fromLTRB(32, 32, 32, 16),
       decoration: BoxDecoration(
         color: AppColors.surfaceDark,

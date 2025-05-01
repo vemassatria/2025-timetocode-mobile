@@ -2,6 +2,7 @@
   "levels": [
     {
       "level": 1,
+      "description": "[Deskripsi Sementara]",
       "title": "Tipe Data, Variabel, dan Operator",
       "background": "cafe-raka",
       "character1_name": "Adrien",
@@ -477,6 +478,7 @@
     },
     {
       "level": 2,
+      "description": "[Deskripsi Sementara]",
       "title": "Kondisi dalam Pemrograman",
       "background": "home",
       "character1_name": "Adrien",
@@ -941,8 +943,9 @@
     },
     {
       "level": 6,
+      "description": "[Deskripsi Sementara]",
       "title": "Penggolongan Variabel",
-      "background": "cafe-raka", 
+      "background": "cafe-raka",
       "character1_name": "Adrien",
       "character1_reaction": ["mc-cafe", "mc-cafe-sad", "mc-cafe-true"],
       "character2_name": "Jennie",

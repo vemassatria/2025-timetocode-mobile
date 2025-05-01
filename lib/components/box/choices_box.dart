@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/answer_popup.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
+import 'package:timetocode/utils/screen_utils.dart';
 
 class ChoicesBox extends StatelessWidget {
   final int correctAnswerIndex;
@@ -49,7 +51,10 @@ class ChoicesBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     return Container(
+      width: 1.sw,
       height: 306,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
