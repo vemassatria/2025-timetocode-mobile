@@ -63,7 +63,6 @@ class EndGameScreen extends StatelessWidget {
               ),
               child: TextButton.icon(
                 onPressed: () {
-                  (game as GameEngine).changeScene('lab');
                   rangkumanDialog(context);
                 },
                 icon: const Icon(Icons.chrome_reader_mode, color: Colors.white),

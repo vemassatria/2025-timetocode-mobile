@@ -124,6 +124,7 @@ class _DialogBoxState extends State<DialogBox> {
       if (dialogs.nextType == 'soal') {
         widget.game.setCurrentQuestion(dialogs.next);
       } else {
+        widget.game.overlays.remove('Story');
         widget.game.overlays.add('EndGame');
       }
     }
