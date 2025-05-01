@@ -1,39 +1,23 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/components/card.dart';
+import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/themes/colors.dart';
 
 class DaftarLevelPage extends StatefulWidget {
   final FlameGame game;
-  const DaftarLevelPage({Key? key, required this.game}) : super(key: key);
+  const DaftarLevelPage({super.key, required this.game});
 
   @override
   State<DaftarLevelPage> createState() => _DaftarLevelPageState();
 }
 
 class _DaftarLevelPageState extends State<DaftarLevelPage> {
-  int totalLevel = 6;
-  int completedLevel = 1;
+  late SharedPreferences _prefs;
   final ScrollController _scrollController = ScrollController();
-
-  // Data level
-  final List<Map<String, dynamic>> levelData = [
-    {
-      'title': 'Level 1 - Pengenalan Pemrograman',
-      'status': CardStatus.completed,
-      'visible': true, // Default visible untuk item pertama
-    },
-    {
-      'title': 'Level 2 - Variabel dan Tipe Data',
-      'status': CardStatus.unlocked,
-      'visible': false,
-    },
-    {
-      'title': 'Level 3 - Percabangan',
-      'status': CardStatus.locked,
-      'visible': false,
-    },
-  ];
+  late int completedLevel;
+  late int totalLevel;
 
   // Keys untuk setiap card agar bisa tracking posisi viewport
   late List<GlobalKey> _cardKeys;
@@ -41,60 +25,70 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
   @override
   void initState() {
     super.initState();
-    _cardKeys = List<GlobalKey>.generate(levelData.length, (_) => GlobalKey());
-
-    // Setup listener untuk scroll events
-    _scrollController.addListener(_checkVisibility);
-
-    // Jalankan sekali di awal untuk memastikan item awal terlihat
-    WidgetsBinding.instance.addPostFrameCallback((_) => _checkVisibility());
+    _loadLevelData();
   }
 
-  @override
-  void dispose() {
-    _scrollController.removeListener(_checkVisibility);
-    _scrollController.dispose();
-    super.dispose();
-  }
+  Future<void> _loadLevelData() async {
+    _prefs = await SharedPreferences.getInstance();
 
-  void _checkVisibility() {
-    // Pastikan widget sudah di-build sebelum mengakses RenderBox
-    if (!mounted) return;
-
-    final RenderBox? renderBox = context.findRenderObject() as RenderBox?;
-    if (renderBox == null) return;
-
-    final viewportHeight = renderBox.size.height;
-    final scrollOffset = _scrollController.offset;
-
-    // Tandai item sebagai visible berdasarkan posisi scroll
-    for (int i = 0; i < _cardKeys.length; i++) {
-      final BuildContext? cardContext = _cardKeys[i].currentContext;
-      if (cardContext == null) continue;
-
-      final RenderBox? cardBox = cardContext.findRenderObject() as RenderBox?;
-      if (cardBox == null) continue;
-
-      final cardPosition = cardBox.localToGlobal(
-        Offset.zero,
-        ancestor: renderBox,
-      );
-
-      // Posisi relatif terhadap viewport
-      final cardTop = cardPosition.dy - scrollOffset;
-      final cardBottom = cardTop + cardBox.size.height;
-
-      // Card visible jika sebagian dalam viewport
-      final isVisible = (cardTop < viewportHeight && cardBottom > 0);
-
-      // Update state jika status visibility berubah
-      if (isVisible != levelData[i]['visible']) {
-        setState(() {
-          levelData[i]['visible'] = isVisible;
-        });
-      }
+    // Set default if null
+    if (_prefs.getInt('completedLevel') == null) {
+      await _prefs.setInt('completedLevel', 0);
     }
+
+    completedLevel = _prefs.getInt('completedLevel')!;
+    totalLevel = (widget.game as GameEngine).levels.length;
+    _cardKeys = List<GlobalKey>.generate(totalLevel, (_) => GlobalKey());
+
+    // Pastikan build ulang setelah data siap
+    setState(() {});
   }
+
+  // @override
+  // void dispose() {
+  //   _scrollController.removeListener(_checkVisibility);
+  //   _scrollController.dispose();
+  //   super.dispose();
+  // }
+
+  // void _checkVisibility() {
+  //   // Pastikan widget sudah di-build sebelum mengakses RenderBox
+  //   if (!mounted) return;
+
+  //   final RenderBox? renderBox = context.findRenderObject() as RenderBox?;
+  //   if (renderBox == null) return;
+
+  //   final viewportHeight = renderBox.size.height;
+  //   final scrollOffset = _scrollController.offset;
+
+  //   // Tandai item sebagai visible berdasarkan posisi scroll
+  //   for (int i = 0; i < _cardKeys.length; i++) {
+  //     final BuildContext? cardContext = _cardKeys[i].currentContext;
+  //     if (cardContext == null) continue;
+
+  //     final RenderBox? cardBox = cardContext.findRenderObject() as RenderBox?;
+  //     if (cardBox == null) continue;
+
+  //     final cardPosition = cardBox.localToGlobal(
+  //       Offset.zero,
+  //       ancestor: renderBox,
+  //     );
+
+  //     // Posisi relatif terhadap viewport
+  //     final cardTop = cardPosition.dy - scrollOffset;
+  //     final cardBottom = cardTop + cardBox.size.height;
+
+  //     // Card visible jika sebagian dalam viewport
+  //     final isVisible = (cardTop < viewportHeight && cardBottom > 0);
+
+  //     // Update state jika status visibility berubah
+  //     if (isVisible != levelData[i]['visible']) {
+  //       setState(() {
+  //         levelData[i]['visible'] = isVisible;
+  //       });
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -139,54 +133,46 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: NotificationListener<ScrollNotification>(
-            onNotification: (notification) {
-              // Trigger visibility check saat scroll
-              if (notification is ScrollUpdateNotification) {
-                _checkVisibility();
-              }
-              return true;
-            },
-            child: ListView.builder(
-              controller: _scrollController,
-              itemCount: levelData.length,
-              itemBuilder: (context, index) {
-                // Import matrix4_transform paket untuk menghindari konflik dengan Matrix4
-                return AnimatedContainer(
-                  key: _cardKeys[index],
+          child: ListView.builder(
+            controller: _scrollController,
+            itemCount: totalLevel,
+            itemBuilder: (context, index) {
+              // Import matrix4_transform paket untuk menghindari konflik dengan Matrix4
+              return AnimatedContainer(
+                key: _cardKeys[index],
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeOutCubic,
+                // Menggunakan offset langsung pada margin untuk menghindari conflict Matrix4
+                margin: EdgeInsets.only(
+                  bottom: 16,
+                  // left: completedLevel >= index ? 0 : 100, // Slide effect
+                ),
+                child: AnimatedOpacity(
+                  opacity: completedLevel >= index ? 1.0 : 1.0,
                   duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeOutCubic,
-                  // Menggunakan offset langsung pada margin untuk menghindari conflict Matrix4
-                  margin: EdgeInsets.only(
-                    bottom: 16,
-                    left: levelData[index]['visible'] ? 0 : 100, // Slide effect
-                  ),
-                  child: AnimatedOpacity(
-                    opacity: levelData[index]['visible'] ? 1.0 : 0.0,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeInOut,
-                    child: LevelCard(
-                      image: Image.asset('assets/images/TEMP.jpg'),
-                      title: levelData[index]['title'],
-                      status: levelData[index]['status'],
-                      onStartPressed: () {
-                        if (index == 0) {
-                        } else {
-                          debugPrint(
-                            "Start button pressed for level ${index + 1}",
-                          );
-                        }
-                      },
-                      onInfoPressed: () {
-                        debugPrint(
-                          "Info button pressed for level ${index + 1}",
-                        );
-                      },
+                  curve: Curves.easeInOut,
+                  child: LevelCard(
+                    image: Image.asset(
+                      'assets/background/${(widget.game as GameEngine).levels[index].background}.webp',
                     ),
+                    title: (widget.game as GameEngine).levels[index].title,
+                    status:
+                        completedLevel > index
+                            ? CardStatus.completed
+                            : (completedLevel == index
+                                ? CardStatus.unlocked
+                                : CardStatus.locked),
+
+                    onStartPressed: () {
+                      (widget.game as GameEngine).startLevel(index);
+                    },
+                    onInfoPressed: () {
+                      debugPrint("Info button pressed for level ${index + 1}");
+                    },
                   ),
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),

@@ -14,17 +14,12 @@ class DialogModel {
   });
 
   factory DialogModel.fromJson(Map<String, dynamic> json) {
-    if (json['dialogs'] == null || json['dialogs'] is! List) {
-      print('Error: Invalid or missing "dialogs" field in JSON.');
-    }
-
     return DialogModel(
       id: json['id'] as String? ?? '',
       dialogue:
-          (json['dialogs'] as List<dynamic>?)
-              ?.map((d) => TextDialogModel.fromJson(d as Map<String, dynamic>))
-              .toList() ??
-          [],
+          (json['text'] as List)
+              .map((d) => TextDialogModel.fromJson(d as Map<String, dynamic>))
+              .toList(),
       next: json['next'] as String? ?? '',
       nextType: json['nextType'] as String? ?? '',
     );

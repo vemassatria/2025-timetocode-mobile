@@ -1,6 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:timetocode/components/cerita/dialogue.dart';
+import 'package:timetocode/components/box/dialog_box.dart';
 import 'package:timetocode/components/cerita/intro.dart';
 import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/components/cerita/end_game_page.dart';
@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
           'GameUI': (_, game) => MainNavigation(game: game),
           'Story': (_, game) => StoryPage(game: game),
           'Intro': (_, game) => IntroBoxWidget(game: game),
-          'DialogueBox': (_, game) => DialogueBoxWidget(game: game),
+          'DialogueBox': (_, game) => DialogBox(game: game),
           'QuestionBox': (_, game) => QuestionBoxWidget(game: game),
-          'EndGame': (_, game) => EndGameScreen(game: gameEngine),
+          'EndGame': (_, game) => EndGameScreen(game: game),
         },
         initialActiveOverlays: const ['GameUI'],
       ),

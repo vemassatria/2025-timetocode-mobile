@@ -14,19 +14,11 @@ class QuestionModel {
   factory QuestionModel.fromJson(Map<String, dynamic> json) {
     return QuestionModel(
       id: json['id'] as String? ?? '',
-      question: json['question'] as String? ?? '',
+      question: json['text'] as String? ?? '',
       choices:
           (json['choices'] as List)
               .map((c) => ChoicesModel.fromJson(c as Map<String, dynamic>))
               .toList(),
     );
-  }
-
-  List<String> getChoices() {
-    return choices.map((choice) => choice.text).toList();
-  }
-
-  String getCorrectAnswer() {
-    return choices.firstWhere((choice) => choice.isCorrect == true).text;
   }
 }

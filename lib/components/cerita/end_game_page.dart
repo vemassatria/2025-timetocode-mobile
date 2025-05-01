@@ -1,5 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/games/game_engine.dart';
 
@@ -7,11 +8,20 @@ class EndGameScreen extends StatelessWidget {
   final FlameGame game;
   const EndGameScreen({super.key, required this.game});
 
+  Future<void> _saveCompletedLevel() async {
+    final prefs = await SharedPreferences.getInstance();
+    int completedLevel = (game as GameEngine).activeLevel + 1;
+    await prefs.setInt('completedLevel', completedLevel);
+  }
+
   @override
   Widget build(BuildContext context) {
     int correctAnswer = (game as GameEngine).correctAnswer;
     int wrongAnswer = (game as GameEngine).wrongAnswer;
     int totalAnswer = correctAnswer + wrongAnswer;
+    int totalSteps = (game as GameEngine).levels.length;
+    int completedLevel = (game as GameEngine).activeLevel + 1;
+    _saveCompletedLevel();
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Center(
@@ -21,8 +31,8 @@ class EndGameScreen extends StatelessWidget {
           children: [
             CircularStepProgressIndicator(
               circularDirection: CircularDirection.counterclockwise,
-              totalSteps: 5,
-              currentStep: 3,
+              totalSteps: totalSteps,
+              currentStep: completedLevel,
               stepSize: 20,
               selectedColor: const Color.fromRGBO(0, 200, 83, 1),
               unselectedColor: const Color.fromRGBO(255, 255, 255, 0.498),
@@ -30,14 +40,14 @@ class EndGameScreen extends StatelessWidget {
               width: 300,
               child: Center(
                 child: Text(
-                  '${(game as GameEngine).activeLevel}/${(game as GameEngine).levels.length}',
+                  '${(game as GameEngine).activeLevel + 1}/${(game as GameEngine).levels.length}',
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
               ),
             ),
             const SizedBox(height: 32),
             Text(
-              'Level ${(game as GameEngine).activeLevel} Selesai',
+              'Level ${(game as GameEngine).activeLevel + 1} Selesai',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             Container(
@@ -53,7 +63,6 @@ class EndGameScreen extends StatelessWidget {
               ),
               child: TextButton.icon(
                 onPressed: () {
-                  (game as GameEngine).changeScene('lab');
                   rangkumanDialog(context);
                 },
                 icon: const Icon(Icons.chrome_reader_mode, color: Colors.white),

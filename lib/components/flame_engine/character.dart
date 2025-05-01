@@ -58,9 +58,8 @@ class StoryCharactersComponent extends Component {
   }
 
   //menghitamkan karakter
-  Future<void> activeCharacter(int indexCharacter) async {
-    final secondCharacter = indexCharacter == 1 ? person2 : person1;
-    enhancedCharacter(indexCharacter);
+  Future<void> negroCharacter(int indexCharacter) async {
+    final secondCharacter = indexCharacter == 1 ? person1 : person2;
     secondCharacter.paint =
         Paint()
           ..colorFilter = ColorFilter.mode(
@@ -70,21 +69,21 @@ class StoryCharactersComponent extends Component {
   }
 
   //membesarkan karakter
-  Future<void> enhancedCharacter(int indexCharacter) async {
+  Future<void> enhancedSizeCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
     final height = _game.size.y * 0.825;
     final width = target.sprite!.srcSize.x / target.sprite!.srcSize.y * height;
     final position =
         indexCharacter == 1
-            ? Vector2(_game.size.x * 1.15, _game.size.y * 0.95)
-            : Vector2(_game.size.x * -0.15, _game.size.y * 0.95);
+            ? Vector2(_game.size.x * 1.05, _game.size.y * 0.95)
+            : Vector2(_game.size.x * -0.05, _game.size.y * 0.95);
     target
       ..size = Vector2(width, height)
       ..position = position;
   }
 
   //fungsinya ini untuk mengecilkan karakter ke posisi semula
-  Future<void> normalMCCharacter(int indexCharacter) async {
+  Future<void> normalSizeCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
     final height = _game.size.y * 0.7;
     final width = target.sprite!.srcSize.x / target.sprite!.srcSize.y * height;
@@ -98,18 +97,8 @@ class StoryCharactersComponent extends Component {
   }
 
   //fungsinya ini untuk menormalkan warna karakter
-  Future<void> normalSecondCharacter(int indexCharacter) async {
+  Future<void> normalColorCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
     target.paint = Paint();
-  }
-
-  Future<void> normalCharacters(int MCIndex) async {
-    if (MCIndex == 1) {
-      normalMCCharacter(1);
-      normalSecondCharacter(2);
-    } else {
-      normalMCCharacter(2);
-      normalSecondCharacter(1);
-    }
   }
 }

@@ -136,23 +136,19 @@ class GameEngine extends FlameGame {
     await storyCharacters!.changeCharacter(indexCharacter, characterNewPath);
   }
 
-  void activeCharacter(int indexCharacter) async {
-    await storyCharacters!.activeCharacter(indexCharacter);
+  void blackCharacter(int indexCharacter) async {
+    await storyCharacters!.negroCharacter(indexCharacter);
   }
 
-  void enchancedCharacter(int indexCharacter) async {
-    await storyCharacters!.enhancedCharacter(indexCharacter);
+  void enhancedSizeCharacter(int indexCharacter) async {
+    await storyCharacters!.enhancedSizeCharacter(indexCharacter);
   }
 
-  void normalMCCharacter(int indexCharacter) async {
-    await storyCharacters!.normalMCCharacter(indexCharacter);
+  void normalSizeCharacter(int indexCharacter) async {
+    await storyCharacters!.normalSizeCharacter(indexCharacter);
   }
 
-  void normalSecondCharacter(int indexCharacter) async {
-    await storyCharacters!.normalSecondCharacter(indexCharacter);
-  }
-
-  void normalCharacters(int indexCharacter) async {
-    await storyCharacters!.normalCharacters(indexCharacter);
+  void normalColorCharacter(int indexCharacter) async {
+    await storyCharacters!.normalColorCharacter(indexCharacter);
   }
 }
