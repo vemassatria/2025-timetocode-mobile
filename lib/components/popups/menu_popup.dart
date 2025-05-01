@@ -5,6 +5,7 @@ import 'package:timetocode/components/popups/confirm_popup.dart';
 import 'package:timetocode/components/popups/setting_popup.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
+import 'package:timetocode/SFX/music_service.dart';
 
 class MenuPopup extends StatelessWidget {
   final VoidCallback onRestart;
@@ -34,6 +35,7 @@ class MenuPopup extends StatelessWidget {
         CustomButton(
           label: "Lanjutkan",
           onPressed: () {
+            MusicService.sfxNegativeClick();
             onClose();
           },
           widthMode: ButtonWidthMode.fill,
@@ -42,6 +44,7 @@ class MenuPopup extends StatelessWidget {
         CustomButton(
           label: "Mulai Ulang",
           onPressed: () {
+            MusicService.sfxSelectClick();
             showPopupOverlay(
               context,
               ConfirmPopup(
@@ -49,8 +52,12 @@ class MenuPopup extends StatelessWidget {
                 description:
                     "Progress hilang dan permainan dimulai dari awal sekarang.",
                 confirmLabel: "Mulai Ulang",
-                onPrimaryButtonPressed: onRestart,
+                onPrimaryButtonPressed: () {
+                  MusicService.sfxButtonClick();
+                  onRestart();
+                },
                 onGoBack: () {
+                  MusicService.sfxNegativeClick();
                   onGoBack();
                 },
               ),
@@ -62,10 +69,12 @@ class MenuPopup extends StatelessWidget {
         CustomButton(
           label: "Pengaturan",
           onPressed: () {
+            MusicService.sfxSelectClick();
             showPopupOverlay(
               context,
               SettingPopup(
                 onGoBack: () {
+                  MusicService.sfxNegativeClick();
                   onGoBack();
                 },
               ),
@@ -77,6 +86,7 @@ class MenuPopup extends StatelessWidget {
         CustomButton(
           label: "Keluar",
           onPressed: () {
+            MusicService.sfxSelectClick();
             showPopupOverlay(
               context,
               ConfirmPopup(
@@ -84,8 +94,12 @@ class MenuPopup extends StatelessWidget {
                 description:
                     "Progress akan hilang dan level diulang dari awal saat dimainkan kembali.",
                 confirmLabel: "Tetap Keluar",
-                onPrimaryButtonPressed: onExit,
+                onPrimaryButtonPressed: () {
+                  MusicService.sfxButtonClick();
+                  onExit();
+                },
                 onGoBack: () {
+                  MusicService.sfxNegativeClick();
                   onGoBack();
                 },
               ),

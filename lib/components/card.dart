@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/SFX/music_service.dart';
 
 enum CardStatus { unlocked, locked, completed }
 
@@ -93,7 +94,10 @@ class LevelCard extends StatelessWidget {
         Expanded(
           child: CustomButton(
             label: label,
-            onPressed: onStartPressed,
+            onPressed: () {
+              MusicService.sfxButtonClick();
+              onStartPressed();
+            },
             type: ButtonType.filled,
             color: ButtonColor.blue,
             isDisabled: isLocked,
@@ -102,7 +106,10 @@ class LevelCard extends StatelessWidget {
         const SizedBox(width: 8),
         CustomButton(
           icon: const Icon(Icons.info_outline),
-          onPressed: onInfoPressed,
+          onPressed: () {
+              MusicService.sfxPopClick();
+              onInfoPressed();
+            },
           type: ButtonType.icon,
           color: ButtonColor.purple,
           label: '',

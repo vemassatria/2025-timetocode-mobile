@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/SFX/music_service.dart';
 
 class ConfirmPopup extends StatelessWidget {
   final String title;
@@ -42,7 +43,10 @@ class ConfirmPopup extends StatelessWidget {
         Expanded(
           child: CustomButton(
             label: confirmLabel,
-            onPressed: onPrimaryButtonPressed,
+            onPressed: () {
+              MusicService.sfxButtonClick();
+              onPrimaryButtonPressed();
+            },
             widthMode: ButtonWidthMode.fill,
           ),
         ),
@@ -50,7 +54,10 @@ class ConfirmPopup extends StatelessWidget {
         Expanded(
           child: CustomButton(
             label: "Batal",
-            onPressed: onGoBack,
+            onPressed: () {
+              MusicService.sfxNegativeClick();
+              onGoBack();
+            },
             widthMode: ButtonWidthMode.fill,
             type: ButtonType.outline,
             color: ButtonColor.none,
