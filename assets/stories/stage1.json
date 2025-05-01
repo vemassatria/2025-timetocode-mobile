@@ -1,6 +1,943 @@
 {
   "levels": [
     {
+      "level": 1,
+      "start": "preDialog",
+      "typeStart": "preDialog",
+      "preDialog": {
+        "id": "preDialog",
+        "text": "Adrien duduk di teras kosan terlihat kebingungan membolak-balik buku diktatnya. Mas Tino yang kebetulan lewat melihat adik tingkatnya itu tampak kesulitan, lalu menghampiri.",
+        "next": "intro",
+        "nextType": "dialog"
+      },
+      "dialogs": [
+        {
+          "id": "intro",
+          "text": [
+            {
+              "line": "Mas kuliah di informatika tuh berat banget. Materi langsung susah-susah, apalagi konsep pemrograman",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Iya aku dulu juga gitu. Tapi kamu bakal paham kok, asal konsisten belajar. Ngomong-ngomong dosen konsep pemrogaman kamu Pak Rongga bukan?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Iya bener banget! Kok mas tau?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Haha ya tau lah. Pak Rongga tuh legend di mata kuliah itu. Santai aja, beliau emang tegas tapi ngajarnya jelas kok. Oiya kalau pelajaran pertama harusnya tentang \"variabel\" dan \"operator\" ga sih?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Iya bener mas! Tapi aku masih bingung, \"variabel\" dan \"operator\" itu apaan sih?",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Nah sebelum masuk kesitu lebih baik aku jelasin dulu soal tipe data biar kamu makin paham. Pertama ada tipe data int, biasanya dipake buat nyimpen angka bulat. Kayak umur, jumlah barang, tahun, pokoknya angka yang gak ada komanya.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ooh jadi kayak 18, 2025, 100 gitu ya kak?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Bener. Kedua ada float, itu buat angka yang ada komanya. Kayak berat badan 55.5 kg, tinggi badan 160.3 cm, atau nilai ujian 89.75. Pokoknya yang ada pecahannya gitu.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Berarti kalo yang ada koma-koma gitu lebih akurat pake float ya mas?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Yap! Akurat buat angka-angka yang gak bulat. Ketiga ada char buat nyimpen satu huruf aja. Misal huruf awal nama kamu, kayak 'A' buat Adrien.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Kalau nama lengkap?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Kalau nama lengkap, kayak \"Adrien Yudistion\", itu kamu pake string. String itu buat nyimpen deretan karakter alias tulisan panjang.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Okee aku kebayang!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Terakhir, bool alias boolean. Itu buat nyimpen dua pilihan aja: true atau false. Misal status \"Lulus\" atau \"Belum Lulus\", \"Sudah Login\" atau \"Belum Login\".",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Wuihh, ternyata tipe data banyak jenisnya ya dan ada gunanya masing-masing.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Yoi! Karena kalo kamu salah pilih tipe data, program bisa error atau hasilnya gak sesuai. Makanya penting ngerti dari sekarang! Coba deh buat tes pemahaman, kamu jawab soal ini ya!",
+              "reaction_index": 2,
+              "speaker": 2
+            }
+          ],
+          "next": "soal1_1",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah1_1",
+          "text": [
+            {
+              "line": "Waduh jawaban untuk tipe data kamu belum tepat.",
+              "reaction_index": 1,
+              "speaker": 2
+            },
+            {
+              "line": "Yah salah ya..",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Hmm sepertinya ada beberapa hal yang perlu kita perhatikan di sini. Ayo kita bahas satu per satu ya?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oke Adrien mari kita bahas soal tipe data ini satu per satu. Pertama untuk Nama biasanya pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat. Kedua untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Usia itu kan angka bulat, jadi mungkin tipe data float?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Hmm float biasanya digunakan untuk angka yang ada desimalnya, seperti berat badan atau pengukuran yang presisi. Kalau Usia hanya angka bulat jadi tipe data yang tepat adalah tipe data yang bisa menyimpan angka bulat saja.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oh int ya?!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Betul! int itu untuk angka bulat. Lanjut ketiga sekarang ke Berat badan. Berat badan itu biasanya ada angka desimalnya kan? Jadi kita butuh tipe data yang bisa menyimpan angka dengan desimal. Apa yang kamu pikirkan?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Ah kalau gitu float ya? Karena ada desimalnya.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Betul sekali! float memang untuk angka desimal. Keempat untuk Nilai ujian, ini kan biasanya berupa angka bulat, ya? Jadi apa yang tepat untuk tipe data ini?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Kalau begitu tipe data yang tepat untuk Nilai ujian adalah int.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Betul! Nilai ujian itu angka bulat jadi int memang cocok. Terakhir, Status lulus. Ini cuma punya dua kemungkinan, lulus atau tidak. Tipe data apa yang bisa mewakili dua pilihan seperti itu?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Kayaknya itu bool ya? Karena hanya ada dua nilai: benar atau salah.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Betul! bool memang tepat untuk dua kemungkinan seperti itu. Nah, sekarang kamu coba pikirkan lagi, apakah semua pilihanmu sudah pas?",
+              "reaction_index": 2,
+              "speaker": 2
+            }
+          ],
+          "next": "soal1_1",
+          "nextType": "soal"
+        },
+        {
+          "id": "materi1_2",
+          "text": [
+            {
+              "line": "Wah jawabannya bener! Kamu udah mulai paham banget soal tipe data. Kacau, cepet banget pahamnya! Jadi, kalau ada program yang butuh nyimpen angka, tinggal pilih aja tipe datanya.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Wih mantep dah, udah siap banget buat nerima soal dari Pak Rongga nih.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Nah sekarang kita lanjut ke variabel! Kalau kamu udah paham tipe data, variabel itu sebenarnya gampang banget. Variabel adalah tempat buat nyimpen data. Jadi bayangin aja kamu punya wadah atau kotak yang bisa berubah isinya.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oh jadi variabel itu kayak kotak buat nyimpen data gitu? Tapi apa bedanya sama tipe data?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Iya bener banget! Tipe data itu ngejelasin jenis datanya, misalnya angka, teks, atau logika. Nah variabel itu nama dari kotaknya. Jadi misalnya, kamu pengen nyimpen umur seseorang, kamu bikin variabel namanya umur, dan tipe datanya int karena umur itu angka bulat.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Ohhhh pahammm!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Ah paham-paham mulu, coba kamu jawab soal ini kalo emang paham.",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next": "soal1_2",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah1_2",
+          "text": [
+            {
+              "line": "Aduh aku kena virus kesalahan berpikir nih",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Wahahahaha, gapapa kita kerjain bareng-bareng",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Aduhh kacauu sih",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Aku jelasin ulang yaa, jadi, int itu biasanya dipakai buat angka bulat, kayak 10, 25, atau 100. Tapi kalau berat badan itu ada desimalnya, kayak 55.5, kira-kira cocok nggak kalau pakai tipe data buat angka bulat?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Hmm... kurang cocok sih",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Yap. Karena 55.5 itu ada koma-nya, harus cari tipe data yang bisa nampung angka pecahan.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Kalau bool itu gimana ya, aku lupa peraturannya",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Bool itu tipe data yang isinya cuma dua kemungkinan: true atau false. Biasanya dipakai buat nyimpen status, bukan angka. Nah berat badan itu berupa angka, kan? Bukan status lulus atau tidak.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ohh aku paham sekarang",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Nah coba cek lagi pilihan lain yang lebih cocok.",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next": "soal1_2",
+          "nextType": "soal"
+        },
+        {
+          "id": "materi1_3",
+          "text": [
+            {
+              "line": "Beh Adrien mulai jago nih, takut banget kena bantai konsep pemrogaman deh",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Kalau berat badan berarti pake float ya mas, kayak float beratBadan = 55.5; gitu kan?",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Wah bener banget, kamu udah mulai paham nih! Nah sekarang bayangin ya, kamu udah punya data berat badan itu. Terus kamu mau ngolah datanya, misal mau nambahin 5 kilo, atau mau bagi dua buat simulasi diet. Buat ngelakuin perubahan kayak gitu, kamu butuh yang namanya operator.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ohhh... operator tuh kayak alat buat ngubah data gitu ya mas?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Operator itu alat buat ngelakuin operasi kayak tambah, kurang, kali, dan bagi. Misal, mau nambahin umur 5 tahun, tinggal pakai \"+\": int hasil = umur + 5;. Kalau ngurangin pakai \"-\", perkalian pakai \"*\", dan pembagian pakai \"/\". Operator ini penting banget buat semua operasi dasar di program.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oalaaah, jadi kayak alat buat ngatur angka-angka gitu ya, Kak! Pantesan semua contoh kodingan pasti ada operatornya.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Iya, bener banget. Semua operasi matematika dasar pake operator itu. Dan, operator ini penting banget, karena tanpa operator, program kamu gak bisa ngelakuin perhitungan atau manipulasi data dengan bener. Oh ya, buat ngambil input dari user atau nampilin hasil ke layar, kamu bisa pake operasi input output. Misalnya, pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus, kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\"",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oh, jadi operator ini penting banget buat ngelakuin berbagai perhitungan, dan input output itu fungsinya buat ngambil input sama nampilin outputnya ke layar ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Iya banget! Operator itu bikin program bisa fleksibel dan ngelakuin tugas yang kamu inginkan. Selain itu, ada operator \"!=\" yang artinya tidak sama dengan. Terus, ada juga operator logika kayak \"&&\" yang artinya \"AND\", dan \"||\" yang artinya \"OR\" itu buat ngecek kondisi lebih dari satu. Paham kan?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Paham! aku mulai ngerti. Variabel buat nyimpen data, operator buat ngitung, bandingin, dan ngelakuin logika, terus input output buat ngambil input dan nampilin output.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Nah, buat uji pemahaman kamu, aku kasih soal sederhana, kamu coba jawab deh!",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next": "soal1_3",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah1_3",
+          "text": [
+            {
+              "line": "Yaelah jawabanku salah",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Oke, sebentar yaa. Jadi gini, di soal tadi ada operasi a += 3 * 2. Kita harus inget kalau di C itu ada aturan prioritas operator. Perkalian (*) dikerjain dulu sebelum penjumlahan (+). Jadi bukan langsung dijumlah dari kiri ke kanan ya. Setelah hasil perkaliannya ketemu, baru deh ditambah ke a yang awalnya 5. Ini penting supaya nggak salah hitung. Coba kamu cek lagi deh pelan-pelan, mana yang dikerjain dulu.",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next": "soal1_3",
+          "nextType": "soal"
+        },
+        {
+          "id": "benar1_last",
+          "text": [
+            {
+              "line": "Nahh, iya itu udah benar! Gampang kan? Lo mulai paham sekarang, ya? Nih aku kasih rangkuman tentang tipe data, variabel dan operator. kamu bisa baca rangkumannya untuk memerdalam pengetahuan kamu soal ini.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Siap mas Tin! Makasih, Mas!",
+              "reaction_index": 2,
+              "speaker": 1
+            }
+          ],
+          "next": null
+        }
+      ],
+      "background": "kosan",
+      "character1_name": "Adrien",
+      "character1_reaction": ["mc-kosan", "mc-kosan-sad", "mc-kosan-true"],
+      "character2_name": "Mas Tino",
+      "character2_reaction": ["tino", "tino-angry", "tino-true"],
+      "questions": [
+        {
+          "id": "soal1_1",
+          "text": "Terdapat data seorang mahasiswa. Nama mahasiswa itu adalah \"Andi\", usianya 20 tahun, berat badannya 70.5 kg, dan dia sudah lulus ujian dengan nilai 85. Pilih tipe data yang tepat untuk masing-masing data tersebut:\n* Nama: \"Andi\"\n* Usia: 20\n* Berat badan: 70.5\n* Nilai ujian: 85\n* Status lulus: true",
+          "choices": [
+            {
+              "text": "Nama: string, Usia: float, Berat badan: int, Nilai ujian: bool, Status lulus: char",
+              "next": "salah1_1",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "Nama: string, Usia: int, Berat badan: float, Nilai ujian: int, Status lulus: bool",
+              "next": "materi1_2",
+              "nextType": "dialog",
+              "isCorrect": true
+            },
+            {
+              "text": "Nama: char, Usia: bool, Berat badan: string, Nilai ujian: float, Status lulus: int",
+              "next": "salah1_1",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "Nama: int, Usia: float, Berat badan: string, Nilai ujian: bool, Status lulus: float",
+              "next": "salah1_1",
+              "nextType": "dialog",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal1_2",
+          "text": "Kalau kamu mau buat variabel beratBadan untuk nyimpen berat 55.5 kilogram, deklarasi yang BENAR adalah...",
+          "choices": [
+            {
+              "text": "int berat.Badan = 55.5;",
+              "next": "salah1_2",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "float beratBadan = 55.5;",
+              "next": "materi1_3",
+              "nextType": "dialog",
+              "isCorrect": true
+            },
+            {
+              "text": "string beratBadan = 55.5;",
+              "next": "salah1_2",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "bool beratBadan = \"true\";",
+              "next": "salah1_2",
+              "nextType": "dialog",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal1_3",
+          "text": "#include <stdio.h>\nint main() {\n    int a = 5;\n    a += 3 * 2;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
+          "choices": [
+            {
+              "text": "16",
+              "next": "salah1_3",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "11",
+              "next": "benar1_last",
+              "nextType": "dialog",
+              "isCorrect": true
+            },
+            {
+              "text": "13",
+              "next": "salah1_3",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "10",
+              "next": "salah1_3",
+              "nextType": "dialog",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "rangkuman": [
+        "Tipe Data: Tipe data menentukan jenis nilai yang bisa disimpan dalam variabel, seperti int untuk angka bulat, float untuk angka pecahan, dan char untuk karakter.",
+        "Variabel: Variabel adalah tempat menyimpan data yang nilainya bisa berubah selama program berjalan. Contohnya, int umur = 21; menyimpan nilai umur.",
+        "Operator: Operator digunakan untuk melakukan operasi pada data, seperti:\nAritmatika: +, -, *, / untuk perhitungan.\nPembanding: ==, !=, >, < untuk membandingkan nilai.\nLogika: && (AND), || (OR) untuk menggabungkan kondisi.\nPenugasan: = untuk memberi nilai, +=, -= untuk operasi dan penugasan bersamaan.",
+        "I/O (Input/Output): Gunakan scanf untuk input data dari pengguna dan printf untuk menampilkan hasil ke layar."
+      ]
+    },
+    {
+      "level": 2,
+      "start": "preDialog",
+      "typeStart": "preDialog",
+      "preDialog": {
+        "id": "preDialog",
+        "text": "Setelah pulang kuliah, aku masuk rumah dan langsung menuju ruang tamu. Di sana, aku lihat laptop kakakku terbuka, dan di layarnya ada materi yang judul highlightnya if, else if, switch yang asing banget buatku. Karena penasaran, akhirnya aku nanya ke kakak.",
+        "next": "intro",
+        "nextType": "dialog"
+      },
+      "dialogs": [
+        {
+          "id": "intro",
+          "text": [
+            {
+              "line": "Ini materi apaan kak?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Oh ini materiku waktu semester satu. eh btw harusnya kamu udah diajarin materi ini kan?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Hah apaan? aku belum diajarin. eh tapi gapapa ajarin aku sekarang aja kak buat persiapan nanti menyambut kesenangan kuliah informatika",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "jangan sarkas gitu dong, okee jadi ini tuh if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ooh, trus kalau else if gimana?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Nah, satu lagi nih, kalau pilihan kamu banyak banget, dan kondisinya mirip, kamu bisa pake switch",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ooh jadi gini, if untuk cek satu kondisi, else if untuk cek jika mempunyai lebih dari satu kondisi, dan switch untuk cek jika mempunyai pilihan banyak banget dan kondisinya mirip. bener ga kak?",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "BEHHHH KACAU! mantep tuh, eh nih coba kamu lihat, kalau ini masuk ke kondisi apa",
+              "reaction_index": 2,
+              "speaker": 2
+            }
+          ],
+          "next": "soal_1",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah_1",
+          "text": [
+            {
+              "line": "Hmm, jawaban kamu DEK DEK. makanya jangan banyak main hp mulu :p.",
+              "reaction_index": 1,
+              "speaker": 2
+            },
+            {
+              "line": "Oh iya",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Coba lagi ya, perhatikan baik-baik kodenya. Lihat kondisi dan output yang dihasilkan.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oke kak, aku coba jawab lagi deh.",
+              "reaction_index": 0,
+              "speaker": 1
+            }
+          ],
+          "next": "soal_1",
+          "nextType": "soal"
+        },
+        {
+          "id": "benar_last",
+          "text": [
+            {
+              "line": "Beh, pinter banget. kamu udah ngerti cara kerja if, else if, dan switch, jadi gampang nanti kalau kamu ngadepin materi kondisi dalam program.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Asik, semoga saat aku ketemu materi kondisi dalam konsep pemrogarman ga bakal bingung lagi ya. Makasih banyak, Kak!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Iya, siap! Nanti kamu bakal sering ketemu ini di soal-soal. Kalau ada yang bingung lagi, langsung tanya aja!",
+              "reaction_index": 2,
+              "speaker": 2
+            }
+          ],
+          "next": null
+        },
+        {
+          "id": "intro2",
+          "text": [
+            {
+              "line": "Ini materi apaan kak?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Oh ini materi konsep pemrogamanku waktu semester satu pas diajarin sama Pak Rongga. eh btw harusnya kamu udah diajarin materi ini kan?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Lah sama kak, aku juga konsep perograman yang ngajar juga pak rusdi, tapi aku belum diajarin materi itu. eh tapi coba dong kak aajarin aku sekarang buat persiapan materi nanti.",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "jangan sarkas gitu dong, okee jadi ini tuh if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "okee jadi ini tuh materi kondisi yaitu if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan. coba kalau ini if atau bukan",
+              "reaction_index": 0,
+              "speaker": 1
+            }
+          ],
+          "next": "soal2_1",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah2_1",
+          "text": [
+            {
+              "line": "Hehe, aduh, salah lagi, Adrien! Tapi santai aja, ya. Kalau dipikir-pikir, soal tadi kan cuma minta cek satu kondisi: 'suhu lebih dari 30 derajat atau nggak'. Jadi sebenarnya, kita cukup pakai satu pengecekan aja tanpa harus pilih-pilih ke kemungkinan lain.",
+              "reaction_index": 1,
+              "speaker": 2
+            },
+            {
+              "line": "Ohh, jadi maksudnya nggak perlu ada opsi lain ya, cukup cek doang?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Yap, benar banget! Kalau kondisi itu terpenuhi, baru kita lakuin sesuatu. Kalau nggak, ya udah, program diem aja. Jadi intinya: kalau cuma mau ngecek satu hal, satu syarat, kita cukup pakai satu kondisi sederhana.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oooh, paham sekarang! Aku coba pikir lagi deh!",
+              "reaction_index": 0,
+              "speaker": 1
+            }
+          ],
+          "next": "soal2_1",
+          "nextType": "soal"
+        },
+        {
+          "id": "materi2_2",
+          "text": [
+            {
+              "line": "wih mantap bener tuh, ok sekarang kita lanjut ke materi else if",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "nah else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Misalnya, kamu lagi ngecek usia seseorang, apakah dia remaja, dewasa, atau lanjut usia. Kalau remaja, akan ada aksi tertentu, kalau dewasa, aksi yang berbeda, dan kalau lanjut usia, aksi yang lain lagi. contohnya kayak code ini sama sekalian deh kamu tebak outputnya",
+              "reaction_index": 0,
+              "speaker": 1
+            }
+          ],
+          "next": "soal2_2",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah2_2",
+          "text": [
+            {
+              "line": "Aduh Kak, aku salah lagi jawabnya...",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Gapapa Rin, yang penting ngerti kenapa salah ya! Nih aku bantu jelasin dikit.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Siap Kak!",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Di soal tadi, keliatan kan ada kombinasi tanda >=, <=, dan &&. Nah, && itu artinya dan, jadi dua syarat harus benar semua.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ooh berarti nggak cukup satu syarat aja ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Yap, bener! Jadi kalau mau masuk ke kondisi printf(\"Kamu dewasa\"), umur harus lebih dari atau sama dengan 18 dan kurang dari atau sama dengan 60. Dua-duanya harus terpenuhi.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Kalau cuma satu syarat doang yang bener, berarti lompat ke else ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Betul! Kalau dua-duanya nggak pas juga, dia baru masuk ke blok else. Makanya penting banget liat operator kayak &&, ||, dan tanda-tanda perbandingan >, <, >=, <= itu beneran dipahami.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Wah iya iya Kak! Aku kadang suka kelewat liat operatornya.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Hehehe santai, makin sering latihan makin peka kok. Yuk lanjut biar makin jago!",
+              "reaction_index": 2,
+              "speaker": 2
+            }
+          ],
+          "next": "soal2_2",
+          "nextType": "soal"
+        },
+        {
+          "id": "materi2_3",
+          "text": [
+            {
+              "line": "beh mantep, lanjut nih materi terakhir, switch",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "jadi switch digunakan untuk memilih aksi berdasarkan nilai yang ada. Misalnya, kamu punya pilihan menu di restoran, dan tiap pilihan punya nomor tertentu. Berdasarkan nomor yang dipilih, menu yang berbeda akan muncul. sekarang tebak nih output yang muncul apa",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next": "soal2_3",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah2_3",
+          "text": [
+            {
+              "line": "Eits, switch-case itu cocok buat banyak pilihan tetap, bukan buat kondisi yang fleksibel banget. Tadi jawabannya kayak masih salah kaprah nih.",
+              "reaction_index": 1,
+              "speaker": 2
+            },
+            {
+              "line": "Ooooh gitu! Aku kira switch itu kayak if-else, bisa buat cek suhu lebih besar atau lebih kecil.",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Nah itu dia bedanya, kalau mau cek kondisi fleksibel kayak lebih besar atau lebih kecil, itu baru pakai if. Kalau switch-case, harus nilai pastinya yang dibandingin. Misal, suhu == 30, suhu == 40, gitu.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Aaaah paham sekarang. Jadi switch tuh kayak ngecek daftar pilihan yang pasti-pasti aja ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Betul! Kalau yang sifatnya perbandingan atau kondisi kompleks, mending tetap pakai if-else.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Woke siap Kak, abis ini aku baca ulang deh biar makin mantap!",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Semangat terus ya! Sedikit lagi ilmunya makin nancep nih!",
+              "reaction_index": 2,
+              "speaker": 2
+            }
+          ],
+          "next": "soal2_3",
+          "nextType": "soal"
+        },
+        {
+          "id": "benar2_last",
+          "text": [
+            {
+              "line": "asik, pinter banget kamu. sekarang udah ngerti kan cara kerja if, else if, dan switch, jadi gampang nanti kalau kamu ngadepin materi kondisi dalam program.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Asik, semoga saat aku ketemu materi kondisi dalam konsep pemrogarman ga bakal bingung lagi ya. Makasih banyak, Kak!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Iya, siap! Nanti kamu bakal sering ketemu ini di soal-soal. Kalau ada yang bingung lagi, langsung tanya aja!",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Siap kak! Aku mau lanjut belajar materi selanjutnya, for while dan do while. Besok siang aku sama raka mau ke cafe buat diskusi materi for, while, dan do while, ngerjain tugas bareng juga",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Oke deh! Semangat terus ya konsep pemrogamannya",
+              "reaction_index": 2,
+              "speaker": 2
+            }
+          ],
+          "next": null
+        }
+      ],
+      "background": "home",
+      "character1_name": "Adrien",
+      "character1_reaction": ["mc-home", "mc-home-sad", "mc-home-true"],
+      "character2_name": "Kakak",
+      "character2_reaction": ["brother", "brother-angry", "brother-true"],
+      "questions": [
+        {
+          "id": "soal_1",
+          "text": "#include <stdio.h>\n\nint main() {\n    int x = 10;\n\n    if (x > 5)\n        printf(\"A\\n\");\n    else\n        printf(\"B\\n\");\n\n    return 0;\n}",
+          "choices": [
+            {
+              "text": "Kondisi if, output: B",
+              "next": "salah_1",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "Kondisi if-else, output: B",
+              "next": "salah_1",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "Kondisi if-else, output: A",
+              "next": "benar_last",
+              "nextType": "dialog",
+              "isCorrect": true
+            },
+            {
+              "text": "Kondisi switch, output: A",
+              "next": "salah_1",
+              "nextType": "dialog",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal2_1",
+          "text": "Misalnya kamu bikin program buat cek apakah suhu ruangan lebih dari 30°C. Kalau iya, tampilkan \"Ruangan Panas\". Kalau enggak, program gak perlu ngapa-ngapain. Kira-kira, struktur kondisi yang paling tepat buat program ini apa?",
+          "choices": [
+            {
+              "text": "if, karena cuma perlu ngecek satu kondisi aja.",
+              "next": "materi2_2",
+              "nextType": "dialog",
+              "isCorrect": true
+            },
+            {
+              "text": "else, karena cuma butuh dua kemungkinan.",
+              "next": "salah2_1",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "if dan else, karena ada dua kondisi yang harus dipilih.",
+              "next": "salah2_1",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "Tidak perlu kondisi, cukup tampilkan saja.",
+              "next": "salah2_1",
+              "nextType": "dialog",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal2_2",
+          "text": "int umur = 25;\nif (umur < 18) {\nprintf(\"Kamu masih remaja\");\n} else if (umur >= 18 && umur <= 60) {\n    printf(\"Kamu dewasa\");\n} else {\n    printf(\"Kamu lanjut usia\");\n}",
+          "choices": [
+            {
+              "text": "Kamu masih remaja",
+              "next": "salah2_2",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "Kamu dewasa",
+              "next": "materi2_3",
+              "nextType": "dialog",
+              "isCorrect": true
+            },
+            {
+              "text": "Kamu lanjut usia",
+              "next": "salah2_2",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "Tidak ada output",
+              "next": "salah2_2",
+              "nextType": "dialog",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal2_3",
+          "text": "int pilihanMenu = 2;\nswitch (pilihanMenu) {\n    case 1:\n        printf(\"Pilihan menu: Nasi Goreng\");\n        break;\n    case 2:\n        printf(\"Pilihan menu: Mie Ayam\");\n        break;\n    case 3:\n        printf(\"Pilihan menu: Soto\");\n        break;\n    default:\n        printf(\"Pilihan menu tidak valid\");\n}",
+          "choices": [
+            {
+              "text": "Pilihan menu: Nasi Goreng",
+              "next": "salah2_3",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "Pilihan menu: Mie Ayam",
+              "next": "benar2_last",
+              "nextType": "dialog",
+              "isCorrect": true
+            },
+            {
+              "text": "Pilihan menu: Soto",
+              "next": "salah2_3",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "Pilihan menu tidak valid",
+              "next": "salah2_3",
+              "nextType": "dialog",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "rangkuman": [
+        "if digunakan untuk memeriksa satu kondisi. Jika kondisi tersebut benar, maka aksi atau kode yang ada di dalam blok if akan dijalankan.",
+        "else if digunakan ketika ada lebih dari satu kondisi yang perlu diperiksa. Jika kondisi pertama salah, maka kondisi berikutnya akan dicek. Ini memungkinkan pengecekan beberapa kondisi dalam urutan yang terstruktur.",
+        "switch digunakan ketika ada banyak pilihan atau kondisi yang mirip. Dengan switch, kamu bisa memeriksa nilai dari suatu variabel terhadap beberapa kemungkinan nilai dan menjalankan aksi berdasarkan nilai yang cocok."
+      ]
+    },
+    {
       "level": 6,
       "start": "preDialog",
       "typeStart": "preDialog",
