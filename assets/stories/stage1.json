@@ -2,6 +2,12 @@
   "levels": [
     {
       "level": 1,
+      "title": "Tipe Data, Variabel, dan Operator",
+      "background": "cafe-raka",
+      "character1_name": "Adrien",
+      "character1_reaction": ["mc-kosan", "mc-kosan-sad", "mc-kosan-true"],
+      "character2_name": "Mas Tino",
+      "character2_reaction": ["tino", "tino-angry", "tino-true"],
       "start": "preDialog",
       "typeStart": "preDialog",
       "preDialog": {
@@ -370,11 +376,6 @@
           "next": null
         }
       ],
-      "background": "kosan",
-      "character1_name": "Adrien",
-      "character1_reaction": ["mc-kosan", "mc-kosan-sad", "mc-kosan-true"],
-      "character2_name": "Mas Tino",
-      "character2_reaction": ["tino", "tino-angry", "tino-true"],
       "questions": [
         {
           "id": "soal1_1",
@@ -476,6 +477,12 @@
     },
     {
       "level": 2,
+      "title": "Kondisi dalam Pemrograman",
+      "background": "home",
+      "character1_name": "Adrien",
+      "character1_reaction": ["mc-home", "mc-home-sad", "mc-home-true"],
+      "character2_name": "Kakak",
+      "character2_reaction": ["brother", "brother-angry", "brother-true"],
       "start": "preDialog",
       "typeStart": "preDialog",
       "preDialog": {
@@ -804,11 +811,6 @@
           "next": null
         }
       ],
-      "background": "home",
-      "character1_name": "Adrien",
-      "character1_reaction": ["mc-home", "mc-home-sad", "mc-home-true"],
-      "character2_name": "Kakak",
-      "character2_reaction": ["brother", "brother-angry", "brother-true"],
       "questions": [
         {
           "id": "soal_1",
@@ -939,6 +941,12 @@
     },
     {
       "level": 6,
+      "title": "Penggolongan Variabel",
+      "background": "cafe-raka", 
+      "character1_name": "Adrien",
+      "character1_reaction": ["mc-cafe", "mc-cafe-sad", "mc-cafe-true"],
+      "character2_name": "Jennie",
+      "character2_reaction": ["crush", "crush-angry", "crush-true"],
       "start": "preDialog",
       "typeStart": "preDialog",
       "preDialog": {
@@ -1246,11 +1254,6 @@
           "next": null
         }
       ],
-      "background": "cafe-raka", 
-      "character1_name": "Adrien",
-      "character1_reaction": ["mc-cafe", "mc-cafe-sad", "mc-cafe-true"],
-      "character2_name": "Jennie",
-      "character2_reaction": ["crush", "crush-angry", "crush-true"],
       "questions": [
         {
           "id": "soal6_1",

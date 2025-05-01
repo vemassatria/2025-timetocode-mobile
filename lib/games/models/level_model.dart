@@ -5,6 +5,7 @@ import 'dialog_model.dart';
 
 class LevelModel {
   final int level;
+  final String title;
   final String background;
   final String character1;
   final String character2;
@@ -18,6 +19,7 @@ class LevelModel {
   final String typeStart;
   LevelModel({
     required this.level,
+    required this.title,
     required this.background,
     required this.character1,
     required this.character2,
@@ -33,6 +35,7 @@ class LevelModel {
   factory LevelModel.fromJson(Map<String, dynamic> json) {
     return LevelModel(
       level: json['level'] as int,
+      title: json['title'] as String? ?? '',
       background: json['background'] as String? ?? '',
       character1: json['character1_name'] as String? ?? '',
       character2: json['character2_name'] as String? ?? '',
