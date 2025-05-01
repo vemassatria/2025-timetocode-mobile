@@ -17,7 +17,7 @@ class DialogModel {
     return DialogModel(
       id: json['id'] as String? ?? '',
       dialogue:
-          (json['dialogs'] as List)
+          (json['text'] as List)
               .map((d) => TextDialogModel.fromJson(d as Map<String, dynamic>))
               .toList(),
       next: json['next'] as String? ?? '',

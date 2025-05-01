@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/games/models/choices_model.dart';
 import 'package:timetocode/widgets/code_text.dart';
 import 'package:timetocode/components/button.dart';
 
@@ -13,21 +14,17 @@ class QuestionBoxWidget extends StatefulWidget {
 
 class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
   late String questionText;
-  late List<String> options;
-  late String correctAnswer;
+  late List<ChoicesModel> options;
 
   @override
   void initState() {
-    options = widget.game.currentQuestion.getChoices();
+    options = widget.game.currentQuestion.choices;
     questionText = widget.game.currentQuestion.question;
-    correctAnswer = widget.game.currentQuestion.getCorrectAnswer();
     super.initState();
   }
 
-  void checkAnswer(String selected) {
-    final isCorrect = selected == correctAnswer;
-
-    if (isCorrect) {
+  void checkAnswer(ChoicesModel selected) {
+    if (selected.isCorrect!) {
       widget.game.correctAnswer++;
     } else {
       widget.game.wrongAnswer++;
@@ -37,9 +34,11 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text(isCorrect ? 'Benar!' : 'Salah!'),
+            title: Text(selected.isCorrect! ? 'Benar!' : 'Salah!'),
             content: Text(
-              isCorrect ? 'Jawaban kamu benar!' : 'Jawaban salah, coba lagi.',
+              selected.isCorrect!
+                  ? 'Jawaban kamu benar!'
+                  : 'Jawaban salah, coba lagi.',
             ),
             actions: [
               TextButton(
@@ -49,6 +48,16 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
             ],
           ),
     );
+
+    if (selected.nextType == 'dialog') {
+      widget.game.setCurrentDialog(selected.next!);
+      widget.game.removeQuestion();
+    } else if (selected.nextType == 'soal') {
+      widget.game.removeQuestion();
+      widget.game.setCurrentQuestion(selected.next!);
+    } else {
+      widget.game.overlays.add('EndGame');
+    }
   }
 
   @override
@@ -90,7 +99,7 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
                         onPressed: () => checkAnswer(option),
                         type: ButtonType.outline,
                         color: ButtonColor.blue,
-                        label: option,
+                        label: option.text,
                       ),
                     ),
                   ),

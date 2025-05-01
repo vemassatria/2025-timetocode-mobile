@@ -13,7 +13,7 @@ class LevelModel {
   final PreDialogModel? preDialog;
   final List<DialogModel> dialogs;
   final List<QuestionModel> questions;
-  final String? summary;
+  final List<String>? summary;
   final String start;
   final String typeStart;
   LevelModel({
@@ -58,7 +58,10 @@ class LevelModel {
           (json['dialogs'] as List)
               .map((d) => DialogModel.fromJson(d as Map<String, dynamic>))
               .toList(),
-      summary: json['summary'] as String? ?? '',
+      summary:
+          json['rangkuman'] != null
+              ? (json['rangkuman'] as List).map((s) => s as String).toList()
+              : null,
       start: json['start'] as String? ?? '',
       typeStart: json['typeStart'] as String? ?? '',
     );

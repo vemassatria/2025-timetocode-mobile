@@ -16,34 +16,42 @@ class _DialogueBoxWidgetState extends State<DialogueBoxWidget> {
   @override
   void initState() {
     super.initState();
+    _doInit();
+  }
+
+  Future<void> _doInit() async {
+    // 1. load karakter (asumsi sync; kalau async, tambahkan await)
     widget.game.loadCharacter(
       widget.game.character1Path[0],
       widget.game.character2Path[0],
     );
-    if (widget.game.currentDialogs.getCharacterIndex(_currentIndex) == 1) {
-      if (widget.game.character1ActivePath !=
-          widget.game.currentDialogs.getReactionIndex(_currentIndex)) {
-        widget.game.changeCharacter(
-          1,
-          widget.game.character1Path[widget.game.currentDialogs
-              .getReactionIndex(_currentIndex)],
-        );
-        widget.game.character1ActivePath = widget.game.currentDialogs
-            .getReactionIndex(_currentIndex);
+
+    // 2. set path aktif
+    widget.game.character1ActivePath = 0;
+    widget.game.character2ActivePath = 0;
+
+    // 3. semua logika dialog / changeCharacter
+    final idx = widget.game.currentDialogs.getCharacterIndex(_currentIndex);
+    final react = widget.game.currentDialogs.getReactionIndex(_currentIndex);
+
+    if (idx == 1) {
+      if (widget.game.character1ActivePath != react) {
+        widget.game.changeCharacter(1, widget.game.character1Path[react]);
+        widget.game.character1ActivePath = react;
       }
-      widget.game.activeCharacter(1);
+      widget.game.normalColorCharacter(1);
+      widget.game.normalSizeCharacter(2);
+      widget.game.enhancedSizeCharacter(1);
+      widget.game.blackCharacter(2);
     } else {
-      if (widget.game.character2ActivePath !=
-          widget.game.currentDialogs.getReactionIndex(_currentIndex)) {
-        widget.game.changeCharacter(
-          2,
-          widget.game.character2Path[widget.game.currentDialogs
-              .getReactionIndex(_currentIndex)],
-        );
-        widget.game.character2ActivePath = widget.game.currentDialogs
-            .getReactionIndex(_currentIndex);
+      if (widget.game.character2ActivePath != react) {
+        widget.game.changeCharacter(2, widget.game.character2Path[react]);
+        widget.game.character2ActivePath = react;
       }
-      widget.game.activeCharacter(2);
+      widget.game.normalColorCharacter(2);
+      widget.game.normalSizeCharacter(1);
+      widget.game.enhancedSizeCharacter(2);
+      widget.game.blackCharacter(1);
     }
   }
 
@@ -62,7 +70,10 @@ class _DialogueBoxWidgetState extends State<DialogueBoxWidget> {
           widget.game.character1ActivePath = widget.game.currentDialogs
               .getReactionIndex(_currentIndex);
         }
-        widget.game.activeCharacter(1);
+        widget.game.normalColorCharacter(1);
+        widget.game.normalSizeCharacter(2);
+        widget.game.enhancedSizeCharacter(1);
+        widget.game.blackCharacter(2);
       } else {
         if (widget.game.character2ActivePath !=
             widget.game.currentDialogs.getReactionIndex(_currentIndex)) {
@@ -74,7 +85,10 @@ class _DialogueBoxWidgetState extends State<DialogueBoxWidget> {
           widget.game.character2ActivePath = widget.game.currentDialogs
               .getReactionIndex(_currentIndex);
         }
-        widget.game.activeCharacter(2);
+        widget.game.normalColorCharacter(2);
+        widget.game.normalSizeCharacter(1);
+        widget.game.enhancedSizeCharacter(2);
+        widget.game.blackCharacter(1);
       }
     } else {
       widget.game.removeDialog();

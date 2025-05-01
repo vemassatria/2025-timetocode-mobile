@@ -39,12 +39,12 @@ class IntroBoxWidget extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  game.removeIntro();
-                  if (game.preDialogue.nextType == 'dialogue') {
-                    game.setCurrentDialog(game.preDialogue.next!);
-                  } else if (game.preDialogue.nextType == 'question') {
-                    game.setCurrentQuestion(game.preDialogue.next!);
+                  if (game.preDialogue.nextType == 'dialog') {
+                    game.setCurrentDialog(game.preDialogue.next);
+                  } else if (game.preDialogue.nextType == 'soal') {
+                    game.setCurrentQuestion(game.preDialogue.next);
                   }
+                  game.removeIntro();
                 },
                 icon: const Icon(
                   Icons.double_arrow,

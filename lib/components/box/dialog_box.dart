@@ -1,64 +1,131 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
 class DialogBox extends StatefulWidget {
-  final String dialogText;
-  final String characterName;
-  final VoidCallback onTap;
-  final Color nameBoxColor;
+  final GameEngine game;
 
-  const DialogBox({
-    super.key,
-    required this.dialogText,
-    required this.characterName,
-    required this.onTap,
-    required this.nameBoxColor,
-  });
+  const DialogBox({Key? key, required this.game}) : super(key: key);
 
   @override
-  State<DialogBox> createState() => DialogBoxState();
+  State<DialogBox> createState() => _DialogBoxState();
 }
 
-class DialogBoxState extends State<DialogBox> {
-  String displayedText = '';
-  int charIndex = 0;
-  bool isTextComplete = false;
+class _DialogBoxState extends State<DialogBox> {
+  int _currentIndex = 0;
+  String _displayedText = '';
+  int _charIndex = 0;
+  bool _isTextComplete = false;
   Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    _startTypingEffect();
+    _currentIndex = 0;
+    _setupDialog();
   }
 
-  void _startTypingEffect() {
+  @override
+  void didUpdateWidget(covariant DialogBox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.game.currentDialogs != widget.game.currentDialogs) {
+      setState(() {
+        _currentIndex = 0;
+        _displayedText = '';
+        _charIndex = 0;
+        _isTextComplete = false;
+      });
+      _setupDialog();
+    }
+  }
+
+  void _setupDialog() {
+    widget.game.loadCharacter(
+      widget.game.character1Path[0],
+      widget.game.character2Path[0],
+    );
+    widget.game.character1ActivePath = 0;
+    widget.game.character2ActivePath = 0;
+    _applyCharacterState();
+    _startTyping();
+  }
+
+  void _applyCharacterState() {
+    final idx = widget.game.currentDialogs.getCharacterIndex(_currentIndex);
+    final react = widget.game.currentDialogs.getReactionIndex(_currentIndex);
+
+    if (idx == 1) {
+      if (widget.game.character1ActivePath != react) {
+        widget.game.changeCharacter(1, widget.game.character1Path[react]);
+        widget.game.character1ActivePath = react;
+      }
+      widget.game.normalColorCharacter(1);
+      widget.game.normalSizeCharacter(2);
+      widget.game.enhancedSizeCharacter(1);
+      widget.game.blackCharacter(2);
+    } else {
+      if (widget.game.character2ActivePath != react) {
+        widget.game.changeCharacter(2, widget.game.character2Path[react]);
+        widget.game.character2ActivePath = react;
+      }
+      widget.game.normalColorCharacter(2);
+      widget.game.normalSizeCharacter(1);
+      widget.game.enhancedSizeCharacter(2);
+      widget.game.blackCharacter(1);
+    }
+  }
+
+  void _startTyping() {
+    _timer?.cancel();
+    _displayedText = '';
+    _charIndex = 0;
+    _isTextComplete = false;
     _timer = Timer(const Duration(milliseconds: 20), _updateText);
   }
 
   void _updateText() {
-    if (charIndex < widget.dialogText.length) {
+    final fullText = widget.game.currentDialogs.getTextDialog(_currentIndex);
+    if (_charIndex < fullText.length) {
       setState(() {
-        displayedText += widget.dialogText[charIndex];
-        charIndex++;
+        _displayedText += fullText[_charIndex];
+        _charIndex++;
       });
-      _startTypingEffect();
+      _timer = Timer(const Duration(milliseconds: 20), _updateText);
     } else {
-      setState(() => isTextComplete = true);
+      setState(() => _isTextComplete = true);
     }
   }
 
   void _handleTap() {
-    if (!isTextComplete) {
+    if (!_isTextComplete) {
       _timer?.cancel();
       setState(() {
-        displayedText = widget.dialogText;
-        isTextComplete = true;
+        _displayedText = widget.game.currentDialogs.getTextDialog(
+          _currentIndex,
+        );
+        _isTextComplete = true;
       });
     } else {
-      widget.onTap();
+      _advanceDialog();
+    }
+  }
+
+  void _advanceDialog() {
+    final dialogs = widget.game.currentDialogs;
+    if (_currentIndex < dialogs.getDialogLength() - 1) {
+      setState(() => _currentIndex++);
+      _applyCharacterState();
+      _startTyping();
+    } else {
+      widget.game.removeDialog();
+      if (dialogs.nextType == 'soal') {
+        widget.game.setCurrentQuestion(dialogs.next);
+      } else {
+        widget.game.overlays.add('EndGame');
+      }
     }
   }
 
@@ -68,69 +135,77 @@ class DialogBoxState extends State<DialogBox> {
     super.dispose();
   }
 
-  Widget _buildDialogContent(BuildContext context) {
-    return GestureDetector(
-      onTap: _handleTap,
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(16, 36, 16, 16),
-        width: ScreenUtils.screenWidth(context),
-        height: 306,
-        decoration: BoxDecoration(
-          color: AppColors.backgroundTransparent,
-          border: const Border(
-            top: BorderSide(color: AppColors.white, width: 2),
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              displayedText,
-              style: AppTypography.large(),
-              maxLines: 7,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const Spacer(),
-            if (isTextComplete)
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Icon(
-                  Icons.keyboard_double_arrow_right_rounded,
-                  size: 32,
-                  color: AppColors.primaryText,
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildNameBox() {
-    return Positioned(
-      top: -20,
-      left: 16,
-      child: Container(
-        width: 150,
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        decoration: BoxDecoration(
-          color: widget.nameBoxColor,
-          border: Border.all(color: AppColors.white, width: 2),
-        ),
-        child: Text(
-          widget.characterName,
-          style: AppTypography.heading6(),
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [_buildDialogContent(context), _buildNameBox()],
+    final lvl = widget.game.levels[widget.game.activeLevel];
+    final name =
+        widget.game.currentDialogs.getCharacterIndex(_currentIndex) == 1
+            ? lvl.character1
+            : lvl.character2;
+    final boxColor =
+        widget.game.currentDialogs.getCharacterIndex(_currentIndex) == 1
+            ? AppColors.challengeOrange
+            : AppColors.deepTealGlow;
+
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          GestureDetector(
+            onTap: _handleTap,
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(16, 36, 16, 16),
+              width: ScreenUtils.screenWidth(context),
+              height: 306,
+              decoration: BoxDecoration(
+                color: AppColors.backgroundTransparent,
+                border: const Border(
+                  top: BorderSide(color: AppColors.white, width: 2),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    _displayedText,
+                    style: AppTypography.large(),
+                    maxLines: 7,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const Spacer(),
+                  if (_isTextComplete)
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Icon(
+                        Icons.keyboard_double_arrow_right_rounded,
+                        size: 32,
+                        color: AppColors.primaryText,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: -20,
+            left: 16,
+            child: Container(
+              width: 150,
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              decoration: BoxDecoration(
+                color: boxColor,
+                border: Border.all(color: AppColors.white, width: 2),
+              ),
+              child: Text(
+                name,
+                style: AppTypography.heading6(),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
