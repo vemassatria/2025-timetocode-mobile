@@ -16,7 +16,17 @@ class StoryPage extends StatelessWidget {
         leadingWidth: 70,
         backgroundColor: Colors.transparent,
         leading: MenuButton(
-          onRestart: () {},
+          onRestart: () {
+            if (game.activeMode == "intro") {
+              game.removeIntro();
+            } else if (game.activeMode == "dialogue") {
+              game.removeDialog();
+            } else {
+              game.removeQuestion();
+            }
+            game.startLevel(game.activeLevel);
+            closePopupOverlay();
+          },
           onExit: () {
             if (game.activeMode == "intro") {
               game.removeIntro();
