@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:timetocode/games/game_engine.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 
-class IntroBoxWidget extends StatelessWidget {
-  final GameEngine game;
-  const IntroBoxWidget({super.key, required this.game});
+class IntroBoxWidget extends ConsumerWidget {
+  const IntroBoxWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final game = ref.read(gameEngineProvider);
     final maxHeight = MediaQuery.of(context).size.height * 0.35;
 
     return Center(

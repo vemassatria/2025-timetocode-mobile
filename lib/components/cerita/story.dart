@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/components/menu_button.dart';
-import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 
-class StoryPage extends StatelessWidget {
-  final GameEngine game;
-  const StoryPage({super.key, required this.game});
+class StoryPage extends ConsumerWidget {
+  const StoryPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final game = ref.read(gameEngineProvider);
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(

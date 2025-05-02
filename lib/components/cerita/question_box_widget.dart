@@ -1,33 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/games/models/choices_model.dart';
+import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/widgets/code_text.dart';
 import 'package:timetocode/components/button.dart';
 
-class QuestionBoxWidget extends StatefulWidget {
-  final GameEngine game;
-  const QuestionBoxWidget({super.key, required this.game});
+class QuestionBoxWidget extends ConsumerStatefulWidget {
+  const QuestionBoxWidget({super.key});
 
   @override
-  State<QuestionBoxWidget> createState() => _QuestionBoxWidgetState();
+  ConsumerState<QuestionBoxWidget> createState() => _QuestionBoxWidgetState();
 }
 
-class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
+class _QuestionBoxWidgetState extends ConsumerState<QuestionBoxWidget> {
   late String questionText;
   late List<ChoicesModel> options;
+  late GameEngine game;
 
   @override
   void initState() {
-    options = widget.game.currentQuestion!.choices;
-    questionText = widget.game.currentQuestion!.question;
+    game = ref.read(gameEngineProvider);
+    options = game.currentQuestion!.choices;
+    questionText = game.currentQuestion!.question;
     super.initState();
   }
 
   void checkAnswer(ChoicesModel selected) {
     if (selected.isCorrect!) {
-      widget.game.correctAnswer++;
+      game.correctAnswer++;
     } else {
-      widget.game.wrongAnswer++;
+      game.wrongAnswer++;
     }
 
     showDialog(
@@ -50,16 +53,16 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
     );
 
     if (selected.nextType == 'dialog') {
-      widget.game.setCurrentDialog(selected.next!);
-      widget.game.removeQuestion();
+      game.setCurrentDialog(selected.next!);
+      game.removeQuestion();
     } else if (selected.nextType == 'soal') {
-      widget.game.removeQuestion();
-      widget.game.setCurrentQuestion(selected.next!);
+      game.removeQuestion();
+      game.setCurrentQuestion(selected.next!);
     } else {
-      widget.game.removeQuestion();
-      widget.game.overlays.remove('QuestionBox');
-      widget.game.overlays.remove('StoryMenu');
-      widget.game.overlays.add('EndGame');
+      game.removeQuestion();
+      game.overlays.remove('QuestionBox');
+      game.overlays.remove('StoryMenu');
+      game.overlays.add('EndGame');
     }
   }
 

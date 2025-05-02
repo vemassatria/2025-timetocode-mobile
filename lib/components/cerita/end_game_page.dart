@@ -1,27 +1,27 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/providers/game_provider.dart';
 
-class EndGameScreen extends StatelessWidget {
-  final FlameGame game;
-  const EndGameScreen({super.key, required this.game});
+class EndGameScreen extends ConsumerWidget {
+  const EndGameScreen({super.key});
 
-  Future<void> _saveCompletedLevel() async {
+  Future<void> _saveCompletedLevel(int level) async {
     final prefs = await SharedPreferences.getInstance();
-    int completedLevel = (game as GameEngine).activeLevel + 1;
-    await prefs.setInt('completedLevel', completedLevel);
+    await prefs.setInt('completedLevel', level);
   }
 
   @override
-  Widget build(BuildContext context) {
-    int correctAnswer = (game as GameEngine).correctAnswer;
-    int wrongAnswer = (game as GameEngine).wrongAnswer;
-    int totalAnswer = correctAnswer + wrongAnswer;
-    int totalSteps = (game as GameEngine).levels.length;
-    int completedLevel = (game as GameEngine).activeLevel + 1;
-    _saveCompletedLevel();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final game = ref.read(gameEngineProvider);
+    final correctAnswer = game.correctAnswer;
+    final wrongAnswer = game.wrongAnswer;
+    final totalAnswer = correctAnswer + wrongAnswer;
+    final totalSteps = game.levels.length;
+    final completedLevel = game.activeLevel + 1;
+    final maxLevel = game.levels.length;
+    _saveCompletedLevel(completedLevel);
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Center(
@@ -40,14 +40,14 @@ class EndGameScreen extends StatelessWidget {
               width: 300,
               child: Center(
                 child: Text(
-                  '${(game as GameEngine).activeLevel + 1}/${(game as GameEngine).levels.length}',
+                  '$completedLevel/$maxLevel',
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
               ),
             ),
             const SizedBox(height: 32),
             Text(
-              'Level ${(game as GameEngine).activeLevel + 1} Selesai',
+              'Level $completedLevel Selesai',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             Container(
@@ -63,7 +63,10 @@ class EndGameScreen extends StatelessWidget {
               ),
               child: TextButton.icon(
                 onPressed: () {
-                  rangkumanDialog(context);
+                  rangkumanDialog(
+                    context,
+                    game.levels[game.activeLevel].summary!,
+                  );
                 },
                 icon: const Icon(Icons.chrome_reader_mode, color: Colors.white),
                 label: const Text(
@@ -105,7 +108,7 @@ class EndGameScreen extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   game.overlays.remove('EndGame');
-                  (game as GameEngine).endGame();
+                  game.endGame();
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 112, 183, 255),
@@ -129,7 +132,7 @@ class EndGameScreen extends StatelessWidget {
     );
   }
 
-  Future<dynamic> rangkumanDialog(BuildContext context) {
+  Future<dynamic> rangkumanDialog(BuildContext context, List<String> summary) {
     return showDialog(
       context: context,
       builder:
@@ -156,10 +159,7 @@ class EndGameScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    '${(game as GameEngine).levels[(game as GameEngine).activeLevel].summary}',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  Text('$summary', style: TextStyle(color: Colors.white)),
                   const SizedBox(height: 16),
                   Align(
                     alignment: Alignment.centerRight,

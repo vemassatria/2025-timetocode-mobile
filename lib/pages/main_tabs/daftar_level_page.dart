@@ -1,25 +1,23 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/components/card.dart';
-import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 
-class DaftarLevelPage extends StatefulWidget {
-  final FlameGame game;
-  const DaftarLevelPage({super.key, required this.game});
+class DaftarLevelPage extends ConsumerStatefulWidget {
+  const DaftarLevelPage({super.key});
 
   @override
-  State<DaftarLevelPage> createState() => _DaftarLevelPageState();
+  ConsumerState<DaftarLevelPage> createState() => _DaftarLevelPageState();
 }
 
-class _DaftarLevelPageState extends State<DaftarLevelPage> {
+class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
   late SharedPreferences _prefs;
   final ScrollController _scrollController = ScrollController();
   late int completedLevel;
   late int totalLevel;
 
-  // Keys untuk setiap card agar bisa tracking posisi viewport
   late List<GlobalKey> _cardKeys;
 
   @override
@@ -30,68 +28,22 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
 
   Future<void> _loadLevelData() async {
     _prefs = await SharedPreferences.getInstance();
+    final game = ref.read(gameEngineProvider);
 
-    // Set default if null
     if (_prefs.getInt('completedLevel') == null) {
       await _prefs.setInt('completedLevel', 0);
     }
 
     completedLevel = _prefs.getInt('completedLevel')!;
-    totalLevel = (widget.game as GameEngine).levels.length;
+    totalLevel = game.levels.length;
     _cardKeys = List<GlobalKey>.generate(totalLevel, (_) => GlobalKey());
 
-    // Pastikan build ulang setelah data siap
     setState(() {});
   }
 
-  // @override
-  // void dispose() {
-  //   _scrollController.removeListener(_checkVisibility);
-  //   _scrollController.dispose();
-  //   super.dispose();
-  // }
-
-  // void _checkVisibility() {
-  //   // Pastikan widget sudah di-build sebelum mengakses RenderBox
-  //   if (!mounted) return;
-
-  //   final RenderBox? renderBox = context.findRenderObject() as RenderBox?;
-  //   if (renderBox == null) return;
-
-  //   final viewportHeight = renderBox.size.height;
-  //   final scrollOffset = _scrollController.offset;
-
-  //   // Tandai item sebagai visible berdasarkan posisi scroll
-  //   for (int i = 0; i < _cardKeys.length; i++) {
-  //     final BuildContext? cardContext = _cardKeys[i].currentContext;
-  //     if (cardContext == null) continue;
-
-  //     final RenderBox? cardBox = cardContext.findRenderObject() as RenderBox?;
-  //     if (cardBox == null) continue;
-
-  //     final cardPosition = cardBox.localToGlobal(
-  //       Offset.zero,
-  //       ancestor: renderBox,
-  //     );
-
-  //     // Posisi relatif terhadap viewport
-  //     final cardTop = cardPosition.dy - scrollOffset;
-  //     final cardBottom = cardTop + cardBox.size.height;
-
-  //     // Card visible jika sebagian dalam viewport
-  //     final isVisible = (cardTop < viewportHeight && cardBottom > 0);
-
-  //     // Update state jika status visibility berubah
-  //     if (isVisible != levelData[i]['visible']) {
-  //       setState(() {
-  //         levelData[i]['visible'] = isVisible;
-  //       });
-  //     }
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
+    final game = ref.read(gameEngineProvider);
     final double progress = completedLevel / totalLevel;
 
     return Scaffold(
@@ -153,9 +105,9 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                   curve: Curves.easeInOut,
                   child: LevelCard(
                     image: Image.asset(
-                      'assets/background/${(widget.game as GameEngine).levels[index].background}.webp',
+                      'assets/background/${game.levels[index].background}.webp',
                     ),
-                    title: (widget.game as GameEngine).levels[index].title,
+                    title: game.levels[index].title,
                     status:
                         completedLevel > index
                             ? CardStatus.completed
@@ -164,7 +116,7 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                                 : CardStatus.locked),
 
                     onStartPressed: () {
-                      (widget.game as GameEngine).startLevel(index);
+                      game.startLevel(index);
                     },
                     onInfoPressed: () {
                       debugPrint("Info button pressed for level ${index + 1}");
