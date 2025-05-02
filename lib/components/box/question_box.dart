@@ -12,6 +12,7 @@ class QuestionBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initScreenUtil(context);
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       width: 328.w,

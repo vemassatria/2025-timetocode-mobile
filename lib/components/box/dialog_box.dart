@@ -161,11 +161,11 @@ class _DialogBoxState extends State<DialogBox> {
             child: Container(
               padding: EdgeInsets.fromLTRB(16.w, 36.h, 16.w, 16.h),
               width: 1.sw,
-              height: 306,
+              height: 285.h,
               decoration: BoxDecoration(
                 color: AppColors.backgroundTransparent,
-                border: const Border(
-                  top: BorderSide(color: AppColors.white, width: 2),
+                border: Border(
+                  top: BorderSide(color: AppColors.white, width: 2.w),
                 ),
               ),
               child: Column(
@@ -173,7 +173,9 @@ class _DialogBoxState extends State<DialogBox> {
                 children: [
                   Text(
                     _displayedText,
-                    style: AppTypography.large(),
+                    style: AppTypography.large().copyWith(
+                      decoration: TextDecoration.none,
+                    ),
                     maxLines: 7,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -183,7 +185,7 @@ class _DialogBoxState extends State<DialogBox> {
                       alignment: Alignment.bottomRight,
                       child: Icon(
                         Icons.keyboard_double_arrow_right_rounded,
-                        size: 32,
+                        size: 32.sp,
                         color: AppColors.primaryText,
                       ),
                     ),
@@ -195,15 +197,17 @@ class _DialogBoxState extends State<DialogBox> {
             top: -20,
             left: 16,
             child: Container(
-              width: 150,
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              width: 150.w,
+              padding: EdgeInsets.symmetric(vertical: 8.h),
               decoration: BoxDecoration(
                 color: boxColor,
-                border: Border.all(color: AppColors.white, width: 2),
+                border: Border.all(color: AppColors.white, width: 2.w),
               ),
               child: Text(
                 name,
-                style: AppTypography.heading6(),
+                style: AppTypography.heading6().copyWith(
+                  decoration: TextDecoration.none,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
