@@ -161,7 +161,7 @@ class _DialogBoxState extends State<DialogBox> {
             child: Container(
               padding: EdgeInsets.fromLTRB(16.w, 36.h, 16.w, 16.h),
               width: 1.sw,
-              height: 285.h,
+              height: 295.h,
               decoration: BoxDecoration(
                 color: AppColors.backgroundTransparent,
                 border: Border(

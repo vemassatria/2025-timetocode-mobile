@@ -17,7 +17,7 @@ class CodeBox extends StatelessWidget {
 
     return Container(
       width: 328.w,
-      height: 328.h,
+      height: 318.h,
       decoration: BoxDecoration(
         color: AppColors.surfaceDark,
         border: Border.all(color: AppColors.white, width: 2.w),
@@ -64,7 +64,7 @@ class CodeBox extends StatelessWidget {
                       child: ConstrainedBox(
                         constraints: BoxConstraints(
                           minWidth: 328.w - 34.w,
-                          minHeight: 328.h - 37.h,
+                          minHeight: 318.h - 37.h,
                         ),
                         child: CodeText(code),
                       ),

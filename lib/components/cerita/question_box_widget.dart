@@ -76,10 +76,9 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
                     SizedBox(height: 16.h),
                     CodeBox(code: codeText),
                   ] else ...[
-                    Expanded(
-                      child: Center(
-                        child: QuestionBox(questionText: questionText),
-                      ),
+                    Container(
+                      margin: EdgeInsets.only(top: 100.h),
+                      child: QuestionBox(questionText: questionText),
                     ),
                   ],
                 ],

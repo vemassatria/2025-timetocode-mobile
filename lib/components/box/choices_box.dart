@@ -46,7 +46,7 @@ class ChoicesBox extends StatelessWidget {
 
     return Container(
       width: 1.sw,
-      height: 285.h,
+      height: 295.h,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
         color: AppColors.backgroundTransparent,
