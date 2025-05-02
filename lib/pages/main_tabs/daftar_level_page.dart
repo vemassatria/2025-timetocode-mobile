@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/components/card.dart';
 import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/themes/colors.dart';
 
 class DaftarLevelPage extends StatefulWidget {
@@ -18,8 +19,6 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
   final ScrollController _scrollController = ScrollController();
   late int completedLevel;
   late int totalLevel;
-
-  // Keys untuk setiap card agar bisa tracking posisi viewport
   late List<GlobalKey> _cardKeys;
 
   @override
@@ -31,7 +30,6 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
   Future<void> _loadLevelData() async {
     _prefs = await SharedPreferences.getInstance();
 
-    // Set default if null
     if (_prefs.getInt('completedLevel') == null) {
       await _prefs.setInt('completedLevel', 0);
     }
@@ -40,55 +38,10 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
     totalLevel = (widget.game as GameEngine).levels.length;
     _cardKeys = List<GlobalKey>.generate(totalLevel, (_) => GlobalKey());
 
-    // Pastikan build ulang setelah data siap
+    await MusicService.playMainMenuMusic(); // Memutar musik halaman menu level
+
     setState(() {});
   }
-
-  // @override
-  // void dispose() {
-  //   _scrollController.removeListener(_checkVisibility);
-  //   _scrollController.dispose();
-  //   super.dispose();
-  // }
-
-  // void _checkVisibility() {
-  //   // Pastikan widget sudah di-build sebelum mengakses RenderBox
-  //   if (!mounted) return;
-
-  //   final RenderBox? renderBox = context.findRenderObject() as RenderBox?;
-  //   if (renderBox == null) return;
-
-  //   final viewportHeight = renderBox.size.height;
-  //   final scrollOffset = _scrollController.offset;
-
-  //   // Tandai item sebagai visible berdasarkan posisi scroll
-  //   for (int i = 0; i < _cardKeys.length; i++) {
-  //     final BuildContext? cardContext = _cardKeys[i].currentContext;
-  //     if (cardContext == null) continue;
-
-  //     final RenderBox? cardBox = cardContext.findRenderObject() as RenderBox?;
-  //     if (cardBox == null) continue;
-
-  //     final cardPosition = cardBox.localToGlobal(
-  //       Offset.zero,
-  //       ancestor: renderBox,
-  //     );
-
-  //     // Posisi relatif terhadap viewport
-  //     final cardTop = cardPosition.dy - scrollOffset;
-  //     final cardBottom = cardTop + cardBox.size.height;
-
-  //     // Card visible jika sebagian dalam viewport
-  //     final isVisible = (cardTop < viewportHeight && cardBottom > 0);
-
-  //     // Update state jika status visibility berubah
-  //     if (isVisible != levelData[i]['visible']) {
-  //       setState(() {
-  //         levelData[i]['visible'] = isVisible;
-  //       });
-  //     }
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +71,7 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                     value: progress,
                     color: AppColors.deepAzure,
                     backgroundColor: AppColors.gray1,
-                    padding: const EdgeInsets.all(4),
+                    strokeWidth: 5,
                   ),
                 ),
                 Text(
@@ -137,16 +90,11 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
             controller: _scrollController,
             itemCount: totalLevel,
             itemBuilder: (context, index) {
-              // Import matrix4_transform paket untuk menghindari konflik dengan Matrix4
               return AnimatedContainer(
                 key: _cardKeys[index],
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.easeOutCubic,
-                // Menggunakan offset langsung pada margin untuk menghindari conflict Matrix4
-                margin: EdgeInsets.only(
-                  bottom: 16,
-                  // left: completedLevel >= index ? 0 : 100, // Slide effect
-                ),
+                margin: const EdgeInsets.only(bottom: 16),
                 child: AnimatedOpacity(
                   opacity: completedLevel >= index ? 1.0 : 1.0,
                   duration: const Duration(milliseconds: 500),
@@ -156,14 +104,13 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                       'assets/background/${(widget.game as GameEngine).levels[index].background}.webp',
                     ),
                     title: (widget.game as GameEngine).levels[index].title,
-                    status:
-                        completedLevel > index
-                            ? CardStatus.completed
-                            : (completedLevel == index
-                                ? CardStatus.unlocked
-                                : CardStatus.locked),
-
-                    onStartPressed: () {
+                    status: completedLevel > index
+                        ? CardStatus.completed
+                        : (completedLevel == index
+                            ? CardStatus.unlocked
+                            : CardStatus.locked),
+                    onStartPressed: () async {
+                      await MusicService.playLevelMusic(index);
                       (widget.game as GameEngine).startLevel(index);
                     },
                     onInfoPressed: () {
