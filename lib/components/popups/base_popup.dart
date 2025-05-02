@@ -15,11 +15,11 @@ class BasePopup extends StatelessWidget {
 
     return Container(
       width: 328.w,
-      padding: const EdgeInsets.all(32),
+      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
       decoration: BoxDecoration(
         color: AppColors.surfaceDark,
-        border: Border.all(color: borderColor ?? AppColors.white, width: 2),
-        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: borderColor ?? AppColors.white, width: 2.r),
+        borderRadius: BorderRadius.circular(8.r),
       ),
       child: IntrinsicHeight(child: child),
     );

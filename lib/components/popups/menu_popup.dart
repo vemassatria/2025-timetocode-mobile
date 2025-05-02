@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/components/popups/confirm_popup.dart';
@@ -6,6 +7,7 @@ import 'package:timetocode/components/popups/setting_popup.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/SFX/music_service.dart';
+import 'package:timetocode/utils/screen_utils.dart';
 
 class MenuPopup extends StatelessWidget {
   final VoidCallback onRestart;
@@ -40,7 +42,7 @@ class MenuPopup extends StatelessWidget {
           },
           widthMode: ButtonWidthMode.fill,
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 8.h),
         CustomButton(
           label: "Mulai Ulang",
           onPressed: () {
@@ -65,7 +67,7 @@ class MenuPopup extends StatelessWidget {
           },
           widthMode: ButtonWidthMode.fill,
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 8.h),
         CustomButton(
           label: "Pengaturan",
           onPressed: () {
@@ -82,7 +84,7 @@ class MenuPopup extends StatelessWidget {
           },
           widthMode: ButtonWidthMode.fill,
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 8.h),
         CustomButton(
           label: "Keluar",
           onPressed: () {
@@ -114,15 +116,17 @@ class MenuPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     return BasePopup(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildTitle(),
-          const SizedBox(height: 8),
-          const Divider(thickness: 3),
-          const SizedBox(height: 32),
+          SizedBox(height: 8.h),
+          Divider(thickness: 3.w),
+          SizedBox(height: 32.h),
           _buildMenuButtons(context),
         ],
       ),
