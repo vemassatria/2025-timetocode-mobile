@@ -72,6 +72,7 @@ class NarrationBoxState extends State<NarrationBox> {
     return GestureDetector(
       onTap: _handleTap,
       child: Container(
+        height: 250.h,
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         width: 328.w,
         decoration: BoxDecoration(
@@ -81,10 +82,19 @@ class NarrationBoxState extends State<NarrationBox> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(displayedText, style: AppTypography.normal()),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Text(
+                  displayedText,
+                  style: AppTypography.normal().copyWith(
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+              ),
+            ),
             if (isTextComplete)
               Padding(
-                padding: EdgeInsets.only(top: 16.h),
+                padding: EdgeInsets.only(top: 8.h),
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: Icon(
