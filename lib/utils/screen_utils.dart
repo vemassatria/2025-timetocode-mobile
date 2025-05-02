@@ -1,15 +1,11 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/material.dart';
 
-class ScreenUtils {
-  static Size screenSize(BuildContext context) {
-    return MediaQuery.of(context).size;
-  }
-
-  static double screenWidth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
-  }
-
-  static double screenHeight(BuildContext context) {
-    return MediaQuery.of(context).size.height;
-  }
+void initScreenUtil(BuildContext context) {
+  ScreenUtil.init(
+    context,
+    designSize: const Size(360, 800),
+    minTextAdapt: true,
+    splitScreenMode: true,
+  );
 }

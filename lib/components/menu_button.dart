@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/popups/menu_popup.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
@@ -22,11 +23,11 @@ class MenuButton extends StatelessWidget {
   }
 
   BoxDecoration _buildDecoration() {
-    return const BoxDecoration(
+    return BoxDecoration(
       color: AppColors.darkBackground,
       borderRadius: BorderRadius.horizontal(
         left: Radius.circular(0),
-        right: Radius.circular(100),
+        right: Radius.circular(100.r),
       ),
     );
   }
@@ -36,9 +37,9 @@ class MenuButton extends StatelessWidget {
     return GestureDetector(
       onTap: () => _openMenuPopup(context),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         decoration: _buildDecoration(),
-        child: const Icon(Icons.menu, color: AppColors.primaryText, size: 32),
+        child: Icon(Icons.menu, color: AppColors.primaryText, size: 32.sp),
       ),
     );
   }

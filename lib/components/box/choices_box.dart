@@ -1,47 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
-import 'package:timetocode/components/popups/answer_popup.dart';
+import 'package:timetocode/components/popups/confirm_popup.dart';
+import 'package:timetocode/games/models/choices_model.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
+import 'package:timetocode/utils/screen_utils.dart';
 
 class ChoicesBox extends StatelessWidget {
-  final int correctAnswerIndex;
-  final List<String> choices;
-  final VoidCallback? onCorrect;
-  final VoidCallback? onWrong;
+  final List<ChoicesModel> choices;
+  final ValueChanged<int> onPressed;
 
-  const ChoicesBox({
-    super.key,
-    required this.correctAnswerIndex,
-    required this.choices,
-    this.onCorrect,
-    this.onWrong,
-  });
+  const ChoicesBox({super.key, required this.choices, required this.onPressed});
 
   Widget _buildChoiceButton(BuildContext context, int index) {
-    final isCorrect = index == correctAnswerIndex;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: 8.h),
       child: CustomButton(
-        label: choices[index],
+        label: choices[index].text,
         widthMode: ButtonWidthMode.fill,
         type: ButtonType.outline,
-        onPressed: () => _onChoicePressed(context, isCorrect),
-      ),
-    );
-  }
-
-  void _onChoicePressed(BuildContext context, bool isCorrect) {
-    showPopupOverlay(
-      context,
-      AnswerPopup(
-        isCorrect: isCorrect,
         onPressed: () {
-          if (isCorrect) {
-            onCorrect?.call();
-          } else {
-            onWrong?.call();
-          }
+          showPopupOverlay(
+            context,
+            ConfirmPopup(
+              title: "Yakin ingin menjawab?",
+              description:
+                  "Kamu bisa mencoba lagi jika jawabannya belum tepat.",
+              confirmLabel: "Yakin",
+              onPrimaryButtonPressed: () {
+                closePopupOverlay();
+                onPressed(index);
+              },
+              onGoBack: closePopupOverlay,
+            ),
+          );
         },
       ),
     );
@@ -49,12 +42,15 @@ class ChoicesBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     return Container(
-      height: 306,
-      padding: const EdgeInsets.all(16),
+      width: 1.sw,
+      height: 295.h,
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
         color: AppColors.backgroundTransparent,
-        border: const Border(top: BorderSide(color: AppColors.white, width: 2)),
+        border: Border(top: BorderSide(color: AppColors.white, width: 2.w)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

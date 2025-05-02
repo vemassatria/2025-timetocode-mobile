@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/components/card.dart';
+import 'package:timetocode/components/popups/info_popup.dart';
 import 'package:timetocode/providers/game_provider.dart';
+import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/themes/colors.dart';
+import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
 
 class DaftarLevelPage extends ConsumerStatefulWidget {
   const DaftarLevelPage({super.key});
@@ -17,8 +22,8 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
   final ScrollController _scrollController = ScrollController();
   late int completedLevel;
   late int totalLevel;
-
   late List<GlobalKey> _cardKeys;
+  bool _isLoaded = false;
 
   @override
   void initState() {
@@ -38,44 +43,45 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
     totalLevel = game.levels.length;
     _cardKeys = List<GlobalKey>.generate(totalLevel, (_) => GlobalKey());
 
+    _isLoaded = true;
+    await MusicService.playMainMenuMusic(); // Memutar musik halaman menu level
+
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     final game = ref.read(gameEngineProvider);
+    if (!_isLoaded) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
     final double progress = completedLevel / totalLevel;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: const Text(
-          'Konsep Pemrograman',
-          style: TextStyle(
-            color: AppColors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: Text('Konsep Pemrograman', style: AppTypography.heading5()),
+        toolbarHeight: 64.h,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 16.0),
+            padding: EdgeInsets.only(right: 16.w),
             child: Stack(
               alignment: Alignment.center,
               children: [
                 SizedBox(
-                  width: 50,
-                  height: 50,
+                  width: 40.w,
+                  height: 40.h,
                   child: CircularProgressIndicator(
                     value: progress,
                     color: AppColors.deepAzure,
                     backgroundColor: AppColors.gray1,
-                    padding: const EdgeInsets.all(4),
+                    strokeWidth: 4,
                   ),
                 ),
                 Text(
                   '$completedLevel/$totalLevel',
-                  style: const TextStyle(color: AppColors.white),
+                  style: AppTypography.smallBold(),
                 ),
               ],
             ),
@@ -84,44 +90,42 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
           child: ListView.builder(
             controller: _scrollController,
             itemCount: totalLevel,
             itemBuilder: (context, index) {
-              // Import matrix4_transform paket untuk menghindari konflik dengan Matrix4
-              return AnimatedContainer(
+              return Padding(
                 key: _cardKeys[index],
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeOutCubic,
-                // Menggunakan offset langsung pada margin untuk menghindari conflict Matrix4
-                margin: EdgeInsets.only(
-                  bottom: 16,
-                  // left: completedLevel >= index ? 0 : 100, // Slide effect
+                padding: EdgeInsets.only(
+                  top: index == 0 ? 16.h : 0,
+                  bottom: index == totalLevel - 1 ? 16.h : 8.h,
                 ),
-                child: AnimatedOpacity(
-                  opacity: completedLevel >= index ? 1.0 : 1.0,
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeInOut,
-                  child: LevelCard(
-                    image: Image.asset(
-                      'assets/background/${game.levels[index].background}.webp',
-                    ),
-                    title: game.levels[index].title,
-                    status:
-                        completedLevel > index
-                            ? CardStatus.completed
-                            : (completedLevel == index
-                                ? CardStatus.unlocked
-                                : CardStatus.locked),
-
-                    onStartPressed: () {
-                      game.startLevel(index);
-                    },
-                    onInfoPressed: () {
-                      debugPrint("Info button pressed for level ${index + 1}");
-                    },
+                child: LevelCard(
+                  image: Image.asset(
+                    'assets/background/${game.levels[index].background}.webp',
                   ),
+                  title: game.levels[index].title,
+                  status:
+                      completedLevel > index
+                          ? CardStatus.completed
+                          : (completedLevel == index
+                              ? CardStatus.unlocked
+                              : CardStatus.locked),
+                  onStartPressed: () async {
+                    await MusicService.playLevelMusic(index);
+                    game.startLevel(index);
+                  },
+                  onInfoPressed: () {
+                    showPopupOverlay(
+                      context,
+                      InfoPopup(
+                        title: game.levels[index].title,
+                        description: game.levels[index].description,
+                        onClose: closePopupOverlay,
+                      ),
+                    );
+                  },
                 ),
               );
             },

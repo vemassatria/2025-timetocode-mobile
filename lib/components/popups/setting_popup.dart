@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/components/setting_item.dart';
@@ -20,7 +21,7 @@ class _SettingPopupState extends State<SettingPopup> {
   bool _musikLatar = true;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _loadMusiklatar();
     _loadEfekSuara();
@@ -33,7 +34,7 @@ class _SettingPopupState extends State<SettingPopup> {
     });
   }
 
-  _updateMusikLatar(bool value) async{
+  _updateMusikLatar(bool value) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('musikLatar', value);
     setState(() {
@@ -48,7 +49,7 @@ class _SettingPopupState extends State<SettingPopup> {
     });
   }
 
-  void _updateEfekSuara(bool value) async{
+  void _updateEfekSuara(bool value) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('efekSuara', value);
     setState(() {
@@ -69,7 +70,7 @@ class _SettingPopupState extends State<SettingPopup> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Pengaturan Aplikasi', style: AppTypography.small()),
-        const SizedBox(height: 8),
+        SizedBox(height: 8.h),
         SettingItem(
           icon: const Icon(Icons.volume_up),
           label: "Efek Suara",
@@ -81,7 +82,7 @@ class _SettingPopupState extends State<SettingPopup> {
             });
           },
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8.h),
         SettingItem(
           icon: const Icon(Icons.music_note_sharp),
           label: "Musik Latar",
@@ -114,11 +115,11 @@ class _SettingPopupState extends State<SettingPopup> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildTitle(),
-          const SizedBox(height: 8),
-          const Divider(thickness: 3),
-          const SizedBox(height: 32),
+          SizedBox(height: 8.h),
+          Divider(thickness: 3.w),
+          SizedBox(height: 32.h),
           _buildSettingsSection(),
-          const SizedBox(height: 32),
+          SizedBox(height: 32.h),
           _buildButton(),
         ],
       ),

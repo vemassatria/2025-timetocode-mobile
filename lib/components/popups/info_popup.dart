@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/SFX/music_service.dart';
+import 'package:timetocode/utils/screen_utils.dart';
 
 class InfoPopup extends StatelessWidget {
   final String title;
@@ -34,24 +37,29 @@ class InfoPopup extends StatelessWidget {
   Widget _buildCloseButton() {
     return CustomButton(
       label: "Tutup",
-      onPressed: onClose,
+      onPressed: () {
+        MusicService.sfxNegativeClick();
+        onClose();
+      },
       widthMode: ButtonWidthMode.fill,
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     return BasePopup(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildTitle(),
-          const SizedBox(height: 8),
-          const Divider(thickness: 3),
-          const SizedBox(height: 32),
+          SizedBox(height: 8.h),
+          Divider(thickness: 3.w),
+          SizedBox(height: 32.w),
           _buildDescription(),
-          const SizedBox(height: 32),
+          SizedBox(height: 32.w),
           _buildCloseButton(),
         ],
       ),

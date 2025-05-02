@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/themes/colors.dart';
@@ -131,6 +132,8 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     final lvl = game.levels[game.activeLevel];
     final name =
         game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
@@ -149,13 +152,13 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
           GestureDetector(
             onTap: _handleTap,
             child: Container(
-              padding: const EdgeInsets.fromLTRB(16, 36, 16, 16),
-              width: ScreenUtils.screenWidth(context),
-              height: 306,
+              padding: EdgeInsets.fromLTRB(16.w, 36.h, 16.w, 16.h),
+              width: 1.sw,
+              height: 295.h,
               decoration: BoxDecoration(
                 color: AppColors.backgroundTransparent,
-                border: const Border(
-                  top: BorderSide(color: AppColors.white, width: 2),
+                border: Border(
+                  top: BorderSide(color: AppColors.white, width: 2.w),
                 ),
               ),
               child: Column(
@@ -163,7 +166,9 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                 children: [
                   Text(
                     _displayedText,
-                    style: AppTypography.large(),
+                    style: AppTypography.large().copyWith(
+                      decoration: TextDecoration.none,
+                    ),
                     maxLines: 7,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -173,7 +178,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                       alignment: Alignment.bottomRight,
                       child: Icon(
                         Icons.keyboard_double_arrow_right_rounded,
-                        size: 32,
+                        size: 32.sp,
                         color: AppColors.primaryText,
                       ),
                     ),
@@ -185,15 +190,17 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
             top: -20,
             left: 16,
             child: Container(
-              width: 150,
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              width: 150.w,
+              padding: EdgeInsets.symmetric(vertical: 8.h),
               decoration: BoxDecoration(
                 color: boxColor,
-                border: Border.all(color: AppColors.white, width: 2),
+                border: Border.all(color: AppColors.white, width: 2.w),
               ),
               child: Text(
                 name,
-                style: AppTypography.heading6(),
+                style: AppTypography.heading6().copyWith(
+                  decoration: TextDecoration.none,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),

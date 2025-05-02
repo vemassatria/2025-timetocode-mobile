@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/SFX/music_service.dart';
+import 'package:timetocode/utils/screen_utils.dart';
 
 class AnswerPopup extends StatelessWidget {
   final bool isCorrect;
@@ -20,7 +23,7 @@ class AnswerPopup extends StatelessWidget {
     return Icon(
       isCorrect ? Icons.check_circle : Icons.cancel,
       color: _color,
-      size: 32,
+      size: 32.sp,
     );
   }
 
@@ -35,14 +38,17 @@ class AnswerPopup extends StatelessWidget {
   Widget _buildIconWithTitleRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [_buildIcon(), const SizedBox(width: 16), _buildTitle()],
+      children: [_buildIcon(), SizedBox(width: 16.w), _buildTitle()],
     );
   }
 
   Widget _buildButton() {
     return CustomButton(
       label: "Lanjutkan",
-      onPressed: onPressed,
+      onPressed: () {
+        MusicService.sfxButtonClick();
+        onPressed();
+      },
       widthMode: ButtonWidthMode.fill,
       color: isCorrect ? ButtonColor.green : ButtonColor.red,
     );
@@ -50,6 +56,8 @@ class AnswerPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     return BasePopup(
       borderColor: _color,
       child: Column(
@@ -57,7 +65,7 @@ class AnswerPopup extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildIconWithTitleRow(),
-          const SizedBox(height: 32),
+          SizedBox(height: 32.h),
           _buildButton(),
         ],
       ),
