@@ -4,7 +4,7 @@ import 'package:timetocode/games/game_engine.dart';
 
 class IntroBoxWidget extends StatelessWidget {
   final GameEngine game;
-  const IntroBoxWidget({Key? key, required this.game}) : super(key: key);
+  const IntroBoxWidget({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {

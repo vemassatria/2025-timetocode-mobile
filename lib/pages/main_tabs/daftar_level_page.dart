@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/components/card.dart';
 import 'package:timetocode/components/popups/info_popup.dart';
 import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
@@ -34,7 +35,6 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
   Future<void> _loadLevelData() async {
     _prefs = await SharedPreferences.getInstance();
 
-    // Set default if null
     if (_prefs.getInt('completedLevel') == null) {
       await _prefs.setInt('completedLevel', 0);
     }
@@ -44,6 +44,8 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
     _cardKeys = List<GlobalKey>.generate(totalLevel, (_) => GlobalKey());
 
     _isLoaded = true;
+    await MusicService.playMainMenuMusic(); // Memutar musik halaman menu level
+
     setState(() {});
   }
 
@@ -110,6 +112,7 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                               ? CardStatus.unlocked
                               : CardStatus.locked),
                   onStartPressed: () {
+                    await MusicService.playLevelMusic(index);
                     (widget.game as GameEngine).startLevel(index);
                   },
                   onInfoPressed: () {

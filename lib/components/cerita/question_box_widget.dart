@@ -50,7 +50,6 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
           } else {
             widget.game.overlays.add('EndGame');
           }
-
           closePopupOverlay();
         },
       ),
