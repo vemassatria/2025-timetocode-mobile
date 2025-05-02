@@ -67,8 +67,8 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
               alignment: Alignment.center,
               children: [
                 SizedBox(
-                  width: 48.w,
-                  height: 48.h,
+                  width: 40.w,
+                  height: 40.h,
                   child: CircularProgressIndicator(
                     value: progress,
                     color: AppColors.deepAzure,
@@ -117,7 +117,10 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                       context,
                       InfoPopup(
                         title: (widget.game as GameEngine).levels[index].title,
-                        description: (widget.game as GameEngine).levels[index].description,
+                        description:
+                            (widget.game as GameEngine)
+                                .levels[index]
+                                .description,
                         onClose: closePopupOverlay,
                       ),
                     );

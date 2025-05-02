@@ -4,11 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/games/game_engine.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/utils/screen_utils.dart';
 
 class DialogBox extends StatefulWidget {
   final GameEngine game;
 
-  const DialogBox({Key? key, required this.game}) : super(key: key);
+  const DialogBox({super.key, required this.game});
 
   @override
   State<DialogBox> createState() => _DialogBoxState();
@@ -138,6 +139,8 @@ class _DialogBoxState extends State<DialogBox> {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     final lvl = widget.game.levels[widget.game.activeLevel];
     final name =
         widget.game.currentDialogs.getCharacterIndex(_currentIndex) == 1
@@ -156,7 +159,7 @@ class _DialogBoxState extends State<DialogBox> {
           GestureDetector(
             onTap: _handleTap,
             child: Container(
-              padding: const EdgeInsets.fromLTRB(16, 36, 16, 16),
+              padding: EdgeInsets.fromLTRB(16.w, 36.h, 16.w, 16.h),
               width: 1.sw,
               height: 306,
               decoration: BoxDecoration(

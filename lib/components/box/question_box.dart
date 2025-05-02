@@ -13,13 +13,19 @@ class QuestionBox extends StatelessWidget {
   Widget build(BuildContext context) {
     initScreenUtil(context);
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       width: 328.w,
+      height: 100.h,
       decoration: BoxDecoration(
         color: AppColors.backgroundTransparent,
         border: Border.all(color: AppColors.white),
       ),
-      child: Text(questionText, style: AppTypography.normal()),
+      alignment: Alignment.center,
+      child: Text(
+        questionText,
+        style: AppTypography.normal(),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
