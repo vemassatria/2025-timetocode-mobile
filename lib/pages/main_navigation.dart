@@ -6,7 +6,7 @@ import 'package:timetocode/SFX/music_service.dart';
 
 class MainNavigation extends StatefulWidget {
   final FlameGame game;
-  const MainNavigation({Key? key, required this.game}) : super(key: key);
+  const MainNavigation({super.key, required this.game});
 
   @override
   State<MainNavigation> createState() => _MainNavigationState();

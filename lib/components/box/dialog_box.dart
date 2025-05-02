@@ -8,7 +8,7 @@ import 'package:timetocode/utils/screen_utils.dart';
 class DialogBox extends StatefulWidget {
   final GameEngine game;
 
-  const DialogBox({Key? key, required this.game}) : super(key: key);
+  const DialogBox({super.key, required this.game});
 
   @override
   State<DialogBox> createState() => _DialogBoxState();
@@ -44,8 +44,8 @@ class _DialogBoxState extends State<DialogBox> {
 
   void _setupDialog() {
     widget.game.loadCharacter(
-      widget.game.character1Path[0],
-      widget.game.character2Path[0],
+      widget.game.character1Path![0],
+      widget.game.character2Path![0],
     );
     widget.game.character1ActivePath = 0;
     widget.game.character2ActivePath = 0;
@@ -54,12 +54,12 @@ class _DialogBoxState extends State<DialogBox> {
   }
 
   void _applyCharacterState() {
-    final idx = widget.game.currentDialogs.getCharacterIndex(_currentIndex);
-    final react = widget.game.currentDialogs.getReactionIndex(_currentIndex);
+    final idx = widget.game.currentDialogs?.getCharacterIndex(_currentIndex);
+    final react = widget.game.currentDialogs?.getReactionIndex(_currentIndex);
 
     if (idx == 1) {
       if (widget.game.character1ActivePath != react) {
-        widget.game.changeCharacter(1, widget.game.character1Path[react]);
+        widget.game.changeCharacter(1, widget.game.character1Path![react!]);
         widget.game.character1ActivePath = react;
       }
       widget.game.normalColorCharacter(1);
@@ -68,7 +68,7 @@ class _DialogBoxState extends State<DialogBox> {
       widget.game.blackCharacter(2);
     } else {
       if (widget.game.character2ActivePath != react) {
-        widget.game.changeCharacter(2, widget.game.character2Path[react]);
+        widget.game.changeCharacter(2, widget.game.character2Path![react!]);
         widget.game.character2ActivePath = react;
       }
       widget.game.normalColorCharacter(2);
@@ -87,8 +87,8 @@ class _DialogBoxState extends State<DialogBox> {
   }
 
   void _updateText() {
-    final fullText = widget.game.currentDialogs.getTextDialog(_currentIndex);
-    if (_charIndex < fullText.length) {
+    final fullText = widget.game.currentDialogs?.getTextDialog(_currentIndex);
+    if (_charIndex < fullText!.length) {
       setState(() {
         _displayedText += fullText[_charIndex];
         _charIndex++;
@@ -103,7 +103,7 @@ class _DialogBoxState extends State<DialogBox> {
     if (!_isTextComplete) {
       _timer?.cancel();
       setState(() {
-        _displayedText = widget.game.currentDialogs.getTextDialog(
+        _displayedText = widget.game.currentDialogs!.getTextDialog(
           _currentIndex,
         );
         _isTextComplete = true;
@@ -115,7 +115,7 @@ class _DialogBoxState extends State<DialogBox> {
 
   void _advanceDialog() {
     final dialogs = widget.game.currentDialogs;
-    if (_currentIndex < dialogs.getDialogLength() - 1) {
+    if (_currentIndex < dialogs!.getDialogLength() - 1) {
       setState(() => _currentIndex++);
       _applyCharacterState();
       _startTyping();
@@ -124,7 +124,7 @@ class _DialogBoxState extends State<DialogBox> {
       if (dialogs.nextType == 'soal') {
         widget.game.setCurrentQuestion(dialogs.next);
       } else {
-        widget.game.overlays.remove('Story');
+        widget.game.overlays.remove('StoryMenu');
         widget.game.overlays.add('EndGame');
       }
     }
@@ -140,11 +140,11 @@ class _DialogBoxState extends State<DialogBox> {
   Widget build(BuildContext context) {
     final lvl = widget.game.levels[widget.game.activeLevel];
     final name =
-        widget.game.currentDialogs.getCharacterIndex(_currentIndex) == 1
+        widget.game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
             ? lvl.character1
             : lvl.character2;
     final boxColor =
-        widget.game.currentDialogs.getCharacterIndex(_currentIndex) == 1
+        widget.game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
             ? AppColors.challengeOrange
             : AppColors.deepTealGlow;
 

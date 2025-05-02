@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
         game: gameEngine,
         overlayBuilderMap: {
           'GameUI': (_, game) => MainNavigation(game: game),
-          'Story': (_, game) => StoryPage(game: game),
+          'StoryMenu': (_, game) => StoryPage(game: game),
           'Intro': (_, game) => IntroBoxWidget(game: game),
-          'DialogueBox': (_, game) => DialogBox(game: game),
+          'DialogBox': (_, game) => DialogBox(game: game),
           'QuestionBox': (_, game) => QuestionBoxWidget(game: game),
           'EndGame': (_, game) => EndGameScreen(game: game),
         },

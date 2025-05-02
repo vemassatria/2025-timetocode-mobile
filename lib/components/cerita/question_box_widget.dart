@@ -18,8 +18,8 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
 
   @override
   void initState() {
-    options = widget.game.currentQuestion.choices;
-    questionText = widget.game.currentQuestion.question;
+    options = widget.game.currentQuestion!.choices;
+    questionText = widget.game.currentQuestion!.question;
     super.initState();
   }
 
@@ -56,6 +56,9 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
       widget.game.removeQuestion();
       widget.game.setCurrentQuestion(selected.next!);
     } else {
+      widget.game.removeQuestion();
+      widget.game.overlays.remove('QuestionBox');
+      widget.game.overlays.remove('StoryMenu');
       widget.game.overlays.add('EndGame');
     }
   }
