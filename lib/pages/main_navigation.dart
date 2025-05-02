@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/pages/main_tabs/daftar_level_page.dart';
 import 'package:timetocode/pages/main_tabs/pengaturan.dart';
 import 'package:timetocode/themes/colors.dart';
@@ -16,8 +17,18 @@ class MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
 
+  @override
+  void initState() {
+    playSound();
+    super.initState();
+  }
+
   void _onItemTapped(int index) {
     setState(() => _selectedIndex = index);
+  }
+
+  Future<void> playSound() async {
+    await MusicService.playMainMenuMusic();
   }
 
   @override

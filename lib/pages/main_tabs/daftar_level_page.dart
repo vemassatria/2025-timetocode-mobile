@@ -44,7 +44,6 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
     _cardKeys = List<GlobalKey>.generate(totalLevel, (_) => GlobalKey());
 
     _isLoaded = true;
-    await MusicService.playMainMenuMusic(); // Memutar musik halaman menu level
 
     setState(() {});
   }
