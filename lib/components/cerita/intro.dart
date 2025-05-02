@@ -4,7 +4,7 @@ import 'package:timetocode/themes/colors.dart';
 
 class IntroBoxWidget extends StatelessWidget {
   final GameEngine game;
-  const IntroBoxWidget({Key? key, required this.game}) : super(key: key);
+  const IntroBoxWidget({super.key, required this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class IntroBoxWidget extends StatelessWidget {
               constraints: BoxConstraints(maxHeight: maxHeight),
               child: SingleChildScrollView(
                 child: Text(
-                  game.preDialogue.text,
+                  game.preDialog!.text,
                   style: Theme.of(context).textTheme.labelSmall,
                   textAlign: TextAlign.center,
                 ),
@@ -39,10 +39,10 @@ class IntroBoxWidget extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: IconButton(
                 onPressed: () {
-                  if (game.preDialogue.nextType == 'dialog') {
-                    game.setCurrentDialog(game.preDialogue.next);
-                  } else if (game.preDialogue.nextType == 'soal') {
-                    game.setCurrentQuestion(game.preDialogue.next);
+                  if (game.preDialog!.nextType == 'dialog') {
+                    game.setCurrentDialog(game.preDialog!.next);
+                  } else if (game.preDialog!.nextType == 'soal') {
+                    game.setCurrentQuestion(game.preDialog!.next);
                   }
                   game.removeIntro();
                 },

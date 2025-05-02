@@ -5,7 +5,7 @@ import 'package:timetocode/pages/main_tabs/pengaturan.dart';
 
 class MainNavigation extends StatefulWidget {
   final FlameGame game;
-  const MainNavigation({Key? key, required this.game}) : super(key: key);
+  const MainNavigation({super.key, required this.game});
 
   @override
   State<MainNavigation> createState() => _MainNavigationState();

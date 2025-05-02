@@ -15,16 +15,12 @@ class GameEngine extends FlameGame {
 
   late final List<LevelModel> levels;
 
-  late PreDialogModel? _preDialogue;
+  late PreDialogModel? preDialog;
 
-  late DialogModel? _currentDialogs;
-  PreDialogModel get preDialogue => _preDialogue!;
-  DialogModel get currentDialogs => _currentDialogs!;
+  late DialogModel? currentDialogs;
 
-  late List<String>? _character1Path;
-  late List<String>? _character2Path;
-  List<String> get character1Path => _character1Path!;
-  List<String> get character2Path => _character2Path!;
+  late List<String>? character1Path;
+  late List<String>? character2Path;
 
   late int character1ActivePath;
   late int character2ActivePath;
@@ -32,8 +28,7 @@ class GameEngine extends FlameGame {
   late int activeLevel;
   late String activeMode;
 
-  late QuestionModel? _currentQuestion;
-  QuestionModel get currentQuestion => _currentQuestion!;
+  late QuestionModel? currentQuestion;
 
   late int correctAnswer;
   late int wrongAnswer;
@@ -58,17 +53,15 @@ class GameEngine extends FlameGame {
 
   void startLevel(int indexLevel) {
     overlays.remove('GameUI');
-    overlays.add('Story');
+    overlays.add('StoryMenu');
     changeScene(levels[indexLevel].background);
-    _character1Path = levels[indexLevel].character1Images;
-    _character2Path = levels[indexLevel].character2Images;
-    character1ActivePath = 0;
-    character2ActivePath = 0;
+    character1Path = levels[indexLevel].character1Images;
+    character2Path = levels[indexLevel].character2Images;
     activeLevel = indexLevel;
     correctAnswer = 0;
     wrongAnswer = 0;
     if (levels[indexLevel].typeStart == 'preDialog') {
-      _preDialogue = levels[indexLevel].preDialog;
+      preDialog = levels[indexLevel].preDialog;
       activeMode = "intro";
       overlays.add('Intro');
     } else {
@@ -77,13 +70,13 @@ class GameEngine extends FlameGame {
   }
 
   void setCurrentDialog(String id) {
-    _currentDialogs = levels[activeLevel].getDialog(id);
-    activeMode = "dialogue";
-    overlays.add('DialogueBox');
+    currentDialogs = levels[activeLevel].getDialog(id);
+    activeMode = "dialog";
+    overlays.add('DialogBox');
   }
 
   void setCurrentQuestion(String id) {
-    _currentQuestion = levels[activeLevel].questions.firstWhere(
+    currentQuestion = levels[activeLevel].questions.firstWhere(
       (dialog) => dialog.id == id,
     );
     activeMode = "question";
@@ -104,25 +97,25 @@ class GameEngine extends FlameGame {
   }
 
   void removeDialog() {
-    _currentDialogs = null;
+    currentDialogs = null;
     removeCharacter();
-    overlays.remove('DialogueBox');
+    overlays.remove('DialogBox');
   }
 
   void removeQuestion() {
     overlays.remove('QuestionBox');
-    _currentQuestion = null;
+    currentQuestion = null;
   }
 
   void removeIntro() {
     overlays.remove('Intro');
-    _preDialogue = null;
+    preDialog = null;
   }
 
   void endGame() {
-    _currentDialogs = null;
-    _currentQuestion = null;
-    _preDialogue = null;
+    currentDialogs = null;
+    currentQuestion = null;
+    preDialog = null;
     changeScene('default');
     overlays.add('GameUI');
   }
