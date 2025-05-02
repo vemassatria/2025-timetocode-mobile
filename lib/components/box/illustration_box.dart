@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
@@ -9,17 +10,19 @@ class IllustrationBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     return Container(
-      width: 328 / 360 * ScreenUtils.screenWidth(context),
-      height: 325,
-      padding: const EdgeInsets.all(16),
+      width: 328.w,
+      height: 328.h,
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
         color: AppColors.white,
-        border: Border.all(color: AppColors.black1, width: 2),
-        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: AppColors.black1, width: 2.w),
+        borderRadius: BorderRadius.circular(8.r),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
         child: Image(
           image: image,
           fit: BoxFit.cover,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
 
 class AppTypography {
@@ -8,8 +9,8 @@ class AppTypography {
   static TextStyle heading1({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
-    fontSize: 56,
-    height: 61.6 / 56,
+    fontSize: 56.sp,
+    height: 61.6.h / 56.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -17,8 +18,8 @@ class AppTypography {
   static TextStyle heading2({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
-    fontSize: 48,
-    height: 52.8 / 48,
+    fontSize: 48.sp,
+    height: 52.8.h / 48.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -26,8 +27,8 @@ class AppTypography {
   static TextStyle heading3({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
-    fontSize: 40,
-    height: 44 / 40,
+    fontSize: 40.sp,
+    height: 44.h / 40.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -35,8 +36,8 @@ class AppTypography {
   static TextStyle heading4({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
-    fontSize: 32,
-    height: 35.2 / 32,
+    fontSize: 32.sp,
+    height: 35.2.h / 32.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -44,8 +45,8 @@ class AppTypography {
   static TextStyle heading5({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
-    fontSize: 24,
-    height: 26.4 / 24,
+    fontSize: 24.sp,
+    height: 26.4.h / 24.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -53,8 +54,8 @@ class AppTypography {
   static TextStyle heading6({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
-    fontSize: 20,
-    height: 22 / 20,
+    fontSize: 20.sp,
+    height: 22.h / 20.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -63,8 +64,8 @@ class AppTypography {
   static TextStyle largeBold({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
-    fontSize: 20,
-    height: 28 / 20,
+    fontSize: 20.sp,
+    height: 28.h / 20.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -72,8 +73,8 @@ class AppTypography {
   static TextStyle mediumBold({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
-    fontSize: 18,
-    height: 25.2 / 18,
+    fontSize: 18.sp,
+    height: 25.2.h / 18.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -81,8 +82,8 @@ class AppTypography {
   static TextStyle normalBold({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
-    fontSize: 16,
-    height: 22.4 / 16,
+    fontSize: 16.sp,
+    height: 22.4.h / 16.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -90,8 +91,8 @@ class AppTypography {
   static TextStyle smallBold({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.bold,
-    fontSize: 14,
-    height: 19.6 / 14,
+    fontSize: 14.sp,
+    height: 19.6.h / 14.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -100,8 +101,8 @@ class AppTypography {
   static TextStyle large({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.normal,
-    fontSize: 20,
-    height: 28 / 20,
+    fontSize: 20.sp,
+    height: 28.h / 20.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -109,8 +110,8 @@ class AppTypography {
   static TextStyle medium({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.normal,
-    fontSize: 18,
-    height: 25.2 / 18,
+    fontSize: 18.sp,
+    height: 25.2.h / 18.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -118,8 +119,8 @@ class AppTypography {
   static TextStyle normal({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.normal,
-    fontSize: 16,
-    height: 22.4 / 16,
+    fontSize: 16.sp,
+    height: 22.4.h / 16.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
@@ -127,8 +128,8 @@ class AppTypography {
   static TextStyle small({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
     fontWeight: FontWeight.normal,
-    fontSize: 14,
-    height: 19.6 / 14,
+    fontSize: 14.sp,
+    height: 19.6.h / 14.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );
