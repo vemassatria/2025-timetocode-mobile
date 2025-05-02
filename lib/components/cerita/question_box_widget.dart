@@ -23,9 +23,9 @@ class _QuestionBoxWidgetState extends State<QuestionBoxWidget> {
 
   @override
   void initState() {
-    options = widget.game.currentQuestion.choices;
-    questionText = widget.game.currentQuestion.question;
-    codeText = widget.game.currentQuestion.code;
+    options = widget.game.currentQuestion!.choices;
+    questionText = widget.game.currentQuestion!.question;
+    codeText = widget.game.currentQuestion!.code;
     super.initState();
   }
 

@@ -111,7 +111,7 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                           : (completedLevel == index
                               ? CardStatus.unlocked
                               : CardStatus.locked),
-                  onStartPressed: () {
+                  onStartPressed: () async {
                     await MusicService.playLevelMusic(index);
                     (widget.game as GameEngine).startLevel(index);
                   },

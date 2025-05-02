@@ -10,12 +10,12 @@ class IntroBoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: NarrationBox(
-        narrationText: game.preDialogue.text,
+        narrationText: game.preDialog!.text,
         onTap: () {
-          if (game.preDialogue.nextType == 'dialog') {
-            game.setCurrentDialog(game.preDialogue.next);
-          } else if (game.preDialogue.nextType == 'soal') {
-            game.setCurrentQuestion(game.preDialogue.next);
+          if (game.preDialog!.nextType == 'dialog') {
+            game.setCurrentDialog(game.preDialog!.next);
+          } else if (game.preDialog!.nextType == 'soal') {
+            game.setCurrentQuestion(game.preDialog!.next);
           }
           game.removeIntro();
         },
