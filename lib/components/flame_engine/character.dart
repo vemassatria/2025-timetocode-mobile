@@ -26,14 +26,14 @@ class StoryCharactersComponent extends Component {
     person1 = SpriteComponent(
       sprite: Sprite(image1),
       size: Vector2(width1, height),
-      position: Vector2(_game.size.x * 0.925, _game.size.y * 0.95),
+      position: Vector2(_game.size.x * 0.7, _game.size.y * 0.95),
       anchor: Anchor.bottomRight,
     );
 
     person2 = SpriteComponent(
       sprite: Sprite(image2),
       size: Vector2(width2, height),
-      position: Vector2(_game.size.x * 0.075, _game.size.y * 0.95),
+      position: Vector2(_game.size.x * 0.15, _game.size.y * 0.95),
       anchor: Anchor.bottomLeft,
     );
 
@@ -75,7 +75,7 @@ class StoryCharactersComponent extends Component {
     final width = target.sprite!.srcSize.x / target.sprite!.srcSize.y * height;
     final position =
         indexCharacter == 1
-            ? Vector2(_game.size.x * 1.05, _game.size.y * 0.95)
+            ? Vector2(_game.size.x * 0.85, _game.size.y * 0.95)
             : Vector2(_game.size.x * -0.05, _game.size.y * 0.95);
     target
       ..size = Vector2(width, height)
@@ -89,8 +89,8 @@ class StoryCharactersComponent extends Component {
     final width = target.sprite!.srcSize.x / target.sprite!.srcSize.y * height;
     final position =
         indexCharacter == 1
-            ? Vector2(_game.size.x * 0.925, _game.size.y * 0.95)
-            : Vector2(_game.size.x * 0.075, _game.size.y * 0.95);
+            ? Vector2(_game.size.x * 0.7, _game.size.y * 0.95)
+            : Vector2(_game.size.x * 0.15, _game.size.y * 0.95);
     target
       ..size = Vector2(width, height)
       ..position = position;

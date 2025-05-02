@@ -126,23 +126,26 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
     storyCharacters = null;
   }
 
-  void changeCharacter(int indexCharacter, String characterNewPath) async {
+  Future<void> changeCharacter(
+    int indexCharacter,
+    String characterNewPath,
+  ) async {
     await storyCharacters!.changeCharacter(indexCharacter, characterNewPath);
   }
 
-  void blackCharacter(int indexCharacter) async {
+  Future<void> blackCharacter(int indexCharacter) async {
     await storyCharacters!.negroCharacter(indexCharacter);
   }
 
-  void enhancedSizeCharacter(int indexCharacter) async {
+  Future<void> enhancedSizeCharacter(int indexCharacter) async {
     await storyCharacters!.enhancedSizeCharacter(indexCharacter);
   }
 
-  void normalSizeCharacter(int indexCharacter) async {
+  Future<void> normalSizeCharacter(int indexCharacter) async {
     await storyCharacters!.normalSizeCharacter(indexCharacter);
   }
 
-  void normalColorCharacter(int indexCharacter) async {
+  Future<void> normalColorCharacter(int indexCharacter) async {
     await storyCharacters!.normalColorCharacter(indexCharacter);
   }
 }

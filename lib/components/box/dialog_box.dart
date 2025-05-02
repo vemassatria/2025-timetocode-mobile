@@ -27,51 +27,82 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
   void initState() {
     super.initState();
     game = ref.read(gameEngineProvider);
-    _setupDialog();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _initialize();
+    });
+  }
+
+  void _initialize() async {
+    // Create characters first if they don't exist yet
+    if (game.storyCharacters == null) {
+      await game.loadCharacter(
+        game.character1Path![0],
+        game.character2Path![0],
+      );
+      game.character1ActivePath = 0;
+      game.character2ActivePath = 0;
+    }
+
+    // Now that characters exist, apply state changes
+    _applyInitialState();
+
+    // Start typing animation after a short delay
+    Future.delayed(const Duration(milliseconds: 100), () {
+      if (mounted) {
+        _startTyping();
+      }
+    });
+  }
+
+  void _applyInitialState() {
+    final dialogs = game.currentDialogs!;
+    final idx = dialogs.getCharacterIndex(_currentIndex);
+    final react = dialogs.getReactionIndex(_currentIndex);
+
+    // Prevent rebuilds during character setup
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (idx == 1) {
+        // First character is speaking
+        if (game.character1ActivePath != react) {
+          await game.changeCharacter(1, game.character1Path![react]);
+          game.character1ActivePath = react;
+        }
+        await game.normalColorCharacter(1);
+        await game.normalSizeCharacter(2);
+        await game.enhancedSizeCharacter(1);
+        await game.blackCharacter(2);
+      } else {
+        // Second character is speaking
+        if (game.character2ActivePath != react) {
+          await game.changeCharacter(2, game.character2Path![react]);
+          game.character2ActivePath = react;
+        }
+        await game.normalColorCharacter(2);
+        await game.normalSizeCharacter(1);
+        await game.enhancedSizeCharacter(2);
+        await game.blackCharacter(1);
+      }
+    });
   }
 
   @override
   void didUpdateWidget(covariant DialogBox oldWidget) {
     super.didUpdateWidget(oldWidget);
+    // Reset the state for the updated widget
     _currentIndex = 0;
     _displayedText = '';
     _charIndex = 0;
     _isTextComplete = false;
-    _setupDialog();
-  }
 
-  void _setupDialog() {
-    game.loadCharacter(game.character1Path![0], game.character2Path![0]);
-    game.character1ActivePath = 0;
-    game.character2ActivePath = 0;
-    _applyCharacterState();
-    _startTyping();
-  }
+    // Apply initial state on update
+    _applyInitialState();
 
-  void _applyCharacterState() {
-    final dialogs = game.currentDialogs!;
-    final idx = dialogs.getCharacterIndex(_currentIndex);
-    final react = dialogs.getReactionIndex(_currentIndex);
-
-    if (idx == 1) {
-      if (game.character1ActivePath != react) {
-        game.changeCharacter(1, game.character1Path![react]);
-        game.character1ActivePath = react;
+    // Restart typing animation
+    Future.delayed(const Duration(milliseconds: 100), () {
+      if (mounted) {
+        _startTyping();
       }
-      game.normalColorCharacter(1);
-      game.normalSizeCharacter(2);
-      game.enhancedSizeCharacter(1);
-      game.blackCharacter(2);
-    } else {
-      if (game.character2ActivePath != react) {
-        game.changeCharacter(2, game.character2Path![react]);
-        game.character2ActivePath = react;
-      }
-      game.normalColorCharacter(2);
-      game.normalSizeCharacter(1);
-      game.enhancedSizeCharacter(2);
-      game.blackCharacter(1);
-    }
+    });
   }
 
   void _startTyping() {
@@ -107,18 +138,56 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     }
   }
 
-  void _advanceDialog() {
+  void _advanceDialog() async {
     final dialogs = game.currentDialogs;
     if (_currentIndex < dialogs!.getDialogLength() - 1) {
-      setState(() => _currentIndex++);
-      _applyCharacterState();
-      _startTyping();
+      setState(() {
+        _currentIndex++;
+        _displayedText = '';
+        _isTextComplete = false;
+      });
+
+      // Apply character state changes for the new dialog
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        final idx = dialogs.getCharacterIndex(_currentIndex);
+        final react = dialogs.getReactionIndex(_currentIndex);
+
+        if (idx == 1) {
+          // First character is speaking
+          if (game.character1ActivePath != react) {
+            await game.changeCharacter(1, game.character1Path![react]);
+            game.character1ActivePath = react;
+          }
+          await game.normalColorCharacter(1);
+          await game.normalSizeCharacter(2);
+          await game.enhancedSizeCharacter(1);
+          await game.blackCharacter(2);
+        } else {
+          // Second character is speaking
+          if (game.character2ActivePath != react) {
+            await game.changeCharacter(2, game.character2Path![react]);
+            game.character2ActivePath = react;
+          }
+          await game.normalColorCharacter(2);
+          await game.normalSizeCharacter(1);
+          await game.enhancedSizeCharacter(2);
+          await game.blackCharacter(1);
+        }
+
+        // Start typing after character changes
+        Future.delayed(const Duration(milliseconds: 100), () {
+          if (mounted) {
+            _startTyping();
+          }
+        });
+      });
     } else {
       game.removeDialog();
       if (dialogs.nextType == 'soal') {
         game.setCurrentQuestion(dialogs.next);
       } else {
         game.overlays.remove('StoryMenu');
+        game.changeScene('default');
         game.overlays.add('EndGame');
       }
     }

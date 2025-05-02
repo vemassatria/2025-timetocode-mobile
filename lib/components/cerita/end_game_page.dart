@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/providers/game_provider.dart';
+import 'package:timetocode/themes/typography.dart';
 
 class EndGameScreen extends ConsumerWidget {
   const EndGameScreen({super.key});
@@ -41,14 +42,18 @@ class EndGameScreen extends ConsumerWidget {
               child: Center(
                 child: Text(
                   '$completedLevel/$maxLevel',
-                  style: Theme.of(context).textTheme.displayLarge,
+                  style: AppTypography.heading1().copyWith(
+                    decoration: TextDecoration.none,
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 32),
             Text(
               'Level $completedLevel Selesai',
-              style: Theme.of(context).textTheme.headlineLarge,
+              style: AppTypography.heading3().copyWith(
+                decoration: TextDecoration.none,
+              ),
             ),
             Container(
               margin: const EdgeInsets.only(top: 16),
@@ -204,7 +209,9 @@ class EndGameScreen extends ConsumerWidget {
               alignment: Alignment.center,
               child: Text(
                 text,
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: AppTypography.heading6().copyWith(
+                  decoration: TextDecoration.none,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
