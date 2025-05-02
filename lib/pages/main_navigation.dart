@@ -1,4 +1,3 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/pages/main_tabs/daftar_level_page.dart';
@@ -8,8 +7,7 @@ import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
 class MainNavigation extends StatefulWidget {
-  final FlameGame game;
-  const MainNavigation({super.key, required this.game});
+  const MainNavigation({super.key});
 
   @override
   State<MainNavigation> createState() => _MainNavigationState();
@@ -26,10 +24,7 @@ class _MainNavigationState extends State<MainNavigation> {
   Widget build(BuildContext context) {
     initScreenUtil(context);
 
-    final pages = <Widget>[
-      DaftarLevelPage(game: widget.game),
-      PengaturanPage(),
-    ];
+    final pages = <Widget>[DaftarLevelPage(), PengaturanPage()];
 
     return Scaffold(
       backgroundColor: Colors.transparent,

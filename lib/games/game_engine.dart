@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flame/game.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:timetocode/components/flame_engine/background.dart';
 import 'package:timetocode/components/flame_engine/character.dart';
@@ -9,7 +10,7 @@ import 'package:timetocode/games/models/level_model.dart';
 import 'package:timetocode/games/models/predialog_model.dart';
 import 'package:timetocode/games/models/question_model.dart';
 
-class GameEngine extends FlameGame {
+class GameEngine extends FlameGame with RiverpodGameMixin {
   late SceneBackgroundComponent sceneBackground;
   StoryCharactersComponent? storyCharacters;
 

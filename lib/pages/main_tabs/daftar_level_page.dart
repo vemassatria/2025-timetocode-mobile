@@ -1,24 +1,23 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/components/card.dart';
 import 'package:timetocode/components/popups/info_popup.dart';
-import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 
-class DaftarLevelPage extends StatefulWidget {
-  final FlameGame game;
-  const DaftarLevelPage({super.key, required this.game});
+class DaftarLevelPage extends ConsumerStatefulWidget {
+  const DaftarLevelPage({super.key});
 
   @override
-  State<DaftarLevelPage> createState() => _DaftarLevelPageState();
+  ConsumerState<DaftarLevelPage> createState() => _DaftarLevelPageState();
 }
 
-class _DaftarLevelPageState extends State<DaftarLevelPage> {
+class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
   late SharedPreferences _prefs;
   final ScrollController _scrollController = ScrollController();
   late int completedLevel;
@@ -34,13 +33,14 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
 
   Future<void> _loadLevelData() async {
     _prefs = await SharedPreferences.getInstance();
+    final game = ref.read(gameEngineProvider);
 
     if (_prefs.getInt('completedLevel') == null) {
       await _prefs.setInt('completedLevel', 0);
     }
 
     completedLevel = _prefs.getInt('completedLevel')!;
-    totalLevel = (widget.game as GameEngine).levels.length;
+    totalLevel = game.levels.length;
     _cardKeys = List<GlobalKey>.generate(totalLevel, (_) => GlobalKey());
 
     _isLoaded = true;
@@ -51,6 +51,7 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
 
   @override
   Widget build(BuildContext context) {
+    final game = ref.read(gameEngineProvider);
     if (!_isLoaded) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
@@ -102,9 +103,9 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                 ),
                 child: LevelCard(
                   image: Image.asset(
-                    'assets/background/${(widget.game as GameEngine).levels[index].background}.webp',
+                    'assets/background/${game.levels[index].background}.webp',
                   ),
-                  title: (widget.game as GameEngine).levels[index].title,
+                  title: game.levels[index].title,
                   status:
                       completedLevel > index
                           ? CardStatus.completed
@@ -113,17 +114,14 @@ class _DaftarLevelPageState extends State<DaftarLevelPage> {
                               : CardStatus.locked),
                   onStartPressed: () async {
                     await MusicService.playLevelMusic(index);
-                    (widget.game as GameEngine).startLevel(index);
+                    game.startLevel(index);
                   },
                   onInfoPressed: () {
                     showPopupOverlay(
                       context,
                       InfoPopup(
-                        title: (widget.game as GameEngine).levels[index].title,
-                        description:
-                            (widget.game as GameEngine)
-                                .levels[index]
-                                .description,
+                        title: game.levels[index].title,
+                        description: game.levels[index].description,
                         onClose: closePopupOverlay,
                       ),
                     );

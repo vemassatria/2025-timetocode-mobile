@@ -1,81 +1,76 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
-class DialogBox extends StatefulWidget {
-  final GameEngine game;
-
-  const DialogBox({super.key, required this.game});
+class DialogBox extends ConsumerStatefulWidget {
+  const DialogBox({super.key});
 
   @override
-  State<DialogBox> createState() => _DialogBoxState();
+  ConsumerState<DialogBox> createState() => _DialogBoxState();
 }
 
-class _DialogBoxState extends State<DialogBox> {
+class _DialogBoxState extends ConsumerState<DialogBox> {
   int _currentIndex = 0;
   String _displayedText = '';
   int _charIndex = 0;
   bool _isTextComplete = false;
   Timer? _timer;
+  late GameEngine game;
 
   @override
   void initState() {
     super.initState();
-    _currentIndex = 0;
+    game = ref.read(gameEngineProvider);
     _setupDialog();
   }
 
   @override
   void didUpdateWidget(covariant DialogBox oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.game.currentDialogs != widget.game.currentDialogs) {
-      setState(() {
-        _currentIndex = 0;
-        _displayedText = '';
-        _charIndex = 0;
-        _isTextComplete = false;
-      });
-      _setupDialog();
-    }
+    _currentIndex = 0;
+    _displayedText = '';
+    _charIndex = 0;
+    _isTextComplete = false;
+    _setupDialog();
   }
 
   void _setupDialog() {
-    widget.game.loadCharacter(
-      widget.game.character1Path![0],
-      widget.game.character2Path![0],
-    );
-    widget.game.character1ActivePath = 0;
-    widget.game.character2ActivePath = 0;
+    game.loadCharacter(game.character1Path![0], game.character2Path![0]);
+    game.character1ActivePath = 0;
+    game.character2ActivePath = 0;
     _applyCharacterState();
     _startTyping();
   }
 
   void _applyCharacterState() {
-    final idx = widget.game.currentDialogs?.getCharacterIndex(_currentIndex);
-    final react = widget.game.currentDialogs?.getReactionIndex(_currentIndex);
+    final dialogs = game.currentDialogs!;
+    final idx = dialogs.getCharacterIndex(_currentIndex);
+    final react = dialogs.getReactionIndex(_currentIndex);
 
     if (idx == 1) {
-      if (widget.game.character1ActivePath != react) {
-        widget.game.changeCharacter(1, widget.game.character1Path![react!]);
-        widget.game.character1ActivePath = react;
+      if (game.character1ActivePath != react) {
+        game.changeCharacter(1, game.character1Path![react]);
+        game.character1ActivePath = react;
       }
-      widget.game.normalColorCharacter(1);
-      widget.game.normalSizeCharacter(2);
-      widget.game.enhancedSizeCharacter(1);
-      widget.game.blackCharacter(2);
+      game.normalColorCharacter(1);
+      game.normalSizeCharacter(2);
+      game.enhancedSizeCharacter(1);
+      game.blackCharacter(2);
     } else {
-      if (widget.game.character2ActivePath != react) {
-        widget.game.changeCharacter(2, widget.game.character2Path![react!]);
-        widget.game.character2ActivePath = react;
+      if (game.character2ActivePath != react) {
+        game.changeCharacter(2, game.character2Path![react]);
+        game.character2ActivePath = react;
       }
-      widget.game.normalColorCharacter(2);
-      widget.game.normalSizeCharacter(1);
-      widget.game.enhancedSizeCharacter(2);
-      widget.game.blackCharacter(1);
+      game.normalColorCharacter(2);
+      game.normalSizeCharacter(1);
+      game.enhancedSizeCharacter(2);
+      game.blackCharacter(1);
     }
   }
 
@@ -88,7 +83,7 @@ class _DialogBoxState extends State<DialogBox> {
   }
 
   void _updateText() {
-    final fullText = widget.game.currentDialogs?.getTextDialog(_currentIndex);
+    final fullText = game.currentDialogs?.getTextDialog(_currentIndex);
     if (_charIndex < fullText!.length) {
       setState(() {
         _displayedText += fullText[_charIndex];
@@ -104,9 +99,7 @@ class _DialogBoxState extends State<DialogBox> {
     if (!_isTextComplete) {
       _timer?.cancel();
       setState(() {
-        _displayedText = widget.game.currentDialogs!.getTextDialog(
-          _currentIndex,
-        );
+        _displayedText = game.currentDialogs!.getTextDialog(_currentIndex);
         _isTextComplete = true;
       });
     } else {
@@ -115,18 +108,18 @@ class _DialogBoxState extends State<DialogBox> {
   }
 
   void _advanceDialog() {
-    final dialogs = widget.game.currentDialogs;
+    final dialogs = game.currentDialogs;
     if (_currentIndex < dialogs!.getDialogLength() - 1) {
       setState(() => _currentIndex++);
       _applyCharacterState();
       _startTyping();
     } else {
-      widget.game.removeDialog();
+      game.removeDialog();
       if (dialogs.nextType == 'soal') {
-        widget.game.setCurrentQuestion(dialogs.next);
+        game.setCurrentQuestion(dialogs.next);
       } else {
-        widget.game.overlays.remove('StoryMenu');
-        widget.game.overlays.add('EndGame');
+        game.overlays.remove('StoryMenu');
+        game.overlays.add('EndGame');
       }
     }
   }
@@ -141,13 +134,13 @@ class _DialogBoxState extends State<DialogBox> {
   Widget build(BuildContext context) {
     initScreenUtil(context);
 
-    final lvl = widget.game.levels[widget.game.activeLevel];
+    final lvl = game.levels[game.activeLevel];
     final name =
-        widget.game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
+        game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
             ? lvl.character1
             : lvl.character2;
     final boxColor =
-        widget.game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
+        game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
             ? AppColors.challengeOrange
             : AppColors.deepTealGlow;
 
