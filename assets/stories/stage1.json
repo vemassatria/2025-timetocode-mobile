@@ -1539,7 +1539,7 @@
           "text": [
             {
               "line": "Baik anak-anak hari ini kita akan bahas Jenis Fungsi. Fungsi dibagi jadi dua: yang memiliki return value dan yang tidak.",
-              "reaction_index": 2,
+              "reaction_index": 0,
               "speaker": 2
             },
             {
@@ -1549,7 +1549,7 @@
             },
             {
               "line": "Jadi fungsi adalah sekumpulan kode untuk tugas tertentu. Fungsi ada 2 yaitu yang bisa mengembalikan nilai disebut return value dan yang tidak mengembalikan nilai.",
-              "reaction_index": 1,
+              "reaction_index": 2,
               "speaker": 2
             },
             {
@@ -1559,7 +1559,7 @@
             },
             {
               "line": "Betul. Fungsi dengan return value mengembalikan nilai setelah dieksekusi. Misal fungsi penjumlahan yang mengembalikan hasil. Fungsi tambah mengembalikan hasil penjumlahan yang bisa disimpan di variabel. Sekarang fungsi tambah pada kode ini termasuk jenis fungsi apa?",
-              "reaction_index": 1,
+              "reaction_index": 2,
               "speaker": 2
             }
           ],
@@ -1571,17 +1571,17 @@
           "text": [
             {
               "line": "Jawabanmu kurang tepat Adrian.",
-              "reaction_index": 0,
+              "reaction_index": 1,
               "speaker": 2
             },
             {
               "line": "Saya masih bingung pak.",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
               "line": "Ngga masalah, Adrian. Coba perhatikan lagi. Fungsi itu bisa mengembalikan nilai ke pemanggilnya. Dalam kasus ini fungsi tambah menggunakan return untuk mengembalikan hasil.",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 2
             },
             {
@@ -1591,7 +1591,7 @@
             },
             {
               "line": "Jadi tipe fungsi berdasarkan apakah dia mengembalikan nilai atau tidak. Fungsi seperti ini memerlukan tipe data di depan nama fungsi yang menunjukkan nilai yang akan dikembalikan.",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 2
             },
             {
@@ -1613,7 +1613,7 @@
           "text": [
             {
               "line": "Benar! Sekarang fungsi yang tidak memiliki return value, seperti void.",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 2
             },
             {
@@ -1623,7 +1623,7 @@
             },
             {
               "line": "Fungsi void digunakan ketika tidak perlu mengembalikan nilai, misal untuk menampilkan pesan. Coba lihat titik-titik itu, itu seharusnya diisi apa?",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 2
             }
           ],
@@ -1631,11 +1631,53 @@
           "nextType": "soal"
         },
         {
+          "id": "salah5_2",
+          "text": [
+            {
+              "line": "Jawabanmu belum tepat Adrien.",
+              "reaction_index": 1, 
+              "speaker": 2
+            },
+            {
+              "line": "Wah, saya masih bingung pak.",
+              "reaction_index": 0, 
+              "speaker": 1
+            },
+            {
+              "line": "Ngga masalah Adrien. Coba kita bahas sedikit. Fungsi itu bisa mengembalikan nilai atau tidak. Kalau mengembalikan nilai artinya fungsi memberikan hasil yang bisa digunakan kembali di bagian lain dari program.",
+              "reaction_index": 0, 
+              "speaker": 2
+            },
+            {
+              "line": "Jadi kalau fungsi tidak mengembalikan nilai artinya apa pak?",
+              "reaction_index": 0, 
+              "speaker": 1
+            },
+            {
+              "line": "Fungsi yang tidak mengembalikan nilai hanya melakukan tugas tertentu, seperti mencetak sesuatu ke layar tanpa memberikan hasil yang bisa dipakai di tempat lain.",
+              "reaction_index": 0, 
+              "speaker": 2
+            },
+            {
+              "line": "Oh jadi tergantung apa yang dilakukan oleh fungsi itu ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Betul. Jadi, sekarang coba lihat lagi fungsi sapa. Fungsi itu cuma mencetak pesan kan? Nah berdasarkan itu, coba dibaca pelan-pelan soalnya. Apa yang dilakukan oleh fungsi itu dan apakah fungsi tersebut mengembalikan nilai atau tidak?",
+              "reaction_index": 2, 
+              "speaker": 2
+            }
+          ],
+          "next": "soal5_2", 
+          "nextType": "soal"
+        },
+        {
           "id": "benar5_last",
           "text": [
             {
               "line": "Jawabanmu sudah tepat, Adrian!",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 2
             },
             {
@@ -1645,7 +1687,7 @@
             },
             {
               "line": "Betul. Fungsi sapa hanya mencetak pesan, tidak ada nilai yang dikembalikan.",
-              "reaction_index": 1,
+              "reaction_index": 2,
               "speaker": 2
             },
             {
@@ -1655,7 +1697,7 @@
             },
             {
               "line": "Tepat! Fungsi dengan return value mengirimkan hasil yang bisa digunakan lagi di tempat lain dalam program, sementara fungsi tanpa return value hanya menjalankan tugas tanpa memberikan hasil.",
-              "reaction_index": 1,
+              "reaction_index": 2,
               "speaker": 2
             }
           ],
@@ -1748,7 +1790,7 @@
       "character1_name": "Adrian",
       "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
       "character2_name": "Jennie",
-      "character2_reaction": ["crush-biasa", "crush-senang", "crush-marah"],
+      "character2_reaction": ["crush-biasa", "crush-marah", "crush-senang"],
       "start": "preDialog6",
       "typeStart": "preDialog",
       "preDialog": {
@@ -1773,7 +1815,7 @@
             },
             {
               "line": "Iya nih aku lagi belajar tentang penggolongan variabel berdasarkan kelas penyimpanan. Pusing juga sih, banyak jenis variabelnya.",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
@@ -1783,7 +1825,7 @@
             },
             {
               "line": "Serius? Boleh banget deh biar nggak pusing",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 1
             },
             {
@@ -1805,12 +1847,12 @@
             },
             {
               "line": "Wah aku salah ya? Aku kira udah bener.",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
               "line": "Gak apa-apa kok! Nih aku kasih bocoran dikit: variabel itu biasanya yang menyimpan nilai. Coba deh perhatikan di kode itu, mana yang kelihatan menyimpan angka 10?",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 2
             },
             {
@@ -1832,7 +1874,7 @@
           "text": [
             {
               "line": "Yah salah ya ternyata",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
@@ -1906,12 +1948,12 @@
           "text": [
             {
               "line": "Noo, Jawabanku salah.",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
               "line": "Oops, hampir, Adrian! Coba kita lihat lagi ya. Kalau variabel register, itu sebenarnya punya sifat yang berbeda. Variabel ini dimaksudkan agar kompilator bisa mencoba untuk menyimpannya langsung di register prosesor, supaya aksesnya lebih cepat. Jadi, variabel register nggak disimpan di memori biasa.",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 2
             },
             {
@@ -1953,7 +1995,7 @@
             },
             {
               "line": "Iya, bener banget! Lanjut, ada juga variabel global/eksternal. Ini kebalikan dari yang lokal. Variabel global itu bisa diakses dimana aja dalam program, asal udah dideklarasikan di luar fungsi. Nah coba kamu jawab soal ini deh",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 2
             }
           ],
@@ -1975,7 +2017,7 @@
             },
             {
               "line": "Iya, bener banget! Nah, selanjutnya ada variabel statis. Variabel statis ini punya sifat yang unik. Meskipun dia dideklarasikan dalam fungsi, nilainya gak hilang meskipun fungsi udah selesai. Jadi dia tetap menyimpan nilai terakhir saat fungsi tersebut dipanggil lagi.",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 2
             },
             {
@@ -2007,7 +2049,7 @@
             },
             {
               "line": "Ya ampun?! Ada lagi?",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
