@@ -64,7 +64,7 @@ flutter:
     - assets/character/
     - assets/stories/
     - assets/audio/music/
-
+    - assets/audio/sfx/
   fonts:
     - family: Comic Neue
       fonts:
