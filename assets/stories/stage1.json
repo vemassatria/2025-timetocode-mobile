@@ -1,234 +1,507 @@
 {
-  "levels": [{
-    "level": 1,
-    "dialogs": [
-      {
-        "id": "intro",
-        "character1": "Adrien",
-        "character2": "Mas Tino",
-        "text": [
-          "Mas kuliah di informatika tuh berat banget. Materi langsung susah-susah, apalagi konsep pemrograman",
-          "Iya aku dulu juga gitu. Tapi kamu bakal paham kok, asal konsisten belajar. Ngomong-ngomong dosen konsep pemrogaman kamu Pak Rongga bukan?",
-          "Iya bener banget! Kok mas ta?",
-          "Haha ya tau lah. Pak Rongga tuh legend di mata kuliah itu. Santai aja, beliau emang tegas tapi ngajarnya jelas kok. Oiya kalau pelajaran pertama harusnya tentang \"variabel\" dan \"operator\" ga sih?",
-          "Iya bener mas! Tapi aku masih bingung, \"variabel\" dan \"operator\" itu apaan sih?",
-          "Nah sebelum masuk kesitu lebih baik aku jelasin dulu soal tipe data biar kamu makin paham. Pertama ada tipe data int, biasanya dipake buat nyimpen angka bulat. Kayak umur, jumlah barang, tahun, pokoknya angka yang gak ada komanya.",
-          "Ooh jadi kayak 18, 2025, 100 gitu ya kak?",
-          "Bener. Kedua ada float, itu buat angka yang ada komanya. Kayak berat badan 55.5 kg, tinggi badan 160.3 cm, atau nilai ujian 89.75. Pokoknya yang ada pecahannya gitu.",
-          "Berarti kalo yang ada koma-koma gitu lebih akurat pake float ya mas?",
-          "Yap! Akurat buat angka-angka yang gak bulat. Ketiga ada char buat nyimpen satu huruf aja. Misal huruf awal nama kamu, kayak 'A' buat Adrien.",
-          "Kalau nama lengkap?",
-          "Kalau nama lengkap, kayak \"Adrien Yudistion\", itu kamu pake string. String itu buat nyimpen deretan karakter alias tulisan panjang.",
-          "Okee aku kebayang!",
-          "Terakhir, bool alias boolean. Itu buat nyimpen dua pilihan aja: true atau false. Misal status \"Lulus\" atau \"Belum Lulus\", \"Sudah Login\" atau \"Belum Login\".",
-          "Wuihh, ternyata tipe data banyak jenisnya ya dan ada gunanya masing-masing.",
-          "Yoi! Karena kalo kamu salah pilih tipe data, program bisa error atau hasilnya gak sesuai. Makanya penting ngerti dari sekarang!  Coba deh buat tes pemahaman, kamu jawab soal ini ya!"
-        ],
-        "next": "soal1_1"
-      },
-      {
-        "id": "soal1_1",
-        "character1": "Adrien",
-        "character2": "Tino",
-        "text": "Terdapat data seorang mahasiswa. Nama mahasiswa itu adalah \"Andi\", usianya 20 tahun, berat badannya 70.5 kg, dan dia sudah lulus ujian dengan nilai 85. Pilih tipe data yang tepat untuk masing-masing data tersebut:\n* Nama: \"Andi\"\n* Usia: 20\n* Berat badan: 70.5\n* Nilai ujian: 85\n* Status lulus: true",
-        "choices": [
-          {"text": "Nama: string, Usia: float, Berat badan: int, Nilai ujian: bool, Status lulus: char",
-            "next": {
-              "retry": "soal1_1",
-              "review": "salah1_1"
+  "levels": [
+    {
+      "level": 1,
+      "description": "Kenalan dulu sama bahan dasar ngoding: tipe data, variabel, sama operator biar program lo ngerti harus ngapain!",
+      "title": "Tipe Data, Variabel, dan Operator",
+      "background": "warung-kating",
+      "character1_name": "Adrien",
+      "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "character2_name": "Mas Tino",
+      "character2_reaction": ["tino-biasa", "tino-marah", "tino-senang"],
+      "start": "preDialog1",
+      "typeStart": "preDialog",
+      "preDialog": [
+        {
+          "id": "preDialog1",
+          "text": "Adrian duduk di teras kosan terlihat kebingungan membolak-balik buku diktatnya. Mas Tino yang kebetulan lewat melihat adik tingkatnya itu tampak kesulitan, lalu menghampiri.",
+          "next": "intro1",
+          "nextType": "dialogs"
+        }
+      ],
+      "dialogs": [
+        {
+          "id": "intro1",
+          "text": [
+            {
+              "line": "Mas kuliah di informatika tuh berat banget. Materi langsung susah-susah, apalagi konsep pemrograman",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Iya aku dulu juga gitu. Tapi kamu bakal paham kok, asal konsisten belajar. Ngomong-ngomong dosen konsep pemrogaman kamu Pak Rongga bukan?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Iya bener banget! Kok mas tau?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Haha ya tau lah. Pak Rongga tuh legend di mata kuliah itu. Santai aja, beliau emang tegas tapi ngajarnya jelas kok. Oiya kalau pelajaran pertama harusnya tentang \"variabel\" dan \"operator\" ga sih?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Iya bener mas! Tapi aku masih bingung, \"variabel\" dan \"operator\" itu apaan sih?",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Nah sebelum masuk kesitu lebih baik aku jelasin dulu soal tipe data biar kamu makin paham. Pertama ada tipe data int, biasanya dipake buat nyimpen angka bulat. Kayak umur, jumlah barang, tahun, pokoknya angka yang gak ada komanya.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ooh jadi kayak 18, 2025, 100 gitu ya kak?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Bener. Kedua ada float, itu buat angka yang ada komanya. Kayak berat badan 55.5 kg, tinggi badan 160.3 cm, atau nilai ujian 89.75. Pokoknya yang ada pecahannya gitu.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Berarti kalo yang ada koma-koma gitu lebih akurat pake float ya mas?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Yap! Akurat buat angka-angka yang gak bulat. Ketiga ada char buat nyimpen satu huruf aja. Misal huruf awal nama kamu, kayak 'A' buat Adrien.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Kalau nama lengkap?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Kalau nama lengkap, kayak \"Adrien Yudistion\", itu kamu pake string. String itu buat nyimpen deretan karakter alias tulisan panjang.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Okee aku kebayang!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Terakhir, bool alias boolean. Itu buat nyimpen dua pilihan aja: true atau false. Misal status \"Lulus\" atau \"Belum Lulus\", \"Sudah Login\" atau \"Belum Login\".",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Wuihh, ternyata tipe data banyak jenisnya ya dan ada gunanya masing-masing.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Yoi! Karena kalo kamu salah pilih tipe data, program bisa error atau hasilnya gak sesuai. Makanya penting ngerti dari sekarang! Coba deh buat tes pemahaman, kamu jawab soal ini ya!",
+              "reaction_index": 2,
+              "speaker": 2
             }
-          },
-          {"text": "Nama: string, Usia: int, Berat badan: float, Nilai ujian: int, Status lulus: bool", "next": "materi1_2"},
-          {
-            "text": "Nama: char, Usia: bool, Berat badan: string, Nilai ujian: float, Status lulus: int",
-            "next": {
-              "retry": "soal1_1",
-              "review": "salah1_1"
+          ],
+          "next": "soal1_1",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah1_1",
+          "text": [
+            {
+              "line": "Waduh jawaban untuk tipe data kamu belum tepat.",
+              "reaction_index": 1,
+              "speaker": 2
+            },
+            {
+              "line": "Yah salah ya..",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Hmm sepertinya ada beberapa hal yang perlu kita perhatikan di sini. Ayo kita bahas satu per satu ya?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oke Adrien mari kita bahas soal tipe data ini satu per satu. Pertama untuk Nama biasanya pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat. Kedua untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Usia itu kan angka bulat, jadi mungkin tipe data float?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Hmm float biasanya digunakan untuk angka yang ada desimalnya, seperti berat badan atau pengukuran yang presisi. Kalau Usia hanya angka bulat jadi tipe data yang tepat adalah tipe data yang bisa menyimpan angka bulat saja.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oh int ya?!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Betul! int itu untuk angka bulat. Lanjut ketiga sekarang ke Berat badan. Berat badan itu biasanya ada angka desimalnya kan? Jadi kita butuh tipe data yang bisa menyimpan angka dengan desimal. Apa yang kamu pikirkan?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Ah kalau gitu float ya? Karena ada desimalnya.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Betul sekali! float memang untuk angka desimal. Keempat untuk Nilai ujian, ini kan biasanya berupa angka bulat, ya? Jadi apa yang tepat untuk tipe data ini?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Kalau begitu tipe data yang tepat untuk Nilai ujian adalah int.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Betul! Nilai ujian itu angka bulat jadi int memang cocok. Terakhir, Status lulus. Ini cuma punya dua kemungkinan, lulus atau tidak. Tipe data apa yang bisa mewakili dua pilihan seperti itu?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Kayaknya itu bool ya? Karena hanya ada dua nilai: benar atau salah.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Betul! bool memang tepat untuk dua kemungkinan seperti itu. Nah, sekarang kamu coba pikirkan lagi, apakah semua pilihanmu sudah pas?",
+              "reaction_index": 2,
+              "speaker": 2
             }
-          },
-          {"text": "Nama: int, Usia: float, Berat badan: string, Nilai ujian: bool, Status lulus: float",
-            "next": {
-              "retry": "soal1_1",
-              "review": "salah1_1"
+          ],
+          "next": "soal1_1",
+          "nextType": "soal"
+        },
+        {
+          "id": "materi1_2",
+          "text": [
+            {
+              "line": "Wah jawabannya bener! Kamu udah mulai paham banget soal tipe data. Kacau, cepet banget pahamnya! Jadi, kalau ada program yang butuh nyimpen angka, tinggal pilih aja tipe datanya.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Wih mantep dah, udah siap banget buat nerima soal dari Pak Rongga nih.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Nah sekarang kita lanjut ke variabel! Kalau kamu udah paham tipe data, variabel itu sebenarnya gampang banget. Variabel adalah tempat buat nyimpen data. Jadi bayangin aja kamu punya wadah atau kotak yang bisa berubah isinya.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oh jadi variabel itu kayak kotak buat nyimpen data gitu? Tapi apa bedanya sama tipe data?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Iya bener banget! Tipe data itu ngejelasin jenis datanya, misalnya angka, teks, atau logika. Nah variabel itu nama dari kotaknya. Jadi misalnya, kamu pengen nyimpen umur seseorang, kamu bikin variabel namanya umur, dan tipe datanya int karena umur itu angka bulat.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Ohhhh pahammm!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Ah paham-paham mulu, coba kamu jawab soal ini kalo emang paham.",
+              "reaction_index": 0,
+              "speaker": 2
             }
-          }
-        ]
-      },
-      {
-        "id": "salah1_1",
-        "character1": "Mas Tino",
-        "character2": "Adrien",
-        "text": [
-          "Waduh jawaban untuk tipe data kamu belum tepat.",
-          "Yah salah ya..",
-          "Hmm sepertinya ada beberapa hal yang perlu kita perhatikan di sini. Ayo kita bahas satu per satu ya?",
-          "Oke Adrien mari kita bahas soal tipe data ini satu per satu. Pertama untuk Nama biasanya pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat. Kedua untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
-          "Usia itu kan angka bulat, jadi mungkin tipe data float?",
-          "Hmm float biasanya digunakan untuk angka yang ada desimalnya, seperti berat badan atau pengukuran yang presisi. Kalau Usia hanya angka bulat jadi tipe data yang tepat adalah tipe data yang bisa menyimpan angka bulat saja.",
-          "Oh int ya?!",
-          "Betul! int itu untuk angka bulat. Lanjut ketiga sekarang ke Berat badan. Berat badan itu biasanya ada angka desimalnya kan? Jadi kita butuh tipe data yang bisa menyimpan angka dengan desimal. Apa yang kamu pikirkan?",
-          "Ah kalau gitu float ya? Karena ada desimalnya.",
-          "Betul sekali! float memang untuk angka desimal. Keempat untuk Nilai ujian, ini kan biasanya berupa angka bulat, ya? Jadi apa yang tepat untuk tipe data ini?",
-          "Kalau begitu tipe data yang tepat untuk Nilai ujian adalah int.",
-          "Betul! Nilai ujian itu angka bulat jadi int memang cocok. Terakhir, Status lulus. Ini cuma punya dua kemungkinan, lulus atau tidak. Tipe data apa yang bisa mewakili dua pilihan seperti itu?",
-          "Kayaknya itu bool ya? Karena hanya ada dua nilai: benar atau salah.",
-          "Betul! bool memang tepat untuk dua kemungkinan seperti itu. Nah, sekarang kamu coba pikirkan lagi, apakah semua pilihanmu sudah pas?"
-
-
-        ],
-        "next": "soal1_1"
-      },
-      {
-        "id": "materi1_2",
-        "character1": "Mas Tino",
-        "character2": "Adrien",
-        "text": [
-          "Wah jawabannya bener! Kamu udah mulai paham banget soal tipe data. Kacau, cepet banget pahamnya! Jadi, kalau ada program yang butuh nyimpen angka, tinggal pilih aja tipe datanya.",
-          "Wih mantep dah, udah siap banget buat nerima soal dari Pak Rongga nih.",
-          "Nah sekarang kita lanjut ke variabel! Kalau kamu udah paham tipe data, variabel itu sebenarnya gampang banget. Variabel adalah tempat buat nyimpen data. Jadi bayangin aja kamu punya wadah atau kotak yang bisa berubah isinya.",
-          "Oh jadi variabel itu kayak kotak buat nyimpen data gitu? Tapi apa bedanya sama tipe data?",
-          "Iya bener banget! Tipe data itu ngejelasin jenis datanya, misalnya angka, teks, atau logika. Nah variabel itu nama dari kotaknya. Jadi misalnya, kamu pengen nyimpen umur seseorang, kamu bikin variabel namanya umur, dan tipe datanya int karena umur itu angka bulat.",
-          "Ohhhh pahammm!",
-          "Ah paham-paham mulu, coba kamu jawab soal ini kalo emang paham."
-        ],
-        "next": "soal1_2"
-      },
-      {
-        "id": "soal1_2",
-        "character1": "Adrien",
-        "character2": "Mas Tino",
-        "text": "Kalau kamu mau buat variabel beratBadan untuk nyimpen berat 55.5 kilogram, deklarasi yang BENAR adalah...",
-        "choices": [
-          {"text": "int berat.Badan = 55.5;", "next": {
-            "review": "salah1_2",
-            "retry": "soal1_2"
-          }
-          },
-          {"text": "float beratBadan = 55.5;", "next": "materi1_3"},
-          {"text": "string beratBadan = 55.5;", "next": {
-            "review": "salah1_2",
-            "retry": "soal1_2"
-          }
-          },
-          {"text": "bool beratBadan = \"true\";", "next": {
-            "review": "salah1_2",
-            "retry": "soal1_2"
-          }
-          }
-        ]
-      },
-      {
-        "id": "salah1_2",
-        "character1": "Mas Tino",
-        "character2": "Adrien",
-        "text": [
-          "Aduh aku kena virus kesalahan berpikir nih",
-          "Wahahahaha, gapapa kita kerjain bareng-bareng",
-          "Aduhh kacauu sih",
-          "Aku jelasin ulang yaa, jadi, int itu biasanya dipakai buat angka bulat, kayak 10, 25, atau 100. Tapi kalau berat badan itu ada desimalnya, kayak 55.5, kira-kira cocok nggak kalau pakai tipe data buat angka bulat?",
-          "Hmm... kurang cocok sih",
-          "Yap. Karena 55.5 itu ada koma-nya, harus cari tipe data yang bisa nampung angka pecahan.",
-          "Kalau bool itu gimana ya, aku lupa peraturannya",
-          "Bool itu tipe data yang isinya cuma dua kemungkinan: true atau false. Biasanya dipakai buat nyimpen status, bukan angka. Nah berat badan itu berupa angka, kan? Bukan status lulus atau tidak.",
-          "Ohh aku paham sekarang",
-          "Nah coba cek lagi pilihan lain yang lebih cocok."
-        ],
-        "next": "soal1_2"
-      },
-      {
-        "id": "materi1_3",
-        "character1": "Mas Tino",
-        "character2": "Adrien",
-        "text": [
-          "Beh Adrien mulai jago nih, takut banget kena bantai konsep pemrogaman deh",
-          "Kalau berat badan berarti pake float ya mas, kayak float beratBadan = 55.5; gitu kan?",
-          "Wah bener banget, kamu udah mulai paham nih! Nah sekarang bayangin ya, kamu udah punya data berat badan itu. Terus kamu mau ngolah datanya, misal mau nambahin 5 kilo, atau mau bagi dua buat simulasi diet. Buat ngelakuin perubahan kayak gitu, kamu butuh yang namanya operator.",
-          "Ohhh... operator tuh kayak alat buat ngubah data gitu ya mas?",
-          "Operator itu alat buat ngelakuin operasi kayak tambah, kurang, kali, dan bagi. Misal, mau nambahin umur 5 tahun, tinggal pakai \"+\": int hasil = umur + 5;. Kalau ngurangin pakai \"-\", perkalian pakai \"*\", dan pembagian pakai \"/\". Operator ini penting banget buat semua operasi dasar di program.",
-          "Oalaaah jadi kayak alat buat ngatur angka-angka gitu ya. Pantesan semua contoh kodingan pasti ada operatornya.",
-          "Iya bener banget. Semua operasi matematika dasar pake operator itu. Karena tanpa operator, program gak bisa ngelakuin perhitungan atau manipulasi data dengan bener. Oh ya buat ngambil input dari user atau nampilin output ke layar, kamu bisa pake operasi input output. Misal pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\"",
-          "Oh jadi operator buat ngelakuin berbagai perhitungan dan input output buat ngambil input sama nampilin outputnya ke layar ya?",
-          "Iya banget! Operator itu bikin program bisa fleksibel dan ngelakuin tugas yang kamu inginkan. Selain itu, ada operator \"!=\" yang artinya tidak sama dengan, \"&&\" yang artinya \"AND\", dan \"||\" yang artinya \"OR\" itu buat ngecek kondisi lebih dari satu. Paham kan?",
-          "Paham! Variabel buat nyimpen data, operator buat ngitung, bandingin, dan ngelakuin logika, terus input output buat ngambil input dan nampilin output.",
-          "Nah buat uji pemahaman kamu, aku kasih soal sederhana coba jawab deh!"
-        ],
-        "next": "soal1_3"
-      },
-      {
-        "id": "soal1_3",
-        "character1": "Adrien",
-        "character2": "Mas Tino",
-        "text": "#include <stdio.h>\nint main() {\n    int a = 5;\n    a += 3 * 2;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
-        "choices": [
-          {"text": "16",
-            "next": {
-              "review": "salah1_3",
-              "retry": "soal1_3"
+          ],
+          "next": "soal1_2",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah1_2",
+          "text": [
+            {
+              "line": "Aduh aku kena virus kesalahan berpikir nih",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Wahahahaha, gapapa kita kerjain bareng-bareng",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Aduhh kacauu sih",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Aku jelasin ulang yaa, jadi, int itu biasanya dipakai buat angka bulat, kayak 10, 25, atau 100. Tapi kalau berat badan itu ada desimalnya, kayak 55.5, kira-kira cocok nggak kalau pakai tipe data buat angka bulat?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Hmm... kurang cocok sih",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Yap. Karena 55.5 itu ada koma-nya, harus cari tipe data yang bisa nampung angka pecahan.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Kalau bool itu gimana ya, aku lupa peraturannya",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Bool itu tipe data yang isinya cuma dua kemungkinan: true atau false. Biasanya dipakai buat nyimpen status, bukan angka. Nah berat badan itu berupa angka, kan? Bukan status lulus atau tidak.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ohh aku paham sekarang",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Nah coba cek lagi pilihan lain yang lebih cocok.",
+              "reaction_index": 0,
+              "speaker": 2
             }
-          },
-          {"text": "11", "next": "benar1_last"},
-          {"text": "13",
-            "next": {
-              "review": "salah1_3",
-              "retry": "soal1_2"
+          ],
+          "next": "soal1_2",
+          "nextType": "soal"
+        },
+        {
+          "id": "materi1_3",
+          "text": [
+            {
+              "line": "Beh Adrien mulai jago nih, takut banget kena bantai konsep pemrogaman deh",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Kalau berat badan berarti pake float ya mas, kayak float beratBadan = 55.5; gitu kan?",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Wah bener banget, kamu udah mulai paham nih! Nah sekarang bayangin ya, kamu udah punya data berat badan itu. Terus kamu mau ngolah datanya, misal mau nambahin 5 kilo, atau mau bagi dua buat simulasi diet. Buat ngelakuin perubahan kayak gitu, kamu butuh yang namanya operator.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ohhh... operator tuh kayak alat buat ngubah data gitu ya mas?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Operator itu alat buat ngelakuin operasi kayak tambah, kurang, kali, dan bagi. Misal, mau nambahin umur 5 tahun, tinggal pakai \"+\": int hasil = umur + 5;. Kalau ngurangin pakai \"-\", perkalian pakai \"*\", dan pembagian pakai \"/\". Operator ini penting banget buat semua operasi dasar di program.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oalaaah, jadi kayak alat buat ngatur angka-angka gitu ya, Kak! Pantesan semua contoh kodingan pasti ada operatornya.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Iya, bener banget. Semua operasi matematika dasar pake operator itu. Dan, operator ini penting banget, karena tanpa operator, program kamu gak bisa ngelakuin perhitungan atau manipulasi data dengan bener. Oh ya, buat ngambil input dari user atau nampilin hasil ke layar, kamu bisa pake operasi input output. Misalnya, pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus, kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\"",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oh, jadi operator ini penting banget buat ngelakuin berbagai perhitungan, dan input output itu fungsinya buat ngambil input sama nampilin outputnya ke layar ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Iya banget! Operator itu bikin program bisa fleksibel dan ngelakuin tugas yang kamu inginkan. Selain itu, ada operator \"!=\" yang artinya tidak sama dengan. Terus, ada juga operator logika kayak \"&&\" yang artinya \"AND\", dan \"||\" yang artinya \"OR\" itu buat ngecek kondisi lebih dari satu. Paham kan?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Paham! aku mulai ngerti. Variabel buat nyimpen data, operator buat ngitung, bandingin, dan ngelakuin logika, terus input output buat ngambil input dan nampilin output.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Nah, buat uji pemahaman kamu, aku kasih soal sederhana, kamu coba jawab deh!",
+              "reaction_index": 0,
+              "speaker": 2
             }
-          },
-          {"text": "10",
-            "next": {
-              "review": "salah1_3",
-              "retry": "soal1_2"
+          ],
+          "next": "soal1_3",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah1_3",
+          "text": [
+            {
+              "line": "Yaelah jawabanku salah",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Oke, sebentar yaa. Jadi gini, di soal tadi ada operasi a += 3 * 2. Kita harus inget kalau di C itu ada aturan prioritas operator. Perkalian (*) dikerjain dulu sebelum penjumlahan (+). Jadi bukan langsung dijumlah dari kiri ke kanan ya. Setelah hasil perkaliannya ketemu, baru deh ditambah ke a yang awalnya 5. Ini penting supaya nggak salah hitung. Coba kamu cek lagi deh pelan-pelan, mana yang dikerjain dulu.",
+              "reaction_index": 0,
+              "speaker": 2
             }
-          }
-        ]
-      },
-      {
-        "id": "salah1_3",
-        "character1": "Mas Tino",
-        "character2": "Adrien",
-        "text": [
-          "Sepertinya jawaban tentang Operator masih keliru. Tenang, baca lagi perlahan-lahan ya...",
-          "Yahh okedehhh"
-        ],
-        "next": "materi1_3"
-      },
-      {
-        "id": "benar1_last",
-        "character1": "Mas Tino",
-        "character2": "Adrien",
-        "text": [
-          "Nahh iya itu udah benar! Gampang kan? Nih aku kasih rangkuman tentang tipe data, variabel, dan operator. Kamu bisa baca rangkumannya untuk memperdalam pengetahuan kamu soal ini.",
-          "Siap Mas Tin! Makasih Mas!"
-        ],
-        "next": null
-      },
-      {
-        "id": "salah1_3",
-        "character1": "Mas Tino",
-        "character2": "Adrien",
-        "text": [
-          "Yaelah jawabanku salah",
-          "Oke kita bedah pelan-pelan yaa. Jadi gini, di soal tadi ada operasi a += 3 * 2. Kita harus inget kalau ada aturan prioritas operator. Perkalian (*) dikerjain dulu sebelum penjumlahan (+). Jadi bukan langsung dijumlah dari kiri ke kanan ya. Setelah hasil perkaliannya ketemu, baru deh ditambah ke a yang awalnya 5. Coba kamu cek lagi deh pelan-pelan mana yang dikerjain dulu."
-        ],
-        "next": "soal1_3"
-      }
-    ],
-    "rangkuman": [
-      "Tipe Data: menentukan jenis nilai yang bisa disimpan dalam variabel, seperti int untuk angka bulat, float untuk angka pecahan, dan char untuk karakter.",
-      "Variabel: tempat menyimpan data yang nilainya bisa berubah selama program berjalan. Contohnya, int umur = 21; menyimpan nilai umur.",
-      "Operator: melakukan operasi pada data, seperti:\nAritmatika: +, -, *, \/ untuk perhitungan.\n ==, !=, >, < untuk membandingkan nilai.\nLogika: && (AND), || (OR) untuk menggabungkan kondisi.\nPenugasan: = untuk memberi nilai, +=, -= untuk operasi dan penugasan bersamaan.",
-      "I/O (Input/Output): Gunakan scanf untuk input data dari user dan printf untuk menampilkan output ke layar."
-    ]
-  },
-
+          ],
+          "next": "soal1_3",
+          "nextType": "soal"
+        },
+        {
+          "id": "benar1_last",
+          "text": [
+            {
+              "line": "Nahh, iya itu udah benar! Gampang kan? Lo mulai paham sekarang, ya? Nih aku kasih rangkuman tentang tipe data, variabel dan operator. kamu bisa baca rangkumannya untuk memerdalam pengetahuan kamu soal ini.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Siap mas Tin! Makasih, Mas!",
+              "reaction_index": 2,
+              "speaker": 1
+            }
+          ],
+          "next": null
+        }
+      ],
+      "questions": [
+        {
+          "id": "soal1_1",
+          "text": "Bedasarkan data di bawah ini, manakah tipe data yang paling tepat untuk masing-masing data tersebut secara berurutan?",
+          "code": "* Nama: \"Andi\"\n* Usia: 20\n* Berat badan: 70.5\n* Nilai ujian: 85\n* Status lulus: true",
+          "choices": [
+            {
+              "text": "string - float - int - bool - char",
+              "next": "salah1_1",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "string - int - float - int - bool",
+              "next": "materi1_2",
+              "nextType": "dialogs",
+              "isCorrect": true
+            },
+            {
+              "text": "char - bool - string - float - int",
+              "next": "salah1_1",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "int - float - string - bool - float",
+              "next": "salah1_1",
+              "nextType": "dialogs",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal1_2",
+          "text": "Kalau kamu mau buat variabel beratBadan untuk nyimpen data berat 55.5 kilogram, deklarasi yang BENAR adalah...",
+          "code": "",
+          "choices": [
+            {
+              "text": "int berat.Badan = 55.5;",
+              "next": "salah1_2",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "float beratBadan = 55.5;",
+              "next": "materi1_3",
+              "nextType": "dialogs",
+              "isCorrect": true
+            },
+            {
+              "text": "string beratBadan = 55.5;",
+              "next": "salah1_2",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "bool beratBadan = \"true\";",
+              "next": "salah1_2",
+              "nextType": "dialogs",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal1_3",
+          "text": "Berapa output dari code di bawah ini?",
+          "code": "#include <stdio.h>\nint main() {\n    int a = 5;\n    a += 3 * 2;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
+          "choices": [
+            {
+              "text": "16",
+              "next": "salah1_3",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "11",
+              "next": "benar1_last",
+              "nextType": "dialogs",
+              "isCorrect": true
+            },
+            {
+              "text": "13",
+              "next": "salah1_3",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "10",
+              "next": "salah1_3",
+              "nextType": "dialogs",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "rangkuman": [
+        "Tipe Data: Tipe data menentukan jenis nilai yang bisa disimpan dalam variabel, seperti int untuk angka bulat, float untuk angka pecahan, dan char untuk karakter.",
+        "Variabel: Variabel adalah tempat menyimpan data yang nilainya bisa berubah selama program berjalan. Contohnya, int umur = 21; menyimpan nilai umur.",
+        "Operator: Operator digunakan untuk melakukan operasi pada data, seperti:\nAritmatika: +, -, *, / untuk perhitungan.\nPembanding: ==, !=, >, < untuk membandingkan nilai.\nLogika: && (AND), || (OR) untuk menggabungkan kondisi.\nPenugasan: = untuk memberi nilai, +=, -= untuk operasi dan penugasan bersamaan.",
+        "I/O (Input/Output): Gunakan scanf untuk input data dari pengguna dan printf untuk menampilkan hasil ke layar."
+      ]
+    },
 
     {
       "level": 2,
-      "dialogs": [
+      "description": "Mau program kamu bisa milih jalan? Pakai if, else if, atau switch biar dia nggak nyasar!",
+      "title": "If, else if, switch",
+      "background": "mc-rumah",
+      "character1_name": "Adrian",
+      "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "character2_name": "Kakak",
+      "character2_reaction": ["kakak-biasa", "kakak-marah", "kakak-smile"],
+      "start": "preDialog2",
+      "typeStart": "preDialog",
+      "preDialog": [
         {
-          "id": "preDialog",
+          "id": "preDialog2",
           "text": "Setelah pulang kuliah, aku masuk rumah dan langsung menuju ruang tamu. Di sana, aku lihat laptop kakakku terbuka dan di layarnya ada materi yang judul highlightnya if, else if, switch yang asing banget buatku. Karena penasaran akhirnya aku nanya ke kakak.",
-          "next": "intro2"
-        },
+          "next": "intro2",
+          "nextType": "dialogs"
+        }
+      ],
+      "dialogs": [
         {
           "id": "intro2",
           "character1": "Adrien",
@@ -247,22 +520,24 @@
           "character2": "Tino",
           "text": "Terdapat program buat cek apakah suhu ruangan lebih dari 30°C. Kalau iya, tampilkan \"Ruangan Panas\". Kalau enggak, program gak perlu ngapa-ngapain. Kira-kira struktur kondisi apa yang paling tepat buat program ini?",
           "choices": [
-            {"text": "if, karena cuma perlu ngecek satu kondisi aja.", "next": "materi2_2"},
+            {"text": "if, karena cuma perlu ngecek satu kondisi aja.", 
+            "next": "materi2_2",
+            "nextType":"dialogs",
+            "isCorrect":true
+          },
             {"text": "else, karena cuma butuh dua kemungkinan.",
-              "next": {
-                "review": "salah2_1",
-                "retry": "soal2_1"
-              }},
+              "next": "salah2_1",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
             {"text": "if dan else, karena ada dua kondisi yang harus dipilih.",
-              "next": {
-                "review": "salah2_1",
-                "retry": "soal2_1"
-              }},
+              "next": "salah2_1",
+              "nextType": "dialogs",
+              "isCorrect": false},
             {"text": "Tidak perlu kondisi, cukup tampilkan saja.",
-              "next": {
-                "review": "salah2_1",
-                "retry": "soal2_1"
-              }}
+             "next": "salah2_1",
+              "nextType": "dialogs",
+              "isCorrect": false}
           ]
         },
         {
@@ -275,7 +550,8 @@
             "Yap benar banget! Kalau kondisi itu terpenuhi, baru kita lakuin sesuatu. Kalau nggak, ya udah program diem aja. Jadi intinya: kalau cuma mau ngecek satu hal atau satu syarat, kita cukup pakai satu kondisi sederhana.",
             "Oooh paham sekarang! Aku coba pikir lagi deh!"
           ],
-          "next": "soal2_1"
+          "next": "soal2_1",
+          "nextType": "soal"
         },
         {
           "id": "materi2_2",
@@ -285,7 +561,8 @@
             "iWh mantap bener tuh, ok sekarang kita lanjut ke materi else if",
             "else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Misalnya, kamu lagi ngecek usia seseorang apakah dia remaja, dewasa, atau lanjut usia. Kalau remaja, akan ada aksi tertentu, kalau dewasa, aksi yang berbeda, dan kalau lanjut usia, aksi yang lain lagi. Contohnya kayak code ini sama sekalian deh kamu tebak outputnya"
           ],
-          "next": "soal2_2"
+          "next": "soal2_2",
+           "nextType": "soal"
         },
         {
           "id": "soal2_2",
@@ -294,23 +571,23 @@
           "text": "int umur = 25;\nif (umur < 18) {\nprintf(\"Kamu masih remaja\");\n} else if (umur >= 18 && umur <= 60) {\n    printf(\"Kamu dewasa\");\n} else {\n    printf(\"Kamu lanjut usia\");\n}",
           "choices": [
             {"text": "Kamu masih remaja",
-              "next": {
-                "review": "salah2_2",
-                "retry": "soal2_2"
-              }
+              "next": "salah2_2",
+              "nextType": "dialogs",
+              "isCorrect": false
             },
-            {"text": "Kamu dewasa", "next": "materi2_3"},
+            {"text": "Kamu dewasa", 
+            "next": "materi2_3",
+            "nextType":"dialogs"
+          },
             {"text": "Kamu lanjut usia",
-              "next": {
-                "review": "salah2_2",
-                "retry": "soal2_2"
-              }
+              "next": "salah2_2",
+              "nextType": "dialogs",
+              "isCorrect": false
             },
             {"text": "Tidak ada output",
-              "next": {
-                "review": "salah2_2",
-                "retry": "soal2_2"
-              }
+              "next": "salah2_1",
+              "nextType": "dialogs",
+              "isCorrect": false
             }
           ]
         },
@@ -330,7 +607,8 @@
             "Wah iya iya Kak! Aku kadang suka kelewat liat operatornya hehe.",
             "Santai, makin sering latihan makin peka kok. Yuk lanjut biar makin jago!"
           ],
-          "next": "soal2_2"
+          "next": "soal2_2",
+           "nextType": "soal"
         },
         {
           "id": "materi2_3",
@@ -340,35 +618,41 @@
             "Beh mantep, lanjut nih materi terakhir, switch",
             "Switch digunakan untuk memilih aksi berdasarkan nilai yang ada. Misal kamu punya pilihan menu di restoran dan tiap pilihan punya nomor tertentu. Berdasarkan nomor yang dipilih, menu yang berbeda akan muncul. Sekarang tebak nih output yang muncul apa"
           ],
-          "next": "soal2_3"
+          "next": "soal2_3",
+           "nextType": "soal"
         },
         {
           "id": "soal2_3",
-          "character1": "Adrien",
-          "character2": "Tino",
-          "text": "int pilihanMenu = 2;\nswitch (pilihanMenu) {\n    case 1:\n        printf(\"Pilihan menu: Nasi Goreng\");\n        break;\n    case 2:\n        printf(\"Pilihan menu: Mie Ayam\");\n        break;\n    case 3:\n        printf(\"Pilihan menu: Soto\");\n        break;\n    default:\n        printf(\"Pilihan menu tidak valid\");\n}",
+          "character1": "Kakak",
+          "character2": "Adrien",
+          "text": "Adrien memilih sebuah menu berdasarkan angka yang diberikan. Kira-kira menu apa yang akan muncul di layar?",
+          "code": "int pilihanMenu = 2;\nswitch (pilihanMenu) {\n    case 1:\n        printf(\"Pilihan menu: Nasi Goreng\");\n        break;\n    case 2:\n        printf(\"Pilihan menu: Mie Ayam\");\n        break;\n    case 3:\n        printf(\"Pilihan menu: Soto\");\n        break;\n    default:\n        printf(\"Pilihan menu tidak valid\");\n}",
           "choices": [
-            {"text": "Pilihan menu: Nasi Goreng",
-              "next": {
-                "review": "salah2_3",
-                "retry": "soal2_3"
-              }
+            {
+              "text": "Pilihan menu: Nasi Goreng",
+              "next": "salah2_3",
+              "nextType": "dialogs",
+              "isCorrect": false
             },
-            {"text": "Pilihan menu: Mie Ayam", "next": "benar2_last"},
-            {"text": "Pilihan menu: Soto",
-              "next": {
-                "review": "salah2_3",
-                "retry": "soal2_3"
-              }
+            {
+              "text": "Pilihan menu: Mie Ayam",
+              "next": "benar2_last",
+              "isCorrect": true
             },
-            {"text": "Pilihan menu tidak valid",
-              "next": {
-                "review": "salah2_3",
-                "retry": "soal2_3"
-              }
+            {
+              "text": "Pilihan menu: Soto",
+              "next": "salah2_3",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "Pilihan menu tidak valid",
+              "next": "salah2_3",
+              "nextType": "dialogs",
+              "isCorrect": false
             }
           ]
-        },
+        },        
         {
           "id": "salah2_3",
           "character1": "Kakak",
@@ -382,7 +666,8 @@
             "Woke siap Kak, abis ini aku baca ulang deh biar makin mantap!",
             "Semangat terus ya!"
           ],
-          "next": "soal2_3"
+          "next": "soal2_3",
+          "nextType":"soal"
         },
         {
           "id": "benar2_last",
@@ -408,159 +693,328 @@
 
     {
       "level": 3,
+      "description": "[Looping time! Biar program kamu bisa ngulang-ngulang kerjaan tanpa capek]",
+      "title": "For, While, Do While",
+      "background": "teman-cafe",
+      "character1_name": "Rusdi",
+      "character1_reaction": ["rusdi-biasa", "rusdi-marah", "rusdi-senang"],
+      "character2_name": "Adrian",
+      "character2_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "start": "preDialog3",
+      "typeStart": "preDialog",
+      "preDialog": [
+        {
+          "id": "preDialog3",
+          "text": "Siang itu Rusdi sudah menunggu di café sejak jam 3 sore, menatap layar ponselnya dengan muram. Jam dinding sudah menunjukkan pukul 4 dan Adrian belum juga muncul. Rusdi mulai gelisah, berpikir tentang tugas yang harus diselesaikan dan deadline yang semakin dekat.",
+          "next": "intro3",
+          "nextType": "dialogs"
+        }
+      ],
       "dialogs": [
         {
-          "id": "preDialog",
-          "text": "Siang itu, Rusdi sudah menunggu di café sejak jam 3 sore, menatap layar ponselnya dengan muram. Jam dinding sudah menunjukkan pukul 4 dan MC belum juga muncul. Rusdi mulai gelisah, berpikir tentang tugas yang harus diselesaikan dan deadline yang semakin dekat. Ia memesan secangkir kopi, sambil menunggu MC untuk memulai diskusi dan menyelesaikan tugas. Sambil menunggu, ia melirik ke pintu berkali-kali, berharap MC segera datang.",
-          "next": "intro3"
-        },
-        {
           "id": "intro3",
-          "character1": "Rusdi",
-          "character2": "Adrien",
           "text": [
-            "Bro katanya janjiannya jam 3, kenapa kamu baru dateng jam 4? Aku udah nungguin di sini dari tadi. Kamu naik siput ya pasti, lama banget, deh!",
-            "Waduh Mas Rusdi ngamuk lho rek! Sorry-sorry broo macet banget di jalan. Jadi mana yang mau kamu tanyain?",
-            "Ini tentang perulangan, gimana?",
-            "Jadi gini, kalau kamu pengen ngulangin sesuatu berkali-kali, kamu bisa pake for loop. For itu cocok kalau kamu udah tahu berapa kali perulangan yang harus dilakukan. Misal kamu pengen nulis angka dari 1 sampai 5. Jadi kamu tentuin mulai dari mana, sampai mana, dan tiap kali kamu ngulangin, kamu tambahin angkanya. Kamu udah paham belum?",
-            "Ah, oke, jadi for itu kalau udah tahu berapa kali ngulangin ya?",
-            "Betul Rus! Nah aku jelasin pelan-pelan ya soal for loop ini. Ada tiga bagian utama di dalamnya. Pertama ada yang namanya inisialisasi. Jadi sebelum perulangan dimulai, kita harus tentuin nilai awalnya. Misal kamu mau mulai dari angka 1, jadi kita tulis int i = 1;. Itu artinya kita mulai dari angka 1.",
-            "Jadi inisialisasi itu kayak nentuin angka pertama yang mau dipakai, ya?",
-            "Yup tepat banget! Kedua ada bagian yang disebut kondisi. Ini yang bakal dicek setiap kali perulangan berlangsung. Misal kita mau perulangan terus berjalan selama angka i itu masih lebih kecil atau sama dengan 5. Jadi, kita tulis i <= 5;. Artinya, selama i lebih kecil atau sama dengan 5 maka perulangannya terus jalan.",
-            "Ooh jadi kondisi itu buat nentuin kapan perulangannya berhenti, ya?",
-            "Betul banget Rus! Nah terakhir ada yang namanya increment atau decrement. Ini buat nambahin atau ngurangin nilai setelah setiap perulangan selesai. Kalau kamu mau nambahin nilai i, kamu tulis i++. Itu artinya setelah tiap perulangan angka i akan bertambah 1.",
-            "Jadi increment itu buat nambahin nilai i tiap kali perulangan, ya? Kalau mau ngurangin, pakai i-- gitu?",
-            "Iya, persis banget Rus! Jadi tiga bagian itu: inisialisasi buat mulai dari mana, kondisi buat ngecek kapan berhentinya, dan increment buat nambahin atau ngurangin nilai.",
-            "Kayanya aku mulai paham nih",
-            "Nah sip, sekarang aku kasih tantangan buat kamu. Coba kamu jawab soal ini ya!"
-          ],
-          "next": "soal3_1"
-        },
-        {
-          "id": "soal3_1 ",
-          "character1": "Mas Tino",
-          "character2": "Adrien",
-          "text": "Kamu diminta untuk membuat program yang mencetak angka dari 1 sampai 10. Bagaimana cara kamu menggunakan for loop untuk melakukan ini?",
-          "choices": [
             {
-              "text": "for (int i = 1; i < 10; i++) { printf(\"%d \", i); }",
-              "next": {
-                "retry": "soal3_1",
-                "review": "salah3_1"
-              }
+              "line": "Bro katanya janjiannya jam 3, kenapa kamu baru dateng jam 4? Aku udah nungguin di sini dari tadi. Kamu naik siput ya pasti, lama banget, deh!",
+              "reaction_index": 1,
+              "speaker": 1
             },
             {
-              "text": "for (int i = 1; i <= 10; i++) { printf(\"%d \", i); }",
-              "next": {
-                "retry": "soal3_1",
-                "review": "salah3_1"
-              }
+              "line": "Waduh Mas Rusdi ngamuk lho rek! Sorry-sorry broo macet banget di jalan. Jadi mana yang mau kamu tanyain?",
+              "reaction_index": 0,
+              "speaker": 2
             },
             {
-              "text": "for (int i = 0; i < 10; i++) { printf(\"%d \", i); }",
-              "next": {
-                "retry": "soal3_1",
-                "review": "salah3_1"
-              }
+              "line": "Ini tentang perulangan, gimana?",
+              "reaction_index": 0,
+              "speaker": 1
             },
             {
-              "text": "for (int i = 1; i < 11; i++) { printf(\"%d \", i); }",
-              "next": "materi3_2"
+              "line": "Pertama kalau kamu pengen ngulangin sesuatu berkali-kali, kamu bisa pake for loop. For itu cocok kalau kamu udah tahu berapa kali perulangan yang harus dilakukan. Misal kamu pengen nulis angka dari 1 sampai 5. Jadi kamu tentuin mulai dari mana, sampai mana, dan tiap kali kamu ngulangin kamu tambahin angkanya. Ngerti?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ah oke, jadi for itu kalau udah tahu berapa kali ngulangin ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Betul Rus! Nah aku jelasin pelan-pelan ya soal for loop ini. Ada tiga bagian utama di dalamnya. Pertama ada yang namanya inisialisasi. Jadi sebelum perulangan dimulai, kita harus tentuin nilai awalnya. Misal kamu mau mulai dari angka 1, jadi kita tulis int i = 1;. Itu artinya kita mulai dari angka 1.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Jadi inisialisasi itu kayak nentuin angka pertama yang mau dipakai?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Tepat! Kedua ada bagian yang disebut kondisi. Ini yang bakal dicek setiap kali perulangan berlangsung. Misal kita mau perulangan terus berjalan selama angka i itu masih lebih kecil atau sama dengan 5. Jadi, kita tulis i <= 5;. Artinya selama i lebih kecil atau sama dengan 5 maka perulangannya terus jalan.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ooh jadi kondisi itu buat nentuin kapan perulangannya berhenti?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Betul! Nah terakhir ada yang namanya increment atau decrement. Ini buat nambahin atau ngurangin nilai setelah setiap perulangan selesai. Kalau kamu mau nambahin nilai i, kamu tulis i++. Itu artinya setelah tiap perulangan angka i akan bertambah 1.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Jadi increment buat nambahin nilai i tiap kali perulangan ya? Kalau mau ngurangin pakai i--?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Iya! Jadi tiga bagian itu: inisialisasi buat mulai dari mana, kondisi buat ngecek kapan berhentinya, dan increment buat nambahin atau ngurangin nilai.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ok kayanya aku mulai paham nih",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Nah sekarang aku kasih tantangan buat kamu. Coba kamu jawab soal ini ya",
+              "reaction_index": 2,
+              "speaker": 2
             }
-          ]
+          ],
+          "next": "soal3_1",
+          "nextType": "soal"
         },
         {
           "id": "salah3_1",
-          "character1": "Adrien",
-          "character2": "Rusdi",
           "text": [
-            "Yah, salah jawabanku. Kenapa ya for loop yang tadi aku buat gak jalan? Kayaknya ada yang salah deh.",
-            "Coba kita cek lagi deh. Jadi gini, kalau kamu pake i < 10, loopingnya berhenti waktu i udah 10. Artinya angka 10 gak kebaca. Kalau kamu mau sampai angka 10 harus pake i <= 10.",
-            "Ah, gitu ya. Jadi kalau pake < 10 cuma sampe angka 9 dong?",
-            "Iya bener! Makanya biar bisa nyetak 1 sampe 10, kita perlu ngecek i <= 10 supaya kondisi loopingnya jalan terus sampe 10. Kalau pake i < 10, dia berhenti di 9.",
-            "Oh jadi masalahnya ada di operator perbandingannya ya? Kalau gitu aku harus hati-hati banget nih biar gak salah lagi.",
-            "Betul! Jadi perhatiin syaratnya dengan seksama. Kalau lo pengen nyetak sampai 10, jangan lupa pake <= 10. Kecil sih, tapi ngaruh besar hasilnya.",
-            "Oooh sekarang baru paham. Thanks banget bro jadi ngerti nih!",
-            "Sama-sama Rus! Makanya kita harus lebih teliti di setiap bagian kode. Latihan terus ya!"
+            {
+              "line": "Yah salah jawabanku. Kenapa ya for loop yang tadi aku buat gak jalan? Kayaknya ada yang salah deh.",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line":  "Coba kita cek lagi. Jadi gini, kalau kamu pake i < 10, loopingnya berhenti waktu i udah 10. Artinya angka 10 gak kebaca. Kalau kamu mau sampai angka 10 harus pake i <= 10.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Ah gitu ya. Jadi kalau pake < 10 cuma sampe angka 9?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Iya bener! Makanya biar bisa nyetak 1 sampe 10, kita perlu ngecek i <= 10 supaya kondisi loopingnya jalan terus sampe 10. Kalau pake i < 10, dia berhenti di 9.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line":  "Oh jadi masalahnya ada di operator perbandingannya ya? Kalau gitu aku harus hati-hati banget nih biar gak salah lagi.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Betul! Jadi perhatiin syaratnya dengan seksama. Kalau kamu pengen nyetak sampai 10, jangan lupa pake <= 10. Kecil sih, tapi ngaruh besar hasilnya.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line":  "Oooh sekarang baru paham. Thanks banget bro jadi ngerti nih!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line":  "Sama-sama Rus! Makanya kita harus lebih teliti di setiap bagian kode.",
+              "reaction_index": 2,
+              "speaker": 2
+            }
           ],
-          "next": "soal3_1"
+          "next": "soal3_1",
+          "nextType": "soal"
         },
         {
           "id": "materi3_2",
-          "character1": "Adrien",
-          "character2": "Rusdi",
           "text": [
-            "Nah itu kamu bisa, jawabanmu udah bener banget, Di! Sekarang kita lanjut ke while loop. Kalau tadi kan for loop, sekarang kamu bakal belajar bagaimana while bisa lebih fleksibel karena dia fokus ke kondisi yang harus dipenuhi.",
-            "Aduh ada berapa ini materinya.. Kapan selesainya",
-            "Sabar, kita belajar pelan-pelan Rus biar materi bisa masuk. Nah kalau while loop itu lebih fleksibel. Kamu bisa pake while kalau kamu belum tahu pasti berapa kali perulangan yang diperlukan, tapi kamu punya kondisi yang harus dicek dulu. Jadi selama kondisi itu bener, dia akan terus ngulangin. Jadi lebih ke ngecek dulu, baru ngulangin. Paham, kan?",
-            "Jadi while itu ngecek dulu baru ngulang kan?",
-            "Iya bener banget! Sekarang yang terakhir ada do while. Bedanya dengan while, kalau do while itu ngejalanin perulangan setidaknya sekali dulu, baru kemudian ngecek kondisi. Jadi meskipun kondisi awalnya nggak bener, dia tetap jalanin sekali dulu, baru cek kondisinya. Gimana paham ga?",
-            "Ih paham paham kayak kak gem aja kamu! Paham lahhh!!! Jadi do while itu jalan sekali dulu, baru cek kondisinya, kan?",
-            "Betul Rus! Jadi kalau kamu udah tahu pasti jumlah perulangannya, pakai for. Kalau kamu harus ngecek kondisi dulu baru ngulang, pakai while atau do while tergantung kamu butuh perulangan yang jalan minimal sekali dulu atau nggak. Biar kamu lebih paham coba kerjain soal ini, kalau kamu bener aku traktir makan deh"
-          ],
-          "next": "soal3_2"
-        },
-        {
-          "id": "soal3_2",
-          "character1": "Adrien",
-          "character2": "Rusdi",
-          "text": "Perhatikan potongan kode berikut:\n\n#include <stdio.h>\nint main() {\n    for (int i = 1; i <= 3; i++) {\n        printf(\"Hai \");\n    }\n    return 0;\n}\n\nApa output yang dihasilkan?",
-          "choices": [
             {
-              "text": "Hai",
-              "next": {
-                "retry": "soal3_2",
-                "review": "salah3_2"
-              }
+              "line":  "Nah itu kamu bisa! Sekarang kita lanjut ke while loop. Kalau tadi kan for loop, sekarang kamu bakal belajar bagaimana while bisa lebih fleksibel karena dia fokus ke kondisi yang harus dipenuhi.",
+              "reaction_index": 0,
+              "speaker": 2
             },
             {
-              "text": "Hai Hai Hai",
-              "next": "bener3_last"
+              "line":  "Aduh ada berapa ini materinya.. Kapan selesainya",
+              "reaction_index": 1,
+              "speaker": 1
             },
             {
-              "text": "HaiHaiHai",
-              "next": {
-                "retry": "soal3_2",
-                "review": "salah3_2"
-              }
+              "line":  "Sabar... kita belajar pelan-pelan biar paham materinya. Nah kalau while loop itu lebih fleksibel. Kamu bisa pake while kalau kamu belum tahu pasti berapa kali perulangan yang diperlukan, tapi kamu harus punya kondisi yang harus dicek dulu. Jadi selama kondisi itu bener, dia akan terus ngulangin. Paham kan?",
+              "reaction_index": 0,
+              "speaker": 2
             },
             {
-              "text": "HaiHai",
-              "next": {
-                "retry": "soal3_2",
-                "review": "salah3_2"
-              }
+              "line":  "Simplenya while itu ngecek dulu baru ngulang?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Bener banget! Sekarang yang terakhir ada do while. Bedanya dengan while, kalau do while itu ngejalanin perulangan setidaknya sekali dulu, baru kemudian ngecek kondisi. Jadi meskipun kondisi awalnya nggak bener, dia tetap jalanin sekali dulu, baru cek kondisinya. Gimana? Paham?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Ih paham paham kayak Kak Gem aja kamu! Paham lahhh!!! Jadi do while itu jalan sekali dulu, baru cek kondisinya, kan?",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line":  "Betul Rus! Jadi kalau kamu udah tahu pasti jumlah perulangannya, pakai for. Kalau kamu harus ngecek kondisi dulu baru ngulang, pakai while atau do while tergantung kamu butuh perulangan yang jalan minimal sekali dulu atau nggak. Biar kamu lebih paham coba kerjain soal ini, kalau kamu bener aku traktir makan deh",
+              "reaction_index": 2,
+              "speaker": 2
             }
-          ]
+          ],
+          "next": "soal3_2",
+          "nextType": "soal"
         },
         {
           "id": "bener3_last",
-          "character1": "Adrien",
-          "character2": "Rusdi",
           "text": [
-            "Yoi, bener Rus. Jawabannya C. Loop-nya jalan tiga kali, makanya 'Hai' dicetak tiga kali. Pas banget, bro.",
-            "Akhirnya ngerti juga soal for loop ini, makasih Adrien.",
-            "Yaudah sekarang mending kamu pesen makan dah, keburu janji makan gratis dari aku expired nih.",
-            "Iya ini aku mau pesen sandwich"
+            {
+              "line":  "Yoi Rus, jawabannya C! Loop-nya jalan tiga kali, makanya 'Hai' dicetak tiga kali.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line":  "Akhirnya paham juga, makasih Adrian.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line":  "Yaudah sekarang mending kamu pesen makan, keburu janji makan gratis dari aku expired.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Siap!!!",
+              "reaction_index": 2,
+              "speaker": 1
+            }
           ],
           "next": null
         },
         {
           "id": "salah3_2",
-          "character1": "Adrien",
-          "character2": "Rusdi",
           "text": [
-            "Ah salah lagi nih!",
-            "Gak apa-apa Rus, kita cek bareng-bareng. Jadi gini, di dalam loop for, kamu udah nulis i <= 3, artinya program akan nge-loop sebanyak 3 kali. Setiap kali looping, dia bakal mencetak Hai dan dilanjut ke perulangan berikutnya.",
-            "Iya, terus kenapa hasilnya bisa cuma satu?",
-            "Ooooh, maksud kamu itu tadi di jawabannya yang salah kan, di soal. Kalau kamu lihat di pilihan jawabannya, yang benar tuh adalah Hai Hai Hai karena memang output-nya bakal muncul 3 kali.",
-            "Oh! Jadi jawabannya Hai Hai Hai ya, karena diulang tiga kali sesuai dengan perulangan for?",
-            "Iya bener banget! Jangan lupa juga, kalau gak dipisah spasi atau dipake \n, outputnya bakal langsung nempel kayak HaiHaiHai. Jadi perlu perhatiin juga formatnya.",
-            "Wah paham sekarang! Jadi kalau mau hasilnya ada spasi antar 'Hai', harus pakai spasi dalam printf ya?",
-            "Betul! Jangan lupa, perhatikan juga kapan ada perulangan dan bagaimana outputnya dicetak.",
-            "Thanks bro! Sekarang baru ngeh! Aku bakal coba lagi!"
+            {
+              "line":  "Ah salah lagi nih!",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line":  "Gak apa-apa Rus, kita cek bareng-bareng. Jadi di dalam loop for kamu udah nulis i <= 3, artinya program akan nge-loop sebanyak 3 kali. Setiap kali looping, dia bakal mencetak Hai dan dilanjut ke perulangan berikutnya.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Iya tapi kenapa hasilnya bisa cuma satu?",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line":  "Owh maksud kamu itu di jawabannya yang salah di soal. Kalau kamu lihat di pilihan jawabannya, yang benar tuh adalah Hai Hai Hai karena memang output-nya bakal muncul 3 kali.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Oh jawabannya Hai Hai Hai karena diulang tiga kali sesuai dengan perulangan for?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Iya bener banget! Jangan lupa, kalau gak dipisah spasi atau \n, outputnya bakal langsung nempel kayak HaiHaiHai. Jadi perlu perhatiin juga formatnya.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line":  "Paham sekarang! Jadi kalau mau hasilnya ada spasi antar 'Hai', harus pakai spasi dalam printf ya?",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line":  "Betul banget! Jangan lupa perhatikan juga kapan ada perulangan dan bagaimana outputnya dicetak.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line":  "Thanks bro! Sekarang baru nyantol di otak! Aku bakal latihan lagi!",
+              "reaction_index": 2,
+              "speaker": 1
+            }
           ],
-          "next": "materi3_2"
+          "questions": [
+            {
+              "id": "soal3_1 ",
+              "text": "Kamu diminta untuk membuat program yang mencetak angka dari 1 sampai 10. Bagaimana cara kamu menggunakan for loop untuk melakukan ini?",
+              "choices": [
+                {
+                  "text": "for (int i = 1; i < 10; i++) { printf(\"%d \", i); }",
+                  "next": "salah3_1",
+                  "nextType": "dialogs",
+                  "isCorrect": false
+                },
+                {
+                  "text": "for (int i = 1; i <= 10; i++) { printf(\"%d \", i); }",
+                  "next": "salah3_1",
+                  "nextType": "dialogs",
+                  "isCorrect": false
+                },
+                {
+                  "text": "for (int i = 0; i < 10; i++) { printf(\"%d \", i); }",
+                  "next": "salah3_1",
+                  "nextType": "dialogs",
+                  "isCorrect": false
+                },
+                {
+                  "text": "for (int i = 1; i < 11; i++) { printf(\"%d \", i); }",
+                  "next": "materi3_2",
+                  "nextType": "dialogs",
+                  "isCorrect": true
+                }
+              ]
+            },
+            {
+              "id": "soal3_2",
+              "text": "Perhatikan potongan kode berikut. Apa output yang dihasilkan?",
+              "code": "\n\n#include <stdio.h>\nint main() {\n    for (int i = 1; i <= 3; i++) {\n        printf(\"Hai \");\n    }\n    return 0;\n}\n\n",
+              "choices": [
+                {
+                  "text": "Hai",
+                  "next": "salah3_2",
+                  "nextType": "dialogs",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Hai Hai Hai",
+                  "next": "bener3_last",
+                  "nextType": "dialogs",
+                  "isCorrect": true
+                },
+                {
+                  "text": "HaiHaiHai",
+                  "next": "salah3_2",
+                  "nextType": "dialogs",
+                  "isCorrect": false
+                },
+                {
+                  "text": "HaiHai",
+                  "next": "salah3_2",
+                  "nextType": "dialogs",
+                  "isCorrect": false
+                }
+              ]
+            }
+          ]
         }
       ],
       "rangkuman": [
@@ -581,160 +1035,312 @@
       ]
     },
 
-
     {
       "level": 4,
+      "description": "[Loop di dalam loop, plus rem darurat pakai break, continue, atau exit biar nggak bablas!\n]",
+      "title": "Nested Loop, Break, Continue, Exit",
+      "background": "teman-cafe",
+      "character1_name": "Rusdi",
+      "character1_reaction": [["rusdi-biasa", "rusdi-marah", "rusdi-senang"]],
+      "character2_name": "Adrian",
+      "character2_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "start": "intro4",
+      "typeStart": "dialogs",
       "dialogs": [
         {
           "id": "intro4",
-          "character1": "Rusdi",
-          "character2": "Adrien",
           "text": [
-            "Hm sandwich cafe ini enak banget! Makasih ya bro udah traktir. Lumayan banget, perut kenyang, otak juga nambah isinya.",
-            "Aman Bro, yang penting lu paham dan udah bisa ngerjain soal selanjutnya.",
-            "OIYA! Aku lupa ternyata ada tugas perulangan yang satunya, aduhh...aku kira udah selesai, eh ternyata masih ada yang namanya nested loop, terus ada juga perintah break, continue, sama exit",
-            "WKWKWKWKWK ok tenang tenang sini aku jelasin satu per satu",
-            "Jadi nested loop itu sebenernya simpel banget. Intinya, itu loop di dalam loop. Maksudnya, satu perulangan di dalam perulangan lain. Biasanya dipakai kalau mau ngelakuin proses yang berulang-ulang di dalam proses yang juga berulang. Misal kamu mau mencetak bentuk tabel atau matriks. Loop pertama itu buat barisnya, dan di dalamnya, loop kedua buat kolom-kolomnya. Jadi setiap kali barisnya ganti, kolomnya diulang dari awal.",
-            "Kayak kamu bayangin aja, setiap baris itu perlu ngulangin beberapa kolom. Makanya perlu loop di dalam loop. Biar tambah paham, aku kasih kamu soal nested loop dulu"
+            {
+              "line": "Hm sandwich cafe ini enak banget! Makasih ya bro udah traktir. Lumayan banget, perut kenyang, otak juga nambah isinya.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Aman bro!",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "OIYA! Aku lupa ternyata ada tugas perulangan yang satunya, aduhh...aku kira udah selesai, eh ternyata masih ada yang namanya nested loop, terus ada juga perintah break, continue, sama exit",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "WKWKWKWKWK ok tenang tenang sini aku jelasin satu per satu",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Jadi nested loop itu sebenernya simpel banget. Intinya itu loop di dalam loop atau satu perulangan di dalam perulangan lain. Biasanya dipakai kalau mau ngelakuin proses yang berulang-ulang di dalam proses yang juga berulang. Misal kamu mau mencetak bentuk tabel atau matriks. Loop pertama itu buat barisnya, dan di dalamnya ada loop kedua buat kolom-kolomnya. Jadi setiap kali barisnya ganti, kolomnya diulang dari awal.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Kayak kamu bayangin aja setiap baris itu perlu ngulangin beberapa kolom. Makanya perlu loop di dalam loop. Biar paham, aku kasih kamu soal nested loop dulu",
+              "reaction_index": 0,
+              "speaker": 2
+            }
           ],
-          "next":"soal4_1"
+          "next":"soal4_1",
+          "nextType": "soal"
         },
         {
           "id": "soal4_1",
-          "character1": "Adrien",
-          "character2": "Rusdi",
-          "text": "Perhatikan pola berikut:\n\n*\n* *\n* * *\n* * * *\n\nLoop mana yang paling tepat dipakai untuk baris (luar) dan bintang (dalam)?",
+          "text": "Perhatikan pola berikut. Loop mana yang paling tepat dipakai untuk baris (luar) dan bintang (dalam)?",
+          "code": "\n\n*\n* *\n* * *\n* * * *\n\n",
           "choices": [
             {
               "text": "for (int i = 1; i <= 4; i++) // Loop baris\nfor (int j = 1; j <= i; j++) // Loop bintang",
-              "next": "materi4_2"
+              "next": "materi4_2",
+              "nextType": "dialogs",
+              "isCorrect": true
             },
             {
               "text": "for (int i = 1; i <= 4; i++) // Loop bintang\nfor (int j = 1; j <= i; j++) // Loop baris",
-              "next": {
-                "retry": "soal4_1",
-                "review": "salah4_1"
-              }
+              "next": "salah4_1",
+              "nextType": "dialogs",
+              "isCorrect": false
             },
             {
               "text": "for (int i = 1; i <= 4; i++) // Loop baris\nfor (int j = 4; j >= i; j--) // Loop bintang",
-              "next": {
-                "retry": "soal4_1",
-                "review": "salah4_1"
-              }
+              "next": "salah4_1",
+              "nextType": "dialogs",
+              "isCorrect": false
             },
             {
               "text": "for (int i = 4; i >= 1; i--) // Loop baris\nfor (int j = 1; j <= i; j++) // Loop bintang",
-              "next": {
-                "retry": "soal4_1",
-                "review": "salah4_1"
-              }
+              "next": "salah4_1",
+              "nextType": "dialogs",
+              "isCorrect": false
             }
           ]
         },
         {
           "id": "salah4_1",
-          "character1": "Adrien",
-          "character2": "Rusdi",
           "text": [
-            "Hmm jawabannya belum tepat nih, Di!",
-            "Yah kenapa ya?",
-            "Coba ingat lagi konsep loop luar untuk baris dan loop dalam untuk bintang. Bacain lagi materinya pelan-pelan, kamu pasti bisa nemu jawabannya!",
-            "Siap, aku baca lagi deh!"
+            {
+              "line": "Hmm jawabannya belum tepat nih Di!",
+              "reaction_index": 1,
+              "speaker": 2
+            },
+            {
+              "line": "Yah kenapa ya?",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Coba ingat lagi konsep loop luar untuk baris dan loop dalam untuk bintang. Baca lagi materinya pelan-pelan, kamu pasti bisa nemu jawabannya!",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Siap aku baca lagi deh!",
+              "reaction_index": 2,
+              "speaker": 2
+            }
           ],
-          "next": "materi4_1"
+          "next": "materi4_1",
+          "nextType": "soal"
         },
         {
           "id": "materi4_1",
-          "character1": "Adrien",
-          "character2": "Rusdi",
           "text": [
-            "Eh Rusdi, kayaknya tadi jawabanmu kurang pas deh.",
-            "Iya ya, aku bingung pas bagian nested loop-nya",
-            "Jadi gini, di nested loop ada loop di dalam loop. Loop yang luar biasanya ngatur berapa kali si loop dalam dijalankan.",
-            "Berarti yang luar kayak buat baris, yang dalam buat isinya gitu?",
-            "Persis! Misalnya mau gambar segitiga bintang, loop luar buat barisnya, loop dalam buat jumlah bintangnya di tiap baris.",
-            "Oohh... Pantesan tadi jumlah bintangnya aneh.",
-            "Makanya harus perhatiin hubungan antara loop luar sama loop dalam. Baca lagi materinya pelan-pelan, habis itu coba latihan lagi.",
-            "Siap, makasih Adrien! Aku coba ulangin dulu deh."
+            {
+              "line": "Jawabanmu kurang pas.",
+              "reaction_index": 1,
+              "speaker": 2
+            },
+            {
+              "line": "Aku bingung bagian nested loop-nya",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Owh gini, di nested loop ada loop di dalam loop. Loop luar biasanya ngatur berapa kali loop dalam dijalankan.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Berarti yang luar kayak buat baris, yang dalam buat isinya gitu?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Yoi bro! Misal mau gambar segitiga bintang, loop luar buat barisnya dan loop dalam buat jumlah bintangnya di tiap baris.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Oohh pantesan tadi jumlah bintangnya aneh.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Makanya harus perhatiin hubungan antara loop luar dan loop dalam. Baca lagi materinya pelan-pelan, habis itu coba latihan lagi.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Siap makasih Adrian! Aku coba ulangin dulu deh.",
+              "reaction_index": 2,
+              "speaker": 1
+            }
           ],
-          "next":"soal4_1"
+          "next":"soal4_2",
+          "nextType": "soal"
         },
         {
           "id": "materi4_2",
-          "character1": "Rusdi",
-          "character2": "Adrien",
           "text": [
-            "Aku pilih A, soalnya dari yang aku liat for luarnya buat ngatur baris, for dalemnya ngatur bintangnya. Jadi kayaknya cocok!",
-            "Wuuihh mantap banget Rus!  Bener banget! Jadi for pertama itu ngatur baris, sedangkan for kedua ngatur berapa banyak bintangnya sesuai sama baris keberapa kita sekarang.",
-            "Nah kalau kayak gitu kamu udah mulai ngerti nested loop. Yuk kita lanjut tentang break yaa.",
-            "Oke Gasskeunn",
-            "Nah kalau kamu mau keluar dari loop lebih cepat, kamu bisa pake break. Misal kalau kamu udah nemuin angka yang kamu cari, kamu gak perlu ngejalanin sisanya. Kamu pake break biar langsung keluar dari loop itu.",
-            "Tapi gimana kalau aku cuma mau skip satu iterasi aja, ga keluar sama sekali?",
-            "Kalau kasusnya kayak gitu bisa pake continue. Jadi kalau kamu pake continue maka bakal nge-skip iterasi yang lagi jalan dan langsung lanjut ke iterasi berikutnya. Terus ada lagi nih, kalau kamu mau keluar dari program secara langsung, kamu bisa pake exit.",
-            "Wih kacauuu! Ternyata banyak banget ya cara ngatur loop dan kontrol program.",
-            "Iya memang. Makanya penting banget buat ngerti setiap kontrol yang ada biar perulangan kamu lebih fleksibel. Biar tau perbedaan break, continue, dan exit coba kerjain soal ini.",
-            "Oke, bro! aku langsung kerjain deh."
+            {
+              "line": "Aku pilih A soalnya dari yang aku liat for luarnya buat ngatur baris dan for dalemnya ngatur bintangnya. Jadi kayaknya cocok!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Wuuihh mantap bener banget Rus! Jadi for pertama ngatur baris, sedangkan for kedua ngatur berapa banyak bintangnya sesuai sama baris keberapa kita sekarang.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Nah kalau kayak gitu kamu berarti udah mulai ngerti nested loop. Yuk lanjut tentang materi break yaa.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Oke Gasskeunn",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Selanjutnya kalau kamu mau keluar dari loop lebih cepat, kamu bisa pake break. Misal kalau kamu udah nemuin angka yang kamu cari, kamu gak perlu ngejalanin sisanya. Kamu pake break biar langsung keluar dari loop itu.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Tapi gimana kalau aku cuma mau skip satu iterasi aja, ga keluar sama sekali?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Kalau kasusnya kayak gitu bisa pake continue. Jadi kalau kamu pake continue maka akan nge-skip iterasi yang lagi jalan dan langsung lanjut ke iterasi berikutnya. Terus ada lagi nih, kalau kamu mau keluar dari program secara langsung, kamu bisa pake exit.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Wih kacauuu! Ternyata banyak banget ya cara ngatur loop dan kontrol program.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Iya memang. Makanya penting banget buat ngerti setiap kontrol yang ada biar perulangan kamu lebih fleksibel. Biar tau perbedaan break, continue, dan exit coba kerjain soal ini.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oke bro! aku langsung kerjain deh.",
+              "reaction_index": 2,
+              "speaker": 1
+            }
           ],
-          "next": "soal4_2"
+          "next": "soal4_2",
+          "nextType": "soal"
         },
         {
           "id": "soal4_2",
-          "character1": "Adrien",
-          "character2": "Rusdi",
           "text": "Bayangin kamu lagi pake for buat ngeloop angka dari 1 sampai 5. Terus di tengah-tengah loop kamu pengen:\n\nLangsung keluar dari loop kalau ketemu angka 3,\n\nLewatin aja kalau ketemu angka 2 (tapi lanjut ke angka berikutnya),\n\nKeluar dari seluruh program kalau ketemu angka 5.\n\nNah menurutmu keyword apa aja yang harus dipakai?",
           "choices": [
             {
               "text": "break, continue, exit",
-              "next": {
-                "retry": "soal4_2",
-                "review": "salah4_2"
-              }
+              "next": "salah4_2",
+              "nextType": "dialogs",
+              "isCorrect": false
             },
             {
               "text": "continue, exit, break",
-              "next": {
-                "retry": "soal4_2",
-                "review": "salah4_2"
-              }
+              "next": "salah4_2",
+              "nextType": "dialogs",
+              "isCorrect": false
             },
             {
               "text": "exit, break, continue",
-              "next": {
-                "retry": "soal4_2",
-                "review": "salah4_2"
-              }
+              "next": "salah4_2",
+              "nextType": "dialogs",
+              "isCorrect": false
             },
             {
               "text": "continue, break, exit",
-              "next": "bener4_last"
+              "next": "benar4_last",
+              "nextType": "dialogs",
+              "isCorrect": true
             }
           ]
         },
         {
           "id": "salah4_2",
-          "character1": "Adrien",
-          "character2": "Rusdi",
           "text": [
-            "Eh Rusdi jawabannya tadi belum tepat nih.",
-            "Waduh aku salahnya di mana ya?",
-            "Gini, coba inget dulu... Kalau mau lewati suatu angka tapi tetep lanjut ke angka berikutnya, itu perlu keyword apa? Terus kalau mau berhenti dari loop aja, bukan dari program, itu keyword-nya beda lagi. Nah kalau mau berhenti total sampai programnya bener-bener selesai, ada keyword lain lagi.",
-            "Jadi beda-beda ya tergantung mau ngapain?",
-            "Betul banget! Jadi fokus dulu: kamu mau lewatin angka, keluar dari loop, atau keluar dari program? Coba baca lagi materinya tentang perbedaan tiga keyword itu.",
-            "Oke, aku cek lagi deh pelan-pelan."
+            {
+              "line": "Eh Rusdi jawabannya tadi belum tepat nih.",
+              "reaction_index": 1,
+              "speaker": 2
+            },
+            {
+              "line":  "Waduh aku salahnya di mana ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Gini, coba inget dulu... Kalau mau lewati suatu angka tapi tetep lanjut ke angka berikutnya, itu perlu keyword apa? Terus kalau mau berhenti dari loop aja, bukan dari program, itu keyword-nya beda lagi. Nah kalau mau berhenti total sampai programnya bener-bener selesai, ada keyword lain lagi.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Jadi beda-beda ya tergantung mau ngapain?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Betul banget! Jadi fokus dulu: kamu mau lewatin angka, keluar dari loop, atau keluar dari program? Coba baca lagi materinya tentang perbedaan tiga keyword itu.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Oke, aku cek lagi deh pelan-pelan.",
+              "reaction_index": 0,
+              "speaker": 1
+            }
           ],
-          "next": "soal4_2"
+          "next": "soal4_2",
+          "nextType": "soal"
         },
         {
           "id": "benar4_last",
-          "character1": "Rusdi",
-          "character2": "Adrien",
           "text": [
-            "Wihhh, jawabanku benar nih!",
-            "Yoiii, mantap bro! Berarti kamu udah paham konsep break.",
-            "Wah keren juga ya. Jadi tergantung situasi, kita bisa pilih mau keluar dari loop atau cuma skip sementara.",
-            "Akhirnya aku paham juga materi ini, makasih ya Adrien",
-            "Aman aja Di"
+            {
+              "line":  "Wihhh, jawabanku benar nih!",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Yoiii, mantap bro! Berarti kamu udah paham konsep break.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line":  "Wah keren juga ya. Jadi tergantung situasi, kita bisa pilih mau keluar dari loop atau cuma skip sementara.",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Akhirnya aku paham juga materi ini, makasih ya Adrian",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Aman aja Di",
+              "reaction_index": 2,
+              "speaker": 2
+            }
           ],
           "next": null
         }
@@ -770,27 +1376,23 @@
     {
       "level": 5,
       "description": "Biar nggak ribet, pecah kode kamu jadi fungsi-fungsi keren yang bisa dipanggil kapan aja!",
-      "title": "Pemanggilan Fungsi dalam Pemrogaman",
-      "background": "classroom",
-      "character1_name": "Adrien",
+      "title": "Pemanggilan Fungsi dalam Pemrograman",
+      "background": "lab",
+      "character1_name": "Adrian",
       "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
       "character2_name": "Pak Rongga",
       "character2_reaction": ["rongga-biasa", "rongga-marah", "rongga-senang"],
-      "start": "preDialog",
+      "start": "preDialog5",
       "typeStart": "preDialog",
-      
       "preDialog": [
         {
-          "id": "preDialog",
-          "text": [
-            {
-              "line": "Di ruang kelas, MC sedang duduk di bangku depan, sementara Dosen sedang berdiri di depan papan tulis, siap memberikan materi baru tentang Jenis Fungsi dalam pemrograman. Suasana kelas cukup tenang dan penuh perhatian.",
-              "reaction_index": 0,
-              "speaker": 0
-            }
-          ],
-          "next": "intro5"
-        },
+          "id": "preDialog5",
+          "text": "Di ruang kelas, MC sedang duduk di bangku depan, sementara Dosen sedang berdiri di depan papan tulis, siap memberikan materi baru tentang Jenis Fungsi dalam pemrograman. Suasana kelas cukup tenang dan penuh perhatian.",
+          "next": "intro5",
+          "nextType": "dialogs"
+        }
+      ],
+      "dialogs": [
         {
           "id": "intro5",
           "text": [
@@ -822,73 +1424,7 @@
           ],
           "next": "soal5_1",
           "nextType": "soal"
-        }
-      ],
-      
-      "soal": [
-        {
-          "id": "soal5_1",
-          "text": "Coba lihat kode ini:\n\n#include <stdio.h>\n\nint tambah(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int hasil = tambah(4, 5);\n    printf(\"Hasil: %d\\n\", hasil);\n    return 0;\n}\n\nNah, tipe fungsi 'tambah' ini termasuk kategori apa ya?",
-          "choices": [
-            {
-              "text": "Fungsi dengan return value",
-              "next": "materi5_2",
-              "nextType":"dialog-materi",
-              "isCorrect": true
-            },
-            {
-              "text": "Fungsi void",
-              "next": "salah5_1",
-              "nextType":"dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "Fungsi dengan parameter",
-              "next": "salah5_1",
-              "nextType":"dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "Fungsi tanpa parameter",
-              "next": "salah5_1",
-              "nextType":"dialog-salah",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "id": "soal5_2",
-          "text": "Coba lihat kode ini:\n\n#include <stdio.h>\n\n… sapa() {\n    printf(\"Halo, selamat pagi!\\n\");\n}\n\nint main() {\n    sapa();\n    return 0;\n}\n\nNah, tipe fungsi 'sapa' ini termasuk kategori apa?",
-          "choices": [
-            {
-              "text": "char",
-              "next": "salah5_2",
-              "nextType":"dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "void",
-              "next": "benar5_last",
-              "nextType":"dialog-materi",
-              "isCorrect": true
-            },
-            {
-              "text": "string",
-              "next": "salah5_2",
-              "nextType":"dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "return",
-              "next": "salah5_2",
-              "nextType":"dialog-salah",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      
-      "dialog_salah": [
+        }, 
         {
           "id": "salah5_1",
           "text": [
@@ -972,10 +1508,7 @@
           ],
           "next": "soal5_2", 
           "nextType": "soal"
-        }
-      ],
-      
-      "dialog_materi": [
+        },
         {
           "id": "materi5_2",
           "text": [
@@ -1031,6 +1564,72 @@
         }
       ],
       
+      "soal": [
+        {
+          "id": "soal5_1",
+          "text": "Coba lihat kode ini. Nah, tipe fungsi 'tambah' ini termasuk kategori apa ya?",
+          "code": "#include <stdio.h>\n\nint tambah(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int hasil = tambah(4, 5);\n    printf(\"Hasil: %d\\n\", hasil);\n    return 0;\n}",
+          "choices": [
+            {
+              "text": "Fungsi dengan return value",
+              "next": "materi5_2",
+              "nextType":"dialogs",
+              "isCorrect": true
+            },
+            {
+              "text": "Fungsi void",
+              "next": "salah5_1",
+              "nextType":"dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "Fungsi dengan parameter",
+              "next": "salah5_1",
+              "nextType":"dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "Fungsi tanpa parameter",
+              "next": "salah5_1",
+              "nextType":"dialogs",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal5_2",
+         "text": "Coba lihat kode ini:",
+          "code": "#include <stdio.h>\n\n… sapa() {\n    printf(\"Halo, selamat pagi!\\n\");\n}\n\nint main() {\n    sapa();\n    return 0;\n}",
+          "question": "Nah, tipe fungsi 'sapa' ini termasuk kategori apa?",
+          "choices": [
+            {
+              "text": "char",
+              "next": "salah5_2",
+              "nextType":"dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "void",
+              "next": "benar5_last",
+              "nextType":"dialogs",
+              "isCorrect": true
+            },
+            {
+              "text": "string",
+              "next": "salah5_2",
+              "nextType":"dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "return",
+              "next": "salah5_2",
+              "nextType":"dialogs",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      
       "rangkuman": [
         "1. Fungsi dengan Return Value: mengembalikan nilai setelah dieksekusi. Nilai tersebut bisa disimpan dalam variabel dan digunakan di bagian lain dalam program.",
         "Contoh fungsi dengan return value:",
@@ -1055,15 +1654,18 @@
       "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
       "character2_name": "Jennie",
       "character2_reaction": ["crush-biasa", "crush-senang", "crush-marah"],
-      "start": "preDialog",
+      "start": "preDialog6",
       "typeStart": "preDialog",
-      
+
       "preDialog": [
         {
-          "id": "preDialog",
+          "id": "preDialog6",
           "text": "Kantin kampus hari itu cukup ramai, MC duduk di meja pojok sambil menunggu makanan datang. Tiba-tiba, Jennie yang duduk di meja sebelah datang dan ikut duduk bersama MC.",
-          "next": "intro6"
-        },
+          "next": "intro1",
+          "nextType": "dialogs"
+        }
+      ],
+      "dialogs": [
         {
           "id": "intro6",
           "text": [
@@ -1100,141 +1702,7 @@
           ],
           "next": "soal6_1",
           "nextType": "soal"
-        }
-      ],
-      
-      "soal": [
-        {
-          "id": "soal6_1",
-          "character1": "Jennie",
-          "character2": "Adrien",
-          "text": "Perhatikan kode ini:\n\n#include <stdio.h>\n\nvoid contoh() {\n    int angka = 10;\n    printf(\"%d\", angka);\n}\n\nMenurutmu, manakah variabel lokal dalam kode di atas?",
-          "choices": [
-            {
-              "text": "contoh",
-              "next": "salah6_1",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "printf",
-              "next": "salah6_1",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "angka",
-              "next": "materi6_2",
-              "nextType": "dialog-materi",
-              "isCorrect": true
-            },
-            {
-              "text": "int",
-              "next": "salah6_1",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            }
-          ]
         },
-        {
-          "id": "soal6_2",
-          "character1": "Jennie",
-          "character2": "Adrien",
-          "text": "Perhatikan potongan kode berikut:\n\nint angka = 10;\nvoid fungsi() {\n    printf(\"%d\", angka);\n}\n\nMenurutmu, manakah variabel global/eksternal dalam kode di atas?",
-          "choices": [
-            {
-              "text": "fungsi, karena dia bisa dipanggil dari mana saja.",
-              "next": "salah6_2",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "angka, karena dideklarasikan di luar fungsi dan bisa diakses dari dalam fungsi.",
-              "next": "materi6_3",
-              "nextType": "dialog-materi",
-              "isCorrect": true
-            },
-            {
-              "text": "printf, karena digunakan di dalam fungsi untuk menampilkan nilai.",
-              "next": "salah6_2",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "int, karena semua variabel bertipe int pasti global.",
-              "next": "salah6_2",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "id": "soal6_3",
-          "character1": "Jennie",
-          "character2": "Adrien",
-          "text": "Perhatikan potongan kode berikut!\n\nvoid fungsi1() {\n    int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi2() {\n    static int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi3() {\n    int x = 0;\n    for(int i = 0; i < 5; i++) {\n        x++;\n    }\n    printf(\"%d\", x);\n}\n\nvoid fungsi4() {\n    int x = 0;\n    while(x < 5) {\n        x++;\n    }\n    printf(\"%d\", x);\n}\n\nManakah fungsi yang menggunakan variabel statis pada kode berikut?",
-          "choices": [
-            {
-              "text": "fungsi1",
-              "next": "salah6_3",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "fungsi2",
-              "next": "materi6_4",
-              "nextType": "dialog-materi",
-              "isCorrect": true
-            },
-            {
-              "text": "fungsi3",
-              "next": "salah6_3",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "fungsi4",
-              "next": "salah6_3",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "id": "soal6_4",
-          "character1": "Jennie",
-          "character2": "Adrien",
-          "text": "Perhatikan potongan kode berikut:\n\n#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5; // Variabel statis\n    register int i;       // Variabel register\n    for (i = 0; i < 3; i++) {\n        angka++;\n        printf(\"Angka: %d, i: %d\\n\", angka, i);\n    }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}\n\nDalam program di atas, mana yang merupakan variabel register dan variabel statis?",
-          "choices": [
-            {
-              "text": "angka adalah variabel register, i adalah variabel statis.",
-              "next": "salah6_4",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "angka adalah variabel statis, i adalah variabel register.",
-              "next": "benar6_last",
-              "nextType": "dialog-materi",
-              "isCorrect": true
-            },
-            {
-              "text": "angka dan i keduanya variabel register.",
-              "next": "salah6_4",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            },
-            {
-              "text": "angka dan i keduanya variabel statis.",
-              "next": "salah6_4",
-              "nextType": "dialog-salah",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      
-      "dialog_salah": [
         {
           "id": "salah6_1",
           "text": [
@@ -1377,10 +1845,7 @@
           ],
           "next": "soal6_4",
           "nextType": "soal"
-        }
-      ],
-      
-      "dialog_materi": [
+        },
         {
           "id": "materi6_2",
           "text": [
@@ -1497,6 +1962,141 @@
             }
           ],
           "next": null
+        }
+      ],
+      
+      "soal": [
+        {
+          "id": "soal6_1",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": "Perhatikan kode ini. Menurutmu, manakah variabel lokal dalam kode di atas?",
+          "code": "#include <stdio.h>\n\nvoid contoh() {\n    int angka = 10;\n    printf(\"%d\", angka);\n}\n",
+          "choices": [
+            {
+              "text": "contoh",
+              "next": "salah6_1",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "printf",
+              "next": "salah6_1",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "angka",
+              "next": "materi6_2",
+              "nextType": "dialogs",
+              "isCorrect": true
+            },
+            {
+              "text": "int",
+              "next": "salah6_1",
+              "nextType": "dialogs",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal6_2",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": "Perhatikan potongan kode berikut. Menurutmu, manakah variabel global/eksternal dalam kode di atas?",
+          "code": "int angka = 10;\nvoid fungsi() {\n    printf(\"%d\", angka);\n}",
+          "choices": [
+            {
+              "text": "fungsi, karena dia bisa dipanggil dari mana saja.",
+              "next": "salah6_2",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "angka, karena dideklarasikan di luar fungsi dan bisa diakses dari dalam fungsi.",
+              "next": "materi6_3",
+              "nextType": "dialogs",
+              "isCorrect": true
+            },
+            {
+              "text": "printf, karena digunakan di dalam fungsi untuk menampilkan nilai.",
+              "next": "salah6_2",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "int, karena semua variabel bertipe int pasti global.",
+              "next": "salah6_2",
+              "nextType": "dialogs",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal6_3",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": "Perhatikan potongan kode berikut! Manakah fungsi yang menggunakan variabel statis pada kode berikut?",
+          "code": "void fungsi1() {\n    int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi2() {\n    static int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi3() {\n    int x = 0;\n    for(int i = 0; i < 5; i++) {\n        x++;\n    }\n    printf(\"%d\", x);\n}\n\nvoid fungsi4() {\n    int x = 0;\n    while(x < 5) {\n        x++;\n    }\n    printf(\"%d\", x);\n}",
+          "choices": [
+            {
+              "text": "fungsi1",
+              "next": "salah6_3",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "fungsi2",
+              "next": "materi6_4",
+              "nextType": "dialogs",
+              "isCorrect": true
+            },
+            {
+              "text": "fungsi3",
+              "next": "salah6_3",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "fungsi4",
+              "next": "salah6_3",
+              "nextType": "dialogs",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "id": "soal6_4",
+          "character1": "Jennie",
+          "character2": "Adrien",
+          "text": "Perhatikan potongan kode berikut. Dalam program di atas, mana yang merupakan variabel register dan variabel statis?",
+          "code": "#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5; // Variabel statis\n    register int i;       // Variabel register\n    for (i = 0; i < 3; i++) {\n        angka++;\n        printf(\"Angka: %d, i: %d\\n\", angka, i);\n    }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}",
+          "choices": [
+            {
+              "text": "angka adalah variabel register, i adalah variabel statis.",
+              "next": "salah6_4",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "angka adalah variabel statis, i adalah variabel register.",
+              "next": "benar6_last",
+              "nextType": "dialogs",
+              "isCorrect": true
+            },
+            {
+              "text": "angka dan i keduanya variabel register.",
+              "next": "salah6_4",
+              "nextType": "dialogs",
+              "isCorrect": false
+            },
+            {
+              "text": "angka dan i keduanya variabel statis.",
+              "next": "salah6_4",
+              "nextType": "dialogs",
+              "isCorrect": false
+            }
+          ]
         }
       ],
       
