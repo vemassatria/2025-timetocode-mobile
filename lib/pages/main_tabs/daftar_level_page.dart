@@ -22,7 +22,6 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
   final ScrollController _scrollController = ScrollController();
   late int completedLevel;
   late int totalLevel;
-  late List<GlobalKey> _cardKeys;
   bool _isLoaded = false;
 
   @override
@@ -41,11 +40,16 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
 
     completedLevel = _prefs.getInt('completedLevel')!;
     totalLevel = game.levels.length;
-    _cardKeys = List<GlobalKey>.generate(totalLevel, (_) => GlobalKey());
 
     _isLoaded = true;
 
     setState(() {});
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -94,8 +98,29 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
             controller: _scrollController,
             itemCount: totalLevel,
             itemBuilder: (context, index) {
+              // Optimalkan - hanya render level yang sudah dibuka atau berikutnya akan dibuka
+              if (index > completedLevel + 1) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    bottom: index == totalLevel - 1 ? 16.h : 8.h,
+                  ),
+                  child: LevelCard.locked(
+                    title: game.levels[index].title,
+                    onInfoPressed: () {
+                      showPopupOverlay(
+                        context,
+                        InfoPopup(
+                          title: game.levels[index].title,
+                          description: game.levels[index].description,
+                          onClose: closePopupOverlay,
+                        ),
+                      );
+                    },
+                  ),
+                );
+              }
+
               return Padding(
-                key: _cardKeys[index],
                 padding: EdgeInsets.only(
                   top: index == 0 ? 16.h : 0,
                   bottom: index == totalLevel - 1 ? 16.h : 8.h,
@@ -103,6 +128,7 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
                 child: LevelCard(
                   image: Image.asset(
                     'assets/background/${game.levels[index].background}.webp',
+                    fit: BoxFit.cover,
                   ),
                   title: game.levels[index].title,
                   status:
