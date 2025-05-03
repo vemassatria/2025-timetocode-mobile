@@ -16,12 +16,11 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
 
   late final List<LevelModel> levels;
 
-  late PreDialogModel? preDialog;
+  PreDialogModel? preDialog;
+  DialogModel? currentDialogs;
 
-  late DialogModel? currentDialogs;
-
-  late List<String>? character1Path;
-  late List<String>? character2Path;
+  List<String>? character1Path;
+  List<String>? character2Path;
 
   late int character1ActivePath;
   late int character2ActivePath;
@@ -29,10 +28,13 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
   late int activeLevel;
   late String activeMode;
 
-  late QuestionModel? currentQuestion;
+  QuestionModel? currentQuestion;
 
   late int correctAnswer;
   late int wrongAnswer;
+
+  // Add texture cache tracking
+  final Set<String> _loadedTextures = {};
 
   @override
   Future<void> onLoad() async {
@@ -41,6 +43,28 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
     await super.onLoad();
     sceneBackground = SceneBackgroundComponent(size: size);
     add(sceneBackground);
+  }
+
+  @override
+  void onRemove() {
+    // Clean up resources when game is removed
+    _clearResources();
+    super.onRemove();
+  }
+
+  // Add method to clear resources
+  void _clearResources() {
+    // Clear all cached images instead of trying to remove individual textures
+    images.clearCache();
+
+    // Clear other resources
+    removeCharacter();
+    currentDialogs = null;
+    currentQuestion = null;
+    preDialog = null;
+    character1Path = null;
+    character2Path = null;
+    _loadedTextures.clear();
   }
 
   Future<void> _loadLevels() async {
@@ -53,6 +77,9 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
   }
 
   void startLevel(int indexLevel) {
+    // Clear previous resources before starting new level
+    _clearGameplayResources();
+
     overlays.remove('GameUI');
     overlays.add('StoryMenu');
     changeScene(levels[indexLevel].background);
@@ -85,7 +112,11 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
   }
 
   Future<void> changeScene(String sceneName) async {
-    images.prefix = 'assets/';
+    // Track which textures we're loading
+    final String texturePath = 'background/$sceneName.webp';
+    _loadedTextures.add(texturePath);
+
+    // Load new scene
     await sceneBackground.loadScene(sceneName);
   }
 
@@ -93,6 +124,10 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
     String character1Path,
     String character2Path,
   ) async {
+    // Track character textures
+    _loadedTextures.add(character1Path);
+    _loadedTextures.add(character2Path);
+
     storyCharacters = StoryCharactersComponent(character1Path, character2Path);
     add(storyCharacters!);
   }
@@ -113,23 +148,45 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
     preDialog = null;
   }
 
-  void endGame() {
+  // Clear only gameplay resources
+  void _clearGameplayResources() {
+    if (storyCharacters != null) removeCharacter();
     currentDialogs = null;
     currentQuestion = null;
     preDialog = null;
+    activeMode = "";
+  }
+
+  void endGame() {
+    // Clean up all resources properly
+    _clearResources();
+
+    // Reset character state
+    character1ActivePath = 0;
+    character2ActivePath = 0;
+
+    // Change scene with proper cleanup
     changeScene('default');
+
+    // Update overlays
+    overlays.remove('StoryMenu');
     overlays.add('GameUI');
   }
 
   void removeCharacter() {
-    storyCharacters!.removeFromParent();
-    storyCharacters = null;
+    if (storyCharacters != null) {
+      storyCharacters!.removeFromParent();
+      storyCharacters = null;
+    }
   }
 
   Future<void> changeCharacter(
     int indexCharacter,
     String characterNewPath,
   ) async {
+    // Track character textures
+    _loadedTextures.add(characterNewPath);
+
     await storyCharacters!.changeCharacter(indexCharacter, characterNewPath);
   }
 
