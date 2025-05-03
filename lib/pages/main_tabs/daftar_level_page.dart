@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/components/card.dart';
 import 'package:timetocode/components/popups/info_popup.dart';
 import 'package:timetocode/providers/game_provider.dart';
@@ -59,8 +60,6 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
-    final double progress = completedLevel / totalLevel;
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
@@ -69,24 +68,21 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 16.w),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                SizedBox(
-                  width: 40.w,
-                  height: 40.h,
-                  child: CircularProgressIndicator(
-                    value: progress,
-                    color: AppColors.deepAzure,
-                    backgroundColor: AppColors.gray1,
-                    strokeWidth: 4,
-                  ),
-                ),
-                Text(
+            child: CircularStepProgressIndicator(
+              circularDirection: CircularDirection.counterclockwise,
+              totalSteps: totalLevel,
+              currentStep: completedLevel,
+              stepSize: 4,
+              selectedColor: AppColors.xpGreen,
+              unselectedColor: AppColors.gray1,
+              height: 40.h,
+              width: 40.w,
+              child: Center(
+                child: Text(
                   '$completedLevel/$totalLevel',
                   style: AppTypography.smallBold(),
                 ),
-              ],
+              ),
             ),
           ),
         ],

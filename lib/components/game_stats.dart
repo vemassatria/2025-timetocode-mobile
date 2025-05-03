@@ -34,14 +34,24 @@ class GameStats extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(title, style: AppTypography.smallBold()),
+          Text(
+            title,
+            style: AppTypography.smallBold().copyWith(
+              decoration: TextDecoration.none,
+            ),
+          ),
           SizedBox(height: 4.h),
           Container(
             width: double.infinity,
             height: 64.h,
             color: secondaryColor,
             child: Center(
-              child: Text('$count/$total', style: AppTypography.heading4()),
+              child: Text(
+                '$count/$total',
+                style: AppTypography.heading4().copyWith(
+                  decoration: TextDecoration.none,
+                ),
+              ),
             ),
           ),
         ],
