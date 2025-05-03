@@ -10,7 +10,9 @@ class EndGameScreen extends ConsumerWidget {
 
   Future<void> _saveCompletedLevel(int level) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('completedLevel', level);
+    if (prefs.getInt('completedLevel')! < level) {
+      await prefs.setInt('completedLevel', level);
+    }
   }
 
   @override
