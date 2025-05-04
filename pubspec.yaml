@@ -41,6 +41,7 @@ dependencies:
   flutter_riverpod: ^2.6.1
   flame_riverpod: ^5.4.14
   flutter_screenutil: ^5.0.0
+  just_audio: ^0.10.2
 
 dev_dependencies:
   flutter_test:
@@ -59,7 +60,6 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/images/
     - assets/background/
     - assets/character/
     - assets/stories/

@@ -7,6 +7,7 @@ import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
+import 'package:timetocode/SFX/music_service.dart';
 
 class DialogBox extends ConsumerStatefulWidget {
   const DialogBox({super.key});
@@ -113,13 +114,17 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     _timer = Timer(const Duration(milliseconds: 20), _updateText);
   }
 
-  void _updateText() {
+  Future<void> _updateText() async {
+
     final fullText = game.currentDialogs?.getTextDialog(_currentIndex);
     if (_charIndex < fullText!.length) {
       setState(() {
         _displayedText += fullText[_charIndex];
         _charIndex++;
       });
+
+      await MusicService.playTypingSfx();
+
       _timer = Timer(const Duration(milliseconds: 20), _updateText);
     } else {
       setState(() => _isTextComplete = true);
