@@ -17,16 +17,7 @@ class MusicService {
       await playMainMenuMusic();
     }
   }
-
-  // --- MUSIC LATAR BELAKANG ---
-
-  // static Future<void> playMusikLatar() async {
-  //   if (!_playingMusikLatar) {
-  //     await FlameAudio.bgm.play('music/bgm1.ogg', volume: 0.6);
-  //     _playingMusikLatar = true;
-  //   }
-  // }
-
+  
   static Future<void> stopMusikLatar() async {
     if (_playingMusikLatar) {
       await FlameAudio.bgm.stop();
