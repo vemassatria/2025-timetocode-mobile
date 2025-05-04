@@ -6,8 +6,9 @@ import 'package:timetocode/utils/screen_utils.dart';
 
 class QuestionBox extends StatelessWidget {
   final String questionText;
+  final double? height;
 
-  const QuestionBox({super.key, required this.questionText});
+  const QuestionBox({super.key, required this.questionText, this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class QuestionBox extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       width: 328.w,
-      height: 100.h,
+      height: height,
       decoration: BoxDecoration(
         color: AppColors.backgroundTransparent,
         border: Border.all(color: AppColors.white),
