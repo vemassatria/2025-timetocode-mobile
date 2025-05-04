@@ -2,18 +2,18 @@
   "levels": [
     {
       "level": 1,
-      "description": "Kenalan dulu sama bahan dasar ngoding: tipe data, variabel, sama operator biar program lo ngerti harus ngapain!",
+      "description": "Kenalan dulu sama bahan dasar ngoding: tipe data, variabel, sama operator biar program kamu ngerti harus ngapain!",
       "title": "Tipe Data, Variabel, dan Operator",
       "background": "warung-kating",
       "character1_name": "Adrian",
       "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
-      "character2_name": "Mas Tino",
-      "character2_reaction": ["tino-biasa", "tino-marah", "tino-senang"],
+      "character2_name": "Mas Sulis",
+      "character2_reaction": ["kating-biasa", "kating-marah", "kating-senang"],
       "start": "preDialog1",
       "typeStart": "preDialog",
       "preDialog": {
           "id": "preDialog1",
-          "text": "Adrian duduk di teras kosan terlihat kebingungan membolak-balik buku diktatnya. Mas Tino yang kebetulan lewat melihat adik tingkatnya itu tampak kesulitan, lalu menghampiri.",
+          "text": "Adrian duduk di warung terlihat kebingungan membolak-balik buku diktatnya. Mas Sulis yang kebetulan lewat melihat adik tingkatnya itu tampak kesulitan, lalu menghampiri.",
           "next": "intro1",
           "nextType": "dialog"
       },
@@ -52,7 +52,7 @@
               "speaker": 2
             },
             {
-              "line": "Ooh jadi kayak 18, 2025, 100 gitu ya kak?",
+              "line": "Ooh jadi kayak 18, 2025, 100 gitu ya mas?",
               "reaction_index": 0,
               "speaker": 1
             },
@@ -310,7 +310,7 @@
               "speaker": 2
             },
             {
-              "line": "Oalaaah, jadi kayak alat buat ngatur angka-angka gitu ya, Kak! Pantesan semua contoh kodingan pasti ada operatornya.",
+              "line": "Oalaaah, jadi kayak alat buat ngatur angka-angka gitu ya mas! Pantesan semua contoh kodingan pasti ada operatornya.",
               "reaction_index": 2,
               "speaker": 1
             },
@@ -364,12 +364,12 @@
           "id": "benar1_last",
           "text": [
             {
-              "line": "Nahh, iya itu udah benar! Gampang kan? Lo mulai paham sekarang, ya? Nih aku kasih rangkuman tentang tipe data, variabel dan operator. kamu bisa baca rangkumannya untuk memerdalam pengetahuan kamu soal ini.",
+              "line": "Nahh, iya itu udah benar! Gampang kan? Kamu mulai paham sekarang, ya? Nih aku kasih rangkuman tentang tipe data, variabel dan operator. kamu bisa baca rangkumannya untuk memerdalam pengetahuan kamu soal ini.",
               "reaction_index": 2,
               "speaker": 2
             },
             {
-              "line": "Siap mas Tin! Makasih, Mas!",
+              "line": "Siap mas! Makasih, mas!",
               "reaction_index": 2,
               "speaker": 1
             }
@@ -1109,7 +1109,7 @@
               "isCorrect": false
             },
             {
-              "text": "for (int i = 1; i <= 10; i++) { printf(\"%d \", i); }",
+              "text": "for (int i = 0; i <= 10; i++) { printf(\"%d \", i); }",
               "next": "salah3_1",
               "nextType": "dialog",
               "isCorrect": false
@@ -1634,7 +1634,7 @@
           "id": "salah5_2",
           "text": [
             {
-              "line": "Jawabanmu belum tepat Adrien.",
+              "line": "Jawabanmu belum tepat Adrian.",
               "reaction_index": 1, 
               "speaker": 2
             },
@@ -1644,7 +1644,7 @@
               "speaker": 1
             },
             {
-              "line": "Ngga masalah Adrien. Coba kita bahas sedikit. Fungsi itu bisa mengembalikan nilai atau tidak. Kalau mengembalikan nilai artinya fungsi memberikan hasil yang bisa digunakan kembali di bagian lain dari program.",
+              "line": "Ngga masalah Adrian. Coba kita bahas sedikit. Fungsi itu bisa mengembalikan nilai atau tidak. Kalau mengembalikan nilai artinya fungsi memberikan hasil yang bisa digunakan kembali di bagian lain dari program.",
               "reaction_index": 0, 
               "speaker": 2
             },
