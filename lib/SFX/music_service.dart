@@ -75,22 +75,30 @@ class MusicService {
   // --- TYPING SOUND ---
 
   static Future<void> playTypingSfx() async {
-    final prefs = await SharedPreferences.getInstance();
-    bool playEfekSuara = prefs.getBool('efekSuara') ?? true;
-
-    if (!playEfekSuara) return;
-
     if (!_typingInitialized) {
+      final prefs = await SharedPreferences.getInstance();
+      bool playEfekSuara = prefs.getBool('efekSuara') ?? true;
+
+      if (!playEfekSuara) return;
+
       await _typingPlayer.setAsset('assets/audio/sfx/typing.ogg');
-      await _typingPlayer.setSpeed(0.7);
+      await _typingPlayer.setLoopMode(just.LoopMode.one);
+      await _typingPlayer.setSpeed(1.0);
       _typingInitialized = true;
     }
 
-    try {
-      await _typingPlayer.seek(Duration.zero);
-      await _typingPlayer.play();
-    } catch (_) {
-      // silent fail
+    if (!_typingPlayer.playing) {
+      try {
+        await _typingPlayer.play();
+      } catch (_) {
+        // silent fail
+      }
+    }
+  }
+
+  static Future<void> stopTypingSfx() async {
+    if (_typingInitialized) {
+      await _typingPlayer.stop();
     }
   }
 

@@ -1,3 +1,4 @@
+// Semua import tetap seperti sebelumnya...
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,7 +35,6 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
   }
 
   void _initialize() async {
-    // Create characters first if they don't exist yet
     if (game.storyCharacters == null) {
       await game.loadCharacter(
         game.character1Path![0],
@@ -44,10 +44,8 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
       game.character2ActivePath = 0;
     }
 
-    // Now that characters exist, apply state changes
     _applyInitialState();
 
-    // Start typing animation after a short delay
     Future.delayed(const Duration(milliseconds: 100), () {
       if (mounted) {
         _startTyping();
@@ -60,10 +58,8 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     final idx = dialogs.getCharacterIndex(_currentIndex);
     final react = dialogs.getReactionIndex(_currentIndex);
 
-    // Prevent rebuilds during character setup
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (idx == 1) {
-        // First character is speaking
         if (game.character1ActivePath != react) {
           await game.changeCharacter(1, game.character1Path![react]);
           game.character1ActivePath = react;
@@ -73,7 +69,6 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
         await game.enhancedSizeCharacter(1);
         await game.blackCharacter(2);
       } else {
-        // Second character is speaking
         if (game.character2ActivePath != react) {
           await game.changeCharacter(2, game.character2Path![react]);
           game.character2ActivePath = react;
@@ -86,26 +81,6 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     });
   }
 
-  @override
-  void didUpdateWidget(covariant DialogBox oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    // Reset the state for the updated widget
-    _currentIndex = 0;
-    _displayedText = '';
-    _charIndex = 0;
-    _isTextComplete = false;
-
-    // Apply initial state on update
-    _applyInitialState();
-
-    // Restart typing animation
-    Future.delayed(const Duration(milliseconds: 100), () {
-      if (mounted) {
-        _startTyping();
-      }
-    });
-  }
-
   void _startTyping() {
     _timer?.cancel();
     _displayedText = '';
@@ -114,19 +89,22 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     _timer = Timer(const Duration(milliseconds: 20), _updateText);
   }
 
-  Future<void> _updateText() async {
-
+  void _updateText() async {
     final fullText = game.currentDialogs?.getTextDialog(_currentIndex);
     if (_charIndex < fullText!.length) {
       setState(() {
         _displayedText += fullText[_charIndex];
+
+        if (_charIndex == 0) {
+          MusicService.playTypingSfx();
+        }
+
         _charIndex++;
       });
 
-      await MusicService.playTypingSfx();
-
       _timer = Timer(const Duration(milliseconds: 20), _updateText);
     } else {
+      await MusicService.stopTypingSfx();
       setState(() => _isTextComplete = true);
     }
   }
@@ -138,6 +116,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
         _displayedText = game.currentDialogs!.getTextDialog(_currentIndex);
         _isTextComplete = true;
       });
+      MusicService.stopTypingSfx(); // stop typing sound when user skips
     } else {
       _advanceDialog();
     }
@@ -152,13 +131,11 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
         _isTextComplete = false;
       });
 
-      // Apply character state changes for the new dialog
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         final idx = dialogs.getCharacterIndex(_currentIndex);
         final react = dialogs.getReactionIndex(_currentIndex);
 
         if (idx == 1) {
-          // First character is speaking
           if (game.character1ActivePath != react) {
             await game.changeCharacter(1, game.character1Path![react]);
             game.character1ActivePath = react;
@@ -168,7 +145,6 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
           await game.enhancedSizeCharacter(1);
           await game.blackCharacter(2);
         } else {
-          // Second character is speaking
           if (game.character2ActivePath != react) {
             await game.changeCharacter(2, game.character2Path![react]);
             game.character2ActivePath = react;
@@ -179,7 +155,6 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
           await game.blackCharacter(1);
         }
 
-        // Start typing after character changes
         Future.delayed(const Duration(milliseconds: 100), () {
           if (mounted) {
             _startTyping();
@@ -201,6 +176,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
   @override
   void dispose() {
     _timer?.cancel();
+    MusicService.stopTypingSfx();
     super.dispose();
   }
 
@@ -209,14 +185,12 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     initScreenUtil(context);
 
     final lvl = game.levels[game.activeLevel];
-    final name =
-        game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
-            ? lvl.character1
-            : lvl.character2;
-    final boxColor =
-        game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
-            ? AppColors.challengeOrange
-            : AppColors.deepTealGlow;
+    final name = game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
+        ? lvl.character1
+        : lvl.character2;
+    final boxColor = game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
+        ? AppColors.challengeOrange
+        : AppColors.deepTealGlow;
 
     return Align(
       alignment: Alignment.bottomCenter,
