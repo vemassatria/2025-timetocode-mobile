@@ -52,11 +52,13 @@ class ChoicesBox extends StatelessWidget {
         color: AppColors.backgroundTransparent,
         border: Border(top: BorderSide(color: AppColors.white, width: 2.w)),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: List.generate(choices.length, (index) {
-          return _buildChoiceButton(context, index);
-        }),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(choices.length, (index) {
+            return _buildChoiceButton(context, index);
+          }),
+        ),
       ),
     );
   }

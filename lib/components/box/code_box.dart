@@ -17,7 +17,7 @@ class CodeBox extends StatelessWidget {
 
     return Container(
       width: 328.w,
-      height: 318.h,
+      height: 258.h,
       decoration: BoxDecoration(
         color: AppColors.surfaceDark,
         border: Border.all(color: AppColors.white, width: 2.w),
@@ -63,8 +63,8 @@ class CodeBox extends StatelessWidget {
                       physics: const ClampingScrollPhysics(),
                       child: ConstrainedBox(
                         constraints: BoxConstraints(
-                          minWidth: 328.w - 34.w,
-                          minHeight: 318.h - 37.h,
+                          minWidth: 328.w - 37.w,
+                          minHeight: 258.h - 37.h,
                         ),
                         child: CodeText(code),
                       ),
