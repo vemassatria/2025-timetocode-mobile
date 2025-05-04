@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/popups/menu_popup.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
+import 'package:timetocode/SFX/music_service.dart';
 
 class MenuButton extends StatelessWidget {
   final VoidCallback onRestart;
@@ -35,7 +36,10 @@ class MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _openMenuPopup(context),
+      onTap: () {
+        MusicService.sfxButtonClick();
+        _openMenuPopup(context);
+      }, 
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         decoration: _buildDecoration(),

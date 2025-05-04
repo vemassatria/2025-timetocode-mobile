@@ -201,6 +201,7 @@ class LevelCard extends StatelessWidget {
     if (isLocked) {
       return GestureDetector(
         onTap: () {
+          MusicService.sfxErrorClick();
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(const SnackBar(content: Text("Level masih terkunci")));
