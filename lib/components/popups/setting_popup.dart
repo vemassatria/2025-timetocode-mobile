@@ -80,6 +80,7 @@ class _SettingPopupState extends State<SettingPopup> {
               _efekSuara = value;
               _updateEfekSuara(value);
             });
+            MusicService.updateEfekSuara(value);
           },
         ),
         SizedBox(height: 8.h),
