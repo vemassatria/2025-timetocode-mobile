@@ -20,12 +20,12 @@ class MusicService {
 
   // --- MUSIC LATAR BELAKANG ---
 
-  static Future<void> playMusikLatar() async {
-    if (!_playingMusikLatar) {
-      await FlameAudio.bgm.play('music/bgm1.ogg', volume: 0.6);
-      _playingMusikLatar = true;
-    }
-  }
+  // static Future<void> playMusikLatar() async {
+  //   if (!_playingMusikLatar) {
+  //     await FlameAudio.bgm.play('music/bgm1.ogg', volume: 0.6);
+  //     _playingMusikLatar = true;
+  //   }
+  // }
 
   static Future<void> stopMusikLatar() async {
     if (_playingMusikLatar) {
@@ -137,13 +137,20 @@ class MusicService {
 
     switch (levelIndex) {
       case 0:
-        await playCustomMusic('cafe.ogg');
+        await playCustomMusic('warung-kating.ogg');
         break;
       case 1:
         await playCustomMusic('home.ogg');
         break;
-      case 2:
-        await playCustomMusic('bgm1.ogg');
+      case 2: 
+      case 3:
+        await playCustomMusic('cafe.ogg');
+        break;
+      case 4:
+        await playCustomMusic('lab.ogg');
+        break;
+      case 5:
+        await playCustomMusic('cafe-crush.ogg');
         break;
       default:
         await playCustomMusic('bgm1.ogg');
