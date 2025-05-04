@@ -6,12 +6,14 @@ class MusicService {
   static bool _playingMusikLatar = false;
   static final just.AudioPlayer _typingPlayer = just.AudioPlayer();
   static bool _typingInitialized = false;
+  static bool _playingEfekSuara = false;
 
   static Future<void> init() async {
     await FlameAudio.bgm.initialize();
 
     final prefs = await SharedPreferences.getInstance();
     bool _musikLatar = prefs.getBool('musikLatar') ?? true;
+    _playingEfekSuara = prefs.getBool('efekSuara') ?? true;
 
     if (_musikLatar) {
       await playMainMenuMusic();
@@ -47,28 +49,51 @@ class MusicService {
 
   // --- SFX BUTTON & EFFECT ---
 
-  static Future<void> sfxButtonClick() async {
-    await _playSfxIfAllowed('sfx/button2-click.wav');
+  static void sfxButtonClick() {
+    if (_playingEfekSuara) {
+      FlameAudio.play('sfx/button2-click.wav');
+    }
   }
 
-  static Future<void> sfxPopClick() async {
-    await _playSfxIfAllowed('sfx/pop-click.wav');
+  static void sfxButton2Click() {
+    if (_playingEfekSuara) {
+      FlameAudio.play('sfx/button-click.wav');
+    }
   }
 
-  static Future<void> sfxSelectClick() async {
-    await _playSfxIfAllowed('sfx/select-click.wav');
+  static void sfxPopClick() {
+    if (_playingEfekSuara) {
+      FlameAudio.play('sfx/pop-click.wav');
+    }
   }
 
-  static Future<void> sfxNegativeClick() async {
-    await _playSfxIfAllowed('sfx/negative-click.wav');
+  static void sfxSelectClick() {
+    if (_playingEfekSuara) {
+      FlameAudio.play('sfx/select-click.wav');
+    }
   }
 
-  static Future<void> _playSfxIfAllowed(String asset) async {
-    final prefs = await SharedPreferences.getInstance();
-    bool playEfekSuara = prefs.getBool('efekSuara') ?? true;
+  static void sfxNegativeClick() {
+    if (_playingEfekSuara) {
+      FlameAudio.play('sfx/negative-click.wav');
+    }
+  }
 
-    if (playEfekSuara) {
-      FlameAudio.play(asset);
+  static void sfxErrorClick() {
+    if (_playingEfekSuara) {
+      FlameAudio.play('sfx/error-click.wav');
+    }
+  }
+
+  static void sfxPopupAnswer() {
+    if (_playingEfekSuara) {
+      FlameAudio.play('sfx/popup-answer.wav');
+    }
+  }
+
+  static void sfxCorrect() {
+    if (_playingEfekSuara) {
+      FlameAudio.play('sfx/correct.wav');
     }
   }
 

@@ -19,16 +19,13 @@ class _MainNavigationState extends State<MainNavigation> {
 
   @override
   void initState() {
-    playSound();
+    MusicService.playMainMenuMusic();
     super.initState();
   }
 
   void _onItemTapped(int index) {
+    MusicService.sfxButtonClick();
     setState(() => _selectedIndex = index);
-  }
-
-  Future<void> playSound() async {
-    await MusicService.playMainMenuMusic();
   }
 
   @override

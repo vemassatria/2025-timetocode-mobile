@@ -46,7 +46,7 @@ class AnswerPopup extends StatelessWidget {
     return CustomButton(
       label: "Lanjutkan",
       onPressed: () {
-        MusicService.sfxButtonClick();
+        MusicService.sfxButton2Click();
         onPressed();
       },
       widthMode: ButtonWidthMode.fill,
@@ -57,7 +57,7 @@ class AnswerPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initScreenUtil(context);
-
+    MusicService.sfxPopupAnswer();
     return BasePopup(
       borderColor: _color,
       child: Column(
