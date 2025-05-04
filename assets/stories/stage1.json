@@ -67,7 +67,7 @@
               "speaker": 1
             },
             {
-              "line": "Yap! Akurat buat angka-angka yang gak bulat. Ketiga ada char buat nyimpen satu huruf aja. Misal huruf awal nama kamu, kayak 'A' buat Adrien.",
+              "line": "Yap! Akurat buat angka-angka yang gak bulat. Ketiga ada char buat nyimpen satu huruf aja. Misal huruf awal nama kamu, kayak 'A' buat Adrian.",
               "reaction_index": 2,
               "speaker": 2
             },
@@ -77,7 +77,7 @@
               "speaker": 1
             },
             {
-              "line": "Kalau nama lengkap, kayak \"Adrien Yudistion\", itu kamu pake string. String itu buat nyimpen deretan karakter alias tulisan panjang.",
+              "line": "Kalau nama lengkap, kayak \"Adrian Yudistion\", itu kamu pake string. String itu buat nyimpen deretan karakter alias tulisan panjang.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -124,7 +124,7 @@
               "speaker": 2
             },
             {
-              "line": "Oke Adrien mari kita bahas soal tipe data ini satu per satu. Pertama untuk Nama biasanya pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat. Kedua untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
+              "line": "Oke Adrian mari kita bahas soal tipe data ini satu per satu. Pertama untuk Nama biasanya pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat. Kedua untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -285,7 +285,7 @@
           "id": "materi1_3",
           "text": [
             {
-              "line": "Beh Adrien mulai jago nih, takut banget kena bantai konsep pemrogaman deh",
+              "line": "Beh Adrian mulai jago nih, takut banget kena bantai konsep pemrogaman deh",
               "reaction_index": 2,
               "speaker": 2
             },
@@ -800,7 +800,7 @@
         },
         {
           "id": "soal2_3",
-          "text": "Adrien memilih sebuah menu berdasarkan angka yang diberikan. Kira-kira menu apa yang akan muncul di layar?",
+          "text": "Adrian memilih sebuah menu berdasarkan angka yang diberikan. Kira-kira menu apa yang akan muncul di layar?",
           "code": "int pilihanMenu = 2;\nswitch (pilihanMenu) {\n    case 1:\n        printf(\"Pilihan menu: Nasi Goreng\");\n        break;\n    case 2:\n        printf(\"Pilihan menu: Mie Ayam\");\n        break;\n    case 3:\n        printf(\"Pilihan menu: Soto\");\n        break;\n    default:\n        printf(\"Pilihan menu tidak valid\");\n}",
           "choices": [
             {
@@ -1516,7 +1516,6 @@
         "Penjelasan:\n- Program berhenti total saat i == 4.\n- Tidak ada perulangan ke-4 dan ke-5 karena exit menghentikan program."
       ]
     },
-
     {
       "level": 5,
       "description": "Biar nggak ribet, pecah kode kamu jadi fungsi-fungsi keren yang bisa dipanggil kapan aja!",
@@ -1529,10 +1528,10 @@
       "start": "preDialog5",
       "typeStart": "preDialog",
       "preDialog": {
-          "id": "preDialog5",
-          "text": "Di ruang kelas, MC sedang duduk di bangku depan, sementara Dosen sedang berdiri di depan papan tulis, siap memberikan materi baru tentang Jenis Fungsi dalam pemrograman. Suasana kelas cukup tenang dan penuh perhatian.",
-          "next": "intro5",
-          "nextType": "dialog"
+        "id": "preDialog5",
+        "text": "Di ruang kelas, Adrian sedang duduk di bangku depan, sementara Pak Rongga sedang berdiri di depan papan tulis, siap memberikan materi baru tentang Jenis Fungsi dalam pemrograman. Suasana kelas cukup tenang dan penuh perhatian.",
+        "next": "intro5",
+        "nextType": "dialog"
       },
       "dialogs": [
         {
@@ -1540,166 +1539,73 @@
           "text": [
             {
               "line": "Baik anak-anak hari ini kita akan bahas Jenis Fungsi. Fungsi dibagi jadi dua: yang memiliki return value dan yang tidak.",
-              "reaction_index": 2, 
-              "speaker": 2
-            },
-            {
-              "line": "Oh iya",
-              "reaction_index": 1,
-              "speaker": 1
-            },
-            {
-              "line": "Coba lagi ya, perhatikan baik-baik kodenya. Lihat kondisi dan output yang dihasilkan.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Oke kak, aku coba jawab lagi deh.",
+              "line": "Permisi pak, sebelum masuk materi saya mau bertanya terlebih dahulu fungsi itu apa, ya? Kenapa ada yang punya return value, ada yang nggak?",
               "reaction_index": 0,
               "speaker": 1
-            }
-          ],
-          "next": "soal_1",
-          "nextType": "soal"
-        },
-        {
-          "id": "benar_last",
-          "text": [
+            },
             {
-              "line": "Beh, pinter banget. kamu udah ngerti cara kerja if, else if, dan switch, jadi gampang nanti kalau kamu ngadepin materi kondisi dalam program.",
+              "line": "Jadi fungsi adalah sekumpulan kode untuk tugas tertentu. Fungsi ada 2 yaitu yang bisa mengembalikan nilai disebut return value dan yang tidak mengembalikan nilai.",
               "reaction_index": 2,
               "speaker": 2
             },
             {
-              "line": "Asik, semoga saat aku ketemu materi kondisi dalam konsep pemrogarman ga bakal bingung lagi ya. Makasih banyak, Kak!",
-              "reaction_index": 2,
+              "line": "Oh jadi ada fungsi yang ngasih hasil, ada yang nggak.",
+              "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Iya, siap! Nanti kamu bakal sering ketemu ini di soal-soal. Kalau ada yang bingung lagi, langsung tanya aja!",
+              "line": "Betul. Fungsi dengan return value mengembalikan nilai setelah dieksekusi. Misal fungsi penjumlahan yang mengembalikan hasil. Fungsi tambah mengembalikan hasil penjumlahan yang bisa disimpan di variabel. Sekarang fungsi tambah pada kode ini termasuk jenis fungsi apa?",
               "reaction_index": 2,
               "speaker": 2
             }
           ],
           "next": "soal5_1",
           "nextType": "soal"
-        }, 
-        {
-          "id": "intro2",
-          "text": [
-            {
-              "line": "Ini materi apaan kak?",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Oh ini materi konsep pemrogamanku waktu semester satu pas diajarin sama Pak Rongga. eh btw harusnya kamu udah diajarin materi ini kan?",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Lah sama kak, aku juga konsep perograman yang ngajar juga pak rusdi, tapi aku belum diajarin materi itu. eh tapi coba dong kak aajarin aku sekarang buat persiapan materi nanti.",
-              "reaction_index": 1,
-              "speaker": 1
-            },
-            {
-              "line": "jangan sarkas gitu dong, okee jadi ini tuh if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "okee jadi ini tuh materi kondisi yaitu if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan. coba kalau ini if atau bukan",
-              "reaction_index": 0,
-              "speaker": 1
-            }
-          ],
-          "next": "soal2_1",
-          "nextType": "soal"
         },
         {
-          "id": "salah2_1",
+          "id": "salah5_1",
           "text": [
             {
-              "line": "Hehe, aduh, salah lagi, Adrien! Tapi santai aja, ya. Kalau dipikir-pikir, soal tadi kan cuma minta cek satu kondisi: 'suhu lebih dari 30 derajat atau nggak'. Jadi sebenarnya, kita cukup pakai satu pengecekan aja tanpa harus pilih-pilih ke kemungkinan lain.",
+              "line": "Jawabanmu kurang tepat Adrian.",
               "reaction_index": 1,
               "speaker": 2
             },
             {
-              "line": "Ohh, jadi maksudnya nggak perlu ada opsi lain ya, cukup cek doang?",
+              "line": "Saya masih bingung pak.",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Yap, benar banget! Kalau kondisi itu terpenuhi, baru kita lakuin sesuatu. Kalau nggak, ya udah, program diem aja. Jadi intinya: kalau cuma mau ngecek satu hal, satu syarat, kita cukup pakai satu kondisi sederhana.",
+              "line": "Ngga masalah, Adrian. Coba perhatikan lagi. Fungsi itu bisa mengembalikan nilai ke pemanggilnya. Dalam kasus ini fungsi tambah menggunakan return untuk mengembalikan hasil.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Oooh, paham sekarang! Aku coba pikir lagi deh!",
+              "line": "Baik pak akan saya coba lebih teliti lagi.",
               "reaction_index": 0,
               "speaker": 1
+            },
+            {
+              "line": "Jadi tipe fungsi berdasarkan apakah dia mengembalikan nilai atau tidak. Fungsi seperti ini memerlukan tipe data di depan nama fungsi yang menunjukkan nilai yang akan dikembalikan.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Baik pak akan saya coba lagi.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Semoga ini membantu. Coba pikirkan lagi, ya!",
+              "reaction_index": 0,
+              "speaker": 2
             }
           ],
           "next": "soal5_1",
-          "nextType": "soal"
-        },
-        {
-          "id": "materi2_3",
-          "text": [
-            {
-              "line": "beh mantep, lanjut nih materi terakhir, switch",
-              "reaction_index": 2,
-              "speaker": 2
-            },
-            {
-              "line": "jadi switch digunakan untuk memilih aksi berdasarkan nilai yang ada. Misalnya, kamu punya pilihan menu di restoran, dan tiap pilihan punya nomor tertentu. Berdasarkan nomor yang dipilih, menu yang berbeda akan muncul. sekarang tebak nih output yang muncul apa",
-              "reaction_index": 0,
-              "speaker": 2
-            }
-          ],
-          "next": "soal2_3",
-          "nextType": "soal"
-        },
-        {
-          "id": "salah2_3",
-          "text": [
-            {
-              "line": "Eits, switch-case itu cocok buat banyak pilihan tetap, bukan buat kondisi yang fleksibel banget. Tadi jawabannya kayak masih salah kaprah nih.",
-              "reaction_index": 1,
-              "speaker": 2
-            },
-            {
-              "line": "Ooooh gitu! Aku kira switch itu kayak if-else, bisa buat cek suhu lebih besar atau lebih kecil.",
-              "reaction_index": 1,
-              "speaker": 1
-            },
-            {
-              "line": "Nah itu dia bedanya, kalau mau cek kondisi fleksibel kayak lebih besar atau lebih kecil, itu baru pakai if. Kalau switch-case, harus nilai pastinya yang dibandingin. Misal, suhu == 30, suhu == 40, gitu.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Aaaah paham sekarang. Jadi switch tuh kayak ngecek daftar pilihan yang pasti-pasti aja ya?",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Betul! Kalau yang sifatnya perbandingan atau kondisi kompleks, mending tetap pakai if-else.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Woke siap Kak, abis ini aku baca ulang deh biar makin mantap!",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Semangat terus ya! Sedikit lagi ilmunya makin nancep nih!",
-              "reaction_index": 2,
-              "speaker": 2
-            }
-          ],
-          "next": "soal5_2", 
           "nextType": "soal"
         },
         {
@@ -1707,17 +1613,17 @@
           "text": [
             {
               "line": "Benar! Sekarang fungsi yang tidak memiliki return value, seperti void.",
-              "reaction_index": 0, 
+              "reaction_index": 2,
               "speaker": 2
             },
             {
               "line": "Fungsi void itu yang seperti apa pak?",
-              "reaction_index": 0, 
+              "reaction_index": 0,
               "speaker": 1
             },
             {
               "line": "Fungsi void digunakan ketika tidak perlu mengembalikan nilai, misal untuk menampilkan pesan. Coba lihat titik-titik itu, itu seharusnya diisi apa?",
-              "reaction_index": 1, 
+              "reaction_index": 0,
               "speaker": 2
             }
           ],
@@ -1725,30 +1631,72 @@
           "nextType": "soal"
         },
         {
-          "id": "benar2_last",
+          "id": "salah5_2",
           "text": [
             {
-              "line": "asik, pinter banget kamu. sekarang udah ngerti kan cara kerja if, else if, dan switch, jadi gampang nanti kalau kamu ngadepin materi kondisi dalam program.",
-              "reaction_index": 2,
+              "line": "Jawabanmu belum tepat Adrien.",
+              "reaction_index": 1, 
               "speaker": 2
             },
             {
-              "line": "Asik, semoga saat aku ketemu materi kondisi dalam konsep pemrogarman ga bakal bingung lagi ya. Makasih banyak, Kak!",
-              "reaction_index": 2,
+              "line": "Wah, saya masih bingung pak.",
+              "reaction_index": 0, 
               "speaker": 1
             },
             {
-              "line": "Iya, siap! Nanti kamu bakal sering ketemu ini di soal-soal. Kalau ada yang bingung lagi, langsung tanya aja!",
-              "reaction_index": 2,
+              "line": "Ngga masalah Adrien. Coba kita bahas sedikit. Fungsi itu bisa mengembalikan nilai atau tidak. Kalau mengembalikan nilai artinya fungsi memberikan hasil yang bisa digunakan kembali di bagian lain dari program.",
+              "reaction_index": 0, 
               "speaker": 2
             },
             {
-              "line": "Siap kak! Aku mau lanjut belajar materi selanjutnya, for while dan do while. Besok siang aku sama raka mau ke cafe buat diskusi materi for, while, dan do while, ngerjain tugas bareng juga",
+              "line": "Jadi kalau fungsi tidak mengembalikan nilai artinya apa pak?",
+              "reaction_index": 0, 
+              "speaker": 1
+            },
+            {
+              "line": "Fungsi yang tidak mengembalikan nilai hanya melakukan tugas tertentu, seperti mencetak sesuatu ke layar tanpa memberikan hasil yang bisa dipakai di tempat lain.",
+              "reaction_index": 0, 
+              "speaker": 2
+            },
+            {
+              "line": "Oh jadi tergantung apa yang dilakukan oleh fungsi itu ya?",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Oke deh! Semangat terus ya konsep pemrogamannya",
+              "line": "Betul. Jadi, sekarang coba lihat lagi fungsi sapa. Fungsi itu cuma mencetak pesan kan? Nah berdasarkan itu, coba dibaca pelan-pelan soalnya. Apa yang dilakukan oleh fungsi itu dan apakah fungsi tersebut mengembalikan nilai atau tidak?",
+              "reaction_index": 2, 
+              "speaker": 2
+            }
+          ],
+          "next": "soal5_2", 
+          "nextType": "soal"
+        },
+        {
+          "id": "benar5_last",
+          "text": [
+            {
+              "line": "Jawabanmu sudah tepat, Adrian!",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Alhamdulillah! Jadi fungsi sapa itu tidak mengembalikan nilai, ya?",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
+              "line": "Betul. Fungsi sapa hanya mencetak pesan, tidak ada nilai yang dikembalikan.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Oh jadi fungsi yang mengembalikan nilai itu memberikan hasil yang bisa dipakai lagi, ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Tepat! Fungsi dengan return value mengirimkan hasil yang bisa digunakan lagi di tempat lain dalam program, sementara fungsi tanpa return value hanya menjalankan tugas tanpa memberikan hasil.",
               "reaction_index": 2,
               "speaker": 2
             }
@@ -1756,7 +1704,6 @@
           "next": null
         }
       ],
-      
       "questions": [
         {
           "id": "soal5_1",
@@ -1766,67 +1713,73 @@
             {
               "text": "Fungsi dengan return value",
               "next": "materi5_2",
-              "nextType":"dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "Fungsi void",
               "next": "salah5_1",
-              "nextType":"dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "Fungsi dengan parameter",
               "next": "salah5_1",
-              "nextType":"dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "Fungsi tanpa parameter",
               "next": "salah5_1",
-              "nextType":"dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
         },
         {
           "id": "soal5_2",
-         "text": "Coba lihat kode ini:",
-          "code": "#include <stdio.h>\n\n… sapa() {\n    printf(\"Halo, selamat pagi!\\n\");\n}\n\nint main() {\n    sapa();\n    return 0;\n}",
-          "question": "Nah, tipe fungsi 'sapa' ini termasuk kategori apa?",
+          "text": "Coba lihat kode ini, Nah, tipe fungsi 'sapa' ini termasuk kategori apa?",
+          "code": "#include <stdio.h>\n\nvoid sapa() {\n    printf(\"Halo, selamat pagi!\\n\");\n}\n\nint main() {\n    sapa();\n    return 0;\n}",
           "choices": [
             {
               "text": "char",
               "next": "salah5_2",
-              "nextType":"dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "void",
               "next": "benar5_last",
-              "nextType":"dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "string",
               "next": "salah5_2",
-              "nextType":"dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "return",
               "next": "salah5_2",
-              "nextType":"dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
         }
       ],
-      
       "rangkuman": [
-        "if digunakan untuk memeriksa satu kondisi. Jika kondisi tersebut benar, maka aksi atau kode yang ada di dalam blok if akan dijalankan.",
-        "else if digunakan ketika ada lebih dari satu kondisi yang perlu diperiksa. Jika kondisi pertama salah, maka kondisi berikutnya akan dicek. Ini memungkinkan pengecekan beberapa kondisi dalam urutan yang terstruktur.",
-        "switch digunakan ketika ada banyak pilihan atau kondisi yang mirip. Dengan switch, kamu bisa memeriksa nilai dari suatu variabel terhadap beberapa kemungkinan nilai dan menjalankan aksi berdasarkan nilai yang cocok."
+        "1. Fungsi dengan Return Value: mengembalikan nilai setelah dieksekusi. Nilai tersebut bisa disimpan dalam variabel dan digunakan di bagian lain dalam program.",
+        "Contoh fungsi dengan return value:",
+        "#include <stdio.h>\n\n// Fungsi yang mengembalikan hasil penjumlahan dua angka\nint tambah(int a, int b) {\n    return a + b;  // Mengembalikan hasil penjumlahan\n}\n\nint main() {\n    int hasil = tambah(3, 4);  // Memanggil fungsi dan menyimpan hasilnya\n    printf(\"Hasil penjumlahan: %d\\n\", hasil);  // Menampilkan hasil\n    return 0;\n}",
+        "Output dari program: Hasil penjumlahan: 7",
+        "Penjelasan:\n- Fungsi tambah memiliki tipe data int karena mengembalikan sebuah angka (hasil penjumlahan).\n- Fungsi tambah menerima dua parameter a dan b, dan mengembalikan hasil penjumlahan keduanya.\n- Di main, kita memanggil fungsi tambah(3, 4) dan menyimpan hasilnya dalam variabel hasil, yang kemudian ditampilkan.",
+        "2. Fungsi Void: tidak mengembalikan nilai apapun. Biasanya untuk melakukan aksi, seperti menampilkan pesan atau mengubah data.",
+        "Contoh fungsi void:",
+        "#include <stdio.h>\n\n// Fungsi void yang hanya mencetak pesan\nvoid cetakPesan() {\n    printf(\"Ini adalah pesan dari fungsi void.\\n\");\n}\n\nint main() {\n    cetakPesan();  // Memanggil fungsi void\n    return 0;\n}",
+        "Output dari program: Ini adalah pesan dari fungsi void.",
+        "Penjelasan:\n- Fungsi cetakPesan adalah fungsi void karena hanya melakukan aksi (mencetak pesan) dan tidak mengembalikan nilai apapun.\n- Fungsi ini dipanggil di dalam main, dan ketika dipanggil, pesan akan dicetak ke layar.",
+        "Perbedaan utama: Fungsi dengan return value mengembalikan hasil, sedangkan fungsi void hanya melakukan aksi tanpa memberikan hasil."
       ]
     },
     {
@@ -1834,16 +1787,16 @@
       "description": "Mau variabel kamu ngumpet, muncul di mana-mana? Kenali kelas penyimpanan biar makin jago!",
       "title": "Penyimpanan variabel dalam pemrograman",
       "background": "cafe-crush",
-      "character1_name": "Adrien",
+      "character1_name": "Adrian",
       "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
       "character2_name": "Jennie",
-      "character2_reaction": ["crush-biasa", "crush-senang", "crush-marah"],
+      "character2_reaction": ["crush-biasa", "crush-marah", "crush-senang"],
       "start": "preDialog6",
       "typeStart": "preDialog",
       "preDialog": {
           "id": "preDialog6",
-          "text": "Kantin kampus hari itu cukup ramai, MC duduk di meja pojok sambil menunggu makanan datang. Tiba-tiba, Jennie yang duduk di meja sebelah datang dan ikut duduk bersama MC.",
-          "next": "intro1",
+          "text": "Kantin kampus hari itu cukup ramai, Adrian duduk di meja pojok sambil menunggu makanan datang. Tiba-tiba, Jennie yang duduk di meja sebelah datang dan ikut duduk bersama Adrian.",
+          "next": "intro6",
           "nextType": "dialog"
       },
       "dialogs": [
@@ -1862,7 +1815,7 @@
             },
             {
               "line": "Iya nih aku lagi belajar tentang penggolongan variabel berdasarkan kelas penyimpanan. Pusing juga sih, banyak jenis variabelnya.",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
@@ -1872,7 +1825,7 @@
             },
             {
               "line": "Serius? Boleh banget deh biar nggak pusing",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 1
             },
             {
@@ -1888,18 +1841,18 @@
           "id": "salah6_1",
           "text": [
             {
-              "line": "Belum tepat tuh Adrien.",
+              "line": "Belum tepat tuh Adrian.",
               "reaction_index": 1,
               "speaker": 2
             },
             {
               "line": "Wah aku salah ya? Aku kira udah bener.",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
               "line": "Gak apa-apa kok! Nih aku kasih bocoran dikit: variabel itu biasanya yang menyimpan nilai. Coba deh perhatikan di kode itu, mana yang kelihatan menyimpan angka 10?",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 2
             },
             {
@@ -1921,7 +1874,7 @@
           "text": [
             {
               "line": "Yah salah ya ternyata",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
@@ -1982,7 +1935,7 @@
               "speaker": 1
             },
             {
-              "line": "Oke semangat yaa Adrien",
+              "line": "Oke semangat yaa Adrian",
               "reaction_index": 2,
               "speaker": 2
             }
@@ -1995,12 +1948,12 @@
           "text": [
             {
               "line": "Noo, Jawabanku salah.",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Oops, hampir, Adrien! Coba kita lihat lagi ya. Kalau variabel register, itu sebenarnya punya sifat yang berbeda. Variabel ini dimaksudkan agar kompilator bisa mencoba untuk menyimpannya langsung di register prosesor, supaya aksesnya lebih cepat. Jadi, variabel register nggak disimpan di memori biasa.",
-              "reaction_index": 0,
+              "line": "Oops, hampir, Adrian! Coba kita lihat lagi ya. Kalau variabel register, itu sebenarnya punya sifat yang berbeda. Variabel ini dimaksudkan agar kompilator bisa mencoba untuk menyimpannya langsung di register prosesor, supaya aksesnya lebih cepat. Jadi, variabel register nggak disimpan di memori biasa.",
+              "reaction_index": 2,
               "speaker": 2
             },
             {
@@ -2019,7 +1972,7 @@
               "speaker": 1
             },
             {
-              "line": "Semangat Adrien! Kamu pasti bisa!",
+              "line": "Semangat Adrian! Kamu pasti bisa!",
               "reaction_index": 2,
               "speaker": 2
             }
@@ -2042,7 +1995,7 @@
             },
             {
               "line": "Iya, bener banget! Lanjut, ada juga variabel global/eksternal. Ini kebalikan dari yang lokal. Variabel global itu bisa diakses dimana aja dalam program, asal udah dideklarasikan di luar fungsi. Nah coba kamu jawab soal ini deh",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 2
             }
           ],
@@ -2064,7 +2017,7 @@
             },
             {
               "line": "Iya, bener banget! Nah, selanjutnya ada variabel statis. Variabel statis ini punya sifat yang unik. Meskipun dia dideklarasikan dalam fungsi, nilainya gak hilang meskipun fungsi udah selesai. Jadi dia tetap menyimpan nilai terakhir saat fungsi tersebut dipanggil lagi.",
-              "reaction_index": 0,
+              "reaction_index": 2,
               "speaker": 2
             },
             {
@@ -2090,13 +2043,13 @@
               "speaker": 1
             },
             {
-              "line": "Keren Adrien! Sekarang yang terakhir ada variabel register",
+              "line": "Keren Adrian! Sekarang yang terakhir ada variabel register",
               "reaction_index": 2,
               "speaker": 2
             },
             {
               "line": "Ya ampun?! Ada lagi?",
-              "reaction_index": 1,
+              "reaction_index": 0,
               "speaker": 1
             },
             {
@@ -2150,7 +2103,7 @@
         {
           "id": "soal6_1",
           "character1": "Jennie",
-          "character2": "Adrien",
+          "character2": "Adrian",
           "text": "Perhatikan kode ini. Menurutmu, manakah variabel lokal dalam kode di atas?",
           "code": "#include <stdio.h>\n\nvoid contoh() {\n    int angka = 10;\n    printf(\"%d\", angka);\n}\n",
           "choices": [
@@ -2183,7 +2136,7 @@
         {
           "id": "soal6_2",
           "character1": "Jennie",
-          "character2": "Adrien",
+          "character2": "Adrian",
           "text": "Perhatikan potongan kode berikut. Menurutmu, manakah variabel global/eksternal dalam kode di atas?",
           "code": "int angka = 10;\nvoid fungsi() {\n    printf(\"%d\", angka);\n}",
           "choices": [
@@ -2216,7 +2169,7 @@
         {
           "id": "soal6_3",
           "character1": "Jennie",
-          "character2": "Adrien",
+          "character2": "Adrian",
           "text": "Perhatikan potongan kode berikut! Manakah fungsi yang menggunakan variabel statis pada kode berikut?",
           "code": "void fungsi1() {\n    int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi2() {\n    static int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi3() {\n    int x = 0;\n    for(int i = 0; i < 5; i++) {\n        x++;\n    }\n    printf(\"%d\", x);\n}\n\nvoid fungsi4() {\n    int x = 0;\n    while(x < 5) {\n        x++;\n    }\n    printf(\"%d\", x);\n}",
           "choices": [
@@ -2249,7 +2202,7 @@
         {
           "id": "soal6_4",
           "character1": "Jennie",
-          "character2": "Adrien",
+          "character2": "Adrian",
           "text": "Perhatikan potongan kode berikut. Dalam program di atas, mana yang merupakan variabel register dan variabel statis?",
           "code": "#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5; // Variabel statis\n    register int i;       // Variabel register\n    for (i = 0; i < 3; i++) {\n        angka++;\n        printf(\"Angka: %d, i: %d\\n\", angka, i);\n    }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}",
           "choices": [
