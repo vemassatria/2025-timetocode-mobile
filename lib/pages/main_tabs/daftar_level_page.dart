@@ -6,7 +6,6 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/components/card.dart';
 import 'package:timetocode/components/popups/info_popup.dart';
 import 'package:timetocode/providers/game_provider.dart';
-import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
@@ -133,8 +132,7 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
                           : (completedLevel == index
                               ? CardStatus.unlocked
                               : CardStatus.locked),
-                  onStartPressed: () async {
-                    await MusicService.playLevelMusic(index);
+                  onStartPressed: () {
                     game.startLevel(index);
                   },
                   onInfoPressed: () {

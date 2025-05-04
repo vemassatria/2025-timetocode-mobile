@@ -13,14 +13,14 @@ class PengaturanPage extends StatefulWidget {
 }
 
 class _PengaturanPageState extends State<PengaturanPage> {
-  bool _efekSuara = true;
+  // bool _efekSuara = true;
   bool _musikLatar = true;
 
   @override
   void initState() {
     super.initState();
     _loadMusiklatar();
-    _loadEfekSuara();
+    // _loadEfekSuara();
   }
 
   Future<void> _loadMusiklatar() async {
@@ -38,20 +38,20 @@ class _PengaturanPageState extends State<PengaturanPage> {
     });
   }
 
-  Future<void> _loadEfekSuara() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _efekSuara = prefs.getBool('efekSuara') ?? true;
-    });
-  }
+  // Future<void> _loadEfekSuara() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     _efekSuara = prefs.getBool('efekSuara') ?? true;
+  //   });
+  // }
 
-  void _updateEfekSuara(bool value) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setBool('efekSuara', value);
-    setState(() {
-      _efekSuara = value;
-    });
-  }
+  // void _updateEfekSuara(bool value) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   prefs.setBool('efekSuara', value);
+  //   setState(() {
+  //     _efekSuara = value;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -67,19 +67,19 @@ class _PengaturanPageState extends State<PengaturanPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Pengaturan Aplikasi', style: AppTypography.small()),
-            SizedBox(height: 8.h),
-            SettingItem(
-              icon: Icon(Icons.volume_up),
-              label: "Efek Suara",
-              value: _efekSuara,
-              onChanged: (value) {
-                setState(() {
-                  _efekSuara = value;
-                  _updateEfekSuara(value);
-                });
-                 MusicService.updateEfekSuara(value);
-              },
-            ),
+            // SizedBox(height: 8.h),
+            // SettingItem(
+            //   icon: Icon(Icons.volume_up),
+            //   label: "Efek Suara",
+            //   value: _efekSuara,
+            //   onChanged: (value) {
+            //     setState(() {
+            //       _efekSuara = value;
+            //       _updateEfekSuara(value);
+            //     });
+            //     //  MusicService.updateEfekSuara(value);
+            //   },
+            // ),
             SizedBox(height: 8.h),
             SettingItem(
               icon: Icon(Icons.music_note_sharp),

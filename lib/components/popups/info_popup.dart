@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:timetocode/SFX/music_service.dart';
+// import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
 enum InfoPopupVariant { defaultVariant, summary }
@@ -73,7 +73,7 @@ class InfoPopup extends StatelessWidget {
     return CustomButton(
       label: "Tutup",
       onPressed: () {
-        MusicService.sfxNegativeClick();
+        // MusicService.sfxNegativeClick();
         onClose();
       },
       widthMode: ButtonWidthMode.fill,
