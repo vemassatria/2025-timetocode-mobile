@@ -7,15 +7,16 @@ class MusicService {
   static final just.AudioPlayer _typingPlayer = just.AudioPlayer();
   static bool _typingInitialized = false;
   static bool _playingEfekSuara = false;
+  static late SharedPreferences _prefs;
 
   static Future<void> init() async {
     await FlameAudio.bgm.initialize();
 
-    final prefs = await SharedPreferences.getInstance();
-    bool _musikLatar = prefs.getBool('musikLatar') ?? true;
-    _playingEfekSuara = prefs.getBool('efekSuara') ?? true;
+    _prefs = await SharedPreferences.getInstance();
+    _playingMusikLatar = _prefs.getBool('musikLatar') ?? true;
+    _playingEfekSuara = _prefs.getBool('efekSuara') ?? true;
 
-    if (_musikLatar) {
+    if (_playingMusikLatar) {
       await playMainMenuMusic();
     }
   }
@@ -28,13 +29,22 @@ class MusicService {
   }
 
   static Future<void> updateMusikLatar(bool enabled) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('musikLatar', enabled);
+    _prefs.setBool('musikLatar', enabled);
 
     if (enabled) {
       await playMainMenuMusic();
     } else {
       await stopMusikLatar();
+    }
+  }
+
+  static void updateEfekSuara(bool enabled) {
+    _prefs.setBool('efekSuara', enabled);
+
+    if (enabled) {
+      _playingEfekSuara = true;
+    } else {
+      _playingEfekSuara = false;
     }
   }
 
@@ -92,10 +102,8 @@ class MusicService {
 
   static Future<void> playTypingSfx() async {
     if (!_typingInitialized) {
-      final prefs = await SharedPreferences.getInstance();
-      bool playEfekSuara = prefs.getBool('efekSuara') ?? true;
 
-      if (!playEfekSuara) return;
+      if (!_playingEfekSuara) return;
 
       await _typingPlayer.setAsset('assets/audio/sfx/typing.ogg');
       await _typingPlayer.setLoopMode(just.LoopMode.one);
@@ -134,17 +142,13 @@ class MusicService {
   }
 
   static Future<void> playMainMenuMusic() async {
-    final prefs = await SharedPreferences.getInstance();
-    bool _musikLatar = prefs.getBool('musikLatar') ?? true;
-    if (_musikLatar) {
+    if (_playingMusikLatar) {
       await playCustomMusic('main-tabs.ogg');
     }
   }
 
   static Future<void> playLevelMusic(int levelIndex) async {
-    final prefs = await SharedPreferences.getInstance();
-    bool _musikLatar = prefs.getBool('musikLatar') ?? true;
-    if (!_musikLatar) return;
+    if (!_playingMusikLatar) return;
 
     if (_playingMusikLatar) {
       await FlameAudio.bgm.stop();

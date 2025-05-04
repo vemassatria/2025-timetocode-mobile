@@ -77,6 +77,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
                   _efekSuara = value;
                   _updateEfekSuara(value);
                 });
+                 MusicService.updateEfekSuara(value);
               },
             ),
             SizedBox(height: 8.h),
