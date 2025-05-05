@@ -485,7 +485,7 @@
       "title": "If, else if, switch",
       "background": "mc-rumah",
       "character1_name": "Adrian",
-      "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "character1_reaction": ["adrian-rumah-biasa", "adrian-rumah-marah", "adrian-rumah-senang"],
       "character2_name": "Kakak",
       "character2_reaction": ["tino-biasa", "tino-marah", "tino-senang"],
       "start": "preDialog2",
