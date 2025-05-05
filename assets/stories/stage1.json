@@ -124,7 +124,12 @@
               "speaker": 2
             },
             {
-              "line": "Oke Adrian mari kita bahas soal tipe data ini satu per satu. Pertama untuk Nama biasanya pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat. Kedua untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
+              "line": "Oke Adrian mari kita bahas soal tipe data ini satu per satu. Pertama untuk Nama biasanya pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Kedua untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -335,7 +340,12 @@
               "speaker": 2
             },
             {
-              "line": "Oh ya, buat ngambil input dari user atau nampilin hasil ke layar, kamu bisa pake operasi input output. Misalnya, pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus, kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\"",
+              "line": "Oh ya, buat ngambil input dari user atau nampilin hasil ke layar, kamu bisa pake operasi input output.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Misalnya, pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus, kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\"",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -377,7 +387,12 @@
               "speaker": 1
             },
             {
-              "line": "Oke, sebentar yaa. Jadi gini, di soal tadi ada operasi a += 3 * 2. Kita harus inget kalau di C itu ada aturan prioritas operator. Perkalian (*) dikerjain dulu sebelum penjumlahan (+). Jadi bukan langsung dijumlah dari kiri ke kanan ya. Setelah hasil perkaliannya ketemu, baru deh ditambah ke a yang awalnya 5. Ini penting supaya nggak salah hitung. Coba kamu cek lagi deh pelan-pelan, mana yang dikerjain dulu.",
+              "line": "Oke, sebentar yaa. Jadi gini, di soal tadi ada operasi a += 3 * 2. Kita harus inget kalau di C itu ada aturan prioritas operator. Perkalian (*) dikerjain dulu sebelum penjumlahan (+). Jadi bukan langsung dijumlah dari kiri ke kanan ya.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Setelah hasil perkaliannya ketemu, baru deh ditambah ke a yang awalnya 5. Ini penting supaya nggak salah hitung. Coba kamu cek lagi deh pelan-pelan, mana yang dikerjain dulu.",
               "reaction_index": 0,
               "speaker": 2
             }
@@ -1293,7 +1308,12 @@
               "speaker": 2
             },
             {
-              "line": "Biasanya dipakai kalau mau ngelakuin proses yang berulang-ulang di dalam proses yang juga berulang. Misal kamu mau mencetak bentuk tabel atau matriks. Loop pertama itu buat barisnya, dan di dalamnya ada loop kedua buat kolom-kolomnya. Jadi setiap kali barisnya ganti, kolomnya diulang dari awal.",
+              "line": "Biasanya dipakai kalau mau ngelakuin proses yang berulang-ulang di dalam proses yang juga berulang.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Misal kamu mau mencetak bentuk tabel atau matriks. Loop pertama itu buat barisnya, dan di dalamnya ada loop kedua buat kolom-kolomnya. Jadi setiap kali barisnya ganti, kolomnya diulang dari awal.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -2015,7 +2035,12 @@
               "speaker": 1
             },
             {
-              "line": "Bayangkan kamu punya kotak (variabel) di dalam kelas. Setiap kali kamu pergi keluar kelas dan kembali lagi, kotak itu kosong dan kamu harus mengisinya lagi. Nah, kalau kamu pakai kotak khusus yang disebut \"static\", kotak itu tidak akan kosong saat kamu keluar dan kembali lagi. Isinya tetap ada, jadi kamu nggak perlu mengisinya lagi.",
+              "line": "Bayangkan kamu punya kotak (variabel) di dalam kelas. Setiap kali kamu pergi keluar kelas dan kembali lagi, kotak itu kosong dan kamu harus mengisinya lagi. ",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Nah, kalau kamu pakai kotak khusus yang disebut \"static\", kotak itu tidak akan kosong saat kamu keluar dan kembali lagi. Isinya tetap ada, jadi kamu nggak perlu mengisinya lagi. ",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -2200,7 +2225,12 @@
           "id": "benar6_last",
           "text": [
             {
-              "line": "Nah udah bisa sekarang yaa. Jadi register itu buat variabel yang perlu akses cepat, intinya ada 4 jenis variabel berdasarkan tempat penyimpanannya, variabel lokal terletak di dalam fungsi, variabel global terletak di luar fungsi, variabel statis terletak pada nilai yang dipertahankan antar pemanggilan fungsi, dan variabel register dengan akses cepat karena disimpan di CPU.",
+              "line": "Nah udah bisa sekarang yaa. Jadi register itu buat variabel yang perlu akses cepat, intinya ada 4 jenis variabel berdasarkan tempat penyimpanannya, variabel lokal terletak di dalam fungsi.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Sedangkan variabel global terletak di luar fungsi, variabel statis terletak pada nilai yang dipertahankan antar pemanggilan fungsi, dan variabel register dengan akses cepat karena disimpan di CPU.",
               "reaction_index": 2,
               "speaker": 2
             },
