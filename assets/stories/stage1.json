@@ -13,7 +13,7 @@
       "typeStart": "preDialog",
       "preDialog": {
           "id": "preDialog1",
-          "text": "Adrian duduk di warung terlihat kebingungan membolak-balik buku diktatnya. Mas Mulyo yang kebetulan lewat melihat adik tingkatnya itu tampak kesulitan, lalu menghampiri.",
+          "text": "Adrian duduk di warung sambil menatap layar laptopnya, tampak bingung membuka-buka dokumen yang ada di dalamnya. Mas Mulyo yang kebetulan lewat melihat adik tingkatnya itu terlihat kesulitan, lalu mendekat untuk menanyakan apa yang sedang terjadi.",
           "next": "intro1",
           "nextType": "dialog"
       },
@@ -77,7 +77,7 @@
               "speaker": 1
             },
             {
-              "line": "Kalau nama lengkap, kayak \"Adrian Yudistion\", itu kamu pake string. String itu buat nyimpen deretan karakter alias tulisan panjang.",
+              "line": "Kalau nama lengkap, kayak \"Mulyono\", itu kamu pake string. String itu buat nyimpen deretan karakter alias tulisan panjang.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -206,7 +206,12 @@
               "speaker": 1
             },
             {
-              "line": "Iya bener banget! Tipe data itu ngejelasin jenis datanya, misalnya angka, teks, atau logika. Nah variabel itu nama dari kotaknya. Jadi misalnya, kamu pengen nyimpen umur seseorang, kamu bikin variabel namanya umur, dan tipe datanya int karena umur itu angka bulat.",
+              "line": "Iya bener banget! Tipe data itu ngejelasin jenis datanya, misalnya angka, teks, atau logika.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Nah variabel itu nama dari kotaknya. Jadi misalnya, kamu pengen nyimpen umur seseorang, kamu bikin variabel namanya umur, dan tipe datanya int karena umur itu angka bulat.",
               "reaction_index": 2,
               "speaker": 2
             },
@@ -295,7 +300,12 @@
               "speaker": 1
             },
             {
-              "line": "Wah bener banget, kamu udah mulai paham nih! Nah sekarang bayangin ya, kamu udah punya data berat badan itu. Terus kamu mau ngolah datanya, misal mau nambahin 5 kilo, atau mau bagi dua buat simulasi diet. Buat ngelakuin perubahan kayak gitu, kamu butuh yang namanya operator.",
+              "line": "Wah bener banget, kamu udah mulai paham nih! Nah sekarang bayangin ya, kamu udah punya data berat badan itu.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Terus kamu mau ngolah datanya, misal mau nambahin 5 kilo, atau mau bagi dua buat simulasi diet. Buat ngelakuin perubahan kayak gitu, kamu butuh yang namanya operator.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -305,7 +315,12 @@
               "speaker": 1
             },
             {
-              "line": "Operator itu alat buat ngelakuin operasi kayak tambah, kurang, kali, dan bagi. Misal, mau nambahin umur 5 tahun, tinggal pakai \"+\": int hasil = umur + 5;. Kalau ngurangin pakai \"-\", perkalian pakai \"*\", dan pembagian pakai \"/\". Operator ini penting banget buat semua operasi dasar di program.",
+              "line": "Operator itu alat buat ngelakuin operasi kayak tambah, kurang, kali, dan bagi. Misal, mau nambahin umur 5 tahun, tinggal pakai \"+\": int hasil = umur + 5;. Kalau ngurangin pakai \"-\", perkalian pakai \"*\", dan pembagian pakai \"/\".",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Operator ini penting banget buat semua operasi dasar di program.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -315,7 +330,12 @@
               "speaker": 1
             },
             {
-              "line": "Iya, bener banget. Semua operasi matematika dasar pake operator itu. Dan, operator ini penting banget, karena tanpa operator, program kamu gak bisa ngelakuin perhitungan atau manipulasi data dengan bener. Oh ya, buat ngambil input dari user atau nampilin hasil ke layar, kamu bisa pake operasi input output. Misalnya, pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus, kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\"",
+              "line": "Iya, bener banget. Semua operasi matematika dasar pake operator itu. Dan, operator ini penting banget, karena tanpa operator, program kamu gak bisa ngelakuin perhitungan atau manipulasi data dengan bener.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oh ya, buat ngambil input dari user atau nampilin hasil ke layar, kamu bisa pake operasi input output. Misalnya, pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus, kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\"",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -325,7 +345,12 @@
               "speaker": 1
             },
             {
-              "line": "Iya banget! Operator itu bikin program bisa fleksibel dan ngelakuin tugas yang kamu inginkan. Selain itu, ada operator \"!=\" yang artinya tidak sama dengan. Terus, ada juga operator logika kayak \"&&\" yang artinya \"AND\", dan \"||\" yang artinya \"OR\" itu buat ngecek kondisi lebih dari satu. Paham kan?",
+              "line": "Iya banget! Operator itu bikin program bisa fleksibel dan ngelakuin tugas yang kamu inginkan.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Selain itu, ada operator \"!=\" yang artinya tidak sama dengan. Terus, ada juga operator logika kayak \"&&\" yang artinya \"AND\", dan \"||\" yang artinya \"OR\" itu buat ngecek kondisi lebih dari satu. Paham kan?",
               "reaction_index": 2,
               "speaker": 2
             },
@@ -516,7 +541,12 @@
               "speaker": 1
             },
             {
-              "line": "jangan sarkas gitu dong, okee jadi ini tuh if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program. Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan.",
+              "line": "Jangan sarkas gitu dong, okee jadi ini tuh if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -580,7 +610,12 @@
               "speaker": 2
             },
             {
-              "line": "nah else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Misalnya, kamu lagi ngecek usia seseorang, apakah dia remaja, dewasa, atau lanjut usia. Kalau remaja, akan ada aksi tertentu, kalau dewasa, aksi yang berbeda, dan kalau lanjut usia, aksi yang lain lagi. contohnya kayak code ini sama sekalian deh kamu tebak outputnya",
+              "line": "nah else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Misalnya, kamu lagi ngecek usia seseorang, apakah dia remaja, dewasa, atau lanjut usia.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Kalau remaja, akan ada aksi tertentu, kalau dewasa, aksi yang berbeda, dan kalau lanjut usia, aksi yang lain lagi. contohnya kayak code ini sama sekalian deh kamu tebak outputnya",
               "reaction_index": 0,
               "speaker": 1
             }
@@ -654,7 +689,12 @@
               "speaker": 2
             },
             {
-              "line": "jadi switch digunakan untuk memilih aksi berdasarkan nilai yang ada. Misalnya, kamu punya pilihan menu di restoran, dan tiap pilihan punya nomor tertentu. Berdasarkan nomor yang dipilih, menu yang berbeda akan muncul. sekarang tebak nih output yang muncul apa",
+              "line": "Jadi switch digunakan untuk memilih aksi berdasarkan nilai yang ada.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Misalnya, kamu punya pilihan menu di restoran, dan tiap pilihan punya nomor tertentu. Berdasarkan nomor yang dipilih, menu yang berbeda akan muncul. Sekarang tebak nih output yang muncul apa",
               "reaction_index": 0,
               "speaker": 2
             }
@@ -810,16 +850,16 @@
               "isCorrect": false
             },
             {
-              "text": "Pilihan menu: Mie Ayam",
-              "next": "benar2_last",
-              "nextType": "dialog",
-              "isCorrect": true
-            },
-            {
               "text": "Pilihan menu: Soto",
               "next": "salah2_3",
               "nextType": "dialog",
               "isCorrect": false
+            },
+            {
+              "text": "Pilihan menu: Mie Ayam",
+              "next": "benar2_last",
+              "nextType": "dialog",
+              "isCorrect": true
             },
             {
               "text": "Pilihan menu tidak valid",
@@ -873,7 +913,12 @@
               "speaker": 1
             },
             {
-              "line": "Pertama kalau kamu pengen ngulangin sesuatu berkali-kali, kamu bisa pake for loop. For itu cocok kalau kamu udah tahu berapa kali perulangan yang harus dilakukan. Misal kamu pengen nulis angka dari 1 sampai 5. Jadi kamu tentuin mulai dari mana, sampai mana, dan tiap kali kamu ngulangin kamu tambahin angkanya. Ngerti?",
+              "line": "Pertama kalau kamu pengen ngulangin sesuatu berkali-kali, kamu bisa pake for loop. For itu cocok kalau kamu udah tahu berapa kali perulangan yang harus dilakukan.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Misal kamu pengen nulis angka dari 1 sampai 5. Jadi kamu tentuin mulai dari mana, sampai mana, dan tiap kali kamu ngulangin kamu tambahin angkanya. Ngerti?",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -883,7 +928,12 @@
               "speaker": 1
             },
             {
-              "line": "Betul Rus! Nah aku jelasin pelan-pelan ya soal for loop ini. Ada tiga bagian utama di dalamnya. Pertama ada yang namanya inisialisasi. Jadi sebelum perulangan dimulai, kita harus tentuin nilai awalnya. Misal kamu mau mulai dari angka 1, jadi kita tulis int i = 1;. Itu artinya kita mulai dari angka 1.",
+              "line": "Betul Rus! Nah aku jelasin pelan-pelan ya soal for loop ini. Ada tiga bagian utama di dalamnya. Pertama ada yang namanya inisialisasi.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Jadi sebelum perulangan dimulai, kita harus tentuin nilai awalnya. Misal kamu mau mulai dari angka 1, jadi kita tulis int i = 1;. Itu artinya kita mulai dari angka 1.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -893,7 +943,12 @@
               "speaker": 1
             },
             {
-              "line": "Tepat! Kedua ada bagian yang disebut kondisi. Ini yang bakal dicek setiap kali perulangan berlangsung. Misal kita mau perulangan terus berjalan selama angka i itu masih lebih kecil atau sama dengan 5. Jadi, kita tulis i <= 5;. Artinya selama i lebih kecil atau sama dengan 5 maka perulangannya terus jalan.",
+              "line": "Tepat! Kedua ada bagian yang disebut kondisi. Ini yang bakal dicek setiap kali perulangan berlangsung. ",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Misal kita mau perulangan terus berjalan selama angka i itu masih lebih kecil atau sama dengan 5. Jadi, kita tulis i <= 5;. Artinya selama i lebih kecil atau sama dengan 5 maka perulangannya terus jalan.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -903,7 +958,12 @@
               "speaker": 1
             },
             {
-              "line":  "Betul! Nah terakhir ada yang namanya increment atau decrement. Ini buat nambahin atau ngurangin nilai setelah setiap perulangan selesai. Kalau kamu mau nambahin nilai i, kamu tulis i++. Itu artinya setelah tiap perulangan angka i akan bertambah 1.",
+              "line":  "Betul! Nah terakhir ada yang namanya increment atau decrement. Ini buat nambahin atau ngurangin nilai setelah setiap perulangan selesai.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Kalau kamu mau nambahin nilai i, kamu tulis i++. Itu artinya setelah tiap perulangan angka i akan bertambah 1.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -992,7 +1052,12 @@
               "speaker": 1
             },
             {
-              "line":  "Sabar... kita belajar pelan-pelan biar paham materinya. Nah kalau while loop itu lebih fleksibel. Kamu bisa pake while kalau kamu belum tahu pasti berapa kali perulangan yang diperlukan, tapi kamu harus punya kondisi yang harus dicek dulu. Jadi selama kondisi itu bener, dia akan terus ngulangin. Paham kan?",
+              "line":  "Sabar... kita belajar pelan-pelan biar paham materinya. Nah kalau while loop itu lebih fleksibel.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Kamu bisa pake while kalau kamu belum tahu pasti berapa kali perulangan yang diperlukan, tapi kamu harus punya kondisi yang harus dicek dulu. Jadi selama kondisi itu bener, dia akan terus ngulangin. Paham kan?",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -1002,7 +1067,12 @@
               "speaker": 1
             },
             {
-              "line":  "Bener banget! Sekarang yang terakhir ada do while. Bedanya dengan while, kalau do while itu ngejalanin perulangan setidaknya sekali dulu, baru kemudian ngecek kondisi. Jadi meskipun kondisi awalnya nggak bener, dia tetap jalanin sekali dulu, baru cek kondisinya. Gimana? Paham?",
+              "line":  "Bener banget! Sekarang yang terakhir ada do while. Bedanya dengan while, kalau do while itu ngejalanin perulangan setidaknya sekali dulu, baru kemudian ngecek kondisi.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Jadi meskipun kondisi awalnya nggak bener, dia tetap jalanin sekali dulu, baru cek kondisinya. Gimana? Paham?",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -1012,7 +1082,12 @@
               "speaker": 1
             },
             {
-              "line":  "Betul Rus! Jadi kalau kamu udah tahu pasti jumlah perulangannya, pakai for. Kalau kamu harus ngecek kondisi dulu baru ngulang, pakai while atau do while tergantung kamu butuh perulangan yang jalan minimal sekali dulu atau nggak. Biar kamu lebih paham coba kerjain soal ini, kalau kamu bener aku traktir makan deh",
+              "line":  "Betul Rus! Jadi kalau kamu udah tahu pasti jumlah perulangannya, pakai for. ",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line":  "Kalau kamu harus ngecek kondisi dulu baru ngulang, pakai while atau do while tergantung kamu butuh perulangan yang jalan minimal sekali dulu atau nggak. Biar kamu lebih paham coba kerjain soal ini, kalau kamu bener aku traktir makan deh",
               "reaction_index": 2,
               "speaker": 2
             }
@@ -1213,7 +1288,12 @@
               "speaker": 2
             },
             {
-              "line": "Jadi nested loop itu sebenernya simpel banget. Intinya itu loop di dalam loop atau satu perulangan di dalam perulangan lain. Biasanya dipakai kalau mau ngelakuin proses yang berulang-ulang di dalam proses yang juga berulang. Misal kamu mau mencetak bentuk tabel atau matriks. Loop pertama itu buat barisnya, dan di dalamnya ada loop kedua buat kolom-kolomnya. Jadi setiap kali barisnya ganti, kolomnya diulang dari awal.",
+              "line": "Jadi nested loop itu sebenernya simpel banget. Intinya itu loop di dalam loop atau satu perulangan di dalam perulangan lain.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Biasanya dipakai kalau mau ngelakuin proses yang berulang-ulang di dalam proses yang juga berulang. Misal kamu mau mencetak bentuk tabel atau matriks. Loop pertama itu buat barisnya, dan di dalamnya ada loop kedua buat kolom-kolomnya. Jadi setiap kali barisnya ganti, kolomnya diulang dari awal.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -1371,7 +1451,12 @@
               "speaker": 1
             },
             {
-              "line": "Gini, coba inget dulu... Kalau mau lewati suatu angka tapi tetep lanjut ke angka berikutnya, itu perlu keyword apa? Terus kalau mau berhenti dari loop aja, bukan dari program, itu keyword-nya beda lagi. Nah kalau mau berhenti total sampai programnya bener-bener selesai, ada keyword lain lagi.",
+              "line": "Gini, coba inget dulu... Kalau mau lewati suatu angka tapi tetep lanjut ke angka berikutnya, itu perlu keyword apa? Terus kalau mau berhenti dari loop aja, bukan dari program, itu keyword-nya beda lagi.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Nah kalau mau berhenti total sampai programnya bener-bener selesai, ada keyword lain lagi.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -1460,7 +1545,7 @@
         },
         {
           "id": "soal4_2",
-          "text": "Bayangin kamu lagi pake for buat ngeloop angka dari 1 sampai 5. Terus di tengah-tengah loop kamu pengen:\n\nLangsung keluar dari loop kalau ketemu angka 3,\n\nLewatin aja kalau ketemu angka 2 (tapi lanjut ke angka berikutnya),\n\nKeluar dari seluruh program kalau ketemu angka 5.\n\nNah menurutmu keyword apa aja yang harus dipakai?",
+          "text": "Bayangin kamu lagi pake for buat ngeloop angka dari 1 sampai 5. Terus di tengah-tengah loop kamu pengen:\n\nLewatin aja kalau ketemu angka 2,\n\nLangsung keluar dari loop kalau ketemu angka 3 (tapi lanjut ke angka berikutnya),\n\nKeluar dari seluruh program kalau ketemu angka 5.\n\nNah menurutmu keyword apa aja yang harus dipakai?",
           "choices": [
             {
               "text": "break, continue, exit",
@@ -1558,7 +1643,17 @@
               "speaker": 1
             },
             {
-              "line": "Betul. Fungsi dengan return value mengembalikan nilai setelah dieksekusi. Misal fungsi penjumlahan yang mengembalikan hasil. Fungsi tambah mengembalikan hasil penjumlahan yang bisa disimpan di variabel. Sekarang fungsi tambah pada kode ini termasuk jenis fungsi apa?",
+              "line": "Betul. Fungsi dengan return value mengembalikan nilai setelah dieksekusi.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Misal fungsi penjumlahan yang mengembalikan hasil.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Sekarang fungsi tambah pada kode ini termasuk jenis fungsi apa?",
               "reaction_index": 2,
               "speaker": 2
             }
@@ -1711,25 +1806,25 @@
           "code": "#include <stdio.h>\n\nint tambah(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int hasil = tambah(4, 5);\n    printf(\"Hasil: %d\\n\", hasil);\n    return 0;\n}",
           "choices": [
             {
-              "text": "Fungsi dengan return value",
+              "text": "Fungsi dengan return integer",
               "next": "materi5_2",
               "nextType": "dialog",
               "isCorrect": true
             },
             {
-              "text": "Fungsi void",
+              "text": "Fungsi dengan no return(void)",
               "next": "salah5_1",
               "nextType": "dialog",
               "isCorrect": false
             },
             {
-              "text": "Fungsi dengan parameter",
+              "text": "Fungsi dengan return float",
               "next": "salah5_1",
               "nextType": "dialog",
               "isCorrect": false
             },
             {
-              "text": "Fungsi tanpa parameter",
+              "text": "Fungsi dengan return char",
               "next": "salah5_1",
               "nextType": "dialog",
               "isCorrect": false
@@ -1829,7 +1924,12 @@
               "speaker": 1
             },
             {
-              "line": "Oke jadi gini. Pertama ada variabel lokal/auto. Ini variabel yang cuma ada dalam fungsi tempat dia dideklarasikan. Biasanya variabel lokal hanya berlaku di dalam fungsi itu aja dan langsung hilang setelah fungsi selesai dieksekusi. Nah coba kamu jawab soal sederhana ini.",
+              "line": "Oke jadi gini. Pertama ada variabel lokal/auto. Ini variabel yang cuma ada dalam fungsi tempat dia dideklarasikan. Biasanya variabel lokal hanya berlaku di dalam fungsi itu aja dan langsung hilang setelah fungsi selesai dieksekusi.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Nah coba kamu jawab soal sederhana ini.",
               "reaction_index": 0,
               "speaker": 2
             }
@@ -1915,7 +2015,7 @@
               "speaker": 1
             },
             {
-              "line": "Jadi variabel statis yang dideklarasikan dengan kata kunci 'static' akan menyimpan nilainya antara panggilan fungsi. Artinya nilai variabel itu tetap ada meskipun fungsi dipanggil berkali-kali. Kalau variabel biasa, nilainya akan di-reset setiap kali fungsi dipanggil. Paham?",
+              "line": "Bayangkan kamu punya kotak (variabel) di dalam kelas. Setiap kali kamu pergi keluar kelas dan kembali lagi, kotak itu kosong dan kamu harus mengisinya lagi. Nah, kalau kamu pakai kotak khusus yang disebut \"static\", kotak itu tidak akan kosong saat kamu keluar dan kembali lagi. Isinya tetap ada, jadi kamu nggak perlu mengisinya lagi.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -1952,7 +2052,12 @@
               "speaker": 1
             },
             {
-              "line": "Oops, hampir, Adrian! Coba kita lihat lagi ya. Kalau variabel register, itu sebenarnya punya sifat yang berbeda. Variabel ini dimaksudkan agar kompilator bisa mencoba untuk menyimpannya langsung di register prosesor, supaya aksesnya lebih cepat. Jadi, variabel register nggak disimpan di memori biasa.",
+              "line": "Oops, hampir, Adrian! Coba kita lihat lagi ya. Kalau variabel register, itu sebenarnya punya sifat yang berbeda.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Variabel ini dimaksudkan agar kompilator bisa mencoba untuk menyimpannya langsung di register prosesor, supaya aksesnya lebih cepat. Jadi, variabel register nggak disimpan di memori biasa.",
               "reaction_index": 2,
               "speaker": 2
             },
@@ -1962,7 +2067,12 @@
               "speaker": 1
             },
             {
-              "line": "Tepat banget! Kompilator biasanya memilih variabel yang sering diakses dan membutuhkan kecepatan, seperti variabel dalam loop. Jadi dalam kode ini, coba lihat lagi deh, variabel mana yang mungkin lebih sering digunakan dalam perulangan dan butuh kecepatan akses?",
+              "line": "Tepat banget! Kompilator biasanya memilih variabel yang sering diakses dan membutuhkan kecepatan, seperti variabel dalam loop.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Jadi dalam kode ini, coba lihat lagi deh, variabel mana yang mungkin lebih sering digunakan dalam perulangan dan butuh kecepatan akses?",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -2016,12 +2126,22 @@
               "speaker": 1
             },
             {
-              "line": "Iya, bener banget! Nah, selanjutnya ada variabel statis. Variabel statis ini punya sifat yang unik. Meskipun dia dideklarasikan dalam fungsi, nilainya gak hilang meskipun fungsi udah selesai. Jadi dia tetap menyimpan nilai terakhir saat fungsi tersebut dipanggil lagi.",
+              "line": "Iya, bener banget! Nah, selanjutnya ada variabel statis. Variabel statis ini punya sifat yang unik. Meskipun dia dideklarasikan dalam fungsi, nilainya gak hilang meskipun fungsi udah selesai.",
               "reaction_index": 2,
               "speaker": 2
             },
             {
-              "line": "Oh iya! Jadi variabel statis itu bedanya sama variabel biasa ini, kalau variabel biasa nilainya hilang begitu fungsi selesai tapi variabel statis ini tetap menyimpan nilai terakhirnya meskipun fungsi sudah selesai dieksekusi. Jadi misalnya, kalau kamu panggil fungsi itu lagi, dia akan langsung pakai nilai terakhir yang disimpan.",
+              "line": "Jadi dia tetap menyimpan nilai terakhir saat fungsi tersebut dipanggil lagi.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Oh iya! Jadi variabel statis itu bedanya sama variabel biasa ini, kalau variabel biasa nilainya hilang begitu fungsi selesai tapi variabel statis ini tetap menyimpan nilai terakhirnya meskipun fungsi sudah selesai dieksekusi.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Jadi misalnya, kalau kamu panggil fungsi itu lagi, dia akan langsung pakai nilai terakhir yang disimpan.",
               "reaction_index": 0,
               "speaker": 1
             },
@@ -2053,7 +2173,12 @@
               "speaker": 1
             },
             {
-              "line": "Iya dong masih. Terakhir kok ini yaitu variabel register! Variabel ini jarang dipakai langsung oleh programmer, tapi dia dikhususkan buat disimpan di register CPU, bukan di RAM. Ini supaya akses data jadi lebih cepat. Biasanya untuk variabel yang sering diakses, seperti counter atau indeks dalam loop. Tapi penggunaan register ini bergantung sama arsitektur komputer yang dipakai.",
+              "line": "Iya dong masih. Terakhir kok ini yaitu variabel register! Variabel ini jarang dipakai langsung oleh programmer, tapi dia dikhususkan buat disimpan di register CPU, bukan di RAM.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ini supaya akses data jadi lebih cepat. Biasanya untuk variabel yang sering diakses, seperti counter atau indeks dalam loop. Tapi penggunaan register ini bergantung sama arsitektur komputer yang dipakai.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -2105,16 +2230,16 @@
           "character1": "Jennie",
           "character2": "Adrian",
           "text": "Perhatikan kode ini. Menurutmu, manakah variabel lokal dalam kode di atas?",
-          "code": "#include <stdio.h>\n\nvoid contoh() {\n    int angka = 10;\n    printf(\"%d\", angka);\n}\n",
+          "code": "#include <stdio.h>\n\nanu = 1;\n\ncharku = 'c'\n\nfloatku = 29.2;\n\nvoid contoh() {\n    int angka = 10;\n    printf(\"%d\", angka);\n}\n",
           "choices": [
             {
-              "text": "contoh",
+              "text": "anu",
               "next": "salah6_1",
               "nextType": "dialog",
               "isCorrect": false
             },
             {
-              "text": "printf",
+              "text": "floatku",
               "next": "salah6_1",
               "nextType": "dialog",
               "isCorrect": false
@@ -2204,7 +2329,7 @@
           "character1": "Jennie",
           "character2": "Adrian",
           "text": "Perhatikan potongan kode berikut. Dalam program di atas, mana yang merupakan variabel register dan variabel statis?",
-          "code": "#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5; // Variabel statis\n    register int i;       // Variabel register\n    for (i = 0; i < 3; i++) {\n        angka++;\n        printf(\"Angka: %d, i: %d\\n\", angka, i);\n    }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}",
+          "code": "#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5; \n    register int i;       \n    for (i = 0; i < 3; i++) {\n        angka++;\n        printf(\"Angka: %d, i: %d\\n\", angka, i);\n    }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}",
           "choices": [
             {
               "text": "angka adalah variabel register, i adalah variabel statis.",
