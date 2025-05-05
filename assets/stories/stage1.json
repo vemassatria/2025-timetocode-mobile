@@ -7,13 +7,13 @@
       "background": "warung-kating",
       "character1_name": "Adrian",
       "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
-      "character2_name": "Mas Sulis",
+      "character2_name": "Mas Mulyo",
       "character2_reaction": ["kating-biasa", "kating-marah", "kating-senang"],
       "start": "preDialog1",
       "typeStart": "preDialog",
       "preDialog": {
           "id": "preDialog1",
-          "text": "Adrian duduk di warung terlihat kebingungan membolak-balik buku diktatnya. Mas Sulis yang kebetulan lewat melihat adik tingkatnya itu tampak kesulitan, lalu menghampiri.",
+          "text": "Adrian duduk di warung terlihat kebingungan membolak-balik buku diktatnya. Mas Mulyo yang kebetulan lewat melihat adik tingkatnya itu tampak kesulitan, lalu menghampiri.",
           "next": "intro1",
           "nextType": "dialog"
       },
