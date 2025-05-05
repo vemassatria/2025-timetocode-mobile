@@ -8,7 +8,7 @@ import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
-import 'package:timetocode/SFX/music_service.dart';
+// import 'package:timetocode/SFX/music_service.dart';
 
 class DialogBox extends ConsumerStatefulWidget {
   const DialogBox({super.key});
@@ -96,7 +96,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
         _displayedText += fullText[_charIndex];
 
         if (_charIndex == 0) {
-          MusicService.playTypingSfx();
+          // MusicService.playTypingSfx();
         }
 
         _charIndex++;
@@ -104,7 +104,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
 
       _timer = Timer(const Duration(milliseconds: 20), _updateText);
     } else {
-      await MusicService.stopTypingSfx();
+      // await MusicService.stopTypingSfx();
       setState(() => _isTextComplete = true);
     }
   }
@@ -116,7 +116,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
         _displayedText = game.currentDialogs!.getTextDialog(_currentIndex);
         _isTextComplete = true;
       });
-      MusicService.stopTypingSfx(); // stop typing sound when user skips
+      // MusicService.stopTypingSfx(); // stop typing sound when user skips
     } else {
       _advanceDialog();
     }
@@ -176,7 +176,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
   @override
   void dispose() {
     _timer?.cancel();
-    MusicService.stopTypingSfx();
+    // MusicService.stopTypingSfx();
     super.dispose();
   }
 
@@ -185,12 +185,14 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     initScreenUtil(context);
 
     final lvl = game.levels[game.activeLevel];
-    final name = game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
-        ? lvl.character1
-        : lvl.character2;
-    final boxColor = game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
-        ? AppColors.challengeOrange
-        : AppColors.deepTealGlow;
+    final name =
+        game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
+            ? lvl.character1
+            : lvl.character2;
+    final boxColor =
+        game.currentDialogs!.getCharacterIndex(_currentIndex) == 1
+            ? AppColors.challengeOrange
+            : AppColors.deepTealGlow;
 
     return Align(
       alignment: Alignment.bottomCenter,

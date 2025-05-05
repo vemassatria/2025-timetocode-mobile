@@ -24,7 +24,7 @@ class _MainNavigationState extends State<MainNavigation> {
   }
 
   void _onItemTapped(int index) {
-    MusicService.sfxButtonClick();
+    // MusicService.sfxButtonClick();
     setState(() => _selectedIndex = index);
   }
 

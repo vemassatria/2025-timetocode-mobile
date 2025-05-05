@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flame/game.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/services.dart';
+import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/components/flame_engine/background.dart';
 import 'package:timetocode/components/flame_engine/character.dart';
 import 'package:timetocode/games/models/dialog_model.dart';
@@ -79,7 +80,7 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
   void startLevel(int indexLevel) {
     // Clear previous resources before starting new level
     _clearGameplayResources();
-
+    MusicService.playLevelMusic(indexLevel);
     overlays.remove('GameUI');
     overlays.add('StoryMenu');
     changeScene(levels[indexLevel].background);

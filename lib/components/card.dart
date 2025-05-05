@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:timetocode/SFX/music_service.dart';
+// import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
 enum CardStatus { unlocked, locked, completed }
@@ -112,7 +112,7 @@ class LevelCard extends StatelessWidget {
           child: CustomButton(
             label: label,
             onPressed: () {
-              MusicService.sfxButtonClick();
+              // MusicService.sfxButtonClick();
               onStartPressed();
             },
             type: ButtonType.filled,
@@ -124,7 +124,7 @@ class LevelCard extends StatelessWidget {
         CustomButton(
           icon: const Icon(Icons.info_outline),
           onPressed: () {
-            MusicService.sfxPopClick();
+            // MusicService.sfxPopClick();
             onInfoPressed();
           },
           type: ButtonType.icon,
@@ -201,7 +201,7 @@ class LevelCard extends StatelessWidget {
     if (isLocked) {
       return GestureDetector(
         onTap: () {
-          MusicService.sfxErrorClick();
+          // MusicService.sfxErrorClick();
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(const SnackBar(content: Text("Level masih terkunci")));

@@ -6,7 +6,7 @@ import 'package:timetocode/games/models/choices_model.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/utils/screen_utils.dart';
-import 'package:timetocode/SFX/music_service.dart';
+// import 'package:timetocode/SFX/music_service.dart';
 
 class ChoicesBox extends StatelessWidget {
   final List<ChoicesModel> choices;
@@ -23,7 +23,7 @@ class ChoicesBox extends StatelessWidget {
         type: ButtonType.outline,
 
         onPressed: () {
-          MusicService.sfxSelectClick();
+          // MusicService.sfxSelectClick();
           showPopupOverlay(
             context,
             ConfirmPopup(
@@ -32,12 +32,12 @@ class ChoicesBox extends StatelessWidget {
                   "Kamu bisa mencoba lagi jika jawabannya belum tepat.",
               confirmLabel: "Yakin",
               onPrimaryButtonPressed: () {
-                MusicService.sfxSelectClick();
+                // MusicService.sfxSelectClick();
                 closePopupOverlay();
                 onPressed(index);
               },
               onGoBack: () {
-                MusicService.sfxNegativeClick();
+                // MusicService.sfxNegativeClick();
                 closePopupOverlay();
               },
             ),

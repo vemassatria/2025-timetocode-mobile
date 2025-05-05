@@ -11,7 +11,7 @@ import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/utils/screen_utils.dart';
-import 'package:timetocode/SFX/music_service.dart';
+// import 'package:timetocode/SFX/music_service.dart';
 
 class EndGameScreen extends ConsumerWidget {
   const EndGameScreen({super.key});
@@ -79,15 +79,15 @@ class EndGameScreen extends ConsumerWidget {
               color: ButtonColor.purple,
               type: ButtonType.iconLabel,
               onPressed: () {
-                MusicService.sfxButton2Click();
+                // MusicService.sfxButton2Click();
                 showPopupOverlay(
                   context,
                   InfoPopup(
                     title: "Rangkuman",
                     summaryList: game.levels[game.activeLevel].summary!,
                     variant: InfoPopupVariant.summary,
-                    onClose: (){
-                      MusicService.sfxNegativeClick();
+                    onClose: () {
+                      // MusicService.sfxNegativeClick();
                       closePopupOverlay();
                     },
                   ),
@@ -109,7 +109,7 @@ class EndGameScreen extends ConsumerWidget {
               label: "Lanjutkan",
               widthMode: ButtonWidthMode.fill,
               onPressed: () {
-                MusicService.sfxSelectClick();
+                // MusicService.sfxSelectClick();
                 game.overlays.remove('EndGame');
                 game.endGame();
               },

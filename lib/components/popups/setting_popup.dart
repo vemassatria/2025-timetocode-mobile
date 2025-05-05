@@ -17,14 +17,14 @@ class SettingPopup extends StatefulWidget {
 }
 
 class _SettingPopupState extends State<SettingPopup> {
-  bool _efekSuara = true;
+  // bool _efekSuara = true;
   bool _musikLatar = true;
 
   @override
   void initState() {
     super.initState();
     _loadMusiklatar();
-    _loadEfekSuara();
+    // _loadEfekSuara();
   }
 
   Future<void> _loadMusiklatar() async {
@@ -42,20 +42,20 @@ class _SettingPopupState extends State<SettingPopup> {
     });
   }
 
-  Future<void> _loadEfekSuara() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _efekSuara = prefs.getBool('efekSuara') ?? true;
-    });
-  }
+  // Future<void> _loadEfekSuara() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     _efekSuara = prefs.getBool('efekSuara') ?? true;
+  //   });
+  // }
 
-  void _updateEfekSuara(bool value) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setBool('efekSuara', value);
-    setState(() {
-      _efekSuara = value;
-    });
-  }
+  // void _updateEfekSuara(bool value) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   prefs.setBool('efekSuara', value);
+  //   setState(() {
+  //     _efekSuara = value;
+  //   });
+  // }
 
   Widget _buildTitle() {
     return Text(
@@ -71,18 +71,18 @@ class _SettingPopupState extends State<SettingPopup> {
       children: [
         Text('Pengaturan Aplikasi', style: AppTypography.small()),
         SizedBox(height: 8.h),
-        SettingItem(
-          icon: const Icon(Icons.volume_up),
-          label: "Efek Suara",
-          value: _efekSuara,
-          onChanged: (value) {
-            setState(() {
-              _efekSuara = value;
-              _updateEfekSuara(value);
-            });
-            MusicService.updateEfekSuara(value);
-          },
-        ),
+        // SettingItem(
+        //   icon: const Icon(Icons.volume_up),
+        //   label: "Efek Suara",
+        //   value: _efekSuara,
+        //   onChanged: (value) {
+        //     setState(() {
+        //       _efekSuara = value;
+        //       _updateEfekSuara(value);
+        //     });
+        //     // MusicService.updateEfekSuara(value);
+        //   },
+        // ),
         SizedBox(height: 8.h),
         SettingItem(
           icon: const Icon(Icons.music_note_sharp),

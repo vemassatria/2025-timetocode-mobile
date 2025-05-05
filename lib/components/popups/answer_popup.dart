@@ -4,7 +4,7 @@ import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:timetocode/SFX/music_service.dart';
+// import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
 class AnswerPopup extends StatelessWidget {
@@ -46,7 +46,7 @@ class AnswerPopup extends StatelessWidget {
     return CustomButton(
       label: "Lanjutkan",
       onPressed: () {
-        MusicService.sfxButton2Click();
+        // MusicService.sfxButton2Click();
         onPressed();
       },
       widthMode: ButtonWidthMode.fill,
@@ -57,7 +57,7 @@ class AnswerPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initScreenUtil(context);
-    MusicService.sfxPopupAnswer();
+    // MusicService.sfxPopupAnswer();
     return BasePopup(
       borderColor: _color,
       child: Column(
