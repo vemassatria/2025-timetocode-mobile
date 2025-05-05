@@ -1,28 +1,23 @@
 import 'package:flame_audio/flame_audio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:just_audio/just_audio.dart' as just;
 
 class MusicService {
   static bool _playingMusikLatar = false;
-  static bool _playingEfekSuara = false;
+  // static final just.AudioPlayer _typingPlayer = just.AudioPlayer();
+  // static bool _typingInitialized = false;
+  // static bool _playingEfekSuara = false;
+  static late SharedPreferences _prefs;
 
   static Future<void> init() async {
     await FlameAudio.bgm.initialize();
 
-    final prefs = await SharedPreferences.getInstance();
-    bool _musikLatar = prefs.getBool('musikLatar') ?? true;
-    bool _efekSuara = prefs.getBool('efekSuara') ?? true;
+    _prefs = await SharedPreferences.getInstance();
+    _playingMusikLatar = _prefs.getBool('musikLatar') ?? true;
+    // _playingEfekSuara = _prefs.getBool('efekSuara') ?? true;
 
-    if (_musikLatar) {
-      await playMusikLatar();
-    } else if (_efekSuara){
-      // await playEfekSuara();
-    }
-  }
-
-  static Future<void> playMusikLatar() async {
-    if (!_playingMusikLatar) {
-      await FlameAudio.bgm.play('music/bgm1.ogg');
-      _playingMusikLatar = true;
+    if (_playingMusikLatar) {
+      await playMainMenuMusic();
     }
   }
 
@@ -34,38 +29,152 @@ class MusicService {
   }
 
   static Future<void> updateMusikLatar(bool enabled) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('musikLatar', enabled);
+    _prefs.setBool('musikLatar', enabled);
 
     if (enabled) {
-      await playMusikLatar();
+      _playingMusikLatar = true;
+      await playMainMenuMusic();
     } else {
       await stopMusikLatar();
     }
   }
 
-  static Future<void> playEfekSuara() async {
-    if (!_playingEfekSuara) {
-      //await FlameAudio.bgm.play('music/bg_music1.mp3');
-      _playingEfekSuara = true;
+  // static void updateEfekSuara(bool enabled) {
+  //   _prefs.setBool('efekSuara', enabled);
+
+  //   if (enabled) {
+  //     _playingEfekSuara = true;
+  //   } else {
+  //     _playingEfekSuara = false;
+  //   }
+  // }
+
+  // --- SFX BUTTON & EFFECT ---
+
+  // static void sfxButtonClick() {
+  //   if (_playingEfekSuara) {
+  //     FlameAudio.play('sfx/button2-click.wav');
+  //   }
+  // }
+
+  // static void sfxButton2Click() {
+  //   if (_playingEfekSuara) {
+  //     FlameAudio.play('sfx/button-click.wav');
+  //   }
+  // }
+
+  // static void sfxPopClick() {
+  //   if (_playingEfekSuara) {
+  //     FlameAudio.play('sfx/pop-click.wav');
+  //   }
+  // }
+
+  // static void sfxSelectClick() {
+  //   if (_playingEfekSuara) {
+  //     FlameAudio.play('sfx/select-click.wav');
+  //   }
+  // }
+
+  // static void sfxNegativeClick() {
+  //   if (_playingEfekSuara) {
+  //     FlameAudio.play('sfx/negative-click.wav');
+  //   }
+  // }
+
+  // static void sfxErrorClick() {
+  //   if (_playingEfekSuara) {
+  //     FlameAudio.play('sfx/error-click.wav');
+  //   }
+  // }
+
+  // static void sfxPopupAnswer() {
+  //   if (_playingEfekSuara) {
+  //     FlameAudio.play('sfx/popup-answer.wav');
+  //   }
+  // }
+
+  // static void sfxCorrect() {
+  //   if (_playingEfekSuara) {
+  //     FlameAudio.play('sfx/correct.wav');
+  //   }
+  // }
+
+  // // --- TYPING SOUND ---
+
+  // static Future<void> playTypingSfx() async {
+  //   if (!_typingInitialized) {
+
+  //     if (!_playingEfekSuara) return;
+
+  //     await _typingPlayer.setAsset('assets/audio/sfx/typing.ogg');
+  //     await _typingPlayer.setLoopMode(just.LoopMode.one);
+  //     await _typingPlayer.setSpeed(1.0);
+  //     _typingInitialized = true;
+  //   }
+
+  //   if (!_typingPlayer.playing) {
+  //     try {
+  //       await _typingPlayer.play();
+  //     } catch (_) {
+  //       // silent fail
+  //     }
+  //   }
+  // }
+
+  // static Future<void> stopTypingSfx() async {
+  //   if (_typingInitialized) {
+  //     await _typingPlayer.stop();
+  //   }
+  // }
+
+  // static void disposeTypingPlayer() {
+  //   _typingPlayer.dispose();
+  // }
+
+  // --- MUSIC BY CONTEXT ---
+
+  static Future<void> playCustomMusic(String filename) async {
+    if (_playingMusikLatar) {
+      await FlameAudio.bgm.stop();
+    }
+
+    await FlameAudio.bgm.play('music/$filename', volume: 0.6);
+    _playingMusikLatar = true;
+  }
+
+  static Future<void> playMainMenuMusic() async {
+    if (_playingMusikLatar) {
+      await playCustomMusic('main-tabs.ogg');
     }
   }
 
-  static Future<void> stopEfekSuara() async {
-    if (_playingEfekSuara) {
-      //await FlameAudio.bgm.stop();
-      _playingEfekSuara = false;
+  static Future<void> playLevelMusic(int levelIndex) async {
+    if (!_playingMusikLatar) return;
+
+    if (_playingMusikLatar) {
+      await FlameAudio.bgm.stop();
+      _playingMusikLatar = false;
     }
-  }
 
-  static Future<void> updateEfekSuara(bool enabled) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('efekSuara', enabled);
-
-    if (enabled) {
-      await playEfekSuara();
-    } else {
-      await stopEfekSuara();
+    switch (levelIndex) {
+      case 0:
+        await playCustomMusic('warung-kating.ogg');
+        break;
+      case 1:
+        await playCustomMusic('home.ogg');
+        break;
+      case 2:
+      case 3:
+        await playCustomMusic('cafe.ogg');
+        break;
+      case 4:
+        await playCustomMusic('lab.ogg');
+        break;
+      case 5:
+        await playCustomMusic('cafe-crush.ogg');
+        break;
+      default:
+        await playCustomMusic('bgm1.ogg');
     }
   }
 }

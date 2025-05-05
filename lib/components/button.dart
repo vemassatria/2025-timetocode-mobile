@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/utils/screen_utils.dart';
 
 enum ButtonType { filled, icon, outline, iconLabel }
 
@@ -92,14 +94,14 @@ class CustomButton extends StatelessWidget {
     return TextButton.styleFrom(
       backgroundColor: mainColor,
       foregroundColor: fgColor,
-      minimumSize: Size(minWidth, height ?? 48),
+      minimumSize: Size(minWidth, height ?? 48.h),
       padding:
           type == ButtonType.icon
-              ? const EdgeInsets.symmetric(horizontal: 11, vertical: 8)
-              : const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              ? EdgeInsets.symmetric(horizontal: 11.w, vertical: 8.h)
+              : EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       textStyle: AppTypography.normalBold(color: AppColors.black1),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
         side:
             type == ButtonType.outline
                 ? border ?? BorderSide.none
@@ -112,7 +114,7 @@ class CustomButton extends StatelessWidget {
     switch (type) {
       case ButtonType.icon:
         if (icon is Icon) {
-          return Icon((icon as Icon).icon, size: 26, color: fgColor);
+          return Icon((icon as Icon).icon, size: 26.sp, color: fgColor);
         }
         return SizedBox();
       case ButtonType.filled:
@@ -124,8 +126,8 @@ class CustomButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (icon is Icon)
-              Icon((icon as Icon).icon, size: 26, color: fgColor),
-            if (icon != null) const SizedBox(width: 8),
+              Icon((icon as Icon).icon, size: 26.sp, color: fgColor),
+            if (icon != null) SizedBox(width: 8.w),
             Text(label ?? ''),
           ],
         );
@@ -134,6 +136,8 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     final bool disabled = isDisabled || onPressed == null;
     final Color mainColor =
         disabled
@@ -151,10 +155,10 @@ class CustomButton extends StatelessWidget {
 
     final BorderSide border =
         disabled
-            ? BorderSide(color: AppColors.gray1, width: 2)
+            ? BorderSide(color: AppColors.gray1, width: 2.w)
             : BorderSide(
               color: _getBorderColor(color),
-              width: type == ButtonType.outline ? 2 : 3,
+              width: type == ButtonType.outline ? 2.w : 3.w,
             );
 
     final double minWidth;
@@ -165,7 +169,7 @@ class CustomButton extends StatelessWidget {
         mainAxisSize = MainAxisSize.max;
         break;
       case ButtonWidthMode.fixed:
-        minWidth = width ?? 42;
+        minWidth = width ?? 42.w;
         mainAxisSize = MainAxisSize.min;
         break;
       case ButtonWidthMode.hug:
@@ -184,7 +188,7 @@ class CustomButton extends StatelessWidget {
     return type != ButtonType.outline
         ? Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(11),
+            borderRadius: BorderRadius.circular(11.r),
             border: disabled ? null : Border(right: border, bottom: border),
           ),
           child: TextButton(

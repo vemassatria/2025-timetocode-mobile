@@ -1,19 +1,18 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 
-enum GameStatsType { correct, retry, wrong }
+enum GameStatsType { correct, wrong }
 
 class GameStats extends StatelessWidget {
   final int correct;
-  final int retry;
   final int wrong;
   final int total;
 
   const GameStats({
     super.key,
     required this.correct,
-    required this.retry,
     required this.wrong,
     required this.total,
   });
@@ -26,23 +25,33 @@ class GameStats extends StatelessWidget {
     required Color secondaryColor,
   }) {
     return Container(
-      width: 104,
-      padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+      width: 104.w,
+      padding: EdgeInsets.fromLTRB(8.w, 4.h, 8.w, 8.h),
       decoration: BoxDecoration(
         color: primaryColor,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(title, style: AppTypography.smallBold()),
-          const SizedBox(height: 4),
+          Text(
+            title,
+            style: AppTypography.smallBold().copyWith(
+              decoration: TextDecoration.none,
+            ),
+          ),
+          SizedBox(height: 4.h),
           Container(
             width: double.infinity,
-            height: 64,
+            height: 64.h,
             color: secondaryColor,
             child: Center(
-              child: Text('$count/$total', style: AppTypography.heading4()),
+              child: Text(
+                '$count/$total',
+                style: AppTypography.heading4().copyWith(
+                  decoration: TextDecoration.none,
+                ),
+              ),
             ),
           ),
         ],
@@ -62,15 +71,7 @@ class GameStats extends StatelessWidget {
           primaryColor: AppColors.xpGreen,
           secondaryColor: AppColors.greenStats,
         ),
-        const SizedBox(width: 8),
-        _buildStatCard(
-          title: 'Ulang Materi',
-          count: retry,
-          total: total,
-          primaryColor: AppColors.secondaryText,
-          secondaryColor: AppColors.black3,
-        ),
-        const SizedBox(width: 8),
+        SizedBox(width: 16.w),
         _buildStatCard(
           title: 'Salah',
           count: wrong,

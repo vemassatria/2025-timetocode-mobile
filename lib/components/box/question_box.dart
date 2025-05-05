@@ -1,23 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
 class QuestionBox extends StatelessWidget {
   final String questionText;
+  final double? height;
 
-  const QuestionBox({super.key, required this.questionText});
+  const QuestionBox({super.key, required this.questionText, this.height});
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     return Container(
-      padding: const EdgeInsets.all(16),
-      width: 328 / 360 * ScreenUtils.screenWidth(context),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      width: 328.w,
+      height: height,
       decoration: BoxDecoration(
         color: AppColors.backgroundTransparent,
         border: Border.all(color: AppColors.white),
       ),
-      child: Text(questionText, style: AppTypography.normal()),
+      alignment: Alignment.center,
+      child: Text(
+        questionText,
+        style: AppTypography.normal(),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }

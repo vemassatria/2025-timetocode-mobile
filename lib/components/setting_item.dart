@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 
@@ -19,16 +20,16 @@ class SettingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
-        border: Border.all(color: AppColors.white, width: 2),
-        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: AppColors.white, width: 2.w),
+        borderRadius: BorderRadius.circular(8.r),
         color: AppColors.surfaceDark,
       ),
       child: Row(
         children: [
           _buildIcon(),
-          const SizedBox(width: 16),
+          SizedBox(width: 16.w),
           _buildLabel(),
           _buildSwitch(),
         ],
@@ -37,7 +38,7 @@ class SettingItem extends StatelessWidget {
   }
 
   Widget _buildIcon() {
-    return Icon(icon.icon, color: AppColors.primaryText, size: 32);
+    return Icon(icon.icon, color: AppColors.primaryText, size: 32.sp);
   }
 
   Widget _buildLabel() {
@@ -48,10 +49,10 @@ class SettingItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onChanged(!value),
       child: Container(
-        width: 52,
-        height: 32,
+        width: 52.w,
+        height: 32.w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(8.r),
           color: value ? AppColors.technoBlue : AppColors.secondaryText,
         ),
         child: AnimatedAlign(
@@ -65,12 +66,12 @@ class SettingItem extends StatelessWidget {
 
   Widget _buildSwitchThumb() {
     return Container(
-      width: 24,
-      height: 24,
-      margin: const EdgeInsets.symmetric(horizontal: 4),
+      width: 24.w,
+      height: 24.h,
+      margin: EdgeInsets.symmetric(horizontal: 4.w),
       decoration: BoxDecoration(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(8.r),
       ),
     );
   }

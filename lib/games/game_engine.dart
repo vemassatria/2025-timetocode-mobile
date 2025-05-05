@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:flame/game.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/services.dart';
+import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/components/flame_engine/background.dart';
 import 'package:timetocode/components/flame_engine/character.dart';
 import 'package:timetocode/games/models/dialog_model.dart';
@@ -9,22 +11,17 @@ import 'package:timetocode/games/models/level_model.dart';
 import 'package:timetocode/games/models/predialog_model.dart';
 import 'package:timetocode/games/models/question_model.dart';
 
-class GameEngine extends FlameGame {
+class GameEngine extends FlameGame with RiverpodGameMixin {
   late SceneBackgroundComponent sceneBackground;
   StoryCharactersComponent? storyCharacters;
 
   late final List<LevelModel> levels;
 
-  late PreDialogModel? _preDialogue;
+  PreDialogModel? preDialog;
+  DialogModel? currentDialogs;
 
-  late DialogModel? _currentDialogs;
-  PreDialogModel get preDialogue => _preDialogue!;
-  DialogModel get currentDialogs => _currentDialogs!;
-
-  late List<String>? _character1Path;
-  late List<String>? _character2Path;
-  List<String> get character1Path => _character1Path!;
-  List<String> get character2Path => _character2Path!;
+  List<String>? character1Path;
+  List<String>? character2Path;
 
   late int character1ActivePath;
   late int character2ActivePath;
@@ -32,11 +29,13 @@ class GameEngine extends FlameGame {
   late int activeLevel;
   late String activeMode;
 
-  late QuestionModel? _currentQuestion;
-  QuestionModel get currentQuestion => _currentQuestion!;
+  QuestionModel? currentQuestion;
 
   late int correctAnswer;
   late int wrongAnswer;
+
+  // Add texture cache tracking
+  final Set<String> _loadedTextures = {};
 
   @override
   Future<void> onLoad() async {
@@ -45,6 +44,28 @@ class GameEngine extends FlameGame {
     await super.onLoad();
     sceneBackground = SceneBackgroundComponent(size: size);
     add(sceneBackground);
+  }
+
+  @override
+  void onRemove() {
+    // Clean up resources when game is removed
+    _clearResources();
+    super.onRemove();
+  }
+
+  // Add method to clear resources
+  void _clearResources() {
+    // Clear all cached images instead of trying to remove individual textures
+    images.clearCache();
+
+    // Clear other resources
+    removeCharacter();
+    currentDialogs = null;
+    currentQuestion = null;
+    preDialog = null;
+    character1Path = null;
+    character2Path = null;
+    _loadedTextures.clear();
   }
 
   Future<void> _loadLevels() async {
@@ -57,18 +78,19 @@ class GameEngine extends FlameGame {
   }
 
   void startLevel(int indexLevel) {
+    // Clear previous resources before starting new level
+    _clearGameplayResources();
+    MusicService.playLevelMusic(indexLevel);
     overlays.remove('GameUI');
-    overlays.add('Story');
+    overlays.add('StoryMenu');
     changeScene(levels[indexLevel].background);
-    _character1Path = levels[indexLevel].character1Images;
-    _character2Path = levels[indexLevel].character2Images;
-    character1ActivePath = 0;
-    character2ActivePath = 0;
+    character1Path = levels[indexLevel].character1Images;
+    character2Path = levels[indexLevel].character2Images;
     activeLevel = indexLevel;
     correctAnswer = 0;
     wrongAnswer = 0;
     if (levels[indexLevel].typeStart == 'preDialog') {
-      _preDialogue = levels[indexLevel].preDialog;
+      preDialog = levels[indexLevel].preDialog;
       activeMode = "intro";
       overlays.add('Intro');
     } else {
@@ -77,13 +99,13 @@ class GameEngine extends FlameGame {
   }
 
   void setCurrentDialog(String id) {
-    _currentDialogs = levels[activeLevel].getDialog(id);
-    activeMode = "dialogue";
-    overlays.add('DialogueBox');
+    currentDialogs = levels[activeLevel].getDialog(id);
+    activeMode = "dialog";
+    overlays.add('DialogBox');
   }
 
   void setCurrentQuestion(String id) {
-    _currentQuestion = levels[activeLevel].questions.firstWhere(
+    currentQuestion = levels[activeLevel].questions.firstWhere(
       (dialog) => dialog.id == id,
     );
     activeMode = "question";
@@ -91,7 +113,11 @@ class GameEngine extends FlameGame {
   }
 
   Future<void> changeScene(String sceneName) async {
-    images.prefix = 'assets/';
+    // Track which textures we're loading
+    final String texturePath = 'background/$sceneName.webp';
+    _loadedTextures.add(texturePath);
+
+    // Load new scene
     await sceneBackground.loadScene(sceneName);
   }
 
@@ -99,60 +125,85 @@ class GameEngine extends FlameGame {
     String character1Path,
     String character2Path,
   ) async {
+    // Track character textures
+    _loadedTextures.add(character1Path);
+    _loadedTextures.add(character2Path);
+
     storyCharacters = StoryCharactersComponent(character1Path, character2Path);
     add(storyCharacters!);
   }
 
   void removeDialog() {
-    _currentDialogs = null;
+    currentDialogs = null;
     removeCharacter();
-    overlays.remove('DialogueBox');
+    overlays.remove('DialogBox');
   }
 
   void removeQuestion() {
     overlays.remove('QuestionBox');
-    _currentQuestion = null;
+    currentQuestion = null;
   }
 
   void removeIntro() {
     overlays.remove('Intro');
-    _preDialogue = null;
+    preDialog = null;
+  }
+
+  // Clear only gameplay resources
+  void _clearGameplayResources() {
+    if (storyCharacters != null) removeCharacter();
+    currentDialogs = null;
+    currentQuestion = null;
+    preDialog = null;
+    activeMode = "";
   }
 
   void endGame() {
-    _currentDialogs = null;
-    _currentQuestion = null;
-    _preDialogue = null;
+    // Clean up all resources properly
+    _clearResources();
+
+    // Reset character state
+    character1ActivePath = 0;
+    character2ActivePath = 0;
+
+    // Change scene with proper cleanup
     changeScene('default');
+
+    // Update overlays
+    overlays.remove('StoryMenu');
     overlays.add('GameUI');
   }
 
   void removeCharacter() {
-    storyCharacters!.removeFromParent();
-    storyCharacters = null;
+    if (storyCharacters != null) {
+      storyCharacters!.removeFromParent();
+      storyCharacters = null;
+    }
   }
 
-  void changeCharacter(int indexCharacter, String characterNewPath) async {
+  Future<void> changeCharacter(
+    int indexCharacter,
+    String characterNewPath,
+  ) async {
+    // Track character textures
+    _loadedTextures.add(characterNewPath);
+
     await storyCharacters!.changeCharacter(indexCharacter, characterNewPath);
   }
 
-  void activeCharacter(int indexCharacter) async {
-    await storyCharacters!.activeCharacter(indexCharacter);
+  Future<void> blackCharacter(int indexCharacter) async {
+    await storyCharacters!.negroCharacter(indexCharacter);
   }
 
-  void enchancedCharacter(int indexCharacter) async {
-    await storyCharacters!.enhancedCharacter(indexCharacter);
+  Future<void> enhancedSizeCharacter(int indexCharacter) async {
+    await storyCharacters!.enhancedSizeCharacter(indexCharacter);
   }
 
-  void normalMCCharacter(int indexCharacter) async {
-    await storyCharacters!.normalMCCharacter(indexCharacter);
+  Future<void> normalSizeCharacter(int indexCharacter) async {
+    await storyCharacters!.normalSizeCharacter(indexCharacter);
   }
 
-  void normalSecondCharacter(int indexCharacter) async {
-    await storyCharacters!.normalSecondCharacter(indexCharacter);
-  }
-
-  void normalCharacters(int indexCharacter) async {
-    await storyCharacters!.normalCharacters(indexCharacter);
+  Future<void> normalColorCharacter(int indexCharacter) async {
+    await storyCharacters!.normalColorCharacter(indexCharacter);
   }
 }

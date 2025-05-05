@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:timetocode/themes/colors.dart';
-import 'package:timetocode/themes/typography.dart';
+// import 'package:timetocode/themes/typography.dart';
 
 class AppThemes {
   static ThemeData darkTheme = ThemeData(
@@ -13,9 +13,8 @@ class AppThemes {
     // === AppBar Theme ===
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.surfaceDark,
-      elevation: 0,
-      titleTextStyle: AppTypography.heading5(),
-      toolbarHeight: 64,
+      elevation: 15,
+      shadowColor: Color(0x4D000000),
     ),
 
     // === Bottom Navigation Bar Theme ===
@@ -23,34 +22,29 @@ class AppThemes {
       backgroundColor: AppColors.surfaceDark,
       selectedItemColor: AppColors.skyByte,
       unselectedItemColor: AppColors.primaryText,
-      selectedLabelStyle: AppTypography.smallBold(color: AppColors.skyByte),
-      unselectedLabelStyle: AppTypography.small(color: AppColors.primaryText),
-      selectedIconTheme: const IconThemeData(size: 32),
-      unselectedIconTheme: const IconThemeData(size: 32),
-      elevation: 0,
     ),
 
     // === Text Theme ===
-    textTheme: TextTheme(
-      displayLarge: AppTypography.heading1(),
-      displayMedium: AppTypography.heading2(),
-      displaySmall: AppTypography.heading3(),
+    // textTheme: TextTheme(
+    //   displayLarge: AppTypography.heading1(),
+    //   displayMedium: AppTypography.heading2(),
+    //   displaySmall: AppTypography.heading3(),
 
-      headlineLarge: AppTypography.heading4(),
-      headlineMedium: AppTypography.heading5(),
-      headlineSmall: AppTypography.heading6(),
+    //   headlineLarge: AppTypography.heading4(),
+    //   headlineMedium: AppTypography.heading5(),
+    //   headlineSmall: AppTypography.heading6(),
 
-      titleLarge: AppTypography.mediumBold(),
-      titleMedium: AppTypography.normalBold(),
-      titleSmall: AppTypography.smallBold(),
+    //   titleLarge: AppTypography.mediumBold(),
+    //   titleMedium: AppTypography.normalBold(),
+    //   titleSmall: AppTypography.smallBold(),
 
-      bodyLarge: AppTypography.large(),
-      bodyMedium: AppTypography.normal(),
-      bodySmall: AppTypography.small(),
+    //   bodyLarge: AppTypography.large(),
+    //   bodyMedium: AppTypography.normal(),
+    //   bodySmall: AppTypography.small(),
 
-      labelLarge: AppTypography.medium(),
-      labelMedium: AppTypography.normal(),
-      labelSmall: AppTypography.small(),
-    ),
+    //   labelLarge: AppTypography.medium(),
+    //   labelMedium: AppTypography.normal(),
+    //   labelSmall: AppTypography.small(),
+    // ),
   );
 }

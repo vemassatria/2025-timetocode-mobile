@@ -5,6 +5,8 @@ import 'dialog_model.dart';
 
 class LevelModel {
   final int level;
+  final String description;
+  final String title;
   final String background;
   final String character1;
   final String character2;
@@ -13,11 +15,13 @@ class LevelModel {
   final PreDialogModel? preDialog;
   final List<DialogModel> dialogs;
   final List<QuestionModel> questions;
-  final String? summary;
+  final List<String>? summary;
   final String start;
   final String typeStart;
   LevelModel({
     required this.level,
+    required this.description,
+    required this.title,
     required this.background,
     required this.character1,
     required this.character2,
@@ -33,6 +37,8 @@ class LevelModel {
   factory LevelModel.fromJson(Map<String, dynamic> json) {
     return LevelModel(
       level: json['level'] as int,
+      description: json['description'] as String? ?? '',
+      title: json['title'] as String? ?? '',
       background: json['background'] as String? ?? '',
       character1: json['character1_name'] as String? ?? '',
       character2: json['character2_name'] as String? ?? '',
@@ -58,7 +64,10 @@ class LevelModel {
           (json['dialogs'] as List)
               .map((d) => DialogModel.fromJson(d as Map<String, dynamic>))
               .toList(),
-      summary: json['summary'] as String? ?? '',
+      summary:
+          json['rangkuman'] != null
+              ? (json['rangkuman'] as List).map((s) => s as String).toList()
+              : null,
       start: json['start'] as String? ?? '',
       typeStart: json['typeStart'] as String? ?? '',
     );

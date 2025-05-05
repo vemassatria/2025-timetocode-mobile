@@ -1,192 +1,136 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/components/card.dart';
+import 'package:timetocode/components/popups/info_popup.dart';
+import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/themes/colors.dart';
+import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
 
-class DaftarLevelPage extends StatefulWidget {
-  final FlameGame game;
-  const DaftarLevelPage({Key? key, required this.game}) : super(key: key);
+class DaftarLevelPage extends ConsumerStatefulWidget {
+  const DaftarLevelPage({super.key});
 
   @override
-  State<DaftarLevelPage> createState() => _DaftarLevelPageState();
+  ConsumerState<DaftarLevelPage> createState() => _DaftarLevelPageState();
 }
 
-class _DaftarLevelPageState extends State<DaftarLevelPage> {
-  int totalLevel = 6;
-  int completedLevel = 1;
+class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
+  late SharedPreferences _prefs;
   final ScrollController _scrollController = ScrollController();
-
-  // Data level
-  final List<Map<String, dynamic>> levelData = [
-    {
-      'title': 'Level 1 - Pengenalan Pemrograman',
-      'status': CardStatus.completed,
-      'visible': true, // Default visible untuk item pertama
-    },
-    {
-      'title': 'Level 2 - Variabel dan Tipe Data',
-      'status': CardStatus.unlocked,
-      'visible': false,
-    },
-    {
-      'title': 'Level 3 - Percabangan',
-      'status': CardStatus.locked,
-      'visible': false,
-    },
-  ];
-
-  // Keys untuk setiap card agar bisa tracking posisi viewport
-  late List<GlobalKey> _cardKeys;
+  late int completedLevel;
+  late int totalLevel;
+  bool _isLoaded = false;
 
   @override
   void initState() {
     super.initState();
-    _cardKeys = List<GlobalKey>.generate(levelData.length, (_) => GlobalKey());
+    _loadLevelData();
+  }
 
-    // Setup listener untuk scroll events
-    _scrollController.addListener(_checkVisibility);
+  Future<void> _loadLevelData() async {
+    _prefs = await SharedPreferences.getInstance();
+    final game = ref.read(gameEngineProvider);
 
-    // Jalankan sekali di awal untuk memastikan item awal terlihat
-    WidgetsBinding.instance.addPostFrameCallback((_) => _checkVisibility());
+    if (_prefs.getInt('completedLevel') == null) {
+      await _prefs.setInt('completedLevel', 0);
+    }
+
+    completedLevel = _prefs.getInt('completedLevel')!;
+    totalLevel = game.levels.length;
+
+    _isLoaded = true;
+
+    setState(() {});
   }
 
   @override
   void dispose() {
-    _scrollController.removeListener(_checkVisibility);
     _scrollController.dispose();
     super.dispose();
   }
 
-  void _checkVisibility() {
-    // Pastikan widget sudah di-build sebelum mengakses RenderBox
-    if (!mounted) return;
-
-    final RenderBox? renderBox = context.findRenderObject() as RenderBox?;
-    if (renderBox == null) return;
-
-    final viewportHeight = renderBox.size.height;
-    final scrollOffset = _scrollController.offset;
-
-    // Tandai item sebagai visible berdasarkan posisi scroll
-    for (int i = 0; i < _cardKeys.length; i++) {
-      final BuildContext? cardContext = _cardKeys[i].currentContext;
-      if (cardContext == null) continue;
-
-      final RenderBox? cardBox = cardContext.findRenderObject() as RenderBox?;
-      if (cardBox == null) continue;
-
-      final cardPosition = cardBox.localToGlobal(
-        Offset.zero,
-        ancestor: renderBox,
-      );
-
-      // Posisi relatif terhadap viewport
-      final cardTop = cardPosition.dy - scrollOffset;
-      final cardBottom = cardTop + cardBox.size.height;
-
-      // Card visible jika sebagian dalam viewport
-      final isVisible = (cardTop < viewportHeight && cardBottom > 0);
-
-      // Update state jika status visibility berubah
-      if (isVisible != levelData[i]['visible']) {
-        setState(() {
-          levelData[i]['visible'] = isVisible;
-        });
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final double progress = completedLevel / totalLevel;
+    final game = ref.read(gameEngineProvider);
+    if (!_isLoaded) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
 
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: const Text(
-          'Konsep Pemrograman',
-          style: TextStyle(
-            color: AppColors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: Text('Konsep Pemrograman', style: AppTypography.heading5()),
+        toolbarHeight: 64.h,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: CircularProgressIndicator(
-                    value: progress,
-                    color: AppColors.deepAzure,
-                    backgroundColor: AppColors.gray1,
-                    padding: const EdgeInsets.all(4),
-                  ),
-                ),
-                Text(
+            padding: EdgeInsets.only(right: 16.w),
+            child: CircularStepProgressIndicator(
+              circularDirection: CircularDirection.counterclockwise,
+              totalSteps: totalLevel,
+              currentStep: completedLevel,
+              stepSize: 4,
+              selectedColor: AppColors.xpGreen,
+              unselectedColor: AppColors.gray1,
+              height: 40.h,
+              width: 40.w,
+              child: Center(
+                child: Text(
                   '$completedLevel/$totalLevel',
-                  style: const TextStyle(color: AppColors.white),
+                  style: AppTypography.smallBold(),
                 ),
-              ],
+              ),
             ),
           ),
         ],
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: NotificationListener<ScrollNotification>(
-            onNotification: (notification) {
-              // Trigger visibility check saat scroll
-              if (notification is ScrollUpdateNotification) {
-                _checkVisibility();
-              }
-              return true;
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
+          child: ListView.builder(
+            controller: _scrollController,
+            itemCount: totalLevel,
+            itemBuilder: (context, index) {
+              final level = game.levels[index];
+              final isLocked = index > completedLevel;
+
+              return Padding(
+                padding: EdgeInsets.only(
+                  top: index == 0 ? 16.h : 0,
+                  bottom: index == totalLevel - 1 ? 16.h : 8.h,
+                ),
+                child: LevelCard(
+                  image: Image.asset(
+                    'assets/background/${level.background}.webp',
+                    fit: BoxFit.cover,
+                  ),
+                  title: level.title,
+                  status:
+                      completedLevel > index
+                          ? CardStatus.completed
+                          : (completedLevel == index
+                              ? CardStatus.unlocked
+                              : CardStatus.locked),
+                  onStartPressed: () {
+                    if (!isLocked) {
+                      game.startLevel(index);
+                    }
+                  },
+                  onInfoPressed: () {
+                    showPopupOverlay(
+                      context,
+                      InfoPopup(
+                        title: level.title,
+                        description: level.description,
+                        onClose: closePopupOverlay,
+                      ),
+                    );
+                  },
+                ),
+              );
             },
-            child: ListView.builder(
-              controller: _scrollController,
-              itemCount: levelData.length,
-              itemBuilder: (context, index) {
-                // Import matrix4_transform paket untuk menghindari konflik dengan Matrix4
-                return AnimatedContainer(
-                  key: _cardKeys[index],
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeOutCubic,
-                  // Menggunakan offset langsung pada margin untuk menghindari conflict Matrix4
-                  margin: EdgeInsets.only(
-                    bottom: 16,
-                    left: levelData[index]['visible'] ? 0 : 100, // Slide effect
-                  ),
-                  child: AnimatedOpacity(
-                    opacity: levelData[index]['visible'] ? 1.0 : 0.0,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeInOut,
-                    child: LevelCard(
-                      image: Image.asset('assets/images/TEMP.jpg'),
-                      title: levelData[index]['title'],
-                      status: levelData[index]['status'],
-                      onStartPressed: () {
-                        if (index == 0) {
-                        } else {
-                          debugPrint(
-                            "Start button pressed for level ${index + 1}",
-                          );
-                        }
-                      },
-                      onInfoPressed: () {
-                        debugPrint(
-                          "Info button pressed for level ${index + 1}",
-                        );
-                      },
-                    ),
-                  ),
-                );
-              },
-            ),
           ),
         ),
       ),

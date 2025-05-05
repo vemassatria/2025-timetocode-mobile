@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
@@ -66,11 +67,14 @@ class NarrationBoxState extends State<NarrationBox> {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     return GestureDetector(
       onTap: _handleTap,
       child: Container(
-        padding: const EdgeInsets.all(16),
-        width: 328 / 360 * ScreenUtils.screenWidth(context),
+        height: 250.h,
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        width: 328.w,
         decoration: BoxDecoration(
           color: AppColors.backgroundTransparent,
           border: Border.all(color: AppColors.white),
@@ -78,15 +82,24 @@ class NarrationBoxState extends State<NarrationBox> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(displayedText, style: AppTypography.normal()),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Text(
+                  displayedText,
+                  style: AppTypography.normal().copyWith(
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+              ),
+            ),
             if (isTextComplete)
               Padding(
-                padding: const EdgeInsets.only(top: 16),
+                padding: EdgeInsets.only(top: 8.h),
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: Icon(
                     Icons.keyboard_double_arrow_right_rounded,
-                    size: 32,
+                    size: 32.sp,
                     color: AppColors.primaryText,
                   ),
                 ),
