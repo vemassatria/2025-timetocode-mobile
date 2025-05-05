@@ -93,27 +93,8 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
             controller: _scrollController,
             itemCount: totalLevel,
             itemBuilder: (context, index) {
-              // Optimalkan - hanya render level yang sudah dibuka atau berikutnya akan dibuka
-              if (index > completedLevel + 1) {
-                return Padding(
-                  padding: EdgeInsets.only(
-                    bottom: index == totalLevel - 1 ? 16.h : 8.h,
-                  ),
-                  child: LevelCard.locked(
-                    title: game.levels[index].title,
-                    onInfoPressed: () {
-                      showPopupOverlay(
-                        context,
-                        InfoPopup(
-                          title: game.levels[index].title,
-                          description: game.levels[index].description,
-                          onClose: closePopupOverlay,
-                        ),
-                      );
-                    },
-                  ),
-                );
-              }
+              final level = game.levels[index];
+              final isLocked = index > completedLevel;
 
               return Padding(
                 padding: EdgeInsets.only(
@@ -122,10 +103,10 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
                 ),
                 child: LevelCard(
                   image: Image.asset(
-                    'assets/background/${game.levels[index].background}.webp',
+                    'assets/background/${level.background}.webp',
                     fit: BoxFit.cover,
                   ),
-                  title: game.levels[index].title,
+                  title: level.title,
                   status:
                       completedLevel > index
                           ? CardStatus.completed
@@ -133,14 +114,16 @@ class _DaftarLevelPageState extends ConsumerState<DaftarLevelPage> {
                               ? CardStatus.unlocked
                               : CardStatus.locked),
                   onStartPressed: () {
-                    game.startLevel(index);
+                    if (!isLocked) {
+                      game.startLevel(index);
+                    }
                   },
                   onInfoPressed: () {
                     showPopupOverlay(
                       context,
                       InfoPopup(
-                        title: game.levels[index].title,
-                        description: game.levels[index].description,
+                        title: level.title,
+                        description: level.description,
                         onClose: closePopupOverlay,
                       ),
                     );
