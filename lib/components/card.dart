@@ -9,7 +9,7 @@ import 'package:timetocode/utils/screen_utils.dart';
 enum CardStatus { unlocked, locked, completed }
 
 class LevelCard extends StatelessWidget {
-  final Image? image;
+  final Image image;
   final String title;
   final CardStatus status;
   final VoidCallback onStartPressed;
@@ -27,10 +27,11 @@ class LevelCard extends StatelessWidget {
   // Factory constructor for locked cards to optimize memory usage
   factory LevelCard.locked({
     required String title,
+    required Image image,
     required VoidCallback onInfoPressed,
   }) {
     return LevelCard(
-      image: null,
+      image: image,
       title: title,
       status: CardStatus.locked,
       onStartPressed: () {}, // Empty callback for locked levels
@@ -42,18 +43,6 @@ class LevelCard extends StatelessWidget {
   bool get isCompleted => status == CardStatus.completed;
 
   Widget _buildImage() {
-    // Return placeholder for locked cards without loading the actual image
-    if (image == null) {
-      return Container(
-        height: 170.h,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColors.black2,
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-      );
-    }
-
     return ClipRRect(
       borderRadius: BorderRadius.circular(8.r),
       child: ColorFiltered(
