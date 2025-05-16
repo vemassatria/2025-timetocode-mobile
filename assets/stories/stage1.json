@@ -9,6 +9,7 @@
       "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
       "character2_name": "Mas Mulyo",
       "character2_reaction": ["kating-biasa", "kating-marah", "kating-senang"],
+      "ilustration": ["isi-nama-ilustrasi", "isi-nama-ilustrasi", "isi-nama-ilustrasi"],
       "start": "preDialog1",
       "typeStart": "preDialog",
       "preDialog": {
@@ -49,7 +50,8 @@
             {
               "line": "Nah sebelum masuk kesitu lebih baik aku jelasin dulu soal tipe data biar kamu makin paham. Pertama ada tipe data int, biasanya dipake buat nyimpen angka bulat. Kayak umur, jumlah barang, tahun, pokoknya angka yang gak ada komanya.",
               "reaction_index": 0,
-              "speaker": 2
+              "speaker": 2,
+              "ilustration": "isi-nama-ilustrasi"
             },
             {
               "line": "Ooh jadi kayak 18, 2025, 100 gitu ya mas?",
@@ -59,7 +61,8 @@
             {
               "line": "Bener. Kedua ada float, itu buat angka yang ada komanya. Kayak berat badan 55.5 kg, tinggi badan 160.3 cm, atau nilai ujian 89.75. Pokoknya yang ada pecahannya gitu.",
               "reaction_index": 0,
-              "speaker": 2
+              "speaker": 2,
+              "ilustration": "isi-nama-ilustrasi"
             },
             {
               "line": "Berarti kalo yang ada koma-koma gitu lebih akurat pake float ya mas?",
