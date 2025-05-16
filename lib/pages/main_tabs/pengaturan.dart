@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/setting_item.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timetocode/SFX/music_service.dart';
+import 'package:timetocode/games/backend/services/music_service.dart';
 
 class PengaturanPage extends StatefulWidget {
   const PengaturanPage({super.key});

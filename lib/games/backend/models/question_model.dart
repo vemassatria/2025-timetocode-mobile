@@ -1,4 +1,4 @@
-import 'package:timetocode/games/models/choices_model.dart';
+import 'package:timetocode/games/backend/models/choices_model.dart';
 
 class QuestionModel {
   final String id;

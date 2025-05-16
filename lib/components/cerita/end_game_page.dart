@@ -6,12 +6,14 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/game_stats.dart';
 import 'package:timetocode/components/popups/info_popup.dart';
-import 'package:timetocode/providers/game_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 // import 'package:timetocode/SFX/music_service.dart';
+
+// Import StoryController provider
+import 'package:timetocode/games/backend/providers/story_provider.dart';
 
 class EndGameScreen extends ConsumerWidget {
   const EndGameScreen({super.key});
@@ -27,96 +29,120 @@ class EndGameScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     initScreenUtil(context);
 
-    final game = ref.read(gameEngineProvider);
-    final correctAnswer = game.correctAnswer;
-    final wrongAnswer = game.wrongAnswer;
-    final totalAnswer = correctAnswer + wrongAnswer;
-    final totalSteps = game.levels.length;
-    final completedLevel = game.activeLevel + 1;
-    final maxLevel = game.levels.length;
-    _saveCompletedLevel(completedLevel);
+    // Watch story state
+    final storyStateAsync = ref.watch(storyControllerProvider);
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 59.5.h),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircularStepProgressIndicator(
-              circularDirection: CircularDirection.counterclockwise,
-              totalSteps: totalSteps,
-              currentStep: completedLevel,
-              stepSize: 20,
-              selectedColor: AppColors.xpGreen,
-              unselectedColor: AppColors.gray1,
-              height: 250.h,
-              width: 250.w,
-              child: Center(
-                child: Text(
-                  '$completedLevel/$maxLevel',
-                  style: AppTypography.heading1().copyWith(
+    return storyStateAsync.when(
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => Center(child: Text('Error: $error')),
+      data: (storyState) {
+        // Data dari StoryController
+        final correctAnswer = storyState.correctAnswer ?? 0;
+        final wrongAnswer = storyState.wrongAnswer ?? 0;
+        final totalAnswer = correctAnswer + wrongAnswer;
+
+        // Data dari activeLevel
+        final activeLevel = storyState.activeLevel;
+        if (activeLevel == null) {
+          return const Center(child: Text('No active level found'));
+        }
+
+        final currentLevelIndex = storyState.levels.indexOf(activeLevel);
+        final totalSteps = storyState.levels.length;
+        final completedLevel = currentLevelIndex + 1;
+        final maxLevel = totalSteps;
+
+        // Simpan level yang telah diselesaikan
+        _saveCompletedLevel(completedLevel);
+
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 59.5.h),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircularStepProgressIndicator(
+                  circularDirection: CircularDirection.counterclockwise,
+                  totalSteps: totalSteps,
+                  currentStep: completedLevel,
+                  stepSize: 20,
+                  selectedColor: AppColors.xpGreen,
+                  unselectedColor: AppColors.gray1,
+                  height: 250.h,
+                  width: 250.w,
+                  child: Center(
+                    child: Text(
+                      '$completedLevel/$maxLevel',
+                      style: AppTypography.heading1().copyWith(
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 32.h),
+
+                Text(
+                  'Level $completedLevel Selesai',
+                  style: AppTypography.heading4().copyWith(
                     decoration: TextDecoration.none,
                   ),
                 ),
-              ),
+
+                SizedBox(height: 16.h),
+
+                CustomButton(
+                  label: "Rangkuman",
+                  icon: const Icon(Icons.chrome_reader_mode),
+                  color: ButtonColor.purple,
+                  type: ButtonType.iconLabel,
+                  onPressed: () {
+                    // MusicService.sfxButton2Click();
+                    showPopupOverlay(
+                      context,
+                      InfoPopup(
+                        title: "Rangkuman",
+                        summaryList: activeLevel.summary!,
+                        variant: InfoPopupVariant.summary,
+                        onClose: () {
+                          // MusicService.sfxNegativeClick();
+                          closePopupOverlay();
+                        },
+                      ),
+                    );
+                  },
+                ),
+
+                SizedBox(height: 64.h),
+
+                GameStats(
+                  correct: correctAnswer,
+                  wrong: wrongAnswer,
+                  total: totalAnswer,
+                ),
+
+                SizedBox(height: 64.h),
+
+                CustomButton(
+                  label: "Lanjutkan",
+                  widthMode: ButtonWidthMode.fill,
+                  onPressed: () {
+                    // MusicService.sfxSelectClick();
+
+                    // Gunakan StoryController untuk mengakhiri permainan
+                    final storyController = ref.read(
+                      storyControllerProvider.notifier,
+                    );
+
+                    storyController.endStory();
+                  },
+                ),
+              ],
             ),
-
-            SizedBox(height: 32.h),
-
-            Text(
-              'Level $completedLevel Selesai',
-              style: AppTypography.heading4().copyWith(
-                decoration: TextDecoration.none,
-              ),
-            ),
-
-            SizedBox(height: 16.h),
-
-            CustomButton(
-              label: "Rangkuman",
-              icon: Icon(Icons.chrome_reader_mode),
-              color: ButtonColor.purple,
-              type: ButtonType.iconLabel,
-              onPressed: () {
-                // MusicService.sfxButton2Click();
-                showPopupOverlay(
-                  context,
-                  InfoPopup(
-                    title: "Rangkuman",
-                    summaryList: game.levels[game.activeLevel].summary!,
-                    variant: InfoPopupVariant.summary,
-                    onClose: () {
-                      // MusicService.sfxNegativeClick();
-                      closePopupOverlay();
-                    },
-                  ),
-                );
-              },
-            ),
-
-            SizedBox(height: 64.h),
-
-            GameStats(
-              correct: correctAnswer,
-              wrong: wrongAnswer,
-              total: totalAnswer,
-            ),
-
-            SizedBox(height: 64.h),
-
-            CustomButton(
-              label: "Lanjutkan",
-              widthMode: ButtonWidthMode.fill,
-              onPressed: () {
-                // MusicService.sfxSelectClick();
-                game.overlays.remove('EndGame');
-                game.endGame();
-              },
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

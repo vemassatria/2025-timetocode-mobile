@@ -1,4 +1,4 @@
-import 'package:timetocode/games/models/text_dialog_model.dart';
+import 'package:timetocode/games/backend/models/text_dialog_model.dart';
 
 class DialogModel {
   final String id;

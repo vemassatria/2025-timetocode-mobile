@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
@@ -9,11 +11,11 @@ import 'package:timetocode/utils/screen_utils.dart';
 enum CardStatus { unlocked, locked, completed }
 
 class LevelCard extends StatelessWidget {
-  final Image image;
+  final ui.Image? image;
   final String title;
   final CardStatus status;
-  final VoidCallback onStartPressed;
-  final VoidCallback onInfoPressed;
+  final VoidCallback? onStartPressed;
+  final VoidCallback? onInfoPressed;
 
   const LevelCard({
     super.key,
@@ -27,7 +29,7 @@ class LevelCard extends StatelessWidget {
   // Factory constructor for locked cards to optimize memory usage
   factory LevelCard.locked({
     required String title,
-    required Image image,
+    required ui.Image? image,
     required VoidCallback onInfoPressed,
   }) {
     return LevelCard(
@@ -71,7 +73,11 @@ class LevelCard extends StatelessWidget {
                   0,
                 ])
                 : const ColorFilter.mode(Colors.transparent, BlendMode.srcOver),
-        child: SizedBox(height: 170.h, width: double.infinity, child: image),
+        child: SizedBox(
+          height: 170.h,
+          width: double.infinity,
+          child: RawImage(image: image, fit: BoxFit.cover),
+        ),
       ),
     );
   }
@@ -102,7 +108,7 @@ class LevelCard extends StatelessWidget {
             label: label,
             onPressed: () {
               // MusicService.sfxButtonClick();
-              onStartPressed();
+              onStartPressed!();
             },
             type: ButtonType.filled,
             color: ButtonColor.blue,
@@ -114,7 +120,7 @@ class LevelCard extends StatelessWidget {
           icon: const Icon(Icons.info_outline),
           onPressed: () {
             // MusicService.sfxPopClick();
-            onInfoPressed();
+            onInfoPressed!();
           },
           type: ButtonType.icon,
           color: ButtonColor.purple,

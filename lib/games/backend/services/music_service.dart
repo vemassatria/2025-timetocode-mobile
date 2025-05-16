@@ -28,6 +28,13 @@ class MusicService {
     }
   }
 
+  static Future<void> switchLevelMusic(int levelIndex) async {
+    if (_playingMusikLatar) {
+      await FlameAudio.bgm.stop();
+      await MusicService.playLevelMusic(levelIndex);
+    }
+  }
+
   static Future<void> updateMusikLatar(bool enabled) async {
     _prefs.setBool('musikLatar', enabled);
 

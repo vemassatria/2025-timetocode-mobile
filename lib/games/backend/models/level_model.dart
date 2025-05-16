@@ -1,5 +1,5 @@
-import 'package:timetocode/games/models/predialog_model.dart';
-import 'package:timetocode/games/models/question_model.dart';
+import 'package:timetocode/games/backend/models/predialog_model.dart';
+import 'package:timetocode/games/backend/models/question_model.dart';
 
 import 'dialog_model.dart';
 

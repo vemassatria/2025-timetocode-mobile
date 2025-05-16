@@ -3,146 +3,98 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/box/code_box.dart';
 import 'package:timetocode/components/box/question_box.dart';
-import 'package:timetocode/components/menu_button.dart';
-import 'package:timetocode/games/game_engine.dart';
-import 'package:timetocode/games/models/choices_model.dart';
-import 'package:timetocode/providers/game_provider.dart';
+import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/components/popups/answer_popup.dart';
 import 'package:timetocode/components/box/choices_box.dart';
-//import 'package:timetocode/SFX/music_service.dart';
 
-class QuestionBoxWidget extends ConsumerStatefulWidget {
+// Add import for StoryController provider
+import 'package:timetocode/games/backend/providers/story_provider.dart';
+
+class QuestionBoxWidget extends ConsumerWidget {
   const QuestionBoxWidget({super.key});
 
   @override
-  ConsumerState<QuestionBoxWidget> createState() => _QuestionBoxWidgetState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Watch StoryController state
+    final storyStateAsync = ref.watch(storyControllerProvider);
 
-class _QuestionBoxWidgetState extends ConsumerState<QuestionBoxWidget> {
-  late String questionText;
-  late String codeText;
-  late List<ChoicesModel> options;
-  late GameEngine game;
+    // Return loading indicator if state is loading
+    return storyStateAsync.when(
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, stackTrace) => Center(child: Text('Error: $error')),
+      data: (storyState) {
+        final questionData = storyState.currentQuestion!;
+        final questionText = questionData.question;
+        final codeText = questionData.code;
+        final options = questionData.choices;
 
-  @override
-  void initState() {
-    game = ref.read(gameEngineProvider);
-    options = game.currentQuestion!.choices;
-    questionText = game.currentQuestion!.question;
-    codeText = game.currentQuestion!.code;
-    super.initState();
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Stack(
+            children: [
+              SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(16.w, 76.h, 16.w, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      if (codeText.trim().isNotEmpty) ...[
+                        QuestionBox(questionText: questionText, height: 100.h),
+                        SizedBox(height: 16.h),
+                        CodeBox(code: codeText),
+                      ] else ...[
+                        Container(
+                          height: 374.h,
+                          width: double.infinity,
+                          decoration: const BoxDecoration(
+                            color: Colors.transparent,
+                          ),
+                          clipBehavior: Clip.hardEdge,
+                          child: Center(
+                            child: QuestionBox(questionText: questionText),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: ChoicesBox(
+                  choices: options,
+                  onPressed:
+                      (index) => _checkAnswer(context, ref, options[index]),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
-  void checkAnswer(ChoicesModel selected) {
-    if (selected.isCorrect!) {
-      game.correctAnswer++;
-    } else {
-      game.wrongAnswer++;
-    }
+  void _checkAnswer(
+    BuildContext context,
+    WidgetRef ref,
+    ChoicesModel selected,
+  ) {
+    final storyController = ref.read(storyControllerProvider.notifier);
 
+    // Show popup with answer result
     showPopupOverlay(
       context,
       AnswerPopup(
         isCorrect: selected.isCorrect!,
         onPressed: () {
-          if (selected.nextType == 'dialog') {
-            game.setCurrentDialog(selected.next!);
-            game.removeQuestion();
-          } else if (selected.nextType == 'soal') {
-            game.setCurrentQuestion(selected.next!);
-            game.removeQuestion();
-          } else {
-            game.overlays.add('EndGame');
-          }
+          // Use StoryController to handle answer and progression
+          storyController.checkAnswer(selected);
           closePopupOverlay();
         },
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset('assets/background/lab.webp', fit: BoxFit.cover),
-          ),
-
-          Positioned(
-            top: 0,
-            left: 0,
-            child: SafeArea(
-              child: Padding(
-                padding: EdgeInsets.only(top: 16.h),
-                child: MenuButton(
-                  onRestart: () {
-                    if (game.activeMode == "intro") {
-                      game.removeIntro();
-                    } else if (game.activeMode == "dialog") {
-                      game.removeDialog();
-                    } else {
-                      game.removeQuestion();
-                    }
-                    game.startLevel(game.activeLevel);
-                    closePopupOverlay();
-                  },
-                  onExit: () {
-                    if (game.activeMode == "intro") {
-                      game.removeIntro();
-                    } else if (game.activeMode == "dialog") {
-                      game.removeDialog();
-                    } else {
-                      game.removeQuestion();
-                    }
-                    game.endGame();
-                    game.overlays.remove('StoryMenu');
-                    closePopupOverlay();
-                  },
-                ),
-              ),
-            ),
-          ),
-
-          SafeArea(
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(16.w, 76.h, 16.w, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  if (codeText.trim().isNotEmpty) ...[
-                    QuestionBox(questionText: questionText, height: 100.h),
-                    SizedBox(height: 16.h),
-                    CodeBox(code: codeText),
-                  ] else ...[
-                    Container(
-                      height: 374.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(color: Colors.transparent),
-                      clipBehavior: Clip.hardEdge,
-                      child: Center(
-                        child: QuestionBox(questionText: questionText),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-            ),
-          ),
-
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: ChoicesBox(
-              choices: options,
-              onPressed: (index) {
-                checkAnswer(options[index]);
-              },
-            ),
-          ),
-        ],
       ),
     );
   }

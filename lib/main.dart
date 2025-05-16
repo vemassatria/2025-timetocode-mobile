@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/components/box/dialog_box.dart';
 import 'package:timetocode/components/cerita/intro.dart';
-import 'package:timetocode/games/game_engine.dart';
+import 'package:timetocode/games/backend/game_engine.dart';
 import 'package:timetocode/components/cerita/end_game_page.dart';
 import 'package:timetocode/pages/main_navigation.dart';
 import 'package:timetocode/components/cerita/story.dart';
-import 'package:timetocode/providers/game_provider.dart';
+import 'package:timetocode/games/backend/providers/game_provider.dart';
 import 'package:timetocode/themes/app_themes.dart';
 import 'package:timetocode/components/cerita/question_box_widget.dart';
-import 'package:timetocode/SFX/music_service.dart';
+import 'package:timetocode/games/backend/services/music_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,14 +20,13 @@ void main() async {
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
-
+  static final gameWidgetKey =
+      GlobalKey<RiverpodAwareGameWidgetState<GameEngine>>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final game = ref.read(gameEngineProvider);
-    final gameWidgetKey = GlobalKey<RiverpodAwareGameWidgetState<GameEngine>>();
-
     return MaterialApp(
-      title: 'TimetoCode',
+      title: 'Time to Code',
       themeMode: ThemeMode.dark,
       darkTheme: AppThemes.darkTheme,
       home: RiverpodAwareGameWidget<GameEngine>(
@@ -37,8 +36,8 @@ class MyApp extends ConsumerWidget {
           'GameUI': (_, __) => MainNavigation(),
           'StoryMenu': (_, __) => StoryPage(),
           'Intro': (_, __) => IntroBoxWidget(),
-          'DialogBox': (_, __) => DialogBox(),
-          'QuestionBox': (_, __) => QuestionBoxWidget(),
+          'Dialog': (_, __) => DialogBox(),
+          'Question': (_, __) => QuestionBoxWidget(),
           'EndGame': (_, __) => EndGameScreen(),
         },
         initialActiveOverlays: const ['GameUI'],

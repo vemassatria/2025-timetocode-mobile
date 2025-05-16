@@ -6,16 +6,33 @@ class StoryCharactersComponent extends Component {
   final String person1Path, person2Path;
   late final SpriteComponent person1, person2;
   late final FlameGame _game;
+  int currentIndex1 = 0;
+  int currentIndex2 = 0;
 
-  StoryCharactersComponent(this.person1Path, this.person2Path);
+  StoryCharactersComponent(
+    this.person1Path,
+    this.person2Path,
+    this.currentIndex1,
+    this.currentIndex2,
+  );
 
   @override
   Future<void> onLoad() async {
     _game = findGame()!;
-    await loadCharacters(person1Path, person2Path);
+    await loadCharacters(
+      person1Path,
+      person2Path,
+      currentIndex1,
+      currentIndex2,
+    );
   }
 
-  Future<void> loadCharacters(String person1Path, String person2Path) async {
+  Future<void> loadCharacters(
+    String person1Path,
+    String person2Path,
+    int indexPerson1Path,
+    int indexPerson2Path,
+  ) async {
     final image1 = await _game.images.load('character/$person1Path.webp');
     final image2 = await _game.images.load('character/$person2Path.webp');
 
@@ -39,12 +56,16 @@ class StoryCharactersComponent extends Component {
 
     add(person1);
     add(person2);
+
+    currentIndex1 = indexPerson1Path;
+    currentIndex2 = indexPerson2Path;
   }
 
   //mengganti karakter
   Future<void> changeCharacter(
     int indexCharacter,
     String characterNewPath,
+    int newIndexPath,
   ) async {
     final image = await _game.images.load('character/$characterNewPath.webp');
     final height = _game.size.y * 0.7;
@@ -55,6 +76,12 @@ class StoryCharactersComponent extends Component {
     character
       ..sprite = Sprite(image)
       ..size = Vector2(width, height);
+
+    if (indexCharacter == 1) {
+      currentIndex1 = newIndexPath;
+    } else {
+      currentIndex2 = newIndexPath;
+    }
   }
 
   //menghitamkan karakter
@@ -100,5 +127,15 @@ class StoryCharactersComponent extends Component {
   Future<void> normalColorCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
     target.paint = Paint();
+  }
+
+  Future<void> changeEmotion(int indexMainCharacter) async {
+    final int indexSecondCharacter = indexMainCharacter == 1 ? 2 : 1;
+    await Future.wait([
+      normalColorCharacter(indexMainCharacter),
+      normalSizeCharacter(indexSecondCharacter),
+      enhancedSizeCharacter(indexMainCharacter),
+      negroCharacter(indexSecondCharacter),
+    ]);
   }
 }

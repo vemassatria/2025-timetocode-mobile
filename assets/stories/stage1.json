@@ -1279,7 +1279,7 @@
       "character2_name": "Adrian",
       "character2_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
       "start": "intro4",
-      "typeStart": "dialogs",
+      "typeStart": "dialog",
       "dialogs": [
         {
           "id": "intro4",
