@@ -1,0 +1,220 @@
+{
+  "challenges": [
+    {
+      "challenge_id": 1,
+      "title": "Judul Materi",
+      "levels": [
+        {
+          "level_id": "soal1_1",
+          "level_name": "Level 1",
+          "questions": {
+            "mudah": [
+              {
+                "text_id": "soal1_1",
+                "text": "Pertanyaan",
+                "code": "ngantuk",
+                "choices": [
+                  {
+                    "text": "a",
+                    "next": "soal1_2",
+                    "nextType": "soal",
+                    "isCorrect": true
+                  },
+                  {
+                    "text": "b",
+                    "next": "soal1_2",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "c",
+                    "next": "soal1_2",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "d",
+                    "next": "soal1_2",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  }
+                ]
+              }
+            ],
+            "sedang": [
+              {
+                "text_id": "soal1_2",
+                "text": "Pertanyaan",
+                "code": "lololol",
+                "choices": [
+                  {
+                    "text": "a",
+                    "next": "soal1_3",
+                    "nextType": "soal",
+                    "isCorrect": true
+                  },
+                  {
+                    "text": "b",
+                    "next": "soal1_3",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "c",
+                    "next": "soal1_3",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "d",
+                    "next": "soal1_3",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  }
+                ]
+              }
+            ],
+            "susah": [
+              {
+                "text_id": "soal1_3",
+                "text": "Pertanyaan",
+                "code": "tralalelo",
+                "choices": [
+                  {
+                    "text": "a",
+                    "next": null,
+                    "nextType": "end",
+                    "isCorrect": true
+                  },
+                  {
+                    "text": "b",
+                    "next": null,
+                    "nextType": "end",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "c",
+                    "next": null,
+                    "nextType": "end",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "d",
+                    "next": null,
+                    "nextType": "end",
+                    "isCorrect": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "level_id": "soal2_1",
+          "level_name": "Level 2: Aku cinta Clairo",
+          "questions": {
+            "mudah": [
+              {
+                "text_id": "soal2_1",
+                "text": "Siapa Clairo?",
+                "code": "clairo",
+                "choices": [
+                  {
+                    "text": "a. Istrinya Malano",
+                    "next": "soal2_2",
+                    "nextType": "soal",
+                    "isCorrect": true
+                  },
+                  {
+                    "text": "b. Manager",
+                    "next": "soal2_2",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "c. Dosen",
+                    "next": "soal2_2",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "d. Guru",
+                    "next": "soal2_2",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  }
+                ]
+              }
+            ],
+            "sedang": [
+              {
+                "text_id": "soal2_2",
+                "text": "Mana yang istrinya Malano?",
+                "code": "clairo",
+                "choices": [
+                  {
+                    "text": "a. emma myers",
+                    "next": "soal2_3",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "b. Frieren",
+                    "next": "soal2_3",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "c. clairo",
+                    "next": "soal2_3",
+                    "nextType": "soal",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "d. semua pilihan benar",
+                    "next": "soal2_3",
+                    "nextType": "soal",
+                    "isCorrect": true
+                  }
+                ]
+              }
+            ],
+            "susah": [
+              {
+                "text_id": "soal2_3",
+                "text": "Hidup?",
+                "code": "HIDUP!!!!",
+                "choices": [
+                  {
+                    "text": "a. Jokowi",
+                    "next": null,
+                    "nextType": "end",
+                    "isCorrect": true
+                  },
+                  {
+                    "text": "b. Windah basudara",
+                    "next": null,
+                    "nextType": "end",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "c. Blonde",
+                    "next": null,
+                    "nextType": "end",
+                    "isCorrect": false
+                  },
+                  {
+                    "text": "d. Bapak Brian",
+                    "next": null,
+                    "nextType": "end",
+                    "isCorrect": false
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
