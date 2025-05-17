@@ -1,9 +1,9 @@
-import 'package:timetocode/games/backend/models/level_model.dart';
+import 'package:timetocode/games/backend/models/challenge_level_model.dart';
 
 class ChallengeModel {
   final int challengeId;
   final String title;
-  final List<LevelModel> levels;
+  final List<ChallengeLevelModel> levels;
 
   ChallengeModel({
     required this.challengeId,
@@ -17,12 +17,15 @@ class ChallengeModel {
       title: json['title'],
       levels:
           (json['levels'] as List)
-              .map((lvl) => LevelModel.fromJson(lvl as Map<String, dynamic>))
+              .map(
+                (lvl) =>
+                    ChallengeLevelModel.fromJson(lvl as Map<String, dynamic>),
+              )
               .toList(),
     );
   }
 
-  LevelModel getLevel(int levelNumber) {
-    return levels.firstWhere((lvl) => lvl.level == levelNumber);
+  ChallengeLevelModel getLevel(int levelNumber) {
+    return levels.firstWhere((lvl) => lvl.levelName == levelNumber);
   }
 }
