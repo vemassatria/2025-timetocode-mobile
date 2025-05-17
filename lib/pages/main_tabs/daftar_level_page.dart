@@ -10,6 +10,7 @@ import 'package:timetocode/games/backend/providers/story_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
+import 'package:timetocode/components/popups/confirm_popup.dart';
 
 class DaftarLevelPage extends ConsumerWidget {
   const DaftarLevelPage({Key? key}) : super(key: key);
@@ -34,76 +35,84 @@ class DaftarLevelPage extends ConsumerWidget {
       data: (storyState) {
         final levels = storyState.levels;
 
-        return Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            title: Text('Konsep Pemrograman', style: AppTypography.heading5()),
-            toolbarHeight: 64.h,
-            actions: [
-              Padding(
-                padding: EdgeInsets.only(right: 16.w),
-                child: CircularStepProgressIndicator(
-                  circularDirection: CircularDirection.counterclockwise,
-                  totalSteps: levels.length,
-                  currentStep: completedLevel,
-                  stepSize: 4,
-                  selectedColor: AppColors.xpGreen,
-                  unselectedColor: AppColors.gray1,
-                  height: 40.h,
-                  width: 40.w,
-                  child: Center(
-                    child: Text(
-                      '$completedLevel/${levels.length}',
-                      style: AppTypography.smallBold(),
+        return PopScope( //untuk popup tombol back
+          canPop: false,
+          onPopInvokedWithResult: (didPop, result) => {
+            exitPopup(context),
+          },
+          child: Scaffold( 
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              title: Text('Konsep Pemrograman', style: AppTypography.heading5()),
+              toolbarHeight: 64.h,
+              actions: [
+                Padding(
+                  padding: EdgeInsets.only(right: 16.w),
+                  child: CircularStepProgressIndicator(
+                    circularDirection: CircularDirection.counterclockwise,
+                    totalSteps: levels.length,
+                    currentStep: completedLevel,
+                    stepSize: 4,
+                    selectedColor: AppColors.xpGreen,
+                    unselectedColor: AppColors.gray1,
+                    height: 40.h,
+                    width: 40.w,
+                    child: Center(
+                      child: Text(
+                        '$completedLevel/${levels.length}',
+                        style: AppTypography.smallBold(),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          body: SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-              child: ListView.separated(
-                itemCount: levels.length,
-                separatorBuilder: (_, __) => SizedBox(height: 8.h),
-                itemBuilder: (context, index) {
-                  final level = levels[index];
-                  final isLocked = index > completedLevel;
+              ],
+            ),
+            body: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                child: ListView.separated(
+                  itemCount: levels.length,
+                  separatorBuilder: (_, __) => SizedBox(height: 8.h),
+                  itemBuilder: (context, index) {
+                    final level = levels[index];
+                    final isLocked = index > completedLevel;
 
-                  return LevelCard(
-                    image: images.fromCache(
-                      'background/${level.background}.webp',
-                    ),
-                    title: level.title,
-                    status:
-                        isLocked
-                            ? CardStatus.locked
-                            : (index < completedLevel
-                                ? CardStatus.completed
-                                : CardStatus.unlocked),
-                    onStartPressed:
-                        isLocked
-                            ? null
-                            : () => ref
-                                .read(storyControllerProvider.notifier)
-                                .startLevel(index),
-                    onInfoPressed:
-                        () => showPopupOverlay(
-                          context,
-                          InfoPopup(
-                            title: level.title,
-                            description: level.description,
-                            onClose: closePopupOverlay,
+                    return LevelCard(
+                      image: images.fromCache(
+                        'background/${level.background}.webp',
+                      ),
+                      title: level.title,
+                      status:
+                          isLocked
+                              ? CardStatus.locked
+                              : (index < completedLevel
+                                  ? CardStatus.completed
+                                  : CardStatus.unlocked),
+                      onStartPressed:
+                          isLocked
+                              ? null
+                              : () => ref
+                                  .read(storyControllerProvider.notifier)
+                                  .startLevel(index),
+                      onInfoPressed:
+                          () => showPopupOverlay(
+                            context,
+                            InfoPopup(
+                              title: level.title,
+                              description: level.description,
+                              onClose: closePopupOverlay,
+                            ),
                           ),
-                        ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
           ),
         );
+        
       },
     );
+    
   }
 }

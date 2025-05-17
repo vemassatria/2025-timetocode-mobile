@@ -5,6 +5,8 @@ import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/themes/typography.dart';
 // import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/utils/screen_utils.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
+import 'package:flutter/services.dart';
 
 class ConfirmPopup extends StatelessWidget {
   final String title;
@@ -90,3 +92,21 @@ class ConfirmPopup extends StatelessWidget {
     );
   }
 }
+
+void exitPopup(BuildContext context) {
+    showPopupOverlay(
+      context,
+      ConfirmPopup(
+        title: 'Keluar Halaman?',
+        description: 'Apakah kamu yakin ingin keluar dari aplikasi?',
+        confirmLabel: 'Keluar',
+        onPrimaryButtonPressed: () {
+          closePopupOverlay();
+          SystemNavigator.pop(); // keluar dari aplikasi
+        },
+        onGoBack: () {
+          closePopupOverlay(); // hanya tutup popup
+        },
+      ),
+    );
+  }
