@@ -97,6 +97,15 @@ class AppTypography {
     color: color ?? AppColors.primaryText,
   );
 
+  static TextStyle verySmallBold({Color? color}) => TextStyle(
+    fontFamily: _fontFamily,
+    fontWeight: FontWeight.bold,
+    fontSize: 12.sp,
+    height: 16.h / 12.sp,
+    letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
+  );
+
   // === Body ===
   static TextStyle large({Color? color}) => TextStyle(
     fontFamily: _fontFamily,
@@ -130,6 +139,15 @@ class AppTypography {
     fontWeight: FontWeight.normal,
     fontSize: 14.sp,
     height: 19.6.h / 14.sp,
+    letterSpacing: 0.0,
+    color: color ?? AppColors.primaryText,
+  );
+
+  static TextStyle verySmall({Color? color}) => TextStyle(
+    fontFamily: _fontFamily,
+    fontWeight: FontWeight.normal,
+    fontSize: 12.sp,
+    height: 16.h / 12.sp,
     letterSpacing: 0.0,
     color: color ?? AppColors.primaryText,
   );

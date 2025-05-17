@@ -32,7 +32,7 @@ class _MainNavigationState extends State<MainNavigation> {
   Widget build(BuildContext context) {
     initScreenUtil(context);
 
-    final pages = <Widget>[DaftarLevelPage(), PengaturanPage()];
+    final pages = <Widget>[DaftarLevelPage(), Scaffold(), PengaturanPage()];
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -44,36 +44,41 @@ class _MainNavigationState extends State<MainNavigation> {
   Widget _buildBottomNavigationBar() {
     return Container(
       decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x4D000000),
-            offset: Offset(0, -4),
-            blurRadius: 8,
-            spreadRadius: 2,
-          ),
-        ],
+        border: Border(top: BorderSide(color: AppColors.black1, width: 1.w)),
       ),
-      child: BottomNavigationBar(
-        elevation: 0,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedLabelStyle: AppTypography.smallBold(color: AppColors.skyByte),
-        unselectedLabelStyle: AppTypography.small(color: AppColors.primaryText),
-        selectedIconTheme: IconThemeData(size: 32.sp),
-        unselectedIconTheme: IconThemeData(size: 32.sp),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school_outlined),
-            activeIcon: Icon(Icons.school),
-            label: 'Pembelajaran',
+      child: SizedBox(
+        height: 56.h, // ini tinggi yang kamu mau
+        child: BottomNavigationBar(
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          selectedLabelStyle: AppTypography.verySmallBold(
+            color: AppColors.skyByte,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings_outlined),
-            activeIcon: Icon(Icons.settings),
-            label: 'Pengaturan',
+          unselectedLabelStyle: AppTypography.verySmall(
+            color: AppColors.primaryText,
           ),
-        ],
+          selectedIconTheme: IconThemeData(size: 24.sp),
+          unselectedIconTheme: IconThemeData(size: 24.sp),
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school_outlined),
+              activeIcon: Icon(Icons.school),
+              label: 'Pembelajaran',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.emoji_events_outlined),
+              activeIcon: Icon(Icons.emoji_events),
+              label: 'Tantangan',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings_outlined),
+              activeIcon: Icon(Icons.settings),
+              label: 'Pengaturan',
+            ),
+          ],
+        ),
       ),
     );
   }

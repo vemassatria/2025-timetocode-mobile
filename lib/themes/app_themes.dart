@@ -13,8 +13,7 @@ class AppThemes {
     // === AppBar Theme ===
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.surfaceDark,
-      elevation: 15,
-      shadowColor: Color(0x4D000000),
+      elevation: 0,
     ),
 
     // === Bottom Navigation Bar Theme ===
@@ -23,6 +22,10 @@ class AppThemes {
       selectedItemColor: AppColors.skyByte,
       unselectedItemColor: AppColors.primaryText,
     ),
+
+    splashColor: Colors.transparent,
+    highlightColor: AppColors.deepAzure,
+    hoverColor: Colors.transparent,
 
     // === Text Theme ===
     // textTheme: TextTheme(
