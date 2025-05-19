@@ -85,27 +85,22 @@ class CustomButton extends StatelessWidget {
     }
   }
 
-  ButtonStyle _buttonStyle(
-    Color mainColor,
-    Color fgColor,
-    BorderSide? border,
-    double minWidth,
-  ) {
+  ButtonStyle _buttonStyle(Color mainColor, Color fgColor, double minWidth) {
+    final Color borderColor = _getBorderColor(color);
+    final BorderSide borderSide = BorderSide(color: borderColor, width: 2.w);
+
     return TextButton.styleFrom(
       backgroundColor: mainColor,
       foregroundColor: fgColor,
-      minimumSize: Size(minWidth, height ?? 48.h),
+      minimumSize: Size(minWidth, height ?? 42.w),
       padding:
           type == ButtonType.icon
-              ? EdgeInsets.symmetric(horizontal: 11.w, vertical: 8.h)
+              ? EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h)
               : EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       textStyle: AppTypography.normalBold(color: AppColors.black1),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.r),
-        side:
-            type == ButtonType.outline
-                ? border ?? BorderSide.none
-                : BorderSide.none,
+        side: type == ButtonType.outline ? borderSide : BorderSide.none,
       ),
     );
   }
@@ -142,9 +137,9 @@ class CustomButton extends StatelessWidget {
     final Color mainColor =
         disabled
             ? AppColors.gray1
-            : type == ButtonType.outline
-            ? _getOutlineBgColor(color)
-            : _getFillBgColor(color);
+            : (type == ButtonType.outline
+                ? _getOutlineBgColor(color)
+                : _getFillBgColor(color));
 
     final Color fgColor =
         disabled
@@ -152,14 +147,6 @@ class CustomButton extends StatelessWidget {
             : (color == ButtonColor.red || type == ButtonType.outline
                 ? AppColors.primaryText
                 : Colors.black);
-
-    final BorderSide border =
-        disabled
-            ? BorderSide(color: AppColors.gray1, width: 2.w)
-            : BorderSide(
-              color: _getBorderColor(color),
-              width: type == ButtonType.outline ? 2.w : 3.w,
-            );
 
     final double minWidth;
     final MainAxisSize mainAxisSize;
@@ -169,7 +156,7 @@ class CustomButton extends StatelessWidget {
         mainAxisSize = MainAxisSize.max;
         break;
       case ButtonWidthMode.fixed:
-        minWidth = width ?? 42.w;
+        minWidth = width ?? 36.w;
         mainAxisSize = MainAxisSize.min;
         break;
       case ButtonWidthMode.hug:
@@ -178,29 +165,25 @@ class CustomButton extends StatelessWidget {
         break;
     }
 
-    final ButtonStyle style = _buttonStyle(
-      mainColor,
-      fgColor,
-      border,
-      minWidth,
-    );
+    final ButtonStyle style = _buttonStyle(mainColor, fgColor, minWidth);
 
-    return type != ButtonType.outline
-        ? Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(11.r),
-            border: disabled ? null : Border(right: border, bottom: border),
-          ),
-          child: TextButton(
-            onPressed: disabled ? null : onPressed,
-            style: style,
-            child: _buildChild(fgColor, mainAxisSize),
-          ),
-        )
-        : TextButton(
-          onPressed: disabled ? null : onPressed,
-          style: style,
-          child: _buildChild(fgColor, mainAxisSize),
-        );
+    return Container(
+      decoration:
+          (type != ButtonType.outline && !disabled)
+              ? BoxDecoration(
+                color: mainColor,
+                border: Border(
+                  right: BorderSide(color: _getBorderColor(color), width: 2.w),
+                  bottom: BorderSide(color: _getBorderColor(color), width: 2.w),
+                ),
+                borderRadius: BorderRadius.circular(8.r),
+              )
+              : null,
+      child: TextButton(
+        onPressed: disabled ? null : onPressed,
+        style: style,
+        child: _buildChild(fgColor, mainAxisSize),
+      ),
+    );
   }
 }
