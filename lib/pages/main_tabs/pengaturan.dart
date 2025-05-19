@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:timetocode/components/popups/confirm_popup.dart';
 import 'package:timetocode/components/setting_item.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
@@ -57,55 +56,50 @@ class _PengaturanPageState extends State<PengaturanPage> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      //untuk popup tombol back
-      canPop: false,
-      onPopInvokedWithResult: (didPop, result) => {exitPopup(context)},
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('Pengaturan', style: AppTypography.heading6()),
-          toolbarHeight: 56.h,
-          backgroundColor: AppColors.surfaceDark,
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(1),
-            child: Container(height: 1, color: AppColors.black1),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Pengaturan', style: AppTypography.heading6()),
+        toolbarHeight: 56.h,
+        backgroundColor: AppColors.surfaceDark,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1),
+          child: Container(height: 1, color: AppColors.black1),
         ),
-        body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Pengaturan Aplikasi', style: AppTypography.small()),
-              // SizedBox(height: 8.h),
-              // SettingItem(
-              //   icon: Icon(Icons.volume_up),
-              //   label: "Efek Suara",
-              //   value: _efekSuara,
-              //   onChanged: (value) {
-              //     setState(() {
-              //       _efekSuara = value;
-              //       _updateEfekSuara(value);
-              //     });
-              //     //  MusicService.updateEfekSuara(value);
-              //   },
-              // ),
-              SizedBox(height: 8.h),
-              SettingItem(
-                icon: Icon(Icons.music_note_sharp),
-                label: "Musik Latar",
-                value: _musikLatar,
-                onChanged: (value) {
-                  setState(() {
-                    _musikLatar = value;
-                    _updateMusikLatar(value);
-                  });
-                  MusicService.updateMusikLatar(value);
-                },
-              ),
-            ],
-          ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Pengaturan Aplikasi', style: AppTypography.small()),
+            // SizedBox(height: 8.h),
+            // SettingItem(
+            //   icon: Icon(Icons.volume_up),
+            //   label: "Efek Suara",
+            //   value: _efekSuara,
+            //   onChanged: (value) {
+            //     setState(() {
+            //       _efekSuara = value;
+            //       _updateEfekSuara(value);
+            //     });
+            //     //  MusicService.updateEfekSuara(value);
+            //   },
+            // ),
+            SizedBox(height: 8.h),
+            SettingItem(
+              icon: Icon(Icons.music_note_sharp),
+              label: "Musik Latar",
+              value: _musikLatar,
+              onChanged: (value) {
+                setState(() {
+                  _musikLatar = value;
+                  _updateMusikLatar(value);
+                });
+                MusicService.updateMusikLatar(value);
+              },
+            ),
+          ],
         ),
       ),
     );
