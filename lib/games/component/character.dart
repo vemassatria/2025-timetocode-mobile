@@ -14,7 +14,7 @@ class StoryCharactersComponent extends Component {
     this.person2Path,
     this.currentIndex1,
     this.currentIndex2,
-  );
+  ) : super(priority: 100);
 
   @override
   Future<void> onLoad() async {
@@ -33,8 +33,8 @@ class StoryCharactersComponent extends Component {
     int indexPerson1Path,
     int indexPerson2Path,
   ) async {
-    final image1 = await _game.images.load('character/$person1Path.webp');
-    final image2 = await _game.images.load('character/$person2Path.webp');
+    final image1 = await _game.images.fromCache('character/$person1Path.webp');
+    final image2 = await _game.images.fromCache('character/$person2Path.webp');
 
     final height = _game.size.y * 0.7;
     final width1 = image1.width / image1.height * height;
@@ -67,7 +67,9 @@ class StoryCharactersComponent extends Component {
     String characterNewPath,
     int newIndexPath,
   ) async {
-    final image = await _game.images.load('character/$characterNewPath.webp');
+    final image = await _game.images.fromCache(
+      'character/$characterNewPath.webp',
+    );
     final height = _game.size.y * 0.7;
     final width = image.width / image.height * height;
 
@@ -136,6 +138,38 @@ class StoryCharactersComponent extends Component {
       normalSizeCharacter(indexSecondCharacter),
       enhancedSizeCharacter(indexMainCharacter),
       negroCharacter(indexSecondCharacter),
+    ]);
+  }
+
+  Future<void> transparentCharacter(int indexCharacter) async {
+    final target = indexCharacter == 1 ? person1 : person2;
+    target.paint =
+        Paint()
+          ..colorFilter = ColorFilter.mode(Colors.transparent, BlendMode.dstIn);
+  }
+
+  Future<void> explainingCharacter(int indexCharacter) async {
+    final target = indexCharacter == 1 ? person1 : person2;
+    final halfHeight = _game.size.y * 0.825 * 0.9;
+    final halfWidth =
+        target.sprite!.srcSize.x / target.sprite!.srcSize.y * halfHeight;
+    final halfPosition =
+        indexCharacter == 1
+            ? Vector2(_game.size.x * 0.85, _game.size.y * 0.95)
+            : Vector2(_game.size.x * -0.05, _game.size.y * 0.95);
+
+    target
+      ..size = Vector2(halfWidth, halfHeight)
+      ..position = halfPosition;
+  }
+
+  Future<void> explainEmotion(int indexMainCharacter) async {
+    final int indexSecondCharacter = indexMainCharacter == 1 ? 2 : 1;
+    await Future.wait([
+      normalColorCharacter(indexMainCharacter),
+      normalSizeCharacter(indexSecondCharacter),
+      explainingCharacter(indexMainCharacter),
+      transparentCharacter(indexSecondCharacter),
     ]);
   }
 }

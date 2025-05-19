@@ -10,7 +10,6 @@ import 'package:timetocode/games/backend/providers/story_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
-import 'package:timetocode/components/popups/confirm_popup.dart';
 
 class DaftarLevelPage extends ConsumerWidget {
   const DaftarLevelPage({Key? key}) : super(key: key);
@@ -121,6 +120,7 @@ class DaftarLevelPage extends ConsumerWidget {
                     );
                   },
                 ),
+
               ),
             ),
           ),

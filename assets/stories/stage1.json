@@ -9,7 +9,7 @@
       "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
       "character2_name": "Mas Mulyo",
       "character2_reaction": ["kating-biasa", "kating-marah", "kating-senang"],
-      "ilustration": ["isi-nama-ilustrasi", "isi-nama-ilustrasi", "isi-nama-ilustrasi"],
+      "ilustration": ["contoh-ilustrasi1"],
       "start": "preDialog1",
       "typeStart": "preDialog",
       "preDialog": {
@@ -49,20 +49,21 @@
             },
             {
               "line": "Nah sebelum masuk kesitu lebih baik aku jelasin dulu soal tipe data biar kamu makin paham. Pertama ada tipe data int, biasanya dipake buat nyimpen angka bulat. Kayak umur, jumlah barang, tahun, pokoknya angka yang gak ada komanya.",
-              "reaction_index": 0,
+              "reaction_index": 1,
               "speaker": 2,
-              "ilustration": "isi-nama-ilustrasi"
+              "ilustration": "contoh-ilustrasi1"
             },
             {
               "line": "Ooh jadi kayak 18, 2025, 100 gitu ya mas?",
-              "reaction_index": 0,
-              "speaker": 1
+              "reaction_index": 2,
+              "speaker": 1,
+              "ilustration": "contoh-ilustrasi1"
             },
             {
               "line": "Bener. Kedua ada float, itu buat angka yang ada komanya. Kayak berat badan 55.5 kg, tinggi badan 160.3 cm, atau nilai ujian 89.75. Pokoknya yang ada pecahannya gitu.",
               "reaction_index": 0,
               "speaker": 2,
-              "ilustration": "isi-nama-ilustrasi"
+              "ilustration": "contoh-ilustrasi1"
             },
             {
               "line": "Berarti kalo yang ada koma-koma gitu lebih akurat pake float ya mas?",
@@ -531,6 +532,7 @@
       "character1_reaction": ["adrian-rumah-biasa", "adrian-rumah-marah", "adrian-rumah-senang"],
       "character2_name": "Kakak",
       "character2_reaction": ["tino-biasa", "tino-marah", "tino-senang"],
+      "ilustration": ["contoh-ilustrasi1"],
       "start": "preDialog2",
       "typeStart": "preDialog",
       "preDialog": {
@@ -903,6 +905,7 @@
       "character1_reaction": ["rusdi-biasa", "rusdi-marah", "rusdi-senang"],
       "character2_name": "Adrian",
       "character2_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "ilustration": ["contoh-ilustrasi1"],
       "start": "preDialog3",
       "typeStart": "preDialog",
       "preDialog": {
@@ -1279,6 +1282,7 @@
       "background": "teman-cafe",
       "character1_name": "Rusdi",
       "character1_reaction": ["rusdi-biasa", "rusdi-marah", "rusdi-senang"],
+      "ilustration": ["contoh-ilustrasi1"],
       "character2_name": "Adrian",
       "character2_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
       "start": "intro4",
@@ -1633,6 +1637,7 @@
       "background": "lab",
       "character1_name": "Adrian",
       "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "ilustration": ["contoh-ilustrasi1"],
       "character2_name": "Pak Rongga",
       "character2_reaction": ["rongga-biasa", "rongga-marah", "rongga-senang"],
       "start": "preDialog5",
@@ -1909,6 +1914,7 @@
       "background": "cafe-crush",
       "character1_name": "Adrian",
       "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "ilustration": ["contoh-ilustrasi1"],
       "character2_name": "Jennie",
       "character2_reaction": ["crush-biasa", "crush-marah", "crush-senang"],
       "start": "preDialog6",

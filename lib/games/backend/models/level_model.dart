@@ -12,6 +12,7 @@ class LevelModel {
   final String character2;
   final List<String> character1Images;
   final List<String> character2Images;
+  final List<String> ilustrations;
   final PreDialogModel? preDialog;
   final List<DialogModel> dialogs;
   final List<QuestionModel> questions;
@@ -27,6 +28,7 @@ class LevelModel {
     required this.character2,
     required this.character1Images,
     required this.character2Images,
+    required this.ilustrations,
     this.preDialog,
     required this.dialogs,
     required this.questions,
@@ -50,6 +52,8 @@ class LevelModel {
           (json['character2_reaction'] as List)
               .map((i) => i as String)
               .toList(),
+      ilustrations:
+          (json['ilustration'] as List).map((i) => i as String).toList(),
       questions:
           (json['questions'] as List)
               .map((q) => QuestionModel.fromJson(q as Map<String, dynamic>))

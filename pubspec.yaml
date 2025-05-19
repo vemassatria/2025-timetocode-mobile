@@ -66,6 +66,7 @@ flutter:
     - assets/character/
     - assets/stories/
     - assets/audio/music/
+    - assets/ilustration/
     - assets/logo/Logo.png
   fonts:
     - family: Comic Neue
