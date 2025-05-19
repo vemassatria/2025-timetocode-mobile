@@ -36,22 +36,22 @@ class StoryCharactersComponent extends Component {
     final image1 = await _game.images.fromCache('character/$person1Path.webp');
     final image2 = await _game.images.fromCache('character/$person2Path.webp');
 
-    final height = _game.size.y * 0.7;
-    final width1 = image1.width / image1.height * height;
-    final width2 = image2.width / image2.height * height;
+    // final height = _game.size.y * 0.65;
+    // final width1 = image1.width / image1.height * height;
+    // final width2 = image2.width / image2.height * height;
 
     person1 = SpriteComponent(
       sprite: Sprite(image1),
-      size: Vector2(width1, height),
-      position: Vector2(_game.size.x * 0.7, _game.size.y * 0.95),
-      anchor: Anchor.bottomRight,
+      // size: Vector2(width1, height),
+      // position: Vector2(_game.size.x * 0.65, _game.size.y * 0.65),
+      anchor: Anchor.bottomLeft,
     );
 
     person2 = SpriteComponent(
       sprite: Sprite(image2),
-      size: Vector2(width2, height),
-      position: Vector2(_game.size.x * 0.15, _game.size.y * 0.95),
-      anchor: Anchor.bottomLeft,
+      // size: Vector2(width2, height),
+      // position: Vector2(_game.size.x * 0.15, _game.size.y * 0.65),
+      anchor: Anchor.bottomRight,
     );
 
     add(person1);
@@ -70,7 +70,7 @@ class StoryCharactersComponent extends Component {
     final image = await _game.images.fromCache(
       'character/$characterNewPath.webp',
     );
-    final height = _game.size.y * 0.7;
+    final height = _game.size.y * 0.375;
     final width = image.width / image.height * height;
 
     final character = indexCharacter == 1 ? person1 : person2;
@@ -92,7 +92,7 @@ class StoryCharactersComponent extends Component {
     secondCharacter.paint =
         Paint()
           ..colorFilter = ColorFilter.mode(
-            Colors.black.withOpacity(0.75),
+            Colors.black.withOpacity(0.655),
             BlendMode.srcATop,
           );
   }
@@ -100,12 +100,15 @@ class StoryCharactersComponent extends Component {
   //membesarkan karakter
   Future<void> enhancedSizeCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
-    final height = _game.size.y * 0.825;
+    final height = _game.size.y * 0.45;
     final width = target.sprite!.srcSize.x / target.sprite!.srcSize.y * height;
     final position =
         indexCharacter == 1
-            ? Vector2(_game.size.x * 0.85, _game.size.y * 0.95)
-            : Vector2(_game.size.x * -0.05, _game.size.y * 0.95);
+            ? Vector2(_game.size.x * -0.1, _game.size.y * 0.65)
+            : Vector2(_game.size.x * 1.15, _game.size.y * 0.65);
+
+    target.priority = 101;
+
     target
       ..size = Vector2(width, height)
       ..position = position;
@@ -114,12 +117,15 @@ class StoryCharactersComponent extends Component {
   //fungsinya ini untuk mengecilkan karakter ke posisi semula
   Future<void> normalSizeCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
-    final height = _game.size.y * 0.7;
+    final height = _game.size.y * 0.375;
     final width = target.sprite!.srcSize.x / target.sprite!.srcSize.y * height;
     final position =
         indexCharacter == 1
-            ? Vector2(_game.size.x * 0.7, _game.size.y * 0.95)
-            : Vector2(_game.size.x * 0.15, _game.size.y * 0.95);
+            ? Vector2(_game.size.x * -0.1, _game.size.y * 0.65)
+            : Vector2(_game.size.x * 1.15, _game.size.y * 0.65);
+
+    target.priority = 100;
+
     target
       ..size = Vector2(width, height)
       ..position = position;
@@ -150,13 +156,13 @@ class StoryCharactersComponent extends Component {
 
   Future<void> explainingCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
-    final halfHeight = _game.size.y * 0.825 * 0.9;
+    final halfHeight = _game.size.y * 0.325;
     final halfWidth =
         target.sprite!.srcSize.x / target.sprite!.srcSize.y * halfHeight;
     final halfPosition =
         indexCharacter == 1
-            ? Vector2(_game.size.x * 0.85, _game.size.y * 0.95)
-            : Vector2(_game.size.x * -0.05, _game.size.y * 0.95);
+            ? Vector2(_game.size.x * -0.1, _game.size.y * 0.65)
+            : Vector2(_game.size.x * 1.15, _game.size.y * 0.65);
 
     target
       ..size = Vector2(halfWidth, halfHeight)
