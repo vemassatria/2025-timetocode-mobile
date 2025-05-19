@@ -27,8 +27,8 @@ class MyApp extends ConsumerWidget {
     final game = ref.read(gameEngineProvider);
     return MaterialApp(
       title: 'Time to Code',
-      themeMode: ThemeMode.dark,
       darkTheme: AppThemes.darkTheme,
+      themeMode: ThemeMode.dark,
       home: RiverpodAwareGameWidget<GameEngine>(
         game: game,
         key: gameWidgetKey,
