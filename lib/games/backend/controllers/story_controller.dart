@@ -123,6 +123,7 @@ class StoryController extends AsyncNotifier<StoryState> {
       resource.preloadCharacters(
         level.character1Images + level.character2Images,
       ),
+      resource.preloadIlustrations(level.ilustrations),
     ]);
     state = AsyncValue.data(state.value!.copyWith(activeLevel: level));
     game.overlays.remove('GameUI');
@@ -131,7 +132,7 @@ class StoryController extends AsyncNotifier<StoryState> {
     } else {
       showDialog(level.start);
     }
-    await game.loadScene(level.background);
+    await game.loadBackground(level.background);
   }
 
   void showPreDialog() {
@@ -170,12 +171,15 @@ class StoryController extends AsyncNotifier<StoryState> {
     final c1Reaction = firstIdx == 1 ? firstReact : 0;
     final c2Reaction = firstIdx == 2 ? firstReact : 0;
 
+    final ilustration = dialog.getIlustration(0);
+
     await game.showCharacters(
       char1Img: level.character1Images[c1Reaction],
       char2Img: level.character2Images[c2Reaction],
       c1Reaction: c1Reaction,
       c2Reaction: c2Reaction,
       speaker: firstIdx == 1 ? 1 : 2,
+      isIllustration: ilustration != null,
     );
     state = AsyncValue.data(
       state.value!.copyWith(
@@ -186,6 +190,14 @@ class StoryController extends AsyncNotifier<StoryState> {
         activeMode: "dialog",
       ),
     );
+
+    if (ilustration != null) {
+      game.showIlustration(ilustration);
+    } else {
+      if (game.ilustration != null) {
+        game.hideIlustration();
+      }
+    }
 
     _showContentOverlay('Dialog');
   }
@@ -199,6 +211,7 @@ class StoryController extends AsyncNotifier<StoryState> {
     if (nextIdx < length) {
       final charIdx = dialog.getCharacterIndex(nextIdx);
       final charReact = dialog.getReactionIndex(nextIdx);
+      final ilustration = dialog.getIlustration(nextIdx);
 
       state = AsyncValue.data(s.copyWith(indexDialog: nextIdx));
       if (charIdx == 1) {
@@ -206,13 +219,23 @@ class StoryController extends AsyncNotifier<StoryState> {
           char1Img: s.activeLevel!.character1Images[charReact],
           c1Reaction: charReact,
           speaker: 1,
+          isIllustration: ilustration != null,
         );
       } else {
         game.showCharacters(
           char2Img: s.activeLevel!.character2Images[charReact],
           c2Reaction: charReact,
           speaker: 2,
+          isIllustration: ilustration != null,
         );
+      }
+
+      if (ilustration != null) {
+        game.showIlustration(ilustration);
+      } else {
+        if (game.ilustration != null) {
+          game.hideIlustration();
+        }
       }
     } else {
       if (dialog.nextType == 'soal') {
@@ -288,16 +311,15 @@ class StoryController extends AsyncNotifier<StoryState> {
         falsePrevious: null,
       ),
     );
-    game.removeCharacters();
+    game.removeStoryResources();
     _showContentOverlay('EndGame', withMenu: false);
-    game.loadScene('default');
   }
 
   void endStory() {
     ref
         .read(completedLevelProvider.notifier)
         .setCompletedLevel(state.value!.activeLevel!.level);
-    resource.clearGameResources();
+    resource.clearStoryResources();
     _showContentOverlay('GameUI', withMenu: false);
     state = AsyncValue.data(
       state.value!.copyWith(
@@ -339,12 +361,11 @@ class StoryController extends AsyncNotifier<StoryState> {
   }
 
   void exitLevel() {
-    resource.clearGameResources();
-    game.removeCharacters();
+    resource.clearStoryResources();
+    game.removeStoryResources();
     _clearStoryContents();
     game.overlays.remove('StoryMenu');
     game.overlays.add('GameUI');
-    game.loadScene('default');
     state = AsyncValue.data(
       state.value!.copyWith(
         preDialog: null,

@@ -20,7 +20,7 @@ class SceneBackgroundComponent extends SpriteComponent {
   }
 
   Future<void> loadScene(String sceneName) async {
-    final image = await game.images.load('background/$sceneName.webp');
+    final image = await game.images.fromCache('background/$sceneName.webp');
     sprite = Sprite(image);
 
     size = game.size;

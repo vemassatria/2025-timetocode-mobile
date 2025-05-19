@@ -2,29 +2,28 @@ import 'package:flame/game.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:timetocode/games/component/background.dart';
 import 'package:timetocode/games/component/character.dart';
+import 'package:timetocode/games/component/ilustration.dart';
 
 class GameEngine extends FlameGame with RiverpodGameMixin {
-  late SceneBackgroundComponent _background;
+  SceneBackgroundComponent? _background;
   StoryCharactersComponent? _characters;
+  StoryIlustrationComponent? _ilustration;
 
   @override
   Future<void> onLoad() async {
     images.prefix = 'assets/';
     await super.onLoad();
-    _background = SceneBackgroundComponent(size: size);
-    add(_background);
   }
 
   @override
   void onRemove() {
     super.onRemove();
-    _background.removeFromParent();
-    _characters?.removeFromParent();
-    _characters = null;
+    removeStoryResources();
   }
 
-  Future<void> loadScene(String name) async {
-    await _background.loadScene(name);
+  Future<void> loadBackground(String name) async {
+    _background = SceneBackgroundComponent(size: size, currentScene: name);
+    await add(_background!);
   }
 
   Future<void> showCharacters({
@@ -33,6 +32,7 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
     int? c1Reaction,
     int? c2Reaction,
     required int speaker,
+    required bool isIllustration,
   }) async {
     if (_characters == null) {
       _characters = StoryCharactersComponent(
@@ -50,12 +50,19 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
           _characters!.changeCharacter(2, char2Img!, c2Reaction),
       ]);
     }
-    await _characters!.changeEmotion(speaker);
+    if (isIllustration)
+      await _characters!.explainEmotion(speaker);
+    else
+      await _characters!.changeEmotion(speaker);
   }
 
-  void removeCharacters() {
+  void removeStoryResources() {
     _characters?.removeFromParent();
+    _background?.removeFromParent();
+    _ilustration?.removeFromParent();
+    _background = null;
     _characters = null;
+    _ilustration = null;
   }
 
   void hideCharacters() {
@@ -66,5 +73,21 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
     add(_characters!);
   }
 
+  Future<void> showIlustration(String ilustrationPath) async {
+    if (_ilustration == null) {
+      _ilustration = StoryIlustrationComponent(ilustrationPath);
+    } else {
+      if (_ilustration!.ilustrationPath != ilustrationPath) {
+        await _ilustration!.changeIlustration(ilustrationPath);
+      }
+    }
+    await add(_ilustration!);
+  }
+
+  void hideIlustration() {
+    _ilustration?.removeFromParent();
+  }
+
   get characters => _characters;
+  get ilustration => _ilustration;
 }

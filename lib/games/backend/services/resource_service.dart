@@ -5,6 +5,7 @@ class ResourceService {
   final Images images;
   final Set<String> _loadedBackground = {};
   final Set<String> _loadedCharacter = {};
+  final Set<String> _loadedIlustration = {};
 
   ResourceService(this.images);
 
@@ -34,21 +35,38 @@ class ResourceService {
     );
   }
 
+  Future<void> preloadIlustrations(List<String> ilustrations) async {
+    images.prefix = 'assets/';
+    await Future.wait(
+      ilustrations
+          .where((name) => !_loadedIlustration.contains(_ilustrationKey(name)))
+          .map((name) {
+            final key = _ilustrationKey(name);
+            _loadedIlustration.add(key);
+            return images.load(key);
+          }),
+    );
+  }
+
+  void clearStoryResources() {
+    final allKeys = {..._loadedCharacter, ..._loadedIlustration};
+
+    allKeys.forEach(images.clear);
+    _loadedCharacter.clear();
+    _loadedIlustration.clear();
+    FlameAudio.bgm.stop();
+  }
+
   void clearAll() {
     images.clearCache();
     _loadedBackground.clear();
     _loadedCharacter.clear();
+    _loadedIlustration.clear();
     FlameAudio.bgm.stop();
-  }
-
-  void clearGameResources() async {
-    _loadedCharacter.forEach((key) async {
-      images.clear(key);
-    });
-    FlameAudio.bgm.stop();
-    _loadedCharacter.clear();
   }
 
   String _bgKey(String sceneName) => 'background/$sceneName.webp';
   String _charKey(String characterName) => 'character/$characterName.webp';
+  String _ilustrationKey(String ilustrationName) =>
+      'ilustration/$ilustrationName.webp';
 }

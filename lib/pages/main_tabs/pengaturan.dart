@@ -4,7 +4,6 @@ import 'package:timetocode/components/setting_item.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/games/backend/services/music_service.dart';
-import 'package:timetocode/components/popups/confirm_popup.dart';
 
 class PengaturanPage extends StatefulWidget {
   const PengaturanPage({super.key});
@@ -56,51 +55,45 @@ class _PengaturanPageState extends State<PengaturanPage> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope( //untuk popup tombol back 
-      canPop: false,
-          onPopInvokedWithResult: (didPop, result) => {
-            exitPopup(context),
-          },
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('Pengaturan', style: AppTypography.heading5()),
-          toolbarHeight: 64.h,
-        ),
-        body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Pengaturan Aplikasi', style: AppTypography.small()),
-              // SizedBox(height: 8.h),
-              // SettingItem(
-              //   icon: Icon(Icons.volume_up),
-              //   label: "Efek Suara",
-              //   value: _efekSuara,
-              //   onChanged: (value) {
-              //     setState(() {
-              //       _efekSuara = value;
-              //       _updateEfekSuara(value);
-              //     });
-              //     //  MusicService.updateEfekSuara(value);
-              //   },
-              // ),
-              SizedBox(height: 8.h),
-              SettingItem(
-                icon: Icon(Icons.music_note_sharp),
-                label: "Musik Latar",
-                value: _musikLatar,
-                onChanged: (value) {
-                  setState(() {
-                    _musikLatar = value;
-                    _updateMusikLatar(value);
-                  });
-                  MusicService.updateMusikLatar(value);
-                },
-              ),
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Pengaturan', style: AppTypography.heading5()),
+        toolbarHeight: 64.h,
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Pengaturan Aplikasi', style: AppTypography.small()),
+            // SizedBox(height: 8.h),
+            // SettingItem(
+            //   icon: Icon(Icons.volume_up),
+            //   label: "Efek Suara",
+            //   value: _efekSuara,
+            //   onChanged: (value) {
+            //     setState(() {
+            //       _efekSuara = value;
+            //       _updateEfekSuara(value);
+            //     });
+            //     //  MusicService.updateEfekSuara(value);
+            //   },
+            // ),
+            SizedBox(height: 8.h),
+            SettingItem(
+              icon: Icon(Icons.music_note_sharp),
+              label: "Musik Latar",
+              value: _musikLatar,
+              onChanged: (value) {
+                setState(() {
+                  _musikLatar = value;
+                  _updateMusikLatar(value);
+                });
+                MusicService.updateMusikLatar(value);
+              },
+            ),
+          ],
         ),
       ),
     );

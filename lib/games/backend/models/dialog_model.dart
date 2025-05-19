@@ -40,4 +40,8 @@ class DialogModel {
   int getDialogLength() {
     return dialogue.length;
   }
+
+  String? getIlustration(int index) {
+    return dialogue[index].ilustration;
+  }
 }
