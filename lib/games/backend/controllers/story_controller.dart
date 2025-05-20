@@ -320,7 +320,6 @@ class StoryController extends AsyncNotifier<StoryState> {
         showQuestion(nextId);
         return;
       }
-      // Move to the next dialog in the chain
       dialog = _dialogService.getDialogById(level, nextId);
     }
   }
