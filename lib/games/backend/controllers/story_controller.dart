@@ -300,6 +300,31 @@ class StoryController extends AsyncNotifier<StoryState> {
     }
   }
 
+  void skipToNextSoal() {
+    final s = state.value!;
+    final level = s.activeLevel;
+    if (level == null) return;
+
+    DialogModel? dialog = s.currentDialog;
+    String? nextId;
+    String? nextType;
+
+    if (dialog == null && level.dialogs.isNotEmpty) {
+      dialog = _dialogService.getDialogById(level, level.start);
+    }
+
+    while (dialog != null) {
+      nextId = dialog.next;
+      nextType = dialog.nextType;
+      if (nextType == 'soal') {
+        showQuestion(nextId);
+        return;
+      }
+      // Move to the next dialog in the chain
+      dialog = _dialogService.getDialogById(level, nextId);
+    }
+  }
+
   void showEndGame() {
     state = AsyncValue.data(
       state.value!.copyWith(
