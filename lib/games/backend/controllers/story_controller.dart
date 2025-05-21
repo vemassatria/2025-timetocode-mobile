@@ -5,6 +5,7 @@ import 'package:timetocode/games/backend/providers/game_provider.dart';
 import 'package:timetocode/games/backend/providers/level_provider.dart';
 import 'package:timetocode/games/backend/providers/resource_provider.dart';
 import 'package:timetocode/games/backend/services/resource_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../services/level_service.dart';
 import '../services/dialog_service.dart';
 import '../services/question_service.dart';
@@ -340,6 +341,8 @@ class StoryController extends AsyncNotifier<StoryState> {
   }
 
   void endStory() {
+    final currentLevel = state.value!.activeLevel;
+    markLevelAsCompleted(currentLevel!.level);
     ref
         .read(completedLevelProvider.notifier)
         .setCompletedLevel(state.value!.activeLevel!.level);
@@ -384,6 +387,16 @@ class StoryController extends AsyncNotifier<StoryState> {
     }
   }
 
+  Future<void> markLevelAsCompleted(int level) async {
+    final prefs = await SharedPreferences.getInstance();
+    final completed = prefs.getStringList('completedLevels') ?? [];
+
+    if (!completed.contains(level.toString())) {
+      completed.add(level.toString());
+      await prefs.setStringList('completed_level', completed);
+    }
+  }
+
   void exitLevel() {
     resource.clearStoryResources();
     game.removeStoryResources();
@@ -410,6 +423,12 @@ class StoryController extends AsyncNotifier<StoryState> {
     for (final name in ['Intro', 'Dialog', 'Question', 'EndGame']) {
       o.remove(name);
     }
+  }
+
+  Future<bool> isLevelCompleted(int level) async {
+    final prefs = await SharedPreferences.getInstance();
+    final completed = prefs.getStringList('completedLevels') ?? [];
+    return completed.contains(level.toString());
   }
 
   void _showContentOverlay(String contentName, {bool withMenu = true}) {

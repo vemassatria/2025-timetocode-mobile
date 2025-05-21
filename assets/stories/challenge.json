@@ -17,25 +17,25 @@
                   {
                     "text": "a",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "b",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "c",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "d",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -50,25 +50,25 @@
                   {
                     "text": "a",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "b",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "c",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "d",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -122,25 +122,25 @@
                   {
                     "text": "a. Istrinya Malano",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "b. Manager",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "c. Dosen",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "d. Guru",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -155,25 +155,25 @@
                   {
                     "text": "a. emma myers",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "b. Frieren",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "c. clairo",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "d. semua pilihan benar",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   }
                 ]
