@@ -6,6 +6,8 @@ import 'package:timetocode/pages/main_tabs/pengaturan.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
+import 'package:timetocode/components/popups/popscope_popups.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -34,10 +36,22 @@ class _MainNavigationState extends State<MainNavigation> {
 
     final pages = <Widget>[DaftarLevelPage(), Scaffold(), PengaturanPage()];
 
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: pages[_selectedIndex],
-      bottomNavigationBar: _buildBottomNavigationBar(),
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+            if(PopscopePopups.isPopScopeActive()){
+              exitPopup(context);
+              PopscopePopups.setPopScope(false);
+            }else{
+              closePopupOverlay();
+              PopscopePopups.setPopScope(true);
+            }
+          },
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: pages[_selectedIndex],
+        bottomNavigationBar: _buildBottomNavigationBar(),
+      ),
     );
   }
 
@@ -83,3 +97,5 @@ class _MainNavigationState extends State<MainNavigation> {
     );
   }
 }
+
+
