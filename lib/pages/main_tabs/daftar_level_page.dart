@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/components/card.dart';
 import 'package:timetocode/components/popups/info_popup.dart';
-import 'package:timetocode/games/backend/providers/level_provider.dart';
+import 'package:timetocode/games/backend/providers/daftar_level_provider.dart';
 import 'package:timetocode/games/backend/providers/resource_provider.dart';
 import 'package:timetocode/games/backend/providers/story_provider.dart';
 import 'package:timetocode/themes/colors.dart';

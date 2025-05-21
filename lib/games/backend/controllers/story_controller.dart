@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/games/backend/game_engine.dart';
 import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/providers/game_provider.dart';
-import 'package:timetocode/games/backend/providers/level_provider.dart';
+import 'package:timetocode/games/backend/providers/daftar_level_provider.dart';
 import 'package:timetocode/games/backend/providers/resource_provider.dart';
 import 'package:timetocode/games/backend/services/resource_service.dart';
 import '../services/level_service.dart';
@@ -93,7 +93,7 @@ class StoryState {
   }
 }
 
-class StoryController extends AsyncNotifier<StoryState> {
+class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   final LevelService _levelService = LevelService();
   final DialogService _dialogService = DialogService();
   final QuestionService _questionService = QuestionService();
