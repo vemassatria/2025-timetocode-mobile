@@ -300,6 +300,30 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     }
   }
 
+  void skipToNextSoal() {
+    final s = state.value!;
+    final level = s.activeLevel;
+    if (level == null) return;
+
+    DialogModel? dialog = s.currentDialog;
+    String? nextId;
+    String? nextType;
+
+    if (dialog == null && level.dialogs.isNotEmpty) {
+      dialog = _dialogService.getDialogById(level, level.start);
+    }
+
+    while (dialog != null) {
+      nextId = dialog.next;
+      nextType = dialog.nextType;
+      if (nextType == 'soal') {
+        showQuestion(nextId);
+        return;
+      }
+      dialog = _dialogService.getDialogById(level, nextId);
+    }
+  }
+
   void showEndGame() {
     state = AsyncValue.data(
       state.value!.copyWith(
@@ -315,10 +339,16 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     _showContentOverlay('EndGame', withMenu: false);
   }
 
-  void endStory() {
-    ref
-        .read(completedLevelProvider.notifier)
-        .setCompletedLevel(state.value!.activeLevel!.level);
+  Future<void> endStory() async {
+    final completedLevel = ref.read(completedLevelProvider);
+    final currentLevel = state.value!.activeLevel;
+    if (currentLevel == null) return;
+
+    if (currentLevel.level > completedLevel) {
+      await ref
+          .read(completedLevelProvider.notifier)
+          .setCompletedLevel(currentLevel.level);
+    }
     resource.clearStoryResources();
     _showContentOverlay('GameUI', withMenu: false);
     state = AsyncValue.data(
@@ -386,6 +416,11 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     for (final name in ['Intro', 'Dialog', 'Question', 'EndGame']) {
       o.remove(name);
     }
+  }
+
+  Future<bool> isLevelCompleted(int level) async {
+    final completedLevel = ref.read(completedLevelProvider);
+    return level <= completedLevel;
   }
 
   void _showContentOverlay(String contentName, {bool withMenu = true}) {
