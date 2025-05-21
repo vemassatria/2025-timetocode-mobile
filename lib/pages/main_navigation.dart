@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/games/backend/services/music_service.dart';
+import 'package:timetocode/pages/main_tabs/challenge_page.dart';
 import 'package:timetocode/pages/main_tabs/daftar_level_page.dart';
 import 'package:timetocode/pages/main_tabs/pengaturan.dart';
 import 'package:timetocode/themes/colors.dart';
@@ -32,7 +33,7 @@ class _MainNavigationState extends State<MainNavigation> {
   Widget build(BuildContext context) {
     initScreenUtil(context);
 
-    final pages = <Widget>[DaftarLevelPage(), Scaffold(), PengaturanPage()];
+    final pages = <Widget>[DaftarLevelPage(), ChallengePage(), PengaturanPage()];
 
     return Scaffold(
       backgroundColor: Colors.transparent,
