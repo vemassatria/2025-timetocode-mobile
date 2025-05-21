@@ -11,6 +11,7 @@ import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 // import 'package:timetocode/SFX/music_service.dart';
+import 'package:timetocode/components/popups/popscope_popups.dart';
 
 // Import StoryController provider
 import 'package:timetocode/games/backend/providers/story_provider.dart';
@@ -55,90 +56,98 @@ class EndGameScreen extends ConsumerWidget {
         // Simpan level yang telah diselesaikan
         _saveCompletedLevel(completedLevel);
 
-        return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 59.5.h),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CircularStepProgressIndicator(
-                  circularDirection: CircularDirection.counterclockwise,
-                  totalSteps: totalSteps,
-                  currentStep: completedLevel,
-                  stepSize: 20,
-                  selectedColor: AppColors.xpGreen,
-                  unselectedColor: AppColors.gray1,
-                  height: 250.h,
-                  width: 250.w,
-                  child: Center(
-                    child: Text(
-                      '$completedLevel/$maxLevel',
-                      style: AppTypography.heading1().copyWith(
-                        decoration: TextDecoration.none,
+        return PopScope(
+          canPop: false,
+          onPopInvokedWithResult: (didPop, result) {
+            if(PopscopePopups.isPopScopeActive()){
+              endGamePopup(context, ref);
+              PopscopePopups.setPopScope(false);
+            }else{
+              closePopupOverlay();
+              PopscopePopups.setPopScope(true);
+            }
+          },
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 59.5.h),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircularStepProgressIndicator(
+                    circularDirection: CircularDirection.counterclockwise,
+                    totalSteps: totalSteps,
+                    currentStep: completedLevel,
+                    stepSize: 20,
+                    selectedColor: AppColors.xpGreen,
+                    unselectedColor: AppColors.gray1,
+                    height: 250.h,
+                    width: 250.w,
+                    child: Center(
+                      child: Text(
+                        '$completedLevel/$maxLevel',
+                        style: AppTypography.heading1().copyWith(
+                          decoration: TextDecoration.none,
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-                SizedBox(height: 32.h),
+                  SizedBox(height: 32.h),
 
-                Text(
-                  'Level $completedLevel Selesai',
-                  style: AppTypography.heading4().copyWith(
-                    decoration: TextDecoration.none,
+                  Text(
+                    'Level $completedLevel Selesai',
+                    style: AppTypography.heading4().copyWith(
+                      decoration: TextDecoration.none,
+                    ),
                   ),
-                ),
 
-                SizedBox(height: 16.h),
+                  SizedBox(height: 16.h),
 
-                CustomButton(
-                  label: "Rangkuman",
-                  icon: const Icon(Icons.chrome_reader_mode),
-                  color: ButtonColor.purple,
-                  type: ButtonType.iconLabel,
-                  onPressed: () {
-                    // MusicService.sfxButton2Click();
-                    showPopupOverlay(
-                      context,
-                      InfoPopup(
-                        title: "Rangkuman",
-                        summaryList: activeLevel.summary!,
-                        variant: InfoPopupVariant.summary,
-                        onClose: () {
-                          // MusicService.sfxNegativeClick();
-                          closePopupOverlay();
-                        },
-                      ),
-                    );
-                  },
-                ),
+                  CustomButton(
+                    label: "Rangkuman",
+                    icon: const Icon(Icons.chrome_reader_mode),
+                    color: ButtonColor.purple,
+                    type: ButtonType.iconLabel,
+                    onPressed: () {
+                      // MusicService.sfxButton2Click();
+                      showPopupOverlay(
+                        context,
+                        InfoPopup(
+                          title: "Rangkuman",
+                          summaryList: activeLevel.summary!,
+                          variant: InfoPopupVariant.summary,
+                          onClose: () {
+                            // MusicService.sfxNegativeClick();
+                            closePopupOverlay();
+                          },
+                        ),
+                      );
+                    },
+                  ),
 
-                SizedBox(height: 64.h),
+                  SizedBox(height: 64.h),
 
-                GameStats(
-                  correct: correctAnswer,
-                  wrong: wrongAnswer,
-                  total: totalAnswer,
-                ),
+                  GameStats(
+                    correct: correctAnswer,
+                    wrong: wrongAnswer,
+                    total: totalAnswer,
+                  ),
 
-                SizedBox(height: 64.h),
+                  SizedBox(height: 64.h),
 
-                CustomButton(
-                  label: "Lanjutkan",
-                  widthMode: ButtonWidthMode.fill,
-                  onPressed: () {
-                    // MusicService.sfxSelectClick();
+                  CustomButton(
+                    label: "Lanjutkan",
+                    widthMode: ButtonWidthMode.fill,
+                    onPressed: () {
+                      // MusicService.sfxSelectClick();
 
-                    // Gunakan StoryController untuk mengakhiri permainan
-                    final storyController = ref.read(
-                      storyControllerProvider.notifier,
-                    );
-
-                    storyController.endStory();
-                  },
-                ),
-              ],
+                      // Gunakan StoryController untuk mengakhiri permainan
+                      endGamePopup(context, ref);
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         );

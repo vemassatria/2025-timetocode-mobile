@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/menu_button.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
+import 'package:timetocode/components/popups/popscope_popups.dart';
 
 // Import StoryController provider
 import 'package:timetocode/games/backend/providers/story_provider.dart';
@@ -28,39 +29,51 @@ class StoryPage extends ConsumerWidget {
             body: Center(child: Text('Error: $error')),
           ),
       data: (storyState) {
-        return Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Stack(
-            children: [
-              // Menu button
-              Positioned(
-                top: 0,
-                left: 0,
-                child: SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 16.h),
-                    child: MenuButton(
-                      onRestart: () {
-                        // Gunakan StoryController untuk me-restart level
-                        final storyController = ref.read(
-                          storyControllerProvider.notifier,
-                        );
-                        storyController.restartLevel();
-                        closePopupOverlay();
-                      },
-                      onExit: () {
-                        // Gunakan StoryController untuk mengakhiri cerita
-                        final storyController = ref.read(
-                          storyControllerProvider.notifier,
-                        );
-                        storyController.exitLevel();
-                        closePopupOverlay();
-                      },
+        return PopScope(
+          canPop: false,
+          onPopInvokedWithResult: (didPop, result) {
+            if(PopscopePopups.isPopScopeActive()){
+              PopscopePopups.openMenuPopup(context, ref);
+              PopscopePopups.setPopScope(false);
+            }else{
+              closePopupOverlay();
+              PopscopePopups.setPopScope(true);
+            }
+          },
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Stack(
+              children: [
+                // Menu button
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: SafeArea(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 16.h),
+                      child: MenuButton(
+                        onRestart: () {
+                          // Gunakan StoryController untuk me-restart level
+                          final storyController = ref.read(
+                            storyControllerProvider.notifier,
+                          );
+                          storyController.restartLevel();
+                          closePopupOverlay();
+                        },
+                        onExit: () {
+                          // Gunakan StoryController untuk mengakhiri cerita
+                          final storyController = ref.read(
+                            storyControllerProvider.notifier,
+                          );
+                          storyController.exitLevel();
+                          closePopupOverlay();
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
