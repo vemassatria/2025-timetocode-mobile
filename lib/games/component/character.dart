@@ -148,7 +148,7 @@ class StoryCharactersComponent extends Component {
 
   Future<void> explainingCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
-    final halfHeight = _game.size.y * 0.325;
+    final halfHeight = _game.size.y * 0.3;
     final halfWidth =
         target.sprite!.srcSize.x / target.sprite!.srcSize.y * halfHeight;
     final halfPosition =
