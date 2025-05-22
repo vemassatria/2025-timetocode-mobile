@@ -73,12 +73,21 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
     add(_characters!);
   }
 
-  Future<void> showIlustration(String ilustrationPath) async {
+  Future<void> showIlustration({
+    String? ilustrationPath,
+    int? ilustrationIndex,
+  }) async {
     if (_ilustration == null) {
-      _ilustration = StoryIlustrationComponent(ilustrationPath);
+      _ilustration = StoryIlustrationComponent(
+        ilustrationPath!,
+        ilustrationIndex!,
+      );
     } else {
-      if (_ilustration!.ilustrationPath != ilustrationPath) {
-        await _ilustration!.changeIlustration(ilustrationPath);
+      if (_ilustration!.currentIndex != ilustrationIndex) {
+        await _ilustration!.changeIlustration(
+          ilustrationPath!,
+          ilustrationIndex!,
+        );
       }
     }
     await add(_ilustration!);

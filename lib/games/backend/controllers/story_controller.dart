@@ -171,7 +171,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     final c1Reaction = firstIdx == 1 ? firstReact : 0;
     final c2Reaction = firstIdx == 2 ? firstReact : 0;
 
-    final ilustration = dialog.getIlustration(0);
+    final ilustrationIndex = dialog.getIlustrationIndex(0);
 
     await game.showCharacters(
       char1Img: level.character1Images[c1Reaction],
@@ -179,7 +179,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
       c1Reaction: c1Reaction,
       c2Reaction: c2Reaction,
       speaker: firstIdx == 1 ? 1 : 2,
-      isIllustration: ilustration != null,
+      isIllustration: ilustrationIndex != null,
     );
     state = AsyncValue.data(
       state.value!.copyWith(
@@ -191,8 +191,11 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
       ),
     );
 
-    if (ilustration != null) {
-      game.showIlustration(ilustration);
+    if (ilustrationIndex != null) {
+      await game.showIlustration(
+        ilustrationPath: level.ilustrations[ilustrationIndex],
+        ilustrationIndex: ilustrationIndex,
+      );
     } else {
       if (game.ilustration != null) {
         game.hideIlustration();
@@ -211,7 +214,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     if (nextIdx < length) {
       final charIdx = dialog.getCharacterIndex(nextIdx);
       final charReact = dialog.getReactionIndex(nextIdx);
-      final ilustration = dialog.getIlustration(nextIdx);
+      final ilustrationIndex = dialog.getIlustrationIndex(nextIdx);
 
       state = AsyncValue.data(s.copyWith(indexDialog: nextIdx));
       if (charIdx == 1) {
@@ -219,19 +222,22 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
           char1Img: s.activeLevel!.character1Images[charReact],
           c1Reaction: charReact,
           speaker: 1,
-          isIllustration: ilustration != null,
+          isIllustration: ilustrationIndex != null,
         );
       } else {
         game.showCharacters(
           char2Img: s.activeLevel!.character2Images[charReact],
           c2Reaction: charReact,
           speaker: 2,
-          isIllustration: ilustration != null,
+          isIllustration: ilustrationIndex != null,
         );
       }
 
-      if (ilustration != null) {
-        game.showIlustration(ilustration);
+      if (ilustrationIndex != null) {
+        game.showIlustration(
+          ilustrationPath: s.activeLevel!.ilustrations[ilustrationIndex],
+          ilustrationIndex: ilustrationIndex,
+        );
       } else {
         if (game.ilustration != null) {
           game.hideIlustration();

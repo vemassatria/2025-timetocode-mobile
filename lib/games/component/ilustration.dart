@@ -7,8 +7,9 @@ class StoryIlustrationComponent extends Component {
   late final SpriteComponent ilustration;
   late final RectangleComponent border;
   late final FlameGame _game;
+  int currentIndex = 0;
 
-  StoryIlustrationComponent(this.ilustrationPath);
+  StoryIlustrationComponent(this.ilustrationPath, this.currentIndex);
 
   @override
   Future<void> onLoad() async {
@@ -41,28 +42,27 @@ class StoryIlustrationComponent extends Component {
     addAll([border, ilustration]);
   }
 
-  Future<void> changeIlustration(String newPath) async {
-    ilustration.removeFromParent();
-    border.removeFromParent();
-
-    final image = await _game.images.fromCache('ilustration/$newPath.webp');
+  Future<void> changeIlustration(
+    String newIlustrationPath,
+    int newIndexPath,
+  ) async {
+    final image = await _game.images.fromCache(
+      'ilustration/$newIlustrationPath.webp',
+    );
 
     final size = Vector2.all(350);
     final borderWidth = 4.0;
-    final position = Vector2((_game.size.x - size.x) / 2, _game.size.y * 0.3);
-
-    border = RectangleComponent(
-      position: position - Vector2.all(borderWidth),
-      size: size + Vector2.all(borderWidth * 2),
-      paint: Paint()..color = Colors.black,
-      priority: -101,
-    );
+    final position = Vector2((_game.size.x - size.x) / 2, _game.size.y * 0.15);
 
     ilustration
       ..sprite = Sprite(image)
       ..size = size
       ..position = position;
 
-    addAll([border, ilustration]);
+    border
+      ..position = position - Vector2.all(borderWidth)
+      ..size = size + Vector2.all(borderWidth * 2);
+
+    currentIndex = newIndexPath;
   }
 }

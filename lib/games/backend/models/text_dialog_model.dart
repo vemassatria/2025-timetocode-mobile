@@ -2,7 +2,7 @@ class TextDialogModel {
   final String line;
   final int reactionIndex;
   final int characterIndex;
-  final String? ilustration;
+  final int? ilustration;
 
   TextDialogModel({
     required this.line,
@@ -16,7 +16,7 @@ class TextDialogModel {
       line: json['line'] as String? ?? '',
       reactionIndex: json['reaction_index'] as int? ?? 0,
       characterIndex: json['speaker'] as int? ?? 1,
-      ilustration: json['ilustration'] as String?,
+      ilustration: json['ilustration_index'] as int?,
     );
   }
 }
