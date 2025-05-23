@@ -19,7 +19,7 @@ class CompletedChallengeNotifier extends StateNotifier<int> {
     state = level;
   }
 
-  Future<int> getCompletedChallengeStars(int level) async {
+  int getCompletedChallengeStars(int level) {
     return _prefs.getInt('completedChallengeStars$level') ?? 0;
   }
 }

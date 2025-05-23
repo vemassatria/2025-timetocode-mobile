@@ -1,11 +1,11 @@
 {
   "challenges": [
     {
-      "challenge_id": "1",
+      "challenge_id": 1,
       "title": "Judul Materi",
       "levels": [
         {
-          "id": "soal1_1",
+          "id": 1,
           "level_name": "Level 1",
           "questions": {
             "mudah": [
@@ -110,7 +110,7 @@
           }
         },
         {
-          "id": "soal2_1",
+          "id": 2,
           "level_name": "Level 2: Aku cinta Clairo",
           "questions": {
             "mudah": [
