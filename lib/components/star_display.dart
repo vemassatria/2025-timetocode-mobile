@@ -33,7 +33,7 @@ class StarDisplay extends StatelessWidget {
     
     return Stack(
       children: [
-        // Border putih (layer paling luar)
+        // Border putih 
         Icon(
           Icons.star,
           size: starSize + 4, 

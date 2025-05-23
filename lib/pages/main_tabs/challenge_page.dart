@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 //import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/components/challengecard.dart';
 import 'package:timetocode/themes/colors.dart';
+import 'package:timetocode/themes/typography.dart';
 //import 'package:timetocode/games/backend/controllers/challenge_controller.dart';
 
 class ChallengePage extends StatelessWidget {
@@ -24,12 +25,9 @@ class ChallengePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
         elevation: 0,
-        title: const Text(
+        title: Text(
           'Tantangan Konsep Pemrograman',
-          style: TextStyle(
-            fontSize: 20,
-            color: AppColors.white,
-          ),
+          style: AppTypography.heading6(color: AppColors.white),
         ),
         centerTitle: true,
       ),
@@ -52,7 +50,6 @@ class ChallengePage extends StatelessWidget {
               isUnlocked: level['isUnlocked'] as bool,
               onTap: level['isUnlocked'] as bool
                   ? () {
-                      // Navigasi ke halaman challenge detail ketika card diklik
                       _navigateToChallenge(context, level['levelNumber'] as int);
                     }
                   : null,
@@ -68,12 +65,21 @@ class ChallengePage extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Level $levelNumber'),
-        content: Text('Halaman detail untuk Level $levelNumber akan ditampilkan di sini.'),
+        title: Text(
+          'Level $levelNumber',
+          style: AppTypography.heading5(color: AppColors.primaryText),
+        ),
+        content: Text(
+          'Halaman detail untuk Level $levelNumber akan ditampilkan di sini.',
+          style: AppTypography.normal(color: AppColors.primaryText),
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Tutup'),
+            child: Text(
+              'Tutup',
+              style: AppTypography.normalBold(color: AppColors.primaryText),
+            ),
           ),
         ],
       ),

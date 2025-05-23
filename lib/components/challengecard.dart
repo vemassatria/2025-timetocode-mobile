@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../themes/colors.dart';
 import 'star_display.dart';
+import '../themes/typography.dart';
 
 class ChallengeCard extends StatelessWidget {
   final int levelNumber;
@@ -26,30 +27,24 @@ class ChallengeCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.surfaceDark,
             borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.black1,
-                offset: const Offset(2, 6),
-                spreadRadius: 6,
-              ),
-            ],
+            border: Border(
+              left: BorderSide(color: AppColors.black1, width: 3),
+              top: BorderSide(color: AppColors.black1, width: 3),
+              right: BorderSide(color: AppColors.black1, width: 3),
+              bottom: BorderSide(color: AppColors.black1, width: 10),
+            ),
           ),
-          padding: const EdgeInsets.fromLTRB(12, 12, 12, 16),
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (isUnlocked) ...[
                 Text(
                   levelNumber.toString(),
-                  style: const TextStyle(
-                    fontSize: 42,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.primaryText,
-                  ),
+                  style: AppTypography.heading1(color: AppColors.primaryText),
                 ),
                 const SizedBox(height: 12),
               ],
-              // Star display & Lock
               isUnlocked
                   ? StarDisplay(starCount: starCount)
                   : _buildLockWithBorder(),
@@ -64,7 +59,6 @@ class ChallengeCard extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Border putih untuk lock
         Icon(Icons.lock, color: AppColors.primaryText, size: 96),
         Positioned(child: Icon(Icons.lock, color: AppColors.black1, size: 94)),
       ],
