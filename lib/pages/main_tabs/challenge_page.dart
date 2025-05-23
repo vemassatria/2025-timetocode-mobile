@@ -17,11 +17,11 @@ class ChallengePage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.darkBackground,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.surfaceDark,
         elevation: 0,
         title: const Text(
           'Tantangan Konsep Pemrograman',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 20, color: AppColors.white),
         ),
         centerTitle: true,
       ),
@@ -32,7 +32,7 @@ class ChallengePage extends ConsumerWidget {
             crossAxisCount: 2, // 2 kolom
             crossAxisSpacing: 16.0,
             mainAxisSpacing: 16.0,
-            childAspectRatio: 1.0, // Card berbentuk persegi
+            childAspectRatio: 1.0,
           ),
           itemCount: storyState.challenge.levels.length,
           itemBuilder: (context, index) {
