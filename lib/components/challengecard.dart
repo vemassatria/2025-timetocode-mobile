@@ -26,18 +26,15 @@ class ChallengeCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.surfaceDark,
             borderRadius: BorderRadius.circular(12),
-            boxShadow:
-                isUnlocked
-                    ? [
-                      BoxShadow(
-                        color: AppColors.black1.withOpacity(0.2),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      ),
-                    ]
-                    : null,
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.black1,
+                offset: const Offset(2, 6),
+                spreadRadius: 6,
+              ),
+            ],
           ),
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.fromLTRB(12, 12, 12, 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -47,12 +44,12 @@ class ChallengeCard extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 42,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: AppColors.primaryText,
                   ),
                 ),
                 const SizedBox(height: 12),
               ],
-              // Star display atau Lock
+              // Star display & Lock
               isUnlocked
                   ? StarDisplay(starCount: starCount)
                   : _buildLockWithBorder(),
@@ -68,18 +65,8 @@ class ChallengeCard extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         // Border putih untuk lock
-        Icon(
-          Icons.lock,
-          color: AppColors.primaryText,
-          size: 96, 
-        ),
-        Positioned(
-          child: Icon(
-            Icons.lock,
-            color: AppColors.black1,
-            size: 94,
-          ),
-        ),
+        Icon(Icons.lock, color: AppColors.primaryText, size: 96),
+        Positioned(child: Icon(Icons.lock, color: AppColors.black1, size: 94)),
       ],
     );
   }
