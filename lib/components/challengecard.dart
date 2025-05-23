@@ -26,49 +26,61 @@ class ChallengeCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.surfaceDark,
             borderRadius: BorderRadius.circular(12),
-            boxShadow: isUnlocked
-                ? [
-                    BoxShadow(
-                      color: AppColors.black1.withOpacity(0.2),
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
-                    ),
-                  ]
-                : null,
+            boxShadow:
+                isUnlocked
+                    ? [
+                      BoxShadow(
+                        color: AppColors.black1.withOpacity(0.2),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
+                      ),
+                    ]
+                    : null,
           ),
           padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Level number
-              Text(
-                levelNumber.toString(),
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: isUnlocked ? Colors.white : Colors.white.withOpacity(0.5),
+              if (isUnlocked) ...[
+                Text(
+                  levelNumber.toString(),
+                  style: const TextStyle(
+                    fontSize: 42,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              // Star display
+                const SizedBox(height: 12),
+              ],
+              // Star display atau Lock
               isUnlocked
                   ? StarDisplay(starCount: starCount)
-                  : Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        const StarDisplay(starCount: 0),
-                        if (!isUnlocked)
-                          Icon(
-                            Icons.lock,
-                            color: Colors.white.withOpacity(0.7),
-                            size: 24,
-                          ),
-                      ],
-                    ),
+                  : _buildLockWithBorder(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildLockWithBorder() {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        // Border putih untuk lock
+        Icon(
+          Icons.lock,
+          color: AppColors.primaryText,
+          size: 96, 
+        ),
+        Positioned(
+          child: Icon(
+            Icons.lock,
+            color: AppColors.black1,
+            size: 94,
+          ),
+        ),
+      ],
     );
   }
 }

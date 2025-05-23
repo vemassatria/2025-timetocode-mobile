@@ -14,7 +14,7 @@ class ChallengePage extends StatelessWidget {
       {'levelNumber': 1, 'starCount': 1, 'isUnlocked': true},
       {'levelNumber': 2, 'starCount': 2, 'isUnlocked': true},
       {'levelNumber': 3, 'starCount': 3, 'isUnlocked': true},
-      {'levelNumber': 4, 'starCount': 0, 'isUnlocked': false},
+      {'levelNumber': 4, 'starCount': 0, 'isUnlocked': true},
       {'levelNumber': 5, 'starCount': 0, 'isUnlocked': false},
       {'levelNumber': 6, 'starCount': 0, 'isUnlocked': false},
     ];
@@ -22,13 +22,13 @@ class ChallengePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.darkBackground,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.surfaceDark,
         elevation: 0,
         title: const Text(
           'Tantangan Konsep Pemrograman',
           style: TextStyle(
             fontSize: 20,
-            fontWeight: FontWeight.bold,
+            color: AppColors.white,
           ),
         ),
         centerTitle: true,
@@ -40,7 +40,7 @@ class ChallengePage extends StatelessWidget {
             crossAxisCount: 2, // 2 kolom
             crossAxisSpacing: 16.0,
             mainAxisSpacing: 16.0,
-            childAspectRatio: 1.0, // Card berbentuk persegi
+            childAspectRatio: 1.0, 
           ),
           itemCount: levelData.length,
           itemBuilder: (context, index) {
