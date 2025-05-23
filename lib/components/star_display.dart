@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../themes/colors.dart';
 
 class StarDisplay extends StatelessWidget {
-  final int starCount; // Jumlah bintang yang sudah diperoleh (0-3)
-  final double size; // Ukuran bintang (default: 24)
-  final bool isCentered; // Apakah bintang ditampilkan di tengah
+  final int starCount; // Jumlah bintang yang sudah diperoleh 
+  final double size; // Ukuran bintang
+  final bool isCentered; 
 
   const StarDisplay({
     Key? key,
@@ -19,21 +19,36 @@ class StarDisplay extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: isCentered ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
-        _buildStar(0, size * 0.8), // Kiri (kecil)
+        _buildStar(0, size ), // Kiri 
         SizedBox(width: size * 0.2),
-        _buildStar(1, size * 2), // Tengah (besar)
+        _buildStar(1, size * 2), // Tengah 
         SizedBox(width: size * 0.2),
-        _buildStar(2, size * 0.8), // Kanan (kecil)
+        _buildStar(2, size), // Kanan 
       ],
     );
   }
 
   Widget _buildStar(int index, double starSize) {
     final bool isActive = index < starCount;
-    return Icon(
-      Icons.star,
-      size: starSize,
-      color: isActive ? AppColors.rewardYellow : Colors.grey.withOpacity(0.3),
+    
+    return Stack(
+      children: [
+        // Border putih (layer paling luar)
+        Icon(
+          Icons.star,
+          size: starSize + 4, 
+          color: AppColors.primaryText,
+        ),
+        Positioned(
+          left: 2, // Offset untuk centering
+          top: 2,  
+          child: Icon(
+            Icons.star,
+            size: starSize,
+            color: isActive ? AppColors.rewardYellow : AppColors.black1,
+          ),
+        ),
+      ],
     );
   }
 }
