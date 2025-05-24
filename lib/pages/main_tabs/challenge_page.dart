@@ -4,6 +4,8 @@ import 'package:timetocode/components/challengecard.dart';
 import 'package:timetocode/games/backend/providers/challenge_provider.dart';
 import 'package:timetocode/games/backend/providers/daftar_challenge_provider.dart';
 import 'package:timetocode/themes/colors.dart';
+import 'package:timetocode/themes/typography.dart';
+//import 'package:timetocode/games/backend/controllers/challenge_controller.dart';
 
 class ChallengePage extends ConsumerWidget {
   const ChallengePage({Key? key}) : super(key: key);
@@ -19,9 +21,9 @@ class ChallengePage extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
         elevation: 0,
-        title: const Text(
+        title: Text(
           'Tantangan Konsep Pemrograman',
-          style: TextStyle(fontSize: 20, color: AppColors.white),
+          style: AppTypography.heading6(color: AppColors.white),
         ),
         centerTitle: true,
       ),
@@ -41,7 +43,15 @@ class ChallengePage extends ConsumerWidget {
             final isUnlocked = levelCompleted <= levelNumber + 1;
 
             return ChallengeCard(
-              levelNumber: levelNumber,
+              levelNumber: level['levelNumber'] as int,
+              starCount: level['starCount'] as int,
+              isUnlocked: level['isUnlocked'] as bool,
+              onTap: level['isUnlocked'] as bool
+                  ? () {
+                      _navigateToChallenge(context, level['levelNumber'] as int);
+                    }
+                  : null,
+              /*levelNumber: levelNumber,
               starCount: notifier.getCompletedChallengeStars(levelNumber),
               isUnlocked: isUnlocked,
               onTap:
@@ -50,7 +60,7 @@ class ChallengePage extends ConsumerWidget {
                         // Navigasi ke halaman challenge detail ketika card diklik
                         _navigateToChallenge(context, levelNumber);
                       }
-                      : null,
+                      : null,*/
             );
           },
         ),
@@ -62,18 +72,22 @@ class ChallengePage extends ConsumerWidget {
     // Untuk sementara, tampilkan dialog sebagai placeholder
     showDialog(
       context: context,
-      builder:
-          (context) => AlertDialog(
-            title: Text('Level $levelNumber'),
-            content: Text(
-              'Halaman detail untuk Level $levelNumber akan ditampilkan di sini.',
+      builder: (context) => AlertDialog(
+        title: Text(
+          'Level $levelNumber',
+          style: AppTypography.heading5(color: AppColors.primaryText),
+        ),
+        content: Text(
+          'Halaman detail untuk Level $levelNumber akan ditampilkan di sini.',
+          style: AppTypography.normal(color: AppColors.primaryText),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text(
+              'Tutup',
+              style: AppTypography.normalBold(color: AppColors.primaryText),
             ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: const Text('Tutup'),
-              ),
-            ],
           ),
     );
   }
