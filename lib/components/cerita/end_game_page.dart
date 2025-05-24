@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/game_stats.dart';
 import 'package:timetocode/components/popups/info_popup.dart';
+import 'package:timetocode/games/backend/providers/daftar_level_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
@@ -19,19 +19,13 @@ import 'package:timetocode/games/backend/providers/story_provider.dart';
 class EndGameScreen extends ConsumerWidget {
   const EndGameScreen({super.key});
 
-  Future<void> _saveCompletedLevel(int level) async {
-    final prefs = await SharedPreferences.getInstance();
-    if (prefs.getInt('completedLevel')! < level) {
-      await prefs.setInt('completedLevel', level);
-    }
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     initScreenUtil(context);
 
     // Watch story state
     final storyStateAsync = ref.watch(storyControllerProvider);
+    final levelNotifier = ref.read(completedLevelProvider.notifier);
 
     return storyStateAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),
@@ -53,16 +47,15 @@ class EndGameScreen extends ConsumerWidget {
         final completedLevel = currentLevelIndex + 1;
         final maxLevel = totalSteps;
 
-        // Simpan level yang telah diselesaikan
-        _saveCompletedLevel(completedLevel);
+        levelNotifier.setCompletedLevel(completedLevel);
 
         return PopScope(
           canPop: false,
           onPopInvokedWithResult: (didPop, result) {
-            if(PopscopePopups.isPopScopeActive()){
+            if (PopscopePopups.isPopScopeActive()) {
               endGamePopup(context, ref);
               PopscopePopups.setPopScope(false);
-            }else{
+            } else {
               closePopupOverlay();
               PopscopePopups.setPopScope(true);
             }
