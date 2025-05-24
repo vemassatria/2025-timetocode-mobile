@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:timetocode/utils/screen_utils.dart';
 import '../themes/colors.dart';
 import 'star_display.dart';
 import '../themes/typography.dart';
@@ -19,37 +21,38 @@ class ChallengeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     return GestureDetector(
-      onTap: isUnlocked ? onTap : null,
-      child: Opacity(
-        opacity: isUnlocked ? 1.0 : 0.6,
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.surfaceDark,
-            borderRadius: BorderRadius.circular(12),
-            border: Border(
-              left: BorderSide(color: AppColors.black1, width: 3),
-              top: BorderSide(color: AppColors.black1, width: 3),
-              right: BorderSide(color: AppColors.black1, width: 3),
-              bottom: BorderSide(color: AppColors.black1, width: 10),
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.surfaceDark,
+          borderRadius: BorderRadius.circular(8.r),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.black1,
+              offset: const Offset(0, 6),
+              blurRadius: 0,
+              spreadRadius: 0,
             ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (isUnlocked) ...[
-                Text(
-                  levelNumber.toString(),
-                  style: AppTypography.heading1(color: AppColors.primaryText),
-                ),
-                const SizedBox(height: 12),
-              ],
-              isUnlocked
-                  ? StarDisplay(starCount: starCount)
-                  : _buildLockWithBorder(),
-            ],
-          ),
+          ],
+          border: Border.all(width: 2.w),
+        ),
+        padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (isUnlocked) ...[
+              Text(
+                levelNumber.toString(),
+                style: AppTypography.heading1(color: AppColors.primaryText),
+              ),
+              SizedBox(height: 2.h),
+              StarDisplay(starCount: starCount),
+            ] else
+              _buildLockWithBorder(),
+          ],
         ),
       ),
     );
