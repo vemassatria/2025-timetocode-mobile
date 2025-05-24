@@ -1,16 +1,16 @@
 {
   "challenges": [
     {
-      "challenge_id": "1",
+      "challenge_id": 1,
       "title": "Konsep Pemrograman",
       "levels": [
         {
-          "id": "soal1_1",
+          "id": 1,
           "level_name": "1",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal1_1",
+                "id": "soal1_1",
                 "text": "Manakah dari berikut ini yang merupakan tipe data untuk menyimpan angka desimal di C?\n",
 
                 "choices": [
@@ -43,7 +43,7 @@
             ],
             "sedang": [
               {
-                "text_id": "soal1_2",
+                "id": "soal1_2",
                 "text": "Apa nilai c setelah eksekusi?",
                 "code": "int a = 6;  \nint b = 2;  \nfloat c = a / b;  \n",
                 "choices": [
@@ -76,7 +76,7 @@
             ],
             "susah": [
               {
-                "text_id": "soal1_3",
+                "id": "soal1_3",
                 "text": "Nilai z setelah eksekusi adalah?",
                 "code": "int x = 5;  \nint y = 10;  \nint z = ++x * y--;  \n",
                 "choices": [
@@ -110,12 +110,12 @@
           }
         },
         {
-          "id": "soal2_1",
+          "id": 2,
           "level_name": "2",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal2_1",
+                "id": "soal2_1",
                 "text": "Apa hasil output dari program berikut?",
                 "code": "int x = 10;  \nif (x > 5) {  \n    printf(\"A\");  \n} else {  \n    printf(\"B\");  \n}\n",
                 "choices": [
@@ -148,7 +148,7 @@
             ],
             "sedang": [
               {
-                "text_id": "soal2_2",
+                "id": "soal2_2",
                 "text": "Manakah pernyataan yang benar mengenai switch di C?",
                 "choices": [
                   {
@@ -180,7 +180,7 @@
             ],
             "susah": [
               {
-                "text_id": "soal2_3",
+                "id": "soal2_3",
                 "text": "Kode berikut akan mencetak apa?",
                 "code": "int x = 2;  \nswitch (x) {  \n    case 1:  \n        printf(\"One\");  \n    case 2:  \n        printf(\"Two\");  \n    case 3:  \n        printf(\"Three\");  \n        break;  \n    default:  \n        printf(\"Default\");  \n}\n",
                 "choices": [
@@ -214,12 +214,12 @@
           }
         },
         {
-          "id": "soal3_1",
+          "id": 3,
           "level_name": "3",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal3_1",
+                "id": "soal3_1",
                 "text": "Berapa kali loop berikut akan berjalan?\n",
                 "code": "for (int i = 0; i < 5; i++) {  \n   …\n}\n",
                 "choices": [
@@ -252,7 +252,7 @@
             ],
             "sedang": [
               {
-                "text_id": "soal3_2",
+                "id": "soal3_2",
                 "text": "Apa perbedaan utama antara while dan do while?",
                 "choices": [
                   {
@@ -284,7 +284,7 @@
             ],
             "susah": [
               {
-                "text_id": "soal3_3",
+                "id": "soal3_3",
                 "text": "Berapa nilai variabel sum setelah loop ini selesai?",
                 "code": "nt i = 1, sum = 0;  \nwhile (i <= 5) {  \n    sum += i;  \n    i += 2;  \n}\n",
                 "choices": [
@@ -318,12 +318,12 @@
           }
         },
         {
-          "id": "soal4_1",
+          "id": 4,
           "level_name": "4",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal4_1",
+                "id": "soal4_1",
                 "text": "Apa fungsi dari statement break dalam loop?\n",
                 "choices": [
                   {
@@ -355,7 +355,7 @@
             ],
             "sedang": [
               {
-                "text_id": "soal4_2",
+                "id": "soal4_2",
                 "text": "Berapa output dari kode berikut?",
                 "code": "for (int i=1; i<=3; i++) {  \n    for (int j=1; j<=3; j++) {  \n        if (j == 2) break;  \n        printf(\"%d%d \", i, j);  \n    }  \n}\n",
                 "choices": [
@@ -388,7 +388,7 @@
             ],
             "susah": [
               {
-                "text_id": "soal4_3",
+                "id": "soal4_3",
                 "text": "Pada bahasa C, fungsi exit() menerima argumen integer yang merepresentasikan status keluar program. Manakah pernyataan yang benar terkait penggunaan exit(0) dan exit(1)?",
                 "choices": [
                   {
@@ -421,12 +421,12 @@
           }
         },
         {
-          "id": "soal5_1",
+          "id": 5,
           "level_name": "5",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal5_1",
+                "id": "soal5_1",
                 "text": "Fungsi berikut ini memiliki tipe return apa?",
                 "code": "void greet() {  \n    printf(\"Hello!\");  \n}\n",
                 "choices": [
@@ -459,7 +459,7 @@
             ],
             "sedang": [
               {
-                "text_id": "soal5_2",
+                "id": "soal5_2",
                 "text": "Apa yang terjadi jika fungsi bertipe int tidak mengembalikan nilai dengan return?",
                 "code": "int malano(int a, int b) {\n    int result = a * b;\n}\n\nint main() {\n    int x = malano(3, 4);\n    printf(\"%d\\n\", x);\n    return 0;\n}\n",
                 "choices": [
@@ -492,7 +492,7 @@
             ],
             "susah": [
               {
-                "text_id": "soal5_3",
+                "id": "soal5_3",
                 "text": "Manakah pernyataan yang benar mengenai output dan perilaku program dibawah?\n",
                 "code": "for (int i = 0; i < 5; i++) {\n    for (int j = 0; j < 5; j++) {\n        if (i * j > 6) {\n            break;\n        }\n        if (i == 3) {\n            continue;\n        }\n        printf(\"%d,%d\\n\", i, j);\n    }\n}\nexit(0);\n",
                 "choices": [
@@ -526,12 +526,12 @@
           }
         },
         {
-          "id": "soal6_1",
+          "id": 6,
           "level_name": "6",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal6_1",
+                "id": "soal6_1",
                 "text": "Variabel yang hanya dikenal dan digunakan di dalam suatu fungsi disebut?\n",
                 "choices": [
                   {
@@ -563,7 +563,7 @@
             ],
             "sedang": [
               {
-                "text_id": "soal6_2",
+                "id": "soal6_2",
                 "text": "Manakah pernyataan yang benar tentang variabel static di C?\n",
                 "choices": [
                   {
@@ -595,7 +595,7 @@
             ],
             "susah": [
               {
-                "text_id": "soal6_3",
+                "id": "soal6_3",
                 "text": "Apa output dari kode dibawah?",
                 "code": "#include <stdio.h>\n\nvoid func();\nint main() {\n    func();\n    func();\n\n    return 0;\n}\n\nvoid func() {\n    static int counter = 0;\n    counter++;\n    printf(\"%d \", counter);\n}",
                 "choices": [

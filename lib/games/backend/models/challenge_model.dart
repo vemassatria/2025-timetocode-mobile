@@ -16,7 +16,7 @@ class ChallengeModel {
       challengeId: json['challenge_id'],
       title: json['title'],
       levels:
-          (json['levels'] as List)
+          (json['levels'] as List<dynamic>)
               .map(
                 (lvl) =>
                     ChallengeLevelModel.fromJson(lvl as Map<String, dynamic>),

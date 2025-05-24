@@ -14,15 +14,15 @@ class QuestionDifficulty {
   factory QuestionDifficulty.fromJson(Map<String, dynamic> json) {
     return QuestionDifficulty(
       mudah:
-          (json['mudah'] as List)
+          (json['mudah'] as List<dynamic>)
               .map((q) => QuestionModel.fromJson(q as Map<String, dynamic>))
               .toList(),
       sedang:
-          (json['sedang'] as List)
+          (json['sedang'] as List<dynamic>)
               .map((q) => QuestionModel.fromJson(q as Map<String, dynamic>))
               .toList(),
       sulit:
-          (json['sulit'] as List)
+          (json['susah'] as List<dynamic>)
               .map((q) => QuestionModel.fromJson(q as Map<String, dynamic>))
               .toList(),
     );

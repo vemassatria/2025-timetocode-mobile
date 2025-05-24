@@ -22,7 +22,7 @@ class ChallengePage extends ConsumerWidget {
         backgroundColor: AppColors.surfaceDark,
         elevation: 0,
         title: Text(
-          'Tantangan Konsep Pemrograman',
+          storyState.challenge.title,
           style: AppTypography.heading6(color: AppColors.white),
         ),
         centerTitle: true,
@@ -43,15 +43,7 @@ class ChallengePage extends ConsumerWidget {
             final isUnlocked = levelCompleted <= levelNumber + 1;
 
             return ChallengeCard(
-              levelNumber: level['levelNumber'] as int,
-              starCount: level['starCount'] as int,
-              isUnlocked: level['isUnlocked'] as bool,
-              onTap: level['isUnlocked'] as bool
-                  ? () {
-                      _navigateToChallenge(context, level['levelNumber'] as int);
-                    }
-                  : null,
-              /*levelNumber: levelNumber,
+              levelNumber: levelNumber,
               starCount: notifier.getCompletedChallengeStars(levelNumber),
               isUnlocked: isUnlocked,
               onTap:
@@ -60,7 +52,7 @@ class ChallengePage extends ConsumerWidget {
                         // Navigasi ke halaman challenge detail ketika card diklik
                         _navigateToChallenge(context, levelNumber);
                       }
-                      : null,*/
+                      : null,
             );
           },
         ),
@@ -72,22 +64,25 @@ class ChallengePage extends ConsumerWidget {
     // Untuk sementara, tampilkan dialog sebagai placeholder
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          'Level $levelNumber',
-          style: AppTypography.heading5(color: AppColors.primaryText),
-        ),
-        content: Text(
-          'Halaman detail untuk Level $levelNumber akan ditampilkan di sini.',
-          style: AppTypography.normal(color: AppColors.primaryText),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text(
-              'Tutup',
-              style: AppTypography.normalBold(color: AppColors.primaryText),
+      builder:
+          (context) => AlertDialog(
+            title: Text(
+              'Level $levelNumber',
+              style: AppTypography.heading5(color: AppColors.primaryText),
             ),
+            content: Text(
+              'Halaman detail untuk Level $levelNumber akan ditampilkan di sini.',
+              style: AppTypography.normal(color: AppColors.primaryText),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text(
+                  'Tutup',
+                  style: AppTypography.normalBold(color: AppColors.primaryText),
+                ),
+              ),
+            ],
           ),
     );
   }

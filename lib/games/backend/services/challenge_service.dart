@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:timetocode/games/backend/models/challenge_list_model.dart';
 import 'package:timetocode/games/backend/models/challenge_model.dart';
 
 class ChallengeService {
@@ -12,6 +13,7 @@ class ChallengeService {
 
   static ChallengeModel _parseChallenges(String jsonString) {
     final jsonList = json.decode(jsonString) as Map<String, dynamic>;
-    return ChallengeModel.fromJson(jsonList);
+    final listChallenge = ChallengesListModel.fromJson(jsonList);
+    return listChallenge.challenges.first;
   }
 }
