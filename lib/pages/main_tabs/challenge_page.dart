@@ -14,49 +14,68 @@ class ChallengePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final levelCompleted = ref.watch(completedChallengeProvider);
     final notifier = ref.read(completedChallengeProvider.notifier);
-    final storyState = ref.watch(challengeControllerProvider).value!;
+    final storyState = ref.watch(challengeControllerProvider);
 
-    return Scaffold(
-      backgroundColor: AppColors.darkBackground,
-      appBar: AppBar(
-        backgroundColor: AppColors.surfaceDark,
-        elevation: 0,
-        title: Text(
-          storyState.challenge.title,
-          style: AppTypography.heading6(color: AppColors.white),
-        ),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // 2 kolom
-            crossAxisSpacing: 16.0,
-            mainAxisSpacing: 16.0,
-            childAspectRatio: 1.0,
+    return storyState.when(
+      loading:
+          () => const Scaffold(
+            backgroundColor: AppColors.darkBackground,
+            body: Center(child: CircularProgressIndicator()),
           ),
-          itemCount: storyState.challenge.levels.length,
-          itemBuilder: (context, index) {
-            final level = storyState.challenge.levels[index];
-            final levelNumber = level.id;
-            final isUnlocked = levelCompleted <= levelNumber + 1;
+      error:
+          (error, stackTrace) => Scaffold(
+            backgroundColor: AppColors.darkBackground,
+            body: Center(
+              child: Text(
+                'Error loading challenges',
+                style: AppTypography.normal(color: AppColors.primaryText),
+              ),
+            ),
+          ),
+      data: (data) {
+        return Scaffold(
+          backgroundColor: AppColors.darkBackground,
+          appBar: AppBar(
+            backgroundColor: AppColors.surfaceDark,
+            elevation: 0,
+            title: Text(
+              data.challenge.title,
+              style: AppTypography.heading6(color: AppColors.white),
+            ),
+            centerTitle: true,
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // 2 kolom
+                crossAxisSpacing: 16.0,
+                mainAxisSpacing: 16.0,
+                childAspectRatio: 1.0,
+              ),
+              itemCount: data.challenge.levels.length,
+              itemBuilder: (context, index) {
+                final level = data.challenge.levels[index];
+                final levelNumber = level.id;
+                final isUnlocked = levelCompleted <= levelNumber + 1;
 
-            return ChallengeCard(
-              levelNumber: levelNumber,
-              starCount: notifier.getCompletedChallengeStars(levelNumber),
-              isUnlocked: isUnlocked,
-              onTap:
-                  isUnlocked
-                      ? () {
-                        // Navigasi ke halaman challenge detail ketika card diklik
-                        _navigateToChallenge(context, levelNumber);
-                      }
-                      : null,
-            );
-          },
-        ),
-      ),
+                return ChallengeCard(
+                  levelNumber: levelNumber,
+                  starCount: notifier.getCompletedChallengeStars(levelNumber),
+                  isUnlocked: isUnlocked,
+                  onTap:
+                      isUnlocked
+                          ? () {
+                            // Navigasi ke halaman challenge detail ketika card diklik
+                            _navigateToChallenge(context, levelNumber);
+                          }
+                          : null,
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 
