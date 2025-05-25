@@ -136,7 +136,10 @@ class EndGameScreen extends ConsumerWidget {
                       // MusicService.sfxSelectClick();
 
                       // Gunakan StoryController untuk mengakhiri permainan
-                      endGamePopup(context, ref);
+                      final storyController = ref.read(
+                        storyControllerProvider.notifier,
+                      );
+                      storyController.endStory();
                     },
                   ),
                 ],
