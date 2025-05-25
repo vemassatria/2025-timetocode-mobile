@@ -101,13 +101,23 @@
               "speaker": 1
             },
             {
-              "line": "Yoi! Karena kalo kamu salah pilih tipe data, program bisa error atau hasilnya gak sesuai. Makanya penting ngerti dari sekarang! Coba deh buat tes pemahaman, kamu jawab soal ini ya!",
+              "line": "Siapa Clairo?",
               "reaction_index": 2,
               "speaker": 2
             }
           ],
-          "next": "soal1_1",
-          "nextType": "soal"
+          "choices": [
+            {
+              "text": "Istri Malano",
+              "next": "soal1_1",
+              "nextType": "soal"
+            },
+            {
+              "text": "Bojonya Malano",
+              "next": "soal1_1",
+              "nextType": "soal"
+            }
+          ]
         },
         {
           "id": "salah1_1",
@@ -235,8 +245,18 @@
               "speaker": 2
             }
           ],
-          "next": "soal1_2",
-          "nextType": "soal"
+          "choices": [
+            {
+              "text": "Istri Malano",
+              "next": "soal1_3",
+              "nextType": "soal"
+            },
+            {
+              "text": "Bojonya Malano",
+              "next": "soal1_3",
+              "nextType": "soal"
+            }
+          ]
         },
         {
           "id": "salah1_2",

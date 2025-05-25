@@ -7,6 +7,7 @@ import 'package:timetocode/games/backend/providers/story_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
+import 'package:timetocode/components/box/dialog_choices_box.dart';
 
 class DialogBox extends ConsumerStatefulWidget {
   const DialogBox({Key? key}) : super(key: key);
@@ -20,11 +21,21 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
   int? _lastIndex;
 
   void _onBoxTap() {
+    final asyncState = ref.read(storyControllerProvider);
+    final story = asyncState.value;
+    final dialog = story?.currentDialog;
+    final idx = story?.indexDialog ?? 0;
+    final isLastLine = dialog != null && idx == dialog.dialogue.length - 1;
+
     if (_isComplete) {
+      // Only block if on last line and there are choices
+      if (isLastLine && dialog.choices != null && dialog.choices!.isNotEmpty) {
+        // Do nothing, wait for user to pick a choice
+        return;
+      }
       ref.read(storyControllerProvider.notifier).nextDialog();
       setState(() => _isComplete = false);
     } else {
-      // mark as complete to show full text
       setState(() => _isComplete = true);
     }
   }
@@ -53,6 +64,8 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
         (charIdx == 1) ? AppColors.challengeOrange : AppColors.deepTealGlow;
     final text = dialog.getTextDialog(idx);
 
+    final isLastLine = idx == dialog.dialogue.length - 1;
+
     return Align(
       alignment: Alignment.bottomCenter,
       child: GestureDetector(
@@ -76,14 +89,12 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                   Expanded(
                     child:
                         _isComplete
-                            // show full text when complete
                             ? Text(
                               text,
                               style: AppTypography.large().copyWith(
                                 decoration: TextDecoration.none,
                               ),
                             )
-                            // otherwise animate typewriter
                             : AnimatedTextKit(
                               key: ValueKey('dialog_$idx'),
                               isRepeatingAnimation: false,
@@ -102,7 +113,30 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                             ),
                   ),
                   const Spacer(),
-                  if (_isComplete)
+                  // FIX: Only show choices at the last line
+                  if (_isComplete &&
+                      isLastLine &&
+                      dialog.choices != null &&
+                      dialog.choices!.isNotEmpty)
+                    DialogChoicesBox(
+                      choices: dialog.choices!,
+                      onPressed: (choice) {
+                        final storyController = ref.read(
+                          storyControllerProvider.notifier,
+                        );
+                        if (choice.nextType == 'dialog') {
+                          storyController.showDialog(choice.next);
+                        } else if (choice.nextType == 'soal') {
+                          storyController.showQuestion(choice.next);
+                        } else {
+                          storyController.showEndGame();
+                        }
+                      },
+                    ),
+                  if (_isComplete &&
+                      (!isLastLine ||
+                          dialog.choices == null ||
+                          dialog.choices!.isEmpty))
                     Align(
                       alignment: Alignment.bottomRight,
                       child: Icon(
