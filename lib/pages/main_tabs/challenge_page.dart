@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/challengecard.dart';
 import 'package:timetocode/games/backend/providers/challenge_provider.dart';
 import 'package:timetocode/games/backend/providers/daftar_challenge_provider.dart';
+import 'package:timetocode/pages/main_tabs/quiz_page.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 //import 'package:timetocode/games/backend/controllers/challenge_controller.dart';
@@ -51,7 +52,28 @@ class ChallengePage extends ConsumerWidget {
                   isUnlocked
                       ? () {
                         // Navigasi ke halaman challenge detail ketika card diklik
-                        _navigateToChallenge(context, levelNumber);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder:
+                                (context) => QuizPage(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  correctAnswer: 1,
+                                  wrongAnswer: 2,
+                                  question:
+                                      "Yang manakah output yang benar dari kode di bawah ini?",
+                                  code:
+                                      "#include <stdio.h>\n\nint main() {\n  int age = 25;\n\n  printf(\"Age: %d\\n\", age);\n\n  return 0;\n}",
+                                  options: [
+                                    "Age: %d\\n",
+                                    "Age: 25",
+                                    "Age: %d",
+                                    "Age: 25\\n",
+                                  ],
+                                ),
+                          ),
+                        );
                       }
                       : null,
             );
@@ -61,30 +83,30 @@ class ChallengePage extends ConsumerWidget {
     );
   }
 
-  void _navigateToChallenge(BuildContext context, int levelNumber) {
-    // Untuk sementara, tampilkan dialog sebagai placeholder
-    showDialog(
-      context: context,
-      builder:
-          (context) => AlertDialog(
-            title: Text(
-              'Level $levelNumber',
-              style: AppTypography.heading5(color: AppColors.primaryText),
-            ),
-            content: Text(
-              'Halaman detail untuk Level $levelNumber akan ditampilkan di sini.',
-              style: AppTypography.normal(color: AppColors.primaryText),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text(
-                  'Tutup',
-                  style: AppTypography.normalBold(color: AppColors.primaryText),
-                ),
-              ),
-            ],
-          ),
-    );
-  }
+  //   void _navigateToChallenge(BuildContext context, int levelNumber) {
+  //     // Untuk sementara, tampilkan dialog sebagai placeholder
+  //     showDialog(
+  //       context: context,
+  //       builder:
+  //           (context) => AlertDialog(
+  //             title: Text(
+  //               'Level $levelNumber',
+  //               style: AppTypography.heading5(color: AppColors.primaryText),
+  //             ),
+  //             content: Text(
+  //               'Halaman detail untuk Level $levelNumber akan ditampilkan di sini.',
+  //               style: AppTypography.normal(color: AppColors.primaryText),
+  //             ),
+  //             actions: [
+  //               TextButton(
+  //                 onPressed: () => Navigator.of(context).pop(),
+  //                 child: Text(
+  //                   'Tutup',
+  //                   style: AppTypography.normalBold(color: AppColors.primaryText),
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //     );
+  //   }
 }
