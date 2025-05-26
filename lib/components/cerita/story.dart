@@ -32,48 +32,45 @@ class StoryPage extends ConsumerWidget {
         return PopScope(
           canPop: false,
           onPopInvokedWithResult: (didPop, result) {
-            if(PopscopePopups.isPopScopeActive()){
+            if (PopscopePopups.isPopScopeActive()) {
               PopscopePopups.openMenuPopup(context, ref);
               PopscopePopups.setPopScope(false);
-            }else{
+            } else {
               closePopupOverlay();
               PopscopePopups.setPopScope(true);
             }
           },
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: Stack(
-              children: [
-                // Menu button
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  child: SafeArea(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 16.h),
-                      child: MenuButton(
-                        onRestart: () {
-                          // Gunakan StoryController untuk me-restart level
-                          final storyController = ref.read(
-                            storyControllerProvider.notifier,
-                          );
-                          storyController.restartLevel();
-                          closePopupOverlay();
-                        },
-                        onExit: () {
-                          // Gunakan StoryController untuk mengakhiri cerita
-                          final storyController = ref.read(
-                            storyControllerProvider.notifier,
-                          );
-                          storyController.exitLevel();
-                          closePopupOverlay();
-                        },
-                      ),
+          child: Stack(
+            children: [
+              // Menu button
+              Positioned(
+                top: 0.h,
+                left: 0.w,
+                child: SafeArea(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 16.h),
+                    child: MenuButton(
+                      onRestart: () {
+                        // Gunakan StoryController untuk me-restart level
+                        final storyController = ref.read(
+                          storyControllerProvider.notifier,
+                        );
+                        storyController.restartLevel();
+                        closePopupOverlay();
+                      },
+                      onExit: () {
+                        // Gunakan StoryController untuk mengakhiri cerita
+                        final storyController = ref.read(
+                          storyControllerProvider.notifier,
+                        );
+                        storyController.exitLevel();
+                        closePopupOverlay();
+                      },
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },

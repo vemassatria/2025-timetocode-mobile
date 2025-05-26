@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/challengecard.dart';
 import 'package:timetocode/games/backend/providers/challenge_provider.dart';
 import 'package:timetocode/games/backend/providers/daftar_challenge_provider.dart';
@@ -47,11 +48,11 @@ class ChallengePage extends ConsumerWidget {
           body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // 2 kolom
-                crossAxisSpacing: 16.0,
-                mainAxisSpacing: 16.0,
-                childAspectRatio: 1.0,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16.w,
+                mainAxisSpacing: 24.w,
+                childAspectRatio: 1,
               ),
               itemCount: data.challenge.levels.length,
               itemBuilder: (context, index) {

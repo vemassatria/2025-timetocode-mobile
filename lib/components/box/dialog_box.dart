@@ -7,6 +7,7 @@ import 'package:timetocode/games/backend/providers/story_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
+import 'package:timetocode/components/box/dialog_choices_box.dart';
 
 class DialogBox extends ConsumerStatefulWidget {
   const DialogBox({Key? key}) : super(key: key);
@@ -20,11 +21,24 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
   int? _lastIndex;
 
   void _onBoxTap() {
+    final asyncState = ref.read(storyControllerProvider);
+    final story = asyncState.value;
+    final dialog = story?.currentDialog;
+    final idx = story?.indexDialog ?? 0;
+    final isLastLine = dialog != null && idx == dialog.dialogue.length - 1;
+
     if (_isComplete) {
+      // Only block if on last line and there are choices
+      if (isLastLine && dialog.choices != null && dialog.choices!.isNotEmpty) {
+        // Do nothing, wait for user to pick a choice
+        return;
+      }
       ref.read(storyControllerProvider.notifier).nextDialog();
-      setState(() => _isComplete = false);
+      setState(() => _isComplete = false); // Reset for the next dialog line
     } else {
-      // mark as complete to show full text
+      // If animation is not complete, tapping will complete it.
+      // The AnimatedTextKit's displayFullTextOnTap could also handle this,
+      // but explicitly setting _isComplete ensures our state is correct.
       setState(() => _isComplete = true);
     }
   }
@@ -35,10 +49,21 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     final asyncState = ref.watch(storyControllerProvider);
     final story = asyncState.value;
 
-    final dialog = story!.currentDialog!;
+    // If story or currentDialog is null, perhaps show a loading or empty state
+    if (story == null ||
+        story.currentDialog == null ||
+        story.indexDialog == null) {
+      return const SizedBox.shrink(); // Or some placeholder
+    }
+
+    final dialog = story.currentDialog!;
     final idx = story.indexDialog!;
 
     // reset complete when index changes
+    // This should ideally happen BEFORE the build method uses _isComplete for the new text
+    // However, placing it here might still work due to the order of operations in build.
+    // A safer place might be in a didUpdateWidget or reacting to provider changes.
+    // For now, this seems to be your current logic.
     if (_lastIndex != idx) {
       _lastIndex = idx;
       _isComplete = false;
@@ -52,6 +77,8 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     final boxColor =
         (charIdx == 1) ? AppColors.challengeOrange : AppColors.deepTealGlow;
     final text = dialog.getTextDialog(idx);
+
+    final isLastLine = idx == dialog.dialogue.length - 1;
 
     return Align(
       alignment: Alignment.bottomCenter,
@@ -76,19 +103,29 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                   Expanded(
                     child:
                         _isComplete
-                            // show full text when complete
                             ? Text(
                               text,
                               style: AppTypography.large().copyWith(
                                 decoration: TextDecoration.none,
                               ),
                             )
-                            // otherwise animate typewriter
                             : AnimatedTextKit(
-                              key: ValueKey('dialog_$idx'),
+                              key: ValueKey(
+                                'dialog_$idx',
+                              ), // Good use of ValueKey
                               isRepeatingAnimation: false,
-                              displayFullTextOnTap: false,
-                              stopPauseOnTap: false,
+                              displayFullTextOnTap:
+                                  true, // Allow tap on text to complete it
+                              stopPauseOnTap: true, // Stop animation on tap
+                              onFinished: () {
+                                // Automatically set _isComplete to true when animation finishes
+                                if (mounted) {
+                                  // Check if widget is still in tree
+                                  setState(() {
+                                    _isComplete = true;
+                                  });
+                                }
+                              },
                               animatedTexts: [
                                 TypewriterAnimatedText(
                                   text,
@@ -102,7 +139,33 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                             ),
                   ),
                   const Spacer(),
-                  if (_isComplete)
+                  if (_isComplete &&
+                      isLastLine &&
+                      dialog.choices != null &&
+                      dialog.choices!.isNotEmpty)
+                    DialogChoicesBox(
+                      choices: dialog.choices!,
+                      onPressed: (choice) {
+                        final storyController = ref.read(
+                          storyControllerProvider.notifier,
+                        );
+                        if (choice.nextType == 'dialog') {
+                          storyController.showDialog(choice.next);
+                        } else if (choice.nextType == 'soal') {
+                          storyController.showQuestion(choice.next);
+                        } else {
+                          storyController.showEndGame();
+                        }
+                        // Ensure _isComplete is reset when a choice is made and new content loads
+                        // This might already be handled if showDialog/showQuestion resets the index
+                        // but being explicit can be safer depending on storyController's implementation.
+                        // setState(() => _isComplete = false); // Consider if needed here
+                      },
+                    ),
+                  if (_isComplete &&
+                      (!isLastLine ||
+                          dialog.choices == null ||
+                          dialog.choices!.isEmpty))
                     Align(
                       alignment: Alignment.bottomRight,
                       child: Icon(
