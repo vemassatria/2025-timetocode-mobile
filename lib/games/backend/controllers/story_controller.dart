@@ -308,25 +308,33 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
 
   void skipToNextSoal() {
     final s = state.value!;
-    final level = s.activeLevel;
-    if (level == null) return;
+    // final level = s.activeLevel;
+    // if (level == null) return;
 
-    DialogModel? dialog = s.currentDialog;
-    String? nextId;
-    String? nextType;
+    // DialogModel? dialog = s.currentDialog;
+    // String? nextId;
+    // String? nextType;
 
-    if (dialog == null && level.dialogs.isNotEmpty) {
-      dialog = _dialogService.getDialogById(level, level.start);
-    }
+    // if (dialog == null && level.dialogs.isNotEmpty) {
+    //   dialog = _dialogService.getDialogById(level, level.start);
+    // }
 
-    while (dialog != null) {
-      nextId = dialog.next;
-      nextType = dialog.nextType;
-      if (nextType == 'soal') {
-        showQuestion(nextId);
-        return;
-      }
-      dialog = _dialogService.getDialogById(level, nextId);
+    // while (dialog != null) {
+    //   nextId = dialog.next;
+    //   nextType = dialog.nextType;
+    //   if (nextType == 'soal') {
+    //     showQuestion(nextId);
+    //     return;
+    //   }
+    //   dialog = _dialogService.getDialogById(level, nextId);
+    // }
+
+    final dialog = s.currentDialog;
+    if (dialog!.nextType == 'soal') {
+      game.hideCharacters();
+      showQuestion(dialog.next);
+    } else {
+      showEndGame();
     }
   }
 
@@ -419,14 +427,15 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
 
   void _clearStoryContents() {
     final o = game.overlays;
-    for (final name in ['Intro', 'Dialog', 'Question', 'EndGame']) {
+    for (final name in [
+      'Intro',
+      'Dialog',
+      'StorySkip',
+      'Question',
+      'EndGame',
+    ]) {
       o.remove(name);
     }
-  }
-
-  Future<bool> isLevelCompleted(int level) async {
-    final completedLevel = ref.read(completedLevelProvider);
-    return level <= completedLevel;
   }
 
   void _showContentOverlay(String contentName, {bool withMenu = true}) {
@@ -437,5 +446,6 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
 
     if (withMenu) game.overlays.add('StoryMenu');
     game.overlays.add(contentName);
+    if (contentName == 'Dialog') game.overlays.add('StorySkip');
   }
 }

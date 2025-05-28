@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/components/box/dialog_box.dart';
 import 'package:timetocode/components/cerita/intro.dart';
+import 'package:timetocode/components/skip_button.dart';
 import 'package:timetocode/games/backend/game_engine.dart';
 import 'package:timetocode/pages/main_tabs/end_game_page.dart';
 import 'package:timetocode/games/backend/providers/shared_preferences_provider.dart';
@@ -43,6 +44,7 @@ class MyApp extends ConsumerWidget {
         overlayBuilderMap: {
           'GameUI': (_, __) => MainNavigation(),
           'StoryMenu': (_, __) => StoryPage(),
+          'StorySkip': (_, __) => SkipButton(),
           'Intro': (_, __) => IntroBoxWidget(),
           'Dialog': (_, __) => DialogBox(),
           'Question': (_, __) => QuestionBoxWidget(),

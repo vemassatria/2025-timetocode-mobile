@@ -34,8 +34,11 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
         return;
       }
       ref.read(storyControllerProvider.notifier).nextDialog();
-      setState(() => _isComplete = false);
+      setState(() => _isComplete = false); // Reset for the next dialog line
     } else {
+      // If animation is not complete, tapping will complete it.
+      // The AnimatedTextKit's displayFullTextOnTap could also handle this,
+      // but explicitly setting _isComplete ensures our state is correct.
       setState(() => _isComplete = true);
     }
   }
@@ -46,10 +49,21 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     final asyncState = ref.watch(storyControllerProvider);
     final story = asyncState.value;
 
-    final dialog = story!.currentDialog!;
+    // If story or currentDialog is null, perhaps show a loading or empty state
+    if (story == null ||
+        story.currentDialog == null ||
+        story.indexDialog == null) {
+      return const SizedBox.shrink(); // Or some placeholder
+    }
+
+    final dialog = story.currentDialog!;
     final idx = story.indexDialog!;
 
     // reset complete when index changes
+    // This should ideally happen BEFORE the build method uses _isComplete for the new text
+    // However, placing it here might still work due to the order of operations in build.
+    // A safer place might be in a didUpdateWidget or reacting to provider changes.
+    // For now, this seems to be your current logic.
     if (_lastIndex != idx) {
       _lastIndex = idx;
       _isComplete = false;
@@ -96,10 +110,22 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                               ),
                             )
                             : AnimatedTextKit(
-                              key: ValueKey('dialog_$idx'),
+                              key: ValueKey(
+                                'dialog_$idx',
+                              ), // Good use of ValueKey
                               isRepeatingAnimation: false,
-                              displayFullTextOnTap: false,
-                              stopPauseOnTap: false,
+                              displayFullTextOnTap:
+                                  true, // Allow tap on text to complete it
+                              stopPauseOnTap: true, // Stop animation on tap
+                              onFinished: () {
+                                // Automatically set _isComplete to true when animation finishes
+                                if (mounted) {
+                                  // Check if widget is still in tree
+                                  setState(() {
+                                    _isComplete = true;
+                                  });
+                                }
+                              },
                               animatedTexts: [
                                 TypewriterAnimatedText(
                                   text,
@@ -113,7 +139,6 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                             ),
                   ),
                   const Spacer(),
-                  // FIX: Only show choices at the last line
                   if (_isComplete &&
                       isLastLine &&
                       dialog.choices != null &&
@@ -131,6 +156,10 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                         } else {
                           storyController.showEndGame();
                         }
+                        // Ensure _isComplete is reset when a choice is made and new content loads
+                        // This might already be handled if showDialog/showQuestion resets the index
+                        // but being explicit can be safer depending on storyController's implementation.
+                        // setState(() => _isComplete = false); // Consider if needed here
                       },
                     ),
                   if (_isComplete &&
