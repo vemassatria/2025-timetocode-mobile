@@ -16,50 +16,33 @@ class ChallengePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final levelCompleted = ref.watch(completedChallengeProvider);
     final notifier = ref.read(completedChallengeProvider.notifier);
-    final storyState = ref.watch(challengeControllerProvider);
+    final storyState = ref.watch(challengeControllerProvider).value!;
 
-    return storyState.when(
-      loading:
-          () => const Scaffold(
-            backgroundColor: AppColors.darkBackground,
-            body: Center(child: CircularProgressIndicator()),
+    return Scaffold(
+      backgroundColor: AppColors.darkBackground,
+      appBar: AppBar(
+        backgroundColor: AppColors.surfaceDark,
+        elevation: 0,
+        title: Text(
+          storyState.challenge.title,
+          style: AppTypography.heading6(color: AppColors.white),
+        ),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 16.w,
+            mainAxisSpacing: 24.w,
+            childAspectRatio: 1,
           ),
-      error:
-          (error, stackTrace) => Scaffold(
-            backgroundColor: AppColors.darkBackground,
-            body: Center(
-              child: Text(
-                'Error loading challenges',
-                style: AppTypography.normal(color: AppColors.primaryText),
-              ),
-            ),
-          ),
-      data: (data) {
-        return Scaffold(
-          backgroundColor: AppColors.darkBackground,
-          appBar: AppBar(
-            backgroundColor: AppColors.surfaceDark,
-            elevation: 0,
-            title: Text(
-              data.challenge.title,
-              style: AppTypography.heading6(color: AppColors.white),
-            ),
-            centerTitle: true,
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16.w,
-                mainAxisSpacing: 24.w,
-                childAspectRatio: 1,
-              ),
-              itemCount: data.challenge.levels.length,
-              itemBuilder: (context, index) {
-                final level = data.challenge.levels[index];
-                final levelNumber = level.id;
-                final isUnlocked = levelCompleted <= levelNumber + 1;
+          itemCount: storyState.challenge.levels.length,
+          itemBuilder: (context, index) {
+            final level = storyState.challenge.levels[index];
+            final levelNumber = level.id;
+            final isUnlocked = levelCompleted <= levelNumber + 1;
 
             return ChallengeCard(
               levelNumber: levelNumber,
