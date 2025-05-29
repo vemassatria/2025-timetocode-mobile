@@ -247,6 +247,8 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
       if (dialog.nextType == 'soal') {
         game.hideCharacters();
         showQuestion(dialog.next);
+      } else if (dialog.nextType == 'dialog') {
+        showDialog(dialog.next);
       } else {
         showEndGame();
       }
