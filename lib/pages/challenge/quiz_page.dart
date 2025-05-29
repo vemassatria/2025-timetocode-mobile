@@ -1,46 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
+import 'package:timetocode/games/backend/models/choices_model.dart';
+import 'package:timetocode/games/backend/providers/challenge_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/widgets/code_text.dart';
 
-class QuizPage extends StatefulWidget {
-  final VoidCallback onPressed;
-  final int correctAnswer;
-  final int wrongAnswer;
-  final String question;
-  final String code;
-  final List<String> options;
-
-  const QuizPage({
-    super.key,
-    required this.onPressed,
-    required this.correctAnswer,
-    required this.wrongAnswer,
-    required this.question,
-    required this.code,
-    required this.options,
-  });
+class QuizPage extends ConsumerStatefulWidget {
+  const QuizPage({super.key});
 
   @override
-  State<QuizPage> createState() => _QuizPageState();
+  ConsumerState<QuizPage> createState() => _QuizPageState();
 }
 
-class _QuizPageState extends State<QuizPage> {
-  String? selectedAnswer;
+class _QuizPageState extends ConsumerState<QuizPage> {
+  ChoicesModel? selectedAnswer;
 
-  void selectAnswer(String answer) {
+  void selectAnswer(ChoicesModel answer) {
     setState(() {
       selectedAnswer = answer;
     });
   }
 
-  Widget buildOption(String optionText) {
-    final bool isSelected = selectedAnswer == optionText;
+  Widget buildOption(ChoicesModel option) {
+    final bool isSelected = selectedAnswer == option;
 
     return GestureDetector(
-      onTap: () => selectAnswer(optionText),
+      onTap: () => selectAnswer(option),
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
@@ -54,7 +42,7 @@ class _QuizPageState extends State<QuizPage> {
           borderRadius: BorderRadius.circular(8.r),
         ),
         child: Text(
-          optionText,
+          option.text,
           style: AppTypography.normal(color: AppColors.primaryText),
           textAlign: TextAlign.center,
         ),
@@ -64,6 +52,8 @@ class _QuizPageState extends State<QuizPage> {
 
   @override
   Widget build(BuildContext context) {
+    final asyncState = ref.watch(challengeControllerProvider);
+    final challenge = asyncState.value;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
@@ -80,7 +70,7 @@ class _QuizPageState extends State<QuizPage> {
               SizedBox(
                 width: 30.w,
                 child: Text(
-                  "${widget.correctAnswer}/3",
+                  "${challenge!.correctAnswer}/3",
                   style: AppTypography.mediumBold(),
                   textAlign: TextAlign.end,
                 ),
@@ -90,7 +80,7 @@ class _QuizPageState extends State<QuizPage> {
               SizedBox(
                 width: 30.w,
                 child: Text(
-                  "${widget.wrongAnswer}/3",
+                  "${challenge.wrongAnswer}/3",
                   style: AppTypography.mediumBold(),
                   textAlign: TextAlign.end,
                 ),
@@ -113,7 +103,7 @@ class _QuizPageState extends State<QuizPage> {
             children: [
               SizedBox(),
               Text(
-                widget.question,
+                challenge.currentQuestion!.question,
                 style: AppTypography.normal(color: AppColors.primaryText),
                 textAlign: TextAlign.justify,
               ),
@@ -126,14 +116,14 @@ class _QuizPageState extends State<QuizPage> {
                 child: Padding(
                   padding: EdgeInsets.all(16.w),
                   child: CodeText('''
-${widget.code}'''),
+${challenge.currentQuestion!.code}'''),
                 ),
               ),
 
               Column(
                 spacing: 16.h,
                 children:
-                    widget.options
+                    challenge.currentQuestion!.choices
                         .map((option) => buildOption(option))
                         .toList(),
               ),
@@ -152,7 +142,12 @@ ${widget.code}'''),
           padding: EdgeInsets.all(16.w),
           child: CustomButton(
             label: "Kirim",
-            onPressed: widget.onPressed,
+            onPressed:
+                () => {
+                  ref
+                      .read(challengeControllerProvider.notifier)
+                      .checkAnswer(selectedAnswer!),
+                },
             color: ButtonColor.purple,
             isDisabled: selectedAnswer == null,
           ),
