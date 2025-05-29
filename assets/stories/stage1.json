@@ -23,99 +23,222 @@
           "id": "intro1",
           "text": [
             {
-              "line": "Mas kuliah di informatika tuh berat banget. Materi langsung susah-susah, apalagi konsep pemrograman",
+              "line": "Masnya daritadi saya lihat ngedumel sendiri, aman kah?",
               "reaction_index": 1,
+              "speaker": 2
+            },
+            {
+              "line": "aduh mas, ini pemrogaman susah banget..",
+              "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Iya aku dulu juga gitu. Tapi kamu bakal paham kok, asal konsisten belajar. Ngomong-ngomong dosen konsep pemrogaman kamu Pak Rongga bukan?",
+              "line": "Wah iya mas, memang susah pada awalnya karena kita ga familiar dengan mereka, tapi lama lama pasti bakal bisa kok mas.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Iya bener banget! Kok mas tau?",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Haha ya tau lah. Pak Rongga tuh legend di mata kuliah itu. Santai aja, beliau emang tegas tapi ngajarnya jelas kok. Oiya kalau pelajaran pertama harusnya tentang \"variabel\" dan \"operator\" ga sih?",
+              "line": "Oh... iya ya, tapi aku masih bingung banget sama yang namanya tipe data sama variabel.",
               "reaction_index": 2,
-              "speaker": 2
+              "speaker": 1
             },
             {
-              "line": "Iya bener mas! Tapi aku masih bingung, \"variabel\" dan \"operator\" itu apaan sih?",
+              "line": " Eh, wajahmu kok kayak familiar ya? Anak PENS juga, kan?",
               "reaction_index": 1,
-              "speaker": 1
-            },
-            {
-              "line": "Nah sebelum masuk kesitu lebih baik aku jelasin dulu soal tipe data biar kamu makin paham. Pertama ada tipe data int, biasanya dipake buat nyimpen angka bulat. Kayak umur, jumlah barang, tahun, pokoknya angka yang gak ada komanya.",
-              "reaction_index": 1,
-              "speaker": 2,
-              "ilustration_index": 0
-            },
-            {
-              "line": "Ooh jadi kayak 18, 2025, 100 gitu ya mas?",
-              "reaction_index": 2,
-              "speaker": 1,
-              "ilustration_index": 1
-            },
-            {
-              "line": "Bener. Kedua ada float, itu buat angka yang ada komanya. Kayak berat badan 55.5 kg, tinggi badan 160.3 cm, atau nilai ujian 89.75. Pokoknya yang ada pecahannya gitu.",
-              "reaction_index": 0,
-              "speaker": 2,
-              "ilustration_index": 0
-            },
-            {
-              "line": "Berarti kalo yang ada koma-koma gitu lebih akurat pake float ya mas?",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Yap! Akurat buat angka-angka yang gak bulat. Ketiga ada char buat nyimpen satu huruf aja. Misal huruf awal nama kamu, kayak 'A' buat Adrian.",
-              "reaction_index": 2,
-              "speaker": 2
-            },
-            {
-              "line": "Kalau nama lengkap?",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Kalau nama lengkap, kayak \"Mulyono\", itu kamu pake string. String itu buat nyimpen deretan karakter alias tulisan panjang.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Okee aku kebayang!",
-              "reaction_index": 2,
-              "speaker": 1
-            },
-            {
-              "line": "Terakhir, bool alias boolean. Itu buat nyimpen dua pilihan aja: true atau false. Misal status \"Lulus\" atau \"Belum Lulus\", \"Sudah Login\" atau \"Belum Login\".",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Wuihh, ternyata tipe data banyak jenisnya ya dan ada gunanya masing-masing.",
-              "reaction_index": 2,
-              "speaker": 1
-            },
-            {
-              "line": "Siapa Clairo?",
-              "reaction_index": 2,
               "speaker": 2
             }
           ],
           "choices": [
             {
-              "text": "Istri Malano",
-              "next": "soal1_1",
-              "nextType": "soal"
+              "text": "Betul mas aduh susah banget ini",
+              "next": "scene1_1",
+              "nextType": "dialog"
             },
             {
-              "text": "Bojonya Malano",
-              "next": "soal1_1",
-              "nextType": "soal"
+              "text": "Loh kok mas tau saya",
+              "next": "scene1_2",
+              "nextType": "dialog"
+            },
+            {
+              "text": "Hah… Masnya siapa ya?",
+              "next": "scene1_3",
+              "nextType": "dialog"
+            }
+          ]
+        },
+        {
+          "id": "scene1_1",
+          "text": [
+            {
+              "line":  "Ah sesusah apa sih, palingan tinggal ngetik doang",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Kacaw tinggal ngetik doang",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Yaudah sini aku jelasin",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next": "materi1_1",
+          "nextType": "dialog"
+        },
+        {
+          "id": "scene1_2",
+          "text": [
+            {
+              "line":  "iya tau dong, aku yang waktu itu ngekader kamu kocak",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Loh yang bener mas?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Serius. Aku komdis, bro. Yang tiap malem mondar-mandir liatin kalian satu-satu.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Hah, beneran Mas komdis? Wah… pantesan kayak familiar…",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Iya dong. Tapi tenang, aku gak se-strict itu di luar acara. By the way tadi aku denger kamu ngedumel soal pemrograman, waktunya AADP, ada apa dengan pemrogaman?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Aduh Mas... pusing banget. Baru belajar tipe data sama variabel aja udah ngerasa kayak baca sandi alien.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Tenang jangan pusing dulu, ini masih permulaan. Coba sini aku jelasin pelan-pelan",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next": "materi1_1",
+          "nextType": "dialog"
+        },
+        {
+          "id": "scene1_3",
+          "text": [
+            {
+              "line":  "Hayoloh... gak inget ya? Aku yang jadi komdis pas kaderisasi. Yang suka mondar-mandir malem-malem, ngawasin kalian satu-satu.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "(kaget, sambil mencoba mengingat) Serius? Wah, beneran Mas? Saya ingetnya cuma suara tegas dari kejauhan…",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "(ketawa kecil) “Haha, ya itu suaraku. Kamu tuh yang waktu itu disuruh maju gara-gara... hmm, ketiduran kan ya?” (kedip jahil)",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Wah… kok masih inget aja mas…” (senyum malu)",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Gapapa itu momen kocak, tenang, aku juga pernah jadi maba. Pusing, capek, ngantuk, tapi harus tetap jalanin semua. Gua paham kok rasanya.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Sekarang juga pusing Mas… tugas pemrogramannya bikin kepala muter. Baru mulai belajar tipe data aja rasanya udah ribet banget.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Nah, itu. Tadi gua liat kamu ngedumel. Makanya, ayo sini, kita bahas bareng. Gua jelasin pelan-pelan soal tipe data sama variabel. Gak ribet kok, asal ngerti logikanya.",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next": "materi1_1",
+          "nextType": "dialog"
+        },
+        {
+          "id": "materi1_1",
+          "text": [
+            {
+              "line": "Bayangin kamu punya dua wadah, satu ember buat nampung air, satu kardus buat barang kering. Nah ember sama kardus itu kayak variabel di program, dan label wadah itu kayak tipe datanya.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": " Jadi kalau kamu masukin nilai kayak angka 55.5 ke variabel float, itu kayak tuang air ke ember, cocok banget.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Tapi kalau aku masukin nilai 30.5 itu ke variabel int gimana?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Itu beda ceritanya. Kayak kamu tuang air ke kardus bro. Airnya bocor, atau dalam kasus program, desimalnya hilang karena int cuma nampung bilangan bulat.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Jadi datanya gak pas dan bisa bikin error.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oh jadi tipe data itu penting supaya nilai yang kita masukin sesuai dan gak rusak ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Iya. Kalau salah masukin tipe data, nanti programnya bisa ngga jalan sesuai harapan. Jadi label itu ngajarin variabel buat nyimpen data yang tepat.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Ohh… aku mulai paham, Kak. Jadi intinya tipe data itu kayak ngasih tahu komputer jenis nilai apa yang disimpan, ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Yap, bener banget! Misalnya kamu mau nyimpen umur, pakai int. Kalau nyimpen nama, pakai string. Gitu.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Terus kalau variabel itu semacam wadahnya, kan? Jadi bisa aja satu variabel berisi tipe data int, satu lagi char, dan seterusnya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Persis! Variabel itu kayak label di botol. Botolnya bisa beda ukuran, isinya beda, tapi semua punya label biar gak ketuker.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oke, jadi sekarang aku ngerti kalau tipe data itu penting banget buat bikin program yang bener.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Nah, sekarang coba jawab soal ini ya, biar makin paham!",
+              "reaction_index": 0,
+              "speaker": 2
             }
           ],
           "next": "soal1_1",
@@ -245,18 +368,6 @@
               "line": "Ah paham-paham mulu, coba kamu jawab soal ini kalo emang paham.",
               "reaction_index": 0,
               "speaker": 2
-            }
-          ],
-          "choices": [
-            {
-              "text": "Istri Malano",
-              "next": "soal1_2",
-              "nextType": "soal"
-            },
-            {
-              "text": "Bojonya Malano",
-              "next": "soal1_2",
-              "nextType": "soal"
             }
           ],
           "next": "soal1_2",
