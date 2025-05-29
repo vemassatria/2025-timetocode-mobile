@@ -1150,10 +1150,10 @@
       "description": "[Looping time! Biar program kamu bisa ngulang-ngulang kerjaan tanpa capek]",
       "title": "For, While, Do While",
       "background": "teman-cafe",
-      "character1_name": "Rusdi",
-      "character1_reaction": ["rusdi-biasa", "rusdi-marah", "rusdi-senang"],
+      "character1_name": "Mas Mulyo",
+      "character1_reaction": ["rusdi_biasa", "rusdi_marah", "rusdi_senang", "rusdi_kecewa", "rusdi_aksi"],
       "character2_name": "Adrian",
-      "character2_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "character2_reaction": ["adriancafe_biasa", "adriancafe_marah", "adriancafe_senang", "adriancafe_kecewa", "adriancafe_aksi"],
       "ilustration": ["contoh-ilustrasi1"],
       "start": "preDialog3",
       "typeStart": "preDialog",
@@ -1168,92 +1168,155 @@
           "id": "intro3",
           "text": [
             {
-              "line": "Bro katanya janjiannya jam 3, kenapa kamu baru dateng jam 4? Aku udah nungguin di sini dari tadi. Kamu naik siput ya pasti, lama banget, deh!",
+              "line": "Aduh… codingnya bener-bener bikin otak ngebul.",
               "reaction_index": 1,
-              "speaker": 1
-            },
-            {
-              "line": "Waduh Mas Rusdi ngamuk lho rek! Sorry-sorry broo macet banget di jalan. Jadi mana yang mau kamu tanyain?",
-              "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Ini tentang perulangan, gimana?",
+              "line": "Halo mas, mau pesen apa hari ini?",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Pertama kalau kamu pengen ngulangin sesuatu berkali-kali, kamu bisa pake for loop. For itu cocok kalau kamu udah tahu berapa kali perulangan yang harus dilakukan.",
+              "line": "Mi ayam biasa, Pak. Yang banyak kuahnya ya.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Misal kamu pengen nulis angka dari 1 sampai 5. Jadi kamu tentuin mulai dari mana, sampai mana, dan tiap kali kamu ngulangin kamu tambahin angkanya. Ngerti?",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Ah oke, jadi for itu kalau udah tahu berapa kali ngulangin ya?",
+              "line": "Wah, keliatan lelah banget. Lagi ngerjain apa mas?",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Betul Rus! Nah aku jelasin pelan-pelan ya soal for loop ini. Ada tiga bagian utama di dalamnya. Pertama ada yang namanya inisialisasi.",
+              "line": "Ini Pak,. Tugas coding, bikin kepala muter terus.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Jadi sebelum perulangan dimulai, kita harus tentuin nilai awalnya. Misal kamu mau mulai dari angka 1, jadi kita tulis int i = 1;. Itu artinya kita mulai dari angka 1.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Jadi inisialisasi itu kayak nentuin angka pertama yang mau dipakai?",
+              "line": "Dulu saya kuliah TI juga lho, Mas. Tapi ya gitu… sekarang muter-muter di dapur tiap hari.",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Tepat! Kedua ada bagian yang disebut kondisi. Ini yang bakal dicek setiap kali perulangan berlangsung. ",
+              "line": "Kadang saya mikir, jangan-jangan hidup saya ini udah kayak program yang kejebak di loop. Gak kelar-kelar.",
               "reaction_index": 0,
-              "speaker": 2
+              "speaker": 1
+            }
+          ],
+          "choices": [
+            {
+              "text": "Eh... loop itu maksudnya apa sih, Mas? Saya lagi belajar itu juga, tapi malah makin pusing.",
+              "next": "scene3_1",
+              "nextType": "dialog"
             },
             {
-              "line": "Misal kita mau perulangan terus berjalan selama angka i itu masih lebih kecil atau sama dengan 5. Jadi, kita tulis i <= 5;. Artinya selama i lebih kecil atau sama dengan 5 maka perulangannya terus jalan.",
-              "reaction_index": 0,
-              "speaker": 2
+              "text": "Wah, saya juga kayaknya lagi kejebak loop deh. Tugas gak kelar-kelar, Mas.",
+              "next": "scene3_2",
+              "nextType": "dialog"
             },
             {
-              "line": "Ooh jadi kondisi itu buat nentuin kapan perulangannya berhenti?",
+              "text": "Hahaha, iya Pak. Tapi saya yakin ada jalan keluarnya kok.",
+              "next": "scene3_3",
+              "nextType": "dialog"
+            }
+          ]
+        },
+        {
+          "id": "scene3_1",
+          "text": [
+            {
+              "line": "Loop itu mirip perulangan, Mas. Jadi, komputer ngelakuin hal yang sama berulang-ulang… sampai syarat tertentu terpenuhi.",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Betul! Nah terakhir ada yang namanya increment atau decrement. Ini buat nambahin atau ngurangin nilai setelah setiap perulangan selesai.",
+              "line": "Mas Rusdi nih kayanya jago, bisa tolong jelasin soal Loop ini ga mas",
               "reaction_index": 0,
-              "speaker": 2
-            },
+              "speaker": 1
+            }
+          ],
+          "next": "materi3_1",
+          "nextType": "dialog"
+        },
+        {
+          "id": "scene3_2",
+          "text": [
             {
-              "line": "Kalau kamu mau nambahin nilai i, kamu tulis i++. Itu artinya setelah tiap perulangan angka i akan bertambah 1.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Jadi increment buat nambahin nilai i tiap kali perulangan ya? Kalau mau ngurangin pakai i--?",
+              "line": "Lho, sama dong kayak saya. Bedanya, loop saya isinya ngaduk kuah sama motong ayam tiap hari.",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Iya! Jadi tiga bagian itu: inisialisasi buat mulai dari mana, kondisi buat ngecek kapan berhentinya, dan increment buat nambahin atau ngurangin nilai.",
+              "line": "Iya juga ya, Mas. Hidup kita bisa dibilang program yang jalan terus…",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Ok kayanya aku mulai paham nih",
-              "reaction_index": 2,
+              "line": "Itu namanya loop kehidupan mas",
+              "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Nah sekarang aku kasih tantangan buat kamu. Coba kamu jawab soal ini ya",
+              "line": "Eh, ngomong-ngomong soal loop… Mas tadi sempat nyebut. Loop itu maksudnya apa sih? Tadi dosen saya jelasin, tapi malah bikin kepala tambah muter.",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next": "materi3_1",
+          "nextType": "dialog"
+        },
+        {
+          "id": "scene3_3",
+          "text": [
+            {
+              "line": "Hahaha… mi ayam tuh emang wenak, Mas. Ibarat nemu titik koma pas coding error—melegakan banget.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Eh iya, ngomongin soal coding… Mas, tadi sempat nyebut soal loop ya? Saya tadi diajarin dosen, tapi kepala saya gak nyangkut apa-apa.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Soalnya keburu kepikiran mi ayam, Mas… kacau.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Wah, kacau bener. Tapi tenang, loop itu gampang kok. Mau saya jelasin soal Loo",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Mau banget mas!",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next":"materi3_1",
+          "nextType": "dialog"
+        },
+        {
+          "id": "materi3_1",
+          "text": [
+            {
+              "line": "Oke, gini for loop itu kayak daftar tugas yang udah jelas jumlahnya, misalnya kamu harus nanam bunga di 5 pot.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Kamu mulai nanam dari pot pertama sampai pot kelima, gak kurang gak lebih. Jadi for loop itu bilang, 'Lakukan ini sebanyak 5 kali.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Oh, jadi for loop itu buat tugas yang jumlahnya sudah pasti dari awal, ya?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Iya bener! Nah sekarang coba kerjain soal ini dulu",
               "reaction_index": 2,
               "speaker": 2
             }
@@ -1261,6 +1324,7 @@
           "next": "soal3_1",
           "nextType": "soal"
         },
+
         {
           "id": "salah3_1",
           "text": [
@@ -1312,55 +1376,41 @@
           "id": "materi3_2",
           "text": [
             {
-              "line": "Nah itu kamu bisa! Sekarang kita lanjut ke while loop. Kalau tadi kan for loop, sekarang kamu bakal belajar bagaimana while bisa lebih fleksibel karena dia fokus ke kondisi yang harus dipenuhi.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Aduh ada berapa ini materinya.. Kapan selesainya",
-              "reaction_index": 1,
-              "speaker": 1
-            },
-            {
-              "line": "Sabar... kita belajar pelan-pelan biar paham materinya. Nah kalau while loop itu lebih fleksibel.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Kamu bisa pake while kalau kamu belum tahu pasti berapa kali perulangan yang diperlukan, tapi kamu harus punya kondisi yang harus dicek dulu. Jadi selama kondisi itu bener, dia akan terus ngulangin. Paham kan?",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Simplenya while itu ngecek dulu baru ngulang?",
+              "line": "Nah, udah bener. Sekarang while loop, while loop beda, nih. Kamu nyiram tanaman yang kering, tapi kamu gak tahu harus nyiram berapa kali sampai tanahnya basah",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Bener banget! Sekarang yang terakhir ada do while. Bedanya dengan while, kalau do while itu ngejalanin perulangan setidaknya sekali dulu, baru kemudian ngecek kondisi.",
+              "line": "Jadi kamu nyiram terus selama tanahnya masih kering. Kalau udah basah, kamu berhenti.",
               "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Jadi meskipun kondisi awalnya nggak bener, dia tetap jalanin sekali dulu, baru cek kondisinya. Gimana? Paham?",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Ih paham paham kayak Kak Gem aja kamu! Paham lahhh!!! Jadi do while itu jalan sekali dulu, baru cek kondisinya, kan?",
-              "reaction_index": 2,
               "speaker": 1
             },
             {
-              "line": "Betul Rus! Jadi kalau kamu udah tahu pasti jumlah perulangannya, pakai for. ",
-              "reaction_index": 2,
+              "line": "Wah, berarti while loop itu tugas yang terus diulang selama kondisi tertentu masih benar, ya?",
+              "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Kalau kamu harus ngecek kondisi dulu baru ngulang, pakai while atau do while tergantung kamu butuh perulangan yang jalan minimal sekali dulu atau nggak. Biar kamu lebih paham coba kerjain soal ini, kalau kamu bener aku traktir makan deh",
+              "line": "Yeah Bro! Terus terakhir ada do-while loop. Misal kamu punya dispenser air yang pasti ngeluarin air minimal sekali ke gelas.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "baru setelah itu dicek apakah gelasnya sudah penuh. Kalau belum, air terus keluar, kalau sudah penuh, berhenti.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Jadi do-while itu selalu jalan minimal sekali dulu baru cek kondisinya, beda sama while yang cek dulu baru jalan?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Betul banget! sekarang coba kerjain soal ini, aku traktir mi ayam kalau kamu bisa jawab bener.",
               "reaction_index": 2,
-              "speaker": 2
+              "speaker": 1
             }
+
           ],
           "next": "soal3_2",
           "nextType": "soal"
@@ -1369,17 +1419,17 @@
           "id": "bener3_last",
           "text": [
             {
-              "line": "Yoi Rus, jawabannya C! Loop-nya jalan tiga kali, makanya 'Hai' dicetak tiga kali.",
-              "reaction_index": 2,
-              "speaker": 2
-            },
-            {
-              "line": "Akhirnya paham juga, makasih Adrian.",
+              "line": "Yoi yan, jawabannya C! Loop-nya jalan tiga kali, makanya 'Hai' dicetak tiga kali.",
               "reaction_index": 2,
               "speaker": 1
             },
             {
-              "line": "Yaudah sekarang mending kamu pesen makan, keburu janji makan gratis dari aku expired.",
+              "line": "Akhirnya paham juga, makasih Mas rusdi.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Yaudah sekarang aku buatin mi ayam gratis yang ku janjiin tadi.",
               "reaction_index": 0,
               "speaker": 2
             },

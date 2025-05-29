@@ -97,84 +97,91 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                   top: BorderSide(color: AppColors.white, width: 2.w),
                 ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child:
-                        _isComplete
-                            ? Text(
-                              text,
-                              style: AppTypography.large().copyWith(
-                                decoration: TextDecoration.none,
-                              ),
-                            )
-                            : AnimatedTextKit(
-                              key: ValueKey(
-                                'dialog_$idx',
-                              ), // Good use of ValueKey
-                              isRepeatingAnimation: false,
-                              displayFullTextOnTap:
-                                  true, // Allow tap on text to complete it
-                              stopPauseOnTap: true, // Stop animation on tap
-                              onFinished: () {
-                                // Automatically set _isComplete to true when animation finishes
-                                if (mounted) {
-                                  // Check if widget is still in tree
-                                  setState(() {
-                                    _isComplete = true;
-                                  });
-                                }
-                              },
-                              animatedTexts: [
-                                TypewriterAnimatedText(
-                                  text,
-                                  textStyle: AppTypography.medium().copyWith(
-                                    decoration: TextDecoration.none,
-                                  ),
-                                  speed: const Duration(milliseconds: 20),
-                                  cursor: '_',
-                                ),
-                              ],
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return SingleChildScrollView(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: constraints.maxHeight,
+                      ),
+                      child: IntrinsicHeight(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: _isComplete
+                                  ? Text(
+                                      text,
+                                      style: AppTypography.large().copyWith(
+                                        decoration: TextDecoration.none,
+                                      ),
+                                    )
+                                  : AnimatedTextKit(
+                                      key: ValueKey('dialog_$idx'),
+                                      isRepeatingAnimation: false,
+                                      displayFullTextOnTap: true,
+                                      stopPauseOnTap: true,
+                                      onFinished: () {
+                                        if (mounted) {
+                                          setState(() {
+                                            _isComplete = true;
+                                          });
+                                        }
+                                      },
+                                      animatedTexts: [
+                                        TypewriterAnimatedText(
+                                          text,
+                                          textStyle: AppTypography.medium()
+                                              .copyWith(
+                                                decoration:
+                                                    TextDecoration.none,
+                                              ),
+                                          speed: const Duration(
+                                            milliseconds: 20,
+                                          ),
+                                          cursor: '_',
+                                        ),
+                                      ],
+                                    ),
                             ),
-                  ),
-                  const Spacer(),
-                  if (_isComplete &&
-                      isLastLine &&
-                      dialog.choices != null &&
-                      dialog.choices!.isNotEmpty)
-                    DialogChoicesBox(
-                      choices: dialog.choices!,
-                      onPressed: (choice) {
-                        final storyController = ref.read(
-                          storyControllerProvider.notifier,
-                        );
-                        if (choice.nextType == 'dialog') {
-                          storyController.showDialog(choice.next);
-                        } else if (choice.nextType == 'soal') {
-                          storyController.showQuestion(choice.next);
-                        } else {
-                          storyController.showEndGame();
-                        }
-                        // Ensure _isComplete is reset when a choice is made and new content loads
-                        // This might already be handled if showDialog/showQuestion resets the index
-                        // but being explicit can be safer depending on storyController's implementation.
-                        // setState(() => _isComplete = false); // Consider if needed here
-                      },
-                    ),
-                  if (_isComplete &&
-                      (!isLastLine ||
-                          dialog.choices == null ||
-                          dialog.choices!.isEmpty))
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Icon(
-                        Icons.keyboard_double_arrow_right_rounded,
-                        size: 32.sp,
-                        color: AppColors.primaryText,
+                            SizedBox(height: 12), // <-- Replace Spacer() with a small gap
+                            if (_isComplete &&
+                                isLastLine &&
+                                dialog.choices != null &&
+                                dialog.choices!.isNotEmpty)
+                              DialogChoicesBox(
+                                choices: dialog.choices!,
+                                onPressed: (choice) {
+                                  final storyController = ref.read(
+                                    storyControllerProvider.notifier,
+                                  );
+                                  if (choice.nextType == 'dialog') {
+                                    storyController.showDialog(choice.next);
+                                  } else if (choice.nextType == 'soal') {
+                                    storyController.showQuestion(choice.next);
+                                  } else {
+                                    storyController.showEndGame();
+                                  }
+                                },
+                              ),
+                            if (_isComplete &&
+                                (!isLastLine ||
+                                    dialog.choices == null ||
+                                    dialog.choices!.isEmpty))
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: Icon(
+                                  Icons.keyboard_double_arrow_right_rounded,
+                                  size: 32.sp,
+                                  color: AppColors.primaryText,
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
-                ],
+                  );
+                },
               ),
             ),
             Positioned(
