@@ -62,7 +62,7 @@ class StoryCharactersComponent extends Component {
     final image = await _game.images.fromCache(
       'character/$characterNewPath.webp',
     );
-    final height = _game.size.y * 0.375;
+    final height = _game.size.y * 0.475;
     final width = image.width / image.height * height;
 
     final character = indexCharacter == 1 ? person1 : person2;
@@ -92,7 +92,7 @@ class StoryCharactersComponent extends Component {
   //membesarkan karakter
   Future<void> enhancedSizeCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
-    final height = _game.size.y * 0.45;
+    final height = _game.size.y * 0.525;
     final width = target.sprite!.srcSize.x / target.sprite!.srcSize.y * height;
     final position =
         indexCharacter == 1
@@ -109,7 +109,7 @@ class StoryCharactersComponent extends Component {
   //fungsinya ini untuk mengecilkan karakter ke posisi semula
   Future<void> normalSizeCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
-    final height = _game.size.y * 0.375;
+    final height = _game.size.y * 0.475;
     final width = target.sprite!.srcSize.x / target.sprite!.srcSize.y * height;
     final position =
         indexCharacter == 1
@@ -148,7 +148,7 @@ class StoryCharactersComponent extends Component {
 
   Future<void> explainingCharacter(int indexCharacter) async {
     final target = indexCharacter == 1 ? person1 : person2;
-    final halfHeight = _game.size.y * 0.3;
+    final halfHeight = _game.size.y * 0.35;
     final halfWidth =
         target.sprite!.srcSize.x / target.sprite!.srcSize.y * halfHeight;
     final halfPosition =

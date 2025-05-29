@@ -6,9 +6,17 @@
       "title": "Tipe Data, Variabel, dan Operator",
       "background": "warung-kating",
       "character1_name": "Adrian",
-      "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "character1_reaction": [
+        "adriancafe_biasa",
+        "adriancafe_marah",
+        "adriancafe_senang"
+      ],
       "character2_name": "Mas Mulyo",
-      "character2_reaction": ["kating-biasa", "kating-marah", "kating-senang"],
+      "character2_reaction": [
+        "adriankampus_biasa",
+        "adriankampus_marah",
+        "adriankampus_senang"
+      ],
       "ilustration": ["contoh-ilustrasi1", "default"],
       "start": "preDialog1",
       "typeStart": "preDialog",

@@ -40,7 +40,7 @@ class SkipButton extends ConsumerWidget {
             right: 0.w,
             child: SafeArea(
               child: Padding(
-                padding: EdgeInsets.only(top: 16.h),
+                padding: EdgeInsets.only(top: 16.h, right: 16.w),
                 child: Container(
                   width: 100.w,
                   height: 38.h,
