@@ -17,25 +17,25 @@
                   {
                     "text": "int",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "float",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "string",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "char",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -50,25 +50,25 @@
                   {
                     "text": "2.5",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "2.0",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "0",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "3.0",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   }
                 ]
@@ -83,25 +83,25 @@
                   {
                     "text": "55",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "60 ",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "50",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "45",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
@@ -122,25 +122,25 @@
                   {
                     "text": "A",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "B",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Tidak ada output",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Error",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -154,25 +154,25 @@
                   {
                     "text": "switch hanya bisa mengecek nilai string",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "switch hanya bisa mengecek tipe data integer atau karakter",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "switch bisa menggunakan ekspresi boolean",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "switch tidak memerlukan break",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -187,25 +187,25 @@
                   {
                     "text": "TwoThree",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "TwoThreeDefault",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "Three",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "OneTwoThree",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
@@ -226,25 +226,25 @@
                   {
                     "text": "4 kali",
                     "next": "soal3_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "5 kali",
                     "next": "soal3_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "6 kali",
                     "next": "soal3_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Infinity",
                     "next": "soal3_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -258,25 +258,25 @@
                   {
                     "text": "while selalu menjalankan minimal satu kali, do while tidak",
                     "next": "soal3_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "do while selalu menjalankan minimal satu kali, while bisa nol kali",
                     "next": "soal3_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "tidak ada perbedaan",
                     "next": "soal3_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "while tidak menggunakan kondisi",
                     "next": "soal3_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -291,25 +291,25 @@
                   {
                     "text": "15",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "9",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "12",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "10",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
@@ -329,25 +329,25 @@
                   {
                     "text": "Melanjutkan iterasi berikutnya",
                     "next": "soal4_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": " Menghentikan seluruh program",
                     "next": "soal4_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Menghentikan loop saat ini dan keluar dari loop",
                     "next": "soal4_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "Melewati perulangan saat ini",
                     "next": "soal4_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -362,25 +362,25 @@
                   {
                     "text": "11 12 13 21 22 23 31 32 33\n",
                     "next": "soal4_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "11 21 31 ",
                     "next": "soal4_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "11 12 21 22 31 32\n",
                     "next": "soal4_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "11 21 22 31 32 33\n",
                     "next": "soal4_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -394,25 +394,25 @@
                   {
                     "text": "exit(0) dan exit(1) keduanya menandakan program berhenti dengan sukses\n",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "exit(0) menandakan program berhenti dengan sukses, sedangkan exit(1) menandakan terjadi kesalahan",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "exit(0) menandakan program berhenti dengan kesalahan, sedangkan exit(1) menandakan sukses\n",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "exit(0) dan exit(1) tidak memiliki makna khusus dan dianggap sama",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
@@ -433,25 +433,25 @@
                   {
                     "text": "int",
                     "next": "soal5_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "void",
                     "next": "soal5_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "char",
                     "next": "soal5_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "float",
                     "next": "soal5_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -466,25 +466,25 @@
                   {
                     "text": "Program akan mencetak 12",
                     "next": "soal5_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Program akan mencetak 0",
                     "next": "soal5_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Program menghasilkan undefined behavior karena fungsi malano tidak mengembalikan nilai",
                     "next": "soal5_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "Program error saat kompilasi karena fungsi malano tidak mengembalikan nilai",
                     "next": "soal5_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -499,25 +499,25 @@
                   {
                     "text": "Program mencetak semua pasangan (i, j) hingga i*j > 6 lalu keluar dari kedua loop dan berhenti dengan status sukses",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "Ketika i == 3, inner loop melewati iterasi tersebut tanpa mencetak apapun, tapi loop tetap berjalan sampai selesai, dan program berhenti normal",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "continue menyebabkan inner loop berhenti total ketika i == 3, dan program tidak mencetak apa pun untuk i == 3 serta langsung keluar dari program dengan status error",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "Fungsi exit(0) menyebabkan loop luar berhenti secara prematur sebelum selesai iterasi i sampai 4",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
@@ -537,25 +537,25 @@
                   {
                     "text": "Variabel global",
                     "next": "soal6_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel lokal",
                     "next": "soal6_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "Variabel statis",
                     "next": "soal6_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel register",
                     "next": "soal6_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -569,25 +569,25 @@
                   {
                     "text": "Variabel statis hanya ada selama fungsi dijalankan",
                     "next": "soal6_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel statis mempertahankan nilainya antara pemanggilan fungsi",
                     "next": "soal6_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "Variabel statis hanya dapat diakses dari luar fungsi\n",
                     "next": "soal6_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel statis selalu disimpan di register CPU",
                     "next": "soal6_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -602,25 +602,25 @@
                   {
                     "text": "1 1",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "2 1",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "1 2",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "0 0",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
