@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:timetocode/components/popups/confirm_popup.dart';
+import 'package:timetocode/games/backend/models/dialog_choices.dart';
 import 'package:timetocode/games/backend/providers/story_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 import 'package:timetocode/components/box/dialog_choices_box.dart';
 
@@ -146,20 +149,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                     DialogChoicesBox(
                       choices: dialog.choices!,
                       onPressed: (choice) {
-                        final storyController = ref.read(
-                          storyControllerProvider.notifier,
-                        );
-                        if (choice.nextType == 'dialog') {
-                          storyController.showDialog(choice.next);
-                        } else if (choice.nextType == 'soal') {
-                          storyController.showQuestion(choice.next);
-                        } else {
-                          storyController.showEndGame();
-                        }
-                        // Ensure _isComplete is reset when a choice is made and new content loads
-                        // This might already be handled if showDialog/showQuestion resets the index
-                        // but being explicit can be safer depending on storyController's implementation.
-                        // setState(() => _isComplete = false); // Consider if needed here
+                        _checkAnswer(context, choice);
                       },
                     ),
                   if (_isComplete &&
@@ -198,6 +188,33 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _checkAnswer(BuildContext context, DialogChoices selected) {
+    showPopupOverlay(
+      context,
+      ConfirmPopup(
+        title: "Yakin ingin merespon?",
+        description: "Kamu bisa mencoba respon lainnya.",
+        confirmLabel: "Yakin",
+        onPrimaryButtonPressed: () {
+          // MusicService.sfxSelectClick();
+          final storyController = ref.read(storyControllerProvider.notifier);
+          if (selected.nextType == 'dialog') {
+            storyController.showDialog(selected.next);
+          } else if (selected.nextType == 'soal') {
+            storyController.showQuestion(selected.next);
+          } else {
+            storyController.showEndGame();
+          }
+          closePopupOverlay();
+        },
+        onGoBack: () {
+          // MusicService.sfxNegativeClick();
+          closePopupOverlay();
+        },
       ),
     );
   }

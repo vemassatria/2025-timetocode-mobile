@@ -54,6 +54,7 @@ class _QuizPageState extends ConsumerState<QuizPage> {
   Widget build(BuildContext context) {
     final asyncState = ref.watch(challengeControllerProvider);
     final challenge = asyncState.value;
+    final code = challenge!.currentQuestion!.code;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
@@ -70,7 +71,7 @@ class _QuizPageState extends ConsumerState<QuizPage> {
               SizedBox(
                 width: 30.w,
                 child: Text(
-                  "${challenge!.correctAnswer}/3",
+                  "${challenge.correctAnswer}/3",
                   style: AppTypography.mediumBold(),
                   textAlign: TextAlign.end,
                 ),
@@ -107,18 +108,23 @@ class _QuizPageState extends ConsumerState<QuizPage> {
                 style: AppTypography.normal(color: AppColors.primaryText),
                 textAlign: TextAlign.justify,
               ),
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.backgroundTransparent,
-                  border: Border.all(color: AppColors.primaryText, width: 1.w),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(16.w),
-                  child: CodeText('''
-${challenge.currentQuestion!.code}'''),
-                ),
-              ),
+              code.trim().isNotEmpty
+                  ? Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColors.backgroundTransparent,
+                      border: Border.all(
+                        color: AppColors.primaryText,
+                        width: 1.w,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(16.w),
+                      child: CodeText('''
+$code'''),
+                    ),
+                  )
+                  : SizedBox.shrink(),
 
               Column(
                 spacing: 16.h,
