@@ -6,15 +6,15 @@
       "title": "Tipe Data, Variabel, dan Operator",
       "background": "warung-kating",
       "character1_name": "Adrian",
-      "character1_reaction": ["adrian-biasa", "adrian-marah", "adrian-senang"],
+      "character1_reaction": ["adriankampus_biasa", "adriankampus_marah", "adriankampus_senang", "adriankampus_kecewa", "adriankampus_aksi"],
       "character2_name": "Mas Mulyo",
-      "character2_reaction": ["kating-biasa", "kating-marah", "kating-senang"],
+      "character2_reaction": ["rusdi_biasa", "rusdi_marah", "rusdi_senang", "rusdi_kecewa", "rusdi_aksi"],
       "ilustration": ["contoh-ilustrasi1", "default"],
       "start": "preDialog1",
       "typeStart": "preDialog",
       "preDialog": {
         "id": "preDialog1",
-        "text": "Adrian duduk di warung sambil menatap layar laptopnya, tampak bingung membuka-buka dokumen yang ada di dalamnya. Mas Mulyo yang kebetulan lewat melihat adik tingkatnya itu terlihat kesulitan, lalu mendekat untuk menanyakan apa yang sedang terjadi.",
+        "text": "Adrian baru saja menyelesaikan kelas pemrograman pertamanya. Pening, ia mampir ke kafe dekat kampus, berharap kopi bisa meredakan pusing akibat deretan kode yang belum ia pahami. Di tengah obrolan ringan pengunjung, terdengar keluhan lirih dari Adrian. Dari sudut kafe, seorang yang tampak familiar mendekatinya",
         "next": "intro1",
         "nextType": "dialog"
       },
@@ -554,18 +554,20 @@
       "background": "mc-rumah",
       "character1_name": "Adrian",
       "character1_reaction": [
-        "adrian-rumah-biasa",
-        "adrian-rumah-marah",
-        "adrian-rumah-senang"
+        "adriancafe_biasa",
+        "adriancafe_marah",
+        "adriancafe_senang",
+        "adriancafe_kecewa",
+        "adriancafe_aksi"
       ],
       "character2_name": "Kakak",
-      "character2_reaction": ["tino-biasa", "tino-marah", "tino-senang"],
+      "character2_reaction": ["tino_biasa", "tino_marah", "tino_senang", "tino_kecewa", "tino_aksi"],
       "ilustration": ["contoh-ilustrasi1"],
       "start": "preDialog2",
       "typeStart": "preDialog",
       "preDialog": {
         "id": "preDialog2",
-        "text": "Setelah pulang kuliah, aku masuk rumah dan langsung menuju ruang tamu. Di sana, aku lihat laptop kakakku terbuka dan di layarnya ada materi yang judul highlightnya if, else if, switch yang asing banget buatku. Karena penasaran akhirnya aku nanya ke kakak.",
+        "text": "Di kamar Adrian, lampu meja menyala redup. Laptopnya terbuka dengan kode program pengecek nilai yang penuh error. Adrian duduk sambil mengernyit, berulang kali mengetik dan mencoba memperbaiki kode itu.",
         "next": "intro2",
         "nextType": "dialog"
       },
@@ -574,53 +576,119 @@
           "id": "intro2",
           "text": [
             {
-              "line": "Ini materi apaan kak?",
+              "line": "Aduh, kenapa sih program pengecek nilainya error terus? Padahal aku sudah nulis kode ini berkali-kali...",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Oh ini materiku waktu semester satu. eh btw harusnya kamu udah diajarin materi ini kan?",
+              "line": "Hmm... dari jauh aku sudah lihat kayaknya kamu belum paham betul cara pakai if, else-if, dan switch, nih.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Hah apaan? aku belum diajarin. eh tapi gapapa ajarin aku sekarang aja kak buat persiapan nanti menyambut kesenangan kuliah informatika",
+              "line": "Aku udah coba, Kak. Tapi makin dilihat, makin rumit. Rasanya makin gak ngerti...",
               "reaction_index": 1,
               "speaker": 1
             },
             {
-              "line": "Jangan sarkas gitu dong, okee jadi ini tuh if, else if, dan switch. if itu cara kita ngecek satu kondisi dalam program.",
+              "line": "Haha, masa baru materi dasar aja udah kewalahan? Gimana nanti menghadapi materi setelah ini.",
               "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Kayak misalnya, kamu mau ngecek apakah umur kamu lebih dari 18 tahun atau nggak. Kalau iya, maka akan ada aksi tertentu yang dijalankan.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Ooh, trus kalau else if gimana?",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Nah, satu lagi nih, kalau pilihan kamu banyak banget, dan kondisinya mirip, kamu bisa pake switch",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Ooh jadi gini, if untuk cek satu kondisi, else if untuk cek jika mempunyai lebih dari satu kondisi, dan switch untuk cek jika mempunyai pilihan banyak banget dan kondisinya mirip. bener ga kak?",
-              "reaction_index": 2,
-              "speaker": 1
-            },
-            {
-              "line": "BEHHHH KACAU! mantep tuh, eh nih coba kamu lihat, kalau ini masuk ke kondisi apa",
-              "reaction_index": 2,
               "speaker": 2
             }
           ],
-          "next": "soal2_1",
-          "nextType": "soal"
+          "choices":[
+            {
+              "text": "Kakak tahu, kan? Bisa tolong jelasin yang gampang aja? Aku udah capek banget nih...",
+              "next": "scene2_1",
+              "nextType": "dialog"
+            },
+            {
+              "text": "Iya deh, tapi jangan cuma nyindir terus, aku juga belajar kok.",
+              "next": "scene2_2",
+              "nextType": "dialog"
+            },
+            {
+              "text": "Ah, kamu cuma nyindir aja, gak usah sok pintar, aku bisa cari sendiri kalau mau.",
+              "next": "scene2_3",
+              "nextType": "dialog"
+            }
+          ]
+        },
+        {
+          "id": "scene2_1",
+          "text": [
+            {
+              "line":  "Santai, bro. Aku juga dulu pernah stuck berhari-hari sebelum ngerti.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Iya, makanya aku minta tolong. Aku bener-bener bingung nih.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Oke, aku jelasin gampangnya",
+              "reaction_index": 0,
+              "speaker": 2
+            }
+          ],
+          "next": "materi2_1",
+          "nextType": "dialog"
+        },
+        {
+          "id": "scene2_2",
+          "text": [
+            {
+              "line":  "Santai aja, gak usah baper. Aku juga pernah kayak kamu, malah sering lebih parah.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Hehe, ya maklum lah, baru belajar. Kadang rasanya pengen nyerah aja",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Nah, makanya aku di sini buat bantu. Yuk, kita lihat bareng-bareng bagian mana yang bikin kamu bingung.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Aku bingung, Kak. Dari nulis if, urutan else-if, sampai kapan pakai switch, semua campur aduk.",
+              "reaction_index": 0,
+              "speaker": 1
+            }
+          ],
+          "next": "materi2_1",
+          "nextType": "dialog"
+        },
+        {
+          "id": "scene2_3",
+          "text": [
+            {
+              "line":  "Heh, gak usah marah gitu dong. Aku cuma pengen bantu.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Halah pasti nanti ada nyindir-nyindirnya",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line":  "Engga kok enggak, kamu mau dibantuin ga?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line":  "Mau kak hehe, jelasin yang gampang dong kak",
+              "reaction_index": 0,
+              "speaker": 1
+            }
+          ],
+          "next": "materi2_1",
+          "nextType": "dialog"
         },
         {
           "id": "salah2_1",
@@ -644,6 +712,38 @@
               "line": "Oooh, paham sekarang! Aku coba pikir lagi deh!",
               "reaction_index": 0,
               "speaker": 1
+            }
+          ],
+          "next": "soal2_1",
+          "nextType": "soal"
+        },
+        {
+          "id": "materi2_1",
+          "text": [
+            {
+              "line": "Misal kamu lagi di persimpangan jalan, terus ada petugas yang nanya mau ke mana. Kalau kamu jawab pantai, si petugas langsung suruh kamu ke pantai. Itu kayak if doang, simpel. Kalau jawabannya bukan pantai, si petugas suruh kamu ke jalan lain.",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Oke, gampang tuh. Terus kalau ada lebih dari satu pilihan?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Nah itu kalau di simpang empat, ada petugas yang bisa arahkan ke pegunungan, pantai, atau kota. Jadi kalau kamu bilang pegunungan, dia suruh ke kiri. Kalau pantai, ke kanan. Kalau ‘kota’, jalan lurus. Kalau jawabannya nggak cocok sama ketiganya, dia kasih jalan lain.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Oh itu kayak pakai… aduh apa sih namanya…",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Itu pakai else-if. Jadi if pertama ngecek satu kondisi, else-if buat ngecek kondisi lain-lainnya. Kalau gak ada yang cocok, pakai else. Nah sekarang cobva kamu jawab soal ini, ya.",
+              "reaction_index": 2,
+              "speaker": 2
             }
           ],
           "next": "soal2_1",
@@ -737,12 +837,22 @@
               "speaker": 2
             },
             {
-              "line": "Jadi switch digunakan untuk memilih aksi berdasarkan nilai yang ada.",
+              "line": "Nah iya! Lah terus switch buat apa dong?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Switch itu mirip kayak else-if, tapi lebih rapi kalau pilihan kamu sudah pasti dan terbatas, kayak pegunungan, pantai, atau kota. Jadi switch langsung cocokkan pilihanmu, dan kasih arahan sesuai case-nya.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Misalnya, kamu punya pilihan menu di restoran, dan tiap pilihan punya nomor tertentu. Berdasarkan nomor yang dipilih, menu yang berbeda akan muncul. Sekarang tebak nih output yang muncul apa",
+              "line": "Wah jadi kalau cuma satu kondisi pakai if, kalau banyak kondisi pakai else-if, terus kalau banyak pilihan pasti bisa pake switch, gitu?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Yeah exactly, sekarang coba kamu jawab soal ini, ya.",
               "reaction_index": 0,
               "speaker": 2
             }
