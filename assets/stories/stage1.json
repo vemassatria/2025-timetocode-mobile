@@ -20,12 +20,20 @@
       "ilustration": ["contoh-ilustrasi1", "default"],
       "start": "preDialog1",
       "typeStart": "preDialog",
-      "preDialog": {
-        "id": "preDialog1",
-        "text": "Adrian duduk di warung sambil menatap layar laptopnya, tampak bingung membuka-buka dokumen yang ada di dalamnya. Mas Mulyo yang kebetulan lewat melihat adik tingkatnya itu terlihat kesulitan, lalu mendekat untuk menanyakan apa yang sedang terjadi.",
-        "next": "intro1",
-        "nextType": "dialog"
-      },
+      "preDialog": [
+        {
+          "id": "preDialog1",
+          "text": "Adrian duduk di warung sambil menatap layar laptopnya, tampak bingung membuka-buka dokumen yang ada di dalamnya. Mas Mulyo yang kebetulan lewat melihat adik tingkatnya itu terlihat kesulitan, lalu mendekat untuk menanyakan apa yang sedang terjadi.",
+          "next": "preDialog1_2",
+          "nextType": "preDialog"
+        },
+        {
+          "id": "preDialog1_2",
+          "text": "Adrian: \"Mas, aku baru masuk kuliah di jurusan Informatika. Tapi kok materi pertama langsung susah-susah ya? Aku masih bingung banget soal tipe data, variabel, dan operator.\"",
+          "next": "intro1",
+          "nextType": "dialog"
+        }
+      ],
       "dialogs": [
         {
           "id": "intro1",
@@ -571,12 +579,14 @@
       "ilustration": ["contoh-ilustrasi1"],
       "start": "preDialog2",
       "typeStart": "preDialog",
-      "preDialog": {
-        "id": "preDialog2",
-        "text": "Setelah pulang kuliah, aku masuk rumah dan langsung menuju ruang tamu. Di sana, aku lihat laptop kakakku terbuka dan di layarnya ada materi yang judul highlightnya if, else if, switch yang asing banget buatku. Karena penasaran akhirnya aku nanya ke kakak.",
-        "next": "intro2",
-        "nextType": "dialog"
-      },
+      "preDialog": [
+        {
+          "id": "preDialog2",
+          "text": "Setelah pulang kuliah, aku masuk rumah dan langsung menuju ruang tamu. Di sana, aku lihat laptop kakakku terbuka dan di layarnya ada materi yang judul highlightnya if, else if, switch yang asing banget buatku. Karena penasaran akhirnya aku nanya ke kakak.",
+          "next": "intro2",
+          "nextType": "dialog"
+        }
+      ],
       "dialogs": [
         {
           "id": "intro2",
@@ -944,12 +954,14 @@
       "ilustration": ["contoh-ilustrasi1"],
       "start": "preDialog3",
       "typeStart": "preDialog",
-      "preDialog": {
-        "id": "preDialog3",
-        "text": "Siang itu Rusdi sudah menunggu di café sejak jam 3 sore, menatap layar ponselnya dengan muram. Jam dinding sudah menunjukkan pukul 4 dan Adrian belum juga muncul. Rusdi mulai gelisah, berpikir tentang tugas yang harus diselesaikan dan deadline yang semakin dekat.",
-        "next": "intro3",
-        "nextType": "dialog"
-      },
+      "preDialog": [
+        {
+          "id": "preDialog3",
+          "text": "Siang itu Rusdi sudah menunggu di café sejak jam 3 sore, menatap layar ponselnya dengan muram. Jam dinding sudah menunjukkan pukul 4 dan Adrian belum juga muncul. Rusdi mulai gelisah, berpikir tentang tugas yang harus diselesaikan dan deadline yang semakin dekat.",
+          "next": "intro3",
+          "nextType": "dialog"
+        }
+      ],
       "dialogs": [
         {
           "id": "intro3",
@@ -1678,12 +1690,14 @@
       "character2_reaction": ["rongga-biasa", "rongga-marah", "rongga-senang"],
       "start": "preDialog5",
       "typeStart": "preDialog",
-      "preDialog": {
-        "id": "preDialog5",
-        "text": "Di ruang kelas, Adrian sedang duduk di bangku depan, sementara Pak Rongga sedang berdiri di depan papan tulis, siap memberikan materi baru tentang Jenis Fungsi dalam pemrograman. Suasana kelas cukup tenang dan penuh perhatian.",
-        "next": "intro5",
-        "nextType": "dialog"
-      },
+      "preDialog": [
+        {
+          "id": "preDialog5",
+          "text": "Di ruang kelas, Adrian sedang duduk di bangku depan, sementara Pak Rongga sedang berdiri di depan papan tulis, siap memberikan materi baru tentang Jenis Fungsi dalam pemrograman. Suasana kelas cukup tenang dan penuh perhatian.",
+          "next": "intro5",
+          "nextType": "dialog"
+        }
+      ],
       "dialogs": [
         {
           "id": "intro5",
@@ -1955,12 +1969,14 @@
       "character2_reaction": ["crush-biasa", "crush-marah", "crush-senang"],
       "start": "preDialog6",
       "typeStart": "preDialog",
-      "preDialog": {
-        "id": "preDialog6",
-        "text": "Kantin kampus hari itu cukup ramai, Adrian duduk di meja pojok sambil menunggu makanan datang. Tiba-tiba, Jennie yang duduk di meja sebelah datang dan ikut duduk bersama Adrian.",
-        "next": "intro6",
-        "nextType": "dialog"
-      },
+      "preDialog": [
+        {
+          "id": "preDialog6",
+          "text": "Kantin kampus hari itu cukup ramai, Adrian duduk di meja pojok sambil menunggu makanan datang. Tiba-tiba, Jennie yang duduk di meja sebelah datang dan ikut duduk bersama Adrian.",
+          "next": "intro6",
+          "nextType": "dialog"
+        }
+      ],
       "dialogs": [
         {
           "id": "intro6",

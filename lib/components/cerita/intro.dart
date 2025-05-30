@@ -15,6 +15,7 @@ class IntroBoxWidget extends ConsumerWidget {
 
     return Center(
       child: NarrationBox(
+        key: ValueKey(state.preDialog!.id),
         narrationText: state.preDialog!.text,
         onTap: () {
           notifier.nextPreDialog();

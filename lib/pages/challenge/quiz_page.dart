@@ -24,6 +24,12 @@ class _QuizPageState extends ConsumerState<QuizPage> {
     });
   }
 
+  void clearSelection() {
+    setState(() {
+      selectedAnswer = null;
+    });
+  }
+
   Widget buildOption(ChoicesModel option) {
     final bool isSelected = selectedAnswer == option;
 
@@ -153,6 +159,7 @@ $code'''),
                   ref
                       .read(challengeControllerProvider.notifier)
                       .checkAnswer(selectedAnswer!),
+                  clearSelection(),
                 },
             color: ButtonColor.purple,
             isDisabled: selectedAnswer == null,
