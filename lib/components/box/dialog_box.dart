@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:timetocode/components/popups/confirm_popup.dart';
+import 'package:timetocode/games/backend/models/dialog_choices.dart';
 import 'package:timetocode/games/backend/providers/story_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 import 'package:timetocode/components/box/dialog_choices_box.dart';
 
@@ -97,91 +100,71 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                   top: BorderSide(color: AppColors.white, width: 2.w),
                 ),
               ),
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  return SingleChildScrollView(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minHeight: constraints.maxHeight,
-                      ),
-                      child: IntrinsicHeight(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: _isComplete
-                                  ? Text(
-                                      text,
-                                      style: AppTypography.large().copyWith(
-                                        decoration: TextDecoration.none,
-                                      ),
-                                    )
-                                  : AnimatedTextKit(
-                                      key: ValueKey('dialog_$idx'),
-                                      isRepeatingAnimation: false,
-                                      displayFullTextOnTap: true,
-                                      stopPauseOnTap: true,
-                                      onFinished: () {
-                                        if (mounted) {
-                                          setState(() {
-                                            _isComplete = true;
-                                          });
-                                        }
-                                      },
-                                      animatedTexts: [
-                                        TypewriterAnimatedText(
-                                          text,
-                                          textStyle: AppTypography.medium()
-                                              .copyWith(
-                                                decoration:
-                                                    TextDecoration.none,
-                                              ),
-                                          speed: const Duration(
-                                            milliseconds: 20,
-                                          ),
-                                          cursor: '_',
-                                        ),
-                                      ],
-                                    ),
-                            ),
-                            SizedBox(height: 12), // <-- Replace Spacer() with a small gap
-                            if (_isComplete &&
-                                isLastLine &&
-                                dialog.choices != null &&
-                                dialog.choices!.isNotEmpty)
-                              DialogChoicesBox(
-                                choices: dialog.choices!,
-                                onPressed: (choice) {
-                                  final storyController = ref.read(
-                                    storyControllerProvider.notifier,
-                                  );
-                                  if (choice.nextType == 'dialog') {
-                                    storyController.showDialog(choice.next);
-                                  } else if (choice.nextType == 'soal') {
-                                    storyController.showQuestion(choice.next);
-                                  } else {
-                                    storyController.showEndGame();
-                                  }
-                                },
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child:
+                        _isComplete
+                            ? Text(
+                              text,
+                              style: AppTypography.large().copyWith(
+                                decoration: TextDecoration.none,
                               ),
-                            if (_isComplete &&
-                                (!isLastLine ||
-                                    dialog.choices == null ||
-                                    dialog.choices!.isEmpty))
-                              Align(
-                                alignment: Alignment.bottomRight,
-                                child: Icon(
-                                  Icons.keyboard_double_arrow_right_rounded,
-                                  size: 32.sp,
-                                  color: AppColors.primaryText,
+                            )
+                            : AnimatedTextKit(
+                              key: ValueKey(
+                                'dialog_$idx',
+                              ), // Good use of ValueKey
+                              isRepeatingAnimation: false,
+                              displayFullTextOnTap:
+                                  true, // Allow tap on text to complete it
+                              stopPauseOnTap: true, // Stop animation on tap
+                              onFinished: () {
+                                // Automatically set _isComplete to true when animation finishes
+                                if (mounted) {
+                                  // Check if widget is still in tree
+                                  setState(() {
+                                    _isComplete = true;
+                                  });
+                                }
+                              },
+                              animatedTexts: [
+                                TypewriterAnimatedText(
+                                  text,
+                                  textStyle: AppTypography.medium().copyWith(
+                                    decoration: TextDecoration.none,
+                                  ),
+                                  speed: const Duration(milliseconds: 20),
+                                  cursor: '_',
                                 ),
-                              ),
-                          ],
-                        ),
+                              ],
+                            ),
+                  ),
+                  const SizedBox(height: 12),
+                  if (_isComplete &&
+                      isLastLine &&
+                      dialog.choices != null &&
+                      dialog.choices!.isNotEmpty)
+                    DialogChoicesBox(
+                      choices: dialog.choices!,
+                      onPressed: (choice) {
+                        _checkAnswer(context, choice);
+                      },
+                    ),
+                  if (_isComplete &&
+                      (!isLastLine ||
+                          dialog.choices == null ||
+                          dialog.choices!.isEmpty))
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Icon(
+                        Icons.keyboard_double_arrow_right_rounded,
+                        size: 32.sp,
+                        color: AppColors.primaryText,
                       ),
                     ),
-                  );
-                },
+                ],
               ),
             ),
             Positioned(
@@ -205,6 +188,33 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _checkAnswer(BuildContext context, DialogChoices selected) {
+    showPopupOverlay(
+      context,
+      ConfirmPopup(
+        title: "Yakin ingin merespon?",
+        description: "Kamu bisa mencoba respon lainnya.",
+        confirmLabel: "Yakin",
+        onPrimaryButtonPressed: () {
+          // MusicService.sfxSelectClick();
+          final storyController = ref.read(storyControllerProvider.notifier);
+          if (selected.nextType == 'dialog') {
+            storyController.showDialog(selected.next);
+          } else if (selected.nextType == 'soal') {
+            storyController.showQuestion(selected.next);
+          } else {
+            storyController.showEndGame();
+          }
+          closePopupOverlay();
+        },
+        onGoBack: () {
+          // MusicService.sfxNegativeClick();
+          closePopupOverlay();
+        },
       ),
     );
   }

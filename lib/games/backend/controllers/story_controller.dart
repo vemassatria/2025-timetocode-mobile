@@ -102,6 +102,10 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
 
   @override
   Future<StoryState> build() async {
+    ref.onDispose(() {
+      resource.clearAll();
+      game.removeStoryResources();
+    });
     game = ref.read(gameEngineProvider);
     resource = ref.read(resourceServiceProvider);
     final levels = await _levelService.loadAllLevels(
