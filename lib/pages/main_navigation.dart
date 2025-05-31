@@ -9,25 +9,29 @@ import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/components/popups/popscope_popups.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timetocode/games/backend/providers/main_navigation_provider.dart';
 
-class MainNavigation extends StatefulWidget {
+class MainNavigation extends ConsumerStatefulWidget {
   const MainNavigation({super.key});
 
   @override
-  State<MainNavigation> createState() => _MainNavigationState();
+  ConsumerState<MainNavigation> createState() => _MainNavigationState();
 }
 
-class _MainNavigationState extends State<MainNavigation> {
+class _MainNavigationState extends ConsumerState<MainNavigation> {
   int _selectedIndex = 0;
 
   @override
   void initState() {
     MusicService.playMainMenuMusic();
+    _selectedIndex = ref.read(mainTabIndexProvider);
     super.initState();
   }
 
   void _onItemTapped(int index) {
     // MusicService.sfxButtonClick();
+    ref.read(mainTabIndexProvider.notifier).state = index;
     setState(() => _selectedIndex = index);
   }
 

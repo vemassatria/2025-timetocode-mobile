@@ -5,6 +5,8 @@ import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/games/backend/providers/story_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
+import 'package:timetocode/games/backend/providers/challenge_provider.dart';
+
 
 class PopscopePopups {
   static bool _isPopScopeActive = true;
@@ -18,7 +20,7 @@ class PopscopePopups {
   }
 
   static void openMenuPopup(BuildContext context, WidgetRef ref){
-  showPopupOverlay(
+    showPopupOverlay(
       context,
       MenuPopup(
         onRestart: () {
@@ -37,7 +39,34 @@ class PopscopePopups {
           storyController.exitLevel();
           closePopupOverlay();
         },
-        onClose: closePopupOverlay,
+        onClose: (){
+          closePopupOverlay();
+          setPopScope(true);
+        },
+        onGoBack: () => goBackToPreviousOverlay(context),
+      ),
+    );
+  }
+
+  static void openMenuPopupChallange(BuildContext context, WidgetRef ref){
+    showPopupOverlay(
+      context,
+      MenuPopup(
+        onRestart: (){
+          // untuk restart challenge
+        },
+        onExit: () {
+          // Gunakan StoryController untuk mengakhiri cerita
+          final challengeController = ref.read(
+            challengeControllerProvider.notifier,
+          );
+          challengeController.endChallenge();
+          closePopupOverlay();
+        },
+        onClose: (){
+          closePopupOverlay();
+          setPopScope(true);
+        },
         onGoBack: () => goBackToPreviousOverlay(context),
       ),
     );
@@ -69,7 +98,7 @@ void exitPopup(BuildContext context) {
   showPopupOverlay(
     context,
     ConfirmPopup(
-      title: 'Keluar Halaman?',
+      title: 'Keluar Aplikasi?',
       description: 'Apakah kamu yakin ingin keluar dari aplikasi?',
       confirmLabel: 'Keluar',
       onPrimaryButtonPressed: () {
@@ -83,3 +112,4 @@ void exitPopup(BuildContext context) {
     ),
   );
 }
+
