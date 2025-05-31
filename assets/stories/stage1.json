@@ -690,7 +690,7 @@
           "text": "Di kamar Adrian, lampu meja menyala redup. Laptopnya terbuka dengan kode program pengecek nilai yang penuh error. Adrian duduk sambil mengernyit, berulang kali mengetik dan mencoba memperbaiki kode itu.",
           "next": "intro2",
           "nextType": "dialog"
-        },
+        }
       ],
       "dialogs": [
         {
@@ -3064,4 +3064,5 @@
       "Penjelasan:\n- Variabel i adalah variabel register yang digunakan di dalam perulangan for. Compiler mencoba untuk menyimpannya di register CPU agar proses lebih cepat."
     ]
   }
+]
 }
