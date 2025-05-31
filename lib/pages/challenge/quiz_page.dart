@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
+import 'package:timetocode/components/popups/answer_popup.dart';
 import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/providers/challenge_provider.dart';
 import 'package:timetocode/themes/colors.dart';
@@ -81,7 +82,8 @@ class _QuizPageState extends ConsumerState<QuizPage> {
           elevation: 0,
           leading: IconButton(
             icon: Icon(Icons.menu, color: AppColors.primaryText),
-            onPressed: () => PopscopePopups.openMenuPopupChallange(context, ref),
+            onPressed:
+                () => PopscopePopups.openMenuPopupChallange(context, ref),
           ),
           actions: [
             Row(
@@ -162,24 +164,47 @@ class _QuizPageState extends ConsumerState<QuizPage> {
           height: 80.h,
           decoration: BoxDecoration(
             color: AppColors.surfaceDark,
-            border: Border(top: BorderSide(color: AppColors.black1, width: 1.w)),
+            border: Border(
+              top: BorderSide(color: AppColors.black1, width: 1.w),
+            ),
           ),
           child: Padding(
             padding: EdgeInsets.all(16.w),
             child: CustomButton(
               label: "Kirim",
-              onPressed:
-                  () => {
-                    ref
-                        .read(challengeControllerProvider.notifier)
-                        .checkAnswer(selectedAnswer!),
-                    clearSelection(),
-                  },
+              onPressed: () => {_checkAnswer(context, ref, selectedAnswer!)},
               color: ButtonColor.purple,
               isDisabled: selectedAnswer == null,
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  void _checkAnswer(
+    BuildContext context,
+    WidgetRef ref,
+    ChoicesModel selected,
+  ) {
+    final challengeController = ref.read(challengeControllerProvider.notifier);
+
+    final choices =
+        ref.read(challengeControllerProvider).value!.currentQuestion!.choices;
+    final correctAnswer = choices.firstWhere((c) => c.isCorrect == true).text;
+
+    showPopupOverlay(
+      context,
+      AnswerPopup(
+        isCorrect: selected.isCorrect!,
+        message:
+            selected.isCorrect!
+                ? null
+                : "Jawaban yang benar adalah:\n\n$correctAnswer",
+        onPressed: () {
+          challengeController.checkAnswer(selected);
+          closePopupOverlay();
+        },
       ),
     );
   }
