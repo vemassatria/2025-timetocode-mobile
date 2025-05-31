@@ -4,6 +4,7 @@ import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/providers/game_provider.dart';
 import 'package:timetocode/games/backend/providers/daftar_level_provider.dart';
 import 'package:timetocode/games/backend/providers/resource_provider.dart';
+import 'package:timetocode/games/backend/services/predialog_service.dart';
 import 'package:timetocode/games/backend/services/resource_service.dart';
 import '../services/level_service.dart';
 import '../services/dialog_service.dart';
@@ -97,6 +98,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   final LevelService _levelService = LevelService();
   final DialogService _dialogService = DialogService();
   final QuestionService _questionService = QuestionService();
+  final PredialogService _predialogService = PredialogService();
   late final ResourceService resource;
   late final GameEngine game;
 
@@ -132,16 +134,16 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     state = AsyncValue.data(state.value!.copyWith(activeLevel: level));
     game.overlays.remove('GameUI');
     if (level.typeStart == 'preDialog') {
-      showPreDialog();
+      showPreDialog(level.start);
     } else {
       showDialog(level.start);
     }
     await game.loadBackground(level.background);
   }
 
-  void showPreDialog() {
+  void showPreDialog(String preDialogId) {
     final level = state.value!.activeLevel!;
-    final preDialog = level.preDialog;
+    final preDialog = _predialogService.getPredialogById(level, preDialogId);
     state = AsyncValue.data(
       state.value!.copyWith(preDialog: preDialog, activeMode: 'preDialog'),
     );
@@ -160,8 +162,14 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
         game.showCharactersOverlay();
       }
       showDialog(next);
-    } else {
+    } else if (nextType == 'soal') {
       showQuestion(next);
+    } else {
+      state = AsyncValue.data(
+        state.value!.copyWith(
+          preDialog: _predialogService.getPredialogById(s.activeLevel!, next),
+        ),
+      );
     }
   }
 
@@ -426,7 +434,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     );
     final level = state.value!.activeLevel!;
     if (level.typeStart == 'preDialog') {
-      showPreDialog();
+      showPreDialog(level.start);
     } else {
       showDialog(level.start);
     }

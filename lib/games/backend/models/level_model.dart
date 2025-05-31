@@ -13,7 +13,7 @@ class LevelModel {
   final List<String> character1Images;
   final List<String> character2Images;
   final List<String> ilustrations;
-  final PreDialogModel? preDialog;
+  final List<PreDialogModel>? preDialog;
   final List<DialogModel> dialogs;
   final List<QuestionModel> questions;
   final List<String>? summary;
@@ -60,9 +60,11 @@ class LevelModel {
               .toList(),
       preDialog:
           json['preDialog'] != null
-              ? PreDialogModel.fromJson(
-                json['preDialog'] as Map<String, dynamic>,
-              )
+              ? (json['preDialog'] as List)
+                  .map(
+                    (pd) => PreDialogModel.fromJson(pd as Map<String, dynamic>),
+                  )
+                  .toList()
               : null,
       dialogs:
           (json['dialogs'] as List)
@@ -75,9 +77,5 @@ class LevelModel {
       start: json['start'] as String? ?? '',
       typeStart: json['typeStart'] as String? ?? '',
     );
-  }
-
-  DialogModel getDialog(String id) {
-    return dialogs.firstWhere((dialog) => dialog.id == id);
   }
 }
