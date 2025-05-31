@@ -12,12 +12,20 @@
       "ilustration": ["contoh-ilustrasi1", "default"],
       "start": "preDialog1",
       "typeStart": "preDialog",
-      "preDialog": {
-        "id": "preDialog1",
-        "text": "Adrian baru saja menyelesaikan kelas pemrograman pertamanya. Pening, ia mampir ke kafe dekat kampus, berharap kopi bisa meredakan pusing akibat deretan kode yang belum ia pahami. Di tengah obrolan ringan pengunjung, terdengar keluhan lirih dari Adrian. Dari sudut kafe, seorang yang tampak familiar mendekatinya",
-        "next": "intro1",
-        "nextType": "dialog"
-      },
+      "preDialog": [
+        {
+          "id": "preDialog1",
+          "text": "Adrian baru saja menyelesaikan kelas pemrograman pertamanya. Pening, ia mampir ke kafe dekat kampus, berharap kopi bisa meredakan pusing akibat deretan kode yang belum ia pahami. Di tengah obrolan ringan pengunjung, terdengar keluhan lirih dari Adrian. Dari sudut kafe, seorang yang tampak familiar mendekatinya",
+          "next": "intro1",
+          "nextType": "dialog"
+        },
+        {
+          "id": "preDialog1_2",
+          "text": "Adrian: \"Mas, aku baru masuk kuliah di jurusan Informatika. Tapi kok materi pertama langsung susah-susah ya? Aku masih bingung banget soal tipe data, variabel, dan operator.\"",
+          "next": "intro1",
+          "nextType": "dialog"
+        }
+      ],
       "dialogs": [
         {
           "id": "intro1",
@@ -676,12 +684,14 @@
       "ilustration": ["contoh-ilustrasi1"],
       "start": "preDialog2",
       "typeStart": "preDialog",
-      "preDialog": {
-        "id": "preDialog2",
-        "text": "Di kamar Adrian, lampu meja menyala redup. Laptopnya terbuka dengan kode program pengecek nilai yang penuh error. Adrian duduk sambil mengernyit, berulang kali mengetik dan mencoba memperbaiki kode itu.",
-        "next": "intro2",
-        "nextType": "dialog"
-      },
+      "preDialog": [
+        {
+          "id": "preDialog2",
+          "text": "Di kamar Adrian, lampu meja menyala redup. Laptopnya terbuka dengan kode program pengecek nilai yang penuh error. Adrian duduk sambil mengernyit, berulang kali mengetik dan mencoba memperbaiki kode itu.",
+          "next": "intro2",
+          "nextType": "dialog"
+        },
+      ],
       "dialogs": [
         {
           "id": "intro2",
@@ -1157,12 +1167,14 @@
       "ilustration": ["contoh-ilustrasi1"],
       "start": "preDialog3",
       "typeStart": "preDialog",
-      "preDialog": {
-        "id": "preDialog3",
-        "text": "Siang itu Rusdi sudah menunggu di café sejak jam 3 sore, menatap layar ponselnya dengan muram. Jam dinding sudah menunjukkan pukul 4 dan Adrian belum juga muncul. Rusdi mulai gelisah, berpikir tentang tugas yang harus diselesaikan dan deadline yang semakin dekat.",
-        "next": "intro3",
-        "nextType": "dialog"
-      },
+      "preDialog": [
+        {
+          "id": "preDialog3",
+          "text": "Siang itu Rusdi sudah menunggu di café sejak jam 3 sore, menatap layar ponselnya dengan muram. Jam dinding sudah menunjukkan pukul 4 dan Adrian belum juga muncul. Rusdi mulai gelisah, berpikir tentang tugas yang harus diselesaikan dan deadline yang semakin dekat.",
+          "next": "intro3",
+          "nextType": "dialog"
+        }
+      ],
       "dialogs": [
         {
           "id": "intro3",
@@ -3052,5 +3064,4 @@
       "Penjelasan:\n- Variabel i adalah variabel register yang digunakan di dalam perulangan for. Compiler mencoba untuk menyimpannya di register CPU agar proses lebih cepat."
     ]
   }
-  ]
 }
