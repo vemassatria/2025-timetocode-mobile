@@ -8,6 +8,7 @@ import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/models/question_model.dart';
 import 'package:timetocode/games/backend/providers/game_provider.dart';
 import 'package:timetocode/games/backend/services/challenge_service.dart';
+import 'package:timetocode/games/backend/providers/main_navigation_provider.dart';
 
 class ChallengeState {
   final ChallengeModel challenge;
@@ -157,6 +158,7 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
   }
 
   void endChallenge() {
+    ref.read(mainTabIndexProvider.notifier).state = 1;
     game.overlays.remove('ChallengeEnd');
     game.overlays.add('GameUI');
     state = AsyncValue.data(
