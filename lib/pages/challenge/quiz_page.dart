@@ -143,7 +143,7 @@ class _QuizPageState extends ConsumerState<QuizPage> {
                       child: Padding(
                         padding: EdgeInsets.all(16.w),
                         child: CodeText('''
-  $code'''),
+$code'''),
                       ),
                     )
                     : SizedBox.shrink(),
@@ -204,6 +204,7 @@ class _QuizPageState extends ConsumerState<QuizPage> {
         onPressed: () {
           challengeController.checkAnswer(selected);
           closePopupOverlay();
+          clearSelection();
         },
       ),
     );
