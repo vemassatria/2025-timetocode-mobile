@@ -141,7 +141,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                               ],
                             ),
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 12),
                   if (_isComplete &&
                       isLastLine &&
                       dialog.choices != null &&

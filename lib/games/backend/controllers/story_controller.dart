@@ -259,6 +259,8 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
       if (dialog.nextType == 'soal') {
         game.hideCharacters();
         showQuestion(dialog.next);
+      } else if (dialog.nextType == 'dialog') {
+        showDialog(dialog.next);
       } else {
         showEndGame();
       }
@@ -320,32 +322,54 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
 
   void skipToNextSoal() {
     final s = state.value!;
-    // final level = s.activeLevel;
-    // if (level == null) return;
+    final level = s.activeLevel;
+    if (level == null) return;
 
-    // DialogModel? dialog = s.currentDialog;
-    // String? nextId;
-    // String? nextType;
+    DialogModel? dialog = s.currentDialog;
+    // If currentDialog is null, start from the beginning
+    if (dialog == null && level.dialogs.isNotEmpty) {
+      dialog = _dialogService.getDialogById(level, level.start);
+    }
 
-    // if (dialog == null && level.dialogs.isNotEmpty) {
-    //   dialog = _dialogService.getDialogById(level, level.start);
-    // }
+    final visited = <String>{};
 
-    // while (dialog != null) {
-    //   nextId = dialog.next;
-    //   nextType = dialog.nextType;
-    //   if (nextType == 'soal') {
-    //     showQuestion(nextId);
-    //     return;
-    //   }
-    //   dialog = _dialogService.getDialogById(level, nextId);
-    // }
+    // Helper function to recursively find the next soal
+    bool findAndShowSoal(DialogModel? dialog) {
+      while (dialog != null && !visited.contains(dialog.id)) {
+        visited.add(dialog.id);
 
-    final dialog = s.currentDialog;
-    if (dialog!.nextType == 'soal') {
-      game.hideCharacters();
-      showQuestion(dialog.next);
-    } else {
+        // If this dialog has choices, check all branches
+        if (dialog.choices != null && dialog.choices!.isNotEmpty) {
+          for (final choice in dialog.choices!) {
+            if (choice.nextType == 'soal') {
+              game.hideCharacters();
+              showQuestion(choice.next);
+              return true;
+            } else if (choice.nextType == 'dialog') {
+              final nextDialog = _dialogService.getDialogById(level, choice.next);
+              if (findAndShowSoal(nextDialog)) return true;
+            }
+          }
+          // If none of the choices lead to a soal, return false
+          return false;
+        }
+
+        // No choices, follow linear next/nextType
+        if (dialog.nextType == 'soal') {
+          game.hideCharacters();
+          showQuestion(dialog.next);
+          return true;
+        } else if (dialog.nextType == 'dialog') {
+          dialog = _dialogService.getDialogById(level, dialog.next);
+        } else {
+          // No more soal found, end the game
+          return false;
+        }
+      }
+      return false;
+    }
+
+    if (!findAndShowSoal(dialog)) {
       showEndGame();
     }
   }

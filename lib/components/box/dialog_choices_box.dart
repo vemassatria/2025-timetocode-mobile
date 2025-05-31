@@ -14,19 +14,27 @@ class DialogChoicesBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children:
-          choices.map((choice) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: CustomButton(
-                label: choice.text,
-                widthMode: ButtonWidthMode.fill,
-                type: ButtonType.outline,
-                onPressed: () => onPressed(choice),
-              ),
-            );
-          }).toList(),
+    final maxHeight = MediaQuery.of(context).size.height * 0.4;
+
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: maxHeight),
+      child: SingleChildScrollView(
+        child: Column(
+          children: choices
+              .map(
+                (choice) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: CustomButton(
+                    label: choice.text,
+                    widthMode: ButtonWidthMode.fill,
+                    type: ButtonType.outline,
+                    onPressed: () => onPressed(choice),
+                  ),
+                ),
+              )
+              .toList(),
+        ),
+      ),
     );
   }
 }

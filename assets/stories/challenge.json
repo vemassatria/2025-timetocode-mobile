@@ -12,7 +12,6 @@
               {
                 "id": "soal1_1",
                 "text": "Manakah dari berikut ini yang merupakan tipe data untuk menyimpan angka desimal di C?\n",
-
                 "choices": [
                   {
                     "text": "int",
