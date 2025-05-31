@@ -16,8 +16,8 @@
         {
           "id": "preDialog1",
           "text": "Adrian baru saja menyelesaikan kelas pemrograman pertamanya. Pening, ia mampir ke kafe dekat kampus, berharap kopi bisa meredakan pusing akibat deretan kode yang belum ia pahami. Di tengah obrolan ringan pengunjung, terdengar keluhan lirih dari Adrian. Dari sudut kafe, seorang yang tampak familiar mendekatinya",
-          "next": "intro1",
-          "nextType": "dialog"
+          "next": "preDialog1_2",
+          "nextType": "preDialog"
         },
         {
           "id": "preDialog1_2",
@@ -1903,12 +1903,14 @@
     "character2_reaction": ["rongga-biasa", "rongga-marah", "rongga-senang", "rongga-kecewa", "rongga-aksi"],
     "start": "preDialog5",
     "typeStart": "preDialog",
-    "preDialog": {
-      "id": "preDialog5",
-      "text": "Suasana kelas pagi itu agak hening, tapi ada riak penasaran di udara.\nBeberapa mahasiswa terlihat mencatat serius, sebagian lain menatap layar laptop yang menampilkan slide materi baru. Di bagian atas papan tulis tertulis besar:\n\"Materi Hari Ini: FUNGSI DALAM PEMROGRAMAN\"\nAdrian duduk dengan punggung sedikit membungkuk, matanya mengikuti setiap penjelasan di slide. Di sampingnya, temannya sudah mulai membuka code editor, mencoba mengikuti contoh fungsi yang tadi ditulis Pak Rongga.\nSementara itu, Pak Rongga berdiri di depan kelas, tangannya menyelip di saku celana, nada bicaranya datar namun tajam seperti biasa.",
-      "next": "intro5",
-      "nextType": "dialogs"
-    },
+    "preDialog": [
+      {
+        "id": "preDialog5",
+        "text": "Suasana kelas pagi itu agak hening, tapi ada riak penasaran di udara.\nBeberapa mahasiswa terlihat mencatat serius, sebagian lain menatap layar laptop yang menampilkan slide materi baru. Di bagian atas papan tulis tertulis besar:\n\"Materi Hari Ini: FUNGSI DALAM PEMROGRAMAN\"\nAdrian duduk dengan punggung sedikit membungkuk, matanya mengikuti setiap penjelasan di slide. Di sampingnya, temannya sudah mulai membuka code editor, mencoba mengikuti contoh fungsi yang tadi ditulis Pak Rongga.\nSementara itu, Pak Rongga berdiri di depan kelas, tangannya menyelip di saku celana, nada bicaranya datar namun tajam seperti biasa.",
+        "next": "intro5",
+        "nextType": "dialogs"
+      }
+    ],
     "dialogs": [
       {
         "id": "intro5",
@@ -2348,12 +2350,14 @@
     "character2_reaction": ["crush-biasa", "crush-marah", "crush-senang", "crush-kecewa", "crush-aksi"],
     "start": "preDialog6",
     "typeStart": "preDialog",
-    "preDialog": {
-      "id": "preDialog6",
-      "text": "Adrian duduk di sudut café favoritnya, sambil membuka laptop dan menyesap kopi hangat. Hari itu suasana cukup ramai, tapi fokus Adrian masih terpecah antara catatan dan baris-baris kode yang belum selesai. Tiba-tiba, dari balik pintu, Jennie masuk dengan langkah santai. Biasanya dia cuek dan jarang berbicara banyak, tapi kali ini dia langsung menghampiri Adrian dengan ekspresi agak serius.",
-      "next": "intro6",
-      "nextType": "dialog"
-    },
+    "preDialog": [
+      {
+        "id": "preDialog6",
+        "text": "Adrian duduk di sudut café favoritnya, sambil membuka laptop dan menyesap kopi hangat. Hari itu suasana cukup ramai, tapi fokus Adrian masih terpecah antara catatan dan baris-baris kode yang belum selesai. Tiba-tiba, dari balik pintu, Jennie masuk dengan langkah santai. Biasanya dia cuek dan jarang berbicara banyak, tapi kali ini dia langsung menghampiri Adrian dengan ekspresi agak serius.",
+        "next": "intro6",
+        "nextType": "dialog"
+      }
+    ],
     "dialogs": [
       {
         "id": "intro6",
