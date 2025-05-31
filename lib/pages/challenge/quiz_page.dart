@@ -189,18 +189,16 @@ $code'''),
   ) {
     final challengeController = ref.read(challengeControllerProvider.notifier);
 
-    final choices =
-        ref.read(challengeControllerProvider).value!.currentQuestion!.choices;
-    final correctAnswer = choices.firstWhere((c) => c.isCorrect == true).text;
+    // Buat Nyimpan String Jawaban Benar
+    
+    // final choices =
+    //     ref.read(challengeControllerProvider).value!.currentQuestion!.choices;
+    // final correctAnswer = choices.firstWhere((c) => c.isCorrect == true).text;
 
     showPopupOverlay(
       context,
       AnswerPopup(
         isCorrect: selected.isCorrect!,
-        message:
-            selected.isCorrect!
-                ? null
-                : "Jawaban yang benar adalah:\n\n$correctAnswer",
         onPressed: () {
           challengeController.checkAnswer(selected);
           closePopupOverlay();
