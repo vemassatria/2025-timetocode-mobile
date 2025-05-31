@@ -1,41 +1,40 @@
 {
   "challenges": [
     {
-      "challenge_id": "1",
+      "challenge_id": 1,
       "title": "Konsep Pemrograman",
       "levels": [
         {
-          "id": "soal1_1",
+          "id": 1,
           "level_name": "1",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal1_1",
+                "id": "soal1_1",
                 "text": "Manakah dari berikut ini yang merupakan tipe data untuk menyimpan angka desimal di C?\n",
-
                 "choices": [
                   {
                     "text": "int",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "float",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "string",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "char",
                     "next": "soal1_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -43,32 +42,32 @@
             ],
             "sedang": [
               {
-                "text_id": "soal1_2",
+                "id": "soal1_2",
                 "text": "Apa nilai c setelah eksekusi?",
                 "code": "int a = 6;  \nint b = 2;  \nfloat c = a / b;  \n",
                 "choices": [
                   {
                     "text": "2.5",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "2.0",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "0",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "3.0",
                     "next": "soal1_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   }
                 ]
@@ -76,32 +75,32 @@
             ],
             "susah": [
               {
-                "text_id": "soal1_3",
+                "id": "soal1_3",
                 "text": "Nilai z setelah eksekusi adalah?",
                 "code": "int x = 5;  \nint y = 10;  \nint z = ++x * y--;  \n",
                 "choices": [
                   {
                     "text": "55",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "60 ",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "50",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "45",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
@@ -110,37 +109,37 @@
           }
         },
         {
-          "id": "soal2_1",
+          "id": 2,
           "level_name": "2",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal2_1",
+                "id": "soal2_1",
                 "text": "Apa hasil output dari program berikut?",
                 "code": "int x = 10;  \nif (x > 5) {  \n    printf(\"A\");  \n} else {  \n    printf(\"B\");  \n}\n",
                 "choices": [
                   {
                     "text": "A",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "B",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Tidak ada output",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Error",
                     "next": "soal2_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -148,31 +147,31 @@
             ],
             "sedang": [
               {
-                "text_id": "soal2_2",
+                "id": "soal2_2",
                 "text": "Manakah pernyataan yang benar mengenai switch di C?",
                 "choices": [
                   {
                     "text": "switch hanya bisa mengecek nilai string",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "switch hanya bisa mengecek tipe data integer atau karakter",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "switch bisa menggunakan ekspresi boolean",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "switch tidak memerlukan break",
                     "next": "soal2_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -180,32 +179,32 @@
             ],
             "susah": [
               {
-                "text_id": "soal2_3",
+                "id": "soal2_3",
                 "text": "Kode berikut akan mencetak apa?",
                 "code": "int x = 2;  \nswitch (x) {  \n    case 1:  \n        printf(\"One\");  \n    case 2:  \n        printf(\"Two\");  \n    case 3:  \n        printf(\"Three\");  \n        break;  \n    default:  \n        printf(\"Default\");  \n}\n",
                 "choices": [
                   {
                     "text": "TwoThree",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "TwoThreeDefault",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "Three",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "OneTwoThree",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
@@ -214,37 +213,37 @@
           }
         },
         {
-          "id": "soal3_1",
+          "id": 3,
           "level_name": "3",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal3_1",
+                "id": "soal3_1",
                 "text": "Berapa kali loop berikut akan berjalan?\n",
                 "code": "for (int i = 0; i < 5; i++) {  \n   …\n}\n",
                 "choices": [
                   {
                     "text": "4 kali",
                     "next": "soal3_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "5 kali",
                     "next": "soal3_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "6 kali",
                     "next": "soal3_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Infinity",
                     "next": "soal3_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -252,31 +251,31 @@
             ],
             "sedang": [
               {
-                "text_id": "soal3_2",
+                "id": "soal3_2",
                 "text": "Apa perbedaan utama antara while dan do while?",
                 "choices": [
                   {
                     "text": "while selalu menjalankan minimal satu kali, do while tidak",
                     "next": "soal3_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "do while selalu menjalankan minimal satu kali, while bisa nol kali",
                     "next": "soal3_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "tidak ada perbedaan",
                     "next": "soal3_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "while tidak menggunakan kondisi",
                     "next": "soal3_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -284,32 +283,32 @@
             ],
             "susah": [
               {
-                "text_id": "soal3_3",
+                "id": "soal3_3",
                 "text": "Berapa nilai variabel sum setelah loop ini selesai?",
                 "code": "nt i = 1, sum = 0;  \nwhile (i <= 5) {  \n    sum += i;  \n    i += 2;  \n}\n",
                 "choices": [
                   {
                     "text": "15",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "9",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "12",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "10",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
@@ -318,36 +317,36 @@
           }
         },
         {
-          "id": "soal4_1",
+          "id": 4,
           "level_name": "4",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal4_1",
+                "id": "soal4_1",
                 "text": "Apa fungsi dari statement break dalam loop?\n",
                 "choices": [
                   {
                     "text": "Melanjutkan iterasi berikutnya",
                     "next": "soal4_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": " Menghentikan seluruh program",
                     "next": "soal4_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Menghentikan loop saat ini dan keluar dari loop",
                     "next": "soal4_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "Melewati perulangan saat ini",
                     "next": "soal4_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -355,32 +354,32 @@
             ],
             "sedang": [
               {
-                "text_id": "soal4_2",
+                "id": "soal4_2",
                 "text": "Berapa output dari kode berikut?",
                 "code": "for (int i=1; i<=3; i++) {  \n    for (int j=1; j<=3; j++) {  \n        if (j == 2) break;  \n        printf(\"%d%d \", i, j);  \n    }  \n}\n",
                 "choices": [
                   {
                     "text": "11 12 13 21 22 23 31 32 33\n",
                     "next": "soal4_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "11 21 31 ",
                     "next": "soal4_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "11 12 21 22 31 32\n",
                     "next": "soal4_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "11 21 22 31 32 33\n",
                     "next": "soal4_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -388,31 +387,31 @@
             ],
             "susah": [
               {
-                "text_id": "soal4_3",
+                "id": "soal4_3",
                 "text": "Pada bahasa C, fungsi exit() menerima argumen integer yang merepresentasikan status keluar program. Manakah pernyataan yang benar terkait penggunaan exit(0) dan exit(1)?",
                 "choices": [
                   {
                     "text": "exit(0) dan exit(1) keduanya menandakan program berhenti dengan sukses\n",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "exit(0) menandakan program berhenti dengan sukses, sedangkan exit(1) menandakan terjadi kesalahan",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "exit(0) menandakan program berhenti dengan kesalahan, sedangkan exit(1) menandakan sukses\n",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "exit(0) dan exit(1) tidak memiliki makna khusus dan dianggap sama",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
@@ -421,37 +420,37 @@
           }
         },
         {
-          "id": "soal5_1",
+          "id": 5,
           "level_name": "5",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal5_1",
+                "id": "soal5_1",
                 "text": "Fungsi berikut ini memiliki tipe return apa?",
                 "code": "void greet() {  \n    printf(\"Hello!\");  \n}\n",
                 "choices": [
                   {
                     "text": "int",
                     "next": "soal5_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "void",
                     "next": "soal5_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "char",
                     "next": "soal5_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "float",
                     "next": "soal5_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -459,32 +458,32 @@
             ],
             "sedang": [
               {
-                "text_id": "soal5_2",
+                "id": "soal5_2",
                 "text": "Apa yang terjadi jika fungsi bertipe int tidak mengembalikan nilai dengan return?",
                 "code": "int malano(int a, int b) {\n    int result = a * b;\n}\n\nint main() {\n    int x = malano(3, 4);\n    printf(\"%d\\n\", x);\n    return 0;\n}\n",
                 "choices": [
                   {
                     "text": "Program akan mencetak 12",
                     "next": "soal5_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Program akan mencetak 0",
                     "next": "soal5_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Program menghasilkan undefined behavior karena fungsi malano tidak mengembalikan nilai",
                     "next": "soal5_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "Program error saat kompilasi karena fungsi malano tidak mengembalikan nilai",
                     "next": "soal5_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -492,32 +491,32 @@
             ],
             "susah": [
               {
-                "text_id": "soal5_3",
+                "id": "soal5_3",
                 "text": "Manakah pernyataan yang benar mengenai output dan perilaku program dibawah?\n",
                 "code": "for (int i = 0; i < 5; i++) {\n    for (int j = 0; j < 5; j++) {\n        if (i * j > 6) {\n            break;\n        }\n        if (i == 3) {\n            continue;\n        }\n        printf(\"%d,%d\\n\", i, j);\n    }\n}\nexit(0);\n",
                 "choices": [
                   {
                     "text": "Program mencetak semua pasangan (i, j) hingga i*j > 6 lalu keluar dari kedua loop dan berhenti dengan status sukses",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "Ketika i == 3, inner loop melewati iterasi tersebut tanpa mencetak apapun, tapi loop tetap berjalan sampai selesai, dan program berhenti normal",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "continue menyebabkan inner loop berhenti total ketika i == 3, dan program tidak mencetak apa pun untuk i == 3 serta langsung keluar dari program dengan status error",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "Fungsi exit(0) menyebabkan loop luar berhenti secara prematur sebelum selesai iterasi i sampai 4",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
@@ -526,36 +525,36 @@
           }
         },
         {
-          "id": "soal6_1",
+          "id": 6,
           "level_name": "6",
           "questions": {
             "mudah": [
               {
-                "text_id": "soal6_1",
+                "id": "soal6_1",
                 "text": "Variabel yang hanya dikenal dan digunakan di dalam suatu fungsi disebut?\n",
                 "choices": [
                   {
                     "text": "Variabel global",
                     "next": "soal6_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel lokal",
                     "next": "soal6_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "Variabel statis",
                     "next": "soal6_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel register",
                     "next": "soal6_2",
-                    "nextType": "soal",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -563,31 +562,31 @@
             ],
             "sedang": [
               {
-                "text_id": "soal6_2",
+                "id": "soal6_2",
                 "text": "Manakah pernyataan yang benar tentang variabel static di C?\n",
                 "choices": [
                   {
                     "text": "Variabel statis hanya ada selama fungsi dijalankan",
                     "next": "soal6_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel statis mempertahankan nilainya antara pemanggilan fungsi",
                     "next": "soal6_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "Variabel statis hanya dapat diakses dari luar fungsi\n",
                     "next": "soal6_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel statis selalu disimpan di register CPU",
                     "next": "soal6_3",
-                    "nextType": "soal",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -595,32 +594,32 @@
             ],
             "susah": [
               {
-                "text_id": "soal6_3",
+                "id": "soal6_3",
                 "text": "Apa output dari kode dibawah?",
                 "code": "#include <stdio.h>\n\nvoid func();\nint main() {\n    func();\n    func();\n\n    return 0;\n}\n\nvoid func() {\n    static int counter = 0;\n    counter++;\n    printf(\"%d \", counter);\n}",
                 "choices": [
                   {
                     "text": "1 1",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "2 1",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "1 2",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "0 0",
                     "next": null,
-                    "nextType": "end",
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]

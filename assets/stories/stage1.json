@@ -1,3 +1,6 @@
+
+
+
 {
   "levels": [
     {
@@ -698,6 +701,7 @@
           "nextType": "dialogs"
         }
 
+
       ],
       "dialogs": [
         {
@@ -1187,6 +1191,7 @@
           "next": "dialog2",
           "nextType": "dialogs"
         }
+
 
       ],
       "dialogs": [
@@ -3263,3 +3268,8 @@
     "Penjelasan:\n- Variabel i adalah variabel register yang digunakan di dalam perulangan for. Compiler mencoba untuk menyimpannya di register CPU agar proses lebih cepat."
   ]
 }
+
+
+
+
+

@@ -1,3 +1,4 @@
+import 'package:timetocode/games/backend/models/dialog_choices.dart';
 import 'package:timetocode/games/backend/models/text_dialog_model.dart';
 
 class DialogModel {
@@ -5,12 +6,14 @@ class DialogModel {
   final List<TextDialogModel> dialogue;
   final String next;
   final String nextType;
+  final List<DialogChoices>? choices;
 
   DialogModel({
     required this.id,
     required this.dialogue,
     required this.next,
     required this.nextType,
+    this.choices,
   });
 
   factory DialogModel.fromJson(Map<String, dynamic> json) {
@@ -20,8 +23,15 @@ class DialogModel {
           (json['text'] as List)
               .map((d) => TextDialogModel.fromJson(d as Map<String, dynamic>))
               .toList(),
+
       next: json['next'] as String? ?? '',
       nextType: json['nextType'] as String? ?? '',
+      choices:
+          json['choices'] != null
+              ? (json['choices'] as List)
+                  .map((c) => DialogChoices.fromJson(c as Map<String, dynamic>))
+                  .toList()
+              : null,
     );
   }
 

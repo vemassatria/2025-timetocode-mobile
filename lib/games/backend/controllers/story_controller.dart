@@ -4,6 +4,7 @@ import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/providers/game_provider.dart';
 import 'package:timetocode/games/backend/providers/daftar_level_provider.dart';
 import 'package:timetocode/games/backend/providers/resource_provider.dart';
+import 'package:timetocode/games/backend/services/predialog_service.dart';
 import 'package:timetocode/games/backend/services/resource_service.dart';
 import '../services/level_service.dart';
 import '../services/dialog_service.dart';
@@ -97,11 +98,16 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   final LevelService _levelService = LevelService();
   final DialogService _dialogService = DialogService();
   final QuestionService _questionService = QuestionService();
+  final PredialogService _predialogService = PredialogService();
   late final ResourceService resource;
   late final GameEngine game;
 
   @override
   Future<StoryState> build() async {
+    ref.onDispose(() {
+      resource.clearAll();
+      game.removeStoryResources();
+    });
     game = ref.read(gameEngineProvider);
     resource = ref.read(resourceServiceProvider);
     final levels = await _levelService.loadAllLevels(
@@ -128,16 +134,16 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     state = AsyncValue.data(state.value!.copyWith(activeLevel: level));
     game.overlays.remove('GameUI');
     if (level.typeStart == 'preDialog') {
-      showPreDialog();
+      showPreDialog(level.start);
     } else {
       showDialog(level.start);
     }
     await game.loadBackground(level.background);
   }
 
-  void showPreDialog() {
+  void showPreDialog(String preDialogId) {
     final level = state.value!.activeLevel!;
-    final preDialog = level.preDialog;
+    final preDialog = _predialogService.getPredialogById(level, preDialogId);
     state = AsyncValue.data(
       state.value!.copyWith(preDialog: preDialog, activeMode: 'preDialog'),
     );
@@ -156,8 +162,14 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
         game.showCharactersOverlay();
       }
       showDialog(next);
-    } else {
+    } else if (nextType == 'soal') {
       showQuestion(next);
+    } else {
+      state = AsyncValue.data(
+        state.value!.copyWith(
+          preDialog: _predialogService.getPredialogById(s.activeLevel!, next),
+        ),
+      );
     }
   }
 
@@ -247,6 +259,8 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
       if (dialog.nextType == 'soal') {
         game.hideCharacters();
         showQuestion(dialog.next);
+      } else if (dialog.nextType == 'dialog') {
+        showDialog(dialog.next);
       } else {
         showEndGame();
       }
@@ -312,21 +326,51 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     if (level == null) return;
 
     DialogModel? dialog = s.currentDialog;
-    String? nextId;
-    String? nextType;
-
+    // If currentDialog is null, start from the beginning
     if (dialog == null && level.dialogs.isNotEmpty) {
       dialog = _dialogService.getDialogById(level, level.start);
     }
 
-    while (dialog != null) {
-      nextId = dialog.next;
-      nextType = dialog.nextType;
-      if (nextType == 'soal') {
-        showQuestion(nextId);
-        return;
+    final visited = <String>{};
+
+    // Helper function to recursively find the next soal
+    bool findAndShowSoal(DialogModel? dialog) {
+      while (dialog != null && !visited.contains(dialog.id)) {
+        visited.add(dialog.id);
+
+        // If this dialog has choices, check all branches
+        if (dialog.choices != null && dialog.choices!.isNotEmpty) {
+          for (final choice in dialog.choices!) {
+            if (choice.nextType == 'soal') {
+              game.hideCharacters();
+              showQuestion(choice.next);
+              return true;
+            } else if (choice.nextType == 'dialog') {
+              final nextDialog = _dialogService.getDialogById(level, choice.next);
+              if (findAndShowSoal(nextDialog)) return true;
+            }
+          }
+          // If none of the choices lead to a soal, return false
+          return false;
+        }
+
+        // No choices, follow linear next/nextType
+        if (dialog.nextType == 'soal') {
+          game.hideCharacters();
+          showQuestion(dialog.next);
+          return true;
+        } else if (dialog.nextType == 'dialog') {
+          dialog = _dialogService.getDialogById(level, dialog.next);
+        } else {
+          // No more soal found, end the game
+          return false;
+        }
       }
-      dialog = _dialogService.getDialogById(level, nextId);
+      return false;
+    }
+
+    if (!findAndShowSoal(dialog)) {
+      showEndGame();
     }
   }
 
@@ -390,7 +434,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     );
     final level = state.value!.activeLevel!;
     if (level.typeStart == 'preDialog') {
-      showPreDialog();
+      showPreDialog(level.start);
     } else {
       showDialog(level.start);
     }
@@ -419,14 +463,15 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
 
   void _clearStoryContents() {
     final o = game.overlays;
-    for (final name in ['Intro', 'Dialog', 'Question', 'EndGame']) {
+    for (final name in [
+      'Intro',
+      'Dialog',
+      'StorySkip',
+      'Question',
+      'EndGame',
+    ]) {
       o.remove(name);
     }
-  }
-
-  Future<bool> isLevelCompleted(int level) async {
-    final completedLevel = ref.read(completedLevelProvider);
-    return level <= completedLevel;
   }
 
   void _showContentOverlay(String contentName, {bool withMenu = true}) {
@@ -437,5 +482,6 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
 
     if (withMenu) game.overlays.add('StoryMenu');
     game.overlays.add(contentName);
+    if (contentName == 'Dialog') game.overlays.add('StorySkip');
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:timetocode/utils/screen_utils.dart';
 import '../themes/colors.dart';
 import 'star_display.dart';
+import '../themes/typography.dart';
 
 class ChallengeCard extends StatelessWidget {
   final int levelNumber;
@@ -18,46 +21,38 @@ class ChallengeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initScreenUtil(context);
+
     return GestureDetector(
-      onTap: isUnlocked ? onTap : null,
-      child: Opacity(
-        opacity: isUnlocked ? 1.0 : 0.6,
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.surfaceDark,
-            borderRadius: BorderRadius.circular(12),
-            boxShadow:
-                isUnlocked
-                    ? [
-                      BoxShadow(
-                        color: AppColors.black1.withOpacity(0.2),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      ),
-                    ]
-                    : null,
-          ),
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (isUnlocked) ...[
-                Text(
-                  levelNumber.toString(),
-                  style: const TextStyle(
-                    fontSize: 42,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 12),
-              ],
-              // Star display atau Lock
-              isUnlocked
-                  ? StarDisplay(starCount: starCount)
-                  : _buildLockWithBorder(),
-            ],
-          ),
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.surfaceDark,
+          borderRadius: BorderRadius.circular(8.r),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.black1,
+              offset: const Offset(0, 6),
+              blurRadius: 0,
+              spreadRadius: 0,
+            ),
+          ],
+          border: Border.all(width: 2.w),
+        ),
+        padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (isUnlocked) ...[
+              Text(
+                levelNumber.toString(),
+                style: AppTypography.heading1(color: AppColors.primaryText),
+              ),
+              SizedBox(height: 2.h),
+              StarDisplay(starCount: starCount),
+            ] else
+              _buildLockWithBorder(),
+          ],
         ),
       ),
     );
@@ -67,19 +62,8 @@ class ChallengeCard extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Border putih untuk lock
-        Icon(
-          Icons.lock,
-          color: AppColors.primaryText,
-          size: 96, 
-        ),
-        Positioned(
-          child: Icon(
-            Icons.lock,
-            color: AppColors.black1,
-            size: 94,
-          ),
-        ),
+        Icon(Icons.lock, color: AppColors.primaryText, size: 96),
+        Positioned(child: Icon(Icons.lock, color: AppColors.black1, size: 94)),
       ],
     );
   }

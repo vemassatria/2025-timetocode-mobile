@@ -14,9 +14,17 @@ class CompletedChallengeNotifier extends StateNotifier<int> {
   }
 
   Future<void> setCompletedChallenge(int level, int stars) async {
-    await _prefs.setInt('completedChallengeLevel', level);
-    await _prefs.setInt('completedChallengeStars$level', stars);
-    state = level;
+    if (level <= state) {
+      if (stars <= getCompletedChallengeStars(level)) {
+        return;
+      } else {
+        await _prefs.setInt('completedChallengeStars$level', stars);
+      }
+    } else {
+      await _prefs.setInt('completedChallengeLevel', level);
+      await _prefs.setInt('completedChallengeStars$level', stars);
+      state = level;
+    }
   }
 
   int getCompletedChallengeStars(int level) {

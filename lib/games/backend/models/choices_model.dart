@@ -10,7 +10,7 @@ class ChoicesModel {
     return ChoicesModel(
       text: json['text'] as String? ?? '',
       next: json['next'] as String?,
-      nextType: json['nextType'] as String? ?? '',
+      nextType: json['nextType'] as String?,
       isCorrect: json['isCorrect'] as bool? ?? false,
     );
   }
