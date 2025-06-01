@@ -51,7 +51,12 @@ class EndGameChallenge extends ConsumerWidget {
             }
           },
           child: Container(
-            color: AppColors.darkBackground,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: const AssetImage('assets/background/default.webp'),
+                fit: BoxFit.cover,
+              ),
+            ),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 48.h),
               child: Center(
