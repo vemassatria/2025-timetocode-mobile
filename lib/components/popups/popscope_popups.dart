@@ -7,39 +7,34 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:timetocode/games/backend/providers/challenge_provider.dart';
 
-
 class PopscopePopups {
   static bool _isPopScopeActive = true;
 
-  static void setPopScope(bool setIsPopScopeActive){
+  static void setPopScope(bool setIsPopScopeActive) {
     _isPopScopeActive = setIsPopScopeActive;
   }
 
-  static bool isPopScopeActive(){
+  static bool isPopScopeActive() {
     return _isPopScopeActive;
   }
 
-  static void openMenuPopup(BuildContext context, WidgetRef ref){
+  static void openMenuPopup(BuildContext context, WidgetRef ref) {
     showPopupOverlay(
       context,
       MenuPopup(
         onRestart: () {
           // Gunakan StoryController untuk me-restart level
-          final storyController = ref.read(
-            storyControllerProvider.notifier,
-          );
+          final storyController = ref.read(storyControllerProvider.notifier);
           storyController.restartLevel();
           closePopupOverlay();
         },
         onExit: () {
           // Gunakan StoryController untuk mengakhiri cerita
-          final storyController = ref.read(
-            storyControllerProvider.notifier,
-          );
+          final storyController = ref.read(storyControllerProvider.notifier);
           storyController.exitLevel();
           closePopupOverlay();
         },
-        onClose: (){
+        onClose: () {
           closePopupOverlay();
           setPopScope(true);
         },
@@ -48,22 +43,20 @@ class PopscopePopups {
     );
   }
 
-  static void openMenuPopupChallange(BuildContext context, WidgetRef ref){
+  static void openMenuPopupChallange(BuildContext context, WidgetRef ref) {
+    final challengeController = ref.read(challengeControllerProvider.notifier);
     showPopupOverlay(
       context,
       MenuPopup(
-        onRestart: (){
-          // untuk restart challenge
+        onRestart: () {
+          challengeController.resetChallenge();
+          closePopupOverlay();
         },
         onExit: () {
-          // Gunakan StoryController untuk mengakhiri cerita
-          final challengeController = ref.read(
-            challengeControllerProvider.notifier,
-          );
           challengeController.endChallenge();
           closePopupOverlay();
         },
-        onClose: (){
+        onClose: () {
           closePopupOverlay();
           setPopScope(true);
         },
@@ -73,26 +66,24 @@ class PopscopePopups {
   }
 }
 
-void endGamePopup(BuildContext context, WidgetRef ref){
-    showPopupOverlay(
-      context,
-      ConfirmPopup(
-        title: 'Lanjutkan Permainan?',
-        description: 'Keluar Halaman dan Lanjutkan Permainan?',
-        confirmLabel: 'Lanjutkan',
-        onPrimaryButtonPressed: () {
-          final storyController = ref.read(
-            storyControllerProvider.notifier,
-          );
-          storyController.endStory();
-          closePopupOverlay();
-        },
-        onGoBack: () {
-          closePopupOverlay(); 
-        },
-      ),
-    );
-  }
+void endGamePopup(BuildContext context, WidgetRef ref) {
+  showPopupOverlay(
+    context,
+    ConfirmPopup(
+      title: 'Lanjutkan Permainan?',
+      description: 'Keluar Halaman dan Lanjutkan Permainan?',
+      confirmLabel: 'Lanjutkan',
+      onPrimaryButtonPressed: () {
+        final storyController = ref.read(storyControllerProvider.notifier);
+        storyController.endStory();
+        closePopupOverlay();
+      },
+      onGoBack: () {
+        closePopupOverlay();
+      },
+    ),
+  );
+}
 
 void exitPopup(BuildContext context) {
   showPopupOverlay(
@@ -107,9 +98,8 @@ void exitPopup(BuildContext context) {
       },
       onGoBack: () {
         PopscopePopups.setPopScope(true);
-        closePopupOverlay(); 
+        closePopupOverlay();
       },
     ),
   );
 }
-
