@@ -9,14 +9,12 @@ import 'package:timetocode/utils/screen_utils.dart';
 
 class AnswerPopup extends StatelessWidget {
   final bool isCorrect;
-  final String? message;
   final VoidCallback onPressed;
 
   const AnswerPopup({
     super.key,
     required this.isCorrect,
     required this.onPressed,
-    this.message,
   });
 
   Color get _color => isCorrect ? AppColors.xpGreen : AppColors.dangerRed;
@@ -33,15 +31,6 @@ class AnswerPopup extends StatelessWidget {
     return Text(
       isCorrect ? "Benar" : "Salah",
       style: AppTypography.heading4(color: _color),
-      textAlign: TextAlign.center,
-    );
-  }
-
-  Widget? _buildMessage() {
-    if (message == null) return null;
-    return Text(
-      message!,
-      style: AppTypography.normal(),
       textAlign: TextAlign.center,
     );
   }
@@ -77,10 +66,6 @@ class AnswerPopup extends StatelessWidget {
         children: [
           _buildIconWithTitleRow(),
           SizedBox(height: 32.h),
-          if (_buildMessage() != null) ...[
-            _buildMessage()!,
-            SizedBox(height: 32.h),
-          ],
           _buildButton(),
         ],
       ),
