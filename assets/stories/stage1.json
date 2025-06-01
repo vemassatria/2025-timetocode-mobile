@@ -9,7 +9,7 @@
       "character1_reaction": ["adriankampus_biasa", "adriankampus_marah", "adriankampus_senang", "adriankampus_kecewa", "adriankampus_aksi"],
       "character2_name": "Mas Mulyo",
       "character2_reaction": ["kating_biasa", "kating_marah", "kating_senang", "kating_kecewa", "kating_aksi"],
-      "ilustration": ["tipe-data.webp", "BOOLEAN.webp"],
+      "ilustration": ["tipe-data", "BOOLEAN"],
       "start": "preDialog1",
       "typeStart": "preDialog",
       "preDialog": [
@@ -187,14 +187,15 @@
           "text": [
             {
               "line": "Bayangin tipe data dan variabel itu seperti wadah dengan labelnya. Biar lebih jelas, coba lihat ilustrasi ember dan kardus ini.",
-              "reaction_index": 0,
+              "reaction_index": 4,
               "speaker": 2,
               "ilustration_index": 0
             },
             {
               "line": "Nah, 'ember' itu ibarat variabel float, cocok untuk 'air' atau angka desimal seperti 55.5. Tapi kalau 'air' itu kamu tuang ke 'kardus', yang ibarat variabel int, ya bakal 'bocor', desimalnya hilang karena int hanya untuk bilangan bulat!",
-              "reaction_index": 0,
-              "speaker": 2
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 0
             },
             {
               "line": "Oh jadi tipe data itu penting supaya nilai yang kita masukin sesuai dan gak rusak ya, Mas?",
@@ -315,14 +316,15 @@
             },
             {
               "line": "Tepat sekali! Boolean itu untuk dua kemungkinan itu. Biar lebih kebayang, bool itu seperti saklar lampu pada ilustrasi ini.",
-              "reaction_index": 2,
+              "reaction_index": 4,
               "speaker": 2,
               "ilustration_index": 1
             },
             {
               "line": "Kalau lampu 'ON' atau menyala, itu TRUE atau benar. Kalau 'OFF' atau mati, itu FALSE atau salah. Komputer pakai ini untuk membuat keputusan.",
-              "reaction_index": 0,
-              "speaker": 2
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 1
             },
             {
               "line": "Nah, dengan pemahaman itu, coba sekarang kamu susun lagi tipe data yang benar untuk soal tadi.",
