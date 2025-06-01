@@ -9,7 +9,7 @@
       "character1_reaction": ["adriankampus_biasa", "adriankampus_marah", "adriankampus_senang", "adriankampus_kecewa", "adriankampus_aksi"],
       "character2_name": "Mas Mulyo",
       "character2_reaction": ["kating_biasa", "kating_marah", "kating_senang", "kating_kecewa", "kating_aksi"],
-      "ilustration": ["contoh-ilustrasi1", "default"],
+      "ilustration": ["tipe-data.webp", "BOOLEAN.webp"],
       "start": "preDialog1",
       "typeStart": "preDialog",
       "preDialog": [
@@ -72,7 +72,9 @@
               "next": "scene1_3",
               "nextType": "dialog"
             }
-          ]
+          ],
+          "next": "",
+          "nextType": ""
         },
         {
           "id": "scene1_1",
@@ -184,37 +186,23 @@
           "id": "materi1_1",
           "text": [
             {
-              "line": "Bayangin kamu punya dua wadah, satu ember buat nampung air, satu kardus buat barang kering. Nah ember sama kardus itu kayak variabel di program, dan label wadah itu kayak tipe datanya.",
+              "line": "Bayangin tipe data dan variabel itu seperti wadah dengan labelnya. Biar lebih jelas, coba lihat ilustrasi ember dan kardus ini.",
+              "reaction_index": 0,
+              "speaker": 2,
+              "ilustration_index": 0
+            },
+            {
+              "line": "Nah, 'ember' itu ibarat variabel float, cocok untuk 'air' atau angka desimal seperti 55.5. Tapi kalau 'air' itu kamu tuang ke 'kardus', yang ibarat variabel int, ya bakal 'bocor', desimalnya hilang karena int hanya untuk bilangan bulat!",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": " Jadi kalau kamu masukin nilai kayak angka 55.5 ke variabel float, itu kayak tuang air ke ember, cocok banget.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Tapi kalau aku masukin nilai 30.5 itu ke variabel int gimana?",
+              "line": "Oh jadi tipe data itu penting supaya nilai yang kita masukin sesuai dan gak rusak ya, Mas?",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Itu beda ceritanya. Kayak kamu tuang air ke kardus bro. Airnya bocor, atau dalam kasus program, desimalnya hilang karena int cuma nampung bilangan bulat.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Jadi datanya gak pas dan bisa bikin error.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Oh jadi tipe data itu penting supaya nilai yang kita masukin sesuai dan gak rusak ya?",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Iya. Kalau salah masukin tipe data, nanti programnya bisa ngga jalan sesuai harapan. Jadi label itu ngajarin variabel buat nyimpen data yang tepat.",
+              "line": "Betul! Ibaratnya, label pada wadah memastikan isinya tepat. Kalau salah tipe data, program bisa error atau hasilnya gak sesuai harapan.",
               "reaction_index": 0,
               "speaker": 2
             },
@@ -326,8 +314,19 @@
               "speaker": 1
             },
             {
-              "line": "Betul! bool memang tepat untuk dua kemungkinan seperti itu. Nah, sekarang kamu coba pikirkan lagi, apakah semua pilihanmu sudah pas?",
+              "line": "Tepat sekali! Boolean itu untuk dua kemungkinan itu. Biar lebih kebayang, bool itu seperti saklar lampu pada ilustrasi ini.",
               "reaction_index": 2,
+              "speaker": 2,
+              "ilustration_index": 1
+            },
+            {
+              "line": "Kalau lampu 'ON' atau menyala, itu TRUE atau benar. Kalau 'OFF' atau mati, itu FALSE atau salah. Komputer pakai ini untuk membuat keputusan.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Nah, dengan pemahaman itu, coba sekarang kamu susun lagi tipe data yang benar untuk soal tadi.",
+              "reaction_index": 0,
               "speaker": 2
             }
           ],
@@ -561,7 +560,8 @@
               "speaker": 1
             }
           ],
-          "next": null
+          "next": null,
+          "nextType": ""
         }
       ],
       "questions": [
@@ -682,7 +682,7 @@
       "character2_name": "Kakak",
       "character2_reaction": ["tino_biasa", "tino_marah", "tino_senang", "tino_kecewa", "tino_aksi"],
       "ilustration": ["contoh-ilustrasi1"],
-      "start": "preDialog2",
+      "start": "preDialog2_1",
       "typeStart": "preDialog",
       "preDialog": [
         {
@@ -697,8 +697,6 @@
           "next": "intro2",
           "nextType": "dialog"
         }
-
-
       ],
       "dialogs": [
         {
@@ -741,7 +739,9 @@
               "next": "scene2_3",
               "nextType": "dialog"
             }
-          ]
+          ],
+          "next": "",
+          "nextType": ""
         },
         {
           "id": "scene2_1",
@@ -1060,7 +1060,8 @@
               "speaker": 2
             }
           ],
-          "next": null
+          "next": null,
+          "nextType": ""
         }
       ],
       "questions": [
@@ -1188,8 +1189,6 @@
           "next": "intro3",
           "nextType": "dialog"
         }
-
-
       ],
       "dialogs": [
         {
@@ -1242,7 +1241,9 @@
               "next": "scene3_3",
               "nextType": "dialog"
             }
-          ]
+          ],
+          "next": "",
+          "nextType": ""
         },
         {
           "id": "scene3_1",
@@ -1532,7 +1533,8 @@
               "speaker": 1
             }
           ],
-          "next": null
+          "next": null,
+          "nextType": ""
         }
       ],
       "questions": [
@@ -1579,7 +1581,7 @@
             },
             {
               "text": "Hai Hai Hai",
-              "next": "bener3_last",
+              "next": "benar3_last",
               "nextType": "dialog",
               "isCorrect": true
             },
@@ -1706,7 +1708,9 @@
               "next": "scene4_3",
               "nextType": "dialog"
             }
-          ]
+          ],
+          "next": "",
+          "nextType": ""
         },
         {
           "id": "scene4_1",
@@ -1986,7 +1990,8 @@
               "speaker": 2
             }
           ],
-          "next": null
+          "next": null,
+          "nextType": ""
         }
       ],
       "questions": [
@@ -2091,7 +2096,7 @@
       "character2_reaction": ["rongga_biasa", "rongga_marah", "rongga_senang", "rongga_kecewa", "rongga_aksi"],
       "start": "predialog5",
       "typeStart": "predialog",
-      "predialog": [
+      "preDialog": [
         {
           "id": "predialog5",
           "text": "Adrian duduk terpaku di bangkunya, menatap papan tulis dengan mata melebar. Di hadapannya berdiri Pak Rongga, dosen pemrograman yang terkenal tegas dan jenius. Suaranya yang berat mengumumkan tugas besar minggu ini: “Buatlah program untuk menghitung nilai akhir mahasiswa, lengkap dengan semua komponennya: tugas, kuis, UTS, dan UAS.”",
@@ -2099,7 +2104,7 @@
           "nextType": "predialog"
         },
         {
-          "id": "predialo5_2",
+          "id": "predialog5_2",
           "text": "Jantung Adrian berdegup kencang. “Waduh, tugas besar? Program penuh begitu? Gimana cara mulainya…” pikirnya panik. Ia teringat betapa ribetnya program sebelumnya yang ia buat tanpa struktur—kode berulang, variabel bertumpuk, dan logika campur aduk yang bikin pusing tujuh keliling.",
           "next": "intro5",
           "nextType": "dialog"
@@ -2151,7 +2156,9 @@
               "next": "scene5_3",
               "nextType": "dialog"
             }
-          ]
+          ],
+          "next": "",
+          "nextType": ""
         },
         {
           "id": "scene5_1",
@@ -2461,7 +2468,8 @@
               "speaker": 2
             }
           ],
-          "next": null
+          "next": null,
+          "nextType": ""
         }
       ],
       "questions": [
@@ -2554,7 +2562,7 @@
       "character2_reaction": ["crush_biasa", "crush_marah", "crush_senang", "crush_kecewa", "crush_aksi"],
       "start": "predialog6",
       "typeStart": "predialog",
-      "predialog": [
+      "preDialog": [
         {
           "id": "predialog6",
           "text": "Adrian duduk di sudut café favoritnya, sambil membuka laptop dan menyesap kopi hangat. Hari itu suasana cukup ramai, tapi fokus Adrian masih terpecah antara catatan dan baris-baris kode yang belum selesai.",
@@ -2619,7 +2627,9 @@
               "next": "scene6_3",
               "nextType": "dialog"
             }
-          ]
+          ],
+          "next": "",
+          "nextType": ""
         },
         {
           "id": "scene6_1",
@@ -3107,14 +3117,44 @@
               "speaker": 2
             }
           ],
-          "next": null
+          "next": null,
+          "nextType": ""
         }
       ],
       "questions": [
         {
+          "id": "soal6_1",
+          "text": "Perhatikan potongan kode berikut. Menurutmu, manakah variabel global/eksternal dalam kode di atas?",
+          "code": "int angka = 10;\nvoid fungsi() {\n    printf(\"%d\", angka);\n}",
+          "choices": [
+            {
+              "text": "fungsi, karena dia bisa dipanggil dari mana saja.",
+              "next": "salah6_2",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "angka, karena dideklarasikan di luar fungsi dan bisa diakses dari dalam fungsi.",
+              "next": "materi6_3",
+              "nextType": "dialog",
+              "isCorrect": true
+            },
+            {
+              "text": "printf, karena digunakan di dalam fungsi untuk menampilkan nilai.",
+              "next": "salah6_2",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "int, karena semua variabel bertipe int pasti global.",
+              "next": "salah6_2",
+              "nextType": "dialog",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
           "id": "soal6_2",
-          "character1": "Jennie",
-          "character2": "Adrian",
           "text": "Perhatikan kode ini. Menurutmu, manakah variabel lokal dalam kode di atas?",
           "code": "#include <stdio.h>\n\nint a = 1;\nchar charku = 'c';\nfloat floatku = 29.2;\n\nvoid contoh() {\n    int angka = 10;\n    printf(\"%d\", angka);\n}",
           "choices": [
@@ -3145,131 +3185,86 @@
           ]
         },
         {
-      "id": "soal6_1",
-      "character1": "Jennie",
-      "character2": "Adrian",
-      "text": "Perhatikan potongan kode berikut. Menurutmu, manakah variabel global/eksternal dalam kode di atas?",
-      "code": "int angka = 10;\nvoid fungsi() {\n    printf(\"%d\", angka);\n}",
-      "choices": [
-        {
-          "text": "fungsi, karena dia bisa dipanggil dari mana saja.",
-          "next": "salah6_2",
-          "nextType": "dialog",
-          "isCorrect": false
+          "id": "soal6_3",
+          "text": "Perhatikan potongan kode berikut! Manakah fungsi yang menggunakan variabel statis pada kode berikut?",
+          "code": "void fungsi1() {\n    int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi2() {\n    static int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi3() {\n    int x = 0;\n    for(int i = 0; i < 5; i++) {\n        x++;\n    }\n    printf(\"%d\", x);\n}\n\nvoid fungsi4() {\n    int x = 0;\n    while(x < 5) {\n        x++;\n    }\n    printf(\"%d\", x);\n}",
+          "choices": [
+            {
+              "text": "fungsi1",
+              "next": "salah6_3",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "fungsi2",
+              "next": "materi6_4",
+              "nextType": "dialog",
+              "isCorrect": true
+            },
+            {
+              "text": "fungsi3",
+              "next": "salah6_3",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "fungsi4",
+              "next": "salah6_3",
+              "nextType": "dialog",
+              "isCorrect": false
+            }
+          ]
         },
         {
-          "text": "angka, karena dideklarasikan di luar fungsi dan bisa diakses dari dalam fungsi.",
-          "next": "materi6_3",
-          "nextType": "dialog",
-          "isCorrect": true
-        },
-        {
-          "text": "printf, karena digunakan di dalam fungsi untuk menampilkan nilai.",
-          "next": "salah6_2",
-          "nextType": "dialog",
-          "isCorrect": false
-        },
-        {
-          "text": "int, karena semua variabel bertipe int pasti global.",
-          "next": "salah6_2",
-          "nextType": "dialog",
-          "isCorrect": false
+          "id": "soal6_4",
+          "text": "Perhatikan potongan kode berikut. Dalam program di atas, mana yang merupakan variabel register dan variabel statis?",
+          "code": "#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5; \n    register int i;       \n    for (i = 0; i < 3; i++) {\n        angka++;\n        printf(\"Angka: %d, i: %d\\n\", angka, i);\n    }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}",
+          "choices": [
+            {
+              "text": "angka adalah variabel register, i adalah variabel statis.",
+              "next": "salah6_4",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "angka adalah variabel statis, i adalah variabel register.",
+              "next": "benar6_last",
+              "nextType": "dialog",
+              "isCorrect": true
+            },
+            {
+              "text": "angka dan i keduanya variabel register.",
+              "next": "salah6_4",
+              "nextType": "dialog",
+              "isCorrect": false
+            },
+            {
+              "text": "angka dan i keduanya variabel statis.",
+              "next": "salah6_4",
+              "nextType": "dialog",
+              "isCorrect": false
+            }
+          ]
         }
-      ]
-    },
-    {
-      "id": "soal6_3",
-      "character1": "Jennie",
-      "character2": "Adrian",
-      "text": "Perhatikan potongan kode berikut! Manakah fungsi yang menggunakan variabel statis pada kode berikut?",
-      "code": "void fungsi1() {\n    int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi2() {\n    static int x = 0;\n    x++;\n    printf(\"%d\", x);\n}\n\nvoid fungsi3() {\n    int x = 0;\n    for(int i = 0; i < 5; i++) {\n        x++;\n    }\n    printf(\"%d\", x);\n}\n\nvoid fungsi4() {\n    int x = 0;\n    while(x < 5) {\n        x++;\n    }\n    printf(\"%d\", x);\n}",
-      "choices": [
-        {
-          "text": "fungsi1",
-          "next": "salah6_3",
-          "nextType": "dialog",
-          "isCorrect": false
-        },
-        {
-          "text": "fungsi2",
-          "next": "materi6_4",
-          "nextType": "dialog",
-          "isCorrect": true
-        },
-        {
-          "text": "fungsi3",
-          "next": "salah6_3",
-          "nextType": "dialog",
-          "isCorrect": false
-        },
-        {
-          "text": "fungsi4",
-          "next": "salah6_3",
-          "nextType": "dialog",
-          "isCorrect": false
-        }
-      ]
-    },
-    {
-      "id": "soal6_4",
-      "character1": "Jennie",
-      "character2": "Adrian",
-      "text": "Perhatikan potongan kode berikut. Dalam program di atas, mana yang merupakan variabel register dan variabel statis?",
-      "code": "#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5; \n    register int i;       \n    for (i = 0; i < 3; i++) {\n        angka++;\n        printf(\"Angka: %d, i: %d\\n\", angka, i);\n    }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}",
-      "choices": [
-        {
-          "text": "angka adalah variabel register, i adalah variabel statis.",
-          "next": "salah6_4",
-          "nextType": "dialog",
-          "isCorrect": false
-        },
-        {
-          "text": "angka adalah variabel statis, i adalah variabel register.",
-          "next": "benar6_last",
-          "nextType": "dialog",
-          "isCorrect": true
-        },
-        {
-          "text": "angka dan i keduanya variabel register.",
-          "next": "salah6_4",
-          "nextType": "dialog",
-          "isCorrect": false
-        },
-        {
-          "text": "angka dan i keduanya variabel statis.",
-          "next": "salah6_4",
-          "nextType": "dialog",
-          "isCorrect": false
-        }
-      ]
-    }
       ],
-      
-"rangkuman": [
-    "1. Variabel Lokal (Auto): dideklarasikan di dalam sebuah fungsi dan hanya bisa diakses selama fungsi tersebut berjalan. Setelah fungsi selesai, variabel lokal akan hilang dari memori. Secara default, semua variabel di dalam fungsi bersifat lokal.",
-    "Contoh variabel lokal:",
-    "#include <stdio.h>\n\nvoid contoh() {\n    int x = 10;  // Variabel lokal \n    printf(\"Nilai x: %d\\n\", x);\n}",
-    "Penjelasan:\n- Variabel x adalah variabel lokal karena dideklarasikan di dalam fungsi contoh. Nilainya hanya ada selama fungsi berjalan dan hilang setelah fungsi selesai dieksekusi.",
-    "2. Variabel Global (Eksternal): dideklarasikan diluar semua fungsi dan dapat diakses oleh semua fungsi dalam program. Variabel ini sering digunakan untuk menyimpan data yang dibutuhkan oleh banyak fungsi. Penggunaannya harus hati-hati karena perubahan nilai variabel global dapat mempengaruhi fungsi lainnya.",
-    "Contoh variabel global:",
-    "#include <stdio.h>\n\nint x = 10;  // Variabel global\n\nvoid contoh() {\n    printf(\"Nilai x: %d\\n\", x);  // Mengakses variabel global x\n}",
-    "Penjelasan:\n- Variabel x adalah variabel global karena dideklarasikan di luar fungsi dan dapat diakses di dalam fungsi contoh.",
-    "3. Variabel Statis: dideklarasikan di dalam fungsi, namun nilainya tidak hilang setelah fungsi selesai dieksekusi. Variabel ini akan menyimpan nilai terakhir yang dimiliki dan melanjutkan dari nilai tersebut ketika fungsi dipanggil lagi.",
-    "Contoh variabel statis:",
-    "#include <stdio.h>\n\nvoid contoh() {\n    static int count = 0;  // Variabel statis\n    count++;\n    printf(\"Count: %d\\n\", count);\n}",
-    "Penjelasan:\n- Variabel count adalah variabel statis karena dideklarasikan dengan keyword static. Nilainya bertahan setelah fungsi selesai dieksekusi dan akan melanjutkan pada pemanggilan berikutnya.",
-    "4. Variabel Register: disarankan disimpan di register CPU agar aksesnya lebih cepat. Biasanya untuk variabel yang sering diakses dalam program, seperti counter dalam perulangan. Penyimpanan variabel register tergantung pada kemampuan arsitektur komputer.",
-    "Contoh variabel register:",
-    "#include <stdio.h>\n\nint main() {\n    register int i;  // Variabel register\n    for (i = 0; i < 5; i++) {\n        printf(\"i: %d\\n\", i);\n    }\n    return 0;\n}",
-    "Penjelasan:\n- Variabel i adalah variabel register yang digunakan di dalam perulangan for. Compiler mencoba untuk menyimpannya di register CPU agar proses lebih cepat."
-  ]
+      "rangkuman": [
+        "1. Variabel Lokal (Auto): dideklarasikan di dalam sebuah fungsi dan hanya bisa diakses selama fungsi tersebut berjalan. Setelah fungsi selesai, variabel lokal akan hilang dari memori. Secara default, semua variabel di dalam fungsi bersifat lokal.",
+        "Contoh variabel lokal:",
+        "#include <stdio.h>\n\nvoid contoh() {\n    int x = 10;  // Variabel lokal \n    printf(\"Nilai x: %d\\n\", x);\n}",
+        "Penjelasan:\n- Variabel x adalah variabel lokal karena dideklarasikan di dalam fungsi contoh. Nilainya hanya ada selama fungsi berjalan dan hilang setelah fungsi selesai dieksekusi.",
+        "2. Variabel Global (Eksternal): dideklarasikan diluar semua fungsi dan dapat diakses oleh semua fungsi dalam program. Variabel ini sering digunakan untuk menyimpan data yang dibutuhkan oleh banyak fungsi. Penggunaannya harus hati-hati karena perubahan nilai variabel global dapat mempengaruhi fungsi lainnya.",
+        "Contoh variabel global:",
+        "#include <stdio.h>\n\nint x = 10;  // Variabel global\n\nvoid contoh() {\n    printf(\"Nilai x: %d\\n\", x);  // Mengakses variabel global x\n}",
+        "Penjelasan:\n- Variabel x adalah variabel global karena dideklarasikan di luar fungsi dan dapat diakses di dalam fungsi contoh.",
+        "3. Variabel Statis: dideklarasikan di dalam fungsi, namun nilainya tidak hilang setelah fungsi selesai dieksekusi. Variabel ini akan menyimpan nilai terakhir yang dimiliki dan melanjutkan dari nilai tersebut ketika fungsi dipanggil lagi.",
+        "Contoh variabel statis:",
+        "#include <stdio.h>\n\nvoid contoh() {\n    static int count = 0;  // Variabel statis\n    count++;\n    printf(\"Count: %d\\n\", count);\n}",
+        "Penjelasan:\n- Variabel count adalah variabel statis karena dideklarasikan dengan keyword static. Nilainya bertahan setelah fungsi selesai dieksekusi dan akan melanjutkan pada pemanggilan berikutnya.",
+        "4. Variabel Register: disarankan disimpan di register CPU agar aksesnya lebih cepat. Biasanya untuk variabel yang sering diakses dalam program, seperti counter dalam perulangan. Penyimpanan variabel register tergantung pada kemampuan arsitektur komputer.",
+        "Contoh variabel register:",
+        "#include <stdio.h>\n\nint main() {\n    register int i;  // Variabel register\n    for (i = 0; i < 5; i++) {\n        printf(\"i: %d\\n\", i);\n    }\n    return 0;\n}",
+        "Penjelasan:\n- Variabel i adalah variabel register yang digunakan di dalam perulangan for. Compiler mencoba untuk menyimpannya di register CPU agar proses lebih cepat."
+      ]
     }
-    
   ]
-  
 }
-
-
-
-
-
