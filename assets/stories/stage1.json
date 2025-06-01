@@ -51,7 +51,7 @@
               "speaker": 1
             },
             {
-              "line": " Eh, wajahmu kok kayak familiar ya? Anak PENS juga, kan?",
+              "line": "Eh, wajahmu kok kayak familiar ya? Anak PENS juga, kan?",
               "reaction_index": 4,
               "speaker": 2
             }
@@ -2335,7 +2335,6 @@
               "reaction_index": 4,
               "speaker": 2,
               "ilustration_index": 0
-            },
             },
             {
               "line": "Jadi, kalau fungsinya bertipe 'int', kurirnya bawa paket bilangan bulat. Kalau 'float', bawa bilangan desimal, kalau 'char' ya karakter. Isi paketnya itu hasil kerja si fungsi.",

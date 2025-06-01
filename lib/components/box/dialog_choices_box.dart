@@ -20,19 +20,21 @@ class DialogChoicesBox extends StatelessWidget {
       constraints: BoxConstraints(maxHeight: maxHeight),
       child: SingleChildScrollView(
         child: Column(
-          children: choices
-              .map(
-                (choice) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: CustomButton(
-                    label: choice.text,
-                    widthMode: ButtonWidthMode.fill,
-                    type: ButtonType.outline,
-                    onPressed: () => onPressed(choice),
-                  ),
-                ),
-              )
-              .toList(),
+          children:
+              choices
+                  .map(
+                    (choice) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: CustomButton(
+                        label: choice.text,
+                        textAlign: ButtonTextAlign.center,
+                        widthMode: ButtonWidthMode.fill,
+                        type: ButtonType.outline,
+                        onPressed: () => onPressed(choice),
+                      ),
+                    ),
+                  )
+                  .toList(),
         ),
       ),
     );
