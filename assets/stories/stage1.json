@@ -1,6 +1,3 @@
-
-
-
 {
   "levels": [
     {
@@ -26,7 +23,7 @@
           "id": "preDialog1_2",
           "text": "Adrian: \"Mas, aku baru masuk kuliah di jurusan Informatika. Tapi kok materi pertama langsung susah-susah ya? Aku masih bingung banget soal tipe data, variabel, dan operator. Aku bisa minta tolong ajarin tipis-tipis gak mas?\"",
           "next": "intro1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         }
       ],
       "dialogs": [
@@ -63,17 +60,17 @@
             {
               "text": "Betul mas aduh susah banget ini programming",
               "next": "scene1_1",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Loh kok mas tau saya",
               "next": "scene1_2",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Hah… Masnya siapa ya?",
               "next": "scene1_3",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             }
           ]
         },
@@ -97,7 +94,7 @@
             }
           ],
           "next": "materi1_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene1_2",
@@ -139,7 +136,7 @@
             }
           ],
           "next": "materi1_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene1_3",
@@ -181,7 +178,7 @@
             }
           ],
           "next": "materi1_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "materi1_1",
@@ -576,25 +573,25 @@
             {
               "text": "string - float - int - bool - char",
               "next": "salah1_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "string - int - float - int - bool",
               "next": "materi1_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "char - bool - string - float - int",
               "next": "salah1_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "int - float - string - bool - float",
               "next": "salah1_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
@@ -607,25 +604,25 @@
             {
               "text": "int berat.Badan = 55.5;",
               "next": "salah1_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "float beratBadan = 55.5;",
               "next": "materi1_3",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "string beratBadan = 55.5;",
               "next": "salah1_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "bool beratBadan = \"true\";",
               "next": "salah1_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
@@ -638,25 +635,25 @@
             {
               "text": "16",
               "next": "salah1_3",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "11",
               "next": "benar1_last",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "13",
               "next": "salah1_3",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "10",
               "next": "salah1_3",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
@@ -698,7 +695,7 @@
           "id": "preDialog2_2",
           "text": "Namun di balik kata-kata sinisnya, Tino sebenarnya adalah sosok kakak yang peduli. Ia diam-diam memperhatikan perkembangan Adrian, bahkan kadang membantu tanpa mengakui secara langsung. Di kamar Adrian, lampu meja menyala redup. Laptopnya terbuka dengan kode program pengecek nilai yang penuh error. Adrian duduk sambil mengernyit, berulang kali mengetik dan mencoba memperbaiki kode itu.",
           "next": "intro2",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         }
 
 
@@ -732,17 +729,17 @@
             {
               "text": "Kakak tahu, kan? Bisa tolong jelasin yang gampang aja? Aku udah capek banget nih...",
               "next": "scene2_1",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Iya deh, tapi jangan cuma nyindir terus, aku juga belajar kok.",
               "next": "scene2_2",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Ah, kamu cuma nyindir aja, gak usah sok pintar, aku bisa cari sendiri kalau mau.",
               "next": "scene2_3",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             }
           ]
         },
@@ -766,7 +763,7 @@
             }
           ],
           "next": "materi2_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene2_2",
@@ -793,7 +790,7 @@
             }
           ],
           "next": "materi2_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene2_3",
@@ -820,7 +817,7 @@
             }
           ],
           "next": "materi2_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "salah2_1",
@@ -1074,13 +1071,13 @@
             {
               "text": "if, karena cuma perlu ngecek satu kondisi aja.",
               "next": "materi2_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "else, karena cuma butuh dua kemungkinan.",
               "next": "salah2_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
@@ -1092,7 +1089,7 @@
             {
               "text": "Tidak perlu kondisi, cukup tampilkan saja.",
               "next": "salah2_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
@@ -1105,25 +1102,25 @@
             {
               "text": "Kamu masih remaja",
               "next": "salah2_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "Kamu dewasa",
               "next": "materi2_3",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "Kamu lanjut usia",
               "next": "salah2_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "Tidak ada output",
               "next": "salah2_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
@@ -1136,25 +1133,25 @@
             {
               "text": "Pilihan menu: Nasi Goreng",
               "next": "salah2_3",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "Pilihan menu: Soto",
               "next": "salah2_3",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "Pilihan menu: Mie Ayam",
               "next": "benar2_last",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "Pilihan menu tidak valid",
               "next": "salah2_3",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
@@ -1176,20 +1173,20 @@
       "ilustration": ["contoh-ilustrasi3"],
       "character2_name": "Rusdi",
       "character2_reaction": ["rusdi_biasa", "rusdi_marah", "rusdi_senang", "rusdi_kecewa", "rusdi_aksi"],
-      "start": "preDialog3",
+      "start": "preDialog3_1",
       "typeStart": "preDialog",
       "preDialog": [
         {
-          "id": "preDialog2",
+          "id": "preDialog3_1",
           "text": "Adrian sering jajan di warung milik Pak Rusdi, pria ramah yang sudah mengenalnya sejak awal kuliah. Ternyata, Rusdi adalah lulusan teknik juga. Namun, nasib membawanya membuka warung karena sulitnya mencari kerja di dunia IT.",
-          "next": "preDialog2_2",
+          "next": "preDialog3_2",
           "nextType": "preDialog"
         },
         {
-          "id": "preDialog2_2",
+          "id": "preDialog3_2",
           "text": "Persaingan yang ketat dan minimnya relasi membuat Rusdi tak lolos seleksi kerja berulang kali. Suatu hari, saat Adrian mengeluh soal konsep perulangan, Rusdi menjelaskan lewat kisah hidupnya sendiri — tentang usaha yang terus diulang meski hasilnya belum selalu sesuai harapan.",
-          "next": "dialog2",
-          "nextType": "dialogs"
+          "next": "intro3",
+          "nextType": "dialog"
         }
 
 
@@ -1233,17 +1230,17 @@
             {
               "text": "Eh... loop itu maksudnya apa sih, Pak? Saya lagi belajar itu juga, tapi malah makin pusing",
               "next": "scene3_1",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Wah, saya juga kayaknya lagi kejebak loop deh. Tugas gak kelar-kelar, Pak",
               "next": "scene3_2",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Wkwk masi mending tu mas daripada saya muter-muter terus kaya siklus mahasiswa gatau arah, coding, mie ayam, tidur, coding lagi, mie ayam lagi, tidur lagi",
               "next": "scene3_3",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             }
           ]
         },
@@ -1262,7 +1259,7 @@
             }
           ],
           "next": "materi3_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene3_2",
@@ -1289,7 +1286,7 @@
             }
           ],
           "next": "materi3_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene3_3",
@@ -1316,7 +1313,7 @@
             }
           ],
           "next": "materi3_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "materi3_1",
@@ -1546,25 +1543,25 @@
             {
               "text": "for (int i = 1; i < 10; i++) { printf(\"%d \", i); }",
               "next": "salah3_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "for (int i = 0; i <= 10; i++) { printf(\"%d \", i); }",
               "next": "salah3_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "for (int i = 0; i < 10; i++) { printf(\"%d \", i); }",
               "next": "salah3_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "for (int i = 1; i < 11; i++) { printf(\"%d \", i); }",
               "next": "materi3_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             }
           ]
@@ -1577,25 +1574,25 @@
             {
               "text": "Hai",
               "next": "salah3_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "Hai Hai Hai",
               "next": "bener3_last",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "HaiHaiHai",
               "next": "salah3_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "HaiHai",
               "next": "salah3_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
@@ -1635,7 +1632,7 @@
           "id": "preDialog4",
           "text": "Adrian mencoba nested loop membuat pola dan tabel. Rusdi memuji hasil kerja Adrian — ini jadi semangat tambahan bagi Adrian.\nSuasana sore yang teduh. Adrian duduk santai di warung mi ayam milik Rusdi, menyandarkan tubuhnya ke kursi plastik sambil menyeruput kuah terakhir",
           "next": "intro4",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         }
       ],
       "dialogs": [
@@ -1697,17 +1694,17 @@
             {
               "text": "Wah, seru nih! Aku bikin yang bentuknya segitiga angka naik. Cocok buat anak-anak",
               "next": "scene4_1",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Hmm, bisa juga aku bikin kayak tabel angka dulu, terus dibentuk jadi segitiga. Mau coba gitu?",
               "next": "scene4_2",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Kalau aku sih tinggal pake dua loop aja satu buat baris, satu buat angka di dalemnya. Simpel lah",
               "next": "scene4_3",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             }
           ]
         },
@@ -1746,7 +1743,7 @@
             }
           ],
           "next": "materi4_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene4_2",
@@ -1773,7 +1770,7 @@
             }
           ],
           "next": "materi4_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene4_3",
@@ -1800,7 +1797,7 @@
             }
           ],
           "next": "materi4_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "materi4_1",
@@ -2001,25 +1998,25 @@
             {
               "text": "for (int i = 1; i <= 4; i++) // Loop baris\nfor (int j = 1; j <= i; j++) // Loop bintang",
               "next": "materi4_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "for (int i = 1; i <= 4; i++) // Loop bintang\nfor (int j = 1; j <= i; j++) // Loop baris",
               "next": "salah4_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "for (int i = 1; i <= 4; i++) // Loop baris\nfor (int j = 4; j >= i; j--) // Loop bintang",
               "next": "salah4_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "for (int i = 4; i >= 1; i--) // Loop baris\nfor (int j = 1; j <= i; j++) // Loop bintang",
               "next": "salah4_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
@@ -2031,25 +2028,25 @@
             {
               "text": "break, continue, exit",
               "next": "salah4_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "continue, exit, break",
               "next": "salah4_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "exit, break, continue",
               "next": "salah4_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "continue, break, exit",
               "next": "benar4_last",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             }
           ]
@@ -2092,20 +2089,20 @@
       "ilustration": ["contoh-ilustrasi5"],
       "character2_name": "Pak Rongga",
       "character2_reaction": ["rongga_biasa", "rongga_marah", "rongga_senang", "rongga_kecewa", "rongga_aksi"],
-      "start": "predialogs5",
-      "typeStart": "predialogs",
-      "predialogs": [
+      "start": "predialog5",
+      "typeStart": "predialog",
+      "predialog": [
         {
-          "id": "predialogs5",
+          "id": "predialog5",
           "text": "Adrian duduk terpaku di bangkunya, menatap papan tulis dengan mata melebar. Di hadapannya berdiri Pak Rongga, dosen pemrograman yang terkenal tegas dan jenius. Suaranya yang berat mengumumkan tugas besar minggu ini: “Buatlah program untuk menghitung nilai akhir mahasiswa, lengkap dengan semua komponennya: tugas, kuis, UTS, dan UAS.”",
-          "next": "predialogs5_2",
-          "nextType": "predialogs"
+          "next": "predialog5_2",
+          "nextType": "predialog"
         },
         {
-          "id": "predialogs5_2",
+          "id": "predialo5_2",
           "text": "Jantung Adrian berdegup kencang. “Waduh, tugas besar? Program penuh begitu? Gimana cara mulainya…” pikirnya panik. Ia teringat betapa ribetnya program sebelumnya yang ia buat tanpa struktur—kode berulang, variabel bertumpuk, dan logika campur aduk yang bikin pusing tujuh keliling.",
-          "next": "dialogs3",
-          "nextType": "dialogs"
+          "next": "intro5",
+          "nextType": "dialog"
         }
       ],
       "dialogs": [
@@ -2142,17 +2139,17 @@
             {
               "text": "Input nilai, terus hitung rata-rata, terus cetak?",
               "next": "scene5_1",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Pak, emang harus satu fungsi satu tugas ya?",
               "next": "scene5_2",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Jadi tiga fungsi, mungkin ya… input, hitung rata-rata, sama cetak hasil?",
               "next": "scene5_3",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             }
           ]
         },
@@ -2191,7 +2188,7 @@
             }
           ],
           "next": "materi5_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene5_2",
@@ -2218,7 +2215,7 @@
             }
           ],
           "next": "materi5_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene5_3",
@@ -2255,7 +2252,7 @@
             }
           ],
           "next": "materi5_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "materi5_1",
@@ -2476,25 +2473,25 @@
             {
               "text": "Fungsi dengan return integer",
               "next": "materi5_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "Fungsi dengan no return(void)",
               "next": "salah5_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "Fungsi dengan return float",
               "next": "salah5_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "Fungsi dengan return char",
               "next": "salah5_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
@@ -2507,25 +2504,25 @@
             {
               "text": "char",
               "next": "salah5_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "void",
               "next": "benar5_last",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "string",
               "next": "salah5_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "return",
               "next": "salah5_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
@@ -2555,20 +2552,20 @@
       "ilustration": ["contoh-ilustrasi6"],
       "character2_name": "Jennie",
       "character2_reaction": ["crush_biasa", "crush_marah", "crush_senang", "crush_kecewa", "crush_aksi"],
-      "start": "predialogs6",
-      "typeStart": "predialogs",
-      "predialogs": [
+      "start": "predialog6",
+      "typeStart": "predialog",
+      "predialog": [
         {
-          "id": "predialogs6",
+          "id": "predialog6",
           "text": "Adrian duduk di sudut café favoritnya, sambil membuka laptop dan menyesap kopi hangat. Hari itu suasana cukup ramai, tapi fokus Adrian masih terpecah antara catatan dan baris-baris kode yang belum selesai.",
-          "next": "predialogs6_2",
-          "nextType": "predialogs"
+          "next": "predialog6_2",
+          "nextType": "predialog"
         },
         {
-          "id": "predialogs6_2",
+          "id": "predialog6_2",
           "text": "Tiba-tiba, dari balik pintu, Jennie masuk dengan langkah santai. Biasanya dia cuek dan jarang berbicara banyak, tapi kali ini dia langsung menghampiri Adrian dengan ekspresi agak serius.",
-          "next": "dialogs6",
-          "nextType": "dialogs"
+          "next": "intro6",
+          "nextType": "dialog"
         }
       ],
       "dialogs": [
@@ -2610,17 +2607,17 @@
             {
               "text": "Santai, aku juga lagi belajar kok. Kita coba bareng aja yuk",
               "next": "scene6_1",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Ok sini duduk sebelahku, aku jelasin pelan-pelan ya",
               "next": "scene6_2",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             },
             {
               "text": "Hmm, kalau kamu mau aku jelasin, kamu bayar pakees teh, deal ga?",
               "next": "scene6_3",
-              "nextType": "dialogs"
+              "nextType": "dialog"
             }
           ]
         },
@@ -2664,7 +2661,7 @@
             }
           ],
           "next": "materi6_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene6_2",
@@ -2716,7 +2713,7 @@
             }
           ],
           "next": "materi6_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "scene6_3",
@@ -2748,7 +2745,7 @@
             }
           ],
           "next": "materi6_1",
-          "nextType": "dialogs"
+          "nextType": "dialog"
         },
         {
           "id": "materi6_1",
@@ -3124,32 +3121,30 @@
             {
               "text": "a",
               "next": "salah6_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "floatku",
               "next": "salah6_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "angka",
               "next": "materi6_2",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "charku",
               "next": "salah6_1",
-              "nextType": "dialogs",
+              "nextType": "dialog",
               "isCorrect": false
             }
           ]
-        }
-      ]
-    },
-    {
+        },
+        {
       "id": "soal6_1",
       "character1": "Jennie",
       "character2": "Adrian",
@@ -3159,25 +3154,25 @@
         {
           "text": "fungsi, karena dia bisa dipanggil dari mana saja.",
           "next": "salah6_2",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": false
         },
         {
           "text": "angka, karena dideklarasikan di luar fungsi dan bisa diakses dari dalam fungsi.",
           "next": "materi6_3",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": true
         },
         {
           "text": "printf, karena digunakan di dalam fungsi untuk menampilkan nilai.",
           "next": "salah6_2",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": false
         },
         {
           "text": "int, karena semua variabel bertipe int pasti global.",
           "next": "salah6_2",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": false
         }
       ]
@@ -3192,25 +3187,25 @@
         {
           "text": "fungsi1",
           "next": "salah6_3",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": false
         },
         {
           "text": "fungsi2",
           "next": "materi6_4",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": true
         },
         {
           "text": "fungsi3",
           "next": "salah6_3",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": false
         },
         {
           "text": "fungsi4",
           "next": "salah6_3",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": false
         }
       ]
@@ -3225,31 +3220,32 @@
         {
           "text": "angka adalah variabel register, i adalah variabel statis.",
           "next": "salah6_4",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": false
         },
         {
           "text": "angka adalah variabel statis, i adalah variabel register.",
           "next": "benar6_last",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": true
         },
         {
           "text": "angka dan i keduanya variabel register.",
           "next": "salah6_4",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": false
         },
         {
           "text": "angka dan i keduanya variabel statis.",
           "next": "salah6_4",
-          "nextType": "dialogs",
+          "nextType": "dialog",
           "isCorrect": false
         }
       ]
     }
-  ],
-  "rangkuman": [
+      ],
+      
+"rangkuman": [
     "1. Variabel Lokal (Auto): dideklarasikan di dalam sebuah fungsi dan hanya bisa diakses selama fungsi tersebut berjalan. Setelah fungsi selesai, variabel lokal akan hilang dari memori. Secara default, semua variabel di dalam fungsi bersifat lokal.",
     "Contoh variabel lokal:",
     "#include <stdio.h>\n\nvoid contoh() {\n    int x = 10;  // Variabel lokal \n    printf(\"Nilai x: %d\\n\", x);\n}",
@@ -3267,6 +3263,10 @@
     "#include <stdio.h>\n\nint main() {\n    register int i;  // Variabel register\n    for (i = 0; i < 5; i++) {\n        printf(\"i: %d\\n\", i);\n    }\n    return 0;\n}",
     "Penjelasan:\n- Variabel i adalah variabel register yang digunakan di dalam perulangan for. Compiler mencoba untuk menyimpannya di register CPU agar proses lebih cepat."
   ]
+    }
+    
+  ]
+  
 }
 
 
