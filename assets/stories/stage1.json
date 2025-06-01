@@ -683,7 +683,7 @@
       ],
       "character2_name": "Kakak",
       "character2_reaction": ["tino_biasa", "tino_marah", "tino_senang", "tino_kecewa", "tino_aksi"],
-      "ilustration": ["contoh-ilustrasi1"],
+      "ilustration": ["contoh-ilustrasi1", "IF-ELSE", "SWITCH"],
       "start": "preDialog2_1",
       "typeStart": "preDialog",
       "preDialog": [
@@ -695,7 +695,13 @@
         },
         {
           "id": "preDialog2_2",
-          "text": "Namun di balik kata-kata sinisnya, Tino sebenarnya adalah sosok kakak yang peduli. Ia diam-diam memperhatikan perkembangan Adrian, bahkan kadang membantu tanpa mengakui secara langsung. Di kamar Adrian, lampu meja menyala redup. Laptopnya terbuka dengan kode program pengecek nilai yang penuh error. Adrian duduk sambil mengernyit, berulang kali mengetik dan mencoba memperbaiki kode itu.",
+          "text": "Namun di balik kata-kata sinisnya, Tino sebenarnya adalah sosok kakak yang peduli. Ia diam-diam memperhatikan perkembangan Adrian, bahkan kadang membantu tanpa mengakui secara langsung.",
+          "next": "preDialog2_3",
+          "nextType": "preDialog"
+        },
+        {
+          "id": "preDialog2_3",
+          "text": "Di kamar Adrian, lampu meja menyala redup. Laptopnya terbuka dengan kode program pengecek nilai yang penuh error. Adrian duduk sambil mengetik, berulang kali mengetik dan mencoba memperbaiki kode itu.",
           "next": "intro2",
           "nextType": "dialog"
         }
@@ -822,6 +828,62 @@
           "nextType": "dialog"
         },
         {
+          "id": "materi2_1",
+          "text": [
+            {
+              "line": "Oke, aku jelasin gampangnya. Bayangin if-else itu kayak milih jalan di persimpangan ini.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 1
+            },
+            {
+              "line": "Lihat kan, ada jalan ke 'PANTAI' atau 'TEMPAT LAIN'? Komputer itu kayak nanya, 'Tujuanmu PANTAI?'. Kalau iya (true), ya lewat jalan PANTAI itu kayak if. Kalau bukan, ya lewat TEMPAT LAIN itu else-nya. Simpel kan?",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 1
+            },
+            {
+              "line": "Oke, itu kalau pilihannya cuma dua, Kak. Terus kalau ada lebih dari satu pilihan gimana? Kayak di simpang empat gitu?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Nah, kalau pilihannya banyak dan jelas kayak di persimpangan ini, kita bisa pakai yang namanya 'switch'. Coba lihat ilustrasinya.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 2
+            },
+            {
+              "line": "Dengan 'switch', komputer itu kayak GPS super cepat. Kamu sebut tujuannya, misalnya 'PANTAI', dia langsung arahin ke jalan yang benar tanpa ngecek satu-satu. Jadi ada case 'PEGUNUNGAN', case 'PANTAI', case 'KOTA'. Kalau tujuanmu gak ada di daftar, dia arahin ke 'LAINNYA' (default). Lebih rapi dan cepat untuk pilihan yang udah pasti!",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 2
+            },
+            {
+              "line": "Oh, jadi 'switch' itu buat banyak pilihan yang spesifik ya? Terus kalau 'else-if' yang Kakak sebut di awal itu gimana bedanya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Nah, kalau 'else-if' itu kita pakai kalau kondisinya berantai dan bisa lebih beragam, gak cuma ngecek satu nilai pasti. Misalnya, ngecek rentang nilai atau beberapa kondisi berbeda yang saling terkait. Tapi untuk pilihan tujuan yang namanya sudah jelas dan pilihannya banyak, 'switch' lebih pas. Paham bedanya?",
+              "reaction_index": 4,
+              "speaker": 2
+            },
+            {
+              "line": "Hmm, lumayan kebayang sih, Kak. Jadi 'if-else' buat satu atau dua kondisi, 'switch' buat banyak pilihan yang nilainya pasti, dan 'else-if' buat kondisi berantai yang lebih kompleks.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Sip! Coba sekarang jawab soal ini, ini tentang kondisi yang paling sederhana dulu.",
+              "reaction_index": 4,
+              "speaker": 2
+            }
+          ],
+          "next": "soal2_1",
+          "nextType": "soal"
+        },
+        {
           "id": "salah2_1",
           "text": [
             {
@@ -843,38 +905,6 @@
               "line": "Oooh, paham sekarang! Aku coba pikir lagi deh!",
               "reaction_index": 0,
               "speaker": 1
-            }
-          ],
-          "next": "soal2_1",
-          "nextType": "soal"
-        },
-        {
-          "id": "materi2_1",
-          "text": [
-            {
-              "line": "Misal kamu lagi di persimpangan jalan, terus ada petugas yang nanya mau ke mana. Kalau kamu jawab pantai, si petugas langsung suruh kamu ke pantai. Itu kayak if doang, simpel. Kalau jawabannya bukan pantai, si petugas suruh kamu ke jalan lain.",
-              "reaction_index": 2,
-              "speaker": 2
-            },
-            {
-              "line": "Oke, gampang tuh. Terus kalau ada lebih dari satu pilihan?",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Nah itu kalau di simpang empat, ada petugas yang bisa arahkan ke pegunungan, pantai, atau kota. Jadi kalau kamu bilang pegunungan, dia suruh ke kiri. Kalau pantai, ke kanan. Kalau ‘kota’, jalan lurus. Kalau jawabannya nggak cocok sama ketiganya, dia kasih jalan lain.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Oh itu kayak pakai… aduh apa sih namanya…",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Itu pakai else-if. Jadi if pertama ngecek satu kondisi, else-if buat ngecek kondisi lain-lainnya. Kalau gak ada yang cocok, pakai else. Nah sekarang cobva kamu jawab soal ini, ya.",
-              "reaction_index": 2,
-              "speaker": 2
             }
           ],
           "next": "soal2_1",
@@ -1173,9 +1203,16 @@
       "background": "teman-cafe",
       "character1_name": "Adrian",
       "character1_reaction": ["adriankampus_biasa", "adriankampus_marah", "adriankampus_senang", "adriankampus_kecewa", "adriankampus_aksi"],
-      "ilustration": ["contoh-ilustrasi3"],
       "character2_name": "Rusdi",
       "character2_reaction": ["rusdi_biasa", "rusdi_marah", "rusdi_senang", "rusdi_kecewa", "rusdi_aksi"],
+      "ilustration": [
+        "LOOP-FOR-ISI",
+        "LOOP-WHILE-KERING",
+        "LOOP-WHILE-BASAH",
+        "DO-WHILE-1",
+        "DO-WHILE-2",
+        "DO-WHILE-3"
+      ],
       "start": "preDialog3_1",
       "typeStart": "preDialog",
       "preDialog": [
@@ -1322,23 +1359,20 @@
           "id": "materi3_1",
           "text": [
             {
-              "line": "Oke, gini for loop itu kayak daftar tugas yang udah jelas jumlahnya, misalnya kamu harus nanam bunga di 5 pot. Kamu mulai nanam dari pot pertama sampai pot kelima, gak kurang gak lebih. Jadi for loop itu bilang, 'Lakukan ini sebanyak 5 kali'",
+              "line": "Oke, gini. For loop itu kayak daftar tugas yang jumlahnya sudah jelas. Misalnya, lihat ilustrasi menanam bunga ini.",
               "reaction_index": 4,
-              "speaker": 2
+              "speaker": 2,
+              "ilustration_index": 0
+            },
+            {
+              "line": "Ada 5 pot kan? Kita tahu persis harus menanam 5 bunga. Mulai dari pot pertama (1/5), setiap kali tanam, bunga mekar, dan hitungan maju (2/5, 3/5...), sampai semua (5/5) terisi. For loop itu otomatis berhenti setelah jumlah tugasnya selesai.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 0
             },
             {
               "line": "Oh, jadi for loop itu buat tugas yang jumlahnya sudah pasti dari awal, ya?",
               "reaction_index": 4,
-              "speaker": 1
-            },
-            {
-              "line": "Yoi! Nah, itu udah bener banget. Nilai awal i = 1, terus jalan terus selama i <= 5, dan tiap kali i nambah satu",
-              "reaction_index": 4,
-              "speaker": 1
-            },
-            {
-              "line": "Wah, jadi ngerti! Kalau tugasnya udah pasti berapa kali, mending pakai for ya",
-              "reaction_index": 2,
               "speaker": 1
             },
             {
@@ -1411,19 +1445,27 @@
           "id": "materi3_2",
           "text": [
             {
-              "line": "Wah mantap, Bro! Udah paham banget tuh for loop. Sekarang kita lanjut, ya… while loop",
-              "reaction_index": 2,
+              "line": "Wah mantap, Bro! Udah paham banget tuh for loop. Sekarang kita lanjut ke 'while loop'. Ini beda lagi.",
+              "reaction_index": 4,
               "speaker": 2
             },
             {
-              "line": "Oke, siap. Bedanya apa nih?",
+              "line": "Coba lihat gambar tanaman layu ini.Tanaman itu kan kering. 'While loop' itu kayak perintah 'selama tanaman masih kering, siram terus!'. Kita gak tahu pasti berapa kali siram, tapi tahu kapan berhenti.",
               "reaction_index": 4,
-              "speaker": 1
+              "speaker": 2,
+              "ilustration_index": 1
             },
             {
-              "line": "Nah, while loop beda, nih. Kamu nyiram tanaman yang kering, tapi kamu gak tahu harus nyiram berapa kali sampai tanahnya basah. Jadi kamu nyiram terus selama tanahnya masih kering. Kalau udah basah, kamu berhenti",
+              "line": "Setiap disiram, meteran kelembaban tanahnya bergerak dari 'Kering' menuju 'Basah'. Nah, lihat gambar berikutnya, tanamannya jadi segar!",
               "reaction_index": 4,
-              "speaker": 2
+              "speaker": 2,
+              "ilustration_index": 2
+            },
+            {
+              "line": "Begitu meteran menunjukkan 'Basah' (kondisi kering sudah tidak terpenuhi), 'while loop' otomatis berhenti menyiram. Jadi, dia terus kerja selama syaratnya benar.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 2
             },
             {
               "line": "Wah, berarti while loop itu tugas yang terus diulang selama kondisi tertentu masih benar, ya?",
@@ -1431,7 +1473,30 @@
               "speaker": 1
             },
             {
-              "line": "Yeah Bro! Terus terakhir ada do-while loop. Misal kamu punya dispenser air yang pasti ngeluarin air minimal sekali ke gelas, baru setelah itu dicek apakah gelasnya sudah penuh. Kalau belum, air terus keluar, kalau sudah penuh, berhenti",
+              "line": "Sip! Terakhir ada 'do-while loop'. Ini mirip 'while', tapi ada beda penting. Bayangin dispenser air ini.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 3
+            },
+            {
+              "line": "Bagian 'do'-nya itu kayak air langsung ngalir ke gelas dulu, tanpa banyak tanya. Jadi, tugasnya minimal jalan sekali.",
+              "reaction_index": 4,
+              "speaker": 2
+            },
+            {
+              "line": "Setelah itu, baru bagian 'while'-nya ngecek kondisi. Lihat, airnya terus ngalir dan meteran level airnya naik kan?",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 4
+            },
+            {
+              "line": "Dia akan terus ngisi 'while' (selama) gelasnya belum penuh. Begitu gelasnya penuh dan meteran menunjukkan 'Full'...",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 5
+            },
+            {
+              "line": "...loop-nya berhenti. Jadi, 'do-while' itu kerjakan dulu sekali, baru cek kondisi untuk ngulang.",
               "reaction_index": 4,
               "speaker": 2
             },
@@ -1626,9 +1691,9 @@
       "background": "teman-cafe",
       "character1_name": "Adrian",
       "character1_reaction": ["adriankampus_biasa", "adriankampus_marah", "adriankampus_senang", "adriankampus_kecewa", "adriankampus_aksi"],
-      "ilustration": ["contoh-ilustrasi4"],
       "character2_name": "Rusdi",
       "character2_reaction": ["rusdi_biasa", "rusdi_marah", "rusdi_senang", "rusdi_kecewa", "rusdi_aksi"],
+      "ilustration": ["NESTED-LOOP", "BREAK-CONTINUE-EXIT"],
       "start": "preDialog4",
       "typeStart": "preDialog",
       "preDialog": [
@@ -1809,32 +1874,36 @@
           "id": "materi4_1",
           "text": [
             {
-              "line": "Oke, misal kamu nonton turnamen panahan. Ada 3 pemain dalam satu tim, tiap pemain punya giliran satu-satu. Nah, tiap pemain dapat kesempatan nembak 5 anak panah",
+              "line": "Oke, kita mulai dengan 'Nested Loop'. Bayangin ini seperti pabrik kue lapis cerdas yang punya dua jenis tugas berulang.",
               "reaction_index": 4,
-              "speaker": 2
+              "speaker": 2,
+              "ilustration_index": 0
             },
             {
-              "line": "Jadi, loop luar itu buat pemain, dan loop dalam buat tembakan anak panah, ya?",
+              "line": "Lihat papan 'Lapisan: 1 dari 3'? Itu Loop Luar kita, bertugas membuat setiap lapisan kue utama, satu per satu, sampai tiga lapisan selesai.",
               "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 0
+            },
+            {
+              "line": "Mesin hiasan di atas dengan empat corong (bintang, hati, dll.) itu Loop Dalam. Untuk SETIAP satu lapisan kue dari Loop Luar, Loop Dalam ini harus menyelesaikan SEMUA tugasnya, yaitu menabur keempat jenis hiasan.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 0
+            },
+            {
+              "line": "Jadi, lapis pertama datang, dihias lengkap. Lapis kedua datang, dihias lengkap lagi dari awal oleh mesin hiasan. Begitu seterusnya. Paham kan konsep loop di dalam loop?",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 0
+            },
+            {
+              "line": "Ohhh, jadi Loop Dalam itu kerja berkali-kali untuk setiap satu kali Loop Luar jalan ya, Mas?",
+              "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Iya, bener banget! Itu yang namanya nested loop, loop di dalam loop. Jadi, setiap pemain (loop luar) akan punya 5 tembakan (loop dalam)",
-              "reaction_index": 4,
-              "speaker": 2
-            },
-            {
-              "line": "Ohhh, paham! Jadi, loop luar itu buat pemain, dan loop dalam buat tembakan anak panah, ya?",
-              "reaction_index": 4,
-              "speaker": 1
-            },
-            {
-              "line": "Yesss, bener banget tuh. Itu namanya nested loop, loop di dalam loop. Jadi tiap pemain (loop luar) bakal punya 5 kali tembakan (loop dalam)",
-              "reaction_index": 4,
-              "speaker": 2
-            },
-            {
-              "line": "Nah, coba kalo paham aku tes yaa! Coba kamu jawab ini deh",
+              "line": "Nah, itu dia! Sekarang, coba kalau paham aku tes ya! Jawab soal ini.",
               "reaction_index": 4,
               "speaker": 2
             }
@@ -1857,13 +1926,13 @@
             },
             {
               "line": "Coba ingat lagi konsep loop luar untuk baris dan loop dalam untuk bintang. Baca lagi materinya pelan-pelan, kamu pasti bisa nemu jawabannya!",
-              "reaction_index": 2,
-              "speaker": 1
+              "reaction_index": 4,
+              "speaker": 2
             },
             {
               "line": "Siap aku baca lagi deh!",
               "reaction_index": 2,
-              "speaker": 2
+              "speaker": 1
             }
           ],
           "next": "soal4_1",
@@ -1873,48 +1942,37 @@
           "id": "materi4_2",
           "text": [
             {
-              "line": "Nah tu kamu jawabnya udah bener, berarti kamu sudah paham. Oke lanjut...",
-              "reaction_index": 2,
-              "speaker": 2
+              "line": "Jawabanmu soal nested loop tadi benar! Sekarang, bayangkan di pabrik kue tadi ada tombol-tombol khusus ini.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 1
             },
             {
-              "line": "Eh bentar tadi kalau misalnya ada pemain yang nyerah sebelum tembakan selesai gimana?",
+              "line": "Tombol Merah 'STOP! HENTIKAN SEMUA' itu seperti perintah 'break'. Kalau ditekan, seluruh proses pembuatan dan hiasan kue dihentikan saat itu juga. Loop-nya berhenti total!",
               "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 1
+            },
+            {
+              "line": "Tombol Kuning 'LEWATI HIASAN INI' itu seperti 'continue'. Misalnya kita gak mau kasih hiasan bintang di satu kue, tombol ini ditekan, hiasan bintang dilewati, tapi kue lanjut ke hiasan berikutnya dan pabrik tetap jalan.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 1
+            },
+            {
+              "line": "Terakhir, Tombol Biru 'KELUAR DARI PABRIK' itu 'exit()'. Kalau ini ditekan, bukan cuma pabriknya berhenti, tapi kamu langsung keluar dari game simulasi pabrik ini! Seluruh program berhenti.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 1
+            },
+            {
+              "line": "Wah, jadi 'break' menghentikan loop sekarang, 'continue' melewati satu putaran, dan 'exit' menghentikan seluruh program ya, Mas?",
+              "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Kalau itu masuk ke materi selanjutnya, kalau misalnya pemain itu nyerah pas tembakan ke-2, kita bisa pakai 'break' buat langsung hentikan loop dalam, alias berhenti di tembakan itu, terus lanjut ke pemain berikutnya",
+              "line": "Tepat sekali! Coba sekarang tes pemahamanmu lagi dengan soal ini.",
               "reaction_index": 4,
-              "speaker": 2
-            },
-            {
-              "line": "Oh, jadi break itu buat keluar dari loop saat kondisi tertentu terpenuhi, tapi cuma untuk loop yang sekarang jalan, ya?",
-              "reaction_index": 4,
-              "speaker": 1
-            },
-            {
-              "line": "Betul. Nah, ada juga 'continue'. Misal, tembakan ke-3 gak sah dan gak dihitung, tapi pemain tetap lanjut tembakan ke-4 dan 5. Jadi pas tembakan ke-3, kita pakai 'continue' buat langsung loncat ke tembakan berikutnya tanpa ngejalanin kode di bawahnya",
-              "reaction_index": 4,
-              "speaker": 2
-            },
-            {
-              "line": "Wah, jadi continue itu buat lewati satu iterasi loop tertentu, tapi loopnya tetap lanjut terus?",
-              "reaction_index": 4,
-              "speaker": 1
-            },
-            {
-              "line": "Iya, itu dia! Jadi break itu berhenti total loop, continue itu lewati sekali aja, terus lanjut",
-              "reaction_index": 4,
-              "speaker": 2
-            },
-            {
-              "line": "Nice! Jadi nested loop itu loop di dalam loop, break buat berhentiin loop saat kondisi, dan continue buat lewatin iterasi tertentu",
-              "reaction_index": 4,
-              "speaker": 1
-            },
-            {
-              "line": "Cepet paham juga kamu, Bro! Coba tes pemahaman sekarang!",
-              "reaction_index": 2,
               "speaker": 2
             }
           ],
@@ -2093,9 +2151,9 @@
       "background": "lab",
       "character1_name": "Adrian",
       "character1_reaction": ["adriankampus_biasa", "adriankampus_marah", "adriankampus_senang", "adriankampus_kecewa", "adriankampus_aksi"],
-      "ilustration": ["contoh-ilustrasi5"],
       "character2_name": "Pak Rongga",
       "character2_reaction": ["rongga_biasa", "rongga_marah", "rongga_senang", "rongga_kecewa", "rongga_aksi"],
+      "ilustration": ["FUNGSI-1", "FUNGSI-2"],
       "start": "predialog5",
       "typeStart": "predialog",
       "preDialog": [
@@ -2267,38 +2325,31 @@
           "id": "materi5_1",
           "text": [
             {
-              "line": "Kamu pasti pernah belanja online kan? Nah yang ngantar pasti kurir, dia bawa paket sesuai permintaan. Kadang dia bawa bilangan bulat, kadang bilangan desimal, atau bahkan karakter.",
+              "line": "Kamu pasti pernah belanja online kan? Nah, bayangkan fungsi itu seperti kurir yang mengantar paket. Coba lihat gambar kurir ini.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 0
+            },
+            {
+              "line": "Kurir ini membawa paket spesifik, misalnya paket bertuliskan 'int' ini berarti dia membawa bilangan bulat. Paket yang dia bawa itu adalah 'nilai return' dari fungsi.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 0
+            },
+            },
+            {
+              "line": "Jadi, kalau fungsinya bertipe 'int', kurirnya bawa paket bilangan bulat. Kalau 'float', bawa bilangan desimal, kalau 'char' ya karakter. Isi paketnya itu hasil kerja si fungsi.",
               "reaction_index": 4,
               "speaker": 2
             },
             {
-              "line": "Jadi paket yang dibawa kurir itu apa maksudnya?",
+              "line": "Oh, berarti fungsi itu kayak kurir yang dikirim buat ngasih paket dengan jenis tertentu, ya? Dan isi paketnya itu nilai return?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
+              "line": "Tepat! Seperti fungsi `int tambah(int a, int b)` yang mengembalikan hasil `a + b`, kurir itu bertugas mengantar hasil penjumlahannya kepadamu.",
               "reaction_index": 4,
-              "speaker": 1
-            },
-            {
-              "line": "Itu yang disebut nilai return. Jadi, isi paketnya itu nilai yang dikirim balik oleh fungsi. Kalau paketnya berisi bilangan bulat, berarti fungsi itu punya tipe return int. Kalau desimal, float. Kalau karakter, char.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Oh, berarti fungsi itu kayak kurir yang dikirim buat ngasih paket dengan jenis tertentu, ya?",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Iya, bener! Terus isi paketnya bisa berubah tergantung isi fungsi, atau kondisi yang kamu kasih ke fungsi itu.",
-              "reaction_index": 2,
-              "speaker": 2
-            },
-            {
-              "line": "Jadi kalau saya panggil fungsi, saya bakal dapet paket berupa nilai yang sesuai tipe return-nya, dan itu hasil dari proses di dalam fungsi?",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Iya. Jadi fungsi itu tugas yang kamu minta, dan nilai return itu hasil yang dikirim balik sama fungsi ke kamu.",
-              "reaction_index": 0,
               "speaker": 2
             },
             {
@@ -2371,28 +2422,25 @@
           "id": "materi5_2",
           "text": [
             {
-              "line": "Nah Benar! Sekarang masuk ke materi fungsi yang tidak memiliki return value, seperti void.",
-              "reaction_index": 2,
-              "speaker": 2
-            },
-            {
-              "line": "Oh... jadi cuma ngejalanin aja, ya? Bukan buat nyari jawaban atau hasil.",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Betul. Ibaratnya kayak kamu ngingetin temen lewat chat — kamu kirim pesannya, tapi enggak nunggu dia balas dulu buat lanjut ke hal lain.",
+              "line": "Betul sekali jawabanmu soal fungsi tadi! Sekarang, ada juga fungsi yang seperti kurir ini, dia tidak bawa paket 'nilai return' untukmu.",
               "reaction_index": 4,
-              "speaker": 2
+              "speaker": 2,
+              "ilustration_index": 1
             },
             {
-              "line": "Ohh saya mulai paham pak!",
+              "line": "Dia tetap punya tugas penting: menyampaikan pesan atau melakukan suatu perintah, seperti bilang 'Halo bagaimana kabarmu?!'. Ini adalah fungsi 'void', dia hanya beraksi tanpa memberi hasil balik.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 1
+            },
+            {
+              "line": "Oh... jadi fungsi void itu cuma ngejalanin perintah aja ya, Pak? Gak ngasih kita paket atau nilai balik?",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line": "Nah kalau paham, sekarang jawab soal ini!",
-              "reaction_index": 0,
+              "line": "Tepat sekali! Seperti fungsi `void beriSalam()` yang hanya mencetak sapaan. Dia melakukan tugasnya, tapi tidak mengembalikan nilai apa pun. Nah, kalau sudah paham, sekarang jawab soal ini!",
+              "reaction_index": 4,
               "speaker": 2
             }
           ],
@@ -2559,12 +2607,12 @@
       "background": "cafe-crush",
       "character1_name": "Adrian",
       "character1_reaction": ["adriancafe_biasa", "adriancafe_marah", "adriancafe_senang", "adriancafe_kecewa", "adriancafe_aksi"],
-      "ilustration": ["contoh-ilustrasi6"],
       "character2_name": "Jennie",
       "character2_reaction": ["crush_biasa", "crush_marah", "crush_senang", "crush_kecewa", "crush_aksi"],
+      "ilustration": ["PENYIMPANAN-VARIABEL"],
       "start": "predialog6",
       "typeStart": "predialog",
-      "preDialog": [
+      "predialog": [
         {
           "id": "predialog6",
           "text": "Adrian duduk di sudut café favoritnya, sambil membuka laptop dan menyesap kopi hangat. Hari itu suasana cukup ramai, tapi fokus Adrian masih terpecah antara catatan dan baris-baris kode yang belum selesai.",
@@ -2763,70 +2811,31 @@
           "id": "materi6_1",
           "text": [
             {
-              "line": "Di lab kita kan banyak komputer, nah komputer itu kayak gedung kantor raksasa yang pintar. Di dalamnya ada banyak kotak buat nyimpen barang atau informasi, itu yang kita sebut variabel.",
+              "line": "Oke Jen, bayangin komputer itu kayak gedung kantor pintar ini. Ini adalah 'Peta Penyimpanan Variabel' di dalamnya.",
               "reaction_index": 4,
-              "speaker": 1
+              "speaker": 1,
+              "ilustration_index": 0
             },
             {
-              "line": "Iya, terus variabel itu ada jenis-jenisnya ya? Apa aja sih?",
+              "line": "Lihat, ada CPU si 'Otak Komputer', lalu 'Register' itu kantong super cepatnya. Variabel 'Global' itu kayak kotak harta di lobi utama, bisa diakses semua 'Ruang Kerja' atau fungsi.",
               "reaction_index": 4,
-              "speaker": 2
+              "speaker": 1,
+              "ilustration_index": 0
             },
             {
-              "line": "Iya, ada beberapa jenis. Misalnya, variabel global itu kayak dokumen penting yang ditaruh di ruang bersama, semua orang di kantor bisa akses.",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Berarti variabel global itu kayak barang yang bisa dipakai semua orang di kantor ya?",
+              "line": "Nah, di dalam tiap 'Ruang Kerja' (fungsi), ada tempat untuk variabel 'Lokal' yang sifatnya rahasia, dan bisa juga ada yang 'Statis' dengan memori kuat. Masing-masing punya aturan sendiri.",
               "reaction_index": 4,
+              "speaker": 1,
+              "ilustration_index": 0
+            },
+            {
+              "line": "Wah, lengkap banget petanya, Dri! Jadi, yang dimaksud variabel 'Global' itu yang di lobi tadi ya, yang bisa diakses semua fungsi?",
+              "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Iya, tapi harus hati-hati karena semua bisa akses, jadi rawan kalau gak dijaga.",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Ohhh aku sedikit paham tentang variabel lokal",
+              "line": "Betul! Karena bisa diakses dari mana saja, kita harus hati-hati menggunakannya. Nah, untuk variabel Global ini, coba jawab soal berikut.",
               "reaction_index": 4,
-              "speaker": 2
-            },
-            {
-              "line": "Bagus, udah mulai nyambung nih. Sekarang aku mau ngetes dikit ya. Coba kerjain soal ini.",
-              "reaction_index": 2,
-              "speaker": 1
-            }
-          ],
-          "next": "soal6_1",
-          "nextType": "soal"
-        },
-        {
-          "id": "salah6_2",
-          "text": [
-            {
-              "line": "Belum tepat tuh Jen.",
-              "reaction_index": 1,
-              "speaker": 1
-            },
-            {
-              "line": "Wah aku salah ya? Aku kira udah bener.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Gak apa-apa kok! Nih aku kasih bocoran dikit: variabel itu biasanya yang menyimpan nilai. Coba deh perhatikan di kode itu, mana yang kelihatan menyimpan angka 10?",
-              "reaction_index": 2,
-              "speaker": 1
-            },
-            {
-              "line": "Oooh... kayaknya aku mulai ngerti deh.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Yap, lihat baik-baik ya. Lainnya kayak nama fungsi dan tipe data, itu beda lagi perannya.",
-              "reaction_index": 0,
               "speaker": 1
             }
           ],
@@ -2866,6 +2875,112 @@
           "nextType": "soal"
         },
         {
+          "id": "materi6_2",
+          "text": [
+            {
+              "line": "Nah kamu bener tuh jawabnya Jen soal variabel Global. Oke sekarang masuk ke variabel Lokal ya. Ingat 'Ruang Kerja' di peta tadi?",
+              "reaction_index": 4,
+              "speaker": 1
+            },
+            {
+              "line": "Iya, Dri, yang ada kotak kecil di dalamnya itu kan?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Betul! Variabel lokal itu kayak mainan rahasia di 'Ruang Kerja' itu. Cuma bisa dipakai di dalam fungsi itu saja. Begitu keluar fungsi, variabelnya hilang atau reset.",
+              "reaction_index": 4,
+              "speaker": 1
+            },
+            {
+              "line": "Ohhh gitu ya! Jadi variabel lokal cuma hidup di dalam fungsinya aja. Paham aku sekarang~",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Wih, jago juga kamu sekarang! Kalau gitu, coba deh jawab soal ini biar makin mantap!",
+              "reaction_index": 4,
+              "speaker": 1
+            }
+          ],
+          "next": "soal6_2",
+          "nextType": "soal"
+        },
+        {
+          "id": "salah6_2",
+          "text": [
+            {
+              "line": "Belum tepat tuh Jen.",
+              "reaction_index": 1,
+              "speaker": 1
+            },
+            {
+              "line": "Wah aku salah ya? Aku kira udah bener.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Gak apa-apa kok! Nih aku kasih bocoran dikit: variabel lokal itu yang dideklarasikan di dalam fungsi. Coba deh perhatikan di kode itu, mana yang ada di dalam fungsi `contoh()`?",
+              "reaction_index": 4,
+              "speaker": 1
+            },
+            {
+              "line": "Oooh... kayaknya aku mulai ngerti deh.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Yap, lihat baik-baik ya. Yang di luar fungsi itu beda lagi jenisnya.",
+              "reaction_index": 0,
+              "speaker": 1
+            }
+          ],
+          "next": "soal6_2",
+          "nextType": "soal"
+        },
+        {
+          "id": "materi6_3",
+          "text": [
+            {
+              "line": "Nah pinter banget, kamu bener tuh jawabnya Jen soal variabel Lokal.",
+              "reaction_index": 4,
+              "speaker": 1
+            },
+            {
+              "line": "Asikk! Masih ada lagi, Dri, jenis variabelnya?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Ada dong! Sekarang variabel Statis. Lihat lagi 'Ruang Kerja' di peta tadi, ada kotak 'Statis' kan? Dia juga di dalam fungsi, tapi istimewa.",
+              "reaction_index": 4,
+              "speaker": 1
+            },
+            {
+              "line": "Istimewanya gimana tuh?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Variabel statis itu kayak mainan yang punya memori kuat. Kalau kamu keluar dari fungsi, nilainya gak hilang! Pas fungsi dipanggil lagi, dia ingat nilai terakhirnya.",
+              "reaction_index": 4,
+              "speaker": 1
+            },
+            {
+              "line": "Wah, keren juga ya! Jadi dia gak reset kayak variabel lokal biasa?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Iya, bener banget! Coba biar tambah paham, kamu kerjain soal ini deh.",
+              "reaction_index": 4,
+              "speaker": 1
+            }
+          ],
+          "next": "soal6_3",
+          "nextType": "soal"
+        },
+        {
           "id": "salah6_3",
           "text": [
             {
@@ -2874,13 +2989,13 @@
               "speaker": 1
             },
             {
-              "line": "Yah salah ya ternyata",
+              "line": "Yah salah ya ternyata.",
               "reaction_index": 1,
               "speaker": 2
             },
             {
-              "line": "Bayangkan kamu punya kotak (variabel) di dalam kelas. Biasanya, setiap kali kamu keluar dan kembali lagi, kotak itu kosong dan harus diisi ulang. Tapi kalau kamu pakai kotak khusus bernama 'static', isinya tetap ada meski kamu keluar. Jadi pas balik, kamu tinggal lanjut pakai tanpa isi ulang.",
-              "reaction_index": 0,
+              "line": "Bayangkan kamu punya kotak (variabel) di dalam fungsi. Biasanya, setiap kali fungsi selesai dan dipanggil lagi, kotak itu kosong dan harus diisi ulang. Tapi kalau kamu pakai kotak khusus bernama 'static', isinya tetap ada meski fungsi selesai. Jadi pas fungsi dipanggil lagi, dia lanjut pakai nilai terakhirnya.",
+              "reaction_index": 4,
               "speaker": 1
             },
             {
@@ -2908,6 +3023,53 @@
           "nextType": "soal"
         },
         {
+          "id": "materi6_4",
+          "text": [
+            {
+              "line": "Wah jawabanku bener nih soal variabel Statis!",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
+              "line": "Keren Jennie! Sekarang yang terakhir, variabel Register. Lihat lagi peta tadi, ada kotak 'Register' dekat CPU kan?",
+              "reaction_index": 4,
+              "speaker": 1
+            },
+            {
+              "line": "Iya, yang kecil itu ya? Fungsinya apa, Dri?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Variabel register ini spesial, kita minta agar dia disimpan di 'kantong ajaib' CPU, bukan di memori utama (RAM). Tujuannya biar aksesnya super cepat!",
+              "reaction_index": 4,
+              "speaker": 1
+            },
+            {
+              "line": "Jadi kayak naruh barang penting di meja resepsionis biar bos (CPU) bisa langsung ambil gitu?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Mirip gitu! Tapi karena tempatnya terbatas, biasanya ini cuma saran ke komputer, dan dipakai buat variabel yang sering banget diakses, kayak di dalam loop.",
+              "reaction_index": 4,
+              "speaker": 1
+            },
+            {
+              "line": "Ah paham, jadi variabel register itu lebih cepat karena disimpen langsung di CPU ya, atau diusahakan di sana.",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
+              "line": "Betul! Nah, biar lebih paham lagi coba deh jawab soal ini.",
+              "reaction_index": 4,
+              "speaker": 1
+            }
+          ],
+          "next": "soal6_4",
+          "nextType": "soal"
+        },
+        {
           "id": "salah6_4",
           "text": [
             {
@@ -2916,17 +3078,17 @@
               "speaker": 2
             },
             {
-              "line": "Oops Coba kita lihat lagi ya. Kalau variabel register, itu sebenarnya punya sifat yang berbeda.",
-              "reaction_index": 2,
+              "line": "Oops Coba kita lihat lagi ya. Kalau variabel register, itu kita minta disimpan dekat CPU untuk akses cepat. Variabel statis beda lagi, dia mempertahankan nilainya antar pemanggilan fungsi.",
+              "reaction_index": 4,
               "speaker": 1
             },
             {
-              "line": "Ooooh jadi register itu supaya aksesnya lebih cepat ya? Terus kalau gitu, apa yang di kode itu yang cocok jadi register?",
+              "line": "Ooooh jadi register itu supaya aksesnya lebih cepat ya? Dan statis itu nilainya gak hilang. Terus kalau gitu, di kode tadi yang mana yang cocok?",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line": "Tepat banget! Kompilator biasanya memilih variabel yang sering diakses dan butuh kecepatan, seperti dalam loop. Nah, coba lihat lagi deh kode ini—menurut kamu, variabel mana yang sering dipakai di perulangan dan perlu akses cepat?",
+              "line": "Tepat banget! Kompilator biasanya memilih variabel yang sering diakses dalam loop untuk register. Dan 'static' itu eksplisit ditulis. Coba lihat lagi deh kode ini.",
               "reaction_index": 0,
               "speaker": 1
             },
@@ -2945,166 +3107,25 @@
           "nextType": "soal"
         },
         {
-          "id": "materi6_2",
-          "text": [
-            {
-              "line": "Nah kamu bener tuh jawabnya jen. Oke sekarang masuk ke materi selanjutnya ya",
-              "reaction_index": 2,
-              "speaker": 1
-            },
-            {
-              "line": "Yes bener! Nah aku mau tanya, kalo ada variabel global kan pasti ada variabel lokal. nah kalau lokal itu gimana?",
-              "reaction_index": 2,
-              "speaker": 2
-            },
-            {
-              "line": "Variabel lokal itu kayak mainan rahasia di ruang kerja tertentu, cuma bisa dipakai di ruang itu aja. Kalau kamu keluar, mainannya hilang dan pas masuk lagi, mulai dari awal",
-              "reaction_index": 2,
-              "speaker": 1
-            },
-            {
-              "line": "Ohhh gitu ya! Jadi variabel lokal cuma hidup di ruang kerjanya aja. Sekarang aku paham~",
-              "reaction_index": 2,
-              "speaker": 2
-            },
-            {
-              "line": "Wih, jago juga kamu sekarang! Kalau gitu, coba deh jawab soal ini. Biar makin mantap!",
-              "reaction_index": 2,
-              "speaker": 1
-            }
-          ],
-          "next": "soal6_2",
-          "nextType": "soal"
-        },
-        {
-          "id": "materi6_3",
-          "text": [
-            {
-              "line": "Nah pinter banget, kamu bener tuh jawabnya jen",
-              "reaction_index": 2,
-              "speaker": 1
-            },
-            {
-              "line": "Asikk, ini udah selesai kan materinya?",
-              "reaction_index": 2,
-              "speaker": 2
-            },
-            {
-              "line": "Eh buru-buru amat, belum dong, masih ada. Selanjutnya ada variabel statis. Variabel statis ini punya sifat yang unik. Meskipun dia dideklarasikan dalam fungsi, nilainya gak hilang meskipun fungsi udah selesai.",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Ohhhh pahammm! Kamu bisa analogikan tentang variabel statis ini ga?",
-              "reaction_index": 4,
-              "speaker": 2
-            },
-            {
-              "line": "Jadi variabel statis itu kayak mainan yang punya memori kuat. Kalau kamu keluar dari ruang kerja, mainan itu tetep ada di tempatnya, ingat posisi terakhir, jadi pas masuk lagi langsung balik ke posisi itu.",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Wah, keren juga ya! Jadi variabel itu bukan cuma tempat nyimpen data, tapi punya aturan gimana data disimpan dan diakses.",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Iya, bener banget! Coba biar tambah paham, kamu kerjain soal ini deh",
-              "reaction_index": 0,
-              "speaker": 1
-            }
-          ],
-          "next": "soal6_3",
-          "nextType": "soal"
-        },
-        {
-          "id": "materi6_4",
-          "text": [
-            {
-              "line": "Wah jawabanku bener nih",
-              "reaction_index": 2,
-              "speaker": 2
-            },
-            {
-              "line": "Keren Jennie! Sekarang yang terakhir ada variabel register",
-              "reaction_index": 2,
-              "speaker": 1
-            },
-            {
-              "line": "Ya ampun?! Ada lagi?",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Iya dong masih. Terakhir kok ini yaitu variabel register! Variabel ini jarang dipakai langsung oleh programmer, tapi dia dikhususkan buat disimpan di register CPU, bukan di RAM.",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Kalau kamu analogikan kaya tadi gimana? Bisa gaa?",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Coba bayangin kamu lagi kerja di kantor. Di depan ruang kerja, ada lobi kecil yang langsung nyambung ke CPU—otaknya kantor.",
-              "reaction_index": 4,
-              "speaker": 1
-            },
-            {
-              "line": "Oke, terus?",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Di lobi itu, ada meja kecil khusus deket banget sama CPU. Nah, itu namanya register. Barang atau informasi yang kamu taruh di situ bisa langsung diproses cepet sama CPU karena letaknya paling deket.",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Jadi kayak naruh dokumen penting di meja resepsionis biar bisa langsung diambil bos, ya?",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Iya! Tapi karena meja itu kecil, cuma bisa nyimpen sedikit barang, dan biasanya yang lagi dibutuhin banget buat diproses.",
-              "reaction_index": 0,
-              "speaker": 1
-            },
-            {
-              "line": "Ah paham, jadi variabel register itu lebih cepat karena disimpen langsung di CPU ya",
-              "reaction_index": 0,
-              "speaker": 2
-            },
-            {
-              "line": "Betul! Nah, biar lebih paham lagi coba deh jawab soal ini. Mana yang termasuk variabel register dalam program ini?",
-              "reaction_index": 0,
-              "speaker": 1
-            }
-          ],
-          "next": "soal6_4",
-          "nextType": "soal"
-        },
-        {
           "id": "benar6_last",
           "text": [
             {
-              "line": "Nah udah bisa sekarang yaa. Jadi register itu buat variabel yang perlu akses cepat karena disimpan langsung di CPU. Intinya ada 4 jenis variabel berdasarkan tempat penyimpanannya: variabel lokal terletak di dalam fungsi, variabel global di luar fungsi, variabel statis mempertahankan nilainya antar pemanggilan fungsi, dan variabel register disimpan di CPU untuk akses super cepat.",
-              "reaction_index": 2,
+              "line": "Nah udah bisa sekarang yaa. Jadi register itu buat variabel yang perlu akses cepat. Intinya ada 4 jenis utama yang kita bahas: Lokal di dalam fungsi, Global di luar fungsi, Statis yang nilainya awet antar pemanggilan fungsi, dan Register untuk ngebut!",
+              "reaction_index": 4,
               "speaker": 1
             },
             {
-              "line": "Wah jadi gitu ya! Makasih banget, akhirnya aku jadi ngerti. Nggak pusing lagi deh soal penggolongan variabel.",
+              "line": "Wah jadi gitu ya! Makasih banget, Dri! Akhirnya aku jadi ngerti. Nggak pusing lagi deh soal penyimpanan variabel.",
               "reaction_index": 2,
               "speaker": 2
             },
             {
-              "line": "Sama-sama, senang bisa bantu. Sekarang ayo kita buat program kecil buat nyimpen data mahasiswa. Pertama, kita pakai array untuk nyimpen nama-nama, struct untuk detail mahasiswa, dan simpan semua itu ke file supaya nggak hilang",
-              "reaction_index": 2,
+              "line": "Sama-sama, Jen, senang bisa bantu. Sekarang ayo kita pakai ilmu ini buat ngerjain proyek akhirmu!",
+              "reaction_index": 4,
               "speaker": 1
             },
             {
-              "line": "Wow, ternyata semua yang aku pelajari mulai nyambung juga ya.!",
+              "line": "Wow, ternyata semua yang aku pelajari mulai nyambung juga ya!",
               "reaction_index": 2,
               "speaker": 2
             },
@@ -3131,25 +3152,25 @@
           "choices": [
             {
               "text": "fungsi, karena dia bisa dipanggil dari mana saja.",
-              "next": "salah6_2",
+              "next": "salah6_1",
               "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "angka, karena dideklarasikan di luar fungsi dan bisa diakses dari dalam fungsi.",
-              "next": "materi6_3",
+              "next": "materi6_2",
               "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "printf, karena digunakan di dalam fungsi untuk menampilkan nilai.",
-              "next": "salah6_2",
+              "next": "salah6_1",
               "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "int, karena semua variabel bertipe int pasti global.",
-              "next": "salah6_2",
+              "next": "salah6_1",
               "nextType": "dialog",
               "isCorrect": false
             }
@@ -3162,25 +3183,25 @@
           "choices": [
             {
               "text": "a",
-              "next": "salah6_1",
+              "next": "salah6_2",
               "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "floatku",
-              "next": "salah6_1",
+              "next": "salah6_2",
               "nextType": "dialog",
               "isCorrect": false
             },
             {
               "text": "angka",
-              "next": "materi6_2",
+              "next": "materi6_3",
               "nextType": "dialog",
               "isCorrect": true
             },
             {
               "text": "charku",
-              "next": "salah6_1",
+              "next": "salah6_2",
               "nextType": "dialog",
               "isCorrect": false
             }
