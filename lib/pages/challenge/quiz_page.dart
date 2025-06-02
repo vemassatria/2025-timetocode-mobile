@@ -91,7 +91,7 @@ class _QuizPageState extends ConsumerState<QuizPage> {
               children: [
                 Icon(Icons.check_circle, color: AppColors.xpGreen),
                 SizedBox(
-                  width: 30.w,
+                  width: 35.w,
                   child: Text(
                     "${challenge.correctAnswer}/3",
                     style: AppTypography.mediumBold(),
@@ -101,7 +101,7 @@ class _QuizPageState extends ConsumerState<QuizPage> {
                 SizedBox(width: 16.w),
                 Icon(Icons.cancel, color: AppColors.dangerRed),
                 SizedBox(
-                  width: 30.w,
+                  width: 35.w,
                   child: Text(
                     "${challenge.wrongAnswer}/3",
                     style: AppTypography.mediumBold(),
@@ -190,7 +190,7 @@ $code'''),
     final challengeController = ref.read(challengeControllerProvider.notifier);
 
     // Buat Nyimpan String Jawaban Benar
-    
+
     // final choices =
     //     ref.read(challengeControllerProvider).value!.currentQuestion!.choices;
     // final correctAnswer = choices.firstWhere((c) => c.isCorrect == true).text;

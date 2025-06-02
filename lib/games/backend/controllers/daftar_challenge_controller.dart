@@ -21,9 +21,11 @@ class CompletedChallengeNotifier extends StateNotifier<int> {
         await _prefs.setInt('completedChallengeStars$level', stars);
       }
     } else {
-      await _prefs.setInt('completedChallengeLevel', level);
-      await _prefs.setInt('completedChallengeStars$level', stars);
-      state = level;
+      if (stars != 0) {
+        await _prefs.setInt('completedChallengeLevel', level);
+        await _prefs.setInt('completedChallengeStars$level', stars);
+        state = level;
+      }
     }
   }
 
