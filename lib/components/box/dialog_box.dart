@@ -116,7 +116,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                                   _isComplete
                                       ? Text(
                                         text,
-                                        style: AppTypography.large().copyWith(
+                                        style: AppTypography.medium().copyWith(
                                           decoration: TextDecoration.none,
                                         ),
                                       )
