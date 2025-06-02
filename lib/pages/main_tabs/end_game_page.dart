@@ -5,7 +5,6 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/game_stats.dart';
 import 'package:timetocode/components/popups/info_popup.dart';
-import 'package:timetocode/games/backend/providers/daftar_level_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
@@ -25,7 +24,6 @@ class EndGameScreen extends ConsumerWidget {
 
     // Watch story state
     final storyStateAsync = ref.watch(storyControllerProvider);
-    final levelNotifier = ref.read(completedLevelProvider.notifier);
 
     return storyStateAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),
@@ -47,8 +45,6 @@ class EndGameScreen extends ConsumerWidget {
         final completedLevel = currentLevelIndex + 1;
         final maxLevel = totalSteps;
 
-        levelNotifier.setCompletedLevel(completedLevel);
-
         return PopScope(
           canPop: false,
           onPopInvokedWithResult: (didPop, result) {
@@ -61,9 +57,7 @@ class EndGameScreen extends ConsumerWidget {
             }
           },
           child: Container(
-            decoration: BoxDecoration(
-              color: AppColors.darkBackground,
-            ),
+            decoration: BoxDecoration(color: AppColors.darkBackground),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 48.h),
               child: Center(

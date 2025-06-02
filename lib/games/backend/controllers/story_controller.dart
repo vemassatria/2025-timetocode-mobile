@@ -346,7 +346,10 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
               showQuestion(choice.next);
               return true;
             } else if (choice.nextType == 'dialog') {
-              final nextDialog = _dialogService.getDialogById(level, choice.next);
+              final nextDialog = _dialogService.getDialogById(
+                level,
+                choice.next,
+              );
               if (findAndShowSoal(nextDialog)) return true;
             }
           }
