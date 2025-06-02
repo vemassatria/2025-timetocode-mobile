@@ -25,7 +25,7 @@ class QuestionBox extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(
         questionText,
-        style: AppTypography.normal(),
+        style: AppTypography.small(),
         textAlign: TextAlign.center,
       ),
     );

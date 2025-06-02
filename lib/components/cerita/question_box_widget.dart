@@ -52,7 +52,7 @@ class QuestionBoxWidget extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         if (codeText.trim().isNotEmpty) ...[
-                          QuestionBox(questionText: questionText, height: 100.h),
+                          QuestionBox(questionText: questionText, height: 120.h),
                           SizedBox(height: 16.h),
                           CodeBox(code: codeText),
                         ] else ...[
