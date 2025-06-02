@@ -6,9 +6,21 @@
       "title": "Tipe Data, Variabel, dan Operator",
       "background": "warung-kating",
       "character1_name": "Adrian",
-      "character1_reaction": ["adriankampus_biasa", "adriankampus_marah", "adriankampus_senang", "adriankampus_kecewa", "adriankampus_aksi"],
+      "character1_reaction": [
+        "adriankampus_biasa",
+        "adriankampus_marah",
+        "adriankampus_senang",
+        "adriankampus_kecewa",
+        "adriankampus_aksi"
+      ],
       "character2_name": "Mas Mulyo",
-      "character2_reaction": ["kating_biasa", "kating_marah", "kating_senang", "kating_kecewa", "kating_aksi"],
+      "character2_reaction": [
+        "kating_biasa",
+        "kating_marah",
+        "kating_senang",
+        "kating_kecewa",
+        "kating_aksi"
+      ],
       "ilustration": ["tipe-data", "BOOLEAN"],
       "start": "preDialog1",
       "typeStart": "preDialog",
@@ -25,7 +37,6 @@
           "next": "intro1",
           "nextType": "dialog"
         }
-        
       ],
       "dialogs": [
         {
@@ -81,22 +92,22 @@
           "id": "scene1_1",
           "text": [
             {
-              "line":  "Betul mas aduh susah banget ini programming",
+              "line": "Betul mas aduh susah banget ini programming",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Ah sesusah apa sih, palingan tinggal ngetik doang",
+              "line": "Ah sesusah apa sih, palingan tinggal ngetik doang",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Kacaw tinggal ngetik doang",
+              "line": "Kacaw tinggal ngetik doang",
               "reaction_index": 1,
               "speaker": 1
             },
             {
-              "line":  "Yaudah sini aku jelasin",
+              "line": "Yaudah sini aku jelasin",
               "reaction_index": 2,
               "speaker": 2
             }
@@ -108,42 +119,42 @@
           "id": "scene1_2",
           "text": [
             {
-              "line":  "Loh kok mas tau saya",
+              "line": "Loh kok mas tau saya",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "iya tau dong, aku yang waktu itu ngekader kamu kocak",
+              "line": "iya tau dong, aku yang waktu itu ngekader kamu kocak",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Loh yang bener mas?",
+              "line": "Loh yang bener mas?",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Serius. Aku komdis, bro. Yang tiap malem mondar-mandir liatin kalian satu-satu.",
+              "line": "Serius. Aku komdis, bro. Yang tiap malem mondar-mandir liatin kalian satu-satu.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Hah, beneran Mas komdis? Wah… pantesan kayak familiar…",
+              "line": "Hah, beneran Mas komdis? Wah… pantesan kayak familiar…",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Iya dong. Tapi tenang, aku gak se-strict itu di luar acara. By the way tadi aku denger kamu ngedumel soal pemrograman, waktunya AADP, ada apa dengan pemrogaman?",
+              "line": "Iya dong. Tapi tenang, aku gak se-strict itu di luar acara. By the way tadi aku denger kamu ngedumel soal pemrograman, waktunya AADP, ada apa dengan pemrogaman?",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Aduh Mas... pusing banget. Baru belajar tipe data sama variabel aja udah ngerasa kayak baca sandi alien.",
+              "line": "Aduh Mas... pusing banget. Baru belajar tipe data sama variabel aja udah ngerasa kayak baca sandi alien.",
               "reaction_index": 3,
               "speaker": 1
             },
             {
-              "line":  "Tenang jangan pusing dulu, ini masih permulaan. Coba sini aku jelasin pelan-pelan",
+              "line": "Tenang jangan pusing dulu, ini masih permulaan. Coba sini aku jelasin pelan-pelan",
               "reaction_index": 2,
               "speaker": 2
             }
@@ -155,42 +166,42 @@
           "id": "scene1_3",
           "text": [
             {
-              "line":  "Hah… Masnya siapa ya?",
+              "line": "Hah… Masnya siapa ya?",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Hayoloh... gak inget ya? Aku yang jadi komdis pas kaderisasi. Yang suka mondar-mandir malem-malem, ngawasin kalian satu-satu.",
+              "line": "Hayoloh... gak inget ya? Aku yang jadi komdis pas kaderisasi. Yang suka mondar-mandir malem-malem, ngawasin kalian satu-satu.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "(kaget, sambil mencoba mengingat) Serius? Wah, beneran Mas? Saya ingetnya cuma suara tegas dari kejauhan…",
+              "line": "(kaget, sambil mencoba mengingat) Serius? Wah, beneran Mas? Saya ingetnya cuma suara tegas dari kejauhan…",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "(ketawa kecil) “Haha, ya itu suaraku. Kamu tuh yang waktu itu disuruh maju gara-gara... hmm, ketiduran kan ya?” (kedip jahil)",
+              "line": "(ketawa kecil) “Haha, ya itu suaraku. Kamu tuh yang waktu itu disuruh maju gara-gara... hmm, ketiduran kan ya?” (kedip jahil)",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Wah… kok masih inget aja mas…” (senyum malu)",
+              "line": "Wah… kok masih inget aja mas…” (senyum malu)",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Gapapa itu momen kocak, tenang, aku juga pernah jadi maba. Pusing, capek, ngantuk, tapi harus tetap jalanin semua. Gua paham kok rasanya.",
+              "line": "Gapapa itu momen kocak, tenang, aku juga pernah jadi maba. Pusing, capek, ngantuk, tapi harus tetap jalanin semua. Gua paham kok rasanya.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Sekarang juga pusing Mas… tugas pemrogramannya bikin kepala muter. Baru mulai belajar tipe data aja rasanya udah ribet banget.",
+              "line": "Sekarang juga pusing Mas… tugas pemrogramannya bikin kepala muter. Baru mulai belajar tipe data aja rasanya udah ribet banget.",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Nah, itu. Tadi gua liat kamu ngedumel. Makanya, ayo sini, kita bahas bareng. Gua jelasin pelan-pelan soal tipe data sama variabel. Gak ribet kok, asal ngerti logikanya.",
+              "line": "Nah, itu. Tadi gua liat kamu ngedumel. Makanya, ayo sini, kita bahas bareng. Gua jelasin pelan-pelan soal tipe data sama variabel. Gak ribet kok, asal ngerti logikanya.",
               "reaction_index": 0,
               "speaker": 2
             }
@@ -698,14 +709,20 @@
         "adriancafe_aksi"
       ],
       "character2_name": "Kakak",
-      "character2_reaction": ["tino_biasa", "tino_marah", "tino_senang", "tino_kecewa", "tino_aksi"],
+      "character2_reaction": [
+        "tino_biasa",
+        "tino_marah",
+        "tino_senang",
+        "tino_kecewa",
+        "tino_aksi"
+      ],
       "ilustration": ["contoh-ilustrasi1", "IF-ELSE", "SWITCH"],
       "start": "preDialog2_1",
       "typeStart": "preDialog",
       "preDialog": [
         {
           "id": "preDialog2_1",
-          "text": "Adrian memiliki seorang kakak bernama Tino — seorang lulusan IT yang kini bekerja di bidang teknologi. Tino dikenal sebagai pribadi yang blak-blakan dan kerap meremehkan kemampuan adiknya. Ia sering menyindir Adrian karena belum memahami hal-hal dasar dalam pemrograman.",
+          "text": "Adrian memiliki seorang kakak bernama Tino seorang lulusan IT yang kini bekerja di bidang teknologi. Tino dikenal sebagai pribadi yang blak-blakan dan kerap meremehkan kemampuan adiknya. Ia sering menyindir Adrian karena belum memahami hal-hal dasar dalam pemrograman.",
           "next": "preDialog2_2",
           "nextType": "preDialog"
         },
@@ -747,7 +764,7 @@
               "speaker": 2
             }
           ],
-          "choices":[
+          "choices": [
             {
               "text": "Kakak tahu, kan? Bisa tolong jelasin yang gampang aja? Aku udah capek banget nih...",
               "next": "scene2_1",
@@ -771,22 +788,22 @@
           "id": "scene2_1",
           "text": [
             {
-              "line":  "Kakak tahu, kan? Bisa tolong jelasin yang gampang aja? Aku udah capek banget nih...",
+              "line": "Kakak tahu, kan? Bisa tolong jelasin yang gampang aja? Aku udah capek banget nih...",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Santai, bro. Aku juga dulu pernah stuck berhari-hari sebelum ngerti.",
+              "line": "Santai, bro. Aku juga dulu pernah stuck berhari-hari sebelum ngerti.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Iya, makanya aku minta tolong. Aku bener-bener bingung nih.",
+              "line": "Iya, makanya aku minta tolong. Aku bener-bener bingung nih.",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Oke, aku jelasin gampangnya",
+              "line": "Oke, aku jelasin gampangnya",
               "reaction_index": 0,
               "speaker": 2
             }
@@ -798,27 +815,27 @@
           "id": "scene2_2",
           "text": [
             {
-              "line":  "Iya deh, tapi jangan cuma nyindir terus, aku juga belajar kok.",
+              "line": "Iya deh, tapi jangan cuma nyindir terus, aku juga belajar kok.",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Santai aja, gak usah baper. Aku juga pernah kayak kamu, malah sering lebih parah.",
+              "line": "Santai aja, gak usah baper. Aku juga pernah kayak kamu, malah sering lebih parah.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Hehe, ya maklum lah, baru belajar. Kadang rasanya pengen nyerah aja",
+              "line": "Hehe, ya maklum lah, baru belajar. Kadang rasanya pengen nyerah aja",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Nah, makanya aku di sini buat bantu. Yuk, kita lihat bareng-bareng bagian mana yang bikin kamu bingung.",
+              "line": "Nah, makanya aku di sini buat bantu. Yuk, kita lihat bareng-bareng bagian mana yang bikin kamu bingung.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Aku bingung, Kak. Dari nulis if, urutan else-if, sampai kapan pakai switch, semua campur aduk.",
+              "line": "Aku bingung, Kak. Dari nulis if, urutan else-if, sampai kapan pakai switch, semua campur aduk.",
               "reaction_index": 0,
               "speaker": 1
             }
@@ -830,27 +847,27 @@
           "id": "scene2_3",
           "text": [
             {
-              "line":  "Ah, kamu cuma nyindir aja, gak usah sok pintar, aku bisa cari sendiri kalau mau.",
+              "line": "Ah, kamu cuma nyindir aja, gak usah sok pintar, aku bisa cari sendiri kalau mau.",
               "reaction_index": 0,
               "speaker": 1
             },
             {
-              "line":  "Heh, gak usah marah gitu dong. Aku cuma pengen bantu.",
+              "line": "Heh, gak usah marah gitu dong. Aku cuma pengen bantu.",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Halah pasti nanti ada nyindir-nyindirnya",
+              "line": "Halah pasti nanti ada nyindir-nyindirnya",
               "reaction_index": 1,
               "speaker": 1
             },
             {
-              "line":  "Engga kok enggak, kamu mau dibantuin ga?",
+              "line": "Engga kok enggak, kamu mau dibantuin ga?",
               "reaction_index": 0,
               "speaker": 2
             },
             {
-              "line":  "Mau kak hehe, jelasin yang gampang dong kak",
+              "line": "Mau kak hehe, jelasin yang gampang dong kak",
               "reaction_index": 0,
               "speaker": 1
             }
@@ -890,7 +907,7 @@
               "speaker": 2,
               "ilustration_index": 2
             },
-             {
+            {
               "line": "Jadi ada case 'PEGUNUNGAN', case 'PANTAI', case 'KOTA'. Kalau tujuanmu gak ada di daftar, dia arahin ke 'LAINNYA' (default). Lebih rapi dan cepat untuk pilihan yang udah pasti!",
               "reaction_index": 2,
               "speaker": 2,
@@ -1119,7 +1136,7 @@
               "speaker": 2
             },
             {
-              "line": "Siap kak! Aku mau lanjut belajar materi selanjutnya, for while dan do while. Besok siang aku sama raka mau ke cafe buat diskusi materi for, while, dan do while, ngerjain tugas bareng juga",
+              "line": "Siap kak! Aku mau lanjut belajar materi selanjutnya, for while dan do while. Besok siang aku sama raka mau ke kafe buat diskusi materi for, while, dan do while, ngerjain tugas bareng juga",
               "reaction_index": 0,
               "speaker": 1
             },
@@ -1239,9 +1256,21 @@
       "title": "For, While, Do While",
       "background": "teman-cafe",
       "character1_name": "Adrian",
-      "character1_reaction": ["adriankampus_biasa", "adriankampus_marah", "adriankampus_senang", "adriankampus_kecewa", "adriankampus_aksi"],
+      "character1_reaction": [
+        "adriankampus_biasa",
+        "adriankampus_marah",
+        "adriankampus_senang",
+        "adriankampus_kecewa",
+        "adriankampus_aksi"
+      ],
       "character2_name": "Rusdi",
-      "character2_reaction": ["rusdi_biasa", "rusdi_marah", "rusdi_senang", "rusdi_kecewa", "rusdi_aksi"],
+      "character2_reaction": [
+        "rusdi_biasa",
+        "rusdi_marah",
+        "rusdi_senang",
+        "rusdi_kecewa",
+        "rusdi_aksi"
+      ],
       "ilustration": [
         "LOOP-FOR-ISI",
         "LOOP-WHILE-KERING",
@@ -1743,16 +1772,28 @@
       "title": "Nested Loop, Break, Continue, Exit",
       "background": "teman-cafe",
       "character1_name": "Adrian",
-      "character1_reaction": ["adriankampus_biasa", "adriankampus_marah", "adriankampus_senang", "adriankampus_kecewa", "adriankampus_aksi"],
+      "character1_reaction": [
+        "adriankampus_biasa",
+        "adriankampus_marah",
+        "adriankampus_senang",
+        "adriankampus_kecewa",
+        "adriankampus_aksi"
+      ],
       "character2_name": "Rusdi",
-      "character2_reaction": ["rusdi_biasa", "rusdi_marah", "rusdi_senang", "rusdi_kecewa", "rusdi_aksi"],
+      "character2_reaction": [
+        "rusdi_biasa",
+        "rusdi_marah",
+        "rusdi_senang",
+        "rusdi_kecewa",
+        "rusdi_aksi"
+      ],
       "ilustration": ["NESTED-LOOP", "BREAK-CONTINUE-EXIT"],
       "start": "preDialog4",
       "typeStart": "preDialog",
       "preDialog": [
         {
           "id": "preDialog4",
-          "text": "Adrian mencoba nested loop membuat pola dan tabel. Rusdi memuji hasil kerja Adrian — ini jadi semangat tambahan bagi Adrian.\nSuasana sore yang teduh. Adrian duduk santai di warung mi ayam milik Rusdi, menyandarkan tubuhnya ke kursi plastik sambil menyeruput kuah terakhir",
+          "text": "Adrian mencoba nested loop membuat pola dan tabel. Rusdi memuji hasil kerja Adrian. Ini jadi semangat tambahan bagi Adrian.\nSuasana sore yang teduh. Adrian duduk santai di warung mi ayam milik Rusdi, menyandarkan tubuhnya ke kursi plastik sambil menyeruput kuah terakhir",
           "next": "intro4",
           "nextType": "dialog"
         }
@@ -2029,7 +2070,7 @@
             },
             {
               "line": "Terakhir, Tombol Biru 'KELUAR DARI PABRIK' itu 'exit()'. Kalau ini ditekan, bukan cuma pabriknya berhenti, tapi kamu langsung keluar dari game simulasi pabrik ini! Seluruh program berhenti.",
-              "reaction_index": 4,
+              "reaction_index": 0,
               "speaker": 2,
               "ilustration_index": 1
             },
@@ -2218,9 +2259,21 @@
       "title": "Pemanggilan Fungsi dalam Pemrograman",
       "background": "lab",
       "character1_name": "Adrian",
-      "character1_reaction": ["adriankampus_biasa", "adriankampus_marah", "adriankampus_senang", "adriankampus_kecewa", "adriankampus_aksi"],
+      "character1_reaction": [
+        "adriankampus_biasa",
+        "adriankampus_marah",
+        "adriankampus_senang",
+        "adriankampus_kecewa",
+        "adriankampus_aksi"
+      ],
       "character2_name": "Pak Rongga",
-      "character2_reaction": ["rongga_biasa", "rongga_marah", "rongga_senang", "rongga_kecewa", "rongga_aksi"],
+      "character2_reaction": [
+        "rongga_biasa",
+        "rongga_marah",
+        "rongga_senang",
+        "rongga_kecewa",
+        "rongga_aksi"
+      ],
       "ilustration": ["FUNGSI-1", "FUNGSI-2"],
       "start": "preDialog5",
       "typeStart": "preDialog",
@@ -2233,7 +2286,7 @@
         },
         {
           "id": "preDialog5_2",
-          "text": "Jantung Adrian berdegup kencang. “Waduh, tugas besar? Program penuh begitu? Gimana cara mulainya…” pikirnya panik. Ia teringat betapa ribetnya program sebelumnya yang ia buat tanpa struktur—kode berulang, variabel bertumpuk, dan logika campur aduk yang bikin pusing tujuh keliling.",
+          "text": "Jantung Adrian berdegup kencang. “Waduh, tugas besar? Program penuh begitu? Gimana cara mulainya…” pikirnya panik. Ia teringat betapa ribetnya program sebelumnya yang ia buat tanpa struktur kode berulang, variabel bertumpuk, dan logika campur aduk yang bikin pusing tujuh keliling.",
           "next": "intro5",
           "nextType": "dialog"
         }
@@ -2688,16 +2741,28 @@
       "title": "Penyimpanan variabel dalam pemrograman",
       "background": "cafe-crush",
       "character1_name": "Adrian",
-      "character1_reaction": ["adriancafe_biasa", "adriancafe_marah", "adriancafe_senang", "adriancafe_kecewa", "adriancafe_aksi"],
+      "character1_reaction": [
+        "adriancafe_biasa",
+        "adriancafe_marah",
+        "adriancafe_senang",
+        "adriancafe_kecewa",
+        "adriancafe_aksi"
+      ],
       "character2_name": "Jennie",
-      "character2_reaction": ["crush_biasa", "crush_marah", "crush_senang", "crush_kecewa", "crush_aksi"],
+      "character2_reaction": [
+        "crush_biasa",
+        "crush_marah",
+        "crush_senang",
+        "crush_kecewa",
+        "crush_aksi"
+      ],
       "ilustration": ["PENYIMPANAN-VARIABEL"],
       "start": "preDialog6",
       "typeStart": "preDialog",
       "preDialog": [
         {
           "id": "preDialog6",
-          "text": "Adrian duduk di sudut café favoritnya, sambil membuka laptop dan menyesap kopi hangat. Hari itu suasana cukup ramai, tapi fokus Adrian masih terpecah antara catatan dan baris-baris kode yang belum selesai.",
+          "text": "Adrian duduk di sudut kafe favoritnya, sambil membuka laptop dan menyesap kopi hangat. Hari itu suasana cukup ramai, tapi fokus Adrian masih terpecah antara catatan dan baris-baris kode yang belum selesai.",
           "next": "preDialog6_2",
           "nextType": "preDialog"
         },
@@ -2713,7 +2778,7 @@
           "id": "intro6",
           "text": [
             {
-              "line": "Eh... Adrian? Wah, nggak nyangka ketemu kamu di sini. Sering ke café ini, ya?",
+              "line": "Eh... Adrian? Wah, nggak nyangka ketemu kamu di sini. Sering ke kafe ini, ya?",
               "reaction_index": 0,
               "speaker": 2
             },
