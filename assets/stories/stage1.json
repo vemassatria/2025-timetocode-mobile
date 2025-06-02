@@ -2294,7 +2294,7 @@
             {
               "line": "Input nilai, terus hitung rata-rata, terus cetak?",
               "reaction_index": 0,
-              "speaker": 2
+              "speaker": 1
             },
             {
               "line": "Iya, inputNilai, hitungRata, dan tampilkanHasil. Itu langkah dasar. Coba kamu jelaskan sedikit",
