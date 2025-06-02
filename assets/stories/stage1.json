@@ -15,7 +15,7 @@
       "preDialog": [
         {
           "id": "preDialog1",
-          "text": "Adrian adalah seorang mahasiswa baru (maba) jurusan Teknik Informatika yang baru saja memasuki dunia perkuliahan. Penuh rasa ingin tahu dan semangat belajar, Adrian bermimpi menjadi seorang programmer handal. Namun, perjalanannya tidak semudah yang ia bayangkan. Ia kerap kali merasa tertinggal dan kesulitan memahami logika pemrograman yang rumit.",
+          "text": "Adrian adalah seorang mahasiswa baru Teknik Informatika yang baru saja memasuki dunia perkuliahan. Penuh rasa ingin tahu dan semangat belajar, Adrian bermimpi menjadi seorang programmer handal. Namun, perjalanannya tidak semudah itu. Ia kerap kali merasa tertinggal dan kesulitan memahami logika pemrograman yang rumit.",
           "next": "preDialog1_2",
           "nextType": "preDialog"
         },
