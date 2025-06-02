@@ -42,6 +42,8 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
       // If animation is not complete, tapping will complete it.
       // The AnimatedTextKit's displayFullTextOnTap could also handle this,
       // but explicitly setting _isComplete ensures our state is correct.
+      // This part is now mostly handled by onTap in AnimatedTextKit
+      // But _isComplete needs to be true for the arrow/choices to show
       setState(() => _isComplete = true);
     }
   }
@@ -112,41 +114,40 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
-                              child:
-                                  _isComplete
-                                      ? Text(
-                                        text,
-                                        style: AppTypography.medium().copyWith(
-                                          decoration: TextDecoration.none,
+                              child: AnimatedTextKit(
+                                key: ValueKey('dialog_$idx'),
+                                isRepeatingAnimation: false,
+                                displayFullTextOnTap: true, // Akan mempercepat animasi jika diketuk
+                                stopPauseOnTap: true,
+                                onFinished: () {
+                                  if (mounted) {
+                                    setState(() {
+                                      _isComplete = true;
+                                    });
+                                  }
+                                },
+                                onTap: () { // Tambahkan onTap untuk mempercepat jika belum selesai
+                                  if (!_isComplete) {
+                                    setState(() {
+                                      _isComplete = true;
+                                    });
+                                  }
+                                },
+                                animatedTexts: [
+                                  TypewriterAnimatedText(
+                                    text,
+                                    textStyle: AppTypography.medium() // Hanya satu kali pemanggilan AppTypography.medium()
+                                        .copyWith(
+                                          decoration:
+                                              TextDecoration.none,
                                         ),
-                                      )
-                                      : AnimatedTextKit(
-                                        key: ValueKey('dialog_$idx'),
-                                        isRepeatingAnimation: false,
-                                        displayFullTextOnTap: true,
-                                        stopPauseOnTap: true,
-                                        onFinished: () {
-                                          if (mounted) {
-                                            setState(() {
-                                              _isComplete = true;
-                                            });
-                                          }
-                                        },
-                                        animatedTexts: [
-                                          TypewriterAnimatedText(
-                                            text,
-                                            textStyle: AppTypography.medium()
-                                                .copyWith(
-                                                  decoration:
-                                                      TextDecoration.none,
-                                                ),
-                                            speed: const Duration(
-                                              milliseconds: 20,
-                                            ),
-                                            cursor: '_',
-                                          ),
-                                        ],
-                                      ),
+                                    speed: const Duration(
+                                      milliseconds: 20,
+                                    ),
+                                    cursor: '_',
+                                  ),
+                                ],
+                              ),
                             ),
                             SizedBox(
                               height: 12,
