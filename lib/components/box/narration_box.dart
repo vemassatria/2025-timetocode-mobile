@@ -38,7 +38,7 @@ class _NarrationBoxState extends State<NarrationBox> {
       child: Container(
         height: 250.h,
         width: 328.w,
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
         decoration: BoxDecoration(
           color: AppColors.backgroundTransparent,
           border: Border.all(color: AppColors.white),
