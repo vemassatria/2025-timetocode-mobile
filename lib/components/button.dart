@@ -10,6 +10,8 @@ enum ButtonColor { purple, yellow, blue, green, red, none }
 
 enum ButtonWidthMode { fill, hug, fixed }
 
+enum ButtonTextAlign { left, center, right }
+
 class CustomButton extends StatelessWidget {
   final String? label;
   final VoidCallback? onPressed;
@@ -20,6 +22,7 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final double? height;
   final ButtonWidthMode widthMode;
+  final ButtonTextAlign textAlign;
 
   const CustomButton({
     super.key,
@@ -32,6 +35,7 @@ class CustomButton extends StatelessWidget {
     this.width,
     this.height,
     this.widthMode = ButtonWidthMode.hug,
+    this.textAlign = ButtonTextAlign.center, // Default to center
   });
 
   Color _getFillBgColor(ButtonColor color) {
@@ -114,18 +118,41 @@ class CustomButton extends StatelessWidget {
         return SizedBox();
       case ButtonType.filled:
       case ButtonType.outline:
-        return Text(label ?? '');
+        return Text(label ?? '', textAlign: _getTextAlignment());
       case ButtonType.iconLabel:
         return Row(
           mainAxisSize: mainAxisSize,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: _getMainAxisAlignment(),
           children: [
             if (icon is Icon)
               Icon((icon as Icon).icon, size: 26.sp, color: fgColor),
             if (icon != null) SizedBox(width: 8.w),
-            Text(label ?? ''),
+            Flexible(child: Text(label ?? '', textAlign: _getTextAlignment())),
           ],
         );
+    }
+  }
+
+  // Add these helper methods
+  TextAlign _getTextAlignment() {
+    switch (textAlign) {
+      case ButtonTextAlign.left:
+        return TextAlign.left;
+      case ButtonTextAlign.right:
+        return TextAlign.right;
+      case ButtonTextAlign.center:
+        return TextAlign.center;
+    }
+  }
+
+  MainAxisAlignment _getMainAxisAlignment() {
+    switch (textAlign) {
+      case ButtonTextAlign.left:
+        return MainAxisAlignment.start;
+      case ButtonTextAlign.right:
+        return MainAxisAlignment.end;
+      case ButtonTextAlign.center:
+        return MainAxisAlignment.center;
     }
   }
 
