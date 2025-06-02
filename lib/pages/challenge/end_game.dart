@@ -43,7 +43,7 @@ class EndGameChallenge extends ConsumerWidget {
           canPop: false,
           onPopInvokedWithResult: (didPop, result) {
             if (PopscopePopups.isPopScopeActive()) {
-              endGamePopup(context, ref);
+              endChallengePopup(context, ref);
               PopscopePopups.setPopScope(false);
             } else {
               closePopupOverlay();
