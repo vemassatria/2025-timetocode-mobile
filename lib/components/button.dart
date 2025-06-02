@@ -101,7 +101,7 @@ class CustomButton extends StatelessWidget {
           type == ButtonType.icon
               ? EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h)
               : EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-      textStyle: AppTypography.normalBold(color: AppColors.black1),
+      textStyle: AppTypography.smallBold(color: AppColors.black1),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.r),
         side: type == ButtonType.outline ? borderSide : BorderSide.none,
