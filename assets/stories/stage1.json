@@ -14,17 +14,18 @@
       "typeStart": "preDialog",
       "preDialog": [
         {
-          "id": "preDialog1",
-          "text": "Adrian baru saja menyelesaikan kelas pemrograman pertamanya. Kepalanya terasa pening, ia pun mampir ke kafe dekat kampus. Secangkir kopi, harapnya, bisa meredakan pusing akibat deretan kode yang masih belum ia pahami. Di tengah keriuhan obrolan pengunjung, Adrian menghela napas lirih. Lalu, dari sudut kafe, sesosok familiar mendekatinya.",
-          "next": "preDialog1_2",
-          "nextType": "preDialog"
+          "id": "preDialog1_1",
+          "text": "Adrian adalah seorang mahasiswa baru (maba) jurusan Teknik Informatika yang baru saja memasuki dunia perkuliahan. Penuh rasa ingin tahu dan semangat belajar, Adrian bermimpi menjadi seorang programmer handal. Namun, perjalanannya tidak semudah yang ia bayangkan. Ia kerap kali merasa tertinggal dan kesulitan memahami logika pemrograman yang rumit.",
+          "next": "intro1",
+          "nextType": "dialog"
         },
         {
           "id": "preDialog1_2",
-          "text": "Adrian: \"Mas, aku baru masuk kuliah di jurusan Informatika. Tapi kok materi pertama langsung susah-susah ya? Aku masih bingung banget soal tipe data, variabel, dan operator. Aku bisa minta tolong ajarin tipis-tipis gak mas?\"",
-          "next": "intro1",
-          "nextType": "dialog"
+          "text": "Adrian baru saja menyelesaikan kelas pemrograman pertamanya. Kepalanya terasa pening, ia pun mampir ke kafe dekat kampus. Secangkir kopi, harapnya, bisa meredakan pusing akibat deretan kode yang masih belum ia pahami. Di tengah keriuhan obrolan pengunjung, Adrian menghela napas lirih. Lalu, dari sudut kafe, sesosok familiar mendekatinya.",
+          "next": "preDialog1_2",
+          "nextType": "preDialog"
         }
+        
       ],
       "dialogs": [
         {
