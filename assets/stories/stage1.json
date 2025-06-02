@@ -885,7 +885,13 @@
               "ilustration_index": 2
             },
             {
-              "line": "Dengan 'switch', komputer itu kayak GPS super cepat. Kamu sebut tujuannya, misalnya 'PANTAI', dia langsung arahin ke jalan yang benar tanpa ngecek satu-satu. Jadi ada case 'PEGUNUNGAN', case 'PANTAI', case 'KOTA'. Kalau tujuanmu gak ada di daftar, dia arahin ke 'LAINNYA' (default). Lebih rapi dan cepat untuk pilihan yang udah pasti!",
+              "line": "Dengan 'switch', komputer itu kayak GPS super cepat. Kamu sebut tujuannya, misalnya 'PANTAI', dia langsung arahin ke jalan yang benar tanpa ngecek satu-satu.",
+              "reaction_index": 4,
+              "speaker": 2,
+              "ilustration_index": 2
+            },
+             {
+              "line": "Jadi ada case 'PEGUNUNGAN', case 'PANTAI', case 'KOTA'. Kalau tujuanmu gak ada di daftar, dia arahin ke 'LAINNYA' (default). Lebih rapi dan cepat untuk pilihan yang udah pasti!",
               "reaction_index": 4,
               "speaker": 2,
               "ilustration_index": 2
@@ -1527,7 +1533,8 @@
             {
               "line": "Bagian 'do'-nya itu kayak air langsung ngalir ke gelas dulu, tanpa banyak tanya. Jadi, tugasnya minimal jalan sekali.",
               "reaction_index": 4,
-              "speaker": 2
+              "speaker": 2,
+              "ilustration_index": 3
             },
             {
               "line": "Setelah itu, baru bagian 'while'-nya ngecek kondisi. Lihat, airnya terus ngalir dan meteran level airnya naik kan?",
@@ -2215,17 +2222,17 @@
       "character2_name": "Pak Rongga",
       "character2_reaction": ["rongga_biasa", "rongga_marah", "rongga_senang", "rongga_kecewa", "rongga_aksi"],
       "ilustration": ["FUNGSI-1", "FUNGSI-2"],
-      "start": "predialog5",
-      "typeStart": "predialog",
+      "start": "preDialog5",
+      "typeStart": "preDialog",
       "preDialog": [
         {
-          "id": "predialog5",
-          "text": "Adrian duduk terpaku di bangkunya, menatap papan tulis dengan mata melebar. Di hadapannya berdiri Pak Rongga, dosen pemrograman yang terkenal tegas dan jenius. Suaranya yang berat mengumumkan tugas besar minggu ini: “Buatlah program untuk menghitung nilai akhir mahasiswa, lengkap dengan semua komponennya: tugas, kuis, UTS, dan UAS.”",
-          "next": "predialog5_2",
-          "nextType": "predialog"
+          "id": "preDialog5",
+          "text": "Adrian duduk terpaku, menatap papan tulis dengan mata melebar. Di hadapannya berdiri Pak Rongga, dosen pemrograman yang terkenal tegas dan jenius. Suaranya yang berat mengumumkan tugas besar minggu ini: “Buatlah program untuk menghitung nilai akhir mahasiswa, lengkap dengan semua komponennya: tugas, kuis, UTS, dan UAS.”",
+          "next": "preDialog5_2",
+          "nextType": "preDialog"
         },
         {
-          "id": "predialog5_2",
+          "id": "preDialog5_2",
           "text": "Jantung Adrian berdegup kencang. “Waduh, tugas besar? Program penuh begitu? Gimana cara mulainya…” pikirnya panik. Ia teringat betapa ribetnya program sebelumnya yang ia buat tanpa struktur—kode berulang, variabel bertumpuk, dan logika campur aduk yang bikin pusing tujuh keliling.",
           "next": "intro5",
           "nextType": "dialog"
@@ -2685,17 +2692,17 @@
       "character2_name": "Jennie",
       "character2_reaction": ["crush_biasa", "crush_marah", "crush_senang", "crush_kecewa", "crush_aksi"],
       "ilustration": ["PENYIMPANAN-VARIABEL"],
-      "start": "predialog6",
-      "typeStart": "predialog",
-      "predialog": [
+      "start": "preDialog6",
+      "typeStart": "preDialog",
+      "preDialog": [
         {
-          "id": "predialog6",
+          "id": "preDialog6",
           "text": "Adrian duduk di sudut café favoritnya, sambil membuka laptop dan menyesap kopi hangat. Hari itu suasana cukup ramai, tapi fokus Adrian masih terpecah antara catatan dan baris-baris kode yang belum selesai.",
-          "next": "predialog6_2",
-          "nextType": "predialog"
+          "next": "preDialog6_2",
+          "nextType": "preDialog"
         },
         {
-          "id": "predialog6_2",
+          "id": "preDialog6_2",
           "text": "Tiba-tiba, dari balik pintu, Jennie masuk dengan langkah santai. Biasanya dia cuek dan jarang berbicara banyak, tapi kali ini dia langsung menghampiri Adrian dengan ekspresi agak serius.",
           "next": "intro6",
           "nextType": "dialog"
