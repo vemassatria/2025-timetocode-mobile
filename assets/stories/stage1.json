@@ -81,6 +81,11 @@
           "id": "scene1_1",
           "text": [
             {
+              "line":  "Betul mas aduh susah banget ini programming",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
               "line":  "Ah sesusah apa sih, palingan tinggal ngetik doang",
               "reaction_index": 0,
               "speaker": 2
@@ -102,6 +107,11 @@
         {
           "id": "scene1_2",
           "text": [
+            {
+              "line":  "Loh kok mas tau saya",
+              "reaction_index": 0,
+              "speaker": 1
+            },
             {
               "line":  "iya tau dong, aku yang waktu itu ngekader kamu kocak",
               "reaction_index": 0,
@@ -144,6 +154,11 @@
         {
           "id": "scene1_3",
           "text": [
+            {
+              "line":  "Hah… Masnya siapa ya?",
+              "reaction_index": 0,
+              "speaker": 1
+            },
             {
               "line":  "Hayoloh... gak inget ya? Aku yang jadi komdis pas kaderisasi. Yang suka mondar-mandir malem-malem, ngawasin kalian satu-satu.",
               "reaction_index": 0,
@@ -756,6 +771,11 @@
           "id": "scene2_1",
           "text": [
             {
+              "line":  "Kakak tahu, kan? Bisa tolong jelasin yang gampang aja? Aku udah capek banget nih...",
+              "reaction_index": 0,
+              "speaker": 1
+            },
+            {
               "line":  "Santai, bro. Aku juga dulu pernah stuck berhari-hari sebelum ngerti.",
               "reaction_index": 0,
               "speaker": 2
@@ -777,6 +797,11 @@
         {
           "id": "scene2_2",
           "text": [
+            {
+              "line":  "Iya deh, tapi jangan cuma nyindir terus, aku juga belajar kok.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
             {
               "line":  "Santai aja, gak usah baper. Aku juga pernah kayak kamu, malah sering lebih parah.",
               "reaction_index": 0,
@@ -804,6 +829,11 @@
         {
           "id": "scene2_3",
           "text": [
+            {
+              "line":  "Ah, kamu cuma nyindir aja, gak usah sok pintar, aku bisa cari sendiri kalau mau.",
+              "reaction_index": 0,
+              "speaker": 1
+            },
             {
               "line":  "Heh, gak usah marah gitu dong. Aku cuma pengen bantu.",
               "reaction_index": 0,
@@ -1219,7 +1249,7 @@
       "preDialog": [
         {
           "id": "preDialog3_1",
-          "text": "Adrian sering jajan di warung milik Pak Rusdi, pria ramah yang sudah mengenalnya sejak awal kuliah. Ternyata, Rusdi adalah lulusan teknik juga. Namun, nasib membawanya membuka warung karena sulitnya mencari kerja di dunia IT.",
+          "text": "Adrian sering jajan di warung milik Mas Rusdi, pria ramah yang sudah mengenalnya sejak awal kuliah. Ternyata, Rusdi adalah lulusan teknik juga. Namun, nasib membawanya membuka warung karena sulitnya mencari kerja di dunia IT.",
           "next": "preDialog3_2",
           "nextType": "preDialog"
         },
@@ -1267,12 +1297,12 @@
           ],
           "choices": [
             {
-              "text": "Eh... loop itu maksudnya apa sih, Pak? Saya lagi belajar itu juga, tapi malah makin pusing",
+              "text": "Eh... loop itu maksudnya apa sih, Mas? Saya lagi belajar itu juga, tapi malah makin pusing",
               "next": "scene3_1",
               "nextType": "dialog"
             },
             {
-              "text": "Wah, saya juga kayaknya lagi kejebak loop deh. Tugas gak kelar-kelar, Pak",
+              "text": "Wah, saya juga kayaknya lagi kejebak loop deh. Tugas gak kelar-kelar, Mas",
               "next": "scene3_2",
               "nextType": "dialog"
             },
@@ -1288,6 +1318,11 @@
         {
           "id": "scene3_1",
           "text": [
+            {
+              "line": "Eh... loop itu maksudnya apa sih, Mas? Saya lagi belajar itu juga, tapi malah makin pusing",
+              "reaction_index": 0,
+              "speaker": 1
+            },
             {
               "line": "Loop itu mirip perulangan, Mas. Jadi kayak komputer ngelakuin hal yang sama berulang-ulang… sampai syarat tertentu terpenuhi",
               "reaction_index": 0,
@@ -1306,6 +1341,11 @@
           "id": "scene3_2",
           "text": [
             {
+              "line": "Wah, saya juga kayaknya lagi kejebak loop deh. Tugas gak kelar-kelar, Mas",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
               "line": "Lho, sama dong kayak saya. Bedanya, loop saya isinya ngaduk kuah sama motong ayam tiap hari",
               "reaction_index": 2,
               "speaker": 2
@@ -1321,7 +1361,7 @@
               "speaker": 2
             },
             {
-              "line": "Eh, ngomong-ngomong soal loop… Bapak tadi sempat nyebut. Loop itu maksudnya apa sih? Tadi dosen saya jelasin, tapi malah bikin kepala tambah muter",
+              "line": "Eh, ngomong-ngomong soal loop… Mas nya tadi sempat nyebut. Loop itu maksudnya apa sih? Tadi dosen saya jelasin, tapi malah bikin kepala tambah muter",
               "reaction_index": 4,
               "speaker": 1
             }
@@ -1333,12 +1373,17 @@
           "id": "scene3_3",
           "text": [
             {
+              "line": "Wkwk masi mending tu mas daripada saya muter-muter terus kaya siklus mahasiswa gatau arah, coding, mie ayam, tidur, coding lagi, mie ayam lagi, tidur lagi",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
               "line": "Hahaha… mi ayam tuh emang wenak, Mas. Ibarat nemu titik koma pas coding error... beh melegakan banget",
               "reaction_index": 2,
               "speaker": 2
             },
             {
-              "line": "Eh iya, ngomongin soal coding… Pak, tadi sempat nyebut soal loop ya? Saya tadi diajarin dosen, tapi kepala saya gak nyangkut apa-apa. Soalnya keburu kepikiran mi ayam, Pak… kacau",
+              "line": "Eh iya, ngomongin soal coding… Mas, tadi sempat nyebut soal loop ya? Saya tadi diajarin dosen, tapi kepala saya gak nyangkut apa-apa. Soalnya keburu kepikiran mi ayam, Pak… kacau",
               "reaction_index": 4,
               "speaker": 1
             },
@@ -1382,7 +1427,7 @@
               "speaker": 2
             },
             {
-              "line": "Wih ready Pak kalau gitu!",
+              "line": "Wih ready Mas kalau gitu!",
               "reaction_index": 2,
               "speaker": 1
             },
@@ -1784,6 +1829,11 @@
           "id": "scene4_1",
           "text": [
             {
+              "line": "Wah, seru nih! Aku bikin yang bentuknya segitiga angka naik. Cocok buat anak-anak",
+              "reaction_index": 2,
+              "speaker": 1
+            },
+            {
               "line": "Bagus tuh! Anak kecil biasanya suka yang bentuknya jelas dan naik gitu. Kayak gunung kecil dari angka",
               "reaction_index": 2,
               "speaker": 2
@@ -1821,6 +1871,11 @@
           "id": "scene4_2",
           "text": [
             {
+              "line": "Hmm, bisa juga aku bikin kayak tabel angka dulu, terus dibentuk jadi segitiga. Mau coba gitu?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
+            {
               "line": "Wah, keren tuh pendekatannya! Jadi kamu cetak angka urut dulu, baru dibikin format segitiga, ya?",
               "reaction_index": 2,
               "speaker": 2
@@ -1847,6 +1902,11 @@
         {
           "id": "scene4_3",
           "text": [
+            {
+              "line": "Kalau aku sih tinggal pake dua loop aja satu buat baris, satu buat angka di dalemnya. Simpel lah",
+              "reaction_index": 2,
+              "speaker": 1
+            },
             {
               "line": "Wah, kamu ngerti juga ya! Tapi kadang loop itu suka bikin pusing, apalagi pas ngatur angka yang naik-nurun",
               "reaction_index": 2,
@@ -2225,6 +2285,11 @@
           "id": "scene5_1",
           "text": [
             {
+              "line": "Input nilai, terus hitung rata-rata, terus cetak?",
+              "reaction_index": 0,
+              "speaker": 2
+            },
+            {
               "line": "Iya, inputNilai, hitungRata, dan tampilkanHasil. Itu langkah dasar. Coba kamu jelaskan sedikit",
               "reaction_index": 0,
               "speaker": 2
@@ -2262,6 +2327,11 @@
           "id": "scene5_2",
           "text": [
             {
+              "line": "Pak, emang harus satu fungsi satu tugas ya?",
+              "reaction_index": 4,
+              "speaker": 1
+            },
+            {
               "line": "Kalau kamu gabungin sih sebenarnya bisa, tapi nanti kode jadi susah diatur dan dimodifikasi. Konsep fungsi yang baik memang sebaiknya tiap fungsi punya satu tugas spesifik.",
               "reaction_index": 4,
               "speaker": 2
@@ -2288,6 +2358,11 @@
         {
           "id": "scene5_3",
           "text": [
+            {
+              "line": "Jadi tiga fungsi, mungkin ya… input, hitung rata-rata, sama cetak hasil?",
+              "reaction_index": 2,
+              "speaker": 1
+            },
             {
               "line": "Iya, itu udah tepat. Masing-masing fungsi punya tugas khusus.",
               "reaction_index": 2,
@@ -2673,7 +2748,7 @@
               "nextType": "dialog"
             },
             {
-              "text": "Hmm, kalau kamu mau aku jelasin, kamu bayar pakees teh, deal ga?",
+              "text": "Hmm, kalau kamu mau aku jelasin, kamu bayar pake es teh, deal ga?",
               "next": "scene6_3",
               "nextType": "dialog"
             }
@@ -2684,6 +2759,11 @@
         {
           "id": "scene6_1",
           "text": [
+            {
+              "line": "Santai, aku juga lagi belajar kok. Kita coba bareng aja yuk",
+              "reaction_index": 0,
+              "speaker": 1
+            },
             {
               "line": "Iya biar aku juga ngga kelihatan konyol di depan kamu.",
               "reaction_index": 0,
@@ -2726,6 +2806,11 @@
         {
           "id": "scene6_2",
           "text": [
+            {
+              "line": "Ok sini duduk sebelahku, aku jelasin pelan-pelan ya",
+              "reaction_index": 2,
+              "speaker": 1
+            },
             {
               "line": "Hehe, makasih, biasanya aku nggak pernah minta tolong orang buat coding begini.",
               "reaction_index": 2,
@@ -2778,6 +2863,11 @@
         {
           "id": "scene6_3",
           "text": [
+            {
+              "line": "Hmm, kalau kamu mau aku jelasin, kamu bayar pake es teh, deal ga?",
+              "reaction_index": 2,
+              "speaker": 2
+            },
             {
               "line": "HAHAHHHAHAH OKE DEAL! Kamu suka es teh ya?",
               "reaction_index": 2,
