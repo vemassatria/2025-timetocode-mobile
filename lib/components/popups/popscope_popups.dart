@@ -53,7 +53,7 @@ class PopscopePopups {
           closePopupOverlay();
         },
         onExit: () {
-          challengeController.endChallenge();
+          challengeController.endChallengePopup();
           closePopupOverlay();
         },
         onClose: () {
@@ -66,49 +66,47 @@ class PopscopePopups {
   }
 }
 
-  void endGamePopup(BuildContext context, WidgetRef ref){
-    showPopupOverlay(
-      context,
-      ConfirmPopup(
-        title: 'Lanjutkan Permainan?',
-        description: 'Keluar Halaman dan Lanjutkan Permainan?',
-        confirmLabel: 'Lanjutkan',
-        onPrimaryButtonPressed: () {
-          final storyController = ref.read(
-            storyControllerProvider.notifier,
-          );
-          storyController.endStory();
-          closePopupOverlay();
-        },
-        onGoBack: () {
-          PopscopePopups.setPopScope(true);
-          closePopupOverlay(); 
-        },
-      ),
-    );
-  }
+void endGamePopup(BuildContext context, WidgetRef ref) {
+  showPopupOverlay(
+    context,
+    ConfirmPopup(
+      title: 'Lanjutkan Permainan?',
+      description: 'Keluar Halaman dan Lanjutkan Permainan?',
+      confirmLabel: 'Lanjutkan',
+      onPrimaryButtonPressed: () {
+        final storyController = ref.read(storyControllerProvider.notifier);
+        storyController.endStory();
+        closePopupOverlay();
+      },
+      onGoBack: () {
+        PopscopePopups.setPopScope(true);
+        closePopupOverlay();
+      },
+    ),
+  );
+}
 
-  void endChallengePopup(BuildContext context, WidgetRef ref){
-    showPopupOverlay(
-      context,
-      ConfirmPopup(
-        title: 'Lanjutkan Challenge?',
-        description: 'Keluar Halaman dan Lanjutkan Permainan?',
-        confirmLabel: 'Lanjutkan',
-        onPrimaryButtonPressed: () {
-          final challengeController = ref.read(
-            challengeControllerProvider.notifier,
-          );
-          challengeController.endChallenge();
-          closePopupOverlay();
-        },
-        onGoBack: () {
-          PopscopePopups.setPopScope(true);
-          closePopupOverlay(); 
-        },
-      ),
-    );
-  }
+void endChallengePopup(BuildContext context, WidgetRef ref) {
+  showPopupOverlay(
+    context,
+    ConfirmPopup(
+      title: 'Lanjutkan Challenge?',
+      description: 'Keluar Halaman dan Lanjutkan Permainan?',
+      confirmLabel: 'Lanjutkan',
+      onPrimaryButtonPressed: () {
+        final challengeController = ref.read(
+          challengeControllerProvider.notifier,
+        );
+        challengeController.endChallenge();
+        closePopupOverlay();
+      },
+      onGoBack: () {
+        PopscopePopups.setPopScope(true);
+        closePopupOverlay();
+      },
+    ),
+  );
+}
 
 void exitPopup(BuildContext context) {
   showPopupOverlay(

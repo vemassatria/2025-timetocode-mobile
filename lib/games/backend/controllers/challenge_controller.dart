@@ -172,6 +172,21 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
     );
   }
 
+  void endChallengePopup() {
+    ref.read(mainTabIndexProvider.notifier).state = 1;
+    game.overlays.remove('Challenge');
+    game.overlays.add('GameUI');
+    state = AsyncValue.data(
+      state.value!.copyWith(
+        currentLevel: null,
+        currentDifficulty: null,
+        currentQuestion: null,
+        correctAnswer: null,
+        wrongAnswer: null,
+      ),
+    );
+  }
+
   void resetChallenge() {
     final challenge = state.value!.currentLevel;
     final currentQuestion = challenge!.questions.mudah.first;
