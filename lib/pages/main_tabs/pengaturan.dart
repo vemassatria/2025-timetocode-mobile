@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/setting_item.dart';
+import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timetocode/SFX/music_service.dart';
+import 'package:timetocode/games/backend/services/music_service.dart';
 
 class PengaturanPage extends StatefulWidget {
   const PengaturanPage({super.key});
@@ -58,8 +59,13 @@ class _PengaturanPageState extends State<PengaturanPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Pengaturan', style: AppTypography.heading5()),
-        toolbarHeight: 64.h,
+        title: Text('Pengaturan', style: AppTypography.heading6()),
+        toolbarHeight: 56.h,
+        backgroundColor: AppColors.surfaceDark,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1),
+          child: Container(height: 1, color: AppColors.black1),
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 16.w),

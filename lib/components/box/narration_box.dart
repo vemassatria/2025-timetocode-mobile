@@ -1,5 +1,5 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
@@ -8,61 +8,25 @@ import 'package:timetocode/utils/screen_utils.dart';
 class NarrationBox extends StatefulWidget {
   final String narrationText;
   final VoidCallback onTap;
+
   const NarrationBox({
-    super.key,
+    Key? key,
     required this.narrationText,
     required this.onTap,
-  });
+  }) : super(key: key);
+
   @override
-  NarrationBoxState createState() => NarrationBoxState();
+  State<NarrationBox> createState() => _NarrationBoxState();
 }
 
-class NarrationBoxState extends State<NarrationBox> {
-  String displayedText = '';
-  int charIndex = 0;
-  bool isTextComplete = false;
-  Timer? _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _startTypingEffect();
-  }
-
-  void _startTypingEffect() {
-    _timer = Timer(const Duration(milliseconds: 20), _updateText);
-  }
-
-  void _updateText() {
-    if (charIndex < widget.narrationText.length) {
-      setState(() {
-        displayedText += widget.narrationText[charIndex];
-        charIndex++;
-      });
-      _startTypingEffect();
-    } else {
-      setState(() {
-        isTextComplete = true;
-      });
-    }
-  }
+class _NarrationBoxState extends State<NarrationBox> {
+  bool _isComplete = false;
 
   void _handleTap() {
-    if (!isTextComplete) {
-      _timer?.cancel();
-      setState(() {
-        displayedText = widget.narrationText;
-        isTextComplete = true;
-      });
-    } else {
+    if (_isComplete) {
       widget.onTap();
     }
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
+    // otherwise: do nothing, since displayFullTextOnTap will rush it
   }
 
   @override
@@ -73,8 +37,8 @@ class NarrationBoxState extends State<NarrationBox> {
       onTap: _handleTap,
       child: Container(
         height: 250.h,
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         width: 328.w,
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
         decoration: BoxDecoration(
           color: AppColors.backgroundTransparent,
           border: Border.all(color: AppColors.white),
@@ -83,16 +47,36 @@ class NarrationBoxState extends State<NarrationBox> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: SingleChildScrollView(
-                child: Text(
-                  displayedText,
-                  style: AppTypography.normal().copyWith(
-                    decoration: TextDecoration.none,
+              child: AnimatedTextKit(
+                animatedTexts: [
+                  TypewriterAnimatedText(
+                    widget.narrationText,
+                    textStyle: AppTypography.normal().copyWith(
+                      decoration: TextDecoration.none,
+                    ),
+                    speed: const Duration(milliseconds: 20),
+                    cursor: '',
                   ),
-                ),
+                ],
+                isRepeatingAnimation: false,
+                displayFullTextOnTap:
+                    true, // rush to full text on tap :contentReference[oaicite:1]{index=1}
+                stopPauseOnTap:
+                    true, // if you had multiple strings, tap to skip pause :contentReference[oaicite:2]{index=2}
+                onTap: () {
+                  if (!_isComplete) {
+                    // the kit has just rushed to full—mark complete
+                    setState(() => _isComplete = true);
+                  }
+                },
+                onFinished: () {
+                  // also mark complete when the animation naturally ends
+                  setState(() => _isComplete = true);
+                },
               ),
             ),
-            if (isTextComplete)
+
+            if (_isComplete)
               Padding(
                 padding: EdgeInsets.only(top: 8.h),
                 child: Align(
