@@ -1,61 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/setting_item.dart';
+import 'package:timetocode/games/backend/providers/music_service_provider.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timetocode/games/backend/services/music_service.dart';
 
-class PengaturanPage extends StatefulWidget {
+class PengaturanPage extends ConsumerWidget {
   const PengaturanPage({super.key});
 
   @override
-  State<PengaturanPage> createState() => _PengaturanPageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final bool isMusicEnabled = ref.watch(musicServiceProvider);
+    final bool isEffectEnabled = ref.watch(soundEffectServiceProvider);
 
-class _PengaturanPageState extends State<PengaturanPage> {
-  // bool _efekSuara = true;
-  bool _musikLatar = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadMusiklatar();
-    // _loadEfekSuara();
-  }
-
-  Future<void> _loadMusiklatar() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _musikLatar = prefs.getBool('musikLatar') ?? true;
-    });
-  }
-
-  _updateMusikLatar(bool value) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setBool('musikLatar', value);
-    setState(() {
-      _musikLatar = value;
-    });
-  }
-
-  // Future<void> _loadEfekSuara() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     _efekSuara = prefs.getBool('efekSuara') ?? true;
-  //   });
-  // }
-
-  // void _updateEfekSuara(bool value) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   prefs.setBool('efekSuara', value);
-  //   setState(() {
-  //     _efekSuara = value;
-  //   });
-  // }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -63,7 +22,7 @@ class _PengaturanPageState extends State<PengaturanPage> {
         toolbarHeight: 56.h,
         backgroundColor: AppColors.surfaceDark,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1),
+          preferredSize: const Size.fromHeight(1),
           child: Container(height: 1, color: AppColors.black1),
         ),
       ),
@@ -73,30 +32,26 @@ class _PengaturanPageState extends State<PengaturanPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Pengaturan Aplikasi', style: AppTypography.small()),
-            // SizedBox(height: 8.h),
-            // SettingItem(
-            //   icon: Icon(Icons.volume_up),
-            //   label: "Efek Suara",
-            //   value: _efekSuara,
-            //   onChanged: (value) {
-            //     setState(() {
-            //       _efekSuara = value;
-            //       _updateEfekSuara(value);
-            //     });
-            //     //  MusicService.updateEfekSuara(value);
-            //   },
-            // ),
             SizedBox(height: 8.h),
             SettingItem(
-              icon: Icon(Icons.music_note_sharp),
+              icon: const Icon(Icons.music_note_sharp),
               label: "Musik Latar",
-              value: _musikLatar,
+              value: isMusicEnabled,
               onChanged: (value) {
-                setState(() {
-                  _musikLatar = value;
-                  _updateMusikLatar(value);
-                });
-                MusicService.updateMusikLatar(value);
+                ref
+                    .read(musicServiceProvider.notifier)
+                    .updateMusicSetting(value);
+              },
+            ),
+            SizedBox(height: 8.h),
+            SettingItem(
+              icon: Icon(Icons.volume_up),
+              label: "Efek Suara",
+              value: isEffectEnabled,
+              onChanged: (value) {
+                ref
+                    .read(soundEffectServiceProvider.notifier)
+                    .updateSoundEffectSetting(value);
               },
             ),
           ],

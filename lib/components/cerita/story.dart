@@ -4,8 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/menu_button.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/components/popups/popscope_popups.dart';
-
-// Import StoryController provider
 import 'package:timetocode/games/backend/providers/story_provider.dart';
 
 class StoryPage extends ConsumerWidget {
@@ -13,10 +11,8 @@ class StoryPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Mengamati state StoryController
     final storyStateAsync = ref.watch(storyControllerProvider);
 
-    // Menangani state asinkron
     return storyStateAsync.when(
       loading:
           () => const Scaffold(
@@ -51,7 +47,6 @@ class StoryPage extends ConsumerWidget {
                     padding: EdgeInsets.only(top: 16.h),
                     child: MenuButton(
                       onRestart: () {
-                        // Gunakan StoryController untuk me-restart level
                         final storyController = ref.read(
                           storyControllerProvider.notifier,
                         );
@@ -59,7 +54,6 @@ class StoryPage extends ConsumerWidget {
                         closePopupOverlay();
                       },
                       onExit: () {
-                        // Gunakan StoryController untuk mengakhiri cerita
                         final storyController = ref.read(
                           storyControllerProvider.notifier,
                         );

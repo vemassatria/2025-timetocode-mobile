@@ -1,61 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/components/setting_item.dart';
+import 'package:timetocode/games/backend/providers/music_service_provider.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timetocode/games/backend/services/music_service.dart';
 
-class SettingPopup extends StatefulWidget {
+class SettingPopup extends ConsumerWidget {
   final VoidCallback onGoBack;
 
   const SettingPopup({super.key, required this.onGoBack});
-
-  @override
-  State<SettingPopup> createState() => _SettingPopupState();
-}
-
-class _SettingPopupState extends State<SettingPopup> {
-  // bool _efekSuara = true;
-  bool _musikLatar = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadMusiklatar();
-    // _loadEfekSuara();
-  }
-
-  Future<void> _loadMusiklatar() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _musikLatar = prefs.getBool('musikLatar') ?? true;
-    });
-  }
-
-  _updateMusikLatar(bool value) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setBool('musikLatar', value);
-    setState(() {
-      _musikLatar = value;
-    });
-  }
-
-  // Future<void> _loadEfekSuara() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     _efekSuara = prefs.getBool('efekSuara') ?? true;
-  //   });
-  // }
-
-  // void _updateEfekSuara(bool value) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   prefs.setBool('efekSuara', value);
-  //   setState(() {
-  //     _efekSuara = value;
-  //   });
-  // }
 
   Widget _buildTitle() {
     return Text(
@@ -65,35 +21,32 @@ class _SettingPopupState extends State<SettingPopup> {
     );
   }
 
-  Widget _buildSettingsSection() {
+  Widget _buildSettingsSection(WidgetRef ref) {
+    final bool isMusicEnabled = ref.watch(musicServiceProvider);
+    final bool isEffectEnabled = ref.watch(soundEffectServiceProvider);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Pengaturan Aplikasi', style: AppTypography.small()),
-        SizedBox(height: 8.h),
-        // SettingItem(
-        //   icon: const Icon(Icons.volume_up),
-        //   label: "Efek Suara",
-        //   value: _efekSuara,
-        //   onChanged: (value) {
-        //     setState(() {
-        //       _efekSuara = value;
-        //       _updateEfekSuara(value);
-        //     });
-        //     // MusicService.updateEfekSuara(value);
-        //   },
-        // ),
-        SizedBox(height: 8.h),
+        SizedBox(height: 16.h),
         SettingItem(
           icon: const Icon(Icons.music_note_sharp),
           label: "Musik Latar",
-          value: _musikLatar,
+          value: isMusicEnabled,
           onChanged: (value) {
-            setState(() {
-              _musikLatar = value;
-              _updateMusikLatar(value);
-            });
-            MusicService.updateMusikLatar(value);
+            ref.read(musicServiceProvider.notifier).updateMusicSetting(value);
+          },
+        ),
+        SizedBox(height: 8.h),
+        SettingItem(
+          icon: const Icon(Icons.volume_up),
+          label: "Efek Suara",
+          value: isEffectEnabled,
+          onChanged: (value) {
+            ref
+                .read(soundEffectServiceProvider.notifier)
+                .updateSoundEffectSetting(value);
           },
         ),
       ],
@@ -103,13 +56,13 @@ class _SettingPopupState extends State<SettingPopup> {
   Widget _buildButton() {
     return CustomButton(
       label: "Kembali",
-      onPressed: widget.onGoBack,
+      onPressed: onGoBack,
       widthMode: ButtonWidthMode.fill,
     );
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return BasePopup(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -119,7 +72,7 @@ class _SettingPopupState extends State<SettingPopup> {
           SizedBox(height: 8.h),
           Divider(thickness: 3.w),
           SizedBox(height: 32.h),
-          _buildSettingsSection(),
+          _buildSettingsSection(ref),
           SizedBox(height: 32.h),
           _buildButton(),
         ],

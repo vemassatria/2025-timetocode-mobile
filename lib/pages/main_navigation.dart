@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:timetocode/games/backend/services/music_service.dart';
 import 'package:timetocode/pages/main_tabs/challenge_page.dart';
 import 'package:timetocode/pages/main_tabs/daftar_level_page.dart';
 import 'package:timetocode/pages/main_tabs/pengaturan.dart';
@@ -24,7 +23,6 @@ class _MainNavigationState extends ConsumerState<MainNavigation> {
 
   @override
   void initState() {
-    MusicService.playMainMenuMusic();
     _selectedIndex = ref.read(mainTabIndexProvider);
     super.initState();
   }
@@ -39,19 +37,23 @@ class _MainNavigationState extends ConsumerState<MainNavigation> {
   Widget build(BuildContext context) {
     initScreenUtil(context);
 
-    final pages = <Widget>[DaftarLevelPage(), ChallengePage(), PengaturanPage()];
+    final pages = <Widget>[
+      DaftarLevelPage(),
+      ChallengePage(),
+      PengaturanPage(),
+    ];
 
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
-            if(PopscopePopups.isPopScopeActive()){
-              exitPopup(context);
-              PopscopePopups.setPopScope(false);
-            }else{
-              closePopupOverlay();
-              PopscopePopups.setPopScope(true);
-            }
-          },
+        if (PopscopePopups.isPopScopeActive()) {
+          exitPopup(context);
+          PopscopePopups.setPopScope(false);
+        } else {
+          closePopupOverlay();
+          PopscopePopups.setPopScope(true);
+        }
+      },
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: pages[_selectedIndex],
@@ -102,5 +104,3 @@ class _MainNavigationState extends ConsumerState<MainNavigation> {
     );
   }
 }
-
-

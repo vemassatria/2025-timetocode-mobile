@@ -3,13 +3,13 @@ import 'package:timetocode/games/backend/game_engine.dart';
 import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/providers/game_provider.dart';
 import 'package:timetocode/games/backend/providers/daftar_level_provider.dart';
+import 'package:timetocode/games/backend/providers/music_service_provider.dart';
 import 'package:timetocode/games/backend/providers/resource_provider.dart';
 import 'package:timetocode/games/backend/services/predialog_service.dart';
 import 'package:timetocode/games/backend/services/resource_service.dart';
 import '../services/level_service.dart';
 import '../services/dialog_service.dart';
 import '../services/question_service.dart';
-import '../services/music_service.dart';
 import '../models/level_model.dart';
 import '../models/predialog_model.dart';
 import '../models/dialog_model.dart';
@@ -125,7 +125,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     final level = levels[index];
 
     await Future.wait([
-      MusicService.switchLevelMusic(index),
+      ref.read(musicServiceProvider.notifier).playLevelMusic(index),
       resource.preloadCharacters(
         level.character1Images + level.character2Images,
       ),
