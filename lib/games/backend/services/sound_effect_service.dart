@@ -14,6 +14,8 @@ class SoundEffectService extends Notifier<bool> {
   late AudioPool _errorClickPool;
   late AudioPool _correctPool;
   late AudioPool _popupAnswerPool;
+  late AudioPool _submitPool;
+  AudioPlayer? _typingAudioPlayer;
 
   @override
   bool build() {
@@ -22,52 +24,60 @@ class SoundEffectService extends Notifier<bool> {
   }
 
   Future<void> initialize() async {
+    await FlameAudio.audioCache.load('sfx/typing.wav');
+
     _buttonClick1Pool = await FlameAudio.createPool(
       'sfx/button-click.wav',
       minPlayers: 1,
-      maxPlayers: 3,
+      maxPlayers: 2,
     );
 
     _buttonClick2Pool = await FlameAudio.createPool(
       'sfx/button2-click.wav',
       minPlayers: 1,
-      maxPlayers: 3,
+      maxPlayers: 2,
     );
 
     _popClickPool = await FlameAudio.createPool(
       'sfx/pop-click.wav',
       minPlayers: 1,
-      maxPlayers: 3,
+      maxPlayers: 2,
     );
 
     _selectClickPool = await FlameAudio.createPool(
       'sfx/select-click.wav',
       minPlayers: 1,
-      maxPlayers: 3,
+      maxPlayers: 2,
     );
 
     _negativeClickPool = await FlameAudio.createPool(
       'sfx/negative-click.wav',
       minPlayers: 1,
-      maxPlayers: 3,
+      maxPlayers: 2,
     );
 
     _errorClickPool = await FlameAudio.createPool(
       'sfx/error-click.wav',
       minPlayers: 1,
-      maxPlayers: 3,
+      maxPlayers: 2,
     );
 
     _correctPool = await FlameAudio.createPool(
       'sfx/correct.wav',
       minPlayers: 1,
-      maxPlayers: 3,
+      maxPlayers: 2,
     );
 
     _popupAnswerPool = await FlameAudio.createPool(
       'sfx/popup-answer.wav',
       minPlayers: 1,
-      maxPlayers: 3,
+      maxPlayers: 2,
+    );
+
+    _submitPool = await FlameAudio.createPool(
+      'sfx/submit.wav',
+      minPlayers: 1,
+      maxPlayers: 2,
     );
   }
 
@@ -117,6 +127,33 @@ class SoundEffectService extends Notifier<bool> {
     if (state) {
       _popupAnswerPool.start();
     }
+  }
+
+  void playSubmit() {
+    if (state) {
+      _submitPool.start();
+    }
+  }
+
+  Future<void> playTyping() async {
+    // Pastikan sound effect aktif
+    if (state) {
+      // Hentikan dulu jika ada yang sedang berjalan untuk menghindari tumpang tindih
+      await stopTyping();
+
+      // Gunakan FlameAudio.play untuk memanfaatkan cache.
+      // Ini lebih sederhana dan efisien.
+      // 'sfx/typing.wav' akan diambil dari cache yang sudah di-load saat initialize().
+      // Kita juga bisa langsung set agar audio berulang (looping).
+      _typingAudioPlayer = await FlameAudio.loop('sfx/typing.wav');
+    }
+  }
+
+  Future<void> stopTyping() async {
+    // Cukup panggil stop(). Release akan dipanggil secara internal oleh FlameAudio
+    // saat tidak lagi dibutuhkan, tetapi menghentikannya secara eksplisit sudah cukup.
+    await _typingAudioPlayer?.stop();
+    _typingAudioPlayer = null; // Set ke null agar bisa dicek lagi nanti
   }
 
   void updateSoundEffectSetting(bool isEnabled) async {

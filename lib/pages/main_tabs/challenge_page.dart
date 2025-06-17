@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/challengecard.dart';
 import 'package:timetocode/games/backend/providers/challenge_provider.dart';
 import 'package:timetocode/games/backend/providers/daftar_challenge_provider.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-//import 'package:timetocode/games/backend/controllers/challenge_controller.dart';
 
 class ChallengePage extends ConsumerWidget {
   const ChallengePage({Key? key}) : super(key: key);
@@ -63,6 +63,9 @@ class ChallengePage extends ConsumerWidget {
                       isUnlocked
                           ? () {
                             ref
+                                .read(soundEffectServiceProvider.notifier)
+                                .playSelectClick();
+                            ref
                                 .read(challengeControllerProvider.notifier)
                                 .startChallenge(index);
                           }
@@ -75,31 +78,4 @@ class ChallengePage extends ConsumerWidget {
       },
     );
   }
-
-  //   void _navigateToChallenge(BuildContext context, int levelNumber) {
-  //     // Untuk sementara, tampilkan dialog sebagai placeholder
-  //     showDialog(
-  //       context: context,
-  //       builder:
-  //           (context) => AlertDialog(
-  //             title: Text(
-  //               'Level $levelNumber',
-  //               style: AppTypography.heading5(color: AppColors.primaryText),
-  //             ),
-  //             content: Text(
-  //               'Halaman detail untuk Level $levelNumber akan ditampilkan di sini.',
-  //               style: AppTypography.normal(color: AppColors.primaryText),
-  //             ),
-  //             actions: [
-  //               TextButton(
-  //                 onPressed: () => Navigator.of(context).pop(),
-  //                 child: Text(
-  //                   'Tutup',
-  //                   style: AppTypography.normalBold(color: AppColors.primaryText),
-  //                 ),
-  //               ),
-  //             ],
-  //           ),
-  //     );
-  //   }
 }

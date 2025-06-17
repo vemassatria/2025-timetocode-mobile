@@ -61,6 +61,7 @@ flutter:
     - assets/character/
     - assets/stories/
     - assets/audio/music/
+    - assets/audio/sfx/
     - assets/ilustration/
     - assets/logo/Logo.png
   fonts:

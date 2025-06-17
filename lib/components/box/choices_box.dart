@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/confirm_popup.dart';
 import 'package:timetocode/games/backend/models/choices_model.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 // import 'package:timetocode/SFX/music_service.dart';
 
-class ChoicesBox extends StatelessWidget {
+class ChoicesBox extends ConsumerWidget {
   final List<ChoicesModel> choices;
   final ValueChanged<int> onPressed;
 
   const ChoicesBox({super.key, required this.choices, required this.onPressed});
 
-  Widget _buildChoiceButton(BuildContext context, int index) {
+  Widget _buildChoiceButton(BuildContext context, int index, VoidCallback sfx) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.h),
       child: CustomButton(
@@ -23,7 +25,7 @@ class ChoicesBox extends StatelessWidget {
         type: ButtonType.outline,
 
         onPressed: () {
-          // MusicService.sfxSelectClick();
+          sfx();
           showPopupOverlay(
             context,
             ConfirmPopup(
@@ -48,8 +50,9 @@ class ChoicesBox extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     initScreenUtil(context);
+    final soundEffectService = ref.watch(soundEffectServiceProvider.notifier);
 
     return Container(
       width: 1.sw,
@@ -63,7 +66,11 @@ class ChoicesBox extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(choices.length, (index) {
-            return _buildChoiceButton(context, index);
+            return _buildChoiceButton(
+              context,
+              index,
+              soundEffectService.playSelectClick,
+            );
           }),
         ),
       ),

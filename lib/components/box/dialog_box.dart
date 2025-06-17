@@ -5,7 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:timetocode/components/popups/confirm_popup.dart';
 import 'package:timetocode/games/backend/models/dialog_choices.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/games/backend/providers/story_provider.dart';
+import 'package:timetocode/games/backend/services/sound_effect_service.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
@@ -22,30 +24,40 @@ class DialogBox extends ConsumerStatefulWidget {
 class _DialogBoxState extends ConsumerState<DialogBox> {
   bool _isComplete = false;
   int? _lastIndex;
+  late final SoundEffectService soundEffectService;
 
+  @override
+  void initState() {
+    soundEffectService = ref.read(soundEffectServiceProvider.notifier);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    soundEffectService.stopTyping();
+    super.dispose();
+  }
+
+  // --- PERUBAHAN LOGIKA TAP UTAMA ---
+  // Logika ini sekarang sama dengan `_handleTap` di NarrationBox.
   void _onBoxTap() {
-    final asyncState = ref.read(storyControllerProvider);
-    final story = asyncState.value;
-    final dialog = story?.currentDialog;
-    final idx = story?.indexDialog ?? 0;
-    final isLastLine = dialog != null && idx == dialog.dialogue.length - 1;
-
+    // Jika animasi sudah selesai, lanjutkan ke dialog berikutnya.
     if (_isComplete) {
-      // Only block if on last line and there are choices
+      final story = ref.read(storyControllerProvider).value;
+      final dialog = story?.currentDialog;
+      final idx = story?.indexDialog ?? 0;
+      final isLastLine = dialog != null && idx == dialog.dialogue.length - 1;
+
+      // Jangan lakukan apa-apa jika ini baris terakhir dan ada pilihan.
+      // Menunggu user untuk memilih dari DialogChoicesBox.
       if (isLastLine && dialog.choices != null && dialog.choices!.isNotEmpty) {
-        // Do nothing, wait for user to pick a choice
         return;
       }
+
       ref.read(storyControllerProvider.notifier).nextDialog();
-      setState(() => _isComplete = false); // Reset for the next dialog line
-    } else {
-      // If animation is not complete, tapping will complete it.
-      // The AnimatedTextKit's displayFullTextOnTap could also handle this,
-      // but explicitly setting _isComplete ensures our state is correct.
-      // This part is now mostly handled by onTap in AnimatedTextKit
-      // But _isComplete needs to be true for the arrow/choices to show
-      setState(() => _isComplete = true);
     }
+    // Jika animasi belum selesai, tidak melakukan apa-apa di sini.
+    // `AnimatedTextKit` dengan `displayFullTextOnTap: true` akan menanganinya.
   }
 
   @override
@@ -54,24 +66,20 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     final asyncState = ref.watch(storyControllerProvider);
     final story = asyncState.value;
 
-    // If story or currentDialog is null, perhaps show a loading or empty state
     if (story == null ||
         story.currentDialog == null ||
         story.indexDialog == null) {
-      return const SizedBox.shrink(); // Or some placeholder
+      return const SizedBox.shrink();
     }
 
     final dialog = story.currentDialog!;
     final idx = story.indexDialog!;
 
-    // reset complete when index changes
-    // This should ideally happen BEFORE the build method uses _isComplete for the new text
-    // However, placing it here might still work due to the order of operations in build.
-    // A safer place might be in a didUpdateWidget or reacting to provider changes.
-    // For now, this seems to be your current logic.
+    // Reset _isComplete setiap kali index dialog berubah.
     if (_lastIndex != idx) {
       _lastIndex = idx;
       _isComplete = false;
+      soundEffectService.playTyping();
     }
 
     final charIdx = dialog.getCharacterIndex(idx);
@@ -88,7 +96,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     return Align(
       alignment: Alignment.bottomCenter,
       child: GestureDetector(
-        onTap: _onBoxTap,
+        onTap: _onBoxTap, // Handler tap utama ada di sini.
         child: Stack(
           clipBehavior: Clip.none,
           children: [
@@ -116,42 +124,34 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                             Expanded(
                               child: AnimatedTextKit(
                                 key: ValueKey('dialog_$idx'),
-                                isRepeatingAnimation: false,
-                                displayFullTextOnTap: true, // Akan mempercepat animasi jika diketuk
-                                stopPauseOnTap: true,
-                                onFinished: () {
-                                  if (mounted) {
-                                    setState(() {
-                                      _isComplete = true;
-                                    });
-                                  }
-                                },
-                                onTap: () { // Tambahkan onTap untuk mempercepat jika belum selesai
-                                  if (!_isComplete) {
-                                    setState(() {
-                                      _isComplete = true;
-                                    });
-                                  }
-                                },
                                 animatedTexts: [
                                   TypewriterAnimatedText(
                                     text,
-                                    textStyle: AppTypography.medium() // Hanya satu kali pemanggilan AppTypography.medium()
-                                        .copyWith(
-                                          decoration:
-                                              TextDecoration.none,
-                                        ),
-                                    speed: const Duration(
-                                      milliseconds: 20,
+                                    textStyle: AppTypography.medium().copyWith(
+                                      decoration: TextDecoration.none,
                                     ),
+                                    speed: const Duration(milliseconds: 20),
                                     cursor: '_',
                                   ),
                                 ],
+                                isRepeatingAnimation: false,
+                                displayFullTextOnTap: true,
+                                onTap: () {
+                                  soundEffectService.stopTyping();
+                                  if (mounted && !_isComplete) {
+                                    setState(() => _isComplete = true);
+                                  }
+                                },
+                                // `onFinished` dipanggil saat animasi selesai secara natural.
+                                onFinished: () {
+                                  soundEffectService.stopTyping();
+                                  if (mounted) {
+                                    setState(() => _isComplete = true);
+                                  }
+                                },
                               ),
                             ),
-                            SizedBox(
-                              height: 12,
-                            ), // <-- Replace Spacer() with a small gap
+                            SizedBox(height: 12),
                             if (_isComplete &&
                                 isLastLine &&
                                 dialog.choices != null &&
@@ -159,6 +159,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                               DialogChoicesBox(
                                 choices: dialog.choices!,
                                 onPressed: (choice) {
+                                  soundEffectService.playSelectClick();
                                   _checkAnswer(context, choice);
                                 },
                               ),
@@ -215,7 +216,6 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
         description: "Kamu bisa mencoba respon lainnya.",
         confirmLabel: "Yakin",
         onPrimaryButtonPressed: () {
-          // MusicService.sfxSelectClick();
           final storyController = ref.read(storyControllerProvider.notifier);
           if (selected.nextType == 'dialog') {
             storyController.showDialog(selected.next);
@@ -227,7 +227,6 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
           closePopupOverlay();
         },
         onGoBack: () {
-          // MusicService.sfxNegativeClick();
           closePopupOverlay();
         },
       ),

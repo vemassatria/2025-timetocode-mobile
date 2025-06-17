@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/typography.dart';
-// import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
 enum InfoPopupVariant { defaultVariant, summary }
 
-class InfoPopup extends StatelessWidget {
+class InfoPopup extends ConsumerWidget {
   final String title;
   final String description;
   final List<String>? summaryList;
@@ -69,11 +70,12 @@ class InfoPopup extends StatelessWidget {
     }
   }
 
-  Widget _buildCloseButton() {
+  Widget _buildCloseButton(WidgetRef ref) {
     return CustomButton(
       label: "Tutup",
       onPressed: () {
-        // MusicService.sfxNegativeClick();
+        final audioService = ref.read(soundEffectServiceProvider.notifier);
+        audioService.playNegativeClick();
         onClose();
       },
       widthMode: ButtonWidthMode.fill,
@@ -81,7 +83,7 @@ class InfoPopup extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     initScreenUtil(context);
 
     return BasePopup(
@@ -95,7 +97,7 @@ class InfoPopup extends StatelessWidget {
           SizedBox(height: 32.h),
           _buildDescription(),
           SizedBox(height: 32.h),
-          _buildCloseButton(),
+          _buildCloseButton(ref),
         ],
       ),
     );

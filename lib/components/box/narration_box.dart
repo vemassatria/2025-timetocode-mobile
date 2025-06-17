@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
+import 'package:timetocode/games/backend/services/sound_effect_service.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
-class NarrationBox extends StatefulWidget {
+class NarrationBox extends ConsumerStatefulWidget {
   final String narrationText;
   final VoidCallback onTap;
 
@@ -16,11 +19,37 @@ class NarrationBox extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<NarrationBox> createState() => _NarrationBoxState();
+  ConsumerState<NarrationBox> createState() => _NarrationBoxState();
 }
 
-class _NarrationBoxState extends State<NarrationBox> {
+class _NarrationBoxState extends ConsumerState<NarrationBox> {
   bool _isComplete = false;
+  late final SoundEffectService soundEffectService;
+
+  @override
+  void initState() {
+    super.initState();
+    soundEffectService = ref.read(soundEffectServiceProvider.notifier);
+    soundEffectService.playTyping();
+  }
+
+  @override
+  void dispose() {
+    soundEffectService.stopTyping();
+    super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(NarrationBox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.narrationText != oldWidget.narrationText) {
+      setState(() {
+        _isComplete = false;
+      });
+      soundEffectService.playTyping();
+    }
+  }
 
   void _handleTap() {
     if (_isComplete) {
@@ -48,6 +77,7 @@ class _NarrationBoxState extends State<NarrationBox> {
           children: [
             Expanded(
               child: AnimatedTextKit(
+                key: ValueKey(widget.narrationText),
                 animatedTexts: [
                   TypewriterAnimatedText(
                     widget.narrationText,
@@ -59,18 +89,16 @@ class _NarrationBoxState extends State<NarrationBox> {
                   ),
                 ],
                 isRepeatingAnimation: false,
-                displayFullTextOnTap:
-                    true, // rush to full text on tap :contentReference[oaicite:1]{index=1}
-                stopPauseOnTap:
-                    true, // if you had multiple strings, tap to skip pause :contentReference[oaicite:2]{index=2}
+                displayFullTextOnTap: true,
+                stopPauseOnTap: true,
                 onTap: () {
+                  soundEffectService.stopTyping();
                   if (!_isComplete) {
-                    // the kit has just rushed to full—mark complete
                     setState(() => _isComplete = true);
                   }
                 },
                 onFinished: () {
-                  // also mark complete when the animation naturally ends
+                  soundEffectService.stopTyping();
                   setState(() => _isComplete = true);
                 },
               ),

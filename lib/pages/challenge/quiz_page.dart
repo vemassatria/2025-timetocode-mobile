@@ -5,6 +5,8 @@ import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/answer_popup.dart';
 import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/providers/challenge_provider.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
+import 'package:timetocode/games/backend/services/sound_effect_service.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/widgets/code_text.dart';
@@ -20,6 +22,13 @@ class QuizPage extends ConsumerStatefulWidget {
 
 class _QuizPageState extends ConsumerState<QuizPage> {
   ChoicesModel? selectedAnswer;
+  late final SoundEffectService soundEffectService;
+
+  @override
+  void initState() {
+    super.initState();
+    soundEffectService = ref.read(soundEffectServiceProvider.notifier);
+  }
 
   void selectAnswer(ChoicesModel answer) {
     setState(() {
@@ -37,7 +46,10 @@ class _QuizPageState extends ConsumerState<QuizPage> {
     final bool isSelected = selectedAnswer == option;
 
     return GestureDetector(
-      onTap: () => selectAnswer(option),
+      onTap: () {
+        selectAnswer(option);
+        soundEffectService.playSelectClick();
+      },
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
@@ -172,7 +184,11 @@ $code'''),
             padding: EdgeInsets.all(16.w),
             child: CustomButton(
               label: "Kirim",
-              onPressed: () => {_checkAnswer(context, ref, selectedAnswer!)},
+              onPressed:
+                  () => {
+                    soundEffectService.playSubmit(),
+                    _checkAnswer(context, ref, selectedAnswer!),
+                  },
               color: ButtonColor.purple,
               isDisabled: selectedAnswer == null,
             ),
@@ -200,6 +216,7 @@ $code'''),
       AnswerPopup(
         isCorrect: selected.isCorrect!,
         onPressed: () {
+          soundEffectService.playPopupAnswer();
           challengeController.checkAnswer(selected);
           closePopupOverlay();
           clearSelection();

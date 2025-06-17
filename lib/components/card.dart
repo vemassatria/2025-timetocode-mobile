@@ -1,16 +1,17 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-// import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
 enum CardStatus { unlocked, locked, completed }
 
-class LevelCard extends StatelessWidget {
+class LevelCard extends ConsumerWidget {
   final ui.Image? image;
   final String title;
   final CardStatus status;
@@ -93,7 +94,7 @@ class LevelCard extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButtons() {
+  Widget _buildActionButtons(VoidCallback sfxButton, VoidCallback sfxPop) {
     final label =
         isLocked
             ? "Terkunci"
@@ -107,7 +108,7 @@ class LevelCard extends StatelessWidget {
           child: CustomButton(
             label: label,
             onPressed: () {
-              // MusicService.sfxButtonClick();
+              sfxButton();
               onStartPressed!();
             },
             type: ButtonType.filled,
@@ -119,7 +120,7 @@ class LevelCard extends StatelessWidget {
         CustomButton(
           icon: const Icon(Icons.info_outline),
           onPressed: () {
-            // MusicService.sfxPopClick();
+            sfxPop();
             onInfoPressed!();
           },
           type: ButtonType.icon,
@@ -164,8 +165,9 @@ class LevelCard extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     initScreenUtil(context);
+    final soundEffectService = ref.read(soundEffectServiceProvider.notifier);
 
     Widget content = Stack(
       children: [
@@ -184,7 +186,10 @@ class LevelCard extends StatelessWidget {
               SizedBox(height: 16.h),
               _buildTitle(),
               SizedBox(height: 16.h),
-              _buildActionButtons(),
+              _buildActionButtons(
+                soundEffectService.playButtonClick1,
+                soundEffectService.playPopClick,
+              ),
             ],
           ),
         ),
@@ -196,7 +201,7 @@ class LevelCard extends StatelessWidget {
     if (isLocked) {
       return GestureDetector(
         onTap: () {
-          // MusicService.sfxErrorClick();
+          soundEffectService.playErrorClick();
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(const SnackBar(content: Text("Level masih terkunci")));

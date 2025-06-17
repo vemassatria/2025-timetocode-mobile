@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-// import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
-class AnswerPopup extends StatelessWidget {
+class AnswerPopup extends ConsumerWidget {
   final bool isCorrect;
   final VoidCallback onPressed;
 
@@ -42,11 +43,12 @@ class AnswerPopup extends StatelessWidget {
     );
   }
 
-  Widget _buildButton() {
+  Widget _buildButton(WidgetRef ref) {
     return CustomButton(
       label: "Lanjutkan",
       onPressed: () {
-        // MusicService.sfxButton2Click();
+        final audioService = ref.read(soundEffectServiceProvider.notifier);
+        audioService.playButtonClick2();
         onPressed();
       },
       widthMode: ButtonWidthMode.fill,
@@ -55,9 +57,10 @@ class AnswerPopup extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     initScreenUtil(context);
-    // MusicService.sfxPopupAnswer();
+    final audioService = ref.read(soundEffectServiceProvider.notifier);
+    audioService.playPopupAnswer();
     return BasePopup(
       borderColor: _color,
       child: Column(
@@ -66,7 +69,7 @@ class AnswerPopup extends StatelessWidget {
         children: [
           _buildIconWithTitleRow(),
           SizedBox(height: 32.h),
-          _buildButton(),
+          _buildButton(ref),
         ],
       ),
     );

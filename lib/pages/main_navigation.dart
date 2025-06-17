@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
+import 'package:timetocode/games/backend/services/sound_effect_service.dart';
 import 'package:timetocode/pages/main_tabs/challenge_page.dart';
 import 'package:timetocode/pages/main_tabs/daftar_level_page.dart';
 import 'package:timetocode/pages/main_tabs/pengaturan.dart';
@@ -19,16 +21,18 @@ class MainNavigation extends ConsumerStatefulWidget {
 }
 
 class _MainNavigationState extends ConsumerState<MainNavigation> {
+  late final SoundEffectService soundEffectService;
   int _selectedIndex = 0;
 
   @override
   void initState() {
     _selectedIndex = ref.read(mainTabIndexProvider);
+    soundEffectService = ref.read(soundEffectServiceProvider.notifier);
     super.initState();
   }
 
   void _onItemTapped(int index) {
-    // MusicService.sfxButtonClick();
+    soundEffectService.playButtonClick2();
     ref.read(mainTabIndexProvider.notifier).state = index;
     setState(() => _selectedIndex = index);
   }
@@ -68,7 +72,7 @@ class _MainNavigationState extends ConsumerState<MainNavigation> {
         border: Border(top: BorderSide(color: AppColors.black1, width: 1.w)),
       ),
       child: SizedBox(
-        height: 56.h, // ini tinggi yang kamu mau
+        height: 56.h,
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,

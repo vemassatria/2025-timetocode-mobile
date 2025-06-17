@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/base_popup.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/typography.dart';
-// import 'package:timetocode/SFX/music_service.dart';
 import 'package:timetocode/utils/screen_utils.dart';
 
-class ConfirmPopup extends StatelessWidget {
+class ConfirmPopup extends ConsumerWidget {
   final String title;
   final String description;
   final String confirmLabel;
@@ -38,7 +39,8 @@ class ConfirmPopup extends StatelessWidget {
     );
   }
 
-  Widget _buildButton() {
+  Widget _buildButton(WidgetRef ref) {
+    final audioService = ref.read(soundEffectServiceProvider.notifier);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -46,7 +48,7 @@ class ConfirmPopup extends StatelessWidget {
           child: CustomButton(
             label: confirmLabel,
             onPressed: () {
-              // MusicService.sfxButtonClick();
+              audioService.playButtonClick1();
               onPrimaryButtonPressed();
             },
             widthMode: ButtonWidthMode.fill,
@@ -57,7 +59,7 @@ class ConfirmPopup extends StatelessWidget {
           child: CustomButton(
             label: "Batal",
             onPressed: () {
-              // MusicService.sfxNegativeClick();
+              audioService.playNegativeClick();
               onGoBack();
             },
             widthMode: ButtonWidthMode.fill,
@@ -70,7 +72,7 @@ class ConfirmPopup extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     initScreenUtil(context);
 
     return BasePopup(
@@ -84,12 +86,9 @@ class ConfirmPopup extends StatelessWidget {
           SizedBox(height: 32.h),
           _buildDescription(),
           SizedBox(height: 32.h),
-          _buildButton(),
+          _buildButton(ref),
         ],
       ),
     );
   }
 }
-
-
-
