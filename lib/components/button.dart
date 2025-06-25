@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:timetocode/utils/screen_utils.dart';
 
 enum ButtonType { filled, icon, outline, iconLabel }
 
@@ -158,8 +157,6 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    initScreenUtil(context);
-
     final bool disabled = isDisabled || onPressed == null;
     final Color mainColor =
         disabled

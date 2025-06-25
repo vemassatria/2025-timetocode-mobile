@@ -628,7 +628,6 @@
         {
           "id": "soal1_2",
           "text": "Kalau kamu mau buat variabel beratBadan untuk nyimpen data berat 55.5 kilogram, deklarasi yang BENAR adalah...",
-          "code": "",
           "choices": [
             {
               "text": "int berat.Badan = 55.5;",

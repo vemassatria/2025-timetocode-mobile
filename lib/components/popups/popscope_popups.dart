@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:timetocode/components/popups/confirm_popup.dart';
 import 'package:timetocode/components/popups/menu_popup.dart';
+import 'package:timetocode/games/backend/providers/visual_novel/story_provider.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
-import 'package:timetocode/games/backend/providers/story_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
-import 'package:timetocode/games/backend/providers/challenge_provider.dart';
+import 'package:timetocode/games/backend/providers/challenge/challenge_provider.dart';
 
 class PopscopePopups {
   static bool _isPopScopeActive = true;
@@ -23,13 +23,11 @@ class PopscopePopups {
       context,
       MenuPopup(
         onRestart: () {
-          // Gunakan StoryController untuk me-restart level
           final storyController = ref.read(storyControllerProvider.notifier);
           storyController.restartLevel();
           closePopupOverlay();
         },
         onExit: () {
-          // Gunakan StoryController untuk mengakhiri cerita
           final storyController = ref.read(storyControllerProvider.notifier);
           storyController.exitLevel();
           closePopupOverlay();
@@ -49,12 +47,12 @@ class PopscopePopups {
       context,
       MenuPopup(
         onRestart: () {
-          challengeController.resetChallenge();
           closePopupOverlay();
+          challengeController.resetChallenge();
         },
         onExit: () {
-          challengeController.endChallengePopup();
           closePopupOverlay();
+          challengeController.endChallengePopup();
         },
         onClose: () {
           closePopupOverlay();
@@ -94,10 +92,6 @@ void endChallengePopup(BuildContext context, WidgetRef ref) {
       description: 'Keluar Halaman dan Lanjutkan Permainan?',
       confirmLabel: 'Lanjutkan',
       onPrimaryButtonPressed: () {
-        final challengeController = ref.read(
-          challengeControllerProvider.notifier,
-        );
-        challengeController.endChallenge();
         closePopupOverlay();
       },
       onGoBack: () {

@@ -1,0 +1,21 @@
+import 'package:timetocode/games/backend/models/challenge/question_difficulty_model.dart.dart';
+
+class ChallengeLevelModel {
+  final int id;
+  final String levelName;
+  final QuestionDifficulty questions;
+
+  ChallengeLevelModel({
+    required this.id,
+    required this.levelName,
+    required this.questions,
+  });
+
+  factory ChallengeLevelModel.fromJson(Map<String, dynamic> json) {
+    return ChallengeLevelModel(
+      id: json['id'] as int,
+      levelName: json['level_name'] as String,
+      questions: QuestionDifficulty.fromJson(json['questions']),
+    );
+  }
+}

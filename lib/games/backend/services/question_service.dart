@@ -1,4 +1,4 @@
-import 'package:timetocode/games/backend/models/level_model.dart';
+import 'package:timetocode/games/backend/models/visual_novel/level_model.dart';
 import 'package:timetocode/games/backend/models/question_model.dart';
 
 class QuestionService {

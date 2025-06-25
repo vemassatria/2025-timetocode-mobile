@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:timetocode/utils/screen_utils.dart';
 
 class QuestionBox extends StatelessWidget {
   final String questionText;
@@ -12,8 +11,6 @@ class QuestionBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    initScreenUtil(context);
-
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       width: 328.w,

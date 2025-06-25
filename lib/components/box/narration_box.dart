@@ -6,7 +6,6 @@ import 'package:timetocode/games/backend/providers/sound_effect_service_provider
 import 'package:timetocode/games/backend/services/sound_effect_service.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:timetocode/utils/screen_utils.dart';
 
 class NarrationBox extends ConsumerStatefulWidget {
   final String narrationText;
@@ -60,8 +59,6 @@ class _NarrationBoxState extends ConsumerState<NarrationBox> {
 
   @override
   Widget build(BuildContext context) {
-    initScreenUtil(context);
-
     return GestureDetector(
       onTap: _handleTap,
       child: Container(
@@ -85,7 +82,7 @@ class _NarrationBoxState extends ConsumerState<NarrationBox> {
                       decoration: TextDecoration.none,
                     ),
                     speed: const Duration(milliseconds: 20),
-                    cursor: '',
+                    cursor: '_',
                   ),
                 ],
                 isRepeatingAnimation: false,

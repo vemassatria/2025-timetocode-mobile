@@ -6,7 +6,6 @@ import 'package:timetocode/components/popups/base_popup.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:timetocode/utils/screen_utils.dart';
 
 class AnswerPopup extends ConsumerWidget {
   final bool isCorrect;
@@ -58,7 +57,6 @@ class AnswerPopup extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    initScreenUtil(context);
     final audioService = ref.read(soundEffectServiceProvider.notifier);
     audioService.playPopupAnswer();
     return BasePopup(

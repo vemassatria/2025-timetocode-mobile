@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:timetocode/utils/screen_utils.dart';
 import '../themes/colors.dart';
 import 'star_display.dart';
 import '../themes/typography.dart';
@@ -21,8 +20,6 @@ class ChallengeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    initScreenUtil(context);
-
     return GestureDetector(
       onTap: onTap,
       child: Container(

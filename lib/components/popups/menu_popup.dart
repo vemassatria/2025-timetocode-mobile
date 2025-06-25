@@ -8,7 +8,6 @@ import 'package:timetocode/components/popups/setting_popup.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
-import 'package:timetocode/utils/screen_utils.dart';
 
 class MenuPopup extends ConsumerWidget {
   final VoidCallback onRestart;
@@ -114,8 +113,6 @@ class MenuPopup extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    initScreenUtil(context);
-
     return BasePopup(
       child: Column(
         mainAxisSize: MainAxisSize.min,

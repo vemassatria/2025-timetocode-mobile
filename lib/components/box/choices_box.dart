@@ -7,8 +7,6 @@ import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
-import 'package:timetocode/utils/screen_utils.dart';
-// import 'package:timetocode/SFX/music_service.dart';
 
 class ChoicesBox extends ConsumerWidget {
   final List<ChoicesModel> choices;
@@ -51,8 +49,7 @@ class ChoicesBox extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    initScreenUtil(context);
-    final soundEffectService = ref.watch(soundEffectServiceProvider.notifier);
+    final soundEffectService = ref.read(soundEffectServiceProvider.notifier);
 
     return Container(
       width: 1.sw,
