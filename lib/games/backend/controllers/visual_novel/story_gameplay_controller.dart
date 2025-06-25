@@ -87,7 +87,7 @@ class StoryState {
   }
 }
 
-class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
+class StoryController extends AsyncNotifier<StoryState> {
   final DialogService _dialogService = DialogService();
   final QuestionService _questionService = QuestionService();
   final PredialogService _predialogService = PredialogService();
@@ -151,14 +151,6 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
         activeMode: 'dialog',
       );
     }
-  }
-
-  void showPreDialog(String preDialogId) {
-    final level = state.value!.activeLevel!;
-    final preDialog = _predialogService.getPredialogById(level, preDialogId);
-    state = AsyncValue.data(
-      state.value!.copyWith(preDialog: preDialog, activeMode: 'preDialog'),
-    );
   }
 
   void nextPreDialog() {
@@ -395,7 +387,8 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
         falsePrevious: null,
       ),
     );
-    game.deleteAll();
+    game.hideCharacters();
+    game.hideIlustration();
   }
 
   Future<void> endStory() async {
@@ -408,6 +401,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
           .read(completedLevelProvider.notifier)
           .setCompletedLevel(currentLevel.level);
     }
+    deleteAll();
   }
 
   void restartLevel() {
@@ -415,46 +409,44 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
       game.hideCharacters();
       game.hideIlustration();
     }
-    state = AsyncValue.data(
-      state.value!.copyWith(
-        preDialog: null,
-        currentDialog: null,
-        currentQuestion: null,
-        indexDialog: null,
-        correctAnswer: null,
-        wrongAnswer: null,
-        falsePrevious: null,
-        activeMode: null,
-      ),
-    );
     final level = state.value!.activeLevel!;
     if (level.typeStart == 'preDialog') {
-      showPreDialog(level.start);
+      final preDialog = _predialogService.getPredialogById(level, level.start);
+      state = AsyncValue.data(
+        state.value!.copyWith(
+          preDialog: preDialog,
+          activeMode: 'preDialog',
+          currentDialog: null,
+          currentQuestion: null,
+          indexDialog: null,
+          correctAnswer: null,
+          wrongAnswer: null,
+          falsePrevious: null,
+        ),
+      );
     } else {
+      state = AsyncValue.data(
+        state.value!.copyWith(
+          preDialog: null,
+          currentDialog: null,
+          currentQuestion: null,
+          indexDialog: null,
+          correctAnswer: null,
+          wrongAnswer: null,
+          falsePrevious: null,
+          activeMode: null,
+        ),
+      );
       showDialog(level.start);
     }
   }
 
   void exitLevel() {
-    game.deleteAll();
-    state = AsyncValue.data(
-      state.value!.copyWith(
-        preDialog: null,
-        currentDialog: null,
-        currentQuestion: null,
-        indexDialog: null,
-        correctAnswer: null,
-        wrongAnswer: null,
-        falsePrevious: null,
-        activeMode: 'exit',
-        activeLevel: null,
-      ),
-    );
+    state = AsyncValue.data(state.value!.copyWith(activeMode: 'exit'));
   }
 
-  void resetActiveMode() {
-    if (state.hasValue) {
-      state = AsyncValue.data(state.value!.copyWith(activeMode: null));
-    }
+  void deleteAll() {
+    ref.invalidateSelf();
+    ref.invalidate(gameEngineProvider);
   }
 }

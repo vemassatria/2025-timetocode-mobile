@@ -18,6 +18,12 @@ class GameEngine extends FlameGame {
     return super.onLoad();
   }
 
+  @override
+  void onRemove() {
+    deleteAll();
+    super.onRemove();
+  }
+
   Future<void> setBackground(String backgroundName) async {
     final newSprite = await Sprite.load('background/$backgroundName.webp');
     _background = SpriteComponent(sprite: newSprite);
@@ -120,25 +126,13 @@ class GameEngine extends FlameGame {
   }
 
   void deleteAll() {
-    _characters?.removeFromParent();
-    _ilustration?.removeFromParent();
-    _background?.removeFromParent();
+    removeAll(children.toList());
     _background = null;
     _characters = null;
     _ilustration = null;
     _loadedCharacter.clear();
     _loadedIlustration.clear();
     images.clearCache();
-    removeAll(children.whereType<SpriteComponent>());
-    removeAll(children.whereType<StoryCharactersComponent>());
-    removeAll(children.whereType<StoryIlustrationComponent>());
-    removeAll(children.whereType<Component>());
-  }
-
-  @override
-  void onRemove() {
-    deleteAll();
-    super.onRemove();
   }
 
   String _charKey(String characterName) => 'character/$characterName.webp';
