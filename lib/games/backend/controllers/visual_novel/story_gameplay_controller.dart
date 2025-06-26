@@ -87,7 +87,7 @@ class StoryState {
   }
 }
 
-class StoryController extends AsyncNotifier<StoryState> {
+class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   final DialogService _dialogService = DialogService();
   final QuestionService _questionService = QuestionService();
   final PredialogService _predialogService = PredialogService();
@@ -401,7 +401,6 @@ class StoryController extends AsyncNotifier<StoryState> {
           .read(completedLevelProvider.notifier)
           .setCompletedLevel(currentLevel.level);
     }
-    deleteAll();
   }
 
   void restartLevel() {
@@ -443,10 +442,5 @@ class StoryController extends AsyncNotifier<StoryState> {
 
   void exitLevel() {
     state = AsyncValue.data(state.value!.copyWith(activeMode: 'exit'));
-  }
-
-  void deleteAll() {
-    ref.invalidateSelf();
-    ref.invalidate(gameEngineProvider);
   }
 }

@@ -62,61 +62,23 @@ class PopscopePopups {
       ),
     );
   }
-}
 
-void endGamePopup(BuildContext context, WidgetRef ref) {
-  showPopupOverlay(
-    context,
-    ConfirmPopup(
-      title: 'Lanjutkan Permainan?',
-      description: 'Keluar Halaman dan Lanjutkan Permainan?',
-      confirmLabel: 'Lanjutkan',
-      onPrimaryButtonPressed: () {
-        final storyController = ref.read(storyControllerProvider.notifier);
-        storyController.endStory();
-        closePopupOverlay();
-      },
-      onGoBack: () {
-        PopscopePopups.setPopScope(true);
-        closePopupOverlay();
-      },
-    ),
-  );
-}
-
-void endChallengePopup(BuildContext context, WidgetRef ref) {
-  showPopupOverlay(
-    context,
-    ConfirmPopup(
-      title: 'Lanjutkan Challenge?',
-      description: 'Keluar Halaman dan Lanjutkan Permainan?',
-      confirmLabel: 'Lanjutkan',
-      onPrimaryButtonPressed: () {
-        closePopupOverlay();
-      },
-      onGoBack: () {
-        PopscopePopups.setPopScope(true);
-        closePopupOverlay();
-      },
-    ),
-  );
-}
-
-void exitPopup(BuildContext context) {
-  showPopupOverlay(
-    context,
-    ConfirmPopup(
-      title: 'Keluar Aplikasi?',
-      description: 'Apakah kamu yakin ingin keluar dari aplikasi?',
-      confirmLabel: 'Keluar',
-      onPrimaryButtonPressed: () {
-        closePopupOverlay();
-        SystemNavigator.pop(); // keluar dari aplikasi
-      },
-      onGoBack: () {
-        PopscopePopups.setPopScope(true);
-        closePopupOverlay();
-      },
-    ),
-  );
+  static void exitPopup(BuildContext context) {
+    showPopupOverlay(
+      context,
+      ConfirmPopup(
+        title: 'Keluar Aplikasi?',
+        description: 'Apakah kamu yakin ingin keluar dari aplikasi?',
+        confirmLabel: 'Keluar',
+        onPrimaryButtonPressed: () {
+          closePopupOverlay();
+          SystemNavigator.pop(); // keluar dari aplikasi
+        },
+        onGoBack: () {
+          PopscopePopups.setPopScope(true);
+          closePopupOverlay();
+        },
+      ),
+    );
+  }
 }

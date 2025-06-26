@@ -15,8 +15,9 @@ class ChallengePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final levelCompleted = ref.watch(completedChallengeProvider);
-    final levelNotifier = ref.read(completedChallengeProvider.notifier);
+    final levelCompletedState = ref.watch(completedChallengeProvider);
+    final levelCompleted =
+        levelCompletedState.isNotEmpty ? levelCompletedState.last.level : 0;
     final challengeAsync = ref.watch(challengeLevelProvider);
 
     return challengeAsync.when(
@@ -56,12 +57,17 @@ class ChallengePage extends ConsumerWidget {
                 final level = challengeState.levels[index];
                 final levelNumber = level.id;
                 final isUnlocked = (levelCompleted + 1) >= levelNumber;
+                int starCount = 0;
+                final completedChallenge = levelCompletedState.where(
+                  (c) => c.level == levelNumber,
+                );
+                if (completedChallenge.isNotEmpty) {
+                  starCount = completedChallenge.first.stars;
+                }
 
                 return ChallengeCard(
                   levelNumber: levelNumber,
-                  starCount: levelNotifier.getCompletedChallengeStars(
-                    levelNumber,
-                  ),
+                  starCount: starCount,
                   isUnlocked: isUnlocked,
                   onTap:
                       isUnlocked

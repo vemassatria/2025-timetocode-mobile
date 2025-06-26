@@ -26,11 +26,13 @@ class ChallengeGameplayPage extends ConsumerStatefulWidget {
 class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
   ChoicesModel? selectedAnswer;
   late final SoundEffectService soundEffectService;
+  late final ChallengeController challengeController;
 
   @override
   void initState() {
     super.initState();
     soundEffectService = ref.read(soundEffectServiceProvider.notifier);
+    challengeController = ref.read(challengeControllerProvider.notifier);
   }
 
   void selectAnswer(ChoicesModel answer) {
@@ -51,7 +53,7 @@ class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
     ) {
       next.whenData((data) {
         if (data.activeMode == 'end') {
-          context.go('/tantangan/endgame');
+          context.go('/tantangan/endgame', extra: data);
         } else if (data.activeMode == 'exit') {
           context.pop();
         }
@@ -210,8 +212,6 @@ $code'''),
     WidgetRef ref,
     ChoicesModel selected,
   ) {
-    final challengeController = ref.read(challengeControllerProvider.notifier);
-
     // Buat Nyimpan String Jawaban Benar
 
     // final choices =

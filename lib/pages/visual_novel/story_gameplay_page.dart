@@ -39,7 +39,6 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
           context.go('/pembelajaran/endgame');
         } else if (state.activeMode == 'exit') {
           context.pop();
-          storyController.deleteAll();
         }
       });
     });

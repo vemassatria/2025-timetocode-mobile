@@ -5,6 +5,7 @@ import 'package:timetocode/games/backend/models/challenge/challenge_level_model.
 import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/models/question_model.dart';
 import 'package:timetocode/games/backend/providers/challenge/challenge_level_provider.dart';
+import 'package:timetocode/games/backend/providers/challenge/daftar_challenge_provider.dart';
 import 'package:timetocode/games/backend/providers/current_level_provider.dart';
 
 class ChallengeState {
@@ -100,6 +101,13 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
           ),
         );
       }
+      final levelChallengeNotifier = ref.read(
+        completedChallengeProvider.notifier,
+      );
+      levelChallengeNotifier.setCompletedChallenge(
+        state.value!.currentLevel!.id,
+        state.value!.correctAnswer!,
+      );
     } else {
       if (difficulty == 'sedang') {
         if (selected.isCorrect == true) {
@@ -144,16 +152,7 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
   }
 
   void endChallengePopup() {
-    state = AsyncValue.data(
-      state.value!.copyWith(
-        currentLevel: null,
-        currentDifficulty: null,
-        currentQuestion: null,
-        correctAnswer: null,
-        wrongAnswer: null,
-        activeMode: 'exit',
-      ),
-    );
+    state = AsyncValue.data(state.value!.copyWith(activeMode: 'exit'));
   }
 
   void resetChallenge() {

@@ -136,24 +136,15 @@ class SoundEffectService extends Notifier<bool> {
   }
 
   Future<void> playTyping() async {
-    // Pastikan sound effect aktif
     if (state) {
-      // Hentikan dulu jika ada yang sedang berjalan untuk menghindari tumpang tindih
       await stopTyping();
-
-      // Gunakan FlameAudio.play untuk memanfaatkan cache.
-      // Ini lebih sederhana dan efisien.
-      // 'sfx/typing.wav' akan diambil dari cache yang sudah di-load saat initialize().
-      // Kita juga bisa langsung set agar audio berulang (looping).
       _typingAudioPlayer = await FlameAudio.loop('sfx/typing.wav');
     }
   }
 
   Future<void> stopTyping() async {
-    // Cukup panggil stop(). Release akan dipanggil secara internal oleh FlameAudio
-    // saat tidak lagi dibutuhkan, tetapi menghentikannya secara eksplisit sudah cukup.
     await _typingAudioPlayer?.stop();
-    _typingAudioPlayer = null; // Set ke null agar bisa dicek lagi nanti
+    _typingAudioPlayer = null;
   }
 
   void updateSoundEffectSetting(bool isEnabled) async {

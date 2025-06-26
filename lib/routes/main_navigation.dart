@@ -51,7 +51,7 @@ class MainNavigation extends ConsumerWidget {
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
         if (PopscopePopups.isPopScopeActive()) {
-          exitPopup(context);
+          PopscopePopups.exitPopup(context);
           PopscopePopups.setPopScope(false);
         } else {
           closePopupOverlay();
