@@ -36,7 +36,7 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
     ref.listen<AsyncValue<StoryState>>(storyControllerProvider, (_, next) {
       next.whenData((state) {
         if (state.activeMode == 'end') {
-          context.go('/pembelajaran/endgame');
+          context.go('/pembelajaran/endgame', extra: state);
         } else if (state.activeMode == 'exit') {
           context.pop();
         }

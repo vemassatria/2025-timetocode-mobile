@@ -389,9 +389,10 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
     );
     game.hideCharacters();
     game.hideIlustration();
+    _saveProgress();
   }
 
-  Future<void> endStory() async {
+  Future<void> _saveProgress() async {
     final completedLevel = ref.read(completedLevelProvider);
     final currentLevel = state.value!.activeLevel;
     if (currentLevel == null) return;
