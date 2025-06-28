@@ -62,6 +62,7 @@ class MenuPopup extends ConsumerWidget {
                   onGoBack();
                 },
               ),
+              ref,
             );
           },
           widthMode: ButtonWidthMode.fill,
@@ -79,6 +80,7 @@ class MenuPopup extends ConsumerWidget {
                   onGoBack();
                 },
               ),
+              ref,
             );
           },
           widthMode: ButtonWidthMode.fill,
@@ -102,6 +104,7 @@ class MenuPopup extends ConsumerWidget {
                   onGoBack();
                 },
               ),
+              ref,
             );
           },
           widthMode: ButtonWidthMode.fill,

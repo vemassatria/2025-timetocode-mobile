@@ -78,9 +78,10 @@ class QuestionBoxWidget extends ConsumerWidget {
         onPressed: () {
           musicService.playButtonClick2();
           storyController.checkAnswer(selected);
-          closePopupOverlay();
+          closePopupOverlay(ref);
         },
       ),
+      ref,
     );
   }
 }

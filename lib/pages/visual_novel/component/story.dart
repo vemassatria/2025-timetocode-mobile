@@ -20,11 +20,11 @@ class StoryPage extends ConsumerWidget {
           child: MenuButton(
             onRestart: () {
               storyController.restartLevel();
-              closePopupOverlay();
+              closePopupOverlay(ref);
             },
             onExit: () {
               storyController.exitLevel();
-              closePopupOverlay();
+              closePopupOverlay(ref);
             },
           ),
         ),

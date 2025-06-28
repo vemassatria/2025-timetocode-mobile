@@ -228,12 +228,13 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
           } else {
             storyController.showEndGame();
           }
-          closePopupOverlay();
+          closePopupOverlay(ref);
         },
         onGoBack: () {
-          closePopupOverlay();
+          closePopupOverlay(ref);
         },
       ),
+      ref,
     );
   }
 }

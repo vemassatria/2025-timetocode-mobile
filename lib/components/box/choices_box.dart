@@ -14,7 +14,7 @@ class ChoicesBox extends ConsumerWidget {
 
   const ChoicesBox({super.key, required this.choices, required this.onPressed});
 
-  Widget _buildChoiceButton(BuildContext context, int index, VoidCallback sfx) {
+  Widget _buildChoiceButton(BuildContext context, int index, WidgetRef ref) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.h),
       child: CustomButton(
@@ -23,7 +23,7 @@ class ChoicesBox extends ConsumerWidget {
         type: ButtonType.outline,
 
         onPressed: () {
-          sfx();
+          ref.read(soundEffectServiceProvider.notifier).playSelectClick();
           showPopupOverlay(
             context,
             ConfirmPopup(
@@ -33,14 +33,15 @@ class ChoicesBox extends ConsumerWidget {
               confirmLabel: "Yakin",
               onPrimaryButtonPressed: () {
                 // MusicService.sfxSelectClick();
-                closePopupOverlay();
+                closePopupOverlay(ref);
                 onPressed(index);
               },
               onGoBack: () {
                 // MusicService.sfxNegativeClick();
-                closePopupOverlay();
+                closePopupOverlay(ref);
               },
             ),
+            ref,
           );
         },
       ),
@@ -49,8 +50,6 @@ class ChoicesBox extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final soundEffectService = ref.read(soundEffectServiceProvider.notifier);
-
     return Container(
       width: 1.sw,
       height: 295.h,
@@ -63,11 +62,7 @@ class ChoicesBox extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(choices.length, (index) {
-            return _buildChoiceButton(
-              context,
-              index,
-              soundEffectService.playSelectClick,
-            );
+            return _buildChoiceButton(context, index, ref);
           }),
         ),
       ),

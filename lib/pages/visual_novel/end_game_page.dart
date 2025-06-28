@@ -86,9 +86,10 @@ class EndGameScreen extends ConsumerWidget {
                       variant: InfoPopupVariant.summary,
                       onClose: () {
                         audioService.playNegativeClick();
-                        closePopupOverlay();
+                        closePopupOverlay(ref);
                       },
                     ),
+                    ref,
                   );
                 },
               ),

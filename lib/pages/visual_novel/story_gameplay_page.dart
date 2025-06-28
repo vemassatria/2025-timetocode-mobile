@@ -2,6 +2,8 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:timetocode/components/popups/menu_popup.dart';
+import 'package:timetocode/games/backend/providers/ui_provider.dart';
 import 'package:timetocode/pages/visual_novel/component/dialog_box.dart';
 import 'package:timetocode/pages/visual_novel/component/intro.dart';
 import 'package:timetocode/pages/visual_novel/component/question_box_widget.dart';
@@ -10,6 +12,7 @@ import 'package:timetocode/pages/visual_novel/component/story.dart';
 import 'package:timetocode/games/backend/controllers/visual_novel/story_gameplay_controller.dart';
 import 'package:timetocode/games/backend/providers/game_provider.dart';
 import 'package:timetocode/games/backend/providers/visual_novel/story_provider.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
 
 class StoryGameplayPage extends ConsumerStatefulWidget {
   const StoryGameplayPage({super.key});
@@ -43,24 +46,55 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
       });
     });
 
-    return Scaffold(
-      body: storyAsync.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, s) => Center(child: Text("Error: $e")),
-        data: (storyState) {
-          return Stack(
-            children: [
-              GameWidget(game: game),
+    return PopScope(
+      child: Scaffold(
+        body: storyAsync.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (e, s) => Center(child: Text("Error: $e")),
+          data: (storyState) {
+            return Stack(
+              children: [
+                GameWidget(game: game),
 
-              _buildContentUI(storyState.activeMode, storyState),
+                _buildContentUI(storyState.activeMode, storyState),
 
-              const StoryPage(),
+                const StoryPage(),
 
-              if (storyState.activeMode == 'dialog') const SkipButton(),
-            ],
-          );
-        },
+                if (storyState.activeMode == 'dialog') const SkipButton(),
+              ],
+            );
+          },
+        ),
       ),
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        final isPopupVisible = ref.read(popupVisibilityProvider);
+        if (isPopupVisible) {
+          closePopupOverlay(ref);
+        } else {
+          showPopupOverlay(
+            context,
+            MenuPopup(
+              onRestart: () {
+                storyController.restartLevel();
+                closePopupOverlay(ref);
+              },
+              onExit: () {
+                storyController.exitLevel();
+                closePopupOverlay(ref);
+              },
+              onClose: () {
+                closePopupOverlay(ref);
+              },
+              onGoBack: () {
+                closePopupOverlay(ref);
+              },
+            ),
+            ref,
+          );
+        }
+      },
     );
   }
 

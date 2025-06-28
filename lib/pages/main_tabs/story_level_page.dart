@@ -108,8 +108,9 @@ class DaftarLevelPage extends ConsumerWidget {
                             InfoPopup(
                               title: level.title,
                               description: level.description,
-                              onClose: closePopupOverlay,
+                              onClose: () => closePopupOverlay(ref),
                             ),
+                            ref,
                           );
                         },
                       ),

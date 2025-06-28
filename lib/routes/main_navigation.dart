@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:timetocode/components/popups/popscope_popups.dart';
+import 'package:timetocode/components/popups/confirm_popup.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
+import 'package:timetocode/games/backend/providers/ui_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
@@ -50,12 +52,27 @@ class MainNavigation extends ConsumerWidget {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
-        if (PopscopePopups.isPopScopeActive()) {
-          PopscopePopups.exitPopup(context);
-          PopscopePopups.setPopScope(false);
+        if (didPop) return;
+        final isPopupVisible = ref.read(popupVisibilityProvider);
+        if (isPopupVisible) {
+          closePopupOverlay(ref);
         } else {
-          closePopupOverlay();
-          PopscopePopups.setPopScope(true);
+          showPopupOverlay(
+            context,
+            ConfirmPopup(
+              title: 'Keluar Aplikasi?',
+              description: 'Apakah kamu yakin ingin keluar dari aplikasi?',
+              confirmLabel: 'Keluar',
+              onPrimaryButtonPressed: () {
+                closePopupOverlay(ref);
+                SystemNavigator.pop();
+              },
+              onGoBack: () {
+                closePopupOverlay(ref);
+              },
+            ),
+            ref,
+          );
         }
       },
       child: Scaffold(
