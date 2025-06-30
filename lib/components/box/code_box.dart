@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/widgets/code_text.dart';
 import 'package:timetocode/themes/colors.dart';
-import 'package:timetocode/utils/screen_utils.dart';
 
 class CodeBox extends StatelessWidget {
   final String code;
@@ -11,7 +10,6 @@ class CodeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    initScreenUtil(context);
     final verticalScrollController = ScrollController();
     final horizontalScrollController = ScrollController();
 

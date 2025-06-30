@@ -1,5 +1,3 @@
-import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,12 +5,11 @@ import 'package:timetocode/components/button.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:timetocode/utils/screen_utils.dart';
 
 enum CardStatus { unlocked, locked, completed }
 
 class LevelCard extends ConsumerWidget {
-  final ui.Image? image;
+  final String image;
   final String title;
   final CardStatus status;
   final VoidCallback? onStartPressed;
@@ -30,7 +27,7 @@ class LevelCard extends ConsumerWidget {
   // Factory constructor for locked cards to optimize memory usage
   factory LevelCard.locked({
     required String title,
-    required ui.Image? image,
+    required String image,
     required VoidCallback onInfoPressed,
   }) {
     return LevelCard(
@@ -77,7 +74,7 @@ class LevelCard extends ConsumerWidget {
         child: SizedBox(
           height: 170.h,
           width: double.infinity,
-          child: RawImage(image: image, fit: BoxFit.cover),
+          child: Image.asset(image, fit: BoxFit.cover),
         ),
       ),
     );
@@ -166,7 +163,6 @@ class LevelCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    initScreenUtil(context);
     final soundEffectService = ref.read(soundEffectServiceProvider.notifier);
 
     Widget content = Stack(

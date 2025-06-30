@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timetocode/games/backend/providers/ui_provider.dart';
 
 OverlayEntry? _currentOverlay;
 Widget? _previousContent;
 
-void showPopupOverlay(BuildContext context, Widget popupContent) {
+void showPopupOverlay(
+  BuildContext context,
+  Widget popupContent,
+  WidgetRef ref,
+) {
   final overlay = Overlay.of(context);
 
   if (_currentOverlay != null) {
@@ -20,15 +26,17 @@ void showPopupOverlay(BuildContext context, Widget popupContent) {
   );
 
   overlay.insert(_currentOverlay!);
+  ref.read(popupVisibilityProvider.notifier).state = true;
 }
 
-void closePopupOverlay() {
+void closePopupOverlay(WidgetRef ref) {
   _currentOverlay?.remove();
   _currentOverlay = null;
   _previousContent = null;
+  ref.read(popupVisibilityProvider.notifier).state = false;
 }
 
-void goBackToPreviousOverlay(BuildContext context) {
+void goBackToPreviousOverlay(BuildContext context, WidgetRef ref) {
   if (_previousContent != null) {
     final previousWidget = _previousContent;
     _currentOverlay?.remove();
@@ -36,6 +44,6 @@ void goBackToPreviousOverlay(BuildContext context) {
     Overlay.of(context).insert(_currentOverlay!);
     _previousContent = null;
   } else {
-    closePopupOverlay();
+    closePopupOverlay(ref);
   }
 }

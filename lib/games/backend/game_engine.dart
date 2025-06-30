@@ -1,29 +1,42 @@
+import 'dart:async';
+
+import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flame_riverpod/flame_riverpod.dart';
-import 'package:timetocode/games/component/background.dart';
 import 'package:timetocode/games/component/character.dart';
 import 'package:timetocode/games/component/ilustration.dart';
 
-class GameEngine extends FlameGame with RiverpodGameMixin {
-  SceneBackgroundComponent? _background;
+class GameEngine extends FlameGame {
+  final Set<String> _loadedCharacter = {};
+  final Set<String> _loadedIlustration = {};
   StoryCharactersComponent? _characters;
   StoryIlustrationComponent? _ilustration;
+  SpriteComponent? _background;
 
   @override
-  Future<void> onLoad() async {
+  FutureOr<void> onLoad() {
     images.prefix = 'assets/';
-    await super.onLoad();
+    return super.onLoad();
   }
 
   @override
   void onRemove() {
+    deleteAll();
     super.onRemove();
-    removeStoryResources();
   }
 
-  Future<void> loadBackground(String name) async {
-    _background = SceneBackgroundComponent(size: size, currentScene: name);
+  Future<void> setBackground(String backgroundName) async {
+    final newSprite = await Sprite.load('background/$backgroundName.webp');
+    _background = SpriteComponent(sprite: newSprite);
+
+    _background?.priority = -1;
+
     await add(_background!);
+  }
+
+  @override
+  void onGameResize(Vector2 size) {
+    super.onGameResize(size);
+    _background?.size = size;
   }
 
   Future<void> showCharacters({
@@ -54,15 +67,6 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
       await _characters!.explainEmotion(speaker);
     else
       await _characters!.changeEmotion(speaker);
-  }
-
-  void removeStoryResources() {
-    _characters?.removeFromParent();
-    _background?.removeFromParent();
-    _ilustration?.removeFromParent();
-    _background = null;
-    _characters = null;
-    _ilustration = null;
   }
 
   void hideCharacters() {
@@ -96,6 +100,44 @@ class GameEngine extends FlameGame with RiverpodGameMixin {
   void hideIlustration() {
     _ilustration?.removeFromParent();
   }
+
+  Future<void> preloadCharacters(List<String> characterNames) async {
+    await Future.wait(
+      characterNames
+          .where((name) => !_loadedCharacter.contains(_charKey(name)))
+          .map((name) {
+            final key = _charKey(name);
+            _loadedCharacter.add(key);
+            return images.load(key);
+          }),
+    );
+  }
+
+  Future<void> preloadIlustrations(List<String> ilustrations) async {
+    await Future.wait(
+      ilustrations
+          .where((name) => !_loadedIlustration.contains(_ilustrationKey(name)))
+          .map((name) {
+            final key = _ilustrationKey(name);
+            _loadedIlustration.add(key);
+            return images.load(key);
+          }),
+    );
+  }
+
+  void deleteAll() {
+    removeAll(children.toList());
+    _background = null;
+    _characters = null;
+    _ilustration = null;
+    _loadedCharacter.clear();
+    _loadedIlustration.clear();
+    images.clearCache();
+  }
+
+  String _charKey(String characterName) => 'character/$characterName.webp';
+  String _ilustrationKey(String ilustrationName) =>
+      'ilustration/$ilustrationName.webp';
 
   get characters => _characters;
   get ilustration => _ilustration;

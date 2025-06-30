@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/games/backend/providers/shared_preferences_provider.dart';
 
+enum _TypingSoundIntent { playing, paused, disposed }
+
 class SoundEffectService extends Notifier<bool> {
   late SharedPreferences _prefs;
 
@@ -16,6 +18,9 @@ class SoundEffectService extends Notifier<bool> {
   late AudioPool _popupAnswerPool;
   late AudioPool _submitPool;
   AudioPlayer? _typingAudioPlayer;
+
+  _TypingSoundIntent _desiredIntent = _TypingSoundIntent.disposed;
+  bool _isProcessing = false;
 
   @override
   bool build() {
@@ -135,29 +140,72 @@ class SoundEffectService extends Notifier<bool> {
     }
   }
 
-  Future<void> playTyping() async {
-    // Pastikan sound effect aktif
-    if (state) {
-      // Hentikan dulu jika ada yang sedang berjalan untuk menghindari tumpang tindih
-      await stopTyping();
+  Future<void> _reconcileState() async {
+    if (_isProcessing) return;
 
-      // Gunakan FlameAudio.play untuk memanfaatkan cache.
-      // Ini lebih sederhana dan efisien.
-      // 'sfx/typing.wav' akan diambil dari cache yang sudah di-load saat initialize().
-      // Kita juga bisa langsung set agar audio berulang (looping).
-      _typingAudioPlayer = await FlameAudio.loop('sfx/typing.wav');
+    _isProcessing = true;
+
+    while (true) {
+      final currentIntent = _desiredIntent;
+
+      _TypingSoundIntent actualState;
+      if (_typingAudioPlayer == null) {
+        actualState = _TypingSoundIntent.disposed;
+      } else if (_typingAudioPlayer!.state == PlayerState.playing) {
+        actualState = _TypingSoundIntent.playing;
+      } else {
+        actualState = _TypingSoundIntent.paused;
+      }
+      if (actualState == currentIntent) {
+        break;
+      }
+      try {
+        if (currentIntent == _TypingSoundIntent.playing) {
+          if (_typingAudioPlayer == null) {
+            _typingAudioPlayer = await FlameAudio.loop(
+              'sfx/typing.wav',
+              volume: 2.0,
+            );
+          } else {
+            await _typingAudioPlayer!.resume();
+          }
+        } else if (currentIntent == _TypingSoundIntent.paused) {
+          if (_typingAudioPlayer != null) {
+            await _typingAudioPlayer!.pause();
+          }
+        } else if (currentIntent == _TypingSoundIntent.disposed) {
+          if (_typingAudioPlayer != null) {
+            await _typingAudioPlayer!.dispose();
+            _typingAudioPlayer = null;
+          }
+        }
+      } catch (e) {
+        break;
+      }
     }
+
+    _isProcessing = false;
   }
 
-  Future<void> stopTyping() async {
-    // Cukup panggil stop(). Release akan dipanggil secara internal oleh FlameAudio
-    // saat tidak lagi dibutuhkan, tetapi menghentikannya secara eksplisit sudah cukup.
-    await _typingAudioPlayer?.stop();
-    _typingAudioPlayer = null; // Set ke null agar bisa dicek lagi nanti
+  void playTyping() {
+    if (!state) return;
+    _desiredIntent = _TypingSoundIntent.playing;
+    _reconcileState();
+  }
+
+  void pauseTyping() {
+    _desiredIntent = _TypingSoundIntent.paused;
+    _reconcileState();
+  }
+
+  void disposeTypingPlayer() {
+    _desiredIntent = _TypingSoundIntent.disposed;
+    _reconcileState();
   }
 
   void updateSoundEffectSetting(bool isEnabled) async {
     await _prefs.setBool('musikEfek', isEnabled);
     state = isEnabled;
+    if (!isEnabled) disposeTypingPlayer();
   }
 }

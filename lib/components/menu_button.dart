@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/popups/menu_popup.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
-// import 'package:timetocode/SFX/music_service.dart';
 
-class MenuButton extends StatelessWidget {
+class MenuButton extends ConsumerWidget {
   final VoidCallback onRestart;
   final VoidCallback onExit;
 
   const MenuButton({super.key, required this.onRestart, required this.onExit});
 
-  void _openMenuPopup(BuildContext context) {
+  void _openMenuPopup(BuildContext context, WidgetRef ref) {
     showPopupOverlay(
       context,
       MenuPopup(
         onRestart: onRestart,
         onExit: onExit,
-        onClose: closePopupOverlay,
-        onGoBack: () => goBackToPreviousOverlay(context),
+        onClose: () => closePopupOverlay(ref),
+        onGoBack: () => goBackToPreviousOverlay(context, ref),
       ),
+      ref,
     );
   }
 
@@ -34,11 +36,11 @@ class MenuButton extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {
-        // MusicService.sfxButtonClick();
-        _openMenuPopup(context);
+        ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
+        _openMenuPopup(context, ref);
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),

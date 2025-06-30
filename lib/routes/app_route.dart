@@ -1,0 +1,86 @@
+import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:timetocode/games/backend/controllers/challenge/challenge_gameplay_controller.dart';
+import 'package:timetocode/games/backend/controllers/visual_novel/story_gameplay_controller.dart';
+import 'package:timetocode/pages/challenge/end_game_page.dart';
+import 'package:timetocode/routes/main_navigation.dart';
+import 'package:timetocode/pages/challenge/challenge_gameplay_page.dart';
+import 'package:timetocode/pages/main_tabs/challenge_level_page.dart';
+import 'package:timetocode/pages/main_tabs/story_level_page.dart';
+import 'package:timetocode/pages/visual_novel/end_game_page.dart';
+import 'package:timetocode/pages/main_tabs/pengaturan.dart';
+import 'package:timetocode/pages/visual_novel/story_gameplay_page.dart';
+
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorKey = GlobalKey<NavigatorState>();
+
+final routerProvider = Provider<GoRouter>((ref) {
+  return GoRouter(
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: '/pembelajaran',
+
+    routes: [
+      ShellRoute(
+        navigatorKey: _shellNavigatorKey,
+        builder: (context, state, child) {
+          return MainNavigation(child: child);
+        },
+        routes: [
+          GoRoute(
+            path: '/pembelajaran',
+            pageBuilder:
+                (context, state) =>
+                    const NoTransitionPage(child: DaftarLevelPage()),
+            routes: [
+              GoRoute(
+                path: 'level',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) {
+                  return StoryGameplayPage();
+                },
+              ),
+              GoRoute(
+                path: 'endgame',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) {
+                  final storyState = state.extra as StoryState;
+                  return EndGameScreen(storyState: storyState);
+                },
+              ),
+            ],
+          ),
+          GoRoute(
+            path: '/tantangan',
+            pageBuilder:
+                (context, state) =>
+                    const NoTransitionPage(child: ChallengePage()),
+            routes: [
+              GoRoute(
+                path: 'level',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) {
+                  return ChallengeGameplayPage();
+                },
+              ),
+              GoRoute(
+                path: 'endgame',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) {
+                  final challengeState = state.extra as ChallengeState;
+                  return EndGameChallenge(challengeState: challengeState);
+                },
+              ),
+            ],
+          ),
+          GoRoute(
+            path: '/pengaturan',
+            pageBuilder:
+                (context, state) =>
+                    const NoTransitionPage(child: PengaturanPage()),
+          ),
+        ],
+      ),
+    ],
+  );
+});

@@ -285,7 +285,7 @@
               {
                 "id": "soal3_3",
                 "text": "Berapa nilai variabel sum setelah loop ini selesai?",
-                "code": "nt i = 1, sum = 0;  \nwhile (i <= 5) {  \n    sum += i;  \n    i += 2;  \n}\n",
+                "code": "int i = 1, sum = 0;  \nwhile (i <= 5) {  \n    sum += i;  \n    i += 2;  \n}\n",
                 "choices": [
                   {
                     "text": "15",

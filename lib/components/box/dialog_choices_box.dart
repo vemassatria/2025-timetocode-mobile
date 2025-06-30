@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:timetocode/games/backend/models/dialog_choices.dart';
+import 'package:timetocode/games/backend/models/visual_novel/dialog_choices.dart';
 import 'package:timetocode/components/button.dart';
 
 class DialogChoicesBox extends StatelessWidget {
