@@ -25,7 +25,7 @@ class SkipButton extends ConsumerWidget {
         onTap: () {
           if (isDisabled) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
+              const SnackBar(
                 content: Text("Selesaikan level terlebih dahulu untuk skip."),
                 duration: Duration(seconds: 2),
               ),

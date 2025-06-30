@@ -137,18 +137,30 @@ class SoundEffectService extends Notifier<bool> {
 
   Future<void> playTyping() async {
     if (state) {
+      // 1. Selalu hentikan player yang mungkin sedang berjalan sebelumnya.
+      // `await` memastikan kita tidak memulai yang baru sebelum yang lama benar-benar berhenti.
       await stopTyping();
+      // 2. Pastikan widget masih ada (mounted) sebelum memulai audio baru.
+      // Meskipun tidak bisa dicek langsung dari service, logika di widget akan membantu.
       _typingAudioPlayer = await FlameAudio.loop('sfx/typing.wav');
     }
   }
 
+  /// **DIPERBAIKI: Metode stopTyping yang aman dari race condition.**
   Future<void> stopTyping() async {
-    await _typingAudioPlayer?.stop();
+    // 1. Simpan referensi player ke variabel lokal.
+    final player = _typingAudioPlayer;
+    // 2. Langsung setel instance di kelas menjadi null. Ini mencegah
+    //    panggilan lain (misalnya playTyping) mencoba menghentikan player yang sama lagi.
     _typingAudioPlayer = null;
+    // 3. Hentikan player menggunakan variabel lokal.
+    //    Operator '?' memastikan tidak ada error jika player sudah null.
+    await player?.stop();
   }
 
   void updateSoundEffectSetting(bool isEnabled) async {
     await _prefs.setBool('musikEfek', isEnabled);
     state = isEnabled;
+    if (!isEnabled) await stopTyping();
   }
 }
