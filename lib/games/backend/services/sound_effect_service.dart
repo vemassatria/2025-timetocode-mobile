@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/games/backend/providers/shared_preferences_provider.dart';
 
+enum _TypingSoundIntent { playing, paused, disposed }
+
 class SoundEffectService extends Notifier<bool> {
   late SharedPreferences _prefs;
 
@@ -16,6 +18,9 @@ class SoundEffectService extends Notifier<bool> {
   late AudioPool _popupAnswerPool;
   late AudioPool _submitPool;
   AudioPlayer? _typingAudioPlayer;
+
+  _TypingSoundIntent _desiredIntent = _TypingSoundIntent.disposed;
+  bool _isProcessing = false;
 
   @override
   bool build() {
@@ -135,32 +140,72 @@ class SoundEffectService extends Notifier<bool> {
     }
   }
 
-  Future<void> playTyping() async {
-    if (state) {
-      // 1. Selalu hentikan player yang mungkin sedang berjalan sebelumnya.
-      // `await` memastikan kita tidak memulai yang baru sebelum yang lama benar-benar berhenti.
-      await stopTyping();
-      // 2. Pastikan widget masih ada (mounted) sebelum memulai audio baru.
-      // Meskipun tidak bisa dicek langsung dari service, logika di widget akan membantu.
-      _typingAudioPlayer = await FlameAudio.loop('sfx/typing.wav');
+  Future<void> _reconcileState() async {
+    if (_isProcessing) return;
+
+    _isProcessing = true;
+
+    while (true) {
+      final currentIntent = _desiredIntent;
+
+      _TypingSoundIntent actualState;
+      if (_typingAudioPlayer == null) {
+        actualState = _TypingSoundIntent.disposed;
+      } else if (_typingAudioPlayer!.state == PlayerState.playing) {
+        actualState = _TypingSoundIntent.playing;
+      } else {
+        actualState = _TypingSoundIntent.paused;
+      }
+      if (actualState == currentIntent) {
+        break;
+      }
+      try {
+        if (currentIntent == _TypingSoundIntent.playing) {
+          if (_typingAudioPlayer == null) {
+            _typingAudioPlayer = await FlameAudio.loop(
+              'sfx/typing.wav',
+              volume: 2.0,
+            );
+          } else {
+            await _typingAudioPlayer!.resume();
+          }
+        } else if (currentIntent == _TypingSoundIntent.paused) {
+          if (_typingAudioPlayer != null) {
+            await _typingAudioPlayer!.pause();
+          }
+        } else if (currentIntent == _TypingSoundIntent.disposed) {
+          if (_typingAudioPlayer != null) {
+            await _typingAudioPlayer!.dispose();
+            _typingAudioPlayer = null;
+          }
+        }
+      } catch (e) {
+        break;
+      }
     }
+
+    _isProcessing = false;
   }
 
-  /// **DIPERBAIKI: Metode stopTyping yang aman dari race condition.**
-  Future<void> stopTyping() async {
-    // 1. Simpan referensi player ke variabel lokal.
-    final player = _typingAudioPlayer;
-    // 2. Langsung setel instance di kelas menjadi null. Ini mencegah
-    //    panggilan lain (misalnya playTyping) mencoba menghentikan player yang sama lagi.
-    _typingAudioPlayer = null;
-    // 3. Hentikan player menggunakan variabel lokal.
-    //    Operator '?' memastikan tidak ada error jika player sudah null.
-    await player?.stop();
+  void playTyping() {
+    if (!state) return;
+    _desiredIntent = _TypingSoundIntent.playing;
+    _reconcileState();
+  }
+
+  void pauseTyping() {
+    _desiredIntent = _TypingSoundIntent.paused;
+    _reconcileState();
+  }
+
+  void disposeTypingPlayer() {
+    _desiredIntent = _TypingSoundIntent.disposed;
+    _reconcileState();
   }
 
   void updateSoundEffectSetting(bool isEnabled) async {
     await _prefs.setBool('musikEfek', isEnabled);
     state = isEnabled;
-    if (!isEnabled) await stopTyping();
+    if (!isEnabled) disposeTypingPlayer();
   }
 }

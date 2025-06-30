@@ -1,17 +1,14 @@
-// lib/components/box/typewriter_effect_box.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
+import 'package:timetocode/games/backend/services/sound_effect_service.dart';
 
 class TypewriterEffectBox extends ConsumerStatefulWidget {
   final String text;
   final ValueKey textKey;
   final TextStyle textStyle;
-  final VoidCallback
-  onFinished; // Callback untuk memberitahu parent bahwa animasi selesai
-
+  final VoidCallback onFinished;
   const TypewriterEffectBox({
     required this.text,
     required this.textKey,
@@ -26,35 +23,25 @@ class TypewriterEffectBox extends ConsumerStatefulWidget {
 }
 
 class _TypewriterEffectBoxState extends ConsumerState<TypewriterEffectBox> {
+  SoundEffectService? _soundNotifier;
+
   @override
   void initState() {
     super.initState();
-    // Memulai suara saat widget pertama kali dibuat
+    _soundNotifier = ref.read(soundEffectServiceProvider.notifier);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(soundEffectServiceProvider.notifier).playTyping();
+      _soundNotifier?.playTyping();
     });
   }
 
   @override
-  void didUpdateWidget(TypewriterEffectBox oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    // Jika teks berubah, mulai ulang suara ketikan
-    if (widget.textKey != oldWidget.textKey) {
-      ref.read(soundEffectServiceProvider.notifier).playTyping();
-    }
-  }
-
-  @override
   void dispose() {
-    // Sangat penting: Hentikan suara ketikan saat widget dihancurkan
-    // untuk mencegah memory leak.
-    ref.read(soundEffectServiceProvider.notifier).stopTyping();
+    _soundNotifier?.pauseTyping();
     super.dispose();
   }
 
   void _handleAnimationEnd() {
-    ref.read(soundEffectServiceProvider.notifier).stopTyping();
-    // Hanya panggil callback jika widget masih ada di tree.
+    _soundNotifier?.pauseTyping();
     if (mounted) {
       widget.onFinished();
     }
@@ -62,11 +49,8 @@ class _TypewriterEffectBoxState extends ConsumerState<TypewriterEffectBox> {
 
   @override
   Widget build(BuildContext context) {
-    // AnimatedTextKit akan menangani semuanya, termasuk 'displayFullTextOnTap'.
     return AnimatedTextKit(
-      key:
-          widget
-              .textKey, // Gunakan key untuk me-reset animasi saat teks berubah
+      key: widget.textKey,
       animatedTexts: [
         TypewriterAnimatedText(
           widget.text,
@@ -76,10 +60,9 @@ class _TypewriterEffectBoxState extends ConsumerState<TypewriterEffectBox> {
         ),
       ],
       isRepeatingAnimation: false,
-      displayFullTextOnTap: true, // Saat ditekan, teks akan langsung lengkap
-      stopPauseOnTap:
-          true, // Menghentikan pause dan melanjutkan ke state 'finished'
-      onTap: _handleAnimationEnd, // Panggil _handleAnimationEnd saat ditekan
+      displayFullTextOnTap: true,
+      stopPauseOnTap: true,
+      onTap: _handleAnimationEnd,
       onFinished: _handleAnimationEnd,
       pause: Duration.zero,
     );

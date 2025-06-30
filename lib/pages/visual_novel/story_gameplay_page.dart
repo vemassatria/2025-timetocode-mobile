@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timetocode/components/popups/menu_popup.dart';
+import 'package:timetocode/games/backend/providers/music_service_provider.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/games/backend/providers/ui_provider.dart';
+import 'package:timetocode/games/backend/services/music_service.dart';
+import 'package:timetocode/games/backend/services/sound_effect_service.dart';
 import 'package:timetocode/pages/visual_novel/component/dialog_box.dart';
 import 'package:timetocode/pages/visual_novel/component/intro.dart';
 import 'package:timetocode/pages/visual_novel/component/question_box_widget.dart';
@@ -24,12 +28,25 @@ class StoryGameplayPage extends ConsumerStatefulWidget {
 class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
   late final game;
   late final StoryController storyController;
+  SoundEffectService? _soundNotifier;
+  MusicService? _musicNotifier;
 
   @override
   void initState() {
     super.initState();
     storyController = ref.read(storyControllerProvider.notifier);
     game = ref.read(gameEngineProvider);
+    _soundNotifier = ref.read(soundEffectServiceProvider.notifier);
+    _musicNotifier = ref.read(musicServiceProvider.notifier);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _soundNotifier?.disposeTypingPlayer();
+      _musicNotifier?.playMainMenuMusic();
+    });
+    super.dispose();
   }
 
   @override
