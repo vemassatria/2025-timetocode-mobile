@@ -10,11 +10,13 @@ import 'package:timetocode/themes/typography.dart';
 class AnswerPopup extends ConsumerWidget {
   final bool isCorrect;
   final VoidCallback onPressed;
+  final String? text;
 
   const AnswerPopup({
     super.key,
     required this.isCorrect,
     required this.onPressed,
+    this.text,
   });
 
   Color get _color => isCorrect ? AppColors.xpGreen : AppColors.dangerRed;
@@ -67,6 +69,26 @@ class AnswerPopup extends ConsumerWidget {
         children: [
           _buildIconWithTitleRow(),
           SizedBox(height: 32.h),
+          if (text != null && !isCorrect) ...[
+            RichText(
+              text: TextSpan(
+                style: AppTypography.small(color: AppColors.primaryText),
+                children: [
+                  TextSpan(text: "Jawaban yang "),
+                  TextSpan(
+                    text: "benar",
+                    style: TextStyle(color: AppColors.xpGreen),
+                  ),
+                  TextSpan(text: ":"),
+                ],
+              ),
+            ),
+            Text(
+              text!,
+              style: AppTypography.largeBold(color: AppColors.primaryText),
+            ),
+            SizedBox(height: 32.h),
+          ],
           _buildButton(ref),
         ],
       ),

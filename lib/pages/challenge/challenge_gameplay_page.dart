@@ -264,11 +264,9 @@ $code'''),
     WidgetRef ref,
     ChoicesModel selected,
   ) {
-    // Buat Nyimpan String Jawaban Benar
-
-    // final choices =
-    //     ref.read(challengeControllerProvider).value!.currentQuestion!.choices;
-    // final correctAnswer = choices.firstWhere((c) => c.isCorrect == true).text;
+    final choices =
+        ref.read(challengeControllerProvider).value!.currentQuestion!.choices;
+    final correctAnswer = choices.firstWhere((c) => c.isCorrect == true).text;
 
     showPopupOverlay(
       context,
@@ -280,6 +278,7 @@ $code'''),
           closePopupOverlay(ref);
           clearSelection();
         },
+        text: correctAnswer,
       ),
       ref,
     );
