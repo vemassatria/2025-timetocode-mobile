@@ -7,6 +7,7 @@ import 'package:timetocode/games/backend/models/question_model.dart';
 import 'package:timetocode/games/backend/providers/challenge/challenge_level_provider.dart';
 import 'package:timetocode/games/backend/providers/challenge/daftar_challenge_provider.dart';
 import 'package:timetocode/games/backend/providers/current_level_provider.dart';
+import 'package:timetocode/routes/app_route.dart';
 
 class ChallengeState {
   final ChallengeLevelModel? currentLevel;
@@ -16,15 +17,12 @@ class ChallengeState {
   final int? correctAnswer;
   final int? wrongAnswer;
 
-  final String? activeMode;
-
   ChallengeState({
     this.currentLevel,
     this.currentDifficulty,
     this.currentQuestion,
     this.correctAnswer,
     this.wrongAnswer,
-    this.activeMode,
   });
 
   static const _sentinel = Object();
@@ -36,7 +34,6 @@ class ChallengeState {
     Object? currentQuestion = _sentinel,
     Object? correctAnswer = _sentinel,
     Object? wrongAnswer = _sentinel,
-    Object? activeMode = _sentinel,
   }) {
     return ChallengeState(
       currentLevel:
@@ -57,8 +54,6 @@ class ChallengeState {
               : correctAnswer as int?,
       wrongAnswer:
           wrongAnswer == _sentinel ? this.wrongAnswer : wrongAnswer as int?,
-      activeMode:
-          activeMode == _sentinel ? this.activeMode : activeMode as String?,
     );
   }
 }
@@ -77,7 +72,6 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
       currentQuestion: currentQuestion,
       correctAnswer: 0,
       wrongAnswer: 0,
-      activeMode: 'playing',
     );
   }
 
@@ -87,27 +81,37 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
 
     if (difficulty == null) {
       if (selected.isCorrect == true) {
-        state = AsyncValue.data(
-          state.value!.copyWith(
-            correctAnswer: (currentState.correctAnswer ?? 0) + 1,
-            activeMode: 'end',
-          ),
-        );
+        ref
+            .read(routerProvider)
+            .go(
+              '/tantangan/endgame',
+              extra: state.value!.copyWith(
+                correctAnswer: (currentState.correctAnswer ?? 0) + 1,
+              ),
+            );
+        ref
+            .read(completedChallengeProvider.notifier)
+            .setCompletedChallenge(
+              state.value!.currentLevel!.id,
+              (currentState.correctAnswer ?? 0) + 1,
+            );
       } else {
-        state = AsyncValue.data(
-          state.value!.copyWith(
-            wrongAnswer: (currentState.wrongAnswer ?? 0) + 1,
-            activeMode: 'end',
-          ),
-        );
+        ref
+            .read(routerProvider)
+            .go(
+              '/tantangan/endgame',
+              extra: state.value!.copyWith(
+                wrongAnswer: (currentState.wrongAnswer ?? 0) + 1,
+              ),
+            );
+        ref
+            .read(completedChallengeProvider.notifier)
+            .setCompletedChallenge(
+              state.value!.currentLevel!.id,
+              state.value!.correctAnswer!,
+            );
       }
-      final levelChallengeNotifier = ref.read(
-        completedChallengeProvider.notifier,
-      );
-      levelChallengeNotifier.setCompletedChallenge(
-        state.value!.currentLevel!.id,
-        state.value!.correctAnswer!,
-      );
+      // ref.invalidateSelf();
     } else {
       if (difficulty == 'sedang') {
         if (selected.isCorrect == true) {
@@ -152,7 +156,8 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
   }
 
   void endChallengePopup() {
-    state = AsyncValue.data(state.value!.copyWith(activeMode: 'exit'));
+    ref.read(routerProvider).pop();
+    // ref.invalidateSelf();
   }
 
   void resetChallenge() {

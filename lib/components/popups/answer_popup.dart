@@ -46,8 +46,7 @@ class AnswerPopup extends ConsumerWidget {
     return CustomButton(
       label: "Lanjutkan",
       onPressed: () {
-        final audioService = ref.read(soundEffectServiceProvider.notifier);
-        audioService.playButtonClick2();
+        ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
         onPressed();
       },
       widthMode: ButtonWidthMode.fill,
@@ -57,8 +56,6 @@ class AnswerPopup extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final audioService = ref.read(soundEffectServiceProvider.notifier);
-    audioService.playPopupAnswer();
     return BasePopup(
       borderColor: _color,
       child: Column(

@@ -24,14 +24,14 @@ class CodeBox extends StatelessWidget {
       child: Theme(
         data: Theme.of(context).copyWith(
           scrollbarTheme: ScrollbarThemeData(
-            thumbColor: MaterialStateProperty.all(Colors.white),
-            trackColor: MaterialStateProperty.all(
-              Colors.white.withOpacity(0.3),
+            thumbColor: WidgetStateProperty.all(Colors.white),
+            trackColor: WidgetStateProperty.all(
+              Colors.white.withValues(alpha: 0.3),
             ),
-            thickness: MaterialStateProperty.all(2.w),
+            thickness: WidgetStateProperty.all(2.w),
             radius: Radius.circular(4.r),
-            thumbVisibility: MaterialStateProperty.all(true),
-            trackVisibility: MaterialStateProperty.all(true),
+            thumbVisibility: WidgetStateProperty.all(true),
+            trackVisibility: WidgetStateProperty.all(true),
           ),
         ),
         child: Stack(

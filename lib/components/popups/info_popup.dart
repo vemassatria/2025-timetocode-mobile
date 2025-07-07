@@ -73,8 +73,7 @@ class InfoPopup extends ConsumerWidget {
     return CustomButton(
       label: "Tutup",
       onPressed: () {
-        final audioService = ref.read(soundEffectServiceProvider.notifier);
-        audioService.playNegativeClick();
+        ref.read(soundEffectServiceProvider.notifier).playNegativeClick();
         onClose();
       },
       widthMode: ButtonWidthMode.fill,

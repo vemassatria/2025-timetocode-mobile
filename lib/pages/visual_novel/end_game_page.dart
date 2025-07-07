@@ -21,8 +21,8 @@ class EndGameScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentLevelIndex = ref.read(currentLevelIndexProvider)!;
-    final audioService = ref.read(soundEffectServiceProvider.notifier);
     final storyLevel = ref.read(storyLevelProvider);
+    final audioService = ref.read(soundEffectServiceProvider.notifier);
 
     final correctAnswer = storyState.correctAnswer ?? 0;
     final wrongAnswer = storyState.wrongAnswer ?? 0;
@@ -109,9 +109,7 @@ class EndGameScreen extends ConsumerWidget {
                 widthMode: ButtonWidthMode.fill,
                 onPressed: () {
                   audioService.playSelectClick();
-                  if (context.mounted) {
-                    context.pop();
-                  }
+                  context.pop();
                 },
               ),
             ],

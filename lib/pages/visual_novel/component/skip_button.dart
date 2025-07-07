@@ -14,7 +14,6 @@ class SkipButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final levelCompleted = ref.read(completedLevelProvider);
     final currentLevel = ref.read(currentLevelIndexProvider)! + 1;
-    final storyController = ref.read(storyControllerProvider.notifier);
 
     final bool isDisabled = (levelCompleted < currentLevel);
 
@@ -31,7 +30,7 @@ class SkipButton extends ConsumerWidget {
               ),
             );
           } else {
-            storyController.skipToNextSoal();
+            ref.read(storyControllerProvider.notifier).skipToNextSoal();
           }
         },
         child: SafeArea(

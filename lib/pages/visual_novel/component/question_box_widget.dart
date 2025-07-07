@@ -5,7 +5,6 @@ import 'package:timetocode/components/box/code_box.dart';
 import 'package:timetocode/components/box/question_box.dart';
 import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/models/question_model.dart';
-import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/games/backend/providers/visual_novel/story_provider.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/components/popups/answer_popup.dart';
@@ -68,15 +67,12 @@ class QuestionBoxWidget extends ConsumerWidget {
     ChoicesModel selected,
   ) {
     final storyController = ref.read(storyControllerProvider.notifier);
-    final musicService = ref.read(soundEffectServiceProvider.notifier);
 
-    // Show popup with answer result
     showPopupOverlay(
       context,
       AnswerPopup(
         isCorrect: selected.isCorrect!,
         onPressed: () {
-          musicService.playButtonClick2();
           storyController.checkAnswer(selected);
           closePopupOverlay(ref);
         },

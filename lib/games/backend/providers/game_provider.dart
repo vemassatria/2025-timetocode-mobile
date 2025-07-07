@@ -3,7 +3,6 @@ import 'package:timetocode/games/backend/game_engine.dart';
 
 final gameEngineProvider = Provider.autoDispose<GameEngine>((ref) {
   final game = GameEngine();
-  ref.onDispose(game.onRemove);
-  game.onLoad();
+  ref.onDispose(game.deleteAll);
   return game;
 });

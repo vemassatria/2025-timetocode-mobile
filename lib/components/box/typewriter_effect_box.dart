@@ -23,25 +23,25 @@ class TypewriterEffectBox extends ConsumerStatefulWidget {
 }
 
 class _TypewriterEffectBoxState extends ConsumerState<TypewriterEffectBox> {
-  SoundEffectService? _soundNotifier;
+  late final SoundEffectService _soundNotifier;
 
   @override
   void initState() {
     super.initState();
     _soundNotifier = ref.read(soundEffectServiceProvider.notifier);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _soundNotifier?.playTyping();
+      _soundNotifier.playTyping();
     });
   }
 
   @override
   void dispose() {
-    _soundNotifier?.pauseTyping();
+    _soundNotifier.pauseTyping();
     super.dispose();
   }
 
   void _handleAnimationEnd() {
-    _soundNotifier?.pauseTyping();
+    _soundNotifier.pauseTyping();
     if (mounted) {
       widget.onFinished();
     }

@@ -58,12 +58,12 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/background/
-    - assets/character/
+    - assets/images/background/
+    - assets/images/character/
     - assets/stories/
     - assets/audio/music/
     - assets/audio/sfx/
-    - assets/ilustration/
+    - assets/images/ilustration/
     - assets/logo/Logo.png
   fonts:
     - family: Comic Neue

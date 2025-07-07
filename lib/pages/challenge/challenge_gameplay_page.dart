@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/answer_popup.dart';
 import 'package:timetocode/components/popups/menu_popup.dart';
-import 'package:timetocode/games/backend/controllers/challenge/challenge_gameplay_controller.dart';
 import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/providers/challenge/challenge_provider.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
@@ -27,13 +25,11 @@ class ChallengeGameplayPage extends ConsumerStatefulWidget {
 class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
   ChoicesModel? selectedAnswer;
   late final SoundEffectService soundEffectService;
-  late final ChallengeController challengeController;
 
   @override
   void initState() {
     super.initState();
     soundEffectService = ref.read(soundEffectServiceProvider.notifier);
-    challengeController = ref.read(challengeControllerProvider.notifier);
   }
 
   void selectAnswer(ChoicesModel answer) {
@@ -47,19 +43,7 @@ class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
   @override
   Widget build(BuildContext context) {
     final challengeAsync = ref.watch(challengeControllerProvider);
-
-    ref.listen<AsyncValue<ChallengeState>>(challengeControllerProvider, (
-      _,
-      next,
-    ) {
-      next.whenData((data) {
-        if (data.activeMode == 'end') {
-          context.go('/tantangan/endgame', extra: data);
-        } else if (data.activeMode == 'exit') {
-          context.pop();
-        }
-      });
-    });
+    final challengeController = ref.read(challengeControllerProvider.notifier);
 
     return challengeAsync.when(
       loading:
@@ -187,7 +171,9 @@ $code'''),
                   label: "Kirim",
                   onPressed:
                       () => {
-                        soundEffectService.playSubmit(),
+                        ref
+                            .read(soundEffectServiceProvider.notifier)
+                            .playSubmit(),
                         _checkAnswer(context, ref, selectedAnswer!),
                       },
                   color: ButtonColor.purple,
@@ -235,8 +221,8 @@ $code'''),
 
     return GestureDetector(
       onTap: () {
+        soundEffectService.playButtonClick2();
         selectAnswer(option);
-        soundEffectService.playSelectClick();
       },
       child: Container(
         width: double.infinity,
@@ -276,7 +262,7 @@ $code'''),
         isCorrect: selected.isCorrect!,
         onPressed: () {
           soundEffectService.playPopupAnswer();
-          challengeController.checkAnswer(selected);
+          ref.read(challengeControllerProvider.notifier).checkAnswer(selected);
           closePopupOverlay(ref);
           clearSelection();
         },

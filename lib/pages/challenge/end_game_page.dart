@@ -17,7 +17,6 @@ class EndGameChallenge extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final audioService = ref.read(soundEffectServiceProvider.notifier);
     final maxLevel = ref.read(challengeLevelProvider).value!.levels.length;
 
     final correctAnswer = challengeState.correctAnswer ?? 0;
@@ -78,10 +77,10 @@ class EndGameChallenge extends ConsumerWidget {
                 label: "Lanjutkan",
                 widthMode: ButtonWidthMode.fill,
                 onPressed: () {
-                  audioService.playButtonClick2();
-                  if (context.mounted) {
-                    context.pop();
-                  }
+                  ref
+                      .read(soundEffectServiceProvider.notifier)
+                      .playButtonClick2();
+                  context.pop();
                 },
               ),
             ],

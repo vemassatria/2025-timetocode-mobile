@@ -133,8 +133,12 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                                 hasChoices)
                               DialogChoicesBox(
                                 choices: dialog.choices!,
-                                onPressed:
-                                    (choice) => _checkAnswer(context, choice),
+                                onPressed: (choice) {
+                                  ref
+                                      .read(soundEffectServiceProvider.notifier)
+                                      .playSelectClick();
+                                  _checkAnswer(context, choice);
+                                },
                               ),
                             if (_isTextAnimationComplete &&
                                 (!isLastLine || !hasChoices))
@@ -180,8 +184,6 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
   }
 
   void _checkAnswer(BuildContext context, DialogChoices selected) {
-    ref.read(soundEffectServiceProvider.notifier).playSelectClick();
-
     showPopupOverlay(
       context,
       ConfirmPopup(
