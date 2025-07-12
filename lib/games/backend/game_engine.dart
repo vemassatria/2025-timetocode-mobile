@@ -13,15 +13,15 @@ class GameEngine extends FlameGame {
   SpriteComponent? _background;
 
   @override
-  FutureOr<void> onLoad() {
-    images.prefix = 'assets/';
-    return super.onLoad();
-  }
-
-  @override
   void onRemove() {
     deleteAll();
     super.onRemove();
+  }
+
+  @override
+  void onDispose() {
+    deleteAll();
+    super.onDispose();
   }
 
   Future<void> setBackground(String backgroundName) async {

@@ -29,19 +29,17 @@ class _IntroBoxWidgetState extends ConsumerState<IntroBoxWidget> {
   @override
   void didUpdateWidget(covariant IntroBoxWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.preDialog.id != oldWidget.preDialog.id) {
-      if (mounted) {
-        setState(() {
-          _isAnimationComplete = false;
-        });
-      }
+    if (widget.preDialog.id != oldWidget.preDialog.id && mounted) {
+      setState(() => _isAnimationComplete = false);
     }
   }
 
   void _handleTap() {
-    if (_isAnimationComplete) {
-      ref.read(storyControllerProvider.notifier).nextPreDialog();
+    if (!_isAnimationComplete) {
+      setState(() => _isAnimationComplete = true);
+      return;
     }
+    ref.read(storyControllerProvider.notifier).nextPreDialog();
   }
 
   @override
@@ -71,10 +69,9 @@ class _IntroBoxWidgetState extends ConsumerState<IntroBoxWidget> {
                         ? Text(widget.preDialog.text, style: textStyle)
                         : TypewriterEffectBox(
                           text: widget.preDialog.text,
-                          textKey: ValueKey(widget.preDialog.id),
                           textStyle: textStyle,
                           onFinished: () {
-                            if (mounted) {
+                            if (mounted && !_isAnimationComplete) {
                               setState(() => _isAnimationComplete = true);
                             }
                           },

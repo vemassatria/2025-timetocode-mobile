@@ -9,6 +9,7 @@ import 'package:timetocode/games/backend/providers/visual_novel/daftar_level_pro
 import 'package:timetocode/games/backend/providers/music_service_provider.dart';
 import 'package:timetocode/games/backend/providers/visual_novel/story_level_provider.dart';
 import 'package:timetocode/games/backend/services/visual_novel/predialog_service.dart';
+import 'package:timetocode/routes/app_route.dart';
 import '../../services/visual_novel/dialog_service.dart';
 import '../../services/question_service.dart';
 import '../../models/visual_novel/level_model.dart';
@@ -95,6 +96,10 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
 
   @override
   FutureOr<StoryState> build() async {
+    ref.onDispose(() {
+      ref.read(musicServiceProvider.notifier).playMainMenuMusic();
+      ref.invalidate(gameEngineProvider);
+    });
     game = ref.watch(gameEngineProvider);
     final levels = ref.read(storyLevelProvider).value;
     final level = levels![ref.read(currentLevelIndexProvider)!];
@@ -377,31 +382,19 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   }
 
   void showEndGame() {
-    state = AsyncValue.data(
-      state.value!.copyWith(
-        activeMode: 'end',
-        preDialog: null,
-        currentDialog: null,
-        currentQuestion: null,
-        indexDialog: null,
-        falsePrevious: null,
-      ),
-    );
-    game.hideCharacters();
-    game.hideIlustration();
+    ref.read(routerProvider).go('/pembelajaran/endgame');
     _saveProgress();
   }
 
   Future<void> _saveProgress() async {
     final completedLevel = ref.read(completedLevelProvider);
-    final currentLevel = state.value!.activeLevel;
-    if (currentLevel == null) return;
-
+    final currentLevel = state.value!.activeLevel!;
     if (currentLevel.level > completedLevel) {
       await ref
           .read(completedLevelProvider.notifier)
           .setCompletedLevel(currentLevel.level);
     }
+    ref.invalidateSelf();
   }
 
   void restartLevel() {
@@ -442,6 +435,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   }
 
   void exitLevel() {
-    state = AsyncValue.data(state.value!.copyWith(activeMode: 'exit'));
+    ref.read(routerProvider).pop();
+    ref.invalidateSelf();
   }
 }

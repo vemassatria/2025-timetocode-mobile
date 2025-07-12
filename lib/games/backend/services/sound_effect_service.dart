@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timetocode/games/backend/providers/shared_preferences_provider.dart';
 
-enum _TypingSoundIntent { playing, paused, disposed }
-
 class SoundEffectService extends Notifier<bool> {
   late SharedPreferences _prefs;
 
@@ -19,8 +17,7 @@ class SoundEffectService extends Notifier<bool> {
   late AudioPool _submitPool;
   AudioPlayer? _typingAudioPlayer;
 
-  _TypingSoundIntent _desiredIntent = _TypingSoundIntent.disposed;
-  bool _isProcessing = false;
+  int _typingOperationId = 0;
 
   @override
   bool build() {
@@ -140,67 +137,28 @@ class SoundEffectService extends Notifier<bool> {
     }
   }
 
-  Future<void> _reconcileState() async {
-    if (_isProcessing) return;
-
-    _isProcessing = true;
-
-    while (true) {
-      final currentIntent = _desiredIntent;
-
-      _TypingSoundIntent actualState;
-      if (_typingAudioPlayer == null) {
-        actualState = _TypingSoundIntent.disposed;
-      } else if (_typingAudioPlayer!.state == PlayerState.playing) {
-        actualState = _TypingSoundIntent.playing;
-      } else {
-        actualState = _TypingSoundIntent.paused;
-      }
-      if (actualState == currentIntent) {
-        break;
-      }
-      try {
-        if (currentIntent == _TypingSoundIntent.playing) {
-          if (_typingAudioPlayer == null) {
-            _typingAudioPlayer = await FlameAudio.loop(
-              'sfx/typing.wav',
-              volume: 2.0,
-            );
-          } else {
-            await _typingAudioPlayer!.resume();
-          }
-        } else if (currentIntent == _TypingSoundIntent.paused) {
-          if (_typingAudioPlayer != null) {
-            await _typingAudioPlayer!.pause();
-          }
-        } else if (currentIntent == _TypingSoundIntent.disposed) {
-          if (_typingAudioPlayer != null) {
-            await _typingAudioPlayer!.dispose();
-            _typingAudioPlayer = null;
-          }
-        }
-      } catch (e) {
-        break;
-      }
-    }
-
-    _isProcessing = false;
-  }
-
-  void playTyping() {
+  Future<void> playTyping() async {
     if (!state) return;
-    _desiredIntent = _TypingSoundIntent.playing;
-    _reconcileState();
+    final operationId = ++_typingOperationId;
+    if (_typingAudioPlayer == null) {
+      _typingAudioPlayer = await FlameAudio.loop('sfx/typing.wav');
+    } else {
+      await _typingAudioPlayer!.resume();
+    }
+    if (operationId != _typingOperationId) {
+      await _typingAudioPlayer?.pause();
+    }
   }
 
-  void pauseTyping() {
-    _desiredIntent = _TypingSoundIntent.paused;
-    _reconcileState();
+  Future<void> pauseTyping() async {
+    _typingOperationId++;
+    await _typingAudioPlayer?.pause();
   }
 
-  void disposeTypingPlayer() {
-    _desiredIntent = _TypingSoundIntent.disposed;
-    _reconcileState();
+  Future<void> disposeTypingPlayer() async {
+    await _typingAudioPlayer?.dispose();
+    _typingOperationId = 0;
+    _typingAudioPlayer = null;
   }
 
   void updateSoundEffectSetting(bool isEnabled) async {

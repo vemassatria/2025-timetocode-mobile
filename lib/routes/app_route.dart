@@ -1,8 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:timetocode/games/backend/controllers/challenge/challenge_gameplay_controller.dart';
-import 'package:timetocode/games/backend/controllers/visual_novel/story_gameplay_controller.dart';
 import 'package:timetocode/pages/challenge/end_game_page.dart';
 import 'package:timetocode/routes/main_navigation.dart';
 import 'package:timetocode/pages/challenge/challenge_gameplay_page.dart';
@@ -37,15 +35,14 @@ final routerProvider = Provider<GoRouter>((ref) {
                 path: 'level',
                 parentNavigatorKey: _rootNavigatorKey,
                 builder: (context, state) {
-                  return StoryGameplayPage();
+                  return const StoryGameplayPage();
                 },
               ),
               GoRoute(
                 path: 'endgame',
                 parentNavigatorKey: _rootNavigatorKey,
                 builder: (context, state) {
-                  final storyState = state.extra as StoryState;
-                  return EndGameScreen(storyState: storyState);
+                  return const EndGameScreen();
                 },
               ),
             ],
@@ -60,15 +57,14 @@ final routerProvider = Provider<GoRouter>((ref) {
                 path: 'level',
                 parentNavigatorKey: _rootNavigatorKey,
                 builder: (context, state) {
-                  return ChallengeGameplayPage();
+                  return const ChallengeGameplayPage();
                 },
               ),
               GoRoute(
                 path: 'endgame',
                 parentNavigatorKey: _rootNavigatorKey,
                 builder: (context, state) {
-                  final challengeState = state.extra as ChallengeState;
-                  return EndGameChallenge(challengeState: challengeState);
+                  return const EndGameChallenge();
                 },
               ),
             ],

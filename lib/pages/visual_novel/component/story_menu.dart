@@ -5,8 +5,8 @@ import 'package:timetocode/components/menu_button.dart';
 import 'package:timetocode/games/backend/providers/visual_novel/story_provider.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 
-class StoryPage extends ConsumerWidget {
-  const StoryPage({super.key});
+class StoryMenu extends ConsumerWidget {
+  const StoryMenu({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

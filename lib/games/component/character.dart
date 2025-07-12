@@ -84,7 +84,7 @@ class StoryCharactersComponent extends Component {
     secondCharacter.paint =
         Paint()
           ..colorFilter = ColorFilter.mode(
-            Colors.black.withOpacity(0.655),
+            Colors.black.withValues(alpha: 0.655),
             BlendMode.srcATop,
           );
   }

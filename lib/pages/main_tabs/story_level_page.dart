@@ -20,7 +20,7 @@ class DaftarLevelPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final storyAsync = ref.watch(storyLevelProvider);
     final completedLevel = ref.watch(completedLevelProvider);
-    final soundEffect = ref.read(soundEffectServiceProvider.notifier);
+    final soundEffectService = ref.read(soundEffectServiceProvider.notifier);
 
     return storyAsync.when(
       loading:
@@ -82,7 +82,8 @@ class DaftarLevelPage extends ConsumerWidget {
                     children: [
                       if (isFirst) SizedBox(height: 16.h),
                       LevelCard(
-                        image: 'assets/background/${level.background}.webp',
+                        image:
+                            'assets/images/background/${level.background}.webp',
                         title: level.title,
                         status:
                             isLocked
@@ -94,7 +95,7 @@ class DaftarLevelPage extends ConsumerWidget {
                             isLocked
                                 ? null
                                 : () {
-                                  soundEffect.playSelectClick();
+                                  soundEffectService.playSelectClick();
                                   ref
                                       .read(currentLevelIndexProvider.notifier)
                                       .state = index;
@@ -102,7 +103,7 @@ class DaftarLevelPage extends ConsumerWidget {
                                 },
 
                         onInfoPressed: () {
-                          soundEffect.playSelectClick();
+                          soundEffectService.playSelectClick();
                           showPopupOverlay(
                             context,
                             InfoPopup(

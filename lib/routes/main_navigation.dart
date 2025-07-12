@@ -29,9 +29,7 @@ class MainNavigation extends ConsumerWidget {
     return 0;
   }
 
-  void _onItemTapped(int index, BuildContext context, WidgetRef ref) {
-    ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
-
+  void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
         context.go('/pembelajaran');
@@ -102,7 +100,10 @@ class MainNavigation extends ConsumerWidget {
           elevation: 0,
           type: BottomNavigationBarType.fixed,
           currentIndex: selectedIndex,
-          onTap: (index) => _onItemTapped(index, context, ref),
+          onTap: (index) {
+            ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
+            _onItemTapped(index, context);
+          },
           selectedLabelStyle: AppTypography.verySmallBold(
             color: AppColors.skyByte,
           ),
