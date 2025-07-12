@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/game_stats.dart';
-import 'package:timetocode/games/backend/controllers/challenge/challenge_gameplay_controller.dart';
 import 'package:timetocode/games/backend/providers/challenge/challenge_level_provider.dart';
+import 'package:timetocode/games/backend/providers/challenge/challenge_provider.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 
 class EndGameChallenge extends ConsumerWidget {
-  final ChallengeState challengeState;
-  const EndGameChallenge({super.key, required this.challengeState});
+  const EndGameChallenge({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final maxLevel = ref.read(challengeLevelProvider).value!.levels.length;
+    final challengeState = ref.read(challengeControllerProvider).value!;
 
     final correctAnswer = challengeState.correctAnswer ?? 0;
     final wrongAnswer = challengeState.wrongAnswer ?? 0;
@@ -80,7 +79,9 @@ class EndGameChallenge extends ConsumerWidget {
                   ref
                       .read(soundEffectServiceProvider.notifier)
                       .playButtonClick2();
-                  context.pop();
+                  ref
+                      .read(challengeControllerProvider.notifier)
+                      .endChallengePopup();
                 },
               ),
             ],

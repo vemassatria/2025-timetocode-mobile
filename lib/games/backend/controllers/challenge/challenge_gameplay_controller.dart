@@ -81,21 +81,18 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
 
     if (difficulty == null) {
       if (selected.isCorrect == true) {
-        ref
-            .read(routerProvider)
-            .go(
-              '/tantangan/endgame',
-              extra: state.value!.copyWith(
-                correctAnswer: (currentState.correctAnswer ?? 0) + 1,
-              ),
-            );
-        ref
-            .read(completedChallengeProvider.notifier)
-            .setCompletedChallenge(
-              state.value!.currentLevel!.id,
-              (currentState.correctAnswer ?? 0) + 1,
-            );
+        state = AsyncValue.data(
+          currentState.copyWith(
+            correctAnswer: (currentState.correctAnswer ?? 0) + 1,
+          ),
+        );
+        ref.read(routerProvider).go('/tantangan/endgame');
       } else {
+        state = AsyncValue.data(
+          currentState.copyWith(
+            wrongAnswer: (currentState.wrongAnswer ?? 0) + 1,
+          ),
+        );
         ref
             .read(routerProvider)
             .go(
@@ -104,14 +101,13 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
                 wrongAnswer: (currentState.wrongAnswer ?? 0) + 1,
               ),
             );
-        ref
-            .read(completedChallengeProvider.notifier)
-            .setCompletedChallenge(
-              state.value!.currentLevel!.id,
-              state.value!.correctAnswer!,
-            );
       }
-      // ref.invalidateSelf();
+      ref
+          .read(completedChallengeProvider.notifier)
+          .setCompletedChallenge(
+            state.value!.currentLevel!.id,
+            state.value!.correctAnswer!,
+          );
     } else {
       if (difficulty == 'sedang') {
         if (selected.isCorrect == true) {
@@ -157,7 +153,7 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
 
   void endChallengePopup() {
     ref.read(routerProvider).pop();
-    // ref.invalidateSelf();
+    ref.invalidateSelf();
   }
 
   void resetChallenge() {

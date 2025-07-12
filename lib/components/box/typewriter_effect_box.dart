@@ -6,12 +6,10 @@ import 'package:timetocode/games/backend/services/sound_effect_service.dart';
 
 class TypewriterEffectBox extends ConsumerStatefulWidget {
   final String text;
-  final ValueKey textKey;
   final TextStyle textStyle;
   final VoidCallback onFinished;
   const TypewriterEffectBox({
     required this.text,
-    required this.textKey,
     required this.textStyle,
     required this.onFinished,
     super.key,
@@ -50,7 +48,6 @@ class _TypewriterEffectBoxState extends ConsumerState<TypewriterEffectBox> {
   @override
   Widget build(BuildContext context) {
     return AnimatedTextKit(
-      key: widget.textKey,
       animatedTexts: [
         TypewriterAnimatedText(
           widget.text,

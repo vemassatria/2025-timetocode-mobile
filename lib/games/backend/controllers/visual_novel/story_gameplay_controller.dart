@@ -98,7 +98,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   FutureOr<StoryState> build() async {
     ref.onDispose(() {
       ref.read(musicServiceProvider.notifier).playMainMenuMusic();
-      // ref.invalidate(gameEngineProvider);
+      ref.invalidate(gameEngineProvider);
     });
     game = ref.watch(gameEngineProvider);
     final levels = ref.read(storyLevelProvider).value;
@@ -382,7 +382,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   }
 
   void showEndGame() {
-    ref.read(routerProvider).go('/pembelajaran/endgame', extra: state.value!);
+    ref.read(routerProvider).go('/pembelajaran/endgame');
     _saveProgress();
   }
 
@@ -394,7 +394,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
           .read(completedLevelProvider.notifier)
           .setCompletedLevel(currentLevel.level);
     }
-    // ref.invalidateSelf();
+    ref.invalidateSelf();
   }
 
   void restartLevel() {
@@ -436,6 +436,6 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
 
   void exitLevel() {
     ref.read(routerProvider).pop();
-    // ref.invalidateSelf();
+    ref.invalidateSelf();
   }
 }

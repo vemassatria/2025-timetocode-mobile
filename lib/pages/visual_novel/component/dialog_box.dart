@@ -23,8 +23,8 @@ class DialogBox extends ConsumerStatefulWidget {
     required this.indexDialog,
     required this.character1Name,
     required this.character2Name,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ConsumerState<DialogBox> createState() => _DialogBoxState();
@@ -112,12 +112,10 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                                       ? Text(text, style: textStyle)
                                       : TypewriterEffectBox(
                                         text: text,
-                                        textKey: ValueKey(
-                                          'dialog_${dialog.id}_$idx',
-                                        ),
                                         textStyle: textStyle,
                                         onFinished: () {
-                                          if (mounted) {
+                                          if (mounted &&
+                                              !_isTextAnimationComplete) {
                                             setState(
                                               () =>
                                                   _isTextAnimationComplete =
