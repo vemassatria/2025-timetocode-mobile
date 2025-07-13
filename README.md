@@ -314,3 +314,50 @@ DialogBox(
 ```dart
 IllustrationBox(image: AssetImage('[PATH KE ASSET ILUSTRASI]')),
 ```
+
+
+# Dokumentasi Backend
+
+## Table of Contents
+
+- [1. BGM](#1-bgm)
+- [2. Sound Effect](#2-sound-effect)
+
+---
+
+<br>
+
+## [1] BGM
+lokasi: lib/games/backend/service
+
+keterangan: bgm yang dimiliki sekarang memiliki pemanggilan global dengan manajemen state riverpod dan cara kerja di mana 1 instance player akan dibuat. jika diibaratkan dengan pemutaran film dengan cd,itu instance player sebagai si dvd player dan musik yang akan dimainkan adalah cd.
+
+cara melihat state bgm(user aktifkan suara apa gak):
+```dart
+ref.watch(musicServiceProvider); // gunakan watch jika ingin selalu mengawasi dan read untuk ambil nilai sekali.
+```
+
+cara memanggil method bgm:
+```dart
+ref.read(musicServiceProvider.notifier).namaMethodnya();
+// ----------------------
+// atau kalau mau nyimpan
+// -----------------------
+final bgmService = ref.read(musicServiceProvider.notifier);
+bgmService.namaMethodnya();
+```
+
+cara nambahin lagu:
+```dart
+Future<void> fungsiBaru (String parameter) async {
+    await _play(parameter); // intinya di sini guys, pastikan parameter berakhir .ogg
+}
+```
+
+tips : gunakan ogg untuk bgm karena ukuran lebih kecil dan kualitasnya lumayan bagus.
+
+## [2] Sound Effect
+lokasi: lib/games/backend/service
+
+keterangan: sfx yang dimiliki sekarang juga memiliki pemanggilan global dengan manajemen riverpod, serta melakukan **caching** pada semua audio yang digunakannya.
+tbc
