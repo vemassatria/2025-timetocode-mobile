@@ -38,6 +38,7 @@ class PengaturanPage extends ConsumerWidget {
               label: "Musik Latar",
               value: isMusicEnabled,
               onChanged: (value) {
+                ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
                 ref
                     .read(musicServiceProvider.notifier)
                     .updateMusicSetting(value);
@@ -49,6 +50,7 @@ class PengaturanPage extends ConsumerWidget {
               label: "Efek Suara",
               value: isEffectEnabled,
               onChanged: (value) {
+                ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
                 ref
                     .read(soundEffectServiceProvider.notifier)
                     .updateSoundEffectSetting(value);

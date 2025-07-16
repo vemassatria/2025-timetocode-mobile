@@ -60,6 +60,7 @@ class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
               leading: IconButton(
                 icon: Icon(Icons.menu, color: AppColors.primaryText),
                 onPressed: () {
+                  ref.read(soundEffectServiceProvider.notifier).playSelectClick();
                   showPopupOverlay(
                     context,
                     MenuPopup(
