@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/games/backend/models/challenge/challenge_level_model.dart';
 import 'package:timetocode/games/backend/models/choices_model.dart';
+import 'package:timetocode/games/backend/models/drag%20_and_drop/drag_and_drop_question_model.dart';
+import 'package:timetocode/games/backend/models/drag%20_and_drop/draggable_model.dart';
+import 'package:timetocode/games/backend/models/drag%20_and_drop/drop_zone_model.dart';
 import 'package:timetocode/games/backend/models/question_model.dart';
 import 'package:timetocode/games/backend/providers/challenge/challenge_level_provider.dart';
 import 'package:timetocode/games/backend/providers/challenge/daftar_challenge_provider.dart';
@@ -17,12 +20,19 @@ class ChallengeState {
   final int? correctAnswer;
   final int? wrongAnswer;
 
+  final DragAndDropModel? currentDragAndDrop;
+  final List<DraggableModel>? availableOptions;
+  final Map<String, DropZoneModel>? dropZones;
+
   ChallengeState({
     this.currentLevel,
     this.currentDifficulty,
     this.currentQuestion,
     this.correctAnswer,
     this.wrongAnswer,
+    this.currentDragAndDrop,
+    this.availableOptions,
+    this.dropZones,
   });
 
   static const _sentinel = Object();
@@ -34,6 +44,9 @@ class ChallengeState {
     Object? currentQuestion = _sentinel,
     Object? correctAnswer = _sentinel,
     Object? wrongAnswer = _sentinel,
+    Object? currentDragAndDrop = _sentinel,
+    Object? availableOptions = _sentinel,
+    Object? dropZones = _sentinel,
   }) {
     return ChallengeState(
       currentLevel:
@@ -54,6 +67,18 @@ class ChallengeState {
               : correctAnswer as int?,
       wrongAnswer:
           wrongAnswer == _sentinel ? this.wrongAnswer : wrongAnswer as int?,
+      currentDragAndDrop:
+          currentDragAndDrop == _sentinel
+              ? this.currentDragAndDrop
+              : currentDragAndDrop as DragAndDropModel?,
+      availableOptions:
+          availableOptions == _sentinel
+              ? this.availableOptions
+              : availableOptions as List<DraggableModel>?,
+      dropZones:
+          dropZones == _sentinel
+              ? this.dropZones
+              : dropZones as Map<String, DropZoneModel>?,
     );
   }
 }
@@ -129,6 +154,8 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
             ),
           );
         }
+      } else if (difficulty == 'drag_and_drop') {
+        startDragAndDrop(selected.next!);
       } else {
         if (selected.isCorrect == true) {
           state = AsyncValue.data(
@@ -166,6 +193,70 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
         correctAnswer: 0,
         wrongAnswer: 0,
       ),
+    );
+  }
+
+  /*
+
+  PEMBUATAN DRAG AND DROP
+  letsgooooooooooooooooooooooooooooo
+
+  */
+
+  void startDragAndDrop(String id) {
+    final dragAndDrop = state.value!.currentLevel!.getDragAndDropById(id);
+    state = AsyncValue.data(
+      state.value!.copyWith(
+        currentDragAndDrop: dragAndDrop,
+        availableOptions: dragAndDrop!.draggableOptions,
+        dropZones: dragAndDrop.dropZones,
+      ),
+    );
+    ref.read(routerProvider).go('/tantangan/dod');
+  }
+
+  void dropItem(String zoneId, String optionId) {
+    final newZones = Map<String, DropZoneModel>.from(state.value!.dropZones!);
+    final newOptions = List<DraggableModel>.from(
+      state.value!.availableOptions!,
+    );
+
+    // 1. Hapus opsi dari dropzone lain jika sudah ada
+    newZones.forEach((key, value) {
+      if (value.contentId == optionId) {
+        newZones[key]!.contentId = null;
+      }
+    });
+
+    // 2. Tempatkan opsi ke dropzone baru
+    newZones[zoneId]!.contentId = optionId;
+
+    // 3. Update daftar opsi yang tersedia (opsional, tergantung UX)
+    // newOptions.removeWhere((opt) => opt.id == optionId);
+
+    state = AsyncValue.data(
+      state.value!.copyWith(dropZones: newZones, availableOptions: newOptions),
+    );
+  }
+
+  bool validateAnswer() {
+    final userSequence =
+        state.value!.dropZones!.values.map((zone) => zone.contentId).toList();
+    final correctSequence = state.value!.currentDragAndDrop!.correctSequence;
+
+    if (userSequence.length != correctSequence.length) return false;
+
+    for (int i = 0; i < userSequence.length; i++) {
+      if (userSequence[i] != correctSequence[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  DraggableModel getOptionById(String id) {
+    return state.value!.currentDragAndDrop!.draggableOptions.firstWhere(
+      (opt) => opt.id == id,
     );
   }
 }

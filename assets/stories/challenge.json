@@ -81,32 +81,86 @@
                 "choices": [
                   {
                     "text": "55",
-                    "next": null,
-                    "nextType": null,
+                    "next": "dd-1.1",
+                    "nextType": "drag_and_drop",
                     "isCorrect": false
                   },
                   {
                     "text": "60 ",
-                    "next": null,
-                    "nextType": null,
+                    "next": "dd-1.1",
+                    "nextType": "drag_and_drop",
                     "isCorrect": true
                   },
                   {
                     "text": "50",
-                    "next": null,
-                    "nextType": null,
+                    "next": "dd-1.1",
+                    "nextType": "drag_and_drop",
                     "isCorrect": false
                   },
                   {
                     "text": "45",
-                    "next": null,
-                    "nextType": null,
+                    "next": "dd-1.1",
+                    "nextType": "drag_and_drop",
                     "isCorrect": false
                   }
                 ]
               }
             ]
-          }
+          },
+          "drag_and_drop": [
+            {
+              "id": "dd-1.1",
+              "instruction": "Seret dan susun potongan kode berikut agar membentuk deklarasi variabel bertipe int dan langsung diberi nilai 5",
+              "scaffoldCode": null,
+              "draggableOptions": [
+                {
+                  "id": "dnd-1",
+                  "content": {
+                    "type": "text",
+                    "value": "a"
+                  }
+                },
+                {
+                  "id": "dnd-2",
+                  "content": {
+                    "type": "text",
+                    "value": "int"
+                  }
+                },
+                {
+                  "id": "dnd-3",
+                  "content": {
+                    "type": "text",
+                    "value": "="
+                  }
+                },
+                {
+                  "id": "dnd-4",
+                  "content": {
+                    "type": "text",
+                    "value": "5"
+                  }
+                },
+                {
+                  "id": "dnd-5",
+                  "content": {
+                    "type": "text",
+                    "value": ";"
+                  }
+                }
+              ],
+              "dropZones": {
+                "dz-01": { "acceptedIds": [], "content": null },
+                "dz-02": { "acceptedIds": [], "content": null },
+                "dz-03": { "acceptedIds": [], "content": null },
+                "dz-04": { "acceptedIds": [], "content": null },
+                "dz-05": { "acceptedIds": [], "content": null }
+              },
+              "correctSequence": [
+                "dnd-2", "dnd-1", "dnd-3", "dnd-4", "dnd-5"
+              ]
+            }
+          ]
         },
         {
           "id": 2,

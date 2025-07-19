@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timetocode/pages/challenge/end_game_page.dart';
+import 'package:timetocode/pages/drag_and_drop/gameplay.dart';
 import 'package:timetocode/routes/main_navigation.dart';
 import 'package:timetocode/pages/challenge/challenge_gameplay_page.dart';
 import 'package:timetocode/pages/main_tabs/challenge_level_page.dart';
@@ -66,6 +67,11 @@ final routerProvider = Provider<GoRouter>((ref) {
                 builder: (context, state) {
                   return const EndGameChallenge();
                 },
+              ),
+              GoRoute(
+                path: 'dod',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) => const DragAndDropQuestionWidget(),
               ),
             ],
           ),
