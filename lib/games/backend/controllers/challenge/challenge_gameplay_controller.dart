@@ -288,7 +288,7 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
     // if (userSequence.length != correctSequence.length) return false;
 
     for (int i = 0; i < userSequence.length; i++) {
-      if (userSequence[i] != correctSequence[i]) {
+      if (userSequence[i].contentId != correctSequence[i]) {
         return false;
       }
     }
