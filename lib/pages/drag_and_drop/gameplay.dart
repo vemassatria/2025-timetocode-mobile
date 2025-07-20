@@ -3,9 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/box/drag_and_drop/block.dart';
 import 'package:timetocode/components/box/drag_and_drop/drop_zone_target.dart';
-import 'package:timetocode/games/backend/models/drag%20_and_drop/drop_zone_model.dart';
+import 'package:timetocode/components/button.dart';
+import 'package:timetocode/components/popups/answer_popup.dart';
+import 'package:timetocode/components/popups/menu_popup.dart';
 import 'package:timetocode/games/backend/providers/challenge/challenge_provider.dart';
+import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
+import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
+import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/widgets/code_text.dart';
 
 class DragAndDropQuestionWidget extends ConsumerWidget {
@@ -13,111 +18,194 @@ class DragAndDropQuestionWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final dndState = ref.watch(challengeControllerProvider).value!;
+    final challengeAsync = ref.watch(challengeControllerProvider);
     final dndNotifier = ref.read(challengeControllerProvider.notifier);
 
-    final dndModel = dndState.currentDragAndDrop!;
-    final availableOptions = dndModel.draggableOptions;
+    return challengeAsync.when(
+      loading:
+          () =>
+              const Scaffold(body: Center(child: CircularProgressIndicator())),
+      error: (e, s) => Scaffold(body: Center(child: Text("Error: $e"))),
+      data: (dndState) {
+        final dndModel = dndState.currentDragAndDrop!;
+        final availableOptions = dndState.availableOptions!;
+        final dropZones = dndState.dropZones!;
+        final allZonesFilled = dropZones.every(
+          (zone) => zone.contentId != null,
+        );
 
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          children: [
-            // 1. Instruksi Soal
-            Text(
-              dndModel.instruction,
-              style: AppTypography.normal(),
-              textAlign: TextAlign.center,
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: AppColors.surfaceDark,
+            elevation: 0,
+            leading: IconButton(
+              icon: Icon(Icons.menu, color: AppColors.primaryText),
+              onPressed: () {
+                showPopupOverlay(
+                  context,
+                  MenuPopup(
+                    onRestart: () {
+                      dndNotifier.resetChallenge();
+                      closePopupOverlay(ref);
+                    },
+                    onExit: () {
+                      dndNotifier.endChallengePopup();
+                      closePopupOverlay(ref);
+                    },
+                    onClose: () => closePopupOverlay(ref),
+                    onGoBack: () => goBackToPreviousOverlay(context, ref),
+                  ),
+                  ref,
+                );
+              },
             ),
-            SizedBox(height: 16.h),
-
-            // 2. Kode Kerangka & Drop Zones
-            Container(
-              padding: EdgeInsets.all(16.w),
-              decoration: BoxDecoration(
-                color: const Color(0xFF1E1E1E),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            title: Text(dndState.currentLevel!.levelName),
+            centerTitle: true,
+            actions: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  if (dndModel.scaffoldCode != null)
-                    CodeText(dndModel.scaffoldCode!),
-                  ...dndState.dropZones!.entries.map((entry) {
-                    String zoneId = entry.key;
-                    DropZoneModel zone = entry.value;
-                    Widget? droppedItem;
-
-                    if (zone.contentId != null) {
-                      // Ambil data item dari controller
-                      final option = dndNotifier.getOptionById(zone.contentId!);
-                      droppedItem = DraggableBlockWidget(option: option);
-                    }
-
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 4.h,
-                        horizontal: 16.w,
-                      ),
-                      child: DropZoneTargetWidget(
-                        zoneId: zoneId,
-                        onAccept:
-                            dndNotifier
-                                .dropItem, // Panggil method dari controller
-                        child: droppedItem,
-                      ),
-                    );
-                  }).toList(),
+                  Icon(Icons.check_circle, color: AppColors.xpGreen),
+                  SizedBox(
+                    width: 35.w,
+                    child: Text(
+                      "${dndState.correctAnswer ?? 0}/3",
+                      style: AppTypography.mediumBold(),
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                  SizedBox(width: 16.w),
+                  Icon(Icons.cancel, color: AppColors.dangerRed),
+                  SizedBox(
+                    width: 35.w,
+                    child: Text(
+                      "${dndState.wrongAnswer ?? 0}/3",
+                      style: AppTypography.mediumBold(),
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                  SizedBox(width: 16.w),
+                ],
+              ),
+            ],
+          ),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(16.w),
+              child: Column(
+                children: [
+                  Text(
+                    dndModel.instruction,
+                    style: AppTypography.normal(),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 16.h),
+                  Container(
+                    padding: EdgeInsets.all(16.w),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF1E1E1E),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (dndModel.scaffoldCode != null)
+                          CodeText(dndModel.scaffoldCode!),
+                        ...dropZones.map((zone) {
+                          Widget? droppedItem;
+                          if (zone.contentId != null) {
+                            final option = dndNotifier.getOptionById(
+                              zone.contentId!,
+                            );
+                            droppedItem = DraggableBlockWidget(option: option);
+                          }
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 4.h,
+                              horizontal: zone.contentId != null ? 0 : 16.w,
+                            ),
+                            child: DropZoneTargetWidget(
+                              zoneId: zone.id,
+                              onAccept: dndNotifier.dropItem,
+                              child: droppedItem,
+                            ),
+                          );
+                        }).toList(),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 24.h),
+                  Text("Pilihan Blok:", style: AppTypography.mediumBold()),
+                  SizedBox(height: 8.h),
+                  DragTarget<String>(
+                    builder: (context, candidateData, rejectedData) {
+                      return Container(
+                        width: double.infinity,
+                        constraints: BoxConstraints(minHeight: 100.h),
+                        padding: EdgeInsets.all(8.w),
+                        decoration: BoxDecoration(
+                          color:
+                              candidateData.isNotEmpty
+                                  ? AppColors.surfaceDark
+                                  : Colors.transparent,
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: Wrap(
+                          spacing: 8.w,
+                          runSpacing: 8.h,
+                          children:
+                              availableOptions
+                                  .map(
+                                    (opt) => DraggableBlockWidget(option: opt),
+                                  )
+                                  .toList(),
+                        ),
+                      );
+                    },
+                    onAccept: (optionId) {
+                      dndNotifier.dropItem('options_area', optionId);
+                    },
+                  ),
                 ],
               ),
             ),
-            SizedBox(height: 24.h),
-
-            // 3. Opsi/Blok yang Tersedia
-            Text("Pilihan Blok:", style: AppTypography.mediumBold()),
-            SizedBox(height: 8.h),
-            Wrap(
-              spacing: 8.w,
-              runSpacing: 8.h,
-              children:
-                  availableOptions
-                      .map((opt) => DraggableBlockWidget(option: opt))
-                      .toList(),
+          ),
+          bottomNavigationBar: Container(
+            height: 80.h,
+            decoration: BoxDecoration(
+              color: AppColors.surfaceDark,
+              border: Border(
+                top: BorderSide(color: AppColors.black1, width: 1.w),
+              ),
             ),
-            SizedBox(height: 24.h),
-            _buildOutputConsole(dndState.dropZones!),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildOutputConsole(Map<String, DropZoneModel> dropZones) {
-    final sequence =
-        dropZones.values.map((e) => e.contentId).whereType<String>().toList();
-    String output = "Output akan muncul di sini...";
-
-    // Logika ini bisa dibuat lebih dinamis jika perlu
-    if (sequence.length == 2) {
-      if (sequence.first == "dnd-002" && sequence.last == "dnd-001") {
-        output = "> Adrian";
-      } else {
-        output = "> ReferenceError: nama is not defined";
-      }
-    }
-
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(12.w),
-      decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(4.r),
-      ),
-      child: Text(
-        output,
-        style: TextStyle(color: Colors.white, fontFamily: 'monospace'),
-      ),
+            child: Padding(
+              padding: EdgeInsets.all(16.w),
+              child: CustomButton(
+                label: "Periksa Jawaban",
+                onPressed: () {
+                  final sfx = ref.read(soundEffectServiceProvider.notifier);
+                  sfx.playSubmit();
+                  final isCorrect = dndNotifier.validateAnswer();
+                  showPopupOverlay(
+                    context,
+                    AnswerPopup(
+                      isCorrect: isCorrect,
+                      onPressed: () {
+                        sfx.playPopupAnswer();
+                        dndNotifier.finalizeDragAndDrop(isCorrect);
+                        closePopupOverlay(ref);
+                      },
+                    ),
+                    ref,
+                  );
+                },
+                color: ButtonColor.purple,
+                isDisabled: !allZonesFilled,
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -7,7 +7,7 @@ class DragAndDropModel {
   final String instruction;
   final String? scaffoldCode;
   final List<DraggableModel> draggableOptions;
-  final Map<String, DropZoneModel>? dropZones;
+  final List<DropZoneModel> dropZones;
   final List<String> correctSequence;
 
   DragAndDropModel({
@@ -15,7 +15,7 @@ class DragAndDropModel {
     required this.instruction,
     this.scaffoldCode,
     required this.draggableOptions,
-    this.dropZones,
+    required this.dropZones,
     required this.correctSequence,
   });
 
@@ -28,12 +28,10 @@ class DragAndDropModel {
           (json['draggableOptions'] as List<dynamic>)
               .map((d) => DraggableModel.fromJson(d as Map<String, dynamic>))
               .toList(),
-      dropZones: (json['dropZones'] as Map<String, dynamic>?)?.map(
-        (key, value) => MapEntry(
-          key,
-          DropZoneModel.fromJson(value as Map<String, dynamic>),
-        ),
-      ),
+      dropZones:
+          (json['dropZones'] as List<dynamic>)
+              .map((d) => DropZoneModel.fromJson(d as Map<String, dynamic>))
+              .toList(),
       correctSequence:
           (json['correctSequence'] as List<dynamic>)
               .map((e) => e as String)

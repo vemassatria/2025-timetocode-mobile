@@ -149,13 +149,33 @@
                   }
                 }
               ],
-              "dropZones": {
-                "dz-01": { "acceptedIds": [], "content": null },
-                "dz-02": { "acceptedIds": [], "content": null },
-                "dz-03": { "acceptedIds": [], "content": null },
-                "dz-04": { "acceptedIds": [], "content": null },
-                "dz-05": { "acceptedIds": [], "content": null }
-              },
+              "dropZones": [
+                {
+                  "id": "dz-1",
+                  "acceptedIds": null,
+                  "content": null
+                },
+                {
+                  "id": "dz-2",
+                  "acceptedIds": null,
+                  "content": null
+                },
+                {
+                  "id": "dz-3",
+                  "acceptedIds": null,
+                  "content": null
+                },
+                {
+                  "id": "dz-4",
+                  "acceptedIds": null,
+                  "content": null
+                },
+                {
+                  "id": "dz-5",
+                  "acceptedIds": null,
+                  "content": null
+                }
+              ],
               "correctSequence": [
                 "dnd-2", "dnd-1", "dnd-3", "dnd-4", "dnd-5"
               ]

@@ -22,7 +22,7 @@ class ChallengeState {
 
   final DragAndDropModel? currentDragAndDrop;
   final List<DraggableModel>? availableOptions;
-  final Map<String, DropZoneModel>? dropZones;
+  final List<DropZoneModel>? dropZones;
 
   ChallengeState({
     this.currentLevel,
@@ -78,7 +78,7 @@ class ChallengeState {
       dropZones:
           dropZones == _sentinel
               ? this.dropZones
-              : dropZones as Map<String, DropZoneModel>?,
+              : dropZones as List<DropZoneModel>?,
     );
   }
 }
@@ -215,36 +215,77 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
     ref.read(routerProvider).go('/tantangan/dod');
   }
 
-  void dropItem(String zoneId, String optionId) {
-    final newZones = Map<String, DropZoneModel>.from(state.value!.dropZones!);
-    final newOptions = List<DraggableModel>.from(
-      state.value!.availableOptions!,
+  void dropItem(String targetZoneId, String droppedOptionId) {
+    final currentState = state.value!;
+    final zones = List<DropZoneModel>.from(currentState.dropZones!);
+    final availableOptions = List<DraggableModel>.from(
+      currentState.availableOptions!,
     );
+    final allDraggableOptions =
+        currentState.currentDragAndDrop!.draggableOptions;
 
-    // 1. Hapus opsi dari dropzone lain jika sudah ada
-    newZones.forEach((key, value) {
-      if (value.contentId == optionId) {
-        newZones[key]!.contentId = null;
+    // Tentukan lokasi asal item yang di-drop
+    DropZoneModel? sourceZone;
+    final sourceZoneIndex = zones.indexWhere(
+      (z) => z.contentId == droppedOptionId,
+    );
+    if (sourceZoneIndex != -1) {
+      sourceZone = zones[sourceZoneIndex];
+    }
+
+    if (targetZoneId == 'options_area') {
+      // === Mengembalikan item ke area pilihan ===
+      if (sourceZone != null) {
+        sourceZone.contentId = null;
       }
-    });
+      if (!availableOptions.any((opt) => opt.id == droppedOptionId)) {
+        final optionToAdd = allDraggableOptions.firstWhere(
+          (opt) => opt.id == droppedOptionId,
+        );
+        availableOptions.add(optionToAdd);
+      }
+    } else {
+      // === Menjatuhkan item ke drop zone ===
+      final targetZone = zones.firstWhere((z) => z.id == targetZoneId);
+      final displacedOptionId = targetZone.contentId;
 
-    // 2. Tempatkan opsi ke dropzone baru
-    newZones[zoneId]!.contentId = optionId;
+      if (sourceZone != null) {
+        // Kasus 1: Menukar item antar drop zone
+        sourceZone.contentId =
+            displacedOptionId; // Item yang tergusur pindah ke source
+        targetZone.contentId =
+            droppedOptionId; // Item yang di-drop pindah ke target
+      } else {
+        // Kasus 2: Memindahkan item dari area pilihan ke drop zone
+        targetZone.contentId = droppedOptionId;
+        availableOptions.removeWhere((opt) => opt.id == droppedOptionId);
 
-    // 3. Update daftar opsi yang tersedia (opsional, tergantung UX)
-    // newOptions.removeWhere((opt) => opt.id == optionId);
+        if (displacedOptionId != null) {
+          // Kembalikan item yang tergusur ke area pilihan
+          final optionToReturn = allDraggableOptions.firstWhere(
+            (opt) => opt.id == displacedOptionId,
+          );
+          if (!availableOptions.any((opt) => opt.id == displacedOptionId)) {
+            availableOptions.add(optionToReturn);
+          }
+        }
+      }
+    }
 
+    // Perbarui state
     state = AsyncValue.data(
-      state.value!.copyWith(dropZones: newZones, availableOptions: newOptions),
+      currentState.copyWith(
+        dropZones: zones,
+        availableOptions: availableOptions,
+      ),
     );
   }
 
   bool validateAnswer() {
-    final userSequence =
-        state.value!.dropZones!.values.map((zone) => zone.contentId).toList();
+    final userSequence = state.value!.dropZones!;
     final correctSequence = state.value!.currentDragAndDrop!.correctSequence;
 
-    if (userSequence.length != correctSequence.length) return false;
+    // if (userSequence.length != correctSequence.length) return false;
 
     for (int i = 0; i < userSequence.length; i++) {
       if (userSequence[i] != correctSequence[i]) {
@@ -252,6 +293,29 @@ class ChallengeController extends AutoDisposeAsyncNotifier<ChallengeState> {
       }
     }
     return true;
+  }
+
+  void finalizeDragAndDrop(bool isCorrect) {
+    final currentState = state.value!;
+    if (isCorrect) {
+      state = AsyncValue.data(
+        currentState.copyWith(
+          correctAnswer: (currentState.correctAnswer ?? 0) + 1,
+        ),
+      );
+      ref
+          .read(completedChallengeProvider.notifier)
+          .setCompletedChallenge(
+            state.value!.currentLevel!.id,
+            state.value!.correctAnswer!,
+          );
+      ref.read(routerProvider).go('/tantangan/endgame');
+    } else {
+      state = AsyncValue.data(
+        currentState.copyWith(wrongAnswer: (currentState.wrongAnswer ?? 0) + 1),
+      );
+      // Popup ditutup oleh UI, pengguna bisa mencoba lagi.
+    }
   }
 
   DraggableModel getOptionById(String id) {
