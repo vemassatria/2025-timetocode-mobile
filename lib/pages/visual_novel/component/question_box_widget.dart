@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/box/code_box.dart';
 import 'package:timetocode/components/box/question_box.dart';
+import 'package:timetocode/games/backend/controllers/visual_novel/story_gameplay_controller.dart';
 import 'package:timetocode/games/backend/models/choices_model.dart';
 import 'package:timetocode/games/backend/models/question_model.dart';
-import 'package:timetocode/games/backend/providers/visual_novel/story_provider.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 import 'package:timetocode/components/popups/answer_popup.dart';
 import 'package:timetocode/components/box/choices_box.dart';
@@ -66,14 +66,12 @@ class QuestionBoxWidget extends ConsumerWidget {
     WidgetRef ref,
     ChoicesModel selected,
   ) {
-    final storyController = ref.read(storyControllerProvider.notifier);
-
     showPopupOverlay(
       context,
       AnswerPopup(
         isCorrect: selected.isCorrect!,
         onPressed: () {
-          storyController.checkAnswer(selected);
+          ref.read(storyControllerProvider.notifier).checkAnswer(selected);
           closePopupOverlay(ref);
         },
       ),

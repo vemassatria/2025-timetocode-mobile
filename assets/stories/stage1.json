@@ -550,8 +550,8 @@
               "speaker": 2
             }
           ],
-          "next": "soal1_3",
-          "nextType": "soal"
+          "next": "dd-1.1",
+          "nextType": "drag_and_drop"
         },
         {
           "id": "salah1_3",
@@ -685,6 +685,131 @@
               "isCorrect": false
             }
           ]
+        }
+      ],
+      "drag_and_drop": [
+        {
+          "id": "dd-1.1",
+          "type": "dnd_code",
+          "instruction": "Seret dan susun potongan kode berikut agar membentuk deklarasi variabel bertipe int dan langsung diberi nilai 5",
+          "scaffoldCode": "int main() {\n\t[dz1][dz2],[dz3]\n\t[dz4][dz5][dz6][dz7][dz8]\n\t[dz9]\n}",
+          "draggableOptions": [
+            {
+              "id": "dnd-1",
+              "content": {
+                "type": "text",
+                "value": "a = 7"
+              }
+            },
+            {
+              "id": "dnd-2",
+              "content": {
+                "type": "text",
+                "value": "int"
+              }
+            },
+            {
+              "id": "dnd-3",
+              "content": {
+                "type": "text",
+                "value": "hasil"
+              }
+            },
+            {
+              "id": "dnd-4",
+              "content": {
+                "type": "text",
+                "value": "b = 2;"
+              }
+            },
+            {
+              "id": "dnd-5",
+              "content": {
+                "type": "text",
+                "value": "float"
+              }
+            },
+            {
+              "id": "dnd-6",
+              "content": {
+                "type": "text",
+                "value": "printf(\"Hasil: %.1f\",hasil);"
+              }
+            },
+            {
+              "id": "dnd-7",
+              "content": {
+                "type": "text",
+                "value": "(float)"
+              }
+            },
+            {
+              "id": "dnd-8",
+              "content": {
+                "type": "text",
+                "value": "a / b;"
+              }
+            },
+            {
+              "id": "dnd-9",
+              "content": {
+                "type": "text",
+                "value": "="
+              }
+            }
+          ],
+          "dropZones": [
+            {
+              "id": "dz1",
+              "acceptedIds": null,
+              "content": null
+            },
+            {
+              "id": "dz2",
+              "acceptedIds": null,
+              "content": null
+            },
+            {
+              "id": "dz3",
+              "acceptedIds": null,
+              "content": null
+            },
+            {
+              "id": "dz4",
+              "acceptedIds": null,
+              "content": null
+            },
+            {
+              "id": "dz5",
+              "acceptedIds": null,
+              "content": null
+            },
+            {
+              "id": "dz6",
+              "acceptedIds": null,
+              "content": null
+            },
+            {
+              "id": "dz7",
+              "acceptedIds": null,
+              "content": null
+            },
+            {
+              "id": "dz8",
+              "acceptedIds": null,
+              "content": null
+            },
+            {
+              "id": "dz9",
+              "acceptedIds": null,
+              "content": null
+            }
+          ],
+          "correctSequence": [
+            "dnd-2", "dnd-1", "dnd-4", "dnd-5", "dnd-3", "dnd-9", "dnd-7", "dnd-8", "dnd-6"
+          ],
+          "next": "soal1_3",
+          "nextType": "soal"
         }
       ],
       "rangkuman": [

@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timetocode/components/challengecard.dart';
+import 'package:timetocode/games/backend/controllers/challenge/challenge_gameplay_controller.dart';
 import 'package:timetocode/games/backend/providers/challenge/challenge_level_provider.dart';
 import 'package:timetocode/games/backend/providers/challenge/daftar_challenge_provider.dart';
-import 'package:timetocode/games/backend/providers/current_level_provider.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
@@ -75,8 +75,9 @@ class ChallengePage extends ConsumerWidget {
                             ref
                                 .read(soundEffectServiceProvider.notifier)
                                 .playSelectClick();
-                            ref.read(currentLevelIndexProvider.notifier).state =
-                                index;
+                            ref
+                                .read(challengeControllerProvider.notifier)
+                                .initializeChallenge(level);
                             context.go('/tantangan/level');
                           }
                           : null,

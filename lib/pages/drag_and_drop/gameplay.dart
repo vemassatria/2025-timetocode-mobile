@@ -1,210 +1,221 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:timetocode/components/box/drag_and_drop/block.dart';
-import 'package:timetocode/components/box/drag_and_drop/drop_zone_target.dart';
+import 'package:timetocode/components/box/code_box.dart';
+import 'package:timetocode/components/box/drag_and_drop/draggable_block.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/answer_popup.dart';
 import 'package:timetocode/components/popups/menu_popup.dart';
-import 'package:timetocode/games/backend/providers/challenge/challenge_provider.dart';
+import 'package:timetocode/games/backend/controllers/drag_and_drop/dnd_state.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
+import 'package:timetocode/games/backend/providers/ui_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
-import 'package:timetocode/widgets/code_text.dart';
 
 class DragAndDropQuestionWidget extends ConsumerWidget {
   const DragAndDropQuestionWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final challengeAsync = ref.watch(challengeControllerProvider);
-    final dndNotifier = ref.read(challengeControllerProvider.notifier);
+    final dndState = ref.watch(dndControllerProvider);
+    final dndNotifier = ref.read(dndControllerProvider.notifier);
+    final dndModel = dndState.currentDragAndDrop!;
+    final availableOptions = dndState.availableOptions;
+    final dropZones = dndState.dropZones;
+    final allZonesFilled = dropZones.every(
+      (zone) => zone.contentDraggable != null,
+    );
 
-    return challengeAsync.when(
-      loading:
-          () =>
-              const Scaffold(body: Center(child: CircularProgressIndicator())),
-      error: (e, s) => Scaffold(body: Center(child: Text("Error: $e"))),
-      data: (dndState) {
-        final dndModel = dndState.currentDragAndDrop!;
-        final availableOptions = dndState.availableOptions!;
-        final dropZones = dndState.dropZones!;
-        final allZonesFilled = dropZones.every(
-          (zone) => zone.contentId != null,
-        );
-
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: AppColors.surfaceDark,
-            elevation: 0,
-            leading: IconButton(
-              icon: Icon(Icons.menu, color: AppColors.primaryText),
+    return PopScope(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColors.surfaceDark,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.menu, color: AppColors.primaryText),
+            onPressed: () {
+              showPopupOverlay(
+                context,
+                MenuPopup(
+                  onRestart: () {
+                    dndNotifier.resetDnD();
+                    closePopupOverlay(ref);
+                  },
+                  onExit: () {
+                    dndNotifier.exitDnD();
+                    closePopupOverlay(ref);
+                  },
+                  onClose: () {
+                    closePopupOverlay(ref);
+                  },
+                  onGoBack: () {
+                    closePopupOverlay(ref);
+                  },
+                ),
+                ref,
+              );
+            },
+          ),
+          actions: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(Icons.check_circle, color: AppColors.xpGreen),
+                SizedBox(
+                  width: 35.w,
+                  child: Text(
+                    "${dndState.correctAnswer ?? 0}/3",
+                    style: AppTypography.mediumBold(),
+                    textAlign: TextAlign.end,
+                  ),
+                ),
+                SizedBox(width: 16.w),
+                Icon(Icons.cancel, color: AppColors.dangerRed),
+                SizedBox(
+                  width: 35.w,
+                  child: Text(
+                    "${dndState.wrongAnswer ?? 0}/3",
+                    style: AppTypography.mediumBold(),
+                    textAlign: TextAlign.end,
+                  ),
+                ),
+                SizedBox(width: 16.w),
+              ],
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(16.w),
+            child: Column(
+              children: [
+                Text(
+                  dndModel.instruction,
+                  style: AppTypography.normal(),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 16.h),
+                Container(
+                  padding: EdgeInsets.all(16.w),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF1E1E1E),
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (dndModel.scaffoldCode != null)
+                        CodeBox(
+                          code: dndModel.scaffoldCode!,
+                          isDragAndDrop: true,
+                        ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 24.h),
+                Text("Pilihan Blok:", style: AppTypography.mediumBold()),
+                SizedBox(height: 8.h),
+                DragTarget<String>(
+                  builder: (context, candidateData, rejectedData) {
+                    return Container(
+                      width: double.infinity,
+                      constraints: BoxConstraints(minHeight: 100.h),
+                      padding: EdgeInsets.all(8.w),
+                      decoration: BoxDecoration(
+                        color:
+                            candidateData.isNotEmpty
+                                ? AppColors.surfaceDark
+                                : Colors.transparent,
+                        borderRadius: BorderRadius.circular(8.r),
+                      ),
+                      child: Wrap(
+                        spacing: 8.w,
+                        runSpacing: 8.h,
+                        children:
+                            availableOptions
+                                .map((opt) => DraggableBlockWidget(option: opt))
+                                .toList(),
+                      ),
+                    );
+                  },
+                  onWillAcceptWithDetails: (details) {
+                    return !availableOptions.any(
+                      (element) => element.id == details.data,
+                    );
+                  },
+                  onAcceptWithDetails: (details) {
+                    dndNotifier.dropItem('options_area', details.data);
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+        bottomNavigationBar: Container(
+          height: 80.h,
+          decoration: BoxDecoration(
+            color: AppColors.surfaceDark,
+            border: Border(
+              top: BorderSide(color: AppColors.black1, width: 1.w),
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(16.w),
+            child: CustomButton(
+              label: "Periksa Jawaban",
               onPressed: () {
+                final sfx = ref.read(soundEffectServiceProvider.notifier);
+                sfx.playSubmit();
+                final isCorrect = dndNotifier.validateAnswer();
                 showPopupOverlay(
                   context,
-                  MenuPopup(
-                    onRestart: () {
-                      dndNotifier.resetChallenge();
+                  AnswerPopup(
+                    isCorrect: isCorrect,
+                    onPressed: () {
+                      sfx.playPopupAnswer();
+                      dndNotifier.finalizeDragAndDrop();
                       closePopupOverlay(ref);
                     },
-                    onExit: () {
-                      dndNotifier.endChallengePopup();
-                      closePopupOverlay(ref);
-                    },
-                    onClose: () => closePopupOverlay(ref),
-                    onGoBack: () => goBackToPreviousOverlay(context, ref),
                   ),
                   ref,
                 );
               },
-            ),
-            title: Text(dndState.currentLevel!.levelName),
-            centerTitle: true,
-            actions: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(Icons.check_circle, color: AppColors.xpGreen),
-                  SizedBox(
-                    width: 35.w,
-                    child: Text(
-                      "${dndState.correctAnswer ?? 0}/3",
-                      style: AppTypography.mediumBold(),
-                      textAlign: TextAlign.end,
-                    ),
-                  ),
-                  SizedBox(width: 16.w),
-                  Icon(Icons.cancel, color: AppColors.dangerRed),
-                  SizedBox(
-                    width: 35.w,
-                    child: Text(
-                      "${dndState.wrongAnswer ?? 0}/3",
-                      style: AppTypography.mediumBold(),
-                      textAlign: TextAlign.end,
-                    ),
-                  ),
-                  SizedBox(width: 16.w),
-                ],
-              ),
-            ],
-          ),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(16.w),
-              child: Column(
-                children: [
-                  Text(
-                    dndModel.instruction,
-                    style: AppTypography.normal(),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: 16.h),
-                  Container(
-                    padding: EdgeInsets.all(16.w),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF1E1E1E),
-                      borderRadius: BorderRadius.circular(8.r),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (dndModel.scaffoldCode != null)
-                          CodeText(dndModel.scaffoldCode!),
-                        ...dropZones.map((zone) {
-                          Widget? droppedItem;
-                          if (zone.contentId != null) {
-                            final option = dndNotifier.getOptionById(
-                              zone.contentId!,
-                            );
-                            droppedItem = DraggableBlockWidget(option: option);
-                          }
-                          return Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 4.h,
-                              horizontal: zone.contentId != null ? 0 : 16.w,
-                            ),
-                            child: DropZoneTargetWidget(
-                              zoneId: zone.id,
-                              onAccept: dndNotifier.dropItem,
-                              child: droppedItem,
-                            ),
-                          );
-                        }).toList(),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 24.h),
-                  Text("Pilihan Blok:", style: AppTypography.mediumBold()),
-                  SizedBox(height: 8.h),
-                  DragTarget<String>(
-                    builder: (context, candidateData, rejectedData) {
-                      return Container(
-                        width: double.infinity,
-                        constraints: BoxConstraints(minHeight: 100.h),
-                        padding: EdgeInsets.all(8.w),
-                        decoration: BoxDecoration(
-                          color:
-                              candidateData.isNotEmpty
-                                  ? AppColors.surfaceDark
-                                  : Colors.transparent,
-                          borderRadius: BorderRadius.circular(8.r),
-                        ),
-                        child: Wrap(
-                          spacing: 8.w,
-                          runSpacing: 8.h,
-                          children:
-                              availableOptions
-                                  .map(
-                                    (opt) => DraggableBlockWidget(option: opt),
-                                  )
-                                  .toList(),
-                        ),
-                      );
-                    },
-                    onAccept: (optionId) {
-                      dndNotifier.dropItem('options_area', optionId);
-                    },
-                  ),
-                ],
-              ),
+              color: ButtonColor.purple,
+              isDisabled: !allZonesFilled,
             ),
           ),
-          bottomNavigationBar: Container(
-            height: 80.h,
-            decoration: BoxDecoration(
-              color: AppColors.surfaceDark,
-              border: Border(
-                top: BorderSide(color: AppColors.black1, width: 1.w),
-              ),
+        ),
+      ),
+
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        final isPopupVisible = ref.read(popupVisibilityProvider);
+        if (isPopupVisible) {
+          closePopupOverlay(ref);
+        } else {
+          showPopupOverlay(
+            context,
+            MenuPopup(
+              onRestart: () {
+                dndNotifier.resetDnD();
+                closePopupOverlay(ref);
+              },
+              onExit: () {
+                dndNotifier.exitDnD();
+                closePopupOverlay(ref);
+              },
+              onClose: () {
+                closePopupOverlay(ref);
+              },
+              onGoBack: () {
+                closePopupOverlay(ref);
+              },
             ),
-            child: Padding(
-              padding: EdgeInsets.all(16.w),
-              child: CustomButton(
-                label: "Periksa Jawaban",
-                onPressed: () {
-                  final sfx = ref.read(soundEffectServiceProvider.notifier);
-                  sfx.playSubmit();
-                  final isCorrect = dndNotifier.validateAnswer();
-                  showPopupOverlay(
-                    context,
-                    AnswerPopup(
-                      isCorrect: isCorrect,
-                      onPressed: () {
-                        sfx.playPopupAnswer();
-                        dndNotifier.finalizeDragAndDrop(isCorrect);
-                        closePopupOverlay(ref);
-                      },
-                    ),
-                    ref,
-                  );
-                },
-                color: ButtonColor.purple,
-                isDisabled: !allZonesFilled,
-              ),
-            ),
-          ),
-        );
+            ref,
+          );
+        }
       },
     );
   }

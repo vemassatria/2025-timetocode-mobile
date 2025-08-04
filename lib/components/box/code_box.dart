@@ -5,8 +5,9 @@ import 'package:timetocode/themes/colors.dart';
 
 class CodeBox extends StatelessWidget {
   final String code;
+  final bool isDragAndDrop;
 
-  const CodeBox({super.key, required this.code});
+  const CodeBox({super.key, required this.code, this.isDragAndDrop = false});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +65,10 @@ class CodeBox extends StatelessWidget {
                           minWidth: 328.w - 37.w,
                           minHeight: 238.h - 37.h,
                         ),
-                        child: CodeText(code),
+                        child: CodeText(
+                          data: code,
+                          isDragAndDrop: isDragAndDrop,
+                        ),
                       ),
                     ),
                   ),

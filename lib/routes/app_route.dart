@@ -68,11 +68,6 @@ final routerProvider = Provider<GoRouter>((ref) {
                   return const EndGameChallenge();
                 },
               ),
-              GoRoute(
-                path: 'dod',
-                parentNavigatorKey: _rootNavigatorKey,
-                builder: (context, state) => const DragAndDropQuestionWidget(),
-              ),
             ],
           ),
           GoRoute(
@@ -82,6 +77,10 @@ final routerProvider = Provider<GoRouter>((ref) {
                     const NoTransitionPage(child: PengaturanPage()),
           ),
         ],
+      ),
+      GoRoute(
+        path: '/dnd',
+        builder: (context, state) => const DragAndDropQuestionWidget(),
       ),
     ],
   );

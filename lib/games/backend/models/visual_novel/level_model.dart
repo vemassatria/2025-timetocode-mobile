@@ -1,3 +1,4 @@
+import 'package:timetocode/games/backend/models/drag%20_and_drop/drag_and_drop_model.dart';
 import 'package:timetocode/games/backend/models/visual_novel/predialog_model.dart';
 import 'package:timetocode/games/backend/models/question_model.dart';
 
@@ -16,6 +17,7 @@ class LevelModel {
   final List<PreDialogModel>? preDialog;
   final List<DialogModel> dialogs;
   final List<QuestionModel> questions;
+  final List<DragAndDropModel>? dragAndDrop;
   final List<String>? summary;
   final String start;
   final String typeStart;
@@ -32,6 +34,7 @@ class LevelModel {
     this.preDialog,
     required this.dialogs,
     required this.questions,
+    this.dragAndDrop,
     this.summary,
     required this.start,
     required this.typeStart,
@@ -58,6 +61,14 @@ class LevelModel {
           (json['questions'] as List)
               .map((q) => QuestionModel.fromJson(q as Map<String, dynamic>))
               .toList(),
+      dragAndDrop:
+          json['drag_and_drop'] != null
+              ? (json['drag_and_drop'] as List)
+                  .map(
+                    (d) => DragAndDropModel.fromJson(d as Map<String, dynamic>),
+                  )
+                  .toList()
+              : null,
       preDialog:
           json['preDialog'] != null
               ? (json['preDialog'] as List)

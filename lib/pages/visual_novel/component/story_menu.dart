@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/menu_button.dart';
-import 'package:timetocode/games/backend/providers/visual_novel/story_provider.dart';
+import 'package:timetocode/games/backend/controllers/visual_novel/story_gameplay_controller.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 
 class StoryMenu extends ConsumerWidget {
@@ -19,11 +19,11 @@ class StoryMenu extends ConsumerWidget {
           padding: EdgeInsets.only(top: 16.h),
           child: MenuButton(
             onRestart: () {
-              storyController.restartLevel();
+              storyController.restartStory();
               closePopupOverlay(ref);
             },
             onExit: () {
-              storyController.exitLevel();
+              storyController.exitStory();
               closePopupOverlay(ref);
             },
           ),

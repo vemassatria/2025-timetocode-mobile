@@ -9,6 +9,9 @@ class DragAndDropModel {
   final List<DraggableModel> draggableOptions;
   final List<DropZoneModel> dropZones;
   final List<String> correctSequence;
+  final String? next;
+  final String? nextType;
+  final String? nextDifficulty;
 
   DragAndDropModel({
     required this.id,
@@ -17,6 +20,9 @@ class DragAndDropModel {
     required this.draggableOptions,
     required this.dropZones,
     required this.correctSequence,
+    this.next,
+    this.nextType,
+    this.nextDifficulty,
   });
 
   factory DragAndDropModel.fromJson(Map<String, dynamic> json) {
@@ -36,6 +42,9 @@ class DragAndDropModel {
           (json['correctSequence'] as List<dynamic>)
               .map((e) => e as String)
               .toList(),
+      next: json['next'] as String?,
+      nextType: json['nextType'] as String?,
+      nextDifficulty: json['nextDifficulty'] as String?,
     );
   }
 }

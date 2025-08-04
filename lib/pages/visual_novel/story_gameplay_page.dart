@@ -9,8 +9,6 @@ import 'package:timetocode/pages/visual_novel/component/question_box_widget.dart
 import 'package:timetocode/pages/visual_novel/component/skip_button.dart';
 import 'package:timetocode/pages/visual_novel/component/story_menu.dart';
 import 'package:timetocode/games/backend/controllers/visual_novel/story_gameplay_controller.dart';
-import 'package:timetocode/games/backend/providers/game_provider.dart';
-import 'package:timetocode/games/backend/providers/visual_novel/story_provider.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 
 class StoryGameplayPage extends ConsumerStatefulWidget {
@@ -26,31 +24,25 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
   @override
   void initState() {
     super.initState();
-    game = ref.read(gameEngineProvider);
+    game = ref.read(storyControllerProvider.notifier).game;
   }
 
   @override
   Widget build(BuildContext context) {
-    final storyAsync = ref.watch(storyControllerProvider);
+    final storyState = ref.watch(storyControllerProvider);
 
     return PopScope(
       child: Scaffold(
-        body: storyAsync.when(
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (e, s) => Center(child: Text("Error: $e")),
-          data: (storyState) {
-            return Stack(
-              children: [
-                GameWidget(game: game),
+        body: Stack(
+          children: [
+            GameWidget(game: game),
 
-                _buildContentUI(storyState.activeMode, storyState),
+            _buildContentUI(storyState.activeMode, storyState),
 
-                const StoryMenu(),
+            const StoryMenu(),
 
-                if (storyState.activeMode == 'dialog') const SkipButton(),
-              ],
-            );
-          },
+            if (storyState.activeMode == 'dialog') const SkipButton(),
+          ],
         ),
       ),
       canPop: false,
@@ -65,11 +57,11 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
             context,
             MenuPopup(
               onRestart: () {
-                storyController.restartLevel();
+                storyController.restartStory();
                 closePopupOverlay(ref);
               },
               onExit: () {
-                storyController.exitLevel();
+                storyController.exitStory();
                 closePopupOverlay(ref);
               },
               onClose: () {

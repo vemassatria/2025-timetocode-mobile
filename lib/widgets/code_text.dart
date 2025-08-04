@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:timetocode/components/box/drag_and_drop/drop_zone_target.dart';
 
-class CodeText extends StatelessWidget {
+class CodeText extends ConsumerWidget {
   final String data;
+  final bool isDragAndDrop;
 
-  const CodeText(this.data, {super.key});
+  const CodeText({required this.data, this.isDragAndDrop = false, super.key});
 
   static final _baseStyle = TextStyle(
     fontFamily: 'Fira Code',
-    fontSize: 12,
+    fontSize: 12.sp,
     color: const Color(0xFFDCDCAA),
     letterSpacing: 0.5,
     height: 1.5,
@@ -74,16 +78,16 @@ class CodeText extends StatelessWidget {
   };
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return RichText(
-      text: TextSpan(style: _baseStyle, children: _parseText(data)),
+      text: TextSpan(style: _baseStyle, children: _parseText(data, ref)),
       softWrap: false,
       overflow: TextOverflow.clip,
     );
   }
 
-  List<TextSpan> _parseText(String source) {
-    final spans = <TextSpan>[];
+  List<InlineSpan> _parseText(String source, WidgetRef ref) {
+    final spans = <InlineSpan>[];
     final lines = source.split('\n');
     bool inVariableDeclaration = false;
     bool expectingVariableAfterComma = false;
@@ -97,6 +101,24 @@ class CodeText extends StatelessWidget {
       expectingVariableAfterComma = false;
 
       while (position < line.length) {
+        if (isDragAndDrop) {
+          final RegExp codeIdDND = RegExp(r'\[([a-z0-9]{3})\]');
+          final Match? match = codeIdDND.matchAsPrefix(line, position);
+
+          if (match != null) {
+            final String zoneId = match.group(1)!;
+            spans.add(
+              WidgetSpan(
+                alignment: PlaceholderAlignment.middle,
+                baseline: TextBaseline.alphabetic,
+                child: DropZoneTargetWidget(zoneId: zoneId),
+              ),
+            );
+            position = match.end;
+            continue;
+          }
+        }
+
         if (position + 1 < line.length &&
             line[position] == '/' &&
             line[position + 1] == '/') {
@@ -215,7 +237,6 @@ class CodeText extends StatelessWidget {
         spans.add(const TextSpan(text: '\n'));
       }
     }
-
     return spans;
   }
 

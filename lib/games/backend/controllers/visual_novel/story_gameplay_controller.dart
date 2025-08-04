@@ -1,17 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timetocode/games/backend/controllers/drag_and_drop/dnd_state.dart';
 import 'package:timetocode/games/backend/game_engine.dart';
 import 'package:timetocode/games/backend/models/choices_model.dart';
-import 'package:timetocode/games/backend/providers/current_level_provider.dart';
-import 'package:timetocode/games/backend/providers/game_provider.dart';
 import 'package:timetocode/games/backend/providers/visual_novel/daftar_level_provider.dart';
 import 'package:timetocode/games/backend/providers/music_service_provider.dart';
-import 'package:timetocode/games/backend/providers/visual_novel/story_level_provider.dart';
-import 'package:timetocode/games/backend/services/visual_novel/predialog_service.dart';
 import 'package:timetocode/routes/app_route.dart';
-import '../../services/visual_novel/dialog_service.dart';
-import '../../services/question_service.dart';
 import '../../models/visual_novel/level_model.dart';
 import '../../models/visual_novel/predialog_model.dart';
 import '../../models/visual_novel/dialog_model.dart';
@@ -88,21 +83,24 @@ class StoryState {
   }
 }
 
-class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
-  final DialogService _dialogService = DialogService();
-  final QuestionService _questionService = QuestionService();
-  final PredialogService _predialogService = PredialogService();
+class StoryController extends AutoDisposeNotifier<StoryState> {
+  KeepAliveLink? _keepAliveLink;
   late final GameEngine game;
 
   @override
-  FutureOr<StoryState> build() async {
+  StoryState build() {
+    game = GameEngine();
+
     ref.onDispose(() {
       ref.read(musicServiceProvider.notifier).playMainMenuMusic();
-      ref.invalidate(gameEngineProvider);
+      game.deleteAll();
     });
-    game = ref.watch(gameEngineProvider);
-    final levels = ref.read(storyLevelProvider).value;
-    final level = levels![ref.read(currentLevelIndexProvider)!];
+
+    return StoryState();
+  }
+
+  void initLevel(LevelModel level) async {
+    _keepAliveLink ??= ref.keepAlive();
 
     await Future.wait([
       ref.read(musicServiceProvider.notifier).playLevelMusic(level.level),
@@ -110,79 +108,55 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
       game.preloadIlustrations(level.ilustrations),
       game.setBackground(level.background),
     ]);
+    state = StoryState(activeLevel: level);
+    navigateMode(level.typeStart, level.start);
+  }
 
-    if (level.typeStart == 'preDialog') {
-      final preDialog = _predialogService.getPredialogById(level, level.start);
-      return StoryState(
-        activeLevel: level,
-        preDialog: preDialog,
-        activeMode: 'preDialog',
-      );
+  void navigateMode(String? modeType, String? modeId) {
+    if (modeType == 'preDialog') {
+      showPreDialog(modeId!);
+    } else if (modeType == 'dialog') {
+      if (game.characters != null) game.showCharactersOverlay();
+      showDialog(modeId!);
+    } else if (modeType == 'soal') {
+      showQuestion(modeId!);
+    } else if (modeType == 'drag_and_drop') {
+      ref
+          .read(dndControllerProvider.notifier)
+          .initializeDragAndDrop(modeId!, 'story');
+      ref.read(routerProvider).push('/dnd');
     } else {
-      final dialog = _dialogService.getDialogById(level, level.start);
-
-      final firstIdx = dialog.getCharacterIndex(0);
-      final firstReact = dialog.getReactionIndex(0);
-
-      final c1Reaction = firstIdx == 1 ? firstReact : 0;
-      final c2Reaction = firstIdx == 2 ? firstReact : 0;
-
-      final ilustrationIndex = dialog.getIlustrationIndex(0);
-
-      await game.showCharacters(
-        char1Img: level.character1Images[c1Reaction],
-        char2Img: level.character2Images[c2Reaction],
-        c1Reaction: c1Reaction,
-        c2Reaction: c2Reaction,
-        speaker: firstIdx == 1 ? 1 : 2,
-        isIllustration: ilustrationIndex != null,
-      );
-
-      if (ilustrationIndex != null) {
-        await game.showIlustration(
-          ilustrationPath: level.ilustrations[ilustrationIndex],
-          ilustrationIndex: ilustrationIndex,
-        );
-      } else {
-        if (game.ilustration != null) {
-          game.hideIlustration();
-        }
-      }
-
-      return StoryState(
-        activeLevel: level,
-        currentDialog: dialog,
-        indexDialog: 0,
-        activeMode: 'dialog',
-      );
+      showEndGame();
     }
+  }
+
+  void showPreDialog(String id) {
+    state =
+        state.activeMode != 'preDialog'
+            ? state.copyWith(
+              preDialog: state.activeLevel!.preDialog!.firstWhere(
+                (preDialog) => preDialog.id == id,
+              ),
+              activeMode: 'preDialog',
+            )
+            : state.copyWith(
+              preDialog: state.activeLevel!.preDialog!.firstWhere(
+                (preDialog) => preDialog.id == id,
+              ),
+            );
   }
 
   void nextPreDialog() {
-    final s = state.value!;
-    final preDialog = s.preDialog!;
+    final preDialog = state.preDialog!;
     final nextType = preDialog.nextType;
     final next = preDialog.next;
 
-    if (nextType == 'dialog') {
-      if (game.characters != null) {
-        game.showCharactersOverlay();
-      }
-      showDialog(next);
-    } else if (nextType == 'soal') {
-      showQuestion(next);
-    } else {
-      state = AsyncValue.data(
-        state.value!.copyWith(
-          preDialog: _predialogService.getPredialogById(s.activeLevel!, next),
-        ),
-      );
-    }
+    navigateMode(nextType, next);
   }
 
   Future<void> showDialog(String dialogId) async {
-    final level = state.value!.activeLevel!;
-    final dialog = _dialogService.getDialogById(level, dialogId);
+    final level = state.activeLevel!;
+    final dialog = level.dialogs.firstWhere((d) => d.id == dialogId);
 
     final firstIdx = dialog.getCharacterIndex(0);
     final firstReact = dialog.getReactionIndex(0);
@@ -200,14 +174,12 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
       speaker: firstIdx == 1 ? 1 : 2,
       isIllustration: ilustrationIndex != null,
     );
-    state = AsyncValue.data(
-      state.value!.copyWith(
-        preDialog: null,
-        currentQuestion: null,
-        currentDialog: dialog,
-        indexDialog: 0,
-        activeMode: "dialog",
-      ),
+    state = state.copyWith(
+      preDialog: null,
+      currentQuestion: null,
+      currentDialog: dialog,
+      indexDialog: 0,
+      activeMode: "dialog",
     );
 
     if (ilustrationIndex != null) {
@@ -223,9 +195,8 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   }
 
   void nextDialog() {
-    final s = state.value!;
-    final dialog = s.currentDialog!;
-    final nextIdx = s.indexDialog! + 1;
+    final dialog = state.currentDialog!;
+    final nextIdx = state.indexDialog! + 1;
     final length = dialog.getDialogLength();
 
     if (nextIdx < length) {
@@ -233,17 +204,17 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
       final charReact = dialog.getReactionIndex(nextIdx);
       final ilustrationIndex = dialog.getIlustrationIndex(nextIdx);
 
-      state = AsyncValue.data(s.copyWith(indexDialog: nextIdx));
+      state = state.copyWith(indexDialog: nextIdx);
       if (charIdx == 1) {
         game.showCharacters(
-          char1Img: s.activeLevel!.character1Images[charReact],
+          char1Img: state.activeLevel!.character1Images[charReact],
           c1Reaction: charReact,
           speaker: 1,
           isIllustration: ilustrationIndex != null,
         );
       } else {
         game.showCharacters(
-          char2Img: s.activeLevel!.character2Images[charReact],
+          char2Img: state.activeLevel!.character2Images[charReact],
           c2Reaction: charReact,
           speaker: 2,
           isIllustration: ilustrationIndex != null,
@@ -252,7 +223,7 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
 
       if (ilustrationIndex != null) {
         game.showIlustration(
-          ilustrationPath: s.activeLevel!.ilustrations[ilustrationIndex],
+          ilustrationPath: state.activeLevel!.ilustrations[ilustrationIndex],
           ilustrationIndex: ilustrationIndex,
         );
       } else {
@@ -261,58 +232,29 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
         }
       }
     } else {
-      if (dialog.nextType == 'soal') {
-        game.hideCharacters();
-        showQuestion(dialog.next);
-      } else if (dialog.nextType == 'dialog') {
-        showDialog(dialog.next);
-      } else {
-        showEndGame();
-      }
+      navigateMode(dialog.nextType, dialog.next);
     }
   }
 
   void showQuestion(String questionId) {
-    final level = state.value!.activeLevel!;
-    final question = _questionService.getQuestionById(level, questionId);
-    state = AsyncValue.data(
-      state.value!.copyWith(
-        currentQuestion: question,
-        activeMode: 'question',
-        preDialog: null,
-        currentDialog: null,
-        indexDialog: null,
-      ),
+    final question = state.activeLevel!.questions.firstWhere(
+      (q) => q.id == questionId,
+    );
+    state = state.copyWith(
+      currentQuestion: question,
+      activeMode: 'question',
+      preDialog: null,
+      currentDialog: null,
+      indexDialog: null,
     );
   }
 
   void checkAnswer(ChoicesModel selected) {
-    final s = state.value!;
-
-    bool? newFalsePrevious = s.falsePrevious;
-    int? newCorrect = s.correctAnswer;
-    int? newWrong = s.wrongAnswer;
-
     if (selected.isCorrect == true) {
-      if (s.falsePrevious != true) {
-        newCorrect = (s.correctAnswer ?? 0) + 1;
-      } else {
-        newFalsePrevious = false;
-      }
+      correctAnswer();
     } else {
-      if (s.falsePrevious != true) {
-        newWrong = (s.wrongAnswer ?? 0) + 1;
-        newFalsePrevious = true;
-      }
+      wrongAnswer();
     }
-
-    state = AsyncValue.data(
-      s.copyWith(
-        correctAnswer: newCorrect,
-        wrongAnswer: newWrong,
-        falsePrevious: newFalsePrevious,
-      ),
-    );
 
     if (selected.nextType == 'dialog') {
       game.showCharactersOverlay();
@@ -325,14 +267,16 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   }
 
   void skipToNextSoal() {
-    final s = state.value!;
-    final level = s.activeLevel;
-    if (level == null) return;
+    final level = state.activeLevel;
+    final dialogs = level!.dialogs;
 
-    DialogModel? dialog = s.currentDialog;
+    DialogModel? dialog = state.currentDialog;
     // If currentDialog is null, start from the beginning
-    if (dialog == null && level.dialogs.isNotEmpty) {
-      dialog = _dialogService.getDialogById(level, level.start);
+    if (dialog == null && dialogs.isNotEmpty) {
+      dialog = dialogs.firstWhere(
+        (d) => d.id == level.start,
+        orElse: () => level.dialogs.first,
+      );
     }
 
     final visited = <String>{};
@@ -347,14 +291,20 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
           for (final choice in dialog.choices!) {
             if (choice.nextType == 'soal') {
               game.hideCharacters();
+              game.hideIlustration();
               showQuestion(choice.next);
               return true;
             } else if (choice.nextType == 'dialog') {
-              final nextDialog = _dialogService.getDialogById(
-                level,
-                choice.next,
-              );
+              final nextDialog = dialogs.firstWhere((d) => d.id == choice.next);
               if (findAndShowSoal(nextDialog)) return true;
+            } else if (choice.nextType == 'drag_and_drop') {
+              game.hideCharacters();
+              game.hideIlustration();
+              ref
+                  .read(dndControllerProvider.notifier)
+                  .initializeDragAndDrop(choice.next, 'story');
+              ref.read(routerProvider).push('/dnd');
+              return true;
             }
           }
           // If none of the choices lead to a soal, return false
@@ -364,10 +314,19 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
         // No choices, follow linear next/nextType
         if (dialog.nextType == 'soal') {
           game.hideCharacters();
+          game.hideIlustration();
           showQuestion(dialog.next);
           return true;
         } else if (dialog.nextType == 'dialog') {
-          dialog = _dialogService.getDialogById(level, dialog.next);
+          dialog = dialogs.firstWhere((d) => d.id == dialog!.next);
+        } else if (dialog.nextType == 'drag_and_drop') {
+          game.hideCharacters();
+          game.hideIlustration();
+          ref
+              .read(dndControllerProvider.notifier)
+              .initializeDragAndDrop(dialog.next, 'story');
+          ref.read(routerProvider).push('/dnd');
+          return true;
         } else {
           // No more soal found, end the game
           return false;
@@ -384,58 +343,56 @@ class StoryController extends AutoDisposeAsyncNotifier<StoryState> {
   void showEndGame() {
     ref.read(routerProvider).go('/pembelajaran/endgame');
     _saveProgress();
+    _releaseKeepAlive();
   }
 
   Future<void> _saveProgress() async {
     final completedLevel = ref.read(completedLevelProvider);
-    final currentLevel = state.value!.activeLevel!;
+    final currentLevel = state.activeLevel!;
     if (currentLevel.level > completedLevel) {
       await ref
           .read(completedLevelProvider.notifier)
           .setCompletedLevel(currentLevel.level);
     }
-    ref.invalidateSelf();
   }
 
-  void restartLevel() {
-    if (state.value!.activeMode == 'dialog') {
+  void restartStory() {
+    if (state.activeMode == 'dialog') {
       game.hideCharacters();
       game.hideIlustration();
     }
-    final level = state.value!.activeLevel!;
-    if (level.typeStart == 'preDialog') {
-      final preDialog = _predialogService.getPredialogById(level, level.start);
-      state = AsyncValue.data(
-        state.value!.copyWith(
-          preDialog: preDialog,
-          activeMode: 'preDialog',
-          currentDialog: null,
-          currentQuestion: null,
-          indexDialog: null,
-          correctAnswer: null,
-          wrongAnswer: null,
-          falsePrevious: null,
-        ),
-      );
+    initLevel(state.activeLevel!);
+  }
+
+  void exitStory() {
+    _releaseKeepAlive();
+    ref.read(routerProvider).pop();
+  }
+
+  void correctAnswer() {
+    if (state.falsePrevious != true) {
+      state = state.copyWith(correctAnswer: (state.correctAnswer ?? 0) + 1);
     } else {
-      state = AsyncValue.data(
-        state.value!.copyWith(
-          preDialog: null,
-          currentDialog: null,
-          currentQuestion: null,
-          indexDialog: null,
-          correctAnswer: null,
-          wrongAnswer: null,
-          falsePrevious: null,
-          activeMode: null,
-        ),
-      );
-      showDialog(level.start);
+      state = state.copyWith(falsePrevious: false);
     }
   }
 
-  void exitLevel() {
-    ref.read(routerProvider).pop();
-    ref.invalidateSelf();
+  void wrongAnswer() {
+    if (state.falsePrevious != true) {
+      state = state.copyWith(
+        wrongAnswer: (state.wrongAnswer ?? 0) + 1,
+        falsePrevious: true,
+      );
+    }
+  }
+
+  void _releaseKeepAlive() {
+    _keepAliveLink!.close();
+    _keepAliveLink = null;
   }
 }
+
+final storyControllerProvider =
+    NotifierProvider.autoDispose<StoryController, StoryState>(
+      StoryController.new,
+    );

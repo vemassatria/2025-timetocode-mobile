@@ -1,10 +1,11 @@
 import 'package:timetocode/games/backend/models/drag%20_and_drop/content_component_model.dart';
+import 'package:timetocode/games/backend/models/drag%20_and_drop/draggable_model.dart';
 
 class DropZoneModel {
   final String id;
   final List<String>? acceptedIds;
   final ContentComponentModel? content;
-  String? contentId;
+  DraggableModel? contentDraggable;
 
   DropZoneModel({required this.id, this.acceptedIds, this.content});
 

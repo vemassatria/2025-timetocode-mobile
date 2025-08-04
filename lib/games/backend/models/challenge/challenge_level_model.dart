@@ -1,5 +1,5 @@
 import 'package:timetocode/games/backend/models/challenge/question_difficulty_model.dart.dart';
-import 'package:timetocode/games/backend/models/drag%20_and_drop/drag_and_drop_question_model.dart';
+import 'package:timetocode/games/backend/models/drag%20_and_drop/drag_and_drop_model.dart';
 
 class ChallengeLevelModel {
   final int id;

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/box/typewriter_effect_box.dart';
+import 'package:timetocode/games/backend/controllers/visual_novel/story_gameplay_controller.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/games/backend/models/visual_novel/predialog_model.dart';
-import 'package:timetocode/games/backend/providers/visual_novel/story_provider.dart';
 import 'package:timetocode/themes/typography.dart';
 
 class IntroBoxWidget extends ConsumerStatefulWidget {

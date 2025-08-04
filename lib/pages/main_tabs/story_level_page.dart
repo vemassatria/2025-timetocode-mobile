@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/components/card.dart';
 import 'package:timetocode/components/popups/info_popup.dart';
-import 'package:timetocode/games/backend/providers/current_level_provider.dart';
+import 'package:timetocode/games/backend/controllers/visual_novel/story_gameplay_controller.dart';
 import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
 import 'package:timetocode/games/backend/providers/visual_novel/daftar_level_provider.dart';
 import 'package:timetocode/games/backend/providers/visual_novel/story_level_provider.dart';
@@ -97,11 +97,10 @@ class DaftarLevelPage extends ConsumerWidget {
                                 : () {
                                   soundEffectService.playSelectClick();
                                   ref
-                                      .read(currentLevelIndexProvider.notifier)
-                                      .state = index;
+                                      .read(storyControllerProvider.notifier)
+                                      .initLevel(level);
                                   context.go('/pembelajaran/level');
                                 },
-
                         onInfoPressed: () {
                           soundEffectService.playSelectClick();
                           showPopupOverlay(

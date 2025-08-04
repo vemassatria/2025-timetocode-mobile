@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:timetocode/games/backend/providers/current_level_provider.dart';
+import 'package:timetocode/games/backend/controllers/visual_novel/story_gameplay_controller.dart';
 import 'package:timetocode/games/backend/providers/visual_novel/daftar_level_provider.dart';
-import 'package:timetocode/games/backend/providers/visual_novel/story_provider.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
 
@@ -13,7 +12,7 @@ class SkipButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final levelCompleted = ref.read(completedLevelProvider);
-    final currentLevel = ref.read(currentLevelIndexProvider)! + 1;
+    final currentLevel = ref.read(storyControllerProvider).activeLevel!.level;
 
     final bool isDisabled = (levelCompleted < currentLevel);
 
