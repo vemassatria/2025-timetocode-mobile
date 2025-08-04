@@ -26,19 +26,27 @@ class DropZoneTargetWidget extends ConsumerWidget {
 
         final textStyle = TextStyle(
           fontFamily: 'Fira Code',
-          fontSize: 12.sp,
-          color: const Color(0xFFDCDCAA),
+          fontSize: 16.sp,
+          color: AppColors.gray1,
           letterSpacing: 0.5,
-          height: 1.5,
+          height: 2,
         );
 
         if (placedOption != null) {
+          final isSpecial = placedOption.info != null;
           return Draggable<String>(
             data: placedOption.id,
-            feedback: Block(text: placedOption.content.value, isDragging: true),
+            feedback: Block(
+              text: placedOption.content.value,
+              isDragging: true,
+              isSpecial: isSpecial,
+            ),
             childWhenDragging: Opacity(
               opacity: 0.4,
-              child: Block(text: placedOption.content.value),
+              child: Block(
+                text: placedOption.content.value,
+                isSpecial: isSpecial,
+              ),
             ),
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 4.w),
@@ -52,7 +60,12 @@ class DropZoneTargetWidget extends ConsumerWidget {
                   ),
                 ),
               ),
-              child: Text(placedOption.content.value, style: textStyle),
+              child: Text(
+                placedOption.content.value,
+                style: textStyle.copyWith(
+                  color: isSpecial ? AppColors.rewardYellow : AppColors.gray1,
+                ),
+              ),
             ),
           );
         } else {

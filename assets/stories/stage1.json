@@ -692,7 +692,7 @@
           "id": "dd-1.1",
           "type": "dnd_code",
           "instruction": "Seret dan susun potongan kode berikut agar membentuk deklarasi variabel bertipe int dan langsung diberi nilai 5",
-          "scaffoldCode": "int main() {\n\t[dz1][dz2],[dz3]\n\t[dz4][dz5][dz6][dz7][dz8]\n\t[dz9]\n}",
+          "scaffoldCode": "int main() {\n\t[dz1][dz2],[dz3]\n\t[dz4][dz5]=[dz6][dz7]\n\t[dz8]\n}",
           "draggableOptions": [
             {
               "id": "dnd-1",
@@ -734,27 +734,22 @@
               "content": {
                 "type": "text",
                 "value": "printf(\"Hasil: %.1f\",hasil);"
-              }
+              },
+              "info": "%.[jumlah_angka]f adalah Format Specifier / Penentu Format, sebuah 'kode perintah' di dalam printf yang mengatur bagaimana sebuah nilai akan ditampilkan. \nSecara default, mencetak angka desimal (float) bisa menghasilkan banyak angka di belakang koma (misal: 2.333333). Dengan penentu format, kita bisa memerintahkan bahasa pemrograman untuk membulatkan dan menampilkannya lebih rapi. \n\nContoh:\nJika nilai adalah 98.765, maka:\n%f akan mencetak 98.765000 (default, kurang rapi). \n%.1f akan mencetak 98.8 (dibulatkan ke 1 angka desimal). \n%.2f akan mencetak 98.77 (dibulatkan ke 2 angka desimal)."
             },
             {
               "id": "dnd-7",
               "content": {
                 "type": "text",
                 "value": "(float)"
-              }
+              },
+              "info": "ini adalah Type Casting, yaitu instruksi eksplisit dari programmer kepada compiler untuk mengubah tipe data dari sebuah nilai atau variabel menjadi tipe data lain.\ntanpa type casting, pembagian seperti  7/3 akan dianggap sebagai pembagian dua bilangan bulat (integer), yang hasilnya juga integer, yaitu 2. Sisa desimalnya (0.333...) akan dibuang. \n\nsintaks general: (tipe_data_tujuan) nilai_atau_variabel;"
             },
             {
               "id": "dnd-8",
               "content": {
                 "type": "text",
                 "value": "a / b;"
-              }
-            },
-            {
-              "id": "dnd-9",
-              "content": {
-                "type": "text",
-                "value": "="
               }
             }
           ],
@@ -798,15 +793,10 @@
               "id": "dz8",
               "acceptedIds": null,
               "content": null
-            },
-            {
-              "id": "dz9",
-              "acceptedIds": null,
-              "content": null
             }
           ],
           "correctSequence": [
-            "dnd-2", "dnd-1", "dnd-4", "dnd-5", "dnd-3", "dnd-9", "dnd-7", "dnd-8", "dnd-6"
+            "dnd-2", "dnd-1", "dnd-4", "dnd-5", "dnd-3", "dnd-7", "dnd-8", "dnd-6"
           ],
           "next": "soal1_3",
           "nextType": "soal"

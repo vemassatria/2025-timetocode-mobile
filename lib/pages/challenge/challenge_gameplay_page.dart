@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:timetocode/components/box/code_box.dart';
 import 'package:timetocode/components/button.dart';
 import 'package:timetocode/components/popups/answer_popup.dart';
 import 'package:timetocode/components/popups/menu_popup.dart';
@@ -11,7 +12,6 @@ import 'package:timetocode/games/backend/providers/ui_provider.dart';
 import 'package:timetocode/games/backend/services/sound_effect_service.dart';
 import 'package:timetocode/themes/colors.dart';
 import 'package:timetocode/themes/typography.dart';
-import 'package:timetocode/widgets/code_text.dart';
 import 'package:timetocode/utils/overlay_utils.dart';
 
 class ChallengeGameplayPage extends ConsumerStatefulWidget {
@@ -133,8 +133,8 @@ class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.all(16.w),
-                        child: CodeText(
-                          data: '''
+                        child: CodeBox(
+                          code: '''
 $code''',
                         ),
                       ),

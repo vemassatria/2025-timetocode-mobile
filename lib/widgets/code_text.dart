@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/components/box/drag_and_drop/drop_zone_target.dart';
+import 'package:timetocode/themes/colors.dart';
 
 class CodeText extends ConsumerWidget {
   final String data;
@@ -12,15 +13,24 @@ class CodeText extends ConsumerWidget {
   static final _baseStyle = TextStyle(
     fontFamily: 'Fira Code',
     fontSize: 12.sp,
-    color: const Color(0xFFDCDCAA),
+    color: AppColors.gray1,
     letterSpacing: 0.5,
     height: 1.5,
+  );
+
+  static final _dragAndDropStyle = TextStyle(
+    fontFamily: 'Fira Code',
+    fontSize: 16.sp,
+    color: AppColors.gray1,
+    letterSpacing: 0.5,
+    height: 2,
   );
 
   static final _keywordStyle = TextStyle(color: Color(0xFF569CD6));
   static final _typeStyle = TextStyle(color: Color(0xFF4EC9B0));
   static final _variableStyle = TextStyle(color: Color(0xFF9CDCFE));
   static final _functionStyle = _baseStyle;
+  static final _functionDragAndDropStyle = _dragAndDropStyle;
   static final _stringStyle = TextStyle(color: Color(0xFFCE9178));
   static final _numberStyle = TextStyle(color: Color(0xFFB5CEA8));
   static final _controlFlowStyle = TextStyle(color: Color(0xFFC586C0));
@@ -80,7 +90,10 @@ class CodeText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return RichText(
-      text: TextSpan(style: _baseStyle, children: _parseText(data, ref)),
+      text: TextSpan(
+        style: isDragAndDrop ? _dragAndDropStyle : _baseStyle,
+        children: _parseText(data, ref),
+      ),
       softWrap: false,
       overflow: TextOverflow.clip,
     );
@@ -124,7 +137,13 @@ class CodeText extends ConsumerWidget {
             line[position + 1] == '/') {
           final comment = line.substring(position);
           spans.add(
-            TextSpan(text: comment, style: _baseStyle.merge(_commentStyle)),
+            TextSpan(
+              text: comment,
+              style:
+                  isDragAndDrop
+                      ? _dragAndDropStyle.merge(_commentStyle)
+                      : _baseStyle.merge(_commentStyle),
+            ),
           );
           break;
         }
@@ -134,7 +153,13 @@ class CodeText extends ConsumerWidget {
           int endQuote = _findClosingQuote(line, position, line[position]);
           final stringText = line.substring(position, endQuote + 1);
           spans.add(
-            TextSpan(text: stringText, style: _baseStyle.merge(_stringStyle)),
+            TextSpan(
+              text: stringText,
+              style:
+                  isDragAndDrop
+                      ? _dragAndDropStyle.merge(_stringStyle)
+                      : _baseStyle.merge(_stringStyle),
+            ),
           );
           position = endQuote + 1;
           continue;
@@ -172,7 +197,13 @@ class CodeText extends ConsumerWidget {
           }
           final number = line.substring(position, end);
           spans.add(
-            TextSpan(text: number, style: _baseStyle.merge(_numberStyle)),
+            TextSpan(
+              text: number,
+              style:
+                  isDragAndDrop
+                      ? _dragAndDropStyle.merge(_numberStyle)
+                      : _baseStyle.merge(_numberStyle),
+            ),
           );
           position = end;
           continue;
@@ -207,7 +238,7 @@ class CodeText extends ConsumerWidget {
             style = _controlFlowStyle;
             expectingVariableAfterComma = false;
           } else if (isFunction) {
-            style = _functionStyle;
+            style = isDragAndDrop ? _functionDragAndDropStyle : _functionStyle;
             expectingVariableAfterComma = false;
           } else if (inVariableDeclaration || expectingVariableAfterComma) {
             style = _variableStyle;
@@ -216,13 +247,20 @@ class CodeText extends ConsumerWidget {
           } else if (definedVariables.contains(word)) {
             style = _variableStyle;
           } else if (definedFunctions.contains(word)) {
-            style = _functionStyle;
+            style = isDragAndDrop ? _functionDragAndDropStyle : _functionStyle;
           }
 
           spans.add(
             TextSpan(
               text: word,
-              style: style != null ? _baseStyle.merge(style) : _baseStyle,
+              style:
+                  style != null
+                      ? isDragAndDrop
+                          ? _dragAndDropStyle.merge(style)
+                          : _baseStyle.merge(style)
+                      : isDragAndDrop
+                      ? _dragAndDropStyle
+                      : _baseStyle,
             ),
           );
           position = end;

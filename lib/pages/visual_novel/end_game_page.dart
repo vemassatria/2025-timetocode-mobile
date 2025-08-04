@@ -75,7 +75,6 @@ class EndGameScreen extends ConsumerWidget {
                 color: ButtonColor.purple,
                 type: ButtonType.iconLabel,
                 onPressed: () {
-                  audioService.playButtonClick2();
                   showPopupOverlay(
                     context,
                     InfoPopup(

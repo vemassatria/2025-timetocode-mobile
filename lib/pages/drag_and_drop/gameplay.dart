@@ -92,14 +92,13 @@ class DragAndDropQuestionWidget extends ConsumerWidget {
               children: [
                 Text(
                   dndModel.instruction,
-                  style: AppTypography.normal(),
+                  style: AppTypography.medium(),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 16.h),
                 Container(
                   padding: EdgeInsets.all(16.w),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF1E1E1E),
                     borderRadius: BorderRadius.circular(8.r),
                   ),
                   child: Column(

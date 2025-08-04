@@ -5,8 +5,14 @@ import 'package:timetocode/themes/colors.dart';
 class Block extends StatelessWidget {
   final String text;
   final bool isDragging;
+  final bool isSpecial;
 
-  const Block({required this.text, this.isDragging = false});
+  const Block({
+    super.key,
+    required this.text,
+    this.isDragging = false,
+    this.isSpecial = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +22,12 @@ class Block extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
         decoration: BoxDecoration(
-          color: isDragging ? AppColors.technoBlue : AppColors.surfaceDark,
+          color:
+              isSpecial
+                  ? AppColors.rewardYellow
+                  : isDragging
+                  ? AppColors.technoBlue
+                  : AppColors.surfaceDark,
           borderRadius: BorderRadius.circular(4.r),
           border: Border.all(color: AppColors.white, width: 1.5.w),
         ),
@@ -25,7 +36,7 @@ class Block extends StatelessWidget {
           style: TextStyle(
             fontFamily: 'Fira Code',
             fontSize: 12.sp,
-            color: const Color(0xFFDCDCAA),
+            color: isSpecial ? AppColors.black1 : AppColors.gray1,
             letterSpacing: 0.5,
             height: 1.5,
           ),
