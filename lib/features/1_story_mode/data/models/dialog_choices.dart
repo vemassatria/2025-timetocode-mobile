@@ -1,19 +1,16 @@
-class DialogChoices {
-  final String text;
-  final String next;
-  final String nextType;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  DialogChoices({
-    required this.text,
-    required this.next,
-    required this.nextType,
-  });
+part 'dialog_choices.freezed.dart';
+part 'dialog_choices.g.dart';
 
-  static DialogChoices fromJson(Map<String, dynamic> c) {
-    return DialogChoices(
-      text: c['text'] as String,
-      next: c['next'] as String,
-      nextType: c['nextType'] as String,
-    );
-  }
+@freezed
+abstract class DialogChoices with _$DialogChoices {
+  const factory DialogChoices({
+    required String text,
+    required String next,
+    required String nextType,
+  }) = _DialogChoices;
+
+  factory DialogChoices.fromJson(Map<String, dynamic> json) =>
+      _$DialogChoicesFromJson(json);
 }

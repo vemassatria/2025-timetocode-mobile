@@ -1,25 +1,18 @@
-class ChoicesModel {
-  final String text;
-  final String? next;
-  final String? nextType;
-  final String? nextDifficulty;
-  final bool? isCorrect;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  ChoicesModel({
-    required this.text,
-    this.next,
-    this.isCorrect,
-    this.nextType,
-    this.nextDifficulty,
-  });
+part 'choices_model.freezed.dart';
+part 'choices_model.g.dart';
 
-  factory ChoicesModel.fromJson(Map<String, dynamic> json) {
-    return ChoicesModel(
-      text: json['text'] as String,
-      next: json['next'] as String?,
-      nextType: json['nextType'] as String?,
-      nextDifficulty: json['nextDifficulty'] as String?,
-      isCorrect: json['isCorrect'] as bool?,
-    );
-  }
+@freezed
+abstract class ChoicesModel with _$ChoicesModel {
+  const factory ChoicesModel({
+    required String text,
+    String? next,
+    String? nextType,
+    String? nextDifficulty,
+    bool? isCorrect,
+  }) = _ChoicesModel;
+
+  factory ChoicesModel.fromJson(Map<String, dynamic> json) =>
+      _$ChoicesModelFromJson(json);
 }

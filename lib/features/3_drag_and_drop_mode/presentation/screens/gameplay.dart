@@ -23,7 +23,7 @@ class DragAndDropQuestionWidget extends ConsumerWidget {
     final dndModel = dndState.currentDragAndDrop!;
     final availableOptions = dndState.availableOptions;
     final dropZones = dndState.dropZones;
-    final allZonesFilled = dropZones.every(
+    final allZonesFilled = dropZones!.every(
       (zone) => zone.contentDraggable != null,
     );
 
@@ -132,14 +132,14 @@ class DragAndDropQuestionWidget extends ConsumerWidget {
                         spacing: 8.w,
                         runSpacing: 8.h,
                         children:
-                            availableOptions
+                            availableOptions!
                                 .map((opt) => DraggableBlockWidget(option: opt))
                                 .toList(),
                       ),
                     );
                   },
                   onWillAcceptWithDetails: (details) {
-                    return !availableOptions.any(
+                    return !availableOptions!.any(
                       (element) => element.id == details.data,
                     );
                   },

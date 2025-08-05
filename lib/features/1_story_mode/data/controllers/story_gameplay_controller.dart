@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/app/data/services/music_service.dart';
+import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:timetocode/features/1_story_mode/data/states/story_state.dart';
 import 'package:timetocode/features/3_drag_and_drop_mode/data/controllers/dnd_gameplay_controller.dart';
 import 'package:timetocode/features/1_story_mode/data/controllers/story_progress_controller.dart';
@@ -46,6 +47,10 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   }
 
   void navigateMode(String? modeType, String? modeId) {
+    if (state.activeMode == 'dialog' || state.activeMode == 'preDialog') {
+      ref.read(soundEffectServiceProvider.notifier).pauseTyping();
+    }
+
     if (modeType == 'preDialog') {
       showPreDialog(modeId!);
     } else if (modeType == 'dialog') {
@@ -53,7 +58,14 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       showDialog(modeId!);
     } else if (modeType == 'soal') {
       showQuestion(modeId!);
-    } else if (modeType == 'drag_and_drop') {
+    } else if (modeType == 'dragAndDrop') {
+      state = state.copyWith(
+        activeMode: null,
+        currentDialog: null,
+        preDialog: null,
+        currentQuestion: null,
+        indexDialog: null,
+      );
       ref
           .read(dndControllerProvider.notifier)
           .initializeDragAndDrop(modeId!, 'story');
@@ -64,19 +76,18 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   }
 
   void showPreDialog(String id) {
-    state =
-        state.activeMode != 'preDialog'
-            ? state.copyWith(
-              preDialog: state.activeLevel!.preDialog!.firstWhere(
-                (preDialog) => preDialog.id == id,
-              ),
-              activeMode: 'preDialog',
-            )
-            : state.copyWith(
-              preDialog: state.activeLevel!.preDialog!.firstWhere(
-                (preDialog) => preDialog.id == id,
-              ),
-            );
+    state = state.activeMode != 'preDialog'
+        ? state.copyWith(
+            preDialog: state.activeLevel!.preDialog!.firstWhere(
+              (preDialog) => preDialog.id == id,
+            ),
+            activeMode: 'preDialog',
+          )
+        : state.copyWith(
+            preDialog: state.activeLevel!.preDialog!.firstWhere(
+              (preDialog) => preDialog.id == id,
+            ),
+          );
   }
 
   void nextPreDialog() {
@@ -90,14 +101,15 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   Future<void> showDialog(String dialogId) async {
     final level = state.activeLevel!;
     final dialog = level.dialogs.firstWhere((d) => d.id == dialogId);
+    final currentConversation = dialog.dialogs[0];
 
-    final firstIdx = dialog.getCharacterIndex(0);
-    final firstReact = dialog.getReactionIndex(0);
+    final firstIdx = currentConversation.characterIndex;
+    final firstReact = currentConversation.reactionIndex;
 
     final c1Reaction = firstIdx == 1 ? firstReact : 0;
     final c2Reaction = firstIdx == 2 ? firstReact : 0;
 
-    final ilustrationIndex = dialog.getIlustrationIndex(0);
+    final ilustrationIndex = currentConversation.ilustrationIndex;
 
     await game.showCharacters(
       char1Img: level.character1Images[c1Reaction],
@@ -130,12 +142,13 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   void nextDialog() {
     final dialog = state.currentDialog!;
     final nextIdx = state.indexDialog! + 1;
-    final length = dialog.getDialogLength();
+    final length = dialog.dialogs.length;
 
     if (nextIdx < length) {
-      final charIdx = dialog.getCharacterIndex(nextIdx);
-      final charReact = dialog.getReactionIndex(nextIdx);
-      final ilustrationIndex = dialog.getIlustrationIndex(nextIdx);
+      final currentConversation = dialog.dialogs[nextIdx];
+      final charIdx = currentConversation.characterIndex;
+      final charReact = currentConversation.reactionIndex;
+      final ilustrationIndex = currentConversation.ilustrationIndex;
 
       state = state.copyWith(indexDialog: nextIdx);
       if (charIdx == 1) {
@@ -230,7 +243,8 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
             } else if (choice.nextType == 'dialog') {
               final nextDialog = dialogs.firstWhere((d) => d.id == choice.next);
               if (findAndShowSoal(nextDialog)) return true;
-            } else if (choice.nextType == 'drag_and_drop') {
+            } else if (choice.nextType == 'dragAndDrop') {
+              ref.read(soundEffectServiceProvider.notifier).pauseTyping();
               game.hideCharacters();
               game.hideIlustration();
               ref
@@ -248,16 +262,17 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
         if (dialog.nextType == 'soal') {
           game.hideCharacters();
           game.hideIlustration();
-          showQuestion(dialog.next);
+          showQuestion(dialog.next!);
           return true;
         } else if (dialog.nextType == 'dialog') {
           dialog = dialogs.firstWhere((d) => d.id == dialog!.next);
-        } else if (dialog.nextType == 'drag_and_drop') {
+        } else if (dialog.nextType == 'dragAndDrop') {
+          ref.read(soundEffectServiceProvider.notifier).pauseTyping();
           game.hideCharacters();
           game.hideIlustration();
           ref
               .read(dndControllerProvider.notifier)
-              .initializeDragAndDrop(dialog.next, 'story');
+              .initializeDragAndDrop(dialog.next!, 'story');
           ref.read(routerProvider).push('/dnd');
           return true;
         } else {

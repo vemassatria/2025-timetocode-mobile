@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:timetocode/features/2_challenge_mode/data/models/challenge_list_model.dart';
+import 'package:timetocode/features/2_challenge_mode/data/models/challenges_list_model.dart';
 import 'package:timetocode/features/2_challenge_mode/data/models/challenge_model.dart';
 
 class ChallengeLoadService {

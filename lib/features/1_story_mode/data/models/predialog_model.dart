@@ -1,22 +1,17 @@
-class PreDialogModel {
-  final String id;
-  final String text;
-  final String next;
-  final String nextType;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  PreDialogModel({
-    required this.id,
-    required this.text,
-    required this.next,
-    required this.nextType,
-  });
+part 'predialog_model.freezed.dart';
+part 'predialog_model.g.dart';
 
-  factory PreDialogModel.fromJson(Map<String, dynamic> json) {
-    return PreDialogModel(
-      id: json['id'] as String? ?? '',
-      text: json['text'],
-      next: json['next'] as String,
-      nextType: json['nextType'] as String,
-    );
-  }
+@freezed
+abstract class PreDialogModel with _$PreDialogModel {
+  const factory PreDialogModel({
+    required String id,
+    required String text,
+    required String next,
+    required String nextType,
+  }) = _PreDialogModel;
+
+  factory PreDialogModel.fromJson(Map<String, dynamic> json) =>
+      _$PreDialogModelFromJson(json);
 }

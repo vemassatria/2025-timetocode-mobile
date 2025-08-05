@@ -1,9 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/features/2_challenge_mode/data/controllers/challenge_gameplay_controller.dart';
 import 'package:timetocode/features/1_story_mode/data/controllers/story_gameplay_controller.dart';
+import 'package:timetocode/features/3_drag_and_drop_mode/data/models/drag_and_drop_model.dart';
+import 'package:timetocode/features/3_drag_and_drop_mode/data/models/drop_zone_model.dart';
 import 'package:timetocode/features/3_drag_and_drop_mode/data/states/dnd_state.dart';
 import 'package:timetocode/features/3_drag_and_drop_mode/data/models/draggable_model.dart';
-import 'package:timetocode/features/3_drag_and_drop_mode/data/models/drop_zone_model.dart';
 import 'package:timetocode/app/config/routes/app_route.dart';
 
 class DndController extends AutoDisposeNotifier<DndState> {
@@ -16,90 +17,91 @@ class DndController extends AutoDisposeNotifier<DndState> {
   void initializeDragAndDrop(String id, String modeGame) {
     _keepAliveLink ??= ref.keepAlive();
 
+    DragAndDropModel dndModel;
+    int? initialCorrect, initialWrong;
+
     if (modeGame == 'challenge') {
-      final challenge = ref.read(challengeControllerProvider);
-      final dnd = challenge.currentLevel!.dragAndDrop!.firstWhere(
+      final challengeState = ref.read(challengeControllerProvider);
+      dndModel = challengeState.currentLevel!.dragAndDrop!.firstWhere(
         (dnd) => dnd.id == id,
       );
-      state = DndState(
-        currentDragAndDrop: dnd,
-        availableOptions: dnd.draggableOptions,
-        dropZones: dnd.dropZones,
-        modeGame: modeGame,
-        correctAnswer: ref.read(challengeControllerProvider).correctAnswer,
-        wrongAnswer: ref.read(challengeControllerProvider).wrongAnswer,
+      initialCorrect = challengeState.correctAnswer;
+      initialWrong = challengeState.wrongAnswer;
+    } else {
+      final storyState = ref.read(storyControllerProvider);
+      dndModel = storyState.activeLevel!.dragAndDrop!.firstWhere(
+        (dnd) => dnd.id == id,
       );
-    } else if (modeGame == 'story') {
-      final dnd = ref
-          .read(storyControllerProvider)
-          .activeLevel!
-          .dragAndDrop!
-          .firstWhere((dnd) => dnd.id == id);
-      state = DndState(
-        currentDragAndDrop: dnd,
-        availableOptions: dnd.draggableOptions,
-        dropZones: dnd.dropZones,
-        modeGame: modeGame,
-        correctAnswer: ref.read(storyControllerProvider).correctAnswer,
-        wrongAnswer: ref.read(storyControllerProvider).wrongAnswer,
-      );
+      initialCorrect = storyState.correctAnswer;
+      initialWrong = storyState.wrongAnswer;
     }
+
+    state = DndState(
+      currentDragAndDrop: dndModel,
+      availableOptions: List.from(dndModel.draggableOptions),
+      dropZones: List.from(dndModel.dropZones),
+      modeGame: modeGame,
+      correctAnswer: initialCorrect,
+      wrongAnswer: initialWrong,
+    );
   }
 
   void dropItem(String targetZoneId, String droppedOptionId) {
-    final currentOptions = List<DraggableModel>.from(state.availableOptions);
-    final currentZones = List<DropZoneModel>.from(state.dropZones);
+    final newOptions = List<DraggableModel>.from(state.availableOptions!);
+    final newZones = List<DropZoneModel>.from(state.dropZones!);
 
     DraggableModel? droppedItem;
+    int? sourceZoneIndex;
 
-    // Mencari index item yang di-drop di dek zone opsi
-    int sourceOptionIndex = currentOptions.indexWhere(
+    final sourceOptionIndex = newOptions.indexWhere(
       (opt) => opt.id == droppedOptionId,
     );
-    int? sourceZoneIndex;
+
     if (sourceOptionIndex != -1) {
-      droppedItem = currentOptions.removeAt(sourceOptionIndex);
+      droppedItem = newOptions.removeAt(sourceOptionIndex);
     } else {
-      // Mencari item yang di-drop di drop zone
-      sourceZoneIndex = currentZones.indexWhere(
-        (zone) => zone.contentDraggable?.id == droppedOptionId,
+      sourceZoneIndex = newZones.indexWhere(
+        (z) => z.contentDraggable?.id == droppedOptionId,
       );
-      droppedItem = currentZones[sourceZoneIndex].contentDraggable;
-      currentZones[sourceZoneIndex].contentDraggable = null;
-    }
-
-    // Tempatkan item ke dek zone utama
-    if (targetZoneId == 'options_area') {
-      currentOptions.add(droppedItem!);
-    } else {
-      // Pindah ke drop zone
-      int targetZoneIndex = currentZones.indexWhere(
-        (zone) => zone.id == targetZoneId,
-      );
-      // Jika ada item di target, kembalikan ke options
-      final displacedItem = currentZones[targetZoneIndex].contentDraggable;
-      if (displacedItem != null) {
-        if (sourceZoneIndex != null) {
-          currentZones[sourceZoneIndex].contentDraggable = displacedItem;
-        } else {
-          currentOptions.add(displacedItem);
-        }
+      if (sourceZoneIndex != -1) {
+        droppedItem = newZones[sourceZoneIndex].contentDraggable;
+        newZones[sourceZoneIndex] = newZones[sourceZoneIndex].copyWith(
+          contentDraggable: null,
+        );
       }
-      // Tempatkan item yang baru
-      currentZones[targetZoneIndex].contentDraggable = droppedItem;
     }
 
-    state = state.copyWith(
-      availableOptions: currentOptions,
-      dropZones: currentZones,
-    );
+    if (targetZoneId == 'options_area') {
+      newOptions.add(droppedItem!);
+    } else {
+      final targetZoneIndex = newZones.indexWhere((z) => z.id == targetZoneId);
+      if (targetZoneIndex != -1) {
+        final displacedItem = newZones[targetZoneIndex].contentDraggable;
+
+        if (displacedItem != null) {
+          if (sourceZoneIndex != null) {
+            newZones[sourceZoneIndex] = newZones[sourceZoneIndex].copyWith(
+              contentDraggable: displacedItem,
+            );
+          } else {
+            newOptions.add(displacedItem);
+          }
+        }
+
+        newZones[targetZoneIndex] = newZones[targetZoneIndex].copyWith(
+          contentDraggable: droppedItem,
+        );
+      }
+    }
+
+    state = state.copyWith(availableOptions: newOptions, dropZones: newZones);
   }
 
   bool validateAnswer() {
     final userSequence = state.dropZones;
     final correctSequence = state.currentDragAndDrop!.correctSequence;
 
-    for (int i = 0; i < userSequence.length; i++) {
+    for (int i = 0; i < userSequence!.length; i++) {
       if (userSequence[i].contentDraggable?.id != correctSequence[i]) {
         wrongAnswer();
         return false;

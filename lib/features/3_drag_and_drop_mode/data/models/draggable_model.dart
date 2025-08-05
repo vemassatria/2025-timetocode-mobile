@@ -1,19 +1,17 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:timetocode/features/3_drag_and_drop_mode/data/models/content_component_model.dart';
 
-class DraggableModel {
-  final String id;
-  final ContentComponentModel content;
-  final String? info;
+part 'draggable_model.freezed.dart';
+part 'draggable_model.g.dart';
 
-  DraggableModel({required this.id, required this.content, this.info});
+@freezed
+abstract class DraggableModel with _$DraggableModel {
+  const factory DraggableModel({
+    required String id,
+    required ContentComponentModel content,
+    String? info,
+  }) = _DraggableModel;
 
-  factory DraggableModel.fromJson(Map<String, dynamic> json) {
-    return DraggableModel(
-      id: json['id'] as String? ?? '',
-      content: ContentComponentModel.fromJson(
-        json['content'] as Map<String, dynamic>,
-      ),
-      info: json['info'] as String?,
-    );
-  }
+  factory DraggableModel.fromJson(Map<String, dynamic> json) =>
+      _$DraggableModelFromJson(json);
 }

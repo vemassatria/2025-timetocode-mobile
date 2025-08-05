@@ -1,13 +1,15 @@
-class ContentComponentModel {
-  final String type;
-  final String value;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  ContentComponentModel({required this.type, required this.value});
+part 'content_component_model.freezed.dart';
+part 'content_component_model.g.dart';
 
-  factory ContentComponentModel.fromJson(Map<String, dynamic> json) {
-    return ContentComponentModel(
-      type: json['type'] as String? ?? '',
-      value: json['value'] as String? ?? '',
-    );
-  }
+@freezed
+abstract class ContentComponentModel with _$ContentComponentModel {
+  const factory ContentComponentModel({
+    required String type,
+    required String value,
+  }) = _ContentComponentModel;
+
+  factory ContentComponentModel.fromJson(Map<String, dynamic> json) =>
+      _$ContentComponentModelFromJson(json);
 }

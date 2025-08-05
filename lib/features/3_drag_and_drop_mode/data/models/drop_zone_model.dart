@@ -1,25 +1,19 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:timetocode/features/3_drag_and_drop_mode/data/models/content_component_model.dart';
 import 'package:timetocode/features/3_drag_and_drop_mode/data/models/draggable_model.dart';
 
-class DropZoneModel {
-  final String id;
-  final List<String>? acceptedIds;
-  final ContentComponentModel? content;
-  DraggableModel? contentDraggable;
+part 'drop_zone_model.freezed.dart';
+part 'drop_zone_model.g.dart';
 
-  DropZoneModel({required this.id, this.acceptedIds, this.content});
+@freezed
+abstract class DropZoneModel with _$DropZoneModel {
+  const factory DropZoneModel({
+    required String id,
+    List<String>? acceptedIds,
+    ContentComponentModel? content,
+    DraggableModel? contentDraggable,
+  }) = _DropZoneModel;
 
-  factory DropZoneModel.fromJson(Map<String, dynamic> json) {
-    return DropZoneModel(
-      id: json['id'] as String,
-      acceptedIds:
-          (json['acceptedIds'] as List<dynamic>?)
-              ?.map((id) => id as String)
-              .toList(),
-      content:
-          json['content'] != null
-              ? ContentComponentModel.fromJson(json['content'])
-              : null,
-    );
-  }
+  factory DropZoneModel.fromJson(Map<String, dynamic> json) =>
+      _$DropZoneModelFromJson(json);
 }

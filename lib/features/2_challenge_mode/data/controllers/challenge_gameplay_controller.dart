@@ -38,7 +38,7 @@ class ChallengeController extends AutoDisposeNotifier<ChallengeState> {
   Future<void> checkAnswer(ChoicesModel selected) async {
     final nextType = selected.nextType;
 
-    if (nextType == "drag_and_drop") {
+    if (nextType == "dragAndDrop") {
       ref
           .read(dndControllerProvider.notifier)
           .initializeDragAndDrop(selected.next!, "challenge");
@@ -75,7 +75,7 @@ class ChallengeController extends AutoDisposeNotifier<ChallengeState> {
         currentQuestion = state.currentLevel!.questions.sedang.first;
         break;
       case 'susah':
-        currentQuestion = state.currentLevel!.questions.sulit.first;
+        currentQuestion = state.currentLevel!.questions.susah.first;
         break;
     }
     state = state.copyWith(

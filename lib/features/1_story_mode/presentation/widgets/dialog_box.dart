@@ -48,7 +48,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
   }
 
   void _handleTap() {
-    final isLastLine = widget.indexDialog == widget.dialog.dialogue.length - 1;
+    final isLastLine = widget.indexDialog == widget.dialog.dialogs.length - 1;
     final hasChoices = widget.dialog.choices?.isNotEmpty == true;
 
     if (!_isTextAnimationComplete) {
@@ -65,12 +65,14 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
   Widget build(BuildContext context) {
     final dialog = widget.dialog;
     final idx = widget.indexDialog;
-    final charIdx = dialog.getCharacterIndex(idx);
+    final currentConversation = dialog.dialogs[idx];
+    final charIdx = currentConversation.characterIndex;
     final name = (charIdx == 1) ? widget.character1Name : widget.character2Name;
-    final boxColor =
-        (charIdx == 1) ? AppColors.challengeOrange : AppColors.deepTealGlow;
-    final text = dialog.getTextDialog(idx);
-    final isLastLine = idx == dialog.dialogue.length - 1;
+    final boxColor = (charIdx == 1)
+        ? AppColors.challengeOrange
+        : AppColors.deepTealGlow;
+    final text = currentConversation.line;
+    final isLastLine = idx == dialog.dialogs.length - 1;
     final hasChoices = dialog.choices?.isNotEmpty == true;
 
     final textStyle = AppTypography.medium().copyWith(
@@ -107,23 +109,21 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
-                              child:
-                                  _isTextAnimationComplete
-                                      ? Text(text, style: textStyle)
-                                      : TypewriterEffectBox(
-                                        text: text,
-                                        textStyle: textStyle,
-                                        onFinished: () {
-                                          if (mounted &&
-                                              !_isTextAnimationComplete) {
-                                            setState(
-                                              () =>
-                                                  _isTextAnimationComplete =
-                                                      true,
-                                            );
-                                          }
-                                        },
-                                      ),
+                              child: _isTextAnimationComplete
+                                  ? Text(text, style: textStyle)
+                                  : TypewriterEffectBox(
+                                      text: text,
+                                      textStyle: textStyle,
+                                      onFinished: () {
+                                        if (mounted &&
+                                            !_isTextAnimationComplete) {
+                                          setState(
+                                            () =>
+                                                _isTextAnimationComplete = true,
+                                          );
+                                        }
+                                      },
+                                    ),
                             ),
                             SizedBox(height: 12.h),
                             if (_isTextAnimationComplete &&

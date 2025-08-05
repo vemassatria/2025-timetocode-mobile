@@ -1,22 +1,17 @@
-class TextDialogModel {
-  final String line;
-  final int reactionIndex;
-  final int characterIndex;
-  final int? ilustration;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  TextDialogModel({
-    required this.line,
-    required this.reactionIndex,
-    required this.characterIndex,
-    this.ilustration,
-  });
+part 'text_dialog_model.freezed.dart';
+part 'text_dialog_model.g.dart';
 
-  factory TextDialogModel.fromJson(Map<String, dynamic> json) {
-    return TextDialogModel(
-      line: json['line'] as String? ?? '',
-      reactionIndex: json['reaction_index'] as int? ?? 0,
-      characterIndex: json['speaker'] as int? ?? 1,
-      ilustration: json['ilustration_index'] as int?,
-    );
-  }
+@freezed
+abstract class TextDialogModel with _$TextDialogModel {
+  const factory TextDialogModel({
+    required String line,
+    required int reactionIndex,
+    required int characterIndex,
+    int? ilustrationIndex,
+  }) = _TextDialogModel;
+
+  factory TextDialogModel.fromJson(Map<String, dynamic> json) =>
+      _$TextDialogModelFromJson(json);
 }
