@@ -1,31 +1,17 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:timetocode/features/2_challenge_mode/data/models/challenge_level_model.dart';
 
-class ChallengeModel {
-  final int challengeId;
-  final String title;
-  final List<ChallengeLevelModel> levels;
+part 'challenge_model.freezed.dart';
+part 'challenge_model.g.dart';
 
-  ChallengeModel({
-    required this.challengeId,
-    required this.title,
-    required this.levels,
-  });
+@freezed
+abstract class ChallengeModel with _$ChallengeModel {
+  const factory ChallengeModel({
+    required int challengeId,
+    required String title,
+    required List<ChallengeLevelModel> levels,
+  }) = _ChallengeModel;
 
-  factory ChallengeModel.fromJson(Map<String, dynamic> json) {
-    return ChallengeModel(
-      challengeId: json['challenge_id'],
-      title: json['title'],
-      levels:
-          (json['levels'] as List<dynamic>)
-              .map(
-                (lvl) =>
-                    ChallengeLevelModel.fromJson(lvl as Map<String, dynamic>),
-              )
-              .toList(),
-    );
-  }
-
-  ChallengeLevelModel getLevel(int levelNumber) {
-    return levels.firstWhere((lvl) => lvl.levelName == levelNumber);
-  }
+  factory ChallengeModel.fromJson(Map<String, dynamic> json) =>
+      _$ChallengeModelFromJson(json);
 }

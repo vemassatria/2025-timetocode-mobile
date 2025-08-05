@@ -1,50 +1,24 @@
 import 'package:timetocode/features/3_drag_and_drop_mode/data/models/drop_zone_model.dart';
-
 import 'draggable_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class DragAndDropModel {
-  final String id;
-  final String instruction;
-  final String? scaffoldCode;
-  final List<DraggableModel> draggableOptions;
-  final List<DropZoneModel> dropZones;
-  final List<String> correctSequence;
-  final String? next;
-  final String? nextType;
-  final String? nextDifficulty;
+part 'drag_and_drop_model.freezed.dart';
+part 'drag_and_drop_model.g.dart';
 
-  DragAndDropModel({
-    required this.id,
-    required this.instruction,
-    this.scaffoldCode,
-    required this.draggableOptions,
-    required this.dropZones,
-    required this.correctSequence,
-    this.next,
-    this.nextType,
-    this.nextDifficulty,
-  });
+@freezed
+abstract class DragAndDropModel with _$DragAndDropModel {
+  const factory DragAndDropModel({
+    required String id,
+    required String instruction,
+    String? scaffoldCode,
+    required List<DraggableModel> draggableOptions,
+    required List<DropZoneModel> dropZones,
+    required List<String> correctSequence,
+    String? next,
+    String? nextType,
+    String? nextDifficulty,
+  }) = _DragAndDropModel;
 
-  factory DragAndDropModel.fromJson(Map<String, dynamic> json) {
-    return DragAndDropModel(
-      id: json['id'] as String? ?? '',
-      instruction: json['instruction'] as String? ?? '',
-      scaffoldCode: json['scaffoldCode'] as String?,
-      draggableOptions:
-          (json['draggableOptions'] as List<dynamic>)
-              .map((d) => DraggableModel.fromJson(d as Map<String, dynamic>))
-              .toList(),
-      dropZones:
-          (json['dropZones'] as List<dynamic>)
-              .map((d) => DropZoneModel.fromJson(d as Map<String, dynamic>))
-              .toList(),
-      correctSequence:
-          (json['correctSequence'] as List<dynamic>)
-              .map((e) => e as String)
-              .toList(),
-      next: json['next'] as String?,
-      nextType: json['nextType'] as String?,
-      nextDifficulty: json['nextDifficulty'] as String?,
-    );
-  }
+  factory DragAndDropModel.fromJson(Map<String, dynamic> json) =>
+      _$DragAndDropModelFromJson(json);
 }

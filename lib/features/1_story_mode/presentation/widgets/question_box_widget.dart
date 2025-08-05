@@ -16,7 +16,7 @@ class QuestionBoxWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final questionText = question.question;
+    final questionText = question.text;
     final codeText = question.code;
     final options = question.choices;
 
@@ -28,7 +28,7 @@ class QuestionBoxWidget extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                if (codeText.trim().isNotEmpty) ...[
+                if (codeText != null) ...[
                   QuestionBox(questionText: questionText, height: 120.h),
                   SizedBox(height: 16.h),
                   CodeBox(code: codeText),

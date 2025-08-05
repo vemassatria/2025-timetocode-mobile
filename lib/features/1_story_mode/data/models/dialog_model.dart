@@ -1,57 +1,20 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:timetocode/features/1_story_mode/data/models/dialog_choices.dart';
 import 'package:timetocode/features/1_story_mode/data/models/text_dialog_model.dart';
 
-class DialogModel {
-  final String id;
-  final List<TextDialogModel> dialogue;
-  final String next;
-  final String nextType;
-  final List<DialogChoices>? choices;
+part 'dialog_model.freezed.dart';
+part 'dialog_model.g.dart';
 
-  DialogModel({
-    required this.id,
-    required this.dialogue,
-    required this.next,
-    required this.nextType,
-    this.choices,
-  });
+@freezed
+abstract class DialogModel with _$DialogModel {
+  const factory DialogModel({
+    required String id,
+    required List<TextDialogModel> dialogs,
+    String? next,
+    String? nextType,
+    List<DialogChoices>? choices,
+  }) = _DialogModel;
 
-  factory DialogModel.fromJson(Map<String, dynamic> json) {
-    return DialogModel(
-      id: json['id'] as String? ?? '',
-      dialogue:
-          (json['text'] as List)
-              .map((d) => TextDialogModel.fromJson(d as Map<String, dynamic>))
-              .toList(),
-
-      next: json['next'] as String? ?? '',
-      nextType: json['nextType'] as String? ?? '',
-      choices:
-          json['choices'] != null
-              ? (json['choices'] as List)
-                  .map((c) => DialogChoices.fromJson(c as Map<String, dynamic>))
-                  .toList()
-              : null,
-    );
-  }
-
-  String getTextDialog(int index) {
-    return dialogue[index].line;
-  }
-
-  int getReactionIndex(int index) {
-    return dialogue[index].reactionIndex;
-  }
-
-  int getCharacterIndex(int index) {
-    return dialogue[index].characterIndex;
-  }
-
-  int getDialogLength() {
-    return dialogue.length;
-  }
-
-  int? getIlustrationIndex(int index) {
-    return dialogue[index].ilustration;
-  }
+  factory DialogModel.fromJson(Map<String, dynamic> json) =>
+      _$DialogModelFromJson(json);
 }

@@ -16,7 +16,7 @@ class DropZoneTargetWidget extends ConsumerWidget {
     final DraggableModel? placedOption = ref.watch(
       dndControllerProvider.select(
         (state) =>
-            state.dropZones.firstWhere((z) => z.id == zoneId).contentDraggable,
+            state.dropZones!.firstWhere((z) => z.id == zoneId).contentDraggable,
       ),
     );
 

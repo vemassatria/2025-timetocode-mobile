@@ -117,36 +117,35 @@ class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
               children: [
                 SizedBox(),
                 Text(
-                  challengeState.currentQuestion!.question,
+                  challengeState.currentQuestion!.text,
                   style: AppTypography.normal(color: AppColors.primaryText),
                   textAlign: TextAlign.justify,
                 ),
-                code.trim().isNotEmpty
+                code != null
                     ? Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColors.backgroundTransparent,
-                        border: Border.all(
-                          color: AppColors.primaryText,
-                          width: 1.w,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: AppColors.backgroundTransparent,
+                          border: Border.all(
+                            color: AppColors.primaryText,
+                            width: 1.w,
+                          ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(16.w),
-                        child: CodeText(
-                          data: '''
+                        child: Padding(
+                          padding: EdgeInsets.all(16.w),
+                          child: CodeText(
+                            data: '''
 $code''',
+                          ),
                         ),
-                      ),
-                    )
+                      )
                     : SizedBox.shrink(),
 
                 Column(
                   spacing: 16.h,
-                  children:
-                      challengeState.currentQuestion!.choices
-                          .map((option) => buildOption(option))
-                          .toList(),
+                  children: challengeState.currentQuestion!.choices
+                      .map((option) => buildOption(option))
+                      .toList(),
                 ),
               ],
             ),
@@ -165,11 +164,10 @@ $code''',
             padding: EdgeInsets.all(16.w),
             child: CustomButton(
               label: "Kirim",
-              onPressed:
-                  () => {
-                    ref.read(soundEffectServiceProvider.notifier).playSubmit(),
-                    _checkAnswer(context, ref, selectedAnswer!),
-                  },
+              onPressed: () => {
+                ref.read(soundEffectServiceProvider.notifier).playSubmit(),
+                _checkAnswer(context, ref, selectedAnswer!),
+              },
               color: ButtonColor.purple,
               isDisabled: selectedAnswer == null,
             ),
@@ -224,8 +222,9 @@ $code''',
             color: isSelected ? AppColors.skyByte : Colors.transparent,
             width: 2.w,
           ),
-          color:
-              isSelected ? AppColors.selectedBlue : AppColors.blueTransparent,
+          color: isSelected
+              ? AppColors.selectedBlue
+              : AppColors.blueTransparent,
           borderRadius: BorderRadius.circular(8.r),
         ),
         child: Text(
@@ -242,8 +241,10 @@ $code''',
     WidgetRef ref,
     ChoicesModel selected,
   ) {
-    final choices =
-        ref.read(challengeControllerProvider).currentQuestion!.choices;
+    final choices = ref
+        .read(challengeControllerProvider)
+        .currentQuestion!
+        .choices;
     final correctAnswer = choices.firstWhere((c) => c.isCorrect == true).text;
 
     showPopupOverlay(

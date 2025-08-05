@@ -1,40 +1,18 @@
 import 'package:timetocode/features/3_drag_and_drop_mode/data/models/drag_and_drop_model.dart';
 import 'package:timetocode/features/3_drag_and_drop_mode/data/models/draggable_model.dart';
 import 'package:timetocode/features/3_drag_and_drop_mode/data/models/drop_zone_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class DndState {
-  final DragAndDropModel? currentDragAndDrop;
-  final List<DraggableModel> availableOptions;
-  final List<DropZoneModel> dropZones;
-  final String? modeGame;
+part 'dnd_state.freezed.dart';
 
-  final int? correctAnswer;
-  final int? wrongAnswer;
-
-  DndState({
-    this.currentDragAndDrop,
-    this.availableOptions = const [],
-    this.dropZones = const [],
-    this.modeGame,
-    this.correctAnswer,
-    this.wrongAnswer,
-  });
-
-  DndState copyWith({
+@freezed
+abstract class DndState with _$DndState {
+  const factory DndState({
     DragAndDropModel? currentDragAndDrop,
     List<DraggableModel>? availableOptions,
     List<DropZoneModel>? dropZones,
     String? modeGame,
     int? correctAnswer,
     int? wrongAnswer,
-  }) {
-    return DndState(
-      currentDragAndDrop: currentDragAndDrop ?? this.currentDragAndDrop,
-      availableOptions: availableOptions ?? this.availableOptions,
-      dropZones: dropZones ?? this.dropZones,
-      modeGame: modeGame ?? this.modeGame,
-      correctAnswer: correctAnswer ?? this.correctAnswer,
-      wrongAnswer: wrongAnswer ?? this.wrongAnswer,
-    );
-  }
+  }) = _DndState;
 }
