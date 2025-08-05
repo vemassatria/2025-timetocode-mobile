@@ -314,3 +314,94 @@ DialogBox(
 ```dart
 IllustrationBox(image: AssetImage('[PATH KE ASSET ILUSTRASI]')),
 ```
+
+---
+
+<br>
+<br>
+
+# Dokumentasi Backend
+
+## Table of Contents
+
+- [1. BGM](#1-bgm)
+- [2. Sound Effect](#2-sound-effect)
+
+---
+
+<br>
+
+## [1] BGM
+lokasi: lib/games/backend/service
+
+keterangan: bgm yang dimiliki sekarang memiliki pemanggilan global dengan inisasi dan membiarkannya hidup sepanjang aplikasi menggunakan manajemen state riverpod & inisasi di **`main.dart`**. Dengan cara kerja di mana 1 instance player akan dibuat, dan jika diibaratkan dengan pemutaran film dengan cd,itu instance player sebagai si dvd player dan musik yang akan dimainkan adalah cd.
+
+**cara melihat state bgm(user aktifkan suara apa gak):**
+```dart
+ref.read(musicServiceProvider); // gunakan watch jika ingin selalu mengawasi dan read untuk ambil nilai sekali.
+```
+
+**cara memanggil method bgm:**
+```dart
+ref.read(musicServiceProvider.notifier).namaMethodnya();
+// ----------------------
+// atau kalau mau nyimpan
+// -----------------------
+final bgmService = ref.read(musicServiceProvider.notifier);
+bgmService.namaMethodnya();
+```
+
+**cara nambahin & memutar lagu:**
+```dart
+Future<void> fungsiBaru () async {
+    await _play(parameter); // intinya di sini, pastikan parameter berakhir .ogg
+}
+```
+
+**tips :** gunakan ogg untuk bgm karena ukuran lebih kecil dan kualitasnya lumayan bagus.
+
+## [2] Sound Effect
+lokasi: lib/games/backend/service
+
+keterangan: sfx yang dimiliki sekarang juga memiliki pemanggilan global dengan inisasi dan membiarkannya hidup sepanjang aplikasi menggunakan manajemen state riverpod & inisasi di **`main.dart`**. Melakukan **caching** pada semua audio yang digunakannya. terdapat 2 cara yang dilakukan untuk melakukan caching dan efisien yang telah dilakukan, dengan cara kerja sebagai berikut:
+- cara 1, menggunakan `FlameAudio.createPool();` IDEALNYA:
+  cara ini menggunakan konsep **Fire and Forget**, di mana memulai sebuah proses dan tidak menunggu hasilnya atau peduli dengan kapan proses itu selesai. Dengan menggunakan createPool, otomatis file juga akan mencaching dan nahkan telah menyiapkan **audio player** siap pakai untuk diputar dengan ketentuan:
+  - parameter `minPlayers`: berfungsi untuk menyiapkan minimal instance audio player yang siap pakai untuk diputar.
+  - parameter `maxPlayers`: berfungsi untuk menambahkan total instance audio player akan dipakai ketika audio diputar terus menerus(jadi misal dipanggil secara hampir bersamaan 10 kali, dan maxPlayers adalah 6, maka hanya 6 yang akan di putar dan 4 sisanya tidak dipedulikan.
+
+  **cara melihat state sound effect(user aktifkan suara apa gak):**
+  ```dart
+  ref.read(soundEffectServiceProvider); // gunakan watch jika ingin selalu mengawasi dan read untuk ambil nilai sekali.
+  ```
+    
+  **cara memanggil method sound effect:**
+  ```dart
+  ref.read(soundEffectServiceProvider.notifier).namaMethodnya();
+  // ----------------------
+  // atau kalau mau nyimpan
+  // -----------------------
+  final sfxService = ref.read(soundEffectServiceProvider.notifier);
+  sfxService.namaMethodnya();
+  ```
+
+  **cara nambahin sound effect:**
+  buat variabel baru dengan: `late AudioPool _namaSFX`;
+
+  lakukan di initialized
+  ```dart
+  late AudioPool _namaSFX= await FlameAudio.createPool(
+      'tempat_sfxnya.wav',
+      minPlayers: int,
+      maxPlayers: int,
+  );
+  ```
+  tips: wajib menggunakan wav soalnya kata ai🤓:  File WAV pada dasarnya adalah aliran data audio mentah. CPU tinggal membaca data digital tersebut dan langsung mengirimkannya ke kartu suara untuk diubah menjadi suara. Tidak ada proses dekompresi atau "penerjemahan" yang rumit.
+
+  **cara memutar sound effect:**
+  ```dart
+  _namaSFX.start()
+  // pastikan kalian buat method dulu untuk mempermudah pemanggilan
+  ```
+
+- cara 2, KHUSUS typing:
+  cara ini menggunakan konsep cancellation token yang memiliki reliabilitas tinggi. hal tersebut karena dia akan secara cerdas menghindari race condition ketika method playing terus menerus dipanggil(karena textnya di skip) karena ketika tombol skip ditekan, token ini membatalkan atau mengabaikan semua operasi play yang sudah "ditembakkan" sebelumnya tetapi belum selesai (masih dalam proses await).

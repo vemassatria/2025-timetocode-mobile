@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:timetocode/features/0_core/widgets/code_box.dart';
+import 'package:timetocode/app/config/theme/colors.dart';
+import 'package:timetocode/app/config/theme/typography.dart';
+import 'package:timetocode/app/data/providers/popup_visibility_provider.dart';
+import 'package:timetocode/app/data/services/sound_effect_service.dart';
+import 'package:timetocode/app/utils/overlay_utils.dart';
 import 'package:timetocode/app/widgets/buttons/custom_button.dart';
 import 'package:timetocode/app/widgets/popups/answer_popup.dart';
 import 'package:timetocode/app/widgets/popups/menu_popup.dart';
-import 'package:timetocode/features/2_challenge_mode/data/controllers/challenge_gameplay_controller.dart';
 import 'package:timetocode/features/0_core/models/choices_model.dart';
-import 'package:timetocode/app/data/providers/popup_visibility_provider.dart';
-import 'package:timetocode/app/data/services/sound_effect_service.dart';
-import 'package:timetocode/app/config/theme/colors.dart';
-import 'package:timetocode/app/config/theme/typography.dart';
-import 'package:timetocode/app/utils/overlay_utils.dart';
+import 'package:timetocode/features/0_core/widgets/code_text.dart';
+import 'package:timetocode/features/2_challenge_mode/data/controllers/challenge_gameplay_controller.dart';
 
 class ChallengeGameplayPage extends ConsumerStatefulWidget {
   const ChallengeGameplayPage({super.key});
@@ -53,6 +53,7 @@ class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
           leading: IconButton(
             icon: Icon(Icons.menu, color: AppColors.primaryText),
             onPressed: () {
+              ref.read(soundEffectServiceProvider.notifier).playSelectClick();
               showPopupOverlay(
                 context,
                 MenuPopup(
@@ -114,7 +115,7 @@ class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
             child: Column(
               spacing: 24.h,
               children: [
-                const SizedBox(),
+                SizedBox(),
                 Text(
                   challengeState.currentQuestion!.question,
                   style: AppTypography.normal(color: AppColors.primaryText),
@@ -132,13 +133,13 @@ class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.all(16.w),
-                        child: CodeBox(
-                          code: '''
+                        child: CodeText(
+                          data: '''
 $code''',
                         ),
                       ),
                     )
-                    : const SizedBox.shrink(),
+                    : SizedBox.shrink(),
 
                 Column(
                   spacing: 16.h,
@@ -241,11 +242,9 @@ $code''',
     WidgetRef ref,
     ChoicesModel selected,
   ) {
-    // Buat Nyimpan String Jawaban Benar
-
-    // final choices =
-    //     ref.read(challengeControllerProvider).value!.currentQuestion!.choices;
-    // final correctAnswer = choices.firstWhere((c) => c.isCorrect == true).text;
+    final choices =
+        ref.read(challengeControllerProvider).currentQuestion!.choices;
+    final correctAnswer = choices.firstWhere((c) => c.isCorrect == true).text;
 
     showPopupOverlay(
       context,
@@ -257,6 +256,7 @@ $code''',
           closePopupOverlay(ref);
           clearSelection();
         },
+        text: correctAnswer,
       ),
       ref,
     );
