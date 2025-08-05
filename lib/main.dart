@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timetocode/games/backend/providers/music_service_provider.dart';
-import 'package:timetocode/games/backend/providers/sound_effect_service_provider.dart';
-import 'package:timetocode/games/backend/providers/shared_preferences_provider.dart';
-import 'package:timetocode/routes/app_route.dart';
-import 'package:timetocode/themes/app_themes.dart';
-import 'package:timetocode/utils/screen_utils.dart';
+import 'package:timetocode/app/data/services/music_service.dart';
+import 'package:timetocode/app/data/services/sound_effect_service.dart';
+import 'package:timetocode/app/data/providers/shared_preferences_provider.dart';
+import 'package:timetocode/app/config/routes/app_route.dart';
+import 'package:timetocode/app/config/theme/app_themes.dart';
+import 'package:timetocode/app/utils/screen_utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
