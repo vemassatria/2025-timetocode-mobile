@@ -8,7 +8,7 @@ import 'package:timetocode/features/2_challenge_mode/presentation/screens/challe
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/challenge_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/end_game_page.dart';
-import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
+import 'package:timetocode/features/5_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -28,9 +28,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         routes: [
           GoRoute(
             path: '/pembelajaran',
-            pageBuilder:
-                (context, state) =>
-                    const NoTransitionPage(child: StorySelectionPage()),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: StorySelectionPage()),
             routes: [
               GoRoute(
                 path: 'level',
@@ -50,9 +49,8 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: '/tantangan',
-            pageBuilder:
-                (context, state) =>
-                    const NoTransitionPage(child: ChallengeSelectionPage()),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: ChallengeSelectionPage()),
             routes: [
               GoRoute(
                 path: 'level',
@@ -72,9 +70,8 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: '/pengaturan',
-            pageBuilder:
-                (context, state) =>
-                    const NoTransitionPage(child: PengaturanPage()),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: PengaturanPage()),
           ),
         ],
       ),
