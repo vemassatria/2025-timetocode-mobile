@@ -7,7 +7,7 @@ enum LogicGateType { AND, OR, NAND, NOR, XOR }
 @freezed
 abstract class LogicGateCardModel with _$LogicGateCardModel {
   const factory LogicGateCardModel({
-    required String id,
+    required int id,
     required LogicGateType type,
   }) = _LogicGateCardModel;
 }

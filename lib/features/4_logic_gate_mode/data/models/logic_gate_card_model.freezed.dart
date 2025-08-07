@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LogicGateCardModel {
 
- String get id; LogicGateType get type;
+ int get id; LogicGateType get type;
 /// Create a copy of LogicGateCardModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $LogicGateCardModelCopyWith<$Res>  {
   factory $LogicGateCardModelCopyWith(LogicGateCardModel value, $Res Function(LogicGateCardModel) _then) = _$LogicGateCardModelCopyWithImpl;
 @useResult
 $Res call({
- String id, LogicGateType type
+ int id, LogicGateType type
 });
 
 
@@ -65,7 +65,7 @@ class _$LogicGateCardModelCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? type = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as int,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as LogicGateType,
   ));
 }
@@ -151,7 +151,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  LogicGateType type)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  LogicGateType type)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LogicGateCardModel() when $default != null:
 return $default(_that.id,_that.type);case _:
@@ -172,7 +172,7 @@ return $default(_that.id,_that.type);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  LogicGateType type)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  LogicGateType type)  $default,) {final _that = this;
 switch (_that) {
 case _LogicGateCardModel():
 return $default(_that.id,_that.type);case _:
@@ -192,7 +192,7 @@ return $default(_that.id,_that.type);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  LogicGateType type)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  LogicGateType type)?  $default,) {final _that = this;
 switch (_that) {
 case _LogicGateCardModel() when $default != null:
 return $default(_that.id,_that.type);case _:
@@ -210,7 +210,7 @@ class _LogicGateCardModel implements LogicGateCardModel {
   const _LogicGateCardModel({required this.id, required this.type});
   
 
-@override final  String id;
+@override final  int id;
 @override final  LogicGateType type;
 
 /// Create a copy of LogicGateCardModel
@@ -243,7 +243,7 @@ abstract mixin class _$LogicGateCardModelCopyWith<$Res> implements $LogicGateCar
   factory _$LogicGateCardModelCopyWith(_LogicGateCardModel value, $Res Function(_LogicGateCardModel) _then) = __$LogicGateCardModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, LogicGateType type
+ int id, LogicGateType type
 });
 
 
@@ -263,7 +263,7 @@ class __$LogicGateCardModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? type = null,}) {
   return _then(_LogicGateCardModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as int,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as LogicGateType,
   ));
 }

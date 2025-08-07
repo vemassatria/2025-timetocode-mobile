@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:timetocode/features/4_gerbang_logika/data/models/logic_gate_card_model.dart';
+import 'package:timetocode/features/4_logic_gate_mode/data/models/logic_gate_card_model.dart';
 
 part 'card_slot_model.freezed.dart';
 
