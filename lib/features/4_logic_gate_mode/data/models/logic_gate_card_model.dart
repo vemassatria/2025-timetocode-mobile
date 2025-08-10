@@ -1,8 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:timetocode/features/4_logic_gate_mode/data/models/logic_gate_type.dart';
 
 part 'logic_gate_card_model.freezed.dart';
-
-enum LogicGateType { AND, OR, NAND, NOR, XOR }
 
 @freezed
 abstract class LogicGateCardModel with _$LogicGateCardModel {

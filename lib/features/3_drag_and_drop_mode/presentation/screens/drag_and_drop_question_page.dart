@@ -13,8 +13,8 @@ import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
 
-class DragAndDropQuestionWidget extends ConsumerWidget {
-  const DragAndDropQuestionWidget({super.key});
+class DragAndDropQuestionPage extends ConsumerWidget {
+  const DragAndDropQuestionPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -122,19 +122,17 @@ class DragAndDropQuestionWidget extends ConsumerWidget {
                       constraints: BoxConstraints(minHeight: 100.h),
                       padding: EdgeInsets.all(8.w),
                       decoration: BoxDecoration(
-                        color:
-                            candidateData.isNotEmpty
-                                ? AppColors.surfaceDark
-                                : Colors.transparent,
+                        color: candidateData.isNotEmpty
+                            ? AppColors.surfaceDark
+                            : Colors.transparent,
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: Wrap(
                         spacing: 8.w,
                         runSpacing: 8.h,
-                        children:
-                            availableOptions!
-                                .map((opt) => DraggableBlockWidget(option: opt))
-                                .toList(),
+                        children: availableOptions!
+                            .map((opt) => DraggableBlockWidget(option: opt))
+                            .toList(),
                       ),
                     );
                   },

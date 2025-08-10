@@ -2,12 +2,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/end_game_page.dart';
-import 'package:timetocode/features/3_drag_and_drop_mode/presentation/screens/gameplay.dart';
+import 'package:timetocode/features/3_drag_and_drop_mode/presentation/screens/drag_and_drop_question_page.dart';
 import 'package:timetocode/app/config/routes/main_navigation.dart';
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/challenge_gameplay_page.dart';
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/challenge_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/end_game_page.dart';
+import 'package:timetocode/features/4_logic_gate_mode/presentation/screens/logic_gate_page.dart';
 import 'package:timetocode/features/5_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
 
@@ -77,7 +78,11 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/dnd',
-        builder: (context, state) => const DragAndDropQuestionWidget(),
+        builder: (context, state) => const DragAndDropQuestionPage(),
+      ),
+      GoRoute(
+        path: '/logic-gate',
+        builder: (context, state) => const LogicGatePage(),
       ),
     ],
   );

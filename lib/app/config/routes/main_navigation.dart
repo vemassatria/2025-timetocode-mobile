@@ -23,7 +23,7 @@ class MainNavigation extends ConsumerWidget {
     if (location.startsWith('/tantangan')) {
       return 1;
     }
-    if (location.startsWith('/pengaturan')) {
+    if (location.startsWith('/logic-gate')) {
       return 2;
     }
     return 0;
@@ -38,7 +38,7 @@ class MainNavigation extends ConsumerWidget {
         context.go('/tantangan');
         break;
       case 2:
-        context.go('/pengaturan');
+        context.go('/logic-gate');
         break;
     }
   }
@@ -92,7 +92,9 @@ class MainNavigation extends ConsumerWidget {
   ) {
     return Container(
       decoration: BoxDecoration(
-        border: Border(top: BorderSide(color: AppColors.black1, width: 1.w)),
+        border: Border(
+          top: BorderSide(color: AppColors.black1, width: 1.w),
+        ),
       ),
       child: SizedBox(
         height: 56.h,

@@ -1,17 +1,29 @@
 import 'dart:math';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timetocode/app/config/routes/app_route.dart';
 import 'package:timetocode/features/4_logic_gate_mode/data/models/binary_slot_model.dart';
 import 'package:timetocode/features/4_logic_gate_mode/data/models/card_slot_model.dart';
 import 'package:timetocode/features/4_logic_gate_mode/data/models/logic_gate_card_model.dart';
+import 'package:timetocode/features/4_logic_gate_mode/data/models/logic_gate_type.dart';
 import 'package:timetocode/features/4_logic_gate_mode/data/models/player_model.dart';
 import 'package:timetocode/features/4_logic_gate_mode/data/states/logic_gate_state.dart';
+
+final logicGateControllerProvider =
+    NotifierProvider.autoDispose<LogicGateGameplayController, LogicGateState>(
+      LogicGateGameplayController.new,
+    );
 
 class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
   KeepAliveLink? _keepAliveLink;
 
   @override
   LogicGateState build() {
+    listenSelf((previous, next) {
+      if (previous?.cardSlots != next.cardSlots) {
+        _recalculateAllBinaryValues();
+      }
+    });
     return LogicGateState();
   }
 
@@ -21,8 +33,8 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
     state = LogicGateState(
       binarySlots: _initializeBinarySlots(15),
       cardSlots: _initializeCardSlots(10),
-      player: PlayerModel(id: 1, hand: _getAvailableCards(1), targetValue: 0),
-      opponent: PlayerModel(id: 2, hand: _getAvailableCards(2), targetValue: 1),
+      player: PlayerModel(id: 1, hand: _getAvailableCards(1), targetValue: 1),
+      opponent: PlayerModel(id: 0, hand: _getAvailableCards(2), targetValue: 0),
     );
   }
 
@@ -80,52 +92,39 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
       cardSlots: newCardSlots,
       player: isPlayerTurn ? updatedUser : state.player,
       opponent: !isPlayerTurn ? updatedUser : state.opponent,
-      currentPlayerId: state.currentPlayerId == 1 ? 2 : 1,
+      currentPlayerId: state.currentPlayerId == 1 ? 0 : 1,
     );
-
-    updateBinarySlotValue(slotId);
   }
 
-  void updateBinarySlotValue(int cardSlotId) {
-    late CardSlotModel cardSlot;
-    late int nextBinarySlot;
-    final binarySlotIndex = _calculateCardSlotIndex(cardSlotId);
+  void _recalculateAllBinaryValues() {
+    final binarySlotsMap = {for (var slot in state.binarySlots!) slot.id: slot};
 
-    final binarySlot1 = state.binarySlots![binarySlotIndex];
-    final binarySlot2 = state.binarySlots![binarySlotIndex + 1];
+    for (final cardSlot in state.cardSlots!) {
+      if (cardSlot.placedCard != null) {
+        final inputSlotId1 = calculateCardSlotIndex(cardSlot.id);
+        final inputSlotId2 = inputSlotId1 + 1;
 
-    if (binarySlot1.value != null && binarySlot2.value != null) {
-      cardSlot = state.cardSlots!.firstWhere((slot) => slot.id == cardSlotId);
-      nextBinarySlot = _calculateBinarySlotIndex(
-        binarySlotIndex,
-        binarySlotIndex + 1,
-      );
+        final value1 = binarySlotsMap[inputSlotId1]?.value;
+        final value2 = binarySlotsMap[inputSlotId2]?.value;
 
-      int resultValue;
-      final value1 = binarySlot1.value!;
-      final value2 = binarySlot2.value!;
+        if (value1 != null && value2 != null) {
+          final outputSlotId = _calculateBinarySlotIndex(
+            inputSlotId1,
+            inputSlotId2,
+          );
 
-      switch (cardSlot.placedCard!.type) {
-        case LogicGateType.AND:
-          resultValue = value1 & value2;
-          break;
-        case LogicGateType.OR:
-          resultValue = value1 | value2;
-          break;
-        case LogicGateType.NOR:
-          resultValue = (value1 | value2) == 0 ? 1 : 0;
-          break;
-        case LogicGateType.XOR:
-          resultValue = value1 ^ value2;
-          break;
-        case LogicGateType.NAND:
-          resultValue = (value1 & value2) == 0 ? 1 : 0;
-          break;
+          final resultValue = cardSlot.placedCard!.type.calculate(
+            value1,
+            value2,
+          );
+
+          binarySlotsMap[outputSlotId] = binarySlotsMap[outputSlotId]!.copyWith(
+            value: resultValue,
+          );
+        }
       }
-
-      state.binarySlots![nextBinarySlot] = state.binarySlots![nextBinarySlot]
-          .copyWith(value: resultValue);
     }
+    state = state.copyWith(binarySlots: binarySlotsMap.values.toList());
   }
 
   int _calculateBinarySlotIndex(int x, int y) {
@@ -135,9 +134,23 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
     return y + fixedOffset - offset;
   }
 
-  int _calculateCardSlotIndex(int x) {
+  int calculateCardSlotIndex(int x) {
     bool isLowerThanEight = x < 8;
     final offset = isLowerThanEight ? (x - 1) ~/ 4 : (x - 1) ~/ 3;
     return x + offset;
+  }
+
+  void _releaseKeepAlive() {
+    _keepAliveLink!.close();
+    _keepAliveLink = null;
+  }
+
+  void exit() {
+    _releaseKeepAlive();
+    ref.read(routerProvider).pop();
+  }
+
+  void restart() {
+    initializeLogicGateGame();
   }
 }
