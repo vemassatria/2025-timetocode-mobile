@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/app/config/routes/app_route.dart';
 import 'package:timetocode/features/4_logic_gate_mode/data/models/binary_slot_model.dart';
@@ -19,12 +18,7 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
 
   @override
   LogicGateState build() {
-    listenSelf((previous, next) {
-      if (previous?.cardSlots != next.cardSlots) {
-        _recalculateAllBinaryValues();
-      }
-    });
-    return LogicGateState();
+    return const LogicGateState();
   }
 
   void initializeLogicGateGame() {
@@ -74,67 +68,69 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
   void dropCard(int slotId, int cardId) {
     final isPlayerTurn = state.currentPlayerId == 1;
     final user = isPlayerTurn ? state.player! : state.opponent!;
-
+    final binarySlot = state.binarySlots!;
+    /*
+      Logic for removing card from user's hand
+    */
     final cardToMove = user.hand.firstWhere((c) => c.id == cardId);
-
     final newHand = user.hand.where((c) => c.id != cardId).toList();
-
+    final updatedUser = user.copyWith(hand: newHand);
+    /*
+      Logic for updating card slots
+    */
     final newCardSlots = state.cardSlots!.map((slot) {
       if (slot.id == slotId) {
         return slot.copyWith(placedCard: cardToMove);
       }
       return slot;
     }).toList();
+    /*
+      Logic for calculating binary slot values based on card placement
+    */
+    final inputSlotId1 = calculateTopBinarySlotIndex(slotId);
+    final inputSlotId2 = inputSlotId1 + 1;
 
-    final updatedUser = user.copyWith(hand: newHand);
+    final value1 = binarySlot
+        .firstWhere((slot) => slot.id == inputSlotId1)
+        .value!;
+    final value2 = binarySlot
+        .firstWhere((slot) => slot.id == inputSlotId2)
+        .value!;
+
+    final outputSlotId = calculateNextBinarySlotIndex(
+      inputSlotId1,
+      inputSlotId2,
+    );
+
+    final resultValue = cardToMove.type.calculate(value1, value2);
+
+    final newBinarySlot = binarySlot.map((slot) {
+      if (slot.id == outputSlotId) {
+        return slot.copyWith(value: resultValue);
+      }
+      return slot;
+    }).toList();
 
     state = state.copyWith(
       cardSlots: newCardSlots,
+      binarySlots: newBinarySlot,
       player: isPlayerTurn ? updatedUser : state.player,
       opponent: !isPlayerTurn ? updatedUser : state.opponent,
       currentPlayerId: state.currentPlayerId == 1 ? 0 : 1,
+      lastUpdatedCardSlotId: slotId,
     );
   }
 
-  void _recalculateAllBinaryValues() {
-    final binarySlotsMap = {for (var slot in state.binarySlots!) slot.id: slot};
-
-    for (final cardSlot in state.cardSlots!) {
-      if (cardSlot.placedCard != null) {
-        final inputSlotId1 = calculateCardSlotIndex(cardSlot.id);
-        final inputSlotId2 = inputSlotId1 + 1;
-
-        final value1 = binarySlotsMap[inputSlotId1]?.value;
-        final value2 = binarySlotsMap[inputSlotId2]?.value;
-
-        if (value1 != null && value2 != null) {
-          final outputSlotId = _calculateBinarySlotIndex(
-            inputSlotId1,
-            inputSlotId2,
-          );
-
-          final resultValue = cardSlot.placedCard!.type.calculate(
-            value1,
-            value2,
-          );
-
-          binarySlotsMap[outputSlotId] = binarySlotsMap[outputSlotId]!.copyWith(
-            value: resultValue,
-          );
-        }
-      }
-    }
-    state = state.copyWith(binarySlots: binarySlotsMap.values.toList());
-  }
-
-  int _calculateBinarySlotIndex(int x, int y) {
+  // find next binary slot index based on the previous binary slots
+  int calculateNextBinarySlotIndex(int x, int y) {
     final offset = (x - 1) ~/ 4;
     const int fixedOffset = 4;
 
     return y + fixedOffset - offset;
   }
 
-  int calculateCardSlotIndex(int x) {
+  // calculate binary slot index (on the top position) based on the card slot index
+  int calculateTopBinarySlotIndex(int x) {
     bool isLowerThanEight = x < 8;
     final offset = isLowerThanEight ? (x - 1) ~/ 4 : (x - 1) ~/ 3;
     return x + offset;

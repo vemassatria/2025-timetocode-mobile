@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/features/4_logic_gate_mode/data/controllers/logic_gate_gameplay_controller.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/cardboard.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/game_board.dart';
@@ -23,7 +24,7 @@ class _LogicGatePageState extends ConsumerState<LogicGatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0A0F2C),
+      backgroundColor: AppColors.surfaceDark,
       body: SafeArea(
         child: Stack(
           children: [

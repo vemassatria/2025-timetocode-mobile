@@ -19,7 +19,7 @@ class ChallengeController extends AutoDisposeNotifier<ChallengeState> {
 
   @override
   ChallengeState build() {
-    return ChallengeState();
+    return const ChallengeState();
   }
 
   void initializeChallenge(ChallengeLevelModel challenge) {

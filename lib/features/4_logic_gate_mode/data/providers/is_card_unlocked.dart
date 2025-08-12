@@ -7,7 +7,7 @@ final isCardSlotUnlockedProvider = Provider.autoDispose.family<bool, int>((
 ) {
   final inputSlotId1 = ref
       .read(logicGateControllerProvider.notifier)
-      .calculateCardSlotIndex(cardSlotId);
+      .calculateTopBinarySlotIndex(cardSlotId);
   final inputSlotId2 = inputSlotId1 + 1;
 
   final binarySlot1 = ref.watch(

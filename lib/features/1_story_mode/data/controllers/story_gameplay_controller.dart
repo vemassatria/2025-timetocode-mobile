@@ -30,7 +30,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       game.deleteAll();
     });
 
-    return StoryState();
+    return const StoryState();
   }
 
   void initLevel(StoryModel level) async {

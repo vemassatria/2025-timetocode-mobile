@@ -27,8 +27,6 @@ class DropZoneCard extends ConsumerWidget {
         final bool isHovering = candidateData.isNotEmpty;
         return cardSlot!.placedCard != null
             ? Container(
-                margin: EdgeInsets.symmetric(horizontal: 4.w),
-                padding: EdgeInsets.only(bottom: 2.h),
                 child: LogicGateCard(
                   card: cardSlot.placedCard!,
                   height: 50,
@@ -39,8 +37,6 @@ class DropZoneCard extends ConsumerWidget {
                   ? Container(
                       width: 35.w,
                       height: 50.h,
-                      margin: EdgeInsets.symmetric(horizontal: 4.w),
-                      padding: EdgeInsets.only(bottom: 2.h),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: AppColors.white.withValues(alpha: 0.5),
@@ -60,8 +56,6 @@ class DropZoneCard extends ConsumerWidget {
                   : Container(
                       width: 35.w,
                       height: 50.h,
-                      margin: EdgeInsets.symmetric(horizontal: 4.w),
-                      padding: EdgeInsets.only(bottom: 2.h),
                       decoration: BoxDecoration(
                         color: isHovering
                             ? AppColors.gray1

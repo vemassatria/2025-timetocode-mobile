@@ -11,7 +11,7 @@ class DndController extends AutoDisposeNotifier<DndState> {
   KeepAliveLink? _keepAliveLink;
   @override
   DndState build() {
-    return DndState();
+    return const DndState();
   }
 
   void initializeDragAndDrop(String id, String modeGame) {
