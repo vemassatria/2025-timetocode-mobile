@@ -12,34 +12,43 @@ class LogicGateMenu extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final logicGateNotifier = ref.read(logicGateControllerProvider.notifier);
+    final isEndGame = ref.watch(
+      logicGateControllerProvider.select((state) => state.outputBinary != null),
+    );
     return Align(
       alignment: Alignment.bottomRight,
       child: GestureDetector(
-        onTap: () {
-          showPopupOverlay(
-            context,
-            MenuPopup(
-              onRestart: () {
-                logicGateNotifier.restart();
-                closePopupOverlay(ref);
+        onTap: isEndGame
+            ? logicGateNotifier.exit
+            : () {
+                showPopupOverlay(
+                  context,
+                  MenuPopup(
+                    onRestart: () {
+                      logicGateNotifier.restart();
+                      closePopupOverlay(ref);
+                    },
+                    onExit: () {
+                      logicGateNotifier.exit();
+                      closePopupOverlay(ref);
+                    },
+                    onClose: () => closePopupOverlay(ref),
+                    onGoBack: () => goBackToPreviousOverlay(context, ref),
+                  ),
+                  ref,
+                );
               },
-              onExit: () {
-                logicGateNotifier.exit();
-                closePopupOverlay(ref);
-              },
-              onClose: () => closePopupOverlay(ref),
-              onGoBack: () => goBackToPreviousOverlay(context, ref),
-            ),
-            ref,
-          );
-        },
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.0),
             border: Border.all(color: AppColors.white, width: 1.0),
           ),
-          child: Icon(Icons.menu, color: AppColors.primaryText, size: 32.sp),
+          child: Icon(
+            isEndGame ? Icons.close : Icons.menu,
+            color: AppColors.primaryText,
+            size: 32.sp,
+          ),
         ),
       ),
     );

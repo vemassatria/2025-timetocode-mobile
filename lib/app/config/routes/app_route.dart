@@ -8,6 +8,7 @@ import 'package:timetocode/features/2_challenge_mode/presentation/screens/challe
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/challenge_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/end_game_page.dart';
+import 'package:timetocode/features/4_logic_gate_mode/presentation/screens/logic_gate_gameplay.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/screens/logic_gate_page.dart';
 import 'package:timetocode/features/5_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
@@ -70,6 +71,18 @@ final routerProvider = Provider<GoRouter>((ref) {
             ],
           ),
           GoRoute(
+            path: '/logic-gate',
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: LogicGatePage()),
+            routes: [
+              GoRoute(
+                path: 'gameplay',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) => const LogicGateGameplay(),
+              ),
+            ],
+          ),
+          GoRoute(
             path: '/pengaturan',
             pageBuilder: (context, state) =>
                 const NoTransitionPage(child: PengaturanPage()),
@@ -79,10 +92,6 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/dnd',
         builder: (context, state) => const DragAndDropQuestionPage(),
-      ),
-      GoRoute(
-        path: '/logic-gate',
-        builder: (context, state) => const LogicGatePage(),
       ),
     ],
   );

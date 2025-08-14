@@ -15,9 +15,8 @@ abstract class LogicGateState with _$LogicGateState {
     PlayerModel? opponent,
 
     @Default(1) int currentPlayerId,
-    @Default(false) bool isGameOver,
 
-    int? winnerId,
+    int? outputBinary,
     int? lastUpdatedCardSlotId,
   }) = _LogicGateState;
 }

@@ -27,7 +27,7 @@ class TargetBinary extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(
-            'assets/images/logic_gate/target.svg',
+            'assets/images/logic_gate/icons/target.svg',
             width: 18.w,
             height: 18.h,
           ),

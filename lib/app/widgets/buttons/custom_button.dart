@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 
@@ -96,10 +97,9 @@ class CustomButton extends StatelessWidget {
       backgroundColor: mainColor,
       foregroundColor: fgColor,
       minimumSize: Size(minWidth, height ?? 42.w),
-      padding:
-          type == ButtonType.icon
-              ? EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h)
-              : EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+      padding: type == ButtonType.icon
+          ? EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h)
+          : EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       textStyle: AppTypography.smallBold(color: AppColors.black1),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.r),
@@ -114,6 +114,9 @@ class CustomButton extends StatelessWidget {
         if (icon is Icon) {
           return Icon((icon as Icon).icon, size: 26.sp, color: fgColor);
         }
+        if (icon is SvgPicture) {
+          return icon as SvgPicture;
+        }
         return SizedBox();
       case ButtonType.filled:
       case ButtonType.outline:
@@ -125,6 +128,7 @@ class CustomButton extends StatelessWidget {
           children: [
             if (icon is Icon)
               Icon((icon as Icon).icon, size: 26.sp, color: fgColor),
+            if (icon is SvgPicture) icon as SvgPicture,
             if (icon != null) SizedBox(width: 8.w),
             Flexible(child: Text(label ?? '', textAlign: _getTextAlignment())),
           ],
@@ -158,19 +162,17 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool disabled = isDisabled || onPressed == null;
-    final Color mainColor =
-        disabled
-            ? AppColors.gray1
-            : (type == ButtonType.outline
-                ? _getOutlineBgColor(color)
-                : _getFillBgColor(color));
+    final Color mainColor = disabled
+        ? AppColors.gray1
+        : (type == ButtonType.outline
+              ? _getOutlineBgColor(color)
+              : _getFillBgColor(color));
 
-    final Color fgColor =
-        disabled
-            ? AppColors.secondaryText
-            : (color == ButtonColor.red || type == ButtonType.outline
-                ? AppColors.primaryText
-                : Colors.black);
+    final Color fgColor = disabled
+        ? AppColors.secondaryText
+        : (color == ButtonColor.red || type == ButtonType.outline
+              ? AppColors.primaryText
+              : Colors.black);
 
     final double minWidth;
     final MainAxisSize mainAxisSize;
@@ -192,17 +194,16 @@ class CustomButton extends StatelessWidget {
     final ButtonStyle style = _buttonStyle(mainColor, fgColor, minWidth);
 
     return Container(
-      decoration:
-          (type != ButtonType.outline && !disabled)
-              ? BoxDecoration(
-                color: mainColor,
-                border: Border(
-                  right: BorderSide(color: _getBorderColor(color), width: 2.w),
-                  bottom: BorderSide(color: _getBorderColor(color), width: 2.w),
-                ),
-                borderRadius: BorderRadius.circular(8.r),
-              )
-              : null,
+      decoration: (type != ButtonType.outline && !disabled)
+          ? BoxDecoration(
+              color: mainColor,
+              border: Border(
+                right: BorderSide(color: _getBorderColor(color), width: 2.w),
+                bottom: BorderSide(color: _getBorderColor(color), width: 2.w),
+              ),
+              borderRadius: BorderRadius.circular(8.r),
+            )
+          : null,
       child: TextButton(
         onPressed: disabled ? null : onPressed,
         style: style,

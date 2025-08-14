@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
+import 'package:timetocode/app/data/services/sound_effect_service.dart';
+import 'package:timetocode/app/utils/overlay_utils.dart';
 import 'package:timetocode/features/4_logic_gate_mode/data/controllers/logic_gate_gameplay_controller.dart';
 import 'package:timetocode/features/4_logic_gate_mode/data/models/line_connection.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/binary_slot_widget.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/drop_zone_card.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/line_painter.dart';
+import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/logic_gate_ending_popup.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/logic_gate_menu.dart';
 
 class GameBoard extends ConsumerStatefulWidget {
@@ -23,6 +26,12 @@ class _GameBoardState extends ConsumerState<GameBoard> {
   };
   final GlobalKey _stackKey = GlobalKey();
   final List<LineConnection> connections = [];
+
+  @override
+  void initState() {
+    ref.read(logicGateControllerProvider.notifier).initializeLogicGateGame();
+    super.initState();
+  }
 
   Rect _findRect(String key) {
     final stackRenderBox = _stackKey.currentContext?.findRenderObject();
@@ -123,6 +132,22 @@ class _GameBoardState extends ConsumerState<GameBoard> {
       },
     );
 
+    ref.listen(
+      logicGateControllerProvider.select((state) => state.outputBinary),
+      (previous, next) {
+        if (next != null) {
+          next == 1
+              ? ref.read(soundEffectServiceProvider.notifier).playVictory()
+              : ref.read(soundEffectServiceProvider.notifier).playDefeat();
+          showPopupOverlay(
+            context,
+            LogicGateEndGamePopup(winnerBinary: next),
+            ref,
+          );
+        }
+      },
+    );
+
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
       padding: EdgeInsets.all(8.w),
@@ -141,7 +166,7 @@ class _GameBoardState extends ConsumerState<GameBoard> {
             painter: LinePainter(connections: connections),
           ),
           _buildGameRow(),
-          LogicGateMenu(),
+          const LogicGateMenu(),
         ],
       ),
     );

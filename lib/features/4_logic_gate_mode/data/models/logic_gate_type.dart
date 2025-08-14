@@ -2,7 +2,7 @@ enum LogicGateType { AND, OR, NAND, NOR, XOR }
 
 extension LogicGateTypeExtension on LogicGateType {
   String get assetPath {
-    return 'assets/images/logic_gate/${this.name}.svg';
+    return 'assets/images/logic_gate/cards/${this.name}.svg';
   }
 
   int calculate(int input1, int input2) {

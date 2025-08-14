@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LogicGateState {
 
- List<BinarySlotModel>? get binarySlots; List<CardSlotModel>? get cardSlots; PlayerModel? get player; PlayerModel? get opponent; int get currentPlayerId; bool get isGameOver; int? get winnerId; int? get lastUpdatedCardSlotId;
+ List<BinarySlotModel>? get binarySlots; List<CardSlotModel>? get cardSlots; PlayerModel? get player; PlayerModel? get opponent; int get currentPlayerId; int? get outputBinary; int? get lastUpdatedCardSlotId;
 /// Create a copy of LogicGateState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $LogicGateStateCopyWith<LogicGateState> get copyWith => _$LogicGateStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogicGateState&&const DeepCollectionEquality().equals(other.binarySlots, binarySlots)&&const DeepCollectionEquality().equals(other.cardSlots, cardSlots)&&(identical(other.player, player) || other.player == player)&&(identical(other.opponent, opponent) || other.opponent == opponent)&&(identical(other.currentPlayerId, currentPlayerId) || other.currentPlayerId == currentPlayerId)&&(identical(other.isGameOver, isGameOver) || other.isGameOver == isGameOver)&&(identical(other.winnerId, winnerId) || other.winnerId == winnerId)&&(identical(other.lastUpdatedCardSlotId, lastUpdatedCardSlotId) || other.lastUpdatedCardSlotId == lastUpdatedCardSlotId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogicGateState&&const DeepCollectionEquality().equals(other.binarySlots, binarySlots)&&const DeepCollectionEquality().equals(other.cardSlots, cardSlots)&&(identical(other.player, player) || other.player == player)&&(identical(other.opponent, opponent) || other.opponent == opponent)&&(identical(other.currentPlayerId, currentPlayerId) || other.currentPlayerId == currentPlayerId)&&(identical(other.outputBinary, outputBinary) || other.outputBinary == outputBinary)&&(identical(other.lastUpdatedCardSlotId, lastUpdatedCardSlotId) || other.lastUpdatedCardSlotId == lastUpdatedCardSlotId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(binarySlots),const DeepCollectionEquality().hash(cardSlots),player,opponent,currentPlayerId,isGameOver,winnerId,lastUpdatedCardSlotId);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(binarySlots),const DeepCollectionEquality().hash(cardSlots),player,opponent,currentPlayerId,outputBinary,lastUpdatedCardSlotId);
 
 @override
 String toString() {
-  return 'LogicGateState(binarySlots: $binarySlots, cardSlots: $cardSlots, player: $player, opponent: $opponent, currentPlayerId: $currentPlayerId, isGameOver: $isGameOver, winnerId: $winnerId, lastUpdatedCardSlotId: $lastUpdatedCardSlotId)';
+  return 'LogicGateState(binarySlots: $binarySlots, cardSlots: $cardSlots, player: $player, opponent: $opponent, currentPlayerId: $currentPlayerId, outputBinary: $outputBinary, lastUpdatedCardSlotId: $lastUpdatedCardSlotId)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $LogicGateStateCopyWith<$Res>  {
   factory $LogicGateStateCopyWith(LogicGateState value, $Res Function(LogicGateState) _then) = _$LogicGateStateCopyWithImpl;
 @useResult
 $Res call({
- List<BinarySlotModel>? binarySlots, List<CardSlotModel>? cardSlots, PlayerModel? player, PlayerModel? opponent, int currentPlayerId, bool isGameOver, int? winnerId, int? lastUpdatedCardSlotId
+ List<BinarySlotModel>? binarySlots, List<CardSlotModel>? cardSlots, PlayerModel? player, PlayerModel? opponent, int currentPlayerId, int? outputBinary, int? lastUpdatedCardSlotId
 });
 
 
@@ -62,15 +62,14 @@ class _$LogicGateStateCopyWithImpl<$Res>
 
 /// Create a copy of LogicGateState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? binarySlots = freezed,Object? cardSlots = freezed,Object? player = freezed,Object? opponent = freezed,Object? currentPlayerId = null,Object? isGameOver = null,Object? winnerId = freezed,Object? lastUpdatedCardSlotId = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? binarySlots = freezed,Object? cardSlots = freezed,Object? player = freezed,Object? opponent = freezed,Object? currentPlayerId = null,Object? outputBinary = freezed,Object? lastUpdatedCardSlotId = freezed,}) {
   return _then(_self.copyWith(
 binarySlots: freezed == binarySlots ? _self.binarySlots : binarySlots // ignore: cast_nullable_to_non_nullable
 as List<BinarySlotModel>?,cardSlots: freezed == cardSlots ? _self.cardSlots : cardSlots // ignore: cast_nullable_to_non_nullable
 as List<CardSlotModel>?,player: freezed == player ? _self.player : player // ignore: cast_nullable_to_non_nullable
 as PlayerModel?,opponent: freezed == opponent ? _self.opponent : opponent // ignore: cast_nullable_to_non_nullable
 as PlayerModel?,currentPlayerId: null == currentPlayerId ? _self.currentPlayerId : currentPlayerId // ignore: cast_nullable_to_non_nullable
-as int,isGameOver: null == isGameOver ? _self.isGameOver : isGameOver // ignore: cast_nullable_to_non_nullable
-as bool,winnerId: freezed == winnerId ? _self.winnerId : winnerId // ignore: cast_nullable_to_non_nullable
+as int,outputBinary: freezed == outputBinary ? _self.outputBinary : outputBinary // ignore: cast_nullable_to_non_nullable
 as int?,lastUpdatedCardSlotId: freezed == lastUpdatedCardSlotId ? _self.lastUpdatedCardSlotId : lastUpdatedCardSlotId // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
@@ -181,10 +180,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<BinarySlotModel>? binarySlots,  List<CardSlotModel>? cardSlots,  PlayerModel? player,  PlayerModel? opponent,  int currentPlayerId,  bool isGameOver,  int? winnerId,  int? lastUpdatedCardSlotId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<BinarySlotModel>? binarySlots,  List<CardSlotModel>? cardSlots,  PlayerModel? player,  PlayerModel? opponent,  int currentPlayerId,  int? outputBinary,  int? lastUpdatedCardSlotId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LogicGateState() when $default != null:
-return $default(_that.binarySlots,_that.cardSlots,_that.player,_that.opponent,_that.currentPlayerId,_that.isGameOver,_that.winnerId,_that.lastUpdatedCardSlotId);case _:
+return $default(_that.binarySlots,_that.cardSlots,_that.player,_that.opponent,_that.currentPlayerId,_that.outputBinary,_that.lastUpdatedCardSlotId);case _:
   return orElse();
 
 }
@@ -202,10 +201,10 @@ return $default(_that.binarySlots,_that.cardSlots,_that.player,_that.opponent,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<BinarySlotModel>? binarySlots,  List<CardSlotModel>? cardSlots,  PlayerModel? player,  PlayerModel? opponent,  int currentPlayerId,  bool isGameOver,  int? winnerId,  int? lastUpdatedCardSlotId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<BinarySlotModel>? binarySlots,  List<CardSlotModel>? cardSlots,  PlayerModel? player,  PlayerModel? opponent,  int currentPlayerId,  int? outputBinary,  int? lastUpdatedCardSlotId)  $default,) {final _that = this;
 switch (_that) {
 case _LogicGateState():
-return $default(_that.binarySlots,_that.cardSlots,_that.player,_that.opponent,_that.currentPlayerId,_that.isGameOver,_that.winnerId,_that.lastUpdatedCardSlotId);case _:
+return $default(_that.binarySlots,_that.cardSlots,_that.player,_that.opponent,_that.currentPlayerId,_that.outputBinary,_that.lastUpdatedCardSlotId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -222,10 +221,10 @@ return $default(_that.binarySlots,_that.cardSlots,_that.player,_that.opponent,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<BinarySlotModel>? binarySlots,  List<CardSlotModel>? cardSlots,  PlayerModel? player,  PlayerModel? opponent,  int currentPlayerId,  bool isGameOver,  int? winnerId,  int? lastUpdatedCardSlotId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<BinarySlotModel>? binarySlots,  List<CardSlotModel>? cardSlots,  PlayerModel? player,  PlayerModel? opponent,  int currentPlayerId,  int? outputBinary,  int? lastUpdatedCardSlotId)?  $default,) {final _that = this;
 switch (_that) {
 case _LogicGateState() when $default != null:
-return $default(_that.binarySlots,_that.cardSlots,_that.player,_that.opponent,_that.currentPlayerId,_that.isGameOver,_that.winnerId,_that.lastUpdatedCardSlotId);case _:
+return $default(_that.binarySlots,_that.cardSlots,_that.player,_that.opponent,_that.currentPlayerId,_that.outputBinary,_that.lastUpdatedCardSlotId);case _:
   return null;
 
 }
@@ -237,7 +236,7 @@ return $default(_that.binarySlots,_that.cardSlots,_that.player,_that.opponent,_t
 
 
 class _LogicGateState implements LogicGateState {
-  const _LogicGateState({final  List<BinarySlotModel>? binarySlots, final  List<CardSlotModel>? cardSlots, this.player, this.opponent, this.currentPlayerId = 1, this.isGameOver = false, this.winnerId, this.lastUpdatedCardSlotId}): _binarySlots = binarySlots,_cardSlots = cardSlots;
+  const _LogicGateState({final  List<BinarySlotModel>? binarySlots, final  List<CardSlotModel>? cardSlots, this.player, this.opponent, this.currentPlayerId = 1, this.outputBinary, this.lastUpdatedCardSlotId}): _binarySlots = binarySlots,_cardSlots = cardSlots;
   
 
  final  List<BinarySlotModel>? _binarySlots;
@@ -261,8 +260,7 @@ class _LogicGateState implements LogicGateState {
 @override final  PlayerModel? player;
 @override final  PlayerModel? opponent;
 @override@JsonKey() final  int currentPlayerId;
-@override@JsonKey() final  bool isGameOver;
-@override final  int? winnerId;
+@override final  int? outputBinary;
 @override final  int? lastUpdatedCardSlotId;
 
 /// Create a copy of LogicGateState
@@ -275,16 +273,16 @@ _$LogicGateStateCopyWith<_LogicGateState> get copyWith => __$LogicGateStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LogicGateState&&const DeepCollectionEquality().equals(other._binarySlots, _binarySlots)&&const DeepCollectionEquality().equals(other._cardSlots, _cardSlots)&&(identical(other.player, player) || other.player == player)&&(identical(other.opponent, opponent) || other.opponent == opponent)&&(identical(other.currentPlayerId, currentPlayerId) || other.currentPlayerId == currentPlayerId)&&(identical(other.isGameOver, isGameOver) || other.isGameOver == isGameOver)&&(identical(other.winnerId, winnerId) || other.winnerId == winnerId)&&(identical(other.lastUpdatedCardSlotId, lastUpdatedCardSlotId) || other.lastUpdatedCardSlotId == lastUpdatedCardSlotId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LogicGateState&&const DeepCollectionEquality().equals(other._binarySlots, _binarySlots)&&const DeepCollectionEquality().equals(other._cardSlots, _cardSlots)&&(identical(other.player, player) || other.player == player)&&(identical(other.opponent, opponent) || other.opponent == opponent)&&(identical(other.currentPlayerId, currentPlayerId) || other.currentPlayerId == currentPlayerId)&&(identical(other.outputBinary, outputBinary) || other.outputBinary == outputBinary)&&(identical(other.lastUpdatedCardSlotId, lastUpdatedCardSlotId) || other.lastUpdatedCardSlotId == lastUpdatedCardSlotId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_binarySlots),const DeepCollectionEquality().hash(_cardSlots),player,opponent,currentPlayerId,isGameOver,winnerId,lastUpdatedCardSlotId);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_binarySlots),const DeepCollectionEquality().hash(_cardSlots),player,opponent,currentPlayerId,outputBinary,lastUpdatedCardSlotId);
 
 @override
 String toString() {
-  return 'LogicGateState(binarySlots: $binarySlots, cardSlots: $cardSlots, player: $player, opponent: $opponent, currentPlayerId: $currentPlayerId, isGameOver: $isGameOver, winnerId: $winnerId, lastUpdatedCardSlotId: $lastUpdatedCardSlotId)';
+  return 'LogicGateState(binarySlots: $binarySlots, cardSlots: $cardSlots, player: $player, opponent: $opponent, currentPlayerId: $currentPlayerId, outputBinary: $outputBinary, lastUpdatedCardSlotId: $lastUpdatedCardSlotId)';
 }
 
 
@@ -295,7 +293,7 @@ abstract mixin class _$LogicGateStateCopyWith<$Res> implements $LogicGateStateCo
   factory _$LogicGateStateCopyWith(_LogicGateState value, $Res Function(_LogicGateState) _then) = __$LogicGateStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<BinarySlotModel>? binarySlots, List<CardSlotModel>? cardSlots, PlayerModel? player, PlayerModel? opponent, int currentPlayerId, bool isGameOver, int? winnerId, int? lastUpdatedCardSlotId
+ List<BinarySlotModel>? binarySlots, List<CardSlotModel>? cardSlots, PlayerModel? player, PlayerModel? opponent, int currentPlayerId, int? outputBinary, int? lastUpdatedCardSlotId
 });
 
 
@@ -312,15 +310,14 @@ class __$LogicGateStateCopyWithImpl<$Res>
 
 /// Create a copy of LogicGateState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? binarySlots = freezed,Object? cardSlots = freezed,Object? player = freezed,Object? opponent = freezed,Object? currentPlayerId = null,Object? isGameOver = null,Object? winnerId = freezed,Object? lastUpdatedCardSlotId = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? binarySlots = freezed,Object? cardSlots = freezed,Object? player = freezed,Object? opponent = freezed,Object? currentPlayerId = null,Object? outputBinary = freezed,Object? lastUpdatedCardSlotId = freezed,}) {
   return _then(_LogicGateState(
 binarySlots: freezed == binarySlots ? _self._binarySlots : binarySlots // ignore: cast_nullable_to_non_nullable
 as List<BinarySlotModel>?,cardSlots: freezed == cardSlots ? _self._cardSlots : cardSlots // ignore: cast_nullable_to_non_nullable
 as List<CardSlotModel>?,player: freezed == player ? _self.player : player // ignore: cast_nullable_to_non_nullable
 as PlayerModel?,opponent: freezed == opponent ? _self.opponent : opponent // ignore: cast_nullable_to_non_nullable
 as PlayerModel?,currentPlayerId: null == currentPlayerId ? _self.currentPlayerId : currentPlayerId // ignore: cast_nullable_to_non_nullable
-as int,isGameOver: null == isGameOver ? _self.isGameOver : isGameOver // ignore: cast_nullable_to_non_nullable
-as bool,winnerId: freezed == winnerId ? _self.winnerId : winnerId // ignore: cast_nullable_to_non_nullable
+as int,outputBinary: freezed == outputBinary ? _self.outputBinary : outputBinary // ignore: cast_nullable_to_non_nullable
 as int?,lastUpdatedCardSlotId: freezed == lastUpdatedCardSlotId ? _self.lastUpdatedCardSlotId : lastUpdatedCardSlotId // ignore: cast_nullable_to_non_nullable
 as int?,
   ));

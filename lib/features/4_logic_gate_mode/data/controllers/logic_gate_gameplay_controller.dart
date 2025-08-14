@@ -111,14 +111,23 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
       return slot;
     }).toList();
 
-    state = state.copyWith(
-      cardSlots: newCardSlots,
-      binarySlots: newBinarySlot,
-      player: isPlayerTurn ? updatedUser : state.player,
-      opponent: !isPlayerTurn ? updatedUser : state.opponent,
-      currentPlayerId: state.currentPlayerId == 1 ? 0 : 1,
-      lastUpdatedCardSlotId: slotId,
-    );
+    state = slotId == 10
+        ? state.copyWith(
+            cardSlots: newCardSlots,
+            binarySlots: newBinarySlot,
+            player: isPlayerTurn ? updatedUser : state.player,
+            opponent: !isPlayerTurn ? updatedUser : state.opponent,
+            lastUpdatedCardSlotId: slotId,
+            outputBinary: resultValue,
+          )
+        : state.copyWith(
+            cardSlots: newCardSlots,
+            binarySlots: newBinarySlot,
+            player: isPlayerTurn ? updatedUser : state.player,
+            opponent: !isPlayerTurn ? updatedUser : state.opponent,
+            currentPlayerId: state.currentPlayerId == 1 ? 0 : 1,
+            lastUpdatedCardSlotId: slotId,
+          );
   }
 
   // find next binary slot index based on the previous binary slots

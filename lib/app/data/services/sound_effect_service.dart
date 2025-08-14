@@ -19,6 +19,8 @@ class SoundEffectService extends Notifier<bool> {
   late AudioPool _correctPool;
   late AudioPool _popupAnswerPool;
   late AudioPool _submitPool;
+  late AudioPool _victoryPool;
+  late AudioPool _defeatPool;
   AudioPlayer? _typingAudioPlayer;
 
   int _typingOperationId = 0;
@@ -30,61 +32,57 @@ class SoundEffectService extends Notifier<bool> {
   }
 
   Future<void> initialize() async {
-    await FlameAudio.audioCache.load('sfx/typing.wav');
+    final futures = [
+      FlameAudio.audioCache.load('sfx/typing.wav'),
+      FlameAudio.createPool(
+        'sfx/button-click.wav',
+        minPlayers: 1,
+        maxPlayers: 2,
+      ),
+      FlameAudio.createPool(
+        'sfx/button2-click.wav',
+        minPlayers: 1,
+        maxPlayers: 2,
+      ),
+      FlameAudio.createPool('sfx/pop-click.wav', minPlayers: 1, maxPlayers: 2),
+      FlameAudio.createPool(
+        'sfx/select-click.wav',
+        minPlayers: 1,
+        maxPlayers: 2,
+      ),
+      FlameAudio.createPool(
+        'sfx/negative-click.wav',
+        minPlayers: 1,
+        maxPlayers: 2,
+      ),
+      FlameAudio.createPool(
+        'sfx/error-click.wav',
+        minPlayers: 1,
+        maxPlayers: 2,
+      ),
+      FlameAudio.createPool('sfx/correct.wav', minPlayers: 1, maxPlayers: 2),
+      FlameAudio.createPool(
+        'sfx/popup-answer.wav',
+        minPlayers: 1,
+        maxPlayers: 2,
+      ),
+      FlameAudio.createPool('sfx/submit.wav', minPlayers: 1, maxPlayers: 2),
+      FlameAudio.createPool('sfx/victory.mp3', minPlayers: 1, maxPlayers: 2),
+      FlameAudio.createPool('sfx/defeat.mp3', minPlayers: 1, maxPlayers: 2),
+    ];
 
-    _buttonClick1Pool = await FlameAudio.createPool(
-      'sfx/button-click.wav',
-      minPlayers: 1,
-      maxPlayers: 2,
-    );
-
-    _buttonClick2Pool = await FlameAudio.createPool(
-      'sfx/button2-click.wav',
-      minPlayers: 1,
-      maxPlayers: 2,
-    );
-
-    _popClickPool = await FlameAudio.createPool(
-      'sfx/pop-click.wav',
-      minPlayers: 1,
-      maxPlayers: 2,
-    );
-
-    _selectClickPool = await FlameAudio.createPool(
-      'sfx/select-click.wav',
-      minPlayers: 1,
-      maxPlayers: 2,
-    );
-
-    _negativeClickPool = await FlameAudio.createPool(
-      'sfx/negative-click.wav',
-      minPlayers: 1,
-      maxPlayers: 2,
-    );
-
-    _errorClickPool = await FlameAudio.createPool(
-      'sfx/error-click.wav',
-      minPlayers: 1,
-      maxPlayers: 2,
-    );
-
-    _correctPool = await FlameAudio.createPool(
-      'sfx/correct.wav',
-      minPlayers: 1,
-      maxPlayers: 2,
-    );
-
-    _popupAnswerPool = await FlameAudio.createPool(
-      'sfx/popup-answer.wav',
-      minPlayers: 1,
-      maxPlayers: 2,
-    );
-
-    _submitPool = await FlameAudio.createPool(
-      'sfx/submit.wav',
-      minPlayers: 1,
-      maxPlayers: 2,
-    );
+    final results = await Future.wait(futures);
+    _buttonClick1Pool = results[1] as AudioPool;
+    _buttonClick2Pool = results[2] as AudioPool;
+    _popClickPool = results[3] as AudioPool;
+    _selectClickPool = results[4] as AudioPool;
+    _negativeClickPool = results[5] as AudioPool;
+    _errorClickPool = results[6] as AudioPool;
+    _correctPool = results[7] as AudioPool;
+    _popupAnswerPool = results[8] as AudioPool;
+    _submitPool = results[9] as AudioPool;
+    _victoryPool = results[10] as AudioPool;
+    _defeatPool = results[11] as AudioPool;
   }
 
   void playButtonClick1() {
@@ -138,6 +136,18 @@ class SoundEffectService extends Notifier<bool> {
   void playSubmit() {
     if (state) {
       _submitPool.start();
+    }
+  }
+
+  void playVictory() {
+    if (state) {
+      _victoryPool.start();
+    }
+  }
+
+  void playDefeat() {
+    if (state) {
+      _defeatPool.start();
     }
   }
 

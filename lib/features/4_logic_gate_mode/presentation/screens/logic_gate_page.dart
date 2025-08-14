@@ -1,46 +1,125 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
-import 'package:timetocode/features/4_logic_gate_mode/data/controllers/logic_gate_gameplay_controller.dart';
-import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/cardboard.dart';
-import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/game_board.dart';
+import 'package:timetocode/app/config/theme/typography.dart';
+import 'package:timetocode/app/widgets/buttons/bordered_button.dart';
+import 'package:timetocode/app/widgets/buttons/custom_button.dart';
 
-class LogicGatePage extends ConsumerStatefulWidget {
+class LogicGatePage extends StatelessWidget {
   const LogicGatePage({super.key});
-
-  @override
-  ConsumerState<LogicGatePage> createState() => _LogicGatePageState();
-}
-
-class _LogicGatePageState extends ConsumerState<LogicGatePage> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(logicGateControllerProvider.notifier).initializeLogicGateGame();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.surfaceDark,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            const Center(child: GameBoard()),
-
-            const Align(
-              alignment: Alignment.bottomCenter,
-              child: CardBoard(playerID: 1),
-            ),
-
-            const Align(
-              alignment: Alignment.topCenter,
-              child: CardBoard(playerID: 0),
-            ),
-          ],
+      backgroundColor: AppColors.darkBackground,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text(
+          'Gerbang Logika',
+          style: AppTypography.heading6(color: AppColors.white),
         ),
+      ),
+      body: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: SvgPicture.asset(
+              'assets/images/logic_gate/screen/upper_background.svg',
+              fit: BoxFit.cover,
+              height: 240.h,
+              alignment: Alignment.topCenter,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(24.w),
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(18.w),
+                  decoration: BoxDecoration(
+                    color: AppColors.surfaceDark,
+                    borderRadius: BorderRadius.circular(16.r),
+                    border: Border.all(color: AppColors.white, width: 2.w),
+                  ),
+                  height: 250.h,
+                  width: 264.w,
+                  child: Text(
+                    'Ini adalah permainan strategi di mana kamu dan lawan bergantian memasang kartu gerbang logika (AND, OR, NAND, NOR, XOR) untuk mengubah-ubah deretan angka 0 dan 1. Setiap pemain punya target angka akhir yang berbeda, yang akan ditentukan di awal permainan. Raih targetmu dan kalahkan lawan!',
+                    style: AppTypography.mediumBold(color: AppColors.white),
+                  ),
+                ),
+                SizedBox(height: 64.h),
+                CustomButton(
+                  icon: SvgPicture.asset(
+                    'assets/images/logic_gate/icons/ai.svg',
+                    width: 26.w,
+                    height: 26.h,
+                  ),
+                  type: ButtonType.iconLabel,
+                  label: "Mainkan Lawan AI",
+                  onPressed: () {
+                    // TODO: Implement AI opponent logic
+                  },
+                  widthMode: ButtonWidthMode.fill,
+                  color: ButtonColor.blue,
+                ),
+                SizedBox(height: 16.h),
+                CustomButton(
+                  icon: SvgPicture.asset(
+                    'assets/images/logic_gate/icons/peoples.svg',
+                    width: 26.w,
+                    height: 26.h,
+                  ),
+                  type: ButtonType.iconLabel,
+                  label: "Mainkan Berdua",
+                  onPressed: () {
+                    context.go('/logic-gate/gameplay');
+                  },
+                  widthMode: ButtonWidthMode.fill,
+                  color: ButtonColor.purple,
+                ),
+                SizedBox(height: 16.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BorderedButton(
+                      icon: SvgPicture.asset(
+                        'assets/images/logic_gate/icons/question.svg',
+                        width: 24.w,
+                        height: 24.h,
+                      ),
+                      type: BorderedButtonType.iconLabel,
+                      label: "Cara Bermain",
+                      onPressed: () {
+                        context.go('/logic-gate/rules');
+                      },
+                      color: BorderedButtonColor.transparent,
+                    ),
+                    SizedBox(width: 8.w),
+                    BorderedButton(
+                      icon: SvgPicture.asset(
+                        'assets/images/logic_gate/icons/cards.svg',
+                        width: 24.w,
+                        height: 24.h,
+                      ),
+                      type: BorderedButtonType.iconLabel,
+                      label: "Detail Kartu",
+                      onPressed: () {
+                        context.go('/logic-gate/gameplay');
+                      },
+                      color: BorderedButtonColor.transparent,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
