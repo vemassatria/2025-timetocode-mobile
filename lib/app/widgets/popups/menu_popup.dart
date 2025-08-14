@@ -53,7 +53,7 @@ class MenuPopup extends ConsumerWidget {
               ConfirmPopup(
                 title: "Mulai Ulang?",
                 description:
-                    "Progress hilang dan permainan dimulai dari awal sekarang.",
+                    "Progress permainan hilang dan permainan dimulai dari awal sekarang.",
                 confirmLabel: "Mulai Ulang",
                 onPrimaryButtonPressed: () {
                   onRestart();
@@ -95,7 +95,7 @@ class MenuPopup extends ConsumerWidget {
               ConfirmPopup(
                 title: "Keluar?",
                 description:
-                    "Progress akan hilang dan level diulang dari awal saat dimainkan kembali.",
+                    "Progress permainan akan hilang dan level diulang dari awal saat dimainkan kembali.",
                 confirmLabel: "Tetap Keluar",
                 onPrimaryButtonPressed: () {
                   onExit();

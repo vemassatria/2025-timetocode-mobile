@@ -2,13 +2,15 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/end_game_page.dart';
-import 'package:timetocode/features/3_drag_and_drop_mode/presentation/screens/gameplay.dart';
+import 'package:timetocode/features/3_drag_and_drop_mode/presentation/screens/drag_and_drop_question_page.dart';
 import 'package:timetocode/app/config/routes/main_navigation.dart';
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/challenge_gameplay_page.dart';
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/challenge_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/end_game_page.dart';
-import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
+import 'package:timetocode/features/4_logic_gate_mode/presentation/screens/logic_gate_gameplay.dart';
+import 'package:timetocode/features/4_logic_gate_mode/presentation/screens/logic_gate_page.dart';
+import 'package:timetocode/features/5_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -28,9 +30,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         routes: [
           GoRoute(
             path: '/pembelajaran',
-            pageBuilder:
-                (context, state) =>
-                    const NoTransitionPage(child: StorySelectionPage()),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: StorySelectionPage()),
             routes: [
               GoRoute(
                 path: 'level',
@@ -50,9 +51,8 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: '/tantangan',
-            pageBuilder:
-                (context, state) =>
-                    const NoTransitionPage(child: ChallengeSelectionPage()),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: ChallengeSelectionPage()),
             routes: [
               GoRoute(
                 path: 'level',
@@ -71,16 +71,27 @@ final routerProvider = Provider<GoRouter>((ref) {
             ],
           ),
           GoRoute(
+            path: '/logic-gate',
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: LogicGatePage()),
+            routes: [
+              GoRoute(
+                path: 'gameplay',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) => const LogicGateGameplay(),
+              ),
+            ],
+          ),
+          GoRoute(
             path: '/pengaturan',
-            pageBuilder:
-                (context, state) =>
-                    const NoTransitionPage(child: PengaturanPage()),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: PengaturanPage()),
           ),
         ],
       ),
       GoRoute(
         path: '/dnd',
-        builder: (context, state) => const DragAndDropQuestionWidget(),
+        builder: (context, state) => const DragAndDropQuestionPage(),
       ),
     ],
   );

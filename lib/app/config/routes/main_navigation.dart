@@ -23,8 +23,11 @@ class MainNavigation extends ConsumerWidget {
     if (location.startsWith('/tantangan')) {
       return 1;
     }
-    if (location.startsWith('/pengaturan')) {
+    if (location.startsWith('/logic-gate')) {
       return 2;
+    }
+    if (location.startsWith('/pengaturan')) {
+      return 3;
     }
     return 0;
   }
@@ -38,6 +41,9 @@ class MainNavigation extends ConsumerWidget {
         context.go('/tantangan');
         break;
       case 2:
+        context.go('/logic-gate');
+        break;
+      case 3:
         context.go('/pengaturan');
         break;
     }
@@ -92,7 +98,9 @@ class MainNavigation extends ConsumerWidget {
   ) {
     return Container(
       decoration: BoxDecoration(
-        border: Border(top: BorderSide(color: AppColors.black1, width: 1.w)),
+        border: Border(
+          top: BorderSide(color: AppColors.black1, width: 1.w),
+        ),
       ),
       child: SizedBox(
         height: 56.h,
@@ -114,18 +122,23 @@ class MainNavigation extends ConsumerWidget {
           unselectedIconTheme: IconThemeData(size: 24.sp),
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.school_outlined),
-              activeIcon: Icon(Icons.school),
+              icon: const Icon(Icons.school_outlined),
+              activeIcon: const Icon(Icons.school),
               label: 'Pembelajaran',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.emoji_events_outlined),
-              activeIcon: Icon(Icons.emoji_events),
+              icon: const Icon(Icons.emoji_events_outlined),
+              activeIcon: const Icon(Icons.emoji_events),
               label: 'Tantangan',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              activeIcon: Icon(Icons.settings),
+              icon: const Icon(Icons.casino_outlined),
+              activeIcon: const Icon(Icons.casino),
+              label: 'Gerbang Logika',
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.settings_outlined),
+              activeIcon: const Icon(Icons.settings),
               label: 'Pengaturan',
             ),
           ],

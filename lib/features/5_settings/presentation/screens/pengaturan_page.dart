@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/app/data/services/music_service.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
-import 'package:timetocode/features/4_settings/presentation/widgets/setting_item.dart';
+import 'package:timetocode/features/5_settings/presentation/widgets/setting_item.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 
@@ -38,7 +38,9 @@ class PengaturanPage extends ConsumerWidget {
               label: "Musik Latar",
               value: isMusicEnabled,
               onChanged: (value) {
-                ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
+                ref
+                    .read(soundEffectServiceProvider.notifier)
+                    .playButtonClick2();
                 ref
                     .read(musicServiceProvider.notifier)
                     .updateMusicSetting(value);
@@ -50,7 +52,9 @@ class PengaturanPage extends ConsumerWidget {
               label: "Efek Suara",
               value: isEffectEnabled,
               onChanged: (value) {
-                ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
+                ref
+                    .read(soundEffectServiceProvider.notifier)
+                    .playButtonClick2();
                 ref
                     .read(soundEffectServiceProvider.notifier)
                     .updateSoundEffectSetting(value);
