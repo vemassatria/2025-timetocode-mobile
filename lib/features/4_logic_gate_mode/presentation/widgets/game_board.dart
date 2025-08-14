@@ -29,8 +29,10 @@ class _GameBoardState extends ConsumerState<GameBoard> {
 
   @override
   void initState() {
-    ref.read(logicGateControllerProvider.notifier).initializeLogicGateGame();
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(logicGateControllerProvider.notifier).initializeLogicGateGame();
+    });
   }
 
   Rect _findRect(String key) {

@@ -74,6 +74,8 @@ flutter:
     - assets/images/logic_gate/cards/
     - assets/images/logic_gate/screen/
     - assets/images/logic_gate/icons/
+    - assets/images/logic_gate/tables/
+    - assets/images/logic_gate/tutorial/
   fonts:
     - family: Comic Neue
       fonts:

@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
+import 'package:timetocode/app/utils/overlay_utils.dart';
 import 'package:timetocode/app/widgets/buttons/bordered_button.dart';
 import 'package:timetocode/app/widgets/buttons/custom_button.dart';
+import 'package:timetocode/features/4_logic_gate_mode/data/models/logic_gate_type.dart';
+import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/card_detail_carousel_popup.dart';
+import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/how_to_play_popup.dart';
 
-class LogicGatePage extends StatelessWidget {
+class LogicGatePage extends ConsumerWidget {
   const LogicGatePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: AppColors.darkBackground,
       appBar: AppBar(
@@ -96,7 +101,7 @@ class LogicGatePage extends StatelessWidget {
                       type: BorderedButtonType.iconLabel,
                       label: "Cara Bermain",
                       onPressed: () {
-                        context.go('/logic-gate/rules');
+                        showPopupOverlay(context, const HowToPlayPopup(), ref);
                       },
                       color: BorderedButtonColor.transparent,
                     ),
@@ -110,7 +115,13 @@ class LogicGatePage extends StatelessWidget {
                       type: BorderedButtonType.iconLabel,
                       label: "Detail Kartu",
                       onPressed: () {
-                        context.go('/logic-gate/gameplay');
+                        showPopupOverlay(
+                          context,
+                          const CardDetailCarouselPopup(
+                            types: LogicGateType.values,
+                          ),
+                          ref,
+                        );
                       },
                       color: BorderedButtonColor.transparent,
                     ),
