@@ -148,11 +148,9 @@ class DndController extends AutoDisposeNotifier<DndState> {
     switch (state.modeGame) {
       case 'challenge':
         ref.read(challengeControllerProvider.notifier).restartChallenge();
-        ref.read(routerProvider).go('/tantangan/level');
         break;
       case 'story':
         ref.read(storyControllerProvider.notifier).restartStory();
-        ref.read(routerProvider).go('/pembelajaran/level');
         break;
     }
     ref.read(routerProvider).pop();
@@ -168,7 +166,6 @@ class DndController extends AutoDisposeNotifier<DndState> {
         ref.read(storyControllerProvider.notifier).exitStory();
         break;
     }
-    ref.read(routerProvider).pop();
     _releaseKeepAlive();
   }
 

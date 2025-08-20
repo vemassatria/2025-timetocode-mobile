@@ -291,7 +291,6 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   void showEndGame() {
     ref.read(routerProvider).go('/pembelajaran/endgame');
     _saveProgress();
-    _releaseKeepAlive();
   }
 
   Future<void> _saveProgress() async {
@@ -314,7 +313,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
 
   void exitStory() {
     _releaseKeepAlive();
-    ref.read(routerProvider).pop();
+    ref.read(routerProvider).go('/pembelajaran');
   }
 
   void correctAnswer() {

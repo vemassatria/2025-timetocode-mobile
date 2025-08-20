@@ -31,7 +31,13 @@ class _GameBoardState extends ConsumerState<GameBoard> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(logicGateControllerProvider.notifier).initializeLogicGateGame();
+      ref
+          .read(logicGateControllerProvider.notifier)
+          .updateLineConnection(
+            () => setState(() {
+              connections.clear();
+            }),
+          );
     });
   }
 

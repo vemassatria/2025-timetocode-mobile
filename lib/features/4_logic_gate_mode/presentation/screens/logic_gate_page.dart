@@ -8,7 +8,9 @@ import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
 import 'package:timetocode/app/widgets/buttons/bordered_button.dart';
 import 'package:timetocode/app/widgets/buttons/custom_button.dart';
+import 'package:timetocode/features/4_logic_gate_mode/data/controllers/logic_gate_gameplay_controller.dart';
 import 'package:timetocode/features/4_logic_gate_mode/data/models/logic_gate_type.dart';
+import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/ai_difficulty_popup.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/card_detail_carousel_popup.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/how_to_play_popup.dart';
 
@@ -67,9 +69,8 @@ class LogicGatePage extends ConsumerWidget {
                   ),
                   type: ButtonType.iconLabel,
                   label: "Mainkan Lawan AI",
-                  onPressed: () {
-                    // TODO: Implement AI opponent logic
-                  },
+                  onPressed: () =>
+                      showPopupOverlay(context, const DifficultyPopup(), ref),
                   widthMode: ButtonWidthMode.fill,
                   color: ButtonColor.blue,
                 ),
@@ -83,6 +84,9 @@ class LogicGatePage extends ConsumerWidget {
                   type: ButtonType.iconLabel,
                   label: "Mainkan Berdua",
                   onPressed: () {
+                    ref
+                        .read(logicGateControllerProvider.notifier)
+                        .initializeLogicGateGame();
                     context.go('/logic-gate/gameplay');
                   },
                   widthMode: ButtonWidthMode.fill,

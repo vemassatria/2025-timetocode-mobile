@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:timetocode/app/widgets/buttons/custom_button.dart';
@@ -29,90 +28,98 @@ class EndGameScreen extends ConsumerWidget {
     final completedLevel = storyState.activeLevel!.level;
     final maxLevel = totalSteps;
 
-    return Container(
-      decoration: BoxDecoration(color: AppColors.darkBackground),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 48.h),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: 32.h),
-              CircularStepProgressIndicator(
-                circularDirection: CircularDirection.counterclockwise,
-                totalSteps: totalSteps,
-                currentStep: completedLevel,
-                stepSize: 20,
-                selectedColor: AppColors.xpGreen,
-                unselectedColor: AppColors.gray1,
-                height: 250.h,
-                width: 250.w,
-                child: Center(
-                  child: Text(
-                    '$completedLevel/$maxLevel',
-                    style: AppTypography.heading1().copyWith(
-                      decoration: TextDecoration.none,
+    return PopScope(
+      child: Container(
+        decoration: BoxDecoration(color: AppColors.darkBackground),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 48.h),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 32.h),
+                CircularStepProgressIndicator(
+                  circularDirection: CircularDirection.counterclockwise,
+                  totalSteps: totalSteps,
+                  currentStep: completedLevel,
+                  stepSize: 20,
+                  selectedColor: AppColors.xpGreen,
+                  unselectedColor: AppColors.gray1,
+                  height: 250.h,
+                  width: 250.w,
+                  child: Center(
+                    child: Text(
+                      '$completedLevel/$maxLevel',
+                      style: AppTypography.heading1().copyWith(
+                        decoration: TextDecoration.none,
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              SizedBox(height: 32.h),
+                SizedBox(height: 32.h),
 
-              Text(
-                'Level $completedLevel Selesai',
-                style: AppTypography.heading4().copyWith(
-                  decoration: TextDecoration.none,
+                Text(
+                  'Level $completedLevel Selesai',
+                  style: AppTypography.heading4().copyWith(
+                    decoration: TextDecoration.none,
+                  ),
                 ),
-              ),
 
-              SizedBox(height: 16.h),
+                SizedBox(height: 16.h),
 
-              CustomButton(
-                label: "Rangkuman",
-                icon: const Icon(Icons.chrome_reader_mode),
-                color: ButtonColor.purple,
-                type: ButtonType.iconLabel,
-                onPressed: () {
-                  showPopupOverlay(
-                    context,
-                    InfoPopup(
-                      title: "Rangkuman",
-                      summaryList: storyState.activeLevel!.summary!,
-                      variant: InfoPopupVariant.summary,
-                      onClose: () {
-                        audioService.playNegativeClick();
-                        closePopupOverlay(ref);
-                      },
-                    ),
-                    ref,
-                  );
-                },
-              ),
+                CustomButton(
+                  label: "Rangkuman",
+                  icon: const Icon(Icons.chrome_reader_mode),
+                  color: ButtonColor.purple,
+                  type: ButtonType.iconLabel,
+                  onPressed: () {
+                    showPopupOverlay(
+                      context,
+                      InfoPopup(
+                        title: "Rangkuman",
+                        summaryList: storyState.activeLevel!.summary!,
+                        variant: InfoPopupVariant.summary,
+                        onClose: () {
+                          audioService.playNegativeClick();
+                          closePopupOverlay(ref);
+                        },
+                      ),
+                      ref,
+                    );
+                  },
+                ),
 
-              SizedBox(height: 64.h),
+                SizedBox(height: 64.h),
 
-              GameStats(
-                correct: correctAnswer,
-                wrong: wrongAnswer,
-                total: totalAnswer,
-              ),
+                GameStats(
+                  correct: correctAnswer,
+                  wrong: wrongAnswer,
+                  total: totalAnswer,
+                ),
 
-              SizedBox(height: 64.h),
+                SizedBox(height: 64.h),
 
-              CustomButton(
-                label: "Lanjutkan",
-                widthMode: ButtonWidthMode.fill,
-                onPressed: () {
-                  audioService.playSelectClick();
-                  context.pop();
-                },
-              ),
-            ],
+                CustomButton(
+                  label: "Lanjutkan",
+                  widthMode: ButtonWidthMode.fill,
+                  onPressed: () {
+                    audioService.playSelectClick();
+                    ref.read(storyControllerProvider.notifier).exitStory();
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        audioService.playSelectClick();
+        ref.read(storyControllerProvider.notifier).exitStory();
+      },
     );
   }
 }

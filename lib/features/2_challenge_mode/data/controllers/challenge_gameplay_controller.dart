@@ -106,7 +106,6 @@ class ChallengeController extends AutoDisposeNotifier<ChallengeState> {
     ref
         .read(challengeProgressProvider.notifier)
         .setCompletedChallenge(state.currentLevel!.id, state.correctAnswer!);
-    _releaseKeepAlive();
   }
 
   void _releaseKeepAlive() {
