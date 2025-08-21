@@ -7,24 +7,12 @@ import 'package:timetocode/features/1_story_mode/presentation/widgets/typewriter
 import 'package:timetocode/app/widgets/popups/confirm_popup.dart';
 import 'package:timetocode/features/1_story_mode/data/controllers/story_gameplay_controller.dart';
 import 'package:timetocode/features/1_story_mode/data/models/dialog_choices.dart';
-import 'package:timetocode/features/1_story_mode/data/models/dialog_model.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
 
 class DialogBox extends ConsumerStatefulWidget {
-  final DialogModel dialog;
-  final int indexDialog;
-  final String character1Name;
-  final String character2Name;
-
-  const DialogBox({
-    required this.dialog,
-    required this.indexDialog,
-    required this.character1Name,
-    required this.character2Name,
-    super.key,
-  });
+  const DialogBox({super.key});
 
   @override
   ConsumerState<DialogBox> createState() => _DialogBoxState();
@@ -32,25 +20,22 @@ class DialogBox extends ConsumerStatefulWidget {
 
 class _DialogBoxState extends ConsumerState<DialogBox> {
   bool _isTextAnimationComplete = false;
+  late String _character1Name;
+  late String _character2Name;
 
   @override
   void initState() {
     super.initState();
     _isTextAnimationComplete = false;
+    _character1Name = ref.read(
+      storyControllerProvider.select((state) => state.activeLevel!.character1),
+    );
+    _character2Name = ref.read(
+      storyControllerProvider.select((state) => state.activeLevel!.character2),
+    );
   }
 
-  @override
-  void didUpdateWidget(DialogBox oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.indexDialog != oldWidget.indexDialog && mounted) {
-      setState(() => _isTextAnimationComplete = false);
-    }
-  }
-
-  void _handleTap() {
-    final isLastLine = widget.indexDialog == widget.dialog.dialogs.length - 1;
-    final hasChoices = widget.dialog.choices?.isNotEmpty == true;
-
+  void _handleTap(bool isLastLine, bool hasChoices) {
     if (!_isTextAnimationComplete) {
       setState(() => _isTextAnimationComplete = true);
       return;
@@ -63,16 +48,29 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
 
   @override
   Widget build(BuildContext context) {
-    final dialog = widget.dialog;
-    final idx = widget.indexDialog;
-    final currentConversation = dialog.dialogs[idx];
+    final dialog = ref.watch(
+      storyControllerProvider.select((state) => state.currentDialog),
+    );
+    final indexDialog = ref.watch(
+      storyControllerProvider.select((state) => state.indexDialog),
+    );
+    ref.listen(storyControllerProvider.select((state) => state.indexDialog), (
+      previous,
+      next,
+    ) {
+      if (previous != next && mounted) {
+        _isTextAnimationComplete = false;
+        ;
+      }
+    });
+    final currentConversation = dialog!.dialogs[indexDialog!];
     final charIdx = currentConversation.characterIndex;
-    final name = (charIdx == 1) ? widget.character1Name : widget.character2Name;
+    final name = (charIdx == 1) ? _character1Name : _character2Name;
     final boxColor = (charIdx == 1)
         ? AppColors.challengeOrange
         : AppColors.deepTealGlow;
     final text = currentConversation.line;
-    final isLastLine = idx == dialog.dialogs.length - 1;
+    final isLastLine = indexDialog == dialog.dialogs.length - 1;
     final hasChoices = dialog.choices?.isNotEmpty == true;
 
     final textStyle = AppTypography.medium().copyWith(
@@ -85,7 +83,7 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
         clipBehavior: Clip.none,
         children: [
           GestureDetector(
-            onTap: _handleTap,
+            onTap: () => _handleTap(isLastLine, hasChoices),
             behavior: HitTestBehavior.opaque,
             child: Container(
               padding: EdgeInsets.fromLTRB(16.w, 36.h, 16.w, 16.h),

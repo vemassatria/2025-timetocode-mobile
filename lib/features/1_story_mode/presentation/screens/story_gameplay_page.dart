@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/app/widgets/popups/menu_popup.dart';
 import 'package:timetocode/app/data/providers/popup_visibility_provider.dart';
-import 'package:timetocode/features/1_story_mode/data/states/story_state.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/dialog_box.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/intro.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/question_box_widget.dart';
@@ -30,7 +29,9 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
 
   @override
   Widget build(BuildContext context) {
-    final storyState = ref.watch(storyControllerProvider);
+    final activeMode = ref.watch(
+      storyControllerProvider.select((state) => state.activeMode),
+    );
 
     return PopScope(
       child: Scaffold(
@@ -38,11 +39,11 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
           children: [
             GameWidget(game: game),
 
-            _buildContentUI(storyState.activeMode, storyState),
+            _buildContentUI(activeMode),
 
             const StoryMenu(),
 
-            if (storyState.activeMode == 'dialog') const SkipButton(),
+            if (activeMode == 'dialog') const SkipButton(),
           ],
         ),
       ),
@@ -79,21 +80,16 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
     );
   }
 
-  Widget _buildContentUI(String? activeMode, StoryState storyState) {
+  Widget _buildContentUI(String? activeMode) {
     switch (activeMode) {
       case 'preDialog':
-        return IntroBoxWidget(preDialog: storyState.preDialog!);
+        return const IntroBoxWidget();
       case 'dialog':
-        return DialogBox(
-          dialog: storyState.currentDialog!,
-          indexDialog: storyState.indexDialog!,
-          character1Name: storyState.activeLevel!.character1,
-          character2Name: storyState.activeLevel!.character2,
-        );
+        return const DialogBox();
       case 'question':
-        return QuestionBoxWidget(question: storyState.currentQuestion!);
+        return const QuestionBoxWidget();
       default:
-        return const Center(child: CircularProgressIndicator());
+        return const SizedBox();
     }
   }
 }

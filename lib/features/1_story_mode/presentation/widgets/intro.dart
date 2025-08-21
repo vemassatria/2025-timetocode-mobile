@@ -4,12 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/typewriter_effect_box.dart';
 import 'package:timetocode/features/1_story_mode/data/controllers/story_gameplay_controller.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
-import 'package:timetocode/features/1_story_mode/data/models/predialog_model.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 
 class IntroBoxWidget extends ConsumerStatefulWidget {
-  final PreDialogModel preDialog;
-  const IntroBoxWidget({super.key, required this.preDialog});
+  const IntroBoxWidget({super.key});
 
   @override
   ConsumerState<IntroBoxWidget> createState() => _IntroBoxWidgetState();
@@ -24,14 +22,6 @@ class _IntroBoxWidgetState extends ConsumerState<IntroBoxWidget> {
     _isAnimationComplete = false;
   }
 
-  @override
-  void didUpdateWidget(covariant IntroBoxWidget oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.preDialog.id != oldWidget.preDialog.id && mounted) {
-      setState(() => _isAnimationComplete = false);
-    }
-  }
-
   void _handleTap() {
     if (!_isAnimationComplete) {
       setState(() => _isAnimationComplete = true);
@@ -42,6 +32,19 @@ class _IntroBoxWidgetState extends ConsumerState<IntroBoxWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final preDialog = ref.watch(
+      storyControllerProvider.select((value) => value.preDialog),
+    );
+
+    ref.listen(storyControllerProvider.select((state) => state.preDialog), (
+      previous,
+      next,
+    ) {
+      if (previous?.id != next?.id && mounted) {
+        _isAnimationComplete = false;
+      }
+    });
+
     final textStyle = AppTypography.normal().copyWith(
       decoration: TextDecoration.none,
     );
@@ -62,18 +65,17 @@ class _IntroBoxWidgetState extends ConsumerState<IntroBoxWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child:
-                    _isAnimationComplete
-                        ? Text(widget.preDialog.text, style: textStyle)
-                        : TypewriterEffectBox(
-                          text: widget.preDialog.text,
-                          textStyle: textStyle,
-                          onFinished: () {
-                            if (mounted && !_isAnimationComplete) {
-                              setState(() => _isAnimationComplete = true);
-                            }
-                          },
-                        ),
+                child: _isAnimationComplete
+                    ? Text(preDialog!.text, style: textStyle)
+                    : TypewriterEffectBox(
+                        text: preDialog!.text,
+                        textStyle: textStyle,
+                        onFinished: () {
+                          if (mounted && !_isAnimationComplete) {
+                            setState(() => _isAnimationComplete = true);
+                          }
+                        },
+                      ),
               ),
               if (_isAnimationComplete)
                 Align(
