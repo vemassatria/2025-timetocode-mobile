@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChallengeState {
 
- ChallengeLevelModel? get currentLevel; String? get currentDifficulty; QuestionModel? get currentQuestion; int? get correctAnswer; int? get wrongAnswer;
+ ChallengeLevelModel? get currentLevel; String? get currentDifficulty; QuestionModel? get currentQuestion; int? get correctAnswer; int? get wrongAnswer; bool? get isLoading;
 /// Create a copy of ChallengeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ChallengeStateCopyWith<ChallengeState> get copyWith => _$ChallengeStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChallengeState&&(identical(other.currentLevel, currentLevel) || other.currentLevel == currentLevel)&&(identical(other.currentDifficulty, currentDifficulty) || other.currentDifficulty == currentDifficulty)&&(identical(other.currentQuestion, currentQuestion) || other.currentQuestion == currentQuestion)&&(identical(other.correctAnswer, correctAnswer) || other.correctAnswer == correctAnswer)&&(identical(other.wrongAnswer, wrongAnswer) || other.wrongAnswer == wrongAnswer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChallengeState&&(identical(other.currentLevel, currentLevel) || other.currentLevel == currentLevel)&&(identical(other.currentDifficulty, currentDifficulty) || other.currentDifficulty == currentDifficulty)&&(identical(other.currentQuestion, currentQuestion) || other.currentQuestion == currentQuestion)&&(identical(other.correctAnswer, correctAnswer) || other.correctAnswer == correctAnswer)&&(identical(other.wrongAnswer, wrongAnswer) || other.wrongAnswer == wrongAnswer)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,currentLevel,currentDifficulty,currentQuestion,correctAnswer,wrongAnswer);
+int get hashCode => Object.hash(runtimeType,currentLevel,currentDifficulty,currentQuestion,correctAnswer,wrongAnswer,isLoading);
 
 @override
 String toString() {
-  return 'ChallengeState(currentLevel: $currentLevel, currentDifficulty: $currentDifficulty, currentQuestion: $currentQuestion, correctAnswer: $correctAnswer, wrongAnswer: $wrongAnswer)';
+  return 'ChallengeState(currentLevel: $currentLevel, currentDifficulty: $currentDifficulty, currentQuestion: $currentQuestion, correctAnswer: $correctAnswer, wrongAnswer: $wrongAnswer, isLoading: $isLoading)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ChallengeStateCopyWith<$Res>  {
   factory $ChallengeStateCopyWith(ChallengeState value, $Res Function(ChallengeState) _then) = _$ChallengeStateCopyWithImpl;
 @useResult
 $Res call({
- ChallengeLevelModel? currentLevel, String? currentDifficulty, QuestionModel? currentQuestion, int? correctAnswer, int? wrongAnswer
+ ChallengeLevelModel? currentLevel, String? currentDifficulty, QuestionModel? currentQuestion, int? correctAnswer, int? wrongAnswer, bool? isLoading
 });
 
 
@@ -62,14 +62,15 @@ class _$ChallengeStateCopyWithImpl<$Res>
 
 /// Create a copy of ChallengeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? currentLevel = freezed,Object? currentDifficulty = freezed,Object? currentQuestion = freezed,Object? correctAnswer = freezed,Object? wrongAnswer = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? currentLevel = freezed,Object? currentDifficulty = freezed,Object? currentQuestion = freezed,Object? correctAnswer = freezed,Object? wrongAnswer = freezed,Object? isLoading = freezed,}) {
   return _then(_self.copyWith(
 currentLevel: freezed == currentLevel ? _self.currentLevel : currentLevel // ignore: cast_nullable_to_non_nullable
 as ChallengeLevelModel?,currentDifficulty: freezed == currentDifficulty ? _self.currentDifficulty : currentDifficulty // ignore: cast_nullable_to_non_nullable
 as String?,currentQuestion: freezed == currentQuestion ? _self.currentQuestion : currentQuestion // ignore: cast_nullable_to_non_nullable
 as QuestionModel?,correctAnswer: freezed == correctAnswer ? _self.correctAnswer : correctAnswer // ignore: cast_nullable_to_non_nullable
 as int?,wrongAnswer: freezed == wrongAnswer ? _self.wrongAnswer : wrongAnswer // ignore: cast_nullable_to_non_nullable
-as int?,
+as int?,isLoading: freezed == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool?,
   ));
 }
 /// Create a copy of ChallengeState
@@ -178,10 +179,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ChallengeLevelModel? currentLevel,  String? currentDifficulty,  QuestionModel? currentQuestion,  int? correctAnswer,  int? wrongAnswer)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ChallengeLevelModel? currentLevel,  String? currentDifficulty,  QuestionModel? currentQuestion,  int? correctAnswer,  int? wrongAnswer,  bool? isLoading)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChallengeState() when $default != null:
-return $default(_that.currentLevel,_that.currentDifficulty,_that.currentQuestion,_that.correctAnswer,_that.wrongAnswer);case _:
+return $default(_that.currentLevel,_that.currentDifficulty,_that.currentQuestion,_that.correctAnswer,_that.wrongAnswer,_that.isLoading);case _:
   return orElse();
 
 }
@@ -199,10 +200,10 @@ return $default(_that.currentLevel,_that.currentDifficulty,_that.currentQuestion
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ChallengeLevelModel? currentLevel,  String? currentDifficulty,  QuestionModel? currentQuestion,  int? correctAnswer,  int? wrongAnswer)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ChallengeLevelModel? currentLevel,  String? currentDifficulty,  QuestionModel? currentQuestion,  int? correctAnswer,  int? wrongAnswer,  bool? isLoading)  $default,) {final _that = this;
 switch (_that) {
 case _ChallengeState():
-return $default(_that.currentLevel,_that.currentDifficulty,_that.currentQuestion,_that.correctAnswer,_that.wrongAnswer);case _:
+return $default(_that.currentLevel,_that.currentDifficulty,_that.currentQuestion,_that.correctAnswer,_that.wrongAnswer,_that.isLoading);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -219,10 +220,10 @@ return $default(_that.currentLevel,_that.currentDifficulty,_that.currentQuestion
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ChallengeLevelModel? currentLevel,  String? currentDifficulty,  QuestionModel? currentQuestion,  int? correctAnswer,  int? wrongAnswer)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ChallengeLevelModel? currentLevel,  String? currentDifficulty,  QuestionModel? currentQuestion,  int? correctAnswer,  int? wrongAnswer,  bool? isLoading)?  $default,) {final _that = this;
 switch (_that) {
 case _ChallengeState() when $default != null:
-return $default(_that.currentLevel,_that.currentDifficulty,_that.currentQuestion,_that.correctAnswer,_that.wrongAnswer);case _:
+return $default(_that.currentLevel,_that.currentDifficulty,_that.currentQuestion,_that.correctAnswer,_that.wrongAnswer,_that.isLoading);case _:
   return null;
 
 }
@@ -234,7 +235,7 @@ return $default(_that.currentLevel,_that.currentDifficulty,_that.currentQuestion
 
 
 class _ChallengeState implements ChallengeState {
-  const _ChallengeState({this.currentLevel, this.currentDifficulty, this.currentQuestion, this.correctAnswer, this.wrongAnswer});
+  const _ChallengeState({this.currentLevel, this.currentDifficulty, this.currentQuestion, this.correctAnswer, this.wrongAnswer, this.isLoading});
   
 
 @override final  ChallengeLevelModel? currentLevel;
@@ -242,6 +243,7 @@ class _ChallengeState implements ChallengeState {
 @override final  QuestionModel? currentQuestion;
 @override final  int? correctAnswer;
 @override final  int? wrongAnswer;
+@override final  bool? isLoading;
 
 /// Create a copy of ChallengeState
 /// with the given fields replaced by the non-null parameter values.
@@ -253,16 +255,16 @@ _$ChallengeStateCopyWith<_ChallengeState> get copyWith => __$ChallengeStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChallengeState&&(identical(other.currentLevel, currentLevel) || other.currentLevel == currentLevel)&&(identical(other.currentDifficulty, currentDifficulty) || other.currentDifficulty == currentDifficulty)&&(identical(other.currentQuestion, currentQuestion) || other.currentQuestion == currentQuestion)&&(identical(other.correctAnswer, correctAnswer) || other.correctAnswer == correctAnswer)&&(identical(other.wrongAnswer, wrongAnswer) || other.wrongAnswer == wrongAnswer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChallengeState&&(identical(other.currentLevel, currentLevel) || other.currentLevel == currentLevel)&&(identical(other.currentDifficulty, currentDifficulty) || other.currentDifficulty == currentDifficulty)&&(identical(other.currentQuestion, currentQuestion) || other.currentQuestion == currentQuestion)&&(identical(other.correctAnswer, correctAnswer) || other.correctAnswer == correctAnswer)&&(identical(other.wrongAnswer, wrongAnswer) || other.wrongAnswer == wrongAnswer)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,currentLevel,currentDifficulty,currentQuestion,correctAnswer,wrongAnswer);
+int get hashCode => Object.hash(runtimeType,currentLevel,currentDifficulty,currentQuestion,correctAnswer,wrongAnswer,isLoading);
 
 @override
 String toString() {
-  return 'ChallengeState(currentLevel: $currentLevel, currentDifficulty: $currentDifficulty, currentQuestion: $currentQuestion, correctAnswer: $correctAnswer, wrongAnswer: $wrongAnswer)';
+  return 'ChallengeState(currentLevel: $currentLevel, currentDifficulty: $currentDifficulty, currentQuestion: $currentQuestion, correctAnswer: $correctAnswer, wrongAnswer: $wrongAnswer, isLoading: $isLoading)';
 }
 
 
@@ -273,7 +275,7 @@ abstract mixin class _$ChallengeStateCopyWith<$Res> implements $ChallengeStateCo
   factory _$ChallengeStateCopyWith(_ChallengeState value, $Res Function(_ChallengeState) _then) = __$ChallengeStateCopyWithImpl;
 @override @useResult
 $Res call({
- ChallengeLevelModel? currentLevel, String? currentDifficulty, QuestionModel? currentQuestion, int? correctAnswer, int? wrongAnswer
+ ChallengeLevelModel? currentLevel, String? currentDifficulty, QuestionModel? currentQuestion, int? correctAnswer, int? wrongAnswer, bool? isLoading
 });
 
 
@@ -290,14 +292,15 @@ class __$ChallengeStateCopyWithImpl<$Res>
 
 /// Create a copy of ChallengeState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? currentLevel = freezed,Object? currentDifficulty = freezed,Object? currentQuestion = freezed,Object? correctAnswer = freezed,Object? wrongAnswer = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? currentLevel = freezed,Object? currentDifficulty = freezed,Object? currentQuestion = freezed,Object? correctAnswer = freezed,Object? wrongAnswer = freezed,Object? isLoading = freezed,}) {
   return _then(_ChallengeState(
 currentLevel: freezed == currentLevel ? _self.currentLevel : currentLevel // ignore: cast_nullable_to_non_nullable
 as ChallengeLevelModel?,currentDifficulty: freezed == currentDifficulty ? _self.currentDifficulty : currentDifficulty // ignore: cast_nullable_to_non_nullable
 as String?,currentQuestion: freezed == currentQuestion ? _self.currentQuestion : currentQuestion // ignore: cast_nullable_to_non_nullable
 as QuestionModel?,correctAnswer: freezed == correctAnswer ? _self.correctAnswer : correctAnswer // ignore: cast_nullable_to_non_nullable
 as int?,wrongAnswer: freezed == wrongAnswer ? _self.wrongAnswer : wrongAnswer // ignore: cast_nullable_to_non_nullable
-as int?,
+as int?,isLoading: freezed == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool?,
   ));
 }
 

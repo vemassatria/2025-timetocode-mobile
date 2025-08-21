@@ -12,5 +12,7 @@ abstract class ChallengeState with _$ChallengeState {
     QuestionModel? currentQuestion,
     int? correctAnswer,
     int? wrongAnswer,
+
+    bool? isLoading,
   }) = _ChallengeState;
 }

@@ -14,5 +14,7 @@ abstract class DndState with _$DndState {
     String? modeGame,
     int? correctAnswer,
     int? wrongAnswer,
+
+    bool? isLoading,
   }) = _DndState;
 }

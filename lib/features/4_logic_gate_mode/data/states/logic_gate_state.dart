@@ -22,5 +22,7 @@ abstract class LogicGateState with _$LogicGateState {
 
     @Default(false) bool vsAI,
     @Default(AiDifficulty.medium) AiDifficulty difficulty,
+
+    bool? isLoading,
   }) = _LogicGateState;
 }

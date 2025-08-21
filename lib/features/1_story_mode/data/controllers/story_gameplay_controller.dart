@@ -30,7 +30,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       game.deleteAll();
     });
 
-    return const StoryState();
+    return const StoryState(isLoading: true);
   }
 
   void initLevel(StoryModel level) async {
@@ -42,7 +42,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       game.preloadIlustrations(level.ilustrations),
       game.setBackground(level.background),
     ]);
-    state = StoryState(activeLevel: level);
+    state = StoryState(activeLevel: level, isLoading: false);
     navigateMode(level.typeStart, level.start);
   }
 

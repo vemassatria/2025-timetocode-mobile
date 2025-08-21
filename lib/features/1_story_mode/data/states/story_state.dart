@@ -18,5 +18,7 @@ abstract class StoryState with _$StoryState {
     int? wrongAnswer,
     bool? falsePrevious,
     String? activeMode,
+
+    bool? isLoading,
   }) = _StoryState;
 }

@@ -30,6 +30,9 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isLoading = ref.watch(
+      storyControllerProvider.select((state) => state.isLoading),
+    );
     final activeMode = ref.watch(
       storyControllerProvider.select((state) => state.activeMode),
     );
@@ -65,19 +68,21 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
           );
         }
       },
-      child: Scaffold(
-        body: Stack(
-          children: [
-            GameWidget(game: game),
+      child: isLoading == true
+          ? const Center(child: CircularProgressIndicator())
+          : Scaffold(
+              body: Stack(
+                children: [
+                  GameWidget(game: game),
 
-            _buildContentUI(activeMode),
+                  _buildContentUI(activeMode),
 
-            const StoryMenu(),
+                  const StoryMenu(),
 
-            if (activeMode == 'dialog') const SkipButton(),
-          ],
-        ),
-      ),
+                  if (activeMode == 'dialog') const SkipButton(),
+                ],
+              ),
+            ),
     );
   }
 

@@ -95,23 +95,29 @@ class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isLoading = ref.watch(
+      challengeControllerProvider.select((state) => state.isLoading),
+    );
+
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: _handlePopScope,
-      child: Scaffold(
-        appBar: ChallengeAppBar(onMenuPressed: _showMenuPopup),
-        body: ChallengeBody(
-          selectedAnswer: selectedAnswer,
-          onAnswerSelected: selectAnswer,
-        ),
-        bottomNavigationBar: SubmitButton(
-          selectedAnswer: selectedAnswer,
-          onSubmit: () {
-            soundEffectService.playSubmit();
-            _checkAnswer(selectedAnswer!);
-          },
-        ),
-      ),
+      child: isLoading == true
+          ? const Center(child: CircularProgressIndicator())
+          : Scaffold(
+              appBar: ChallengeAppBar(onMenuPressed: _showMenuPopup),
+              body: ChallengeBody(
+                selectedAnswer: selectedAnswer,
+                onAnswerSelected: selectAnswer,
+              ),
+              bottomNavigationBar: SubmitButton(
+                selectedAnswer: selectedAnswer,
+                onSubmit: () {
+                  soundEffectService.playSubmit();
+                  _checkAnswer(selectedAnswer!);
+                },
+              ),
+            ),
     );
   }
 }

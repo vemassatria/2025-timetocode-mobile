@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$StoryState {
 
- StoryModel? get activeLevel; PreDialogModel? get preDialog; DialogModel? get currentDialog; QuestionModel? get currentQuestion; int? get indexDialog; int? get correctAnswer; int? get wrongAnswer; bool? get falsePrevious; String? get activeMode;
+ StoryModel? get activeLevel; PreDialogModel? get preDialog; DialogModel? get currentDialog; QuestionModel? get currentQuestion; int? get indexDialog; int? get correctAnswer; int? get wrongAnswer; bool? get falsePrevious; String? get activeMode; bool? get isLoading;
 /// Create a copy of StoryState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $StoryStateCopyWith<StoryState> get copyWith => _$StoryStateCopyWithImpl<StorySt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is StoryState&&(identical(other.activeLevel, activeLevel) || other.activeLevel == activeLevel)&&(identical(other.preDialog, preDialog) || other.preDialog == preDialog)&&(identical(other.currentDialog, currentDialog) || other.currentDialog == currentDialog)&&(identical(other.currentQuestion, currentQuestion) || other.currentQuestion == currentQuestion)&&(identical(other.indexDialog, indexDialog) || other.indexDialog == indexDialog)&&(identical(other.correctAnswer, correctAnswer) || other.correctAnswer == correctAnswer)&&(identical(other.wrongAnswer, wrongAnswer) || other.wrongAnswer == wrongAnswer)&&(identical(other.falsePrevious, falsePrevious) || other.falsePrevious == falsePrevious)&&(identical(other.activeMode, activeMode) || other.activeMode == activeMode));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StoryState&&(identical(other.activeLevel, activeLevel) || other.activeLevel == activeLevel)&&(identical(other.preDialog, preDialog) || other.preDialog == preDialog)&&(identical(other.currentDialog, currentDialog) || other.currentDialog == currentDialog)&&(identical(other.currentQuestion, currentQuestion) || other.currentQuestion == currentQuestion)&&(identical(other.indexDialog, indexDialog) || other.indexDialog == indexDialog)&&(identical(other.correctAnswer, correctAnswer) || other.correctAnswer == correctAnswer)&&(identical(other.wrongAnswer, wrongAnswer) || other.wrongAnswer == wrongAnswer)&&(identical(other.falsePrevious, falsePrevious) || other.falsePrevious == falsePrevious)&&(identical(other.activeMode, activeMode) || other.activeMode == activeMode)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,activeLevel,preDialog,currentDialog,currentQuestion,indexDialog,correctAnswer,wrongAnswer,falsePrevious,activeMode);
+int get hashCode => Object.hash(runtimeType,activeLevel,preDialog,currentDialog,currentQuestion,indexDialog,correctAnswer,wrongAnswer,falsePrevious,activeMode,isLoading);
 
 @override
 String toString() {
-  return 'StoryState(activeLevel: $activeLevel, preDialog: $preDialog, currentDialog: $currentDialog, currentQuestion: $currentQuestion, indexDialog: $indexDialog, correctAnswer: $correctAnswer, wrongAnswer: $wrongAnswer, falsePrevious: $falsePrevious, activeMode: $activeMode)';
+  return 'StoryState(activeLevel: $activeLevel, preDialog: $preDialog, currentDialog: $currentDialog, currentQuestion: $currentQuestion, indexDialog: $indexDialog, correctAnswer: $correctAnswer, wrongAnswer: $wrongAnswer, falsePrevious: $falsePrevious, activeMode: $activeMode, isLoading: $isLoading)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $StoryStateCopyWith<$Res>  {
   factory $StoryStateCopyWith(StoryState value, $Res Function(StoryState) _then) = _$StoryStateCopyWithImpl;
 @useResult
 $Res call({
- StoryModel? activeLevel, PreDialogModel? preDialog, DialogModel? currentDialog, QuestionModel? currentQuestion, int? indexDialog, int? correctAnswer, int? wrongAnswer, bool? falsePrevious, String? activeMode
+ StoryModel? activeLevel, PreDialogModel? preDialog, DialogModel? currentDialog, QuestionModel? currentQuestion, int? indexDialog, int? correctAnswer, int? wrongAnswer, bool? falsePrevious, String? activeMode, bool? isLoading
 });
 
 
@@ -62,7 +62,7 @@ class _$StoryStateCopyWithImpl<$Res>
 
 /// Create a copy of StoryState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? activeLevel = freezed,Object? preDialog = freezed,Object? currentDialog = freezed,Object? currentQuestion = freezed,Object? indexDialog = freezed,Object? correctAnswer = freezed,Object? wrongAnswer = freezed,Object? falsePrevious = freezed,Object? activeMode = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? activeLevel = freezed,Object? preDialog = freezed,Object? currentDialog = freezed,Object? currentQuestion = freezed,Object? indexDialog = freezed,Object? correctAnswer = freezed,Object? wrongAnswer = freezed,Object? falsePrevious = freezed,Object? activeMode = freezed,Object? isLoading = freezed,}) {
   return _then(_self.copyWith(
 activeLevel: freezed == activeLevel ? _self.activeLevel : activeLevel // ignore: cast_nullable_to_non_nullable
 as StoryModel?,preDialog: freezed == preDialog ? _self.preDialog : preDialog // ignore: cast_nullable_to_non_nullable
@@ -73,7 +73,8 @@ as int?,correctAnswer: freezed == correctAnswer ? _self.correctAnswer : correctA
 as int?,wrongAnswer: freezed == wrongAnswer ? _self.wrongAnswer : wrongAnswer // ignore: cast_nullable_to_non_nullable
 as int?,falsePrevious: freezed == falsePrevious ? _self.falsePrevious : falsePrevious // ignore: cast_nullable_to_non_nullable
 as bool?,activeMode: freezed == activeMode ? _self.activeMode : activeMode // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,isLoading: freezed == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool?,
   ));
 }
 /// Create a copy of StoryState
@@ -206,10 +207,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( StoryModel? activeLevel,  PreDialogModel? preDialog,  DialogModel? currentDialog,  QuestionModel? currentQuestion,  int? indexDialog,  int? correctAnswer,  int? wrongAnswer,  bool? falsePrevious,  String? activeMode)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( StoryModel? activeLevel,  PreDialogModel? preDialog,  DialogModel? currentDialog,  QuestionModel? currentQuestion,  int? indexDialog,  int? correctAnswer,  int? wrongAnswer,  bool? falsePrevious,  String? activeMode,  bool? isLoading)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _StoryState() when $default != null:
-return $default(_that.activeLevel,_that.preDialog,_that.currentDialog,_that.currentQuestion,_that.indexDialog,_that.correctAnswer,_that.wrongAnswer,_that.falsePrevious,_that.activeMode);case _:
+return $default(_that.activeLevel,_that.preDialog,_that.currentDialog,_that.currentQuestion,_that.indexDialog,_that.correctAnswer,_that.wrongAnswer,_that.falsePrevious,_that.activeMode,_that.isLoading);case _:
   return orElse();
 
 }
@@ -227,10 +228,10 @@ return $default(_that.activeLevel,_that.preDialog,_that.currentDialog,_that.curr
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( StoryModel? activeLevel,  PreDialogModel? preDialog,  DialogModel? currentDialog,  QuestionModel? currentQuestion,  int? indexDialog,  int? correctAnswer,  int? wrongAnswer,  bool? falsePrevious,  String? activeMode)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( StoryModel? activeLevel,  PreDialogModel? preDialog,  DialogModel? currentDialog,  QuestionModel? currentQuestion,  int? indexDialog,  int? correctAnswer,  int? wrongAnswer,  bool? falsePrevious,  String? activeMode,  bool? isLoading)  $default,) {final _that = this;
 switch (_that) {
 case _StoryState():
-return $default(_that.activeLevel,_that.preDialog,_that.currentDialog,_that.currentQuestion,_that.indexDialog,_that.correctAnswer,_that.wrongAnswer,_that.falsePrevious,_that.activeMode);case _:
+return $default(_that.activeLevel,_that.preDialog,_that.currentDialog,_that.currentQuestion,_that.indexDialog,_that.correctAnswer,_that.wrongAnswer,_that.falsePrevious,_that.activeMode,_that.isLoading);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -247,10 +248,10 @@ return $default(_that.activeLevel,_that.preDialog,_that.currentDialog,_that.curr
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( StoryModel? activeLevel,  PreDialogModel? preDialog,  DialogModel? currentDialog,  QuestionModel? currentQuestion,  int? indexDialog,  int? correctAnswer,  int? wrongAnswer,  bool? falsePrevious,  String? activeMode)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( StoryModel? activeLevel,  PreDialogModel? preDialog,  DialogModel? currentDialog,  QuestionModel? currentQuestion,  int? indexDialog,  int? correctAnswer,  int? wrongAnswer,  bool? falsePrevious,  String? activeMode,  bool? isLoading)?  $default,) {final _that = this;
 switch (_that) {
 case _StoryState() when $default != null:
-return $default(_that.activeLevel,_that.preDialog,_that.currentDialog,_that.currentQuestion,_that.indexDialog,_that.correctAnswer,_that.wrongAnswer,_that.falsePrevious,_that.activeMode);case _:
+return $default(_that.activeLevel,_that.preDialog,_that.currentDialog,_that.currentQuestion,_that.indexDialog,_that.correctAnswer,_that.wrongAnswer,_that.falsePrevious,_that.activeMode,_that.isLoading);case _:
   return null;
 
 }
@@ -262,7 +263,7 @@ return $default(_that.activeLevel,_that.preDialog,_that.currentDialog,_that.curr
 
 
 class _StoryState implements StoryState {
-  const _StoryState({this.activeLevel, this.preDialog, this.currentDialog, this.currentQuestion, this.indexDialog, this.correctAnswer, this.wrongAnswer, this.falsePrevious, this.activeMode});
+  const _StoryState({this.activeLevel, this.preDialog, this.currentDialog, this.currentQuestion, this.indexDialog, this.correctAnswer, this.wrongAnswer, this.falsePrevious, this.activeMode, this.isLoading});
   
 
 @override final  StoryModel? activeLevel;
@@ -274,6 +275,7 @@ class _StoryState implements StoryState {
 @override final  int? wrongAnswer;
 @override final  bool? falsePrevious;
 @override final  String? activeMode;
+@override final  bool? isLoading;
 
 /// Create a copy of StoryState
 /// with the given fields replaced by the non-null parameter values.
@@ -285,16 +287,16 @@ _$StoryStateCopyWith<_StoryState> get copyWith => __$StoryStateCopyWithImpl<_Sto
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StoryState&&(identical(other.activeLevel, activeLevel) || other.activeLevel == activeLevel)&&(identical(other.preDialog, preDialog) || other.preDialog == preDialog)&&(identical(other.currentDialog, currentDialog) || other.currentDialog == currentDialog)&&(identical(other.currentQuestion, currentQuestion) || other.currentQuestion == currentQuestion)&&(identical(other.indexDialog, indexDialog) || other.indexDialog == indexDialog)&&(identical(other.correctAnswer, correctAnswer) || other.correctAnswer == correctAnswer)&&(identical(other.wrongAnswer, wrongAnswer) || other.wrongAnswer == wrongAnswer)&&(identical(other.falsePrevious, falsePrevious) || other.falsePrevious == falsePrevious)&&(identical(other.activeMode, activeMode) || other.activeMode == activeMode));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StoryState&&(identical(other.activeLevel, activeLevel) || other.activeLevel == activeLevel)&&(identical(other.preDialog, preDialog) || other.preDialog == preDialog)&&(identical(other.currentDialog, currentDialog) || other.currentDialog == currentDialog)&&(identical(other.currentQuestion, currentQuestion) || other.currentQuestion == currentQuestion)&&(identical(other.indexDialog, indexDialog) || other.indexDialog == indexDialog)&&(identical(other.correctAnswer, correctAnswer) || other.correctAnswer == correctAnswer)&&(identical(other.wrongAnswer, wrongAnswer) || other.wrongAnswer == wrongAnswer)&&(identical(other.falsePrevious, falsePrevious) || other.falsePrevious == falsePrevious)&&(identical(other.activeMode, activeMode) || other.activeMode == activeMode)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,activeLevel,preDialog,currentDialog,currentQuestion,indexDialog,correctAnswer,wrongAnswer,falsePrevious,activeMode);
+int get hashCode => Object.hash(runtimeType,activeLevel,preDialog,currentDialog,currentQuestion,indexDialog,correctAnswer,wrongAnswer,falsePrevious,activeMode,isLoading);
 
 @override
 String toString() {
-  return 'StoryState(activeLevel: $activeLevel, preDialog: $preDialog, currentDialog: $currentDialog, currentQuestion: $currentQuestion, indexDialog: $indexDialog, correctAnswer: $correctAnswer, wrongAnswer: $wrongAnswer, falsePrevious: $falsePrevious, activeMode: $activeMode)';
+  return 'StoryState(activeLevel: $activeLevel, preDialog: $preDialog, currentDialog: $currentDialog, currentQuestion: $currentQuestion, indexDialog: $indexDialog, correctAnswer: $correctAnswer, wrongAnswer: $wrongAnswer, falsePrevious: $falsePrevious, activeMode: $activeMode, isLoading: $isLoading)';
 }
 
 
@@ -305,7 +307,7 @@ abstract mixin class _$StoryStateCopyWith<$Res> implements $StoryStateCopyWith<$
   factory _$StoryStateCopyWith(_StoryState value, $Res Function(_StoryState) _then) = __$StoryStateCopyWithImpl;
 @override @useResult
 $Res call({
- StoryModel? activeLevel, PreDialogModel? preDialog, DialogModel? currentDialog, QuestionModel? currentQuestion, int? indexDialog, int? correctAnswer, int? wrongAnswer, bool? falsePrevious, String? activeMode
+ StoryModel? activeLevel, PreDialogModel? preDialog, DialogModel? currentDialog, QuestionModel? currentQuestion, int? indexDialog, int? correctAnswer, int? wrongAnswer, bool? falsePrevious, String? activeMode, bool? isLoading
 });
 
 
@@ -322,7 +324,7 @@ class __$StoryStateCopyWithImpl<$Res>
 
 /// Create a copy of StoryState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? activeLevel = freezed,Object? preDialog = freezed,Object? currentDialog = freezed,Object? currentQuestion = freezed,Object? indexDialog = freezed,Object? correctAnswer = freezed,Object? wrongAnswer = freezed,Object? falsePrevious = freezed,Object? activeMode = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? activeLevel = freezed,Object? preDialog = freezed,Object? currentDialog = freezed,Object? currentQuestion = freezed,Object? indexDialog = freezed,Object? correctAnswer = freezed,Object? wrongAnswer = freezed,Object? falsePrevious = freezed,Object? activeMode = freezed,Object? isLoading = freezed,}) {
   return _then(_StoryState(
 activeLevel: freezed == activeLevel ? _self.activeLevel : activeLevel // ignore: cast_nullable_to_non_nullable
 as StoryModel?,preDialog: freezed == preDialog ? _self.preDialog : preDialog // ignore: cast_nullable_to_non_nullable
@@ -333,7 +335,8 @@ as int?,correctAnswer: freezed == correctAnswer ? _self.correctAnswer : correctA
 as int?,wrongAnswer: freezed == wrongAnswer ? _self.wrongAnswer : wrongAnswer // ignore: cast_nullable_to_non_nullable
 as int?,falsePrevious: freezed == falsePrevious ? _self.falsePrevious : falsePrevious // ignore: cast_nullable_to_non_nullable
 as bool?,activeMode: freezed == activeMode ? _self.activeMode : activeMode // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,isLoading: freezed == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool?,
   ));
 }
 

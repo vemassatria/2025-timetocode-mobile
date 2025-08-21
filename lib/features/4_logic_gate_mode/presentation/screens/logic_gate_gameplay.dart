@@ -13,6 +13,9 @@ class LogicGateGameplay extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isLoading = ref.watch(
+      logicGateControllerProvider.select((state) => state.isLoading),
+    );
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
@@ -42,26 +45,28 @@ class LogicGateGameplay extends ConsumerWidget {
           );
         }
       },
-      child: const Scaffold(
-        backgroundColor: AppColors.surfaceDark,
-        body: SafeArea(
-          child: Stack(
-            children: [
-              Center(child: GameBoard()),
+      child: isLoading == true
+          ? const Center(child: CircularProgressIndicator())
+          : const Scaffold(
+              backgroundColor: AppColors.surfaceDark,
+              body: SafeArea(
+                child: Stack(
+                  children: [
+                    Center(child: GameBoard()),
 
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: CardBoard(playerID: 1),
-              ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: CardBoard(playerID: 1),
+                    ),
 
-              Align(
-                alignment: Alignment.topCenter,
-                child: CardBoard(playerID: 0),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: CardBoard(playerID: 0),
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 }
