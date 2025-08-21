@@ -14,24 +14,15 @@ class AiService {
   };
 
   Future<void> loadModel() async {
-    try {
-      _interpreter = await Interpreter.fromAsset(
-        'assets/ml/logic_gate_ai.tflite',
-      );
-    } catch (e) {
-      print('Gagal memuat model TFLite: $e');
-    }
+    _interpreter = await Interpreter.fromAsset(
+      'assets/ml/logic_gate_ai.tflite',
+    );
   }
 
   Map<String, int>? predictMove({
     required AiGameState gameState,
     required AiDifficulty difficulty,
   }) {
-    if (_interpreter == null) {
-      print('model belum dimuat.');
-      return null;
-    }
-
     final validMoves = gameState.getValidMoves();
     if (validMoves.isEmpty) {
       return null;

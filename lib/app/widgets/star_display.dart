@@ -7,12 +7,11 @@ class StarDisplay extends StatelessWidget {
   final bool isCentered;
 
   const StarDisplay({
-    Key? key,
+    super.key,
     required this.starCount,
     this.size = 24.0,
     this.isCentered = false,
-  }) : assert(starCount >= 0 && starCount <= 3),
-       super(key: key);
+  }) : assert(starCount >= 0 && starCount <= 3);
 
   @override
   Widget build(BuildContext context) {

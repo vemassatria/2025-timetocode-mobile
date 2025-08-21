@@ -29,8 +29,14 @@ class EndGameScreen extends ConsumerWidget {
     final maxLevel = totalSteps;
 
     return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        audioService.playSelectClick();
+        ref.read(storyControllerProvider.notifier).exitStory();
+      },
       child: Container(
-        decoration: BoxDecoration(color: AppColors.darkBackground),
+        decoration: const BoxDecoration(color: AppColors.darkBackground),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 48.h),
           child: Center(
@@ -114,12 +120,6 @@ class EndGameScreen extends ConsumerWidget {
           ),
         ),
       ),
-      canPop: false,
-      onPopInvokedWithResult: (didPop, result) {
-        if (didPop) return;
-        audioService.playSelectClick();
-        ref.read(storyControllerProvider.notifier).exitStory();
-      },
     );
   }
 }

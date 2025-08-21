@@ -23,8 +23,14 @@ class EndGameChallenge extends ConsumerWidget {
     final indexLevel = challengeState.currentLevel!.id;
 
     return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
+        ref.read(challengeControllerProvider.notifier).exitChallenge();
+      },
       child: Container(
-        decoration: BoxDecoration(color: AppColors.darkBackground),
+        decoration: const BoxDecoration(color: AppColors.darkBackground),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 48.h),
           child: Center(
@@ -90,12 +96,6 @@ class EndGameChallenge extends ConsumerWidget {
           ),
         ),
       ),
-      canPop: false,
-      onPopInvokedWithResult: (didPop, result) {
-        if (didPop) return;
-        ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
-        ref.read(challengeControllerProvider.notifier).exitChallenge();
-      },
     );
   }
 }

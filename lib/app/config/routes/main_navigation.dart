@@ -122,23 +122,23 @@ class MainNavigation extends ConsumerWidget {
           unselectedIconTheme: IconThemeData(size: 24.sp),
           items: const [
             BottomNavigationBarItem(
-              icon: const Icon(Icons.school_outlined),
-              activeIcon: const Icon(Icons.school),
+              icon: Icon(Icons.school_outlined),
+              activeIcon: Icon(Icons.school),
               label: 'Pembelajaran',
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.emoji_events_outlined),
-              activeIcon: const Icon(Icons.emoji_events),
+              icon: Icon(Icons.emoji_events_outlined),
+              activeIcon: Icon(Icons.emoji_events),
               label: 'Tantangan',
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.casino_outlined),
-              activeIcon: const Icon(Icons.casino),
+              icon: Icon(Icons.casino_outlined),
+              activeIcon: Icon(Icons.casino),
               label: 'Gerbang Logika',
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.settings_outlined),
-              activeIcon: const Icon(Icons.settings),
+              icon: Icon(Icons.settings_outlined),
+              activeIcon: Icon(Icons.settings),
               label: 'Pengaturan',
             ),
           ],

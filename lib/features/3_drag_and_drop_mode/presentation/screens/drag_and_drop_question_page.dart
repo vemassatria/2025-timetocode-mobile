@@ -28,12 +28,41 @@ class DragAndDropQuestionPage extends ConsumerWidget {
     );
 
     return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        final isPopupVisible = ref.read(popupVisibilityProvider);
+        if (isPopupVisible) {
+          closePopupOverlay(ref);
+        } else {
+          showPopupOverlay(
+            context,
+            MenuPopup(
+              onRestart: () {
+                dndNotifier.resetDnD();
+                closePopupOverlay(ref);
+              },
+              onExit: () {
+                dndNotifier.exitDnD();
+                closePopupOverlay(ref);
+              },
+              onClose: () {
+                closePopupOverlay(ref);
+              },
+              onGoBack: () {
+                closePopupOverlay(ref);
+              },
+            ),
+            ref,
+          );
+        }
+      },
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.surfaceDark,
           elevation: 0,
           leading: IconButton(
-            icon: Icon(Icons.menu, color: AppColors.primaryText),
+            icon: const Icon(Icons.menu, color: AppColors.primaryText),
             onPressed: () {
               showPopupOverlay(
                 context,
@@ -61,7 +90,7 @@ class DragAndDropQuestionPage extends ConsumerWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.check_circle, color: AppColors.xpGreen),
+                const Icon(Icons.check_circle, color: AppColors.xpGreen),
                 SizedBox(
                   width: 35.w,
                   child: Text(
@@ -71,7 +100,7 @@ class DragAndDropQuestionPage extends ConsumerWidget {
                   ),
                 ),
                 SizedBox(width: 16.w),
-                Icon(Icons.cancel, color: AppColors.dangerRed),
+                const Icon(Icons.cancel, color: AppColors.dangerRed),
                 SizedBox(
                   width: 35.w,
                   child: Text(
@@ -184,36 +213,6 @@ class DragAndDropQuestionPage extends ConsumerWidget {
           ),
         ),
       ),
-
-      canPop: false,
-      onPopInvokedWithResult: (didPop, result) {
-        if (didPop) return;
-        final isPopupVisible = ref.read(popupVisibilityProvider);
-        if (isPopupVisible) {
-          closePopupOverlay(ref);
-        } else {
-          showPopupOverlay(
-            context,
-            MenuPopup(
-              onRestart: () {
-                dndNotifier.resetDnD();
-                closePopupOverlay(ref);
-              },
-              onExit: () {
-                dndNotifier.exitDnD();
-                closePopupOverlay(ref);
-              },
-              onClose: () {
-                closePopupOverlay(ref);
-              },
-              onGoBack: () {
-                closePopupOverlay(ref);
-              },
-            ),
-            ref,
-          );
-        }
-      },
     );
   }
 }

@@ -14,7 +14,7 @@ import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
 
 class StorySelectionPage extends ConsumerWidget {
-  const StorySelectionPage({Key? key}) : super(key: key);
+  const StorySelectionPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,7 +29,7 @@ class StorySelectionPage extends ConsumerWidget {
             body: Center(child: CircularProgressIndicator()),
           ),
       error:
-          (error, stack) => Scaffold(
+          (error, stack) => const Scaffold(
             backgroundColor: AppColors.darkBackground,
             body: Center(child: Text('Error loading levels')),
           ),
@@ -63,7 +63,7 @@ class StorySelectionPage extends ConsumerWidget {
               ),
             ],
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(1),
+              preferredSize: const Size.fromHeight(1),
               child: Container(height: 1, color: AppColors.black1),
             ),
           ),

@@ -33,8 +33,8 @@ class StoryCharactersComponent extends Component {
     int indexPerson1Path,
     int indexPerson2Path,
   ) async {
-    final image1 = await _game.images.fromCache('character/$person1Path.webp');
-    final image2 = await _game.images.fromCache('character/$person2Path.webp');
+    final image1 = _game.images.fromCache('character/$person1Path.webp');
+    final image2 = _game.images.fromCache('character/$person2Path.webp');
 
     person1 = SpriteComponent(
       sprite: Sprite(image1),
@@ -59,7 +59,7 @@ class StoryCharactersComponent extends Component {
     String characterNewPath,
     int newIndexPath,
   ) async {
-    final image = await _game.images.fromCache(
+    final image = _game.images.fromCache(
       'character/$characterNewPath.webp',
     );
     final height = _game.size.y * 0.35;
@@ -143,7 +143,7 @@ class StoryCharactersComponent extends Component {
     final target = indexCharacter == 1 ? person1 : person2;
     target.paint =
         Paint()
-          ..colorFilter = ColorFilter.mode(Colors.transparent, BlendMode.dstIn);
+          ..colorFilter = const ColorFilter.mode(Colors.transparent, BlendMode.dstIn);
   }
 
   Future<void> explainingCharacter(int indexCharacter) async {

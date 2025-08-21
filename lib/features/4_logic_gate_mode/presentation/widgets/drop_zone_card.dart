@@ -26,13 +26,7 @@ class DropZoneCard extends ConsumerWidget {
       builder: (context, candidateData, rejectedData) {
         final bool isHovering = candidateData.isNotEmpty;
         return cardSlot!.placedCard != null
-            ? Container(
-                child: LogicGateCard(
-                  card: cardSlot.placedCard!,
-                  height: 50,
-                  width: 35,
-                ),
-              )
+            ? LogicGateCard(card: cardSlot.placedCard!, height: 50, width: 35)
             : (isUnlocked
                   ? Container(
                       width: 35.w,

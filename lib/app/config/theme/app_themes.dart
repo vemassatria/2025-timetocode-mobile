@@ -11,13 +11,13 @@ class AppThemes {
     dividerColor: AppColors.primaryText,
 
     // === AppBar Theme ===
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.surfaceDark,
       elevation: 0,
     ),
 
     // === Bottom Navigation Bar Theme ===
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppColors.surfaceDark,
       selectedItemColor: AppColors.skyByte,
       unselectedItemColor: AppColors.primaryText,

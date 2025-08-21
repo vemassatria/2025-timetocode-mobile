@@ -60,7 +60,6 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     ) {
       if (previous != next && mounted) {
         _isTextAnimationComplete = false;
-        ;
       }
     });
     final currentConversation = dialog!.dialogs[indexDialog!];

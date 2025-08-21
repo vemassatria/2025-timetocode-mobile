@@ -26,15 +26,15 @@ class CodeText extends ConsumerWidget {
     height: 2,
   );
 
-  static final _keywordStyle = TextStyle(color: Color(0xFF569CD6));
-  static final _typeStyle = TextStyle(color: Color(0xFF4EC9B0));
-  static final _variableStyle = TextStyle(color: Color(0xFF9CDCFE));
+  static const _keywordStyle = TextStyle(color: Color(0xFF569CD6));
+  static const _typeStyle = TextStyle(color: Color(0xFF4EC9B0));
+  static const _variableStyle = TextStyle(color: Color(0xFF9CDCFE));
   static final _functionStyle = _baseStyle;
   static final _functionDragAndDropStyle = _dragAndDropStyle;
-  static final _stringStyle = TextStyle(color: Color(0xFFCE9178));
-  static final _numberStyle = TextStyle(color: Color(0xFFB5CEA8));
-  static final _controlFlowStyle = TextStyle(color: Color(0xFFC586C0));
-  static final _commentStyle = TextStyle(color: Color(0xFF6A9955));
+  static const _stringStyle = TextStyle(color: Color(0xFFCE9178));
+  static const _numberStyle = TextStyle(color: Color(0xFFB5CEA8));
+  static const _controlFlowStyle = TextStyle(color: Color(0xFFC586C0));
+  static const _commentStyle = TextStyle(color: Color(0xFF6A9955));
 
   static const _keywords = {
     'void',
@@ -168,14 +168,14 @@ class CodeText extends ConsumerWidget {
         if (position < line.length &&
             line[position] == ',' &&
             inVariableDeclaration) {
-          spans.add(TextSpan(text: ','));
+          spans.add(const TextSpan(text: ','));
           position++;
           expectingVariableAfterComma = true;
           continue;
         }
 
         if (position < line.length && line[position] == ';') {
-          spans.add(TextSpan(text: ';'));
+          spans.add(const TextSpan(text: ';'));
           position++;
           inVariableDeclaration = false;
           expectingVariableAfterComma = false;

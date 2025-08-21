@@ -55,7 +55,7 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
 
   List<LogicGateCardModel> _getAvailableCards(int playerId) {
     const int numberOfCards = 5;
-    final availableTypes = LogicGateType.values;
+    const availableTypes = LogicGateType.values;
 
     final int startId = (playerId == 1) ? 1 : (numberOfCards + 1);
 
@@ -159,10 +159,9 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
       cardSlots: state.cardSlots!,
       player1Hand: state.player!.hand,
       player2Hand: state.opponent!.hand,
-      currentPlayerId: 0, // AI adalah pemain 0
+      currentPlayerId: 0,
     );
 
-    // Minta prediksi dari AI Service
     final move = _aiService!.predictMove(
       gameState: aiGameState,
       difficulty: state.difficulty,
@@ -172,15 +171,11 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
       final slotId = move['slot']!;
       final cardTypeId = move['card']!;
 
-      // Temukan kartu asli di tangan AI berdasarkan tipe yang dipilih
       final cardInHand = state.opponent!.hand.firstWhere(
         (card) => card.type.index + 1 == cardTypeId,
       );
 
-      // Eksekusi langkah yang dipilih AI
       dropCard(slotId, cardInHand.id);
-    } else {
-      print("AI tidak dapat menemukan langkah yang valid.");
     }
   }
 

@@ -18,10 +18,10 @@ class StoryIlustrationComponent extends Component {
   }
 
   Future<void> loadIlustration(String path) async {
-    final image = await _game.images.fromCache('ilustration/$path.webp');
+    final image = _game.images.fromCache('ilustration/$path.webp');
 
     final size = Vector2.all(350);
-    final borderWidth = 4.0;
+    const borderWidth = 4.0;
     final position = Vector2((_game.size.x - size.x) / 2, _game.size.y * 0.15);
 
     border = RectangleComponent(
@@ -46,12 +46,12 @@ class StoryIlustrationComponent extends Component {
     String newIlustrationPath,
     int newIndexPath,
   ) async {
-    final image = await _game.images.fromCache(
+    final image = _game.images.fromCache(
       'ilustration/$newIlustrationPath.webp',
     );
 
     final size = Vector2.all(350);
-    final borderWidth = 4.0;
+    const borderWidth = 4.0;
     final position = Vector2((_game.size.x - size.x) / 2, _game.size.y * 0.15);
 
     ilustration

@@ -20,7 +20,7 @@ void showPopupOverlay(
   _currentOverlay = OverlayEntry(
     builder:
         (context) => Material(
-          color: Color(0x80000000),
+          color: const Color(0x80000000),
           child: Center(child: popupContent),
         ),
   );

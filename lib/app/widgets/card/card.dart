@@ -138,7 +138,7 @@ class LevelCard extends ConsumerWidget {
           "Selesai",
           style: AppTypography.normalBold(color: AppColors.black1),
         ),
-        avatar: Icon(Icons.check_box_rounded, color: AppColors.black1),
+        avatar: const Icon(Icons.check_box_rounded, color: AppColors.black1),
         backgroundColor: AppColors.lightGreen,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.r),

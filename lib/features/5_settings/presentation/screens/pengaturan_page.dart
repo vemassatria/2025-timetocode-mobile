@@ -48,7 +48,7 @@ class PengaturanPage extends ConsumerWidget {
             ),
             SizedBox(height: 8.h),
             SettingItem(
-              icon: Icon(Icons.volume_up),
+              icon: const Icon(Icons.volume_up),
               label: "Efek Suara",
               value: isEffectEnabled,
               onChanged: (value) {

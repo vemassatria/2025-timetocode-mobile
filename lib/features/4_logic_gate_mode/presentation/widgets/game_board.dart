@@ -219,7 +219,7 @@ class _GameBoardState extends ConsumerState<GameBoard> {
       cardId = 0;
     }
     final List<Widget> slots = List.generate(iteration, (index) {
-      final widget;
+      final ConsumerWidget widget;
       if ((index + 1) % 2 != 0) {
         widget = BinarySlotWidget(
           key: _keys['binary-$binaryId'],

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/app/widgets/popups/menu_popup.dart';
 import 'package:timetocode/app/data/providers/popup_visibility_provider.dart';
+import 'package:timetocode/features/1_story_mode/engine/core/game_engine.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/dialog_box.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/intro.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/question_box_widget.dart';
@@ -19,7 +20,7 @@ class StoryGameplayPage extends ConsumerStatefulWidget {
 }
 
 class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
-  late final game;
+  late final GameEngine game;
 
   @override
   void initState() {
@@ -34,19 +35,6 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
     );
 
     return PopScope(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            GameWidget(game: game),
-
-            _buildContentUI(activeMode),
-
-            const StoryMenu(),
-
-            if (activeMode == 'dialog') const SkipButton(),
-          ],
-        ),
-      ),
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
         if (didPop) return;
@@ -77,6 +65,19 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
           );
         }
       },
+      child: Scaffold(
+        body: Stack(
+          children: [
+            GameWidget(game: game),
+
+            _buildContentUI(activeMode),
+
+            const StoryMenu(),
+
+            if (activeMode == 'dialog') const SkipButton(),
+          ],
+        ),
+      ),
     );
   }
 

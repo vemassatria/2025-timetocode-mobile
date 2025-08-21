@@ -117,7 +117,7 @@ class CustomButton extends StatelessWidget {
         if (icon is SvgPicture) {
           return icon as SvgPicture;
         }
-        return SizedBox();
+        return const SizedBox();
       case ButtonType.filled:
       case ButtonType.outline:
         return Text(label ?? '', textAlign: _getTextAlignment());

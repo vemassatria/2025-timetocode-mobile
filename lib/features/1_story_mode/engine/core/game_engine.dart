@@ -63,10 +63,11 @@ class GameEngine extends FlameGame {
           _characters!.changeCharacter(2, char2Img!, c2Reaction),
       ]);
     }
-    if (isIllustration)
+    if (isIllustration) {
       await _characters!.explainEmotion(speaker);
-    else
+    } else {
       await _characters!.changeEmotion(speaker);
+    }
   }
 
   void hideCharacters() {

@@ -66,7 +66,7 @@ class ChallengeController extends AutoDisposeNotifier<ChallengeState> {
   }
 
   void nextQuestion(String currentDifficulty) {
-    late final currentQuestion;
+    late final QuestionModel currentQuestion;
     switch (currentDifficulty) {
       case 'mudah':
         currentQuestion = state.currentLevel!.questions.mudah.first;

@@ -11,12 +11,12 @@ class ChallengeCard extends StatelessWidget {
   final VoidCallback? onTap;
 
   const ChallengeCard({
-    Key? key,
+    super.key,
     required this.levelNumber,
     required this.starCount,
     required this.isUnlocked,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +26,10 @@ class ChallengeCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.surfaceDark,
           borderRadius: BorderRadius.circular(8.r),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: AppColors.black1,
-              offset: const Offset(0, 6),
+              offset: Offset(0, 6),
               blurRadius: 0,
               spreadRadius: 0,
             ),
@@ -56,7 +56,7 @@ class ChallengeCard extends StatelessWidget {
   }
 
   Widget _buildLockWithBorder() {
-    return Stack(
+    return const Stack(
       alignment: Alignment.center,
       children: [
         Icon(Icons.lock, color: AppColors.primaryText, size: 96),

@@ -29,7 +29,7 @@ class MenuButton extends ConsumerWidget {
     return BoxDecoration(
       color: AppColors.darkBackground,
       borderRadius: BorderRadius.horizontal(
-        left: Radius.circular(0),
+        left: const Radius.circular(0),
         right: Radius.circular(100.r),
       ),
     );

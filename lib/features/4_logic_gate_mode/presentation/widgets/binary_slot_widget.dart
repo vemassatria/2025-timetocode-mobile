@@ -11,7 +11,7 @@ class BinarySlotWidget extends ConsumerWidget {
   const BinarySlotWidget({super.key, required this.slotId});
 
   @override
-  Widget build(BuildContext, WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final binarySlot = ref.watch(
       logicGateControllerProvider.select(
         (state) => state.binarySlots?.firstWhere((s) => s.id == slotId),

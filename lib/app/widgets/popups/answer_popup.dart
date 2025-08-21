@@ -70,7 +70,7 @@ class AnswerPopup extends ConsumerWidget {
             RichText(
               text: TextSpan(
                 style: AppTypography.small(color: AppColors.primaryText),
-                children: [
+                children: const [
                   TextSpan(text: "Jawaban yang "),
                   TextSpan(
                     text: "benar",

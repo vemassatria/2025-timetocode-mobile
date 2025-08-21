@@ -39,7 +39,7 @@ class LogicGateMenu extends ConsumerWidget {
                 );
               },
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.0),
             border: Border.all(color: AppColors.white, width: 1.0),

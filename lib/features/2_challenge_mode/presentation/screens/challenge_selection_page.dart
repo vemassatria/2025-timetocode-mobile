@@ -11,7 +11,7 @@ import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 
 class ChallengeSelectionPage extends ConsumerWidget {
-  const ChallengeSelectionPage({Key? key}) : super(key: key);
+  const ChallengeSelectionPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,7 +27,7 @@ class ChallengeSelectionPage extends ConsumerWidget {
             body: Center(child: CircularProgressIndicator()),
           ),
       error:
-          (error, stack) => Scaffold(
+          (error, stack) => const Scaffold(
             backgroundColor: AppColors.darkBackground,
             body: Center(child: Text('Error loading levels')),
           ),

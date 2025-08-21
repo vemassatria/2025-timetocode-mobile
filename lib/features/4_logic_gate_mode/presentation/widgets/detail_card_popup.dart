@@ -51,7 +51,7 @@ class DetailCardPopup extends StatelessWidget {
           Text(name, style: AppTypography.heading5(color: AppColors.white)),
           SizedBox(height: 24.h),
           SvgPicture.asset(
-            'assets/images/logic_gate/tables/${name}.svg',
+            'assets/images/logic_gate/tables/$name.svg',
             width: 290.w,
             height: 180.h,
           ),
