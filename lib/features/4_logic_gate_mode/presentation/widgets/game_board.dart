@@ -10,6 +10,7 @@ import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/binar
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/drop_zone_card.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/line_painter.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/logic_gate_ending_popup.dart';
+import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/logic_gate_how_to_play.dart';
 import 'package:timetocode/features/4_logic_gate_mode/presentation/widgets/logic_gate_menu.dart';
 
 class GameBoard extends ConsumerStatefulWidget {
@@ -175,6 +176,7 @@ class _GameBoardState extends ConsumerState<GameBoard> {
           ),
           _buildGameRow(),
           const LogicGateMenu(),
+          const LogicGateHowToPlay(),
         ],
       ),
     );
