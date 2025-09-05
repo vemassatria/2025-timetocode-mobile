@@ -110,6 +110,9 @@ class MainNavigation extends ConsumerWidget {
           currentIndex: selectedIndex,
           onTap: (index) {
             ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
+            if (ref.read(popupVisibilityProvider)) {
+              closePopupOverlay(ref);
+            }
             _onItemTapped(index, context);
           },
           selectedLabelStyle: AppTypography.verySmallBold(

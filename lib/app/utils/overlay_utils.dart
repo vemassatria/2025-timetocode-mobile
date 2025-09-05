@@ -18,11 +18,10 @@ void showPopupOverlay(
   }
 
   _currentOverlay = OverlayEntry(
-    builder:
-        (context) => Material(
-          color: const Color(0x80000000),
-          child: Center(child: popupContent),
-        ),
+    builder: (context) => Material(
+      color: const Color(0x80000000),
+      child: Center(child: popupContent),
+    ),
   );
 
   overlay.insert(_currentOverlay!);
