@@ -6,6 +6,9 @@ import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/da
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/models/draggable_model.dart';
 import 'package:timetocode/app/config/routes/app_route.dart';
 
+final dndControllerProvider =
+    NotifierProvider.autoDispose<DndController, DndState>(DndController.new);
+
 class DndController extends AutoDisposeNotifier<DndState> {
   KeepAliveLink? _keepAliveLink;
 
@@ -28,6 +31,8 @@ class DndController extends AutoDisposeNotifier<DndState> {
       availableOptions: List.from(dndModel.draggableOptions),
       dropZones: List.from(dndModel.dropZones),
     );
+
+    ref.read(storyControllerProvider.notifier).game.pauseEngine();
   }
 
   void dropItem(String targetZoneId, String droppedOptionId) {
@@ -99,14 +104,13 @@ class DndController extends AutoDisposeNotifier<DndState> {
     if (state.currentDragAndDrop!.nextType == 'dnd') {
       initializeDragAndDrop(state.currentDragAndDrop!.id);
     } else {
+      ref.read(storyControllerProvider.notifier).game.resumeEngine();
       ref
           .read(storyControllerProvider.notifier)
           .navigateMode(
-            state.currentDragAndDrop!.next,
             state.currentDragAndDrop!.nextType,
+            state.currentDragAndDrop!.next,
           );
-    }
-    if (state.currentDragAndDrop!.nextType != 'dnd') {
       ref.read(routerProvider).pop();
       _releaseKeepAlive();
     }
@@ -136,6 +140,3 @@ class DndController extends AutoDisposeNotifier<DndState> {
     _keepAliveLink = null;
   }
 }
-
-final dndControllerProvider =
-    NotifierProvider.autoDispose<DndController, DndState>(DndController.new);
