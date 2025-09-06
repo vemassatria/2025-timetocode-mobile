@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DragAndDropModel {
 
- String get id; String get instruction; String? get scaffoldCode; List<DraggableModel> get draggableOptions; List<DropZoneModel> get dropZones; List<String> get correctSequence; String? get next; String? get nextType; String? get nextDifficulty;
+ String get id; String get instruction; String? get scaffoldCode; List<DraggableModel> get draggableOptions; List<DropZoneModel> get dropZones; List<String> get correctSequence; String? get next; String? get nextType;
 /// Create a copy of DragAndDropModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $DragAndDropModelCopyWith<DragAndDropModel> get copyWith => _$DragAndDropModelCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DragAndDropModel&&(identical(other.id, id) || other.id == id)&&(identical(other.instruction, instruction) || other.instruction == instruction)&&(identical(other.scaffoldCode, scaffoldCode) || other.scaffoldCode == scaffoldCode)&&const DeepCollectionEquality().equals(other.draggableOptions, draggableOptions)&&const DeepCollectionEquality().equals(other.dropZones, dropZones)&&const DeepCollectionEquality().equals(other.correctSequence, correctSequence)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&(identical(other.nextDifficulty, nextDifficulty) || other.nextDifficulty == nextDifficulty));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DragAndDropModel&&(identical(other.id, id) || other.id == id)&&(identical(other.instruction, instruction) || other.instruction == instruction)&&(identical(other.scaffoldCode, scaffoldCode) || other.scaffoldCode == scaffoldCode)&&const DeepCollectionEquality().equals(other.draggableOptions, draggableOptions)&&const DeepCollectionEquality().equals(other.dropZones, dropZones)&&const DeepCollectionEquality().equals(other.correctSequence, correctSequence)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,instruction,scaffoldCode,const DeepCollectionEquality().hash(draggableOptions),const DeepCollectionEquality().hash(dropZones),const DeepCollectionEquality().hash(correctSequence),next,nextType,nextDifficulty);
+int get hashCode => Object.hash(runtimeType,id,instruction,scaffoldCode,const DeepCollectionEquality().hash(draggableOptions),const DeepCollectionEquality().hash(dropZones),const DeepCollectionEquality().hash(correctSequence),next,nextType);
 
 @override
 String toString() {
-  return 'DragAndDropModel(id: $id, instruction: $instruction, scaffoldCode: $scaffoldCode, draggableOptions: $draggableOptions, dropZones: $dropZones, correctSequence: $correctSequence, next: $next, nextType: $nextType, nextDifficulty: $nextDifficulty)';
+  return 'DragAndDropModel(id: $id, instruction: $instruction, scaffoldCode: $scaffoldCode, draggableOptions: $draggableOptions, dropZones: $dropZones, correctSequence: $correctSequence, next: $next, nextType: $nextType)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $DragAndDropModelCopyWith<$Res>  {
   factory $DragAndDropModelCopyWith(DragAndDropModel value, $Res Function(DragAndDropModel) _then) = _$DragAndDropModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String instruction, String? scaffoldCode, List<DraggableModel> draggableOptions, List<DropZoneModel> dropZones, List<String> correctSequence, String? next, String? nextType, String? nextDifficulty
+ String id, String instruction, String? scaffoldCode, List<DraggableModel> draggableOptions, List<DropZoneModel> dropZones, List<String> correctSequence, String? next, String? nextType
 });
 
 
@@ -65,7 +65,7 @@ class _$DragAndDropModelCopyWithImpl<$Res>
 
 /// Create a copy of DragAndDropModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? instruction = null,Object? scaffoldCode = freezed,Object? draggableOptions = null,Object? dropZones = null,Object? correctSequence = null,Object? next = freezed,Object? nextType = freezed,Object? nextDifficulty = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? instruction = null,Object? scaffoldCode = freezed,Object? draggableOptions = null,Object? dropZones = null,Object? correctSequence = null,Object? next = freezed,Object? nextType = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,instruction: null == instruction ? _self.instruction : instruction // ignore: cast_nullable_to_non_nullable
@@ -75,7 +75,6 @@ as List<DraggableModel>,dropZones: null == dropZones ? _self.dropZones : dropZon
 as List<DropZoneModel>,correctSequence: null == correctSequence ? _self.correctSequence : correctSequence // ignore: cast_nullable_to_non_nullable
 as List<String>,next: freezed == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String?,nextType: freezed == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
-as String?,nextDifficulty: freezed == nextDifficulty ? _self.nextDifficulty : nextDifficulty // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -161,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String instruction,  String? scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  String? next,  String? nextType,  String? nextDifficulty)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String instruction,  String? scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  String? next,  String? nextType)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DragAndDropModel() when $default != null:
-return $default(_that.id,_that.instruction,_that.scaffoldCode,_that.draggableOptions,_that.dropZones,_that.correctSequence,_that.next,_that.nextType,_that.nextDifficulty);case _:
+return $default(_that.id,_that.instruction,_that.scaffoldCode,_that.draggableOptions,_that.dropZones,_that.correctSequence,_that.next,_that.nextType);case _:
   return orElse();
 
 }
@@ -182,10 +181,10 @@ return $default(_that.id,_that.instruction,_that.scaffoldCode,_that.draggableOpt
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String instruction,  String? scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  String? next,  String? nextType,  String? nextDifficulty)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String instruction,  String? scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  String? next,  String? nextType)  $default,) {final _that = this;
 switch (_that) {
 case _DragAndDropModel():
-return $default(_that.id,_that.instruction,_that.scaffoldCode,_that.draggableOptions,_that.dropZones,_that.correctSequence,_that.next,_that.nextType,_that.nextDifficulty);case _:
+return $default(_that.id,_that.instruction,_that.scaffoldCode,_that.draggableOptions,_that.dropZones,_that.correctSequence,_that.next,_that.nextType);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -202,10 +201,10 @@ return $default(_that.id,_that.instruction,_that.scaffoldCode,_that.draggableOpt
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String instruction,  String? scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  String? next,  String? nextType,  String? nextDifficulty)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String instruction,  String? scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  String? next,  String? nextType)?  $default,) {final _that = this;
 switch (_that) {
 case _DragAndDropModel() when $default != null:
-return $default(_that.id,_that.instruction,_that.scaffoldCode,_that.draggableOptions,_that.dropZones,_that.correctSequence,_that.next,_that.nextType,_that.nextDifficulty);case _:
+return $default(_that.id,_that.instruction,_that.scaffoldCode,_that.draggableOptions,_that.dropZones,_that.correctSequence,_that.next,_that.nextType);case _:
   return null;
 
 }
@@ -217,7 +216,7 @@ return $default(_that.id,_that.instruction,_that.scaffoldCode,_that.draggableOpt
 @JsonSerializable()
 
 class _DragAndDropModel implements DragAndDropModel {
-  const _DragAndDropModel({required this.id, required this.instruction, this.scaffoldCode, required final  List<DraggableModel> draggableOptions, required final  List<DropZoneModel> dropZones, required final  List<String> correctSequence, this.next, this.nextType, this.nextDifficulty}): _draggableOptions = draggableOptions,_dropZones = dropZones,_correctSequence = correctSequence;
+  const _DragAndDropModel({required this.id, required this.instruction, this.scaffoldCode, required final  List<DraggableModel> draggableOptions, required final  List<DropZoneModel> dropZones, required final  List<String> correctSequence, this.next, this.nextType}): _draggableOptions = draggableOptions,_dropZones = dropZones,_correctSequence = correctSequence;
   factory _DragAndDropModel.fromJson(Map<String, dynamic> json) => _$DragAndDropModelFromJson(json);
 
 @override final  String id;
@@ -246,7 +245,6 @@ class _DragAndDropModel implements DragAndDropModel {
 
 @override final  String? next;
 @override final  String? nextType;
-@override final  String? nextDifficulty;
 
 /// Create a copy of DragAndDropModel
 /// with the given fields replaced by the non-null parameter values.
@@ -261,16 +259,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DragAndDropModel&&(identical(other.id, id) || other.id == id)&&(identical(other.instruction, instruction) || other.instruction == instruction)&&(identical(other.scaffoldCode, scaffoldCode) || other.scaffoldCode == scaffoldCode)&&const DeepCollectionEquality().equals(other._draggableOptions, _draggableOptions)&&const DeepCollectionEquality().equals(other._dropZones, _dropZones)&&const DeepCollectionEquality().equals(other._correctSequence, _correctSequence)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&(identical(other.nextDifficulty, nextDifficulty) || other.nextDifficulty == nextDifficulty));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DragAndDropModel&&(identical(other.id, id) || other.id == id)&&(identical(other.instruction, instruction) || other.instruction == instruction)&&(identical(other.scaffoldCode, scaffoldCode) || other.scaffoldCode == scaffoldCode)&&const DeepCollectionEquality().equals(other._draggableOptions, _draggableOptions)&&const DeepCollectionEquality().equals(other._dropZones, _dropZones)&&const DeepCollectionEquality().equals(other._correctSequence, _correctSequence)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,instruction,scaffoldCode,const DeepCollectionEquality().hash(_draggableOptions),const DeepCollectionEquality().hash(_dropZones),const DeepCollectionEquality().hash(_correctSequence),next,nextType,nextDifficulty);
+int get hashCode => Object.hash(runtimeType,id,instruction,scaffoldCode,const DeepCollectionEquality().hash(_draggableOptions),const DeepCollectionEquality().hash(_dropZones),const DeepCollectionEquality().hash(_correctSequence),next,nextType);
 
 @override
 String toString() {
-  return 'DragAndDropModel(id: $id, instruction: $instruction, scaffoldCode: $scaffoldCode, draggableOptions: $draggableOptions, dropZones: $dropZones, correctSequence: $correctSequence, next: $next, nextType: $nextType, nextDifficulty: $nextDifficulty)';
+  return 'DragAndDropModel(id: $id, instruction: $instruction, scaffoldCode: $scaffoldCode, draggableOptions: $draggableOptions, dropZones: $dropZones, correctSequence: $correctSequence, next: $next, nextType: $nextType)';
 }
 
 
@@ -281,7 +279,7 @@ abstract mixin class _$DragAndDropModelCopyWith<$Res> implements $DragAndDropMod
   factory _$DragAndDropModelCopyWith(_DragAndDropModel value, $Res Function(_DragAndDropModel) _then) = __$DragAndDropModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String instruction, String? scaffoldCode, List<DraggableModel> draggableOptions, List<DropZoneModel> dropZones, List<String> correctSequence, String? next, String? nextType, String? nextDifficulty
+ String id, String instruction, String? scaffoldCode, List<DraggableModel> draggableOptions, List<DropZoneModel> dropZones, List<String> correctSequence, String? next, String? nextType
 });
 
 
@@ -298,7 +296,7 @@ class __$DragAndDropModelCopyWithImpl<$Res>
 
 /// Create a copy of DragAndDropModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? instruction = null,Object? scaffoldCode = freezed,Object? draggableOptions = null,Object? dropZones = null,Object? correctSequence = null,Object? next = freezed,Object? nextType = freezed,Object? nextDifficulty = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? instruction = null,Object? scaffoldCode = freezed,Object? draggableOptions = null,Object? dropZones = null,Object? correctSequence = null,Object? next = freezed,Object? nextType = freezed,}) {
   return _then(_DragAndDropModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,instruction: null == instruction ? _self.instruction : instruction // ignore: cast_nullable_to_non_nullable
@@ -308,7 +306,6 @@ as List<DraggableModel>,dropZones: null == dropZones ? _self._dropZones : dropZo
 as List<DropZoneModel>,correctSequence: null == correctSequence ? _self._correctSequence : correctSequence // ignore: cast_nullable_to_non_nullable
 as List<String>,next: freezed == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String?,nextType: freezed == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
-as String?,nextDifficulty: freezed == nextDifficulty ? _self.nextDifficulty : nextDifficulty // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

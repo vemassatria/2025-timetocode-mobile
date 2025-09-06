@@ -66,9 +66,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
         currentQuestion: null,
         indexDialog: null,
       );
-      ref
-          .read(dndControllerProvider.notifier)
-          .initializeDragAndDrop(modeId!, 'story');
+      ref.read(dndControllerProvider.notifier).initializeDragAndDrop(modeId!);
       ref.read(routerProvider).push('/dnd');
     } else {
       showEndGame();
@@ -249,7 +247,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
               game.hideIlustration();
               ref
                   .read(dndControllerProvider.notifier)
-                  .initializeDragAndDrop(choice.next, 'story');
+                  .initializeDragAndDrop(choice.next);
               ref.read(routerProvider).push('/dnd');
               return true;
             }
@@ -272,7 +270,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
           game.hideIlustration();
           ref
               .read(dndControllerProvider.notifier)
-              .initializeDragAndDrop(dialog.next!, 'story');
+              .initializeDragAndDrop(dialog.next!);
           ref.read(routerProvider).push('/dnd');
           return true;
         } else {

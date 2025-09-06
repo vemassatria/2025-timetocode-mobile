@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/features/2_challenge_mode/data/controllers/challenge_progress_controller.dart';
 import 'package:timetocode/features/2_challenge_mode/data/states/challenge_state.dart';
-import 'package:timetocode/features/3_drag_and_drop_mode/data/controllers/dnd_gameplay_controller.dart';
 import 'package:timetocode/features/2_challenge_mode/data/models/challenge_level_model.dart';
 import 'package:timetocode/features/0_core/models/choices_model.dart';
 import 'package:timetocode/features/0_core/models/question_model.dart';
@@ -37,18 +36,7 @@ class ChallengeController extends AutoDisposeNotifier<ChallengeState> {
   }
 
   Future<void> checkAnswer(ChoicesModel selected) async {
-    final nextType = selected.nextType;
-
-    if (nextType == "dragAndDrop") {
-      ref
-          .read(dndControllerProvider.notifier)
-          .initializeDragAndDrop(selected.next!, "challenge");
-      ref.read(routerProvider).push('/dnd');
-      return;
-    }
-
-    final difficulty = selected.nextDifficulty;
-
+    final difficulty = selected.nextType;
     if (difficulty == null) {
       if (selected.isCorrect == true) {
         correctAnswer();

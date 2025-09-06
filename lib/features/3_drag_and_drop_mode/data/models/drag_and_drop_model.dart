@@ -16,7 +16,6 @@ abstract class DragAndDropModel with _$DragAndDropModel {
     required List<String> correctSequence,
     String? next,
     String? nextType,
-    String? nextDifficulty,
   }) = _DragAndDropModel;
 
   factory DragAndDropModel.fromJson(Map<String, dynamic> json) =>

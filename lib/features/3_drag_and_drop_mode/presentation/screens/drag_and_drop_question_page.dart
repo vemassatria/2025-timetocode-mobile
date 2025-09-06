@@ -34,12 +34,6 @@ class DragAndDropQuestionPage extends ConsumerWidget {
     final allZonesFilled = dropZones!.every(
       (zone) => zone.contentDraggable != null,
     );
-    final correctAnswers = ref.watch(
-      dndControllerProvider.select((state) => state.correctAnswer),
-    );
-    final wrongAnswers = ref.watch(
-      dndControllerProvider.select((state) => state.wrongAnswer),
-    );
 
     return PopScope(
       canPop: false,
@@ -102,33 +96,6 @@ class DragAndDropQuestionPage extends ConsumerWidget {
                     );
                   },
                 ),
-                actions: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.check_circle, color: AppColors.xpGreen),
-                      SizedBox(
-                        width: 35.w,
-                        child: Text(
-                          "${correctAnswers ?? 0}/3",
-                          style: AppTypography.mediumBold(),
-                          textAlign: TextAlign.end,
-                        ),
-                      ),
-                      SizedBox(width: 16.w),
-                      const Icon(Icons.cancel, color: AppColors.dangerRed),
-                      SizedBox(
-                        width: 35.w,
-                        child: Text(
-                          "${wrongAnswers ?? 0}/3",
-                          style: AppTypography.mediumBold(),
-                          textAlign: TextAlign.end,
-                        ),
-                      ),
-                      SizedBox(width: 16.w),
-                    ],
-                  ),
-                ],
               ),
               body: SingleChildScrollView(
                 child: Padding(

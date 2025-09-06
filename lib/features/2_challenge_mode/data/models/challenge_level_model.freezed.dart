@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChallengeLevelModel {
 
- int get id; String get levelName; QuestionDifficultyModel get questions; List<DragAndDropModel>? get dragAndDrop;
+ int get id; String get levelName; QuestionDifficultyModel get questions;
 /// Create a copy of ChallengeLevelModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ChallengeLevelModelCopyWith<ChallengeLevelModel> get copyWith => _$ChallengeLev
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChallengeLevelModel&&(identical(other.id, id) || other.id == id)&&(identical(other.levelName, levelName) || other.levelName == levelName)&&(identical(other.questions, questions) || other.questions == questions)&&const DeepCollectionEquality().equals(other.dragAndDrop, dragAndDrop));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChallengeLevelModel&&(identical(other.id, id) || other.id == id)&&(identical(other.levelName, levelName) || other.levelName == levelName)&&(identical(other.questions, questions) || other.questions == questions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,levelName,questions,const DeepCollectionEquality().hash(dragAndDrop));
+int get hashCode => Object.hash(runtimeType,id,levelName,questions);
 
 @override
 String toString() {
-  return 'ChallengeLevelModel(id: $id, levelName: $levelName, questions: $questions, dragAndDrop: $dragAndDrop)';
+  return 'ChallengeLevelModel(id: $id, levelName: $levelName, questions: $questions)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ChallengeLevelModelCopyWith<$Res>  {
   factory $ChallengeLevelModelCopyWith(ChallengeLevelModel value, $Res Function(ChallengeLevelModel) _then) = _$ChallengeLevelModelCopyWithImpl;
 @useResult
 $Res call({
- int id, String levelName, QuestionDifficultyModel questions, List<DragAndDropModel>? dragAndDrop
+ int id, String levelName, QuestionDifficultyModel questions
 });
 
 
@@ -65,13 +65,12 @@ class _$ChallengeLevelModelCopyWithImpl<$Res>
 
 /// Create a copy of ChallengeLevelModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? levelName = null,Object? questions = null,Object? dragAndDrop = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? levelName = null,Object? questions = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,levelName: null == levelName ? _self.levelName : levelName // ignore: cast_nullable_to_non_nullable
 as String,questions: null == questions ? _self.questions : questions // ignore: cast_nullable_to_non_nullable
-as QuestionDifficultyModel,dragAndDrop: freezed == dragAndDrop ? _self.dragAndDrop : dragAndDrop // ignore: cast_nullable_to_non_nullable
-as List<DragAndDropModel>?,
+as QuestionDifficultyModel,
   ));
 }
 /// Create a copy of ChallengeLevelModel
@@ -165,10 +164,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String levelName,  QuestionDifficultyModel questions,  List<DragAndDropModel>? dragAndDrop)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String levelName,  QuestionDifficultyModel questions)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChallengeLevelModel() when $default != null:
-return $default(_that.id,_that.levelName,_that.questions,_that.dragAndDrop);case _:
+return $default(_that.id,_that.levelName,_that.questions);case _:
   return orElse();
 
 }
@@ -186,10 +185,10 @@ return $default(_that.id,_that.levelName,_that.questions,_that.dragAndDrop);case
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String levelName,  QuestionDifficultyModel questions,  List<DragAndDropModel>? dragAndDrop)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String levelName,  QuestionDifficultyModel questions)  $default,) {final _that = this;
 switch (_that) {
 case _ChallengeLevelModel():
-return $default(_that.id,_that.levelName,_that.questions,_that.dragAndDrop);case _:
+return $default(_that.id,_that.levelName,_that.questions);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -206,10 +205,10 @@ return $default(_that.id,_that.levelName,_that.questions,_that.dragAndDrop);case
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String levelName,  QuestionDifficultyModel questions,  List<DragAndDropModel>? dragAndDrop)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String levelName,  QuestionDifficultyModel questions)?  $default,) {final _that = this;
 switch (_that) {
 case _ChallengeLevelModel() when $default != null:
-return $default(_that.id,_that.levelName,_that.questions,_that.dragAndDrop);case _:
+return $default(_that.id,_that.levelName,_that.questions);case _:
   return null;
 
 }
@@ -221,21 +220,12 @@ return $default(_that.id,_that.levelName,_that.questions,_that.dragAndDrop);case
 @JsonSerializable()
 
 class _ChallengeLevelModel implements ChallengeLevelModel {
-  const _ChallengeLevelModel({required this.id, required this.levelName, required this.questions, final  List<DragAndDropModel>? dragAndDrop}): _dragAndDrop = dragAndDrop;
+  const _ChallengeLevelModel({required this.id, required this.levelName, required this.questions});
   factory _ChallengeLevelModel.fromJson(Map<String, dynamic> json) => _$ChallengeLevelModelFromJson(json);
 
 @override final  int id;
 @override final  String levelName;
 @override final  QuestionDifficultyModel questions;
- final  List<DragAndDropModel>? _dragAndDrop;
-@override List<DragAndDropModel>? get dragAndDrop {
-  final value = _dragAndDrop;
-  if (value == null) return null;
-  if (_dragAndDrop is EqualUnmodifiableListView) return _dragAndDrop;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
-}
-
 
 /// Create a copy of ChallengeLevelModel
 /// with the given fields replaced by the non-null parameter values.
@@ -250,16 +240,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChallengeLevelModel&&(identical(other.id, id) || other.id == id)&&(identical(other.levelName, levelName) || other.levelName == levelName)&&(identical(other.questions, questions) || other.questions == questions)&&const DeepCollectionEquality().equals(other._dragAndDrop, _dragAndDrop));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChallengeLevelModel&&(identical(other.id, id) || other.id == id)&&(identical(other.levelName, levelName) || other.levelName == levelName)&&(identical(other.questions, questions) || other.questions == questions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,levelName,questions,const DeepCollectionEquality().hash(_dragAndDrop));
+int get hashCode => Object.hash(runtimeType,id,levelName,questions);
 
 @override
 String toString() {
-  return 'ChallengeLevelModel(id: $id, levelName: $levelName, questions: $questions, dragAndDrop: $dragAndDrop)';
+  return 'ChallengeLevelModel(id: $id, levelName: $levelName, questions: $questions)';
 }
 
 
@@ -270,7 +260,7 @@ abstract mixin class _$ChallengeLevelModelCopyWith<$Res> implements $ChallengeLe
   factory _$ChallengeLevelModelCopyWith(_ChallengeLevelModel value, $Res Function(_ChallengeLevelModel) _then) = __$ChallengeLevelModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String levelName, QuestionDifficultyModel questions, List<DragAndDropModel>? dragAndDrop
+ int id, String levelName, QuestionDifficultyModel questions
 });
 
 
@@ -287,13 +277,12 @@ class __$ChallengeLevelModelCopyWithImpl<$Res>
 
 /// Create a copy of ChallengeLevelModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? levelName = null,Object? questions = null,Object? dragAndDrop = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? levelName = null,Object? questions = null,}) {
   return _then(_ChallengeLevelModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,levelName: null == levelName ? _self.levelName : levelName // ignore: cast_nullable_to_non_nullable
 as String,questions: null == questions ? _self.questions : questions // ignore: cast_nullable_to_non_nullable
-as QuestionDifficultyModel,dragAndDrop: freezed == dragAndDrop ? _self._dragAndDrop : dragAndDrop // ignore: cast_nullable_to_non_nullable
-as List<DragAndDropModel>?,
+as QuestionDifficultyModel,
   ));
 }
 

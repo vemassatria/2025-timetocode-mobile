@@ -22,7 +22,6 @@ _DragAndDropModel _$DragAndDropModelFromJson(Map<String, dynamic> json) =>
           .toList(),
       next: json['next'] as String?,
       nextType: json['nextType'] as String?,
-      nextDifficulty: json['nextDifficulty'] as String?,
     );
 
 Map<String, dynamic> _$DragAndDropModelToJson(_DragAndDropModel instance) =>
@@ -35,5 +34,4 @@ Map<String, dynamic> _$DragAndDropModelToJson(_DragAndDropModel instance) =>
       'correctSequence': instance.correctSequence,
       'next': instance.next,
       'nextType': instance.nextType,
-      'nextDifficulty': instance.nextDifficulty,
     };

@@ -9,7 +9,6 @@ abstract class ChoicesModel with _$ChoicesModel {
     required String text,
     String? next,
     String? nextType,
-    String? nextDifficulty,
     bool? isCorrect,
   }) = _ChoicesModel;
 

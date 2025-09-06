@@ -11,9 +11,6 @@ abstract class DndState with _$DndState {
     DragAndDropModel? currentDragAndDrop,
     List<DraggableModel>? availableOptions,
     List<DropZoneModel>? dropZones,
-    String? modeGame,
-    int? correctAnswer,
-    int? wrongAnswer,
 
     bool? isLoading,
   }) = _DndState;

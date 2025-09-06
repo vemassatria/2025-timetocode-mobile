@@ -13,9 +13,6 @@ _ChallengeLevelModel _$ChallengeLevelModelFromJson(Map<String, dynamic> json) =>
       questions: QuestionDifficultyModel.fromJson(
         json['questions'] as Map<String, dynamic>,
       ),
-      dragAndDrop: (json['dragAndDrop'] as List<dynamic>?)
-          ?.map((e) => DragAndDropModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
     );
 
 Map<String, dynamic> _$ChallengeLevelModelToJson(
@@ -24,5 +21,4 @@ Map<String, dynamic> _$ChallengeLevelModelToJson(
   'id': instance.id,
   'levelName': instance.levelName,
   'questions': instance.questions,
-  'dragAndDrop': instance.dragAndDrop,
 };

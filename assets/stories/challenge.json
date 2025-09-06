@@ -16,29 +16,25 @@
                   {
                     "text": "int",
                     "next": "soal1_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "float",
                     "next": "soal1_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "string",
                     "next": "soal1_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "char",
                     "next": "soal1_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -53,29 +49,25 @@
                   {
                     "text": "2.5",
                     "next": "soal1_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "2.0",
                     "next": "soal1_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "0",
                     "next": "soal1_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "3.0",
                     "next": "soal1_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": true
                   }
                 ]
@@ -89,114 +81,32 @@
                 "choices": [
                   {
                     "text": "55",
-                    "next": "dd-1.1",
-                    "nextType": "dragAndDrop",
-                    "nextDifficulty": null,
+                    "next": null,
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "60 ",
-                    "next": "dd-1.1",
-                    "nextType": "dragAndDrop",
-                    "nextDifficulty": null,
+                    "next": null,
+                    "nextType": null,
                     "isCorrect": true
                   },
                   {
                     "text": "50",
-                    "next": "dd-1.1",
-                    "nextType": "dragAndDrop",
-                    "nextDifficulty": null,
+                    "next": null,
+                    "nextType": null,
                     "isCorrect": false
                   },
                   {
                     "text": "45",
-                    "next": "dd-1.1",
-                    "nextType": "dragAndDrop",
-                    "nextDifficulty": null,
+                    "next": null,
+                    "nextType": null,
                     "isCorrect": false
                   }
                 ]
               }
             ]
-          },
-          "dragAndDrop": [
-            {
-              "id": "dd-1.1",
-              "type": "dnd_code",
-              "instruction": "Seret dan susun potongan kode berikut agar membentuk deklarasi variabel bertipe int dan langsung diberi nilai 5",
-              "scaffoldCode": "int main() {\n[dz1][dz2][dz3][dz4][dz5]\n}",
-              "draggableOptions": [
-                {
-                  "id": "dnd-1",
-                  "content": {
-                    "type": "text",
-                    "value": "a"
-                  }
-                },
-                {
-                  "id": "dnd-2",
-                  "content": {
-                    "type": "text",
-                    "value": "int"
-                  }
-                },
-                {
-                  "id": "dnd-3",
-                  "content": {
-                    "type": "text",
-                    "value": "="
-                  }
-                },
-                {
-                  "id": "dnd-4",
-                  "content": {
-                    "type": "text",
-                    "value": "5"
-                  }
-                },
-                {
-                  "id": "dnd-5",
-                  "content": {
-                    "type": "text",
-                    "value": ";"
-                  }
-                }
-              ],
-              "dropZones": [
-                {
-                  "id": "dz1",
-                  "acceptedIds": null,
-                  "content": null
-                },
-                {
-                  "id": "dz2",
-                  "acceptedIds": null,
-                  "content": null
-                },
-                {
-                  "id": "dz3",
-                  "acceptedIds": null,
-                  "content": null
-                },
-                {
-                  "id": "dz4",
-                  "acceptedIds": null,
-                  "content": null
-                },
-                {
-                  "id": "dz5",
-                  "acceptedIds": null,
-                  "content": null
-                }
-              ],
-              "correctSequence": [
-                "dnd-2", "dnd-1", "dnd-3", "dnd-4", "dnd-5"
-              ],
-              "next": null,
-              "nextType": null,
-              "nextDifficulty": null
-            }
-          ]
+          }
         },
         {
           "id": 2,
@@ -211,29 +121,25 @@
                   {
                     "text": "A",
                     "next": "soal2_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "B",
                     "next": "soal2_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Tidak ada output",
                     "next": "soal2_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Error",
                     "next": "soal2_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -247,29 +153,25 @@
                   {
                     "text": "switch hanya bisa mengecek nilai string",
                     "next": "soal2_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "switch hanya bisa mengecek tipe data integer atau karakter",
                     "next": "soal2_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "switch bisa menggunakan ekspresi boolean",
                     "next": "soal2_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "switch tidak memerlukan break",
                     "next": "soal2_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -323,29 +225,25 @@
                   {
                     "text": "4 kali",
                     "next": "soal3_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "5 kali",
                     "next": "soal3_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "6 kali",
                     "next": "soal3_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Infinity",
                     "next": "soal3_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -359,29 +257,25 @@
                   {
                     "text": "while selalu menjalankan minimal satu kali, do while tidak",
                     "next": "soal3_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "do while selalu menjalankan minimal satu kali, while bisa nol kali",
                     "next": "soal3_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "tidak ada perbedaan",
                     "next": "soal3_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "while tidak menggunakan kondisi",
                     "next": "soal3_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -434,29 +328,25 @@
                   {
                     "text": "Melanjutkan iterasi berikutnya",
                     "next": "soal4_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": " Menghentikan seluruh program",
                     "next": "soal4_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Menghentikan loop saat ini dan keluar dari loop",
                     "next": "soal4_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "Melewati perulangan saat ini",
                     "next": "soal4_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -471,29 +361,25 @@
                   {
                     "text": "11 12 13 21 22 23 31 32 33\n",
                     "next": "soal4_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "11 21 31 ",
                     "next": "soal4_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "11 12 21 22 31 32\n",
                     "next": "soal4_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "11 21 22 31 32 33\n",
                     "next": "soal4_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -546,29 +432,25 @@
                   {
                     "text": "int",
                     "next": "soal5_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "void",
                     "next": "soal5_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "char",
                     "next": "soal5_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "float",
                     "next": "soal5_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -583,29 +465,25 @@
                   {
                     "text": "Program akan mencetak 12",
                     "next": "soal5_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Program akan mencetak 0",
                     "next": "soal5_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Program menghasilkan undefined behavior karena fungsi malano tidak mengembalikan nilai",
                     "next": "soal5_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "Program error saat kompilasi karena fungsi malano tidak mengembalikan nilai",
                     "next": "soal5_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
@@ -658,29 +536,25 @@
                   {
                     "text": "Variabel global",
                     "next": "soal6_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel lokal",
                     "next": "soal6_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": true
                   },
                   {
                     "text": "Variabel statis",
                     "next": "soal6_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel register",
                     "next": "soal6_2",
-                    "nextType": "question",
-                    "nextDifficulty": "sedang",
+                    "nextType": "sedang",
                     "isCorrect": false
                   }
                 ]
@@ -694,29 +568,25 @@
                   {
                     "text": "Variabel statis hanya ada selama fungsi dijalankan",
                     "next": "soal6_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel statis mempertahankan nilainya antara pemanggilan fungsi",
                     "next": "soal6_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": true
                   },
                   {
                     "text": "Variabel statis hanya dapat diakses dari luar fungsi\n",
                     "next": "soal6_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   },
                   {
                     "text": "Variabel statis selalu disimpan di register CPU",
                     "next": "soal6_3",
-                    "nextType": "question",
-                    "nextDifficulty": "susah",
+                    "nextType": "susah",
                     "isCorrect": false
                   }
                 ]
