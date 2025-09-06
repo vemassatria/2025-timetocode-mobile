@@ -16,10 +16,8 @@ void main() async {
     overrides: [sharedPrefsProvider.overrideWithValue(prefs)],
   );
 
-  await Future.wait([
-    container.read(musicServiceProvider.notifier).initialize(),
-    container.read(soundEffectServiceProvider.notifier).initialize(),
-  ]);
+  await container.read(musicServiceProvider.notifier).initialize();
+  await container.read(soundEffectServiceProvider.notifier).initialize();
 
   runApp(UncontrolledProviderScope(container: container, child: const MyApp()));
 }
