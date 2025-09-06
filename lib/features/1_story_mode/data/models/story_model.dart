@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:timetocode/features/0_core/models/question_model.dart';
 import 'package:timetocode/features/1_story_mode/data/models/dialog_model.dart';
 import 'package:timetocode/features/1_story_mode/data/models/predialog_model.dart';
-import 'package:timetocode/features/3_drag_and_drop_mode/data/models/drag_and_drop_model.dart';
+import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/models/drag_and_drop_model.dart';
 
 part 'story_model.freezed.dart';
 part 'story_model.g.dart';

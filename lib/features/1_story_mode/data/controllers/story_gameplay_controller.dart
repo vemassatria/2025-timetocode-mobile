@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/app/data/services/music_service.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:timetocode/features/1_story_mode/data/states/story_state.dart';
-import 'package:timetocode/features/3_drag_and_drop_mode/data/controllers/dnd_gameplay_controller.dart';
+import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/controllers/dnd_gameplay_controller.dart';
 import 'package:timetocode/features/1_story_mode/data/controllers/story_progress_controller.dart';
 import 'package:timetocode/features/1_story_mode/engine/core/game_engine.dart';
 import 'package:timetocode/features/0_core/models/choices_model.dart';
@@ -67,7 +67,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
         indexDialog: null,
       );
       ref.read(dndControllerProvider.notifier).initializeDragAndDrop(modeId!);
-      ref.read(routerProvider).push('/dnd');
+      ref.read(routerProvider).push('/pembelajaran/dnd');
     } else {
       showEndGame();
     }
@@ -248,7 +248,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
               ref
                   .read(dndControllerProvider.notifier)
                   .initializeDragAndDrop(choice.next);
-              ref.read(routerProvider).push('/dnd');
+              ref.read(routerProvider).push('/pembelajaran/dnd');
               return true;
             }
           }
@@ -271,7 +271,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
           ref
               .read(dndControllerProvider.notifier)
               .initializeDragAndDrop(dialog.next!);
-          ref.read(routerProvider).push('/dnd');
+          ref.read(routerProvider).push('/pembelajaran/dnd');
           return true;
         } else {
           // No more soal found, end the game
