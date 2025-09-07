@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:timetocode/features/3_drag_and_drop_mode/presentation/widgets/drop_zone_target.dart';
+import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/presentation/widgets/drop_zone_target.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 
 class CodeText extends ConsumerWidget {
@@ -139,10 +139,9 @@ class CodeText extends ConsumerWidget {
           spans.add(
             TextSpan(
               text: comment,
-              style:
-                  isDragAndDrop
-                      ? _dragAndDropStyle.merge(_commentStyle)
-                      : _baseStyle.merge(_commentStyle),
+              style: isDragAndDrop
+                  ? _dragAndDropStyle.merge(_commentStyle)
+                  : _baseStyle.merge(_commentStyle),
             ),
           );
           break;
@@ -155,10 +154,9 @@ class CodeText extends ConsumerWidget {
           spans.add(
             TextSpan(
               text: stringText,
-              style:
-                  isDragAndDrop
-                      ? _dragAndDropStyle.merge(_stringStyle)
-                      : _baseStyle.merge(_stringStyle),
+              style: isDragAndDrop
+                  ? _dragAndDropStyle.merge(_stringStyle)
+                  : _baseStyle.merge(_stringStyle),
             ),
           );
           position = endQuote + 1;
@@ -199,10 +197,9 @@ class CodeText extends ConsumerWidget {
           spans.add(
             TextSpan(
               text: number,
-              style:
-                  isDragAndDrop
-                      ? _dragAndDropStyle.merge(_numberStyle)
-                      : _baseStyle.merge(_numberStyle),
+              style: isDragAndDrop
+                  ? _dragAndDropStyle.merge(_numberStyle)
+                  : _baseStyle.merge(_numberStyle),
             ),
           );
           position = end;
@@ -253,14 +250,13 @@ class CodeText extends ConsumerWidget {
           spans.add(
             TextSpan(
               text: word,
-              style:
-                  style != null
-                      ? isDragAndDrop
-                          ? _dragAndDropStyle.merge(style)
-                          : _baseStyle.merge(style)
-                      : isDragAndDrop
-                      ? _dragAndDropStyle
-                      : _baseStyle,
+              style: style != null
+                  ? isDragAndDrop
+                        ? _dragAndDropStyle.merge(style)
+                        : _baseStyle.merge(style)
+                  : isDragAndDrop
+                  ? _dragAndDropStyle
+                  : _baseStyle,
             ),
           );
           position = end;

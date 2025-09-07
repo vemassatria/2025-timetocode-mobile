@@ -2,15 +2,15 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/end_game_page.dart';
-import 'package:timetocode/features/3_drag_and_drop_mode/presentation/screens/drag_and_drop_question_page.dart';
+import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/presentation/screens/drag_and_drop_question_page.dart';
 import 'package:timetocode/app/config/routes/main_navigation.dart';
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/challenge_gameplay_page.dart';
 import 'package:timetocode/features/2_challenge_mode/presentation/screens/challenge_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/end_game_page.dart';
-import 'package:timetocode/features/4_logic_gate_mode/presentation/screens/logic_gate_gameplay.dart';
-import 'package:timetocode/features/4_logic_gate_mode/presentation/screens/logic_gate_page.dart';
-import 'package:timetocode/features/5_settings/presentation/screens/pengaturan_page.dart';
+import 'package:timetocode/features/3_logic_gate_mode/presentation/screens/logic_gate_gameplay.dart';
+import 'package:timetocode/features/3_logic_gate_mode/presentation/screens/logic_gate_page.dart';
+import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -36,16 +36,17 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'level',
                 parentNavigatorKey: _rootNavigatorKey,
-                builder: (context, state) {
-                  return const StoryGameplayPage();
-                },
+                builder: (context, state) => const StoryGameplayPage(),
               ),
               GoRoute(
                 path: 'endgame',
                 parentNavigatorKey: _rootNavigatorKey,
-                builder: (context, state) {
-                  return const EndGameScreen();
-                },
+                builder: (context, state) => const EndGameScreen(),
+              ),
+              GoRoute(
+                path: 'dnd',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) => const DragAndDropQuestionPage(),
               ),
             ],
           ),
@@ -57,16 +58,12 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'level',
                 parentNavigatorKey: _rootNavigatorKey,
-                builder: (context, state) {
-                  return const ChallengeGameplayPage();
-                },
+                builder: (context, state) => const ChallengeGameplayPage(),
               ),
               GoRoute(
                 path: 'endgame',
                 parentNavigatorKey: _rootNavigatorKey,
-                builder: (context, state) {
-                  return const EndGameChallenge();
-                },
+                builder: (context, state) => const EndGameChallenge(),
               ),
             ],
           ),
@@ -88,10 +85,6 @@ final routerProvider = Provider<GoRouter>((ref) {
                 const NoTransitionPage(child: PengaturanPage()),
           ),
         ],
-      ),
-      GoRoute(
-        path: '/dnd',
-        builder: (context, state) => const DragAndDropQuestionPage(),
       ),
     ],
   );

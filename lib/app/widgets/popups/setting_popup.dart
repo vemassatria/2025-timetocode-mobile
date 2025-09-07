@@ -5,7 +5,7 @@ import 'package:timetocode/app/data/services/music_service.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:timetocode/app/widgets/buttons/custom_button.dart';
 import 'package:timetocode/app/widgets/popups/base_popup.dart';
-import 'package:timetocode/features/5_settings/presentation/widgets/setting_item.dart';
+import 'package:timetocode/features/4_settings/presentation/widgets/setting_item.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 
 class SettingPopup extends ConsumerWidget {
