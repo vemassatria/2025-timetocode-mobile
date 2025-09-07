@@ -54,14 +54,18 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
     final indexDialog = ref.watch(
       storyControllerProvider.select((state) => state.indexDialog),
     );
-    ref.listen(storyControllerProvider.select((state) => state.indexDialog), (
-      previous,
-      next,
-    ) {
-      if (previous != next && mounted) {
-        _isTextAnimationComplete = false;
-      }
-    });
+
+    ref.listen(
+      storyControllerProvider.select(
+        (state) => (state.currentDialog!.id, state.indexDialog),
+      ),
+      (previous, next) {
+        if (previous != next && mounted) {
+          _isTextAnimationComplete = false;
+        }
+      },
+    );
+
     final currentConversation = dialog!.dialogs[indexDialog!];
     final charIdx = currentConversation.characterIndex;
     final name = (charIdx == 1) ? _character1Name : _character2Name;
@@ -109,6 +113,9 @@ class _DialogBoxState extends ConsumerState<DialogBox> {
                               child: _isTextAnimationComplete
                                   ? Text(text, style: textStyle)
                                   : TypewriterEffectBox(
+                                      key: ValueKey(
+                                        "${dialog.id} + $indexDialog",
+                                      ),
                                       text: text,
                                       textStyle: textStyle,
                                       onFinished: () {

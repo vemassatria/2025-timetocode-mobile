@@ -17,48 +17,40 @@ class QuestionBoxWidget extends ConsumerWidget {
     final question = ref.watch(
       storyControllerProvider.select((state) => state.currentQuestion),
     );
-    final questionText = question!.text;
-    final codeText = question.code;
-    final options = question.choices;
 
-    return Stack(
-      children: [
-        SafeArea(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(16.w, 76.h, 16.w, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                if (codeText != null) ...[
-                  QuestionBox(questionText: questionText, height: 120.h),
-                  SizedBox(height: 16.h),
-                  CodeBox(code: codeText),
-                ] else ...[
-                  Container(
-                    height: 374.h,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(color: Colors.transparent),
-                    clipBehavior: Clip.hardEdge,
-                    child: Center(
-                      child: QuestionBox(questionText: questionText),
+    final questionText = question?.text;
+    final codeText = question?.code;
+    final options = question?.choices ?? [];
+
+    return SafeArea(
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(16.w, 76.h, 16.w, 16.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (codeText != null) ...[
+                    QuestionBox(questionText: questionText!, height: 120.h),
+                    SizedBox(height: 16.h),
+                    CodeBox(code: codeText),
+                  ] else ...[
+                    Center(
+                      heightFactor: 3.h,
+                      child: QuestionBox(questionText: questionText!),
                     ),
-                  ),
+                  ],
                 ],
-              ],
+              ),
             ),
           ),
-        ),
-
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: ChoicesBox(
+          ChoicesBox(
             choices: options,
             onPressed: (index) => _checkAnswer(context, ref, options[index]),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

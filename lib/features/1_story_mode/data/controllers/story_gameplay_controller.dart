@@ -49,6 +49,11 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   void navigateMode(String? modeType, String? modeId) {
     if (state.activeMode == 'dialog' || state.activeMode == 'preDialog') {
       ref.read(soundEffectServiceProvider.notifier).pauseTyping();
+
+      if (state.activeMode == 'dialog') {
+        game.hideCharacters();
+        game.hideIlustration();
+      }
     }
 
     if (modeType == 'preDialog') {
@@ -59,15 +64,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
     } else if (modeType == 'soal') {
       showQuestion(modeId!);
     } else if (modeType == 'dragAndDrop') {
-      state = state.copyWith(
-        activeMode: null,
-        currentDialog: null,
-        preDialog: null,
-        currentQuestion: null,
-        indexDialog: null,
-      );
-      ref.read(dndControllerProvider.notifier).initializeDragAndDrop(modeId!);
-      ref.read(routerProvider).push('/pembelajaran/dnd');
+      showDragAndDrop(modeId!);
     } else {
       showEndGame();
     }
@@ -200,81 +197,26 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       wrongAnswer();
     }
 
-    if (selected.nextType == 'dialog') {
-      game.showCharactersOverlay();
-      showDialog(selected.next!);
-    } else if (selected.nextType == 'soal') {
-      showQuestion(selected.next!);
-    } else {
-      showEndGame();
-    }
+    navigateMode(selected.nextType, selected.next);
   }
 
   void skipToNextSoal() {
-    final level = state.activeLevel;
-    final dialogs = level!.dialogs;
-
     DialogModel? dialog = state.currentDialog;
-    // If currentDialog is null, start from the beginning
-    if (dialog == null && dialogs.isNotEmpty) {
-      dialog = dialogs.firstWhere(
-        (d) => d.id == level.start,
-        orElse: () => level.dialogs.first,
-      );
-    }
-
     final visited = <String>{};
 
-    // Helper function to recursively find the next soal
     bool findAndShowSoal(DialogModel? dialog) {
       while (dialog != null && !visited.contains(dialog.id)) {
         visited.add(dialog.id);
 
-        // If this dialog has choices, check all branches
-        if (dialog.choices != null && dialog.choices!.isNotEmpty) {
-          for (final choice in dialog.choices!) {
-            if (choice.nextType == 'soal') {
-              game.hideCharacters();
-              game.hideIlustration();
-              showQuestion(choice.next);
-              return true;
-            } else if (choice.nextType == 'dialog') {
-              final nextDialog = dialogs.firstWhere((d) => d.id == choice.next);
-              if (findAndShowSoal(nextDialog)) return true;
-            } else if (choice.nextType == 'dragAndDrop') {
-              ref.read(soundEffectServiceProvider.notifier).pauseTyping();
-              game.hideCharacters();
-              game.hideIlustration();
-              ref
-                  .read(dndControllerProvider.notifier)
-                  .initializeDragAndDrop(choice.next);
-              ref.read(routerProvider).push('/pembelajaran/dnd');
-              return true;
-            }
-          }
-          // If none of the choices lead to a soal, return false
-          return false;
+        if (dialog.choices != null) {
+          state = state.copyWith(indexDialog: dialog.dialogs.length - 1);
+          return true;
         }
 
-        // No choices, follow linear next/nextType
-        if (dialog.nextType == 'soal') {
-          game.hideCharacters();
-          game.hideIlustration();
-          showQuestion(dialog.next!);
-          return true;
-        } else if (dialog.nextType == 'dialog') {
-          dialog = dialogs.firstWhere((d) => d.id == dialog!.next);
-        } else if (dialog.nextType == 'dragAndDrop') {
-          ref.read(soundEffectServiceProvider.notifier).pauseTyping();
-          game.hideCharacters();
-          game.hideIlustration();
-          ref
-              .read(dndControllerProvider.notifier)
-              .initializeDragAndDrop(dialog.next!);
-          ref.read(routerProvider).push('/pembelajaran/dnd');
+        if (dialog.nextType != null) {
+          navigateMode(dialog.nextType, dialog.next);
           return true;
         } else {
-          // No more soal found, end the game
           return false;
         }
       }
@@ -289,6 +231,17 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   void showEndGame() {
     ref.read(routerProvider).go('/pembelajaran/endgame');
     _saveProgress();
+  }
+
+  void showDragAndDrop(String modeId) {
+    ref.read(dndControllerProvider.notifier).initializeDragAndDrop(modeId);
+    state = state.copyWith(
+      activeMode: 'dragAndDrop',
+      currentDialog: null,
+      preDialog: null,
+      currentQuestion: null,
+      indexDialog: null,
+    );
   }
 
   Future<void> _saveProgress() async {
@@ -332,6 +285,9 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   }
 
   void _releaseKeepAlive() {
+    if (state.activeMode == 'dragAndDrop') {
+      ref.read(dndControllerProvider.notifier).releaseKeepAlive();
+    }
     _keepAliveLink!.close();
     _keepAliveLink = null;
   }

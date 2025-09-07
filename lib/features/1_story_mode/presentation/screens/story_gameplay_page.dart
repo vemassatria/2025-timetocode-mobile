@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/app/widgets/popups/menu_popup.dart';
 import 'package:timetocode/app/data/providers/popup_visibility_provider.dart';
 import 'package:timetocode/features/1_story_mode/engine/core/game_engine.dart';
+import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/presentation/screens/drag_and_drop_question_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/dialog_box.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/intro.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/question_box_widget.dart';
@@ -79,7 +80,7 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
 
                   const StoryMenu(),
 
-                  if (activeMode == 'dialog') const SkipButton(),
+                  const SkipButton(),
                 ],
               ),
             ),
@@ -94,6 +95,8 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
         return const DialogBox();
       case 'question':
         return const QuestionBoxWidget();
+      case 'dragAndDrop':
+        return const DragAndDropQuestionPage();
       default:
         return const SizedBox();
     }
