@@ -68,23 +68,27 @@
               "characterIndex": 2
             }
           ],
-          "choices": [
-            {
-              "text": "Betul mas aduh susah banget ini programming",
-              "next": "scene1_1",
-              "nextType": "dialog"
-            },
-            {
-              "text": "Loh kok mas tau saya",
-              "next": "scene1_2",
-              "nextType": "dialog"
-            },
-            {
-              "text": "Hah… Masnya siapa ya?",
-              "next": "scene1_3",
-              "nextType": "dialog"
-            }
-          ],
+          "branch": {
+            "timer": 7,
+            "canon": "intro1",
+            "choices": [
+              {
+                "text": "Betul mas aduh susah banget ini programming",
+                "next": "scene1_1",
+                "nextType": "dialog"
+              },
+              {
+                "text": "Loh kok mas tau saya",
+                "next": "scene1_2",
+                "nextType": "dialog"
+              },
+              {
+                "text": "Hah… Masnya siapa ya?",
+                "next": "scene1_3",
+                "nextType": "dialog"
+              }
+            ]
+          },
           "next": null,
           "nextType": null
         },

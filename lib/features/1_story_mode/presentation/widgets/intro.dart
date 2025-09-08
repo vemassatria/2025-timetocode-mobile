@@ -6,32 +6,14 @@ import 'package:timetocode/features/1_story_mode/data/controllers/story_gameplay
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 
-class IntroBoxWidget extends ConsumerStatefulWidget {
+final _isIntroBoxTextAnimationCompleteProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
+
+class IntroBoxWidget extends ConsumerWidget {
   const IntroBoxWidget({super.key});
 
   @override
-  ConsumerState<IntroBoxWidget> createState() => _IntroBoxWidgetState();
-}
-
-class _IntroBoxWidgetState extends ConsumerState<IntroBoxWidget> {
-  bool _isAnimationComplete = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _isAnimationComplete = false;
-  }
-
-  void _handleTap() {
-    if (!_isAnimationComplete) {
-      setState(() => _isAnimationComplete = true);
-      return;
-    }
-    ref.read(storyControllerProvider.notifier).nextPreDialog();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final preDialog = ref.watch(
       storyControllerProvider.select((value) => value.preDialog),
     );
@@ -40,8 +22,9 @@ class _IntroBoxWidgetState extends ConsumerState<IntroBoxWidget> {
       previous,
       next,
     ) {
-      if (previous?.id != next?.id && mounted) {
-        _isAnimationComplete = false;
+      if (previous?.id != next?.id) {
+        ref.read(_isIntroBoxTextAnimationCompleteProvider.notifier).state =
+            false;
       }
     });
 
@@ -50,7 +33,14 @@ class _IntroBoxWidgetState extends ConsumerState<IntroBoxWidget> {
     );
 
     return GestureDetector(
-      onTap: _handleTap,
+      onTap: () {
+        if (!ref.watch(_isIntroBoxTextAnimationCompleteProvider)) {
+          ref.read(_isIntroBoxTextAnimationCompleteProvider.notifier).state =
+              true;
+          return;
+        }
+        ref.read(storyControllerProvider.notifier).nextPreDialog();
+      },
       behavior: HitTestBehavior.opaque,
       child: Center(
         child: Container(
@@ -61,32 +51,42 @@ class _IntroBoxWidgetState extends ConsumerState<IntroBoxWidget> {
             color: AppColors.backgroundTransparent,
             border: Border.all(color: AppColors.white),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: _isAnimationComplete
-                    ? Text(preDialog!.text, style: textStyle)
-                    : TypewriterEffectBox(
-                        text: preDialog!.text,
-                        textStyle: textStyle,
-                        onFinished: () {
-                          if (mounted && !_isAnimationComplete) {
-                            setState(() => _isAnimationComplete = true);
-                          }
-                        },
-                      ),
-              ),
-              if (_isAnimationComplete)
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Icon(
-                    Icons.keyboard_double_arrow_right_rounded,
-                    size: 32.sp,
-                    color: AppColors.primaryText,
-                  ),
+          child: Consumer(
+            builder: (context, ref, child) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: ref.watch(_isIntroBoxTextAnimationCompleteProvider)
+                      ? Text(preDialog!.text, style: textStyle)
+                      : TypewriterEffectBox(
+                          text: preDialog!.text,
+                          textStyle: textStyle,
+                          onFinished: () {
+                            if (!ref.watch(
+                              _isIntroBoxTextAnimationCompleteProvider,
+                            )) {
+                              ref
+                                      .read(
+                                        _isIntroBoxTextAnimationCompleteProvider
+                                            .notifier,
+                                      )
+                                      .state =
+                                  true;
+                            }
+                          },
+                        ),
                 ),
-            ],
+                if (ref.watch(_isIntroBoxTextAnimationCompleteProvider))
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Icon(
+                      Icons.keyboard_double_arrow_right_rounded,
+                      size: 32.sp,
+                      color: AppColors.primaryText,
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
       ),

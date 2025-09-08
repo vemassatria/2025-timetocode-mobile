@@ -208,7 +208,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       while (dialog != null && !visited.contains(dialog.id)) {
         visited.add(dialog.id);
 
-        if (dialog.choices != null) {
+        if (dialog.branch != null) {
           state = state.copyWith(indexDialog: dialog.dialogs.length - 1);
           return true;
         }

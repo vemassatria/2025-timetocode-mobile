@@ -13,9 +13,9 @@ _DialogModel _$DialogModelFromJson(Map<String, dynamic> json) => _DialogModel(
       .toList(),
   next: json['next'] as String?,
   nextType: json['nextType'] as String?,
-  choices: (json['choices'] as List<dynamic>?)
-      ?.map((e) => DialogChoices.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  branch: json['branch'] == null
+      ? null
+      : BranchModel.fromJson(json['branch'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$DialogModelToJson(_DialogModel instance) =>
@@ -24,5 +24,5 @@ Map<String, dynamic> _$DialogModelToJson(_DialogModel instance) =>
       'dialogs': instance.dialogs,
       'next': instance.next,
       'nextType': instance.nextType,
-      'choices': instance.choices,
+      'branch': instance.branch,
     };

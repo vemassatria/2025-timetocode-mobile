@@ -17,7 +17,7 @@ class SkipButton extends ConsumerWidget {
           return false;
         }
 
-        if (state.currentDialog!.choices != null) {
+        if (state.currentDialog!.branch != null) {
           return state.indexDialog != state.currentDialog!.dialogs.length - 1;
         }
 
