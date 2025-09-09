@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PreDialogModel {
 
- String get id; String get text; String get next; String get nextType;
+ String get id; String get text; String get next; String get nextType; Map<String, String>? get conditions;
 /// Create a copy of PreDialogModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $PreDialogModelCopyWith<PreDialogModel> get copyWith => _$PreDialogModelCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PreDialogModel&&(identical(other.id, id) || other.id == id)&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PreDialogModel&&(identical(other.id, id) || other.id == id)&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&const DeepCollectionEquality().equals(other.conditions, conditions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,text,next,nextType);
+int get hashCode => Object.hash(runtimeType,id,text,next,nextType,const DeepCollectionEquality().hash(conditions));
 
 @override
 String toString() {
-  return 'PreDialogModel(id: $id, text: $text, next: $next, nextType: $nextType)';
+  return 'PreDialogModel(id: $id, text: $text, next: $next, nextType: $nextType, conditions: $conditions)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $PreDialogModelCopyWith<$Res>  {
   factory $PreDialogModelCopyWith(PreDialogModel value, $Res Function(PreDialogModel) _then) = _$PreDialogModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String text, String next, String nextType
+ String id, String text, String next, String nextType, Map<String, String>? conditions
 });
 
 
@@ -65,13 +65,14 @@ class _$PreDialogModelCopyWithImpl<$Res>
 
 /// Create a copy of PreDialogModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? text = null,Object? next = null,Object? nextType = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? text = null,Object? next = null,Object? nextType = null,Object? conditions = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,next: null == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String,nextType: null == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
-as String,
+as String,conditions: freezed == conditions ? _self.conditions : conditions // ignore: cast_nullable_to_non_nullable
+as Map<String, String>?,
   ));
 }
 
@@ -156,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String text,  String next,  String nextType)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String text,  String next,  String nextType,  Map<String, String>? conditions)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PreDialogModel() when $default != null:
-return $default(_that.id,_that.text,_that.next,_that.nextType);case _:
+return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions);case _:
   return orElse();
 
 }
@@ -177,10 +178,10 @@ return $default(_that.id,_that.text,_that.next,_that.nextType);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String text,  String next,  String nextType)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String text,  String next,  String nextType,  Map<String, String>? conditions)  $default,) {final _that = this;
 switch (_that) {
 case _PreDialogModel():
-return $default(_that.id,_that.text,_that.next,_that.nextType);case _:
+return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +198,10 @@ return $default(_that.id,_that.text,_that.next,_that.nextType);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String text,  String next,  String nextType)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String text,  String next,  String nextType,  Map<String, String>? conditions)?  $default,) {final _that = this;
 switch (_that) {
 case _PreDialogModel() when $default != null:
-return $default(_that.id,_that.text,_that.next,_that.nextType);case _:
+return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions);case _:
   return null;
 
 }
@@ -212,13 +213,22 @@ return $default(_that.id,_that.text,_that.next,_that.nextType);case _:
 @JsonSerializable()
 
 class _PreDialogModel implements PreDialogModel {
-  const _PreDialogModel({required this.id, required this.text, required this.next, required this.nextType});
+  const _PreDialogModel({required this.id, required this.text, required this.next, required this.nextType, final  Map<String, String>? conditions}): _conditions = conditions;
   factory _PreDialogModel.fromJson(Map<String, dynamic> json) => _$PreDialogModelFromJson(json);
 
 @override final  String id;
 @override final  String text;
 @override final  String next;
 @override final  String nextType;
+ final  Map<String, String>? _conditions;
+@override Map<String, String>? get conditions {
+  final value = _conditions;
+  if (value == null) return null;
+  if (_conditions is EqualUnmodifiableMapView) return _conditions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(value);
+}
+
 
 /// Create a copy of PreDialogModel
 /// with the given fields replaced by the non-null parameter values.
@@ -233,16 +243,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PreDialogModel&&(identical(other.id, id) || other.id == id)&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PreDialogModel&&(identical(other.id, id) || other.id == id)&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&const DeepCollectionEquality().equals(other._conditions, _conditions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,text,next,nextType);
+int get hashCode => Object.hash(runtimeType,id,text,next,nextType,const DeepCollectionEquality().hash(_conditions));
 
 @override
 String toString() {
-  return 'PreDialogModel(id: $id, text: $text, next: $next, nextType: $nextType)';
+  return 'PreDialogModel(id: $id, text: $text, next: $next, nextType: $nextType, conditions: $conditions)';
 }
 
 
@@ -253,7 +263,7 @@ abstract mixin class _$PreDialogModelCopyWith<$Res> implements $PreDialogModelCo
   factory _$PreDialogModelCopyWith(_PreDialogModel value, $Res Function(_PreDialogModel) _then) = __$PreDialogModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String text, String next, String nextType
+ String id, String text, String next, String nextType, Map<String, String>? conditions
 });
 
 
@@ -270,13 +280,14 @@ class __$PreDialogModelCopyWithImpl<$Res>
 
 /// Create a copy of PreDialogModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? text = null,Object? next = null,Object? nextType = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? text = null,Object? next = null,Object? nextType = null,Object? conditions = freezed,}) {
   return _then(_PreDialogModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,next: null == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String,nextType: null == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
-as String,
+as String,conditions: freezed == conditions ? _self._conditions : conditions // ignore: cast_nullable_to_non_nullable
+as Map<String, String>?,
   ));
 }
 

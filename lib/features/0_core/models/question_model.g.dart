@@ -14,6 +14,9 @@ _QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) =>
       choices: (json['choices'] as List<dynamic>)
           .map((e) => ChoicesModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      consequences: (json['consequences'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$QuestionModelToJson(_QuestionModel instance) =>
@@ -22,4 +25,5 @@ Map<String, dynamic> _$QuestionModelToJson(_QuestionModel instance) =>
       'text': instance.text,
       'code': instance.code,
       'choices': instance.choices,
+      'consequences': instance.consequences,
     };

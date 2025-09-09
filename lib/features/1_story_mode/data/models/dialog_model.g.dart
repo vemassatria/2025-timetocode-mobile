@@ -8,6 +8,10 @@ part of 'dialog_model.dart';
 
 _DialogModel _$DialogModelFromJson(Map<String, dynamic> json) => _DialogModel(
   id: json['id'] as String,
+  conditions: (json['conditions'] as Map<String, dynamic>?)?.map(
+    (k, e) => MapEntry(k, e as String),
+  ),
+  backgroundIndex: (json['backgroundIndex'] as num).toInt(),
   dialogs: (json['dialogs'] as List<dynamic>)
       .map((e) => TextDialogModel.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -21,6 +25,8 @@ _DialogModel _$DialogModelFromJson(Map<String, dynamic> json) => _DialogModel(
 Map<String, dynamic> _$DialogModelToJson(_DialogModel instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'conditions': instance.conditions,
+      'backgroundIndex': instance.backgroundIndex,
       'dialogs': instance.dialogs,
       'next': instance.next,
       'nextType': instance.nextType,

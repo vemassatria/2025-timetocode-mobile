@@ -10,7 +10,9 @@ _StoryModel _$StoryModelFromJson(Map<String, dynamic> json) => _StoryModel(
   level: (json['level'] as num).toInt(),
   description: json['description'] as String,
   title: json['title'] as String,
-  background: json['background'] as String,
+  background: (json['background'] as List<dynamic>)
+      .map((e) => e as String)
+      .toList(),
   character1: json['character1'] as String,
   character2: json['character2'] as String,
   character1Images: (json['character1Images'] as List<dynamic>)

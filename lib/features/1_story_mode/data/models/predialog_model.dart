@@ -10,6 +10,7 @@ abstract class PreDialogModel with _$PreDialogModel {
     required String text,
     required String next,
     required String nextType,
+    Map<String, String>? conditions,
   }) = _PreDialogModel;
 
   factory PreDialogModel.fromJson(Map<String, dynamic> json) =>

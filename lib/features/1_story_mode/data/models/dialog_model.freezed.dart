@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DialogModel {
 
- String get id; List<TextDialogModel> get dialogs; String? get next; String? get nextType; BranchModel? get branch;
+ String get id; Map<String, String>? get conditions; int get backgroundIndex; List<TextDialogModel> get dialogs; String? get next; String? get nextType; BranchModel? get branch;
 /// Create a copy of DialogModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $DialogModelCopyWith<DialogModel> get copyWith => _$DialogModelCopyWithImpl<Dial
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DialogModel&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.dialogs, dialogs)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&(identical(other.branch, branch) || other.branch == branch));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DialogModel&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.conditions, conditions)&&(identical(other.backgroundIndex, backgroundIndex) || other.backgroundIndex == backgroundIndex)&&const DeepCollectionEquality().equals(other.dialogs, dialogs)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&(identical(other.branch, branch) || other.branch == branch));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(dialogs),next,nextType,branch);
+int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(conditions),backgroundIndex,const DeepCollectionEquality().hash(dialogs),next,nextType,branch);
 
 @override
 String toString() {
-  return 'DialogModel(id: $id, dialogs: $dialogs, next: $next, nextType: $nextType, branch: $branch)';
+  return 'DialogModel(id: $id, conditions: $conditions, backgroundIndex: $backgroundIndex, dialogs: $dialogs, next: $next, nextType: $nextType, branch: $branch)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $DialogModelCopyWith<$Res>  {
   factory $DialogModelCopyWith(DialogModel value, $Res Function(DialogModel) _then) = _$DialogModelCopyWithImpl;
 @useResult
 $Res call({
- String id, List<TextDialogModel> dialogs, String? next, String? nextType, BranchModel? branch
+ String id, Map<String, String>? conditions, int backgroundIndex, List<TextDialogModel> dialogs, String? next, String? nextType, BranchModel? branch
 });
 
 
@@ -65,10 +65,12 @@ class _$DialogModelCopyWithImpl<$Res>
 
 /// Create a copy of DialogModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? dialogs = null,Object? next = freezed,Object? nextType = freezed,Object? branch = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? conditions = freezed,Object? backgroundIndex = null,Object? dialogs = null,Object? next = freezed,Object? nextType = freezed,Object? branch = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,dialogs: null == dialogs ? _self.dialogs : dialogs // ignore: cast_nullable_to_non_nullable
+as String,conditions: freezed == conditions ? _self.conditions : conditions // ignore: cast_nullable_to_non_nullable
+as Map<String, String>?,backgroundIndex: null == backgroundIndex ? _self.backgroundIndex : backgroundIndex // ignore: cast_nullable_to_non_nullable
+as int,dialogs: null == dialogs ? _self.dialogs : dialogs // ignore: cast_nullable_to_non_nullable
 as List<TextDialogModel>,next: freezed == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String?,nextType: freezed == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
 as String?,branch: freezed == branch ? _self.branch : branch // ignore: cast_nullable_to_non_nullable
@@ -169,10 +171,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  List<TextDialogModel> dialogs,  String? next,  String? nextType,  BranchModel? branch)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  Map<String, String>? conditions,  int backgroundIndex,  List<TextDialogModel> dialogs,  String? next,  String? nextType,  BranchModel? branch)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DialogModel() when $default != null:
-return $default(_that.id,_that.dialogs,_that.next,_that.nextType,_that.branch);case _:
+return $default(_that.id,_that.conditions,_that.backgroundIndex,_that.dialogs,_that.next,_that.nextType,_that.branch);case _:
   return orElse();
 
 }
@@ -190,10 +192,10 @@ return $default(_that.id,_that.dialogs,_that.next,_that.nextType,_that.branch);c
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  List<TextDialogModel> dialogs,  String? next,  String? nextType,  BranchModel? branch)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  Map<String, String>? conditions,  int backgroundIndex,  List<TextDialogModel> dialogs,  String? next,  String? nextType,  BranchModel? branch)  $default,) {final _that = this;
 switch (_that) {
 case _DialogModel():
-return $default(_that.id,_that.dialogs,_that.next,_that.nextType,_that.branch);case _:
+return $default(_that.id,_that.conditions,_that.backgroundIndex,_that.dialogs,_that.next,_that.nextType,_that.branch);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -210,10 +212,10 @@ return $default(_that.id,_that.dialogs,_that.next,_that.nextType,_that.branch);c
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  List<TextDialogModel> dialogs,  String? next,  String? nextType,  BranchModel? branch)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  Map<String, String>? conditions,  int backgroundIndex,  List<TextDialogModel> dialogs,  String? next,  String? nextType,  BranchModel? branch)?  $default,) {final _that = this;
 switch (_that) {
 case _DialogModel() when $default != null:
-return $default(_that.id,_that.dialogs,_that.next,_that.nextType,_that.branch);case _:
+return $default(_that.id,_that.conditions,_that.backgroundIndex,_that.dialogs,_that.next,_that.nextType,_that.branch);case _:
   return null;
 
 }
@@ -225,10 +227,20 @@ return $default(_that.id,_that.dialogs,_that.next,_that.nextType,_that.branch);c
 @JsonSerializable()
 
 class _DialogModel implements DialogModel {
-  const _DialogModel({required this.id, required final  List<TextDialogModel> dialogs, this.next, this.nextType, this.branch}): _dialogs = dialogs;
+  const _DialogModel({required this.id, final  Map<String, String>? conditions, required this.backgroundIndex, required final  List<TextDialogModel> dialogs, this.next, this.nextType, this.branch}): _conditions = conditions,_dialogs = dialogs;
   factory _DialogModel.fromJson(Map<String, dynamic> json) => _$DialogModelFromJson(json);
 
 @override final  String id;
+ final  Map<String, String>? _conditions;
+@override Map<String, String>? get conditions {
+  final value = _conditions;
+  if (value == null) return null;
+  if (_conditions is EqualUnmodifiableMapView) return _conditions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(value);
+}
+
+@override final  int backgroundIndex;
  final  List<TextDialogModel> _dialogs;
 @override List<TextDialogModel> get dialogs {
   if (_dialogs is EqualUnmodifiableListView) return _dialogs;
@@ -253,16 +265,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DialogModel&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other._dialogs, _dialogs)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&(identical(other.branch, branch) || other.branch == branch));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DialogModel&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other._conditions, _conditions)&&(identical(other.backgroundIndex, backgroundIndex) || other.backgroundIndex == backgroundIndex)&&const DeepCollectionEquality().equals(other._dialogs, _dialogs)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&(identical(other.branch, branch) || other.branch == branch));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(_dialogs),next,nextType,branch);
+int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(_conditions),backgroundIndex,const DeepCollectionEquality().hash(_dialogs),next,nextType,branch);
 
 @override
 String toString() {
-  return 'DialogModel(id: $id, dialogs: $dialogs, next: $next, nextType: $nextType, branch: $branch)';
+  return 'DialogModel(id: $id, conditions: $conditions, backgroundIndex: $backgroundIndex, dialogs: $dialogs, next: $next, nextType: $nextType, branch: $branch)';
 }
 
 
@@ -273,7 +285,7 @@ abstract mixin class _$DialogModelCopyWith<$Res> implements $DialogModelCopyWith
   factory _$DialogModelCopyWith(_DialogModel value, $Res Function(_DialogModel) _then) = __$DialogModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, List<TextDialogModel> dialogs, String? next, String? nextType, BranchModel? branch
+ String id, Map<String, String>? conditions, int backgroundIndex, List<TextDialogModel> dialogs, String? next, String? nextType, BranchModel? branch
 });
 
 
@@ -290,10 +302,12 @@ class __$DialogModelCopyWithImpl<$Res>
 
 /// Create a copy of DialogModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? dialogs = null,Object? next = freezed,Object? nextType = freezed,Object? branch = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? conditions = freezed,Object? backgroundIndex = null,Object? dialogs = null,Object? next = freezed,Object? nextType = freezed,Object? branch = freezed,}) {
   return _then(_DialogModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,dialogs: null == dialogs ? _self._dialogs : dialogs // ignore: cast_nullable_to_non_nullable
+as String,conditions: freezed == conditions ? _self._conditions : conditions // ignore: cast_nullable_to_non_nullable
+as Map<String, String>?,backgroundIndex: null == backgroundIndex ? _self.backgroundIndex : backgroundIndex // ignore: cast_nullable_to_non_nullable
+as int,dialogs: null == dialogs ? _self._dialogs : dialogs // ignore: cast_nullable_to_non_nullable
 as List<TextDialogModel>,next: freezed == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String?,nextType: freezed == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
 as String?,branch: freezed == branch ? _self.branch : branch // ignore: cast_nullable_to_non_nullable

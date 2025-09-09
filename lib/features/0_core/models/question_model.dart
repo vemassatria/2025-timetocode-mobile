@@ -11,6 +11,7 @@ abstract class QuestionModel with _$QuestionModel {
     required String text,
     String? code,
     required List<ChoicesModel> choices,
+    Map<String, String>? consequences,
   }) = _QuestionModel;
 
   factory QuestionModel.fromJson(Map<String, dynamic> json) =>

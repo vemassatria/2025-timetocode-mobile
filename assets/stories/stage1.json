@@ -4,7 +4,10 @@
       "level": 1,
       "description": "Kenalan dulu sama bahan dasar ngoding: tipe data, variabel, sama operator biar program kamu ngerti harus ngapain!",
       "title": "Tipe Data, Variabel, dan Operator",
-      "background": "warung-kating",
+      "background": [
+        "warung-kating", 
+        "kampus-malam"
+      ],
       "character1": "Adrian",
       "character1Images": [
         "adriankampus_biasa",
@@ -21,7 +24,10 @@
         "kating_kecewa",
         "kating_aksi"
       ],
-      "ilustrations": ["tipe-data", "BOOLEAN"],
+      "ilustrations": [
+        "tipe-data", 
+        "BOOLEAN"
+      ],
       "start": "preDialog1",
       "typeStart": "preDialog",
       "preDialog": [
@@ -41,6 +47,10 @@
       "dialogs": [
         {
           "id": "intro1",
+          "conditions": {
+            "kepercayaanMasMulyo": "0"
+          },
+          "backgroundIndex": 0,
           "dialogs": [
             {
               "line": "Masnya daritadi saya lihat ngedumel sendiri, aman kah?",
@@ -69,23 +79,102 @@
             }
           ],
           "branch": {
-            "timer": 7,
+            "timer": 6,
             "canon": "intro1",
             "choices": [
               {
                 "text": "Betul mas aduh susah banget ini programming",
                 "next": "scene1_1",
-                "nextType": "dialog"
+                "nextType": "dialog",
+                "consequences": {
+                  "kerendahanHati": "+1",
+                  "kepercayaanMasMulyo": "+5"
+                }
               },
               {
                 "text": "Loh kok mas tau saya",
                 "next": "scene1_2",
-                "nextType": "dialog"
+                "nextType": "dialog",
+                "consequences": {
+                  "kepercayaanMasMulyo": "+10",
+                  "kerendahanHati": "+2"
+                }
               },
               {
                 "text": "Hah… Masnya siapa ya?",
                 "next": "scene1_3",
-                "nextType": "dialog"
+                "nextType": "dialog",
+                "consequences": {
+                  "kepercayaanMasMulyo": "-5",
+                  "kesombongan": "+1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "intro1",
+          "conditions": {
+            "kepercayaanMasMulyo": ">=0"
+          },
+          "backgroundIndex": 0,
+          "dialogs": [
+            {
+              "line": "Masnya daritadi saya lihat ngedumel sendiri, aman kah?",
+              "reactionIndex": 1,
+              "characterIndex": 2
+            },
+            {
+              "line": "aduh mas, ini pemrogaman susah banget..",
+              "reactionIndex": 0,
+              "characterIndex": 1
+            },
+            {
+              "line": "Wah iya mas, memang susah pada awalnya karena kita ga familiar dengan mereka, tapi lama lama pasti bakal bisa kok mas.",
+              "reactionIndex": 0,
+              "characterIndex": 2
+            },
+            {
+              "line": "Oh... iya ya, tapi aku masih bingung banget sama yang namanya tipe data sama variabel.",
+              "reactionIndex": 3,
+              "characterIndex": 1
+            },
+            {
+              "line": "Eh, wajahmu kok kayak familiar ya? Anak PENS juga, kan?",
+              "reactionIndex": 4,
+              "characterIndex": 2
+            }
+          ],
+          "branch": {
+            "timer": 6,
+            "canon": "intro1",
+            "choices": [
+              {
+                "text": "Betul mas aduh susah banget ini programming",
+                "next": "scene1_1",
+                "nextType": "dialog",
+                "consequences": {
+                  "kerendahanHati": "+1",
+                  "kepercayaanMasMulyo": "+5"
+                }
+              },
+              {
+                "text": "Loh kok mas tau saya",
+                "next": "scene1_2",
+                "nextType": "dialog",
+                "consequences": {
+                  "kepercayaanMasMulyo": "+10",
+                  "kerendahanHati": "+2"
+                }
+              },
+              {
+                "text": "Hah… Masnya siapa ya?",
+                "next": "scene1_3",
+                "nextType": "dialog",
+                "consequences": {
+                  "kepercayaanMasMulyo": "-5",
+                  "kesombongan": "+1"
+                }
               }
             ]
           },
@@ -94,6 +183,10 @@
         },
         {
           "id": "scene1_1",
+          "conditions": {
+            "kesombongan": ">=5"
+          },
+          "backgroundIndex": 1,
           "dialogs": [
             {
               "line": "Betul mas aduh susah banget ini programming",
@@ -168,6 +261,10 @@
         },
         {
           "id": "scene1_3",
+          "backgroundIndex": 1,
+          "conditions": {
+            "kesombongan": "<5"
+          },
           "dialogs": [
             {
               "line": "Hah… Masnya siapa ya?",
@@ -215,6 +312,10 @@
         },
         {
           "id": "materi1_1",
+          "backgroundIndex": 0,
+          "conditions": {
+            "kepercayaanMasMulyo": ">=0"
+          },
           "dialogs": [
             {
               "line": "Bayangin tipe data dan variabel itu seperti wadah dengan labelnya. Biar lebih jelas, coba lihat ilustrasi ember dan kardus ini.",
@@ -803,7 +904,10 @@
             "dnd-2", "dnd-1", "dnd-4", "dnd-5", "dnd-3", "dnd-7", "dnd-8", "dnd-6"
           ],
           "next": "soal1_3",
-          "nextType": "soal"
+          "nextType": "soal",
+          "consequences": {
+            "kepintaran": 5
+          }
         }
       ],
       "summary": [

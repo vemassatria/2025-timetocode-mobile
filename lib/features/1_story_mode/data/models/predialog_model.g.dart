@@ -12,6 +12,9 @@ _PreDialogModel _$PreDialogModelFromJson(Map<String, dynamic> json) =>
       text: json['text'] as String,
       next: json['next'] as String,
       nextType: json['nextType'] as String,
+      conditions: (json['conditions'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 Map<String, dynamic> _$PreDialogModelToJson(_PreDialogModel instance) =>
@@ -20,4 +23,5 @@ Map<String, dynamic> _$PreDialogModelToJson(_PreDialogModel instance) =>
       'text': instance.text,
       'next': instance.next,
       'nextType': instance.nextType,
+      'conditions': instance.conditions,
     };

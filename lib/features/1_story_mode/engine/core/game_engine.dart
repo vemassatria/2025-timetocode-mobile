@@ -8,9 +8,11 @@ import 'package:timetocode/features/1_story_mode/engine/components/story_illustr
 class GameEngine extends FlameGame {
   final Set<String> _loadedCharacter = {};
   final Set<String> _loadedIlustration = {};
+  final Set<String> _loadedBackground = {};
   StoryCharactersComponent? _characters;
   StoryIlustrationComponent? _ilustration;
   SpriteComponent? _background;
+  String? _currentBackgroundName;
 
   @override
   void onRemove() {
@@ -24,20 +26,11 @@ class GameEngine extends FlameGame {
     super.onDispose();
   }
 
-  Future<void> setBackground(String backgroundName) async {
-    final newSprite = await Sprite.load('background/$backgroundName.webp');
-    _background = SpriteComponent(sprite: newSprite);
-
-    _background?.priority = -1;
-
-    await add(_background!);
-  }
-
-  @override
-  void onGameResize(Vector2 size) {
-    super.onGameResize(size);
-    _background?.size = size;
-  }
+  // @override
+  // void onGameResize(Vector2 size) {
+  //   super.onGameResize(size);
+  //   _background?.size = size;
+  // }
 
   Future<void> showCharacters({
     String? char1Img,
@@ -102,6 +95,24 @@ class GameEngine extends FlameGame {
     _ilustration?.removeFromParent();
   }
 
+  Future<void> setBackground(String backgroundName) async {
+    if (_currentBackgroundName == backgroundName) {
+      return;
+    }
+    _currentBackgroundName = backgroundName;
+    final image = images.fromCache(_backgroundKey(backgroundName));
+    final newSprite = Sprite(image);
+
+    if (_background != null) {
+      _background!.sprite = newSprite;
+    } else {
+      _background = SpriteComponent(sprite: newSprite);
+      _background?.priority = -1;
+      _background?.size = size;
+      await add(_background!);
+    }
+  }
+
   Future<void> preloadCharacters(List<String> characterNames) async {
     await Future.wait(
       characterNames
@@ -126,6 +137,18 @@ class GameEngine extends FlameGame {
     );
   }
 
+  Future<void> preloadBackgrounds(List<String> backgrounds) async {
+    await Future.wait(
+      backgrounds
+          .where((name) => !_loadedBackground.contains(_backgroundKey(name)))
+          .map((name) {
+            final key = _backgroundKey(name);
+            _loadedBackground.add(key);
+            return images.load(key);
+          }),
+    );
+  }
+
   void deleteAll() {
     removeAll(children.toList());
     _background = null;
@@ -133,12 +156,15 @@ class GameEngine extends FlameGame {
     _ilustration = null;
     _loadedCharacter.clear();
     _loadedIlustration.clear();
+    _loadedBackground.clear();
     images.clearCache();
   }
 
   String _charKey(String characterName) => 'character/$characterName.webp';
   String _ilustrationKey(String ilustrationName) =>
       'ilustration/$ilustrationName.webp';
+  String _backgroundKey(String backgroundName) =>
+      'background/$backgroundName.webp';
 
   get characters => _characters;
   get ilustration => _ilustration;

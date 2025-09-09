@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$StoryModel {
 
- int get level; String get description; String get title; String get background; String get character1; String get character2; List<String> get character1Images; List<String> get character2Images; List<String> get ilustrations; List<PreDialogModel>? get preDialog; List<DialogModel> get dialogs; List<QuestionModel> get questions; List<DragAndDropModel>? get dragAndDrop; List<String>? get summary; String get start; String get typeStart;
+ int get level; String get description; String get title; List<String> get background; String get character1; String get character2; List<String> get character1Images; List<String> get character2Images; List<String> get ilustrations; List<PreDialogModel>? get preDialog; List<DialogModel> get dialogs; List<QuestionModel> get questions; List<DragAndDropModel>? get dragAndDrop; List<String>? get summary; String get start; String get typeStart;
 /// Create a copy of StoryModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,12 +28,12 @@ $StoryModelCopyWith<StoryModel> get copyWith => _$StoryModelCopyWithImpl<StoryMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is StoryModel&&(identical(other.level, level) || other.level == level)&&(identical(other.description, description) || other.description == description)&&(identical(other.title, title) || other.title == title)&&(identical(other.background, background) || other.background == background)&&(identical(other.character1, character1) || other.character1 == character1)&&(identical(other.character2, character2) || other.character2 == character2)&&const DeepCollectionEquality().equals(other.character1Images, character1Images)&&const DeepCollectionEquality().equals(other.character2Images, character2Images)&&const DeepCollectionEquality().equals(other.ilustrations, ilustrations)&&const DeepCollectionEquality().equals(other.preDialog, preDialog)&&const DeepCollectionEquality().equals(other.dialogs, dialogs)&&const DeepCollectionEquality().equals(other.questions, questions)&&const DeepCollectionEquality().equals(other.dragAndDrop, dragAndDrop)&&const DeepCollectionEquality().equals(other.summary, summary)&&(identical(other.start, start) || other.start == start)&&(identical(other.typeStart, typeStart) || other.typeStart == typeStart));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StoryModel&&(identical(other.level, level) || other.level == level)&&(identical(other.description, description) || other.description == description)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.background, background)&&(identical(other.character1, character1) || other.character1 == character1)&&(identical(other.character2, character2) || other.character2 == character2)&&const DeepCollectionEquality().equals(other.character1Images, character1Images)&&const DeepCollectionEquality().equals(other.character2Images, character2Images)&&const DeepCollectionEquality().equals(other.ilustrations, ilustrations)&&const DeepCollectionEquality().equals(other.preDialog, preDialog)&&const DeepCollectionEquality().equals(other.dialogs, dialogs)&&const DeepCollectionEquality().equals(other.questions, questions)&&const DeepCollectionEquality().equals(other.dragAndDrop, dragAndDrop)&&const DeepCollectionEquality().equals(other.summary, summary)&&(identical(other.start, start) || other.start == start)&&(identical(other.typeStart, typeStart) || other.typeStart == typeStart));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,level,description,title,background,character1,character2,const DeepCollectionEquality().hash(character1Images),const DeepCollectionEquality().hash(character2Images),const DeepCollectionEquality().hash(ilustrations),const DeepCollectionEquality().hash(preDialog),const DeepCollectionEquality().hash(dialogs),const DeepCollectionEquality().hash(questions),const DeepCollectionEquality().hash(dragAndDrop),const DeepCollectionEquality().hash(summary),start,typeStart);
+int get hashCode => Object.hash(runtimeType,level,description,title,const DeepCollectionEquality().hash(background),character1,character2,const DeepCollectionEquality().hash(character1Images),const DeepCollectionEquality().hash(character2Images),const DeepCollectionEquality().hash(ilustrations),const DeepCollectionEquality().hash(preDialog),const DeepCollectionEquality().hash(dialogs),const DeepCollectionEquality().hash(questions),const DeepCollectionEquality().hash(dragAndDrop),const DeepCollectionEquality().hash(summary),start,typeStart);
 
 @override
 String toString() {
@@ -48,7 +48,7 @@ abstract mixin class $StoryModelCopyWith<$Res>  {
   factory $StoryModelCopyWith(StoryModel value, $Res Function(StoryModel) _then) = _$StoryModelCopyWithImpl;
 @useResult
 $Res call({
- int level, String description, String title, String background, String character1, String character2, List<String> character1Images, List<String> character2Images, List<String> ilustrations, List<PreDialogModel>? preDialog, List<DialogModel> dialogs, List<QuestionModel> questions, List<DragAndDropModel>? dragAndDrop, List<String>? summary, String start, String typeStart
+ int level, String description, String title, List<String> background, String character1, String character2, List<String> character1Images, List<String> character2Images, List<String> ilustrations, List<PreDialogModel>? preDialog, List<DialogModel> dialogs, List<QuestionModel> questions, List<DragAndDropModel>? dragAndDrop, List<String>? summary, String start, String typeStart
 });
 
 
@@ -71,7 +71,7 @@ level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nulla
 as int,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,background: null == background ? _self.background : background // ignore: cast_nullable_to_non_nullable
-as String,character1: null == character1 ? _self.character1 : character1 // ignore: cast_nullable_to_non_nullable
+as List<String>,character1: null == character1 ? _self.character1 : character1 // ignore: cast_nullable_to_non_nullable
 as String,character2: null == character2 ? _self.character2 : character2 // ignore: cast_nullable_to_non_nullable
 as String,character1Images: null == character1Images ? _self.character1Images : character1Images // ignore: cast_nullable_to_non_nullable
 as List<String>,character2Images: null == character2Images ? _self.character2Images : character2Images // ignore: cast_nullable_to_non_nullable
@@ -168,7 +168,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int level,  String description,  String title,  String background,  String character1,  String character2,  List<String> character1Images,  List<String> character2Images,  List<String> ilustrations,  List<PreDialogModel>? preDialog,  List<DialogModel> dialogs,  List<QuestionModel> questions,  List<DragAndDropModel>? dragAndDrop,  List<String>? summary,  String start,  String typeStart)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int level,  String description,  String title,  List<String> background,  String character1,  String character2,  List<String> character1Images,  List<String> character2Images,  List<String> ilustrations,  List<PreDialogModel>? preDialog,  List<DialogModel> dialogs,  List<QuestionModel> questions,  List<DragAndDropModel>? dragAndDrop,  List<String>? summary,  String start,  String typeStart)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _StoryModel() when $default != null:
 return $default(_that.level,_that.description,_that.title,_that.background,_that.character1,_that.character2,_that.character1Images,_that.character2Images,_that.ilustrations,_that.preDialog,_that.dialogs,_that.questions,_that.dragAndDrop,_that.summary,_that.start,_that.typeStart);case _:
@@ -189,7 +189,7 @@ return $default(_that.level,_that.description,_that.title,_that.background,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int level,  String description,  String title,  String background,  String character1,  String character2,  List<String> character1Images,  List<String> character2Images,  List<String> ilustrations,  List<PreDialogModel>? preDialog,  List<DialogModel> dialogs,  List<QuestionModel> questions,  List<DragAndDropModel>? dragAndDrop,  List<String>? summary,  String start,  String typeStart)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int level,  String description,  String title,  List<String> background,  String character1,  String character2,  List<String> character1Images,  List<String> character2Images,  List<String> ilustrations,  List<PreDialogModel>? preDialog,  List<DialogModel> dialogs,  List<QuestionModel> questions,  List<DragAndDropModel>? dragAndDrop,  List<String>? summary,  String start,  String typeStart)  $default,) {final _that = this;
 switch (_that) {
 case _StoryModel():
 return $default(_that.level,_that.description,_that.title,_that.background,_that.character1,_that.character2,_that.character1Images,_that.character2Images,_that.ilustrations,_that.preDialog,_that.dialogs,_that.questions,_that.dragAndDrop,_that.summary,_that.start,_that.typeStart);case _:
@@ -209,7 +209,7 @@ return $default(_that.level,_that.description,_that.title,_that.background,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int level,  String description,  String title,  String background,  String character1,  String character2,  List<String> character1Images,  List<String> character2Images,  List<String> ilustrations,  List<PreDialogModel>? preDialog,  List<DialogModel> dialogs,  List<QuestionModel> questions,  List<DragAndDropModel>? dragAndDrop,  List<String>? summary,  String start,  String typeStart)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int level,  String description,  String title,  List<String> background,  String character1,  String character2,  List<String> character1Images,  List<String> character2Images,  List<String> ilustrations,  List<PreDialogModel>? preDialog,  List<DialogModel> dialogs,  List<QuestionModel> questions,  List<DragAndDropModel>? dragAndDrop,  List<String>? summary,  String start,  String typeStart)?  $default,) {final _that = this;
 switch (_that) {
 case _StoryModel() when $default != null:
 return $default(_that.level,_that.description,_that.title,_that.background,_that.character1,_that.character2,_that.character1Images,_that.character2Images,_that.ilustrations,_that.preDialog,_that.dialogs,_that.questions,_that.dragAndDrop,_that.summary,_that.start,_that.typeStart);case _:
@@ -224,13 +224,19 @@ return $default(_that.level,_that.description,_that.title,_that.background,_that
 @JsonSerializable()
 
 class _StoryModel implements StoryModel {
-  const _StoryModel({required this.level, required this.description, required this.title, required this.background, required this.character1, required this.character2, required final  List<String> character1Images, required final  List<String> character2Images, required final  List<String> ilustrations, final  List<PreDialogModel>? preDialog, required final  List<DialogModel> dialogs, required final  List<QuestionModel> questions, final  List<DragAndDropModel>? dragAndDrop, final  List<String>? summary, required this.start, required this.typeStart}): _character1Images = character1Images,_character2Images = character2Images,_ilustrations = ilustrations,_preDialog = preDialog,_dialogs = dialogs,_questions = questions,_dragAndDrop = dragAndDrop,_summary = summary;
+  const _StoryModel({required this.level, required this.description, required this.title, required final  List<String> background, required this.character1, required this.character2, required final  List<String> character1Images, required final  List<String> character2Images, required final  List<String> ilustrations, final  List<PreDialogModel>? preDialog, required final  List<DialogModel> dialogs, required final  List<QuestionModel> questions, final  List<DragAndDropModel>? dragAndDrop, final  List<String>? summary, required this.start, required this.typeStart}): _background = background,_character1Images = character1Images,_character2Images = character2Images,_ilustrations = ilustrations,_preDialog = preDialog,_dialogs = dialogs,_questions = questions,_dragAndDrop = dragAndDrop,_summary = summary;
   factory _StoryModel.fromJson(Map<String, dynamic> json) => _$StoryModelFromJson(json);
 
 @override final  int level;
 @override final  String description;
 @override final  String title;
-@override final  String background;
+ final  List<String> _background;
+@override List<String> get background {
+  if (_background is EqualUnmodifiableListView) return _background;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_background);
+}
+
 @override final  String character1;
 @override final  String character2;
  final  List<String> _character1Images;
@@ -311,12 +317,12 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StoryModel&&(identical(other.level, level) || other.level == level)&&(identical(other.description, description) || other.description == description)&&(identical(other.title, title) || other.title == title)&&(identical(other.background, background) || other.background == background)&&(identical(other.character1, character1) || other.character1 == character1)&&(identical(other.character2, character2) || other.character2 == character2)&&const DeepCollectionEquality().equals(other._character1Images, _character1Images)&&const DeepCollectionEquality().equals(other._character2Images, _character2Images)&&const DeepCollectionEquality().equals(other._ilustrations, _ilustrations)&&const DeepCollectionEquality().equals(other._preDialog, _preDialog)&&const DeepCollectionEquality().equals(other._dialogs, _dialogs)&&const DeepCollectionEquality().equals(other._questions, _questions)&&const DeepCollectionEquality().equals(other._dragAndDrop, _dragAndDrop)&&const DeepCollectionEquality().equals(other._summary, _summary)&&(identical(other.start, start) || other.start == start)&&(identical(other.typeStart, typeStart) || other.typeStart == typeStart));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StoryModel&&(identical(other.level, level) || other.level == level)&&(identical(other.description, description) || other.description == description)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._background, _background)&&(identical(other.character1, character1) || other.character1 == character1)&&(identical(other.character2, character2) || other.character2 == character2)&&const DeepCollectionEquality().equals(other._character1Images, _character1Images)&&const DeepCollectionEquality().equals(other._character2Images, _character2Images)&&const DeepCollectionEquality().equals(other._ilustrations, _ilustrations)&&const DeepCollectionEquality().equals(other._preDialog, _preDialog)&&const DeepCollectionEquality().equals(other._dialogs, _dialogs)&&const DeepCollectionEquality().equals(other._questions, _questions)&&const DeepCollectionEquality().equals(other._dragAndDrop, _dragAndDrop)&&const DeepCollectionEquality().equals(other._summary, _summary)&&(identical(other.start, start) || other.start == start)&&(identical(other.typeStart, typeStart) || other.typeStart == typeStart));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,level,description,title,background,character1,character2,const DeepCollectionEquality().hash(_character1Images),const DeepCollectionEquality().hash(_character2Images),const DeepCollectionEquality().hash(_ilustrations),const DeepCollectionEquality().hash(_preDialog),const DeepCollectionEquality().hash(_dialogs),const DeepCollectionEquality().hash(_questions),const DeepCollectionEquality().hash(_dragAndDrop),const DeepCollectionEquality().hash(_summary),start,typeStart);
+int get hashCode => Object.hash(runtimeType,level,description,title,const DeepCollectionEquality().hash(_background),character1,character2,const DeepCollectionEquality().hash(_character1Images),const DeepCollectionEquality().hash(_character2Images),const DeepCollectionEquality().hash(_ilustrations),const DeepCollectionEquality().hash(_preDialog),const DeepCollectionEquality().hash(_dialogs),const DeepCollectionEquality().hash(_questions),const DeepCollectionEquality().hash(_dragAndDrop),const DeepCollectionEquality().hash(_summary),start,typeStart);
 
 @override
 String toString() {
@@ -331,7 +337,7 @@ abstract mixin class _$StoryModelCopyWith<$Res> implements $StoryModelCopyWith<$
   factory _$StoryModelCopyWith(_StoryModel value, $Res Function(_StoryModel) _then) = __$StoryModelCopyWithImpl;
 @override @useResult
 $Res call({
- int level, String description, String title, String background, String character1, String character2, List<String> character1Images, List<String> character2Images, List<String> ilustrations, List<PreDialogModel>? preDialog, List<DialogModel> dialogs, List<QuestionModel> questions, List<DragAndDropModel>? dragAndDrop, List<String>? summary, String start, String typeStart
+ int level, String description, String title, List<String> background, String character1, String character2, List<String> character1Images, List<String> character2Images, List<String> ilustrations, List<PreDialogModel>? preDialog, List<DialogModel> dialogs, List<QuestionModel> questions, List<DragAndDropModel>? dragAndDrop, List<String>? summary, String start, String typeStart
 });
 
 
@@ -353,8 +359,8 @@ class __$StoryModelCopyWithImpl<$Res>
 level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
 as int,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,background: null == background ? _self.background : background // ignore: cast_nullable_to_non_nullable
-as String,character1: null == character1 ? _self.character1 : character1 // ignore: cast_nullable_to_non_nullable
+as String,background: null == background ? _self._background : background // ignore: cast_nullable_to_non_nullable
+as List<String>,character1: null == character1 ? _self.character1 : character1 // ignore: cast_nullable_to_non_nullable
 as String,character2: null == character2 ? _self.character2 : character2 // ignore: cast_nullable_to_non_nullable
 as String,character1Images: null == character1Images ? _self._character1Images : character1Images // ignore: cast_nullable_to_non_nullable
 as List<String>,character2Images: null == character2Images ? _self._character2Images : character2Images // ignore: cast_nullable_to_non_nullable

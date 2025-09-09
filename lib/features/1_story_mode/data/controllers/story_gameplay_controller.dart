@@ -40,7 +40,9 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       ref.read(musicServiceProvider.notifier).playLevelMusic(level.level),
       game.preloadCharacters(level.character1Images + level.character2Images),
       game.preloadIlustrations(level.ilustrations),
-      game.setBackground(level.background),
+      game.preloadBackgrounds(level.background)..then((_) async {
+        await game.setBackground(level.background[0]);
+      }),
     ]);
     state = StoryState(activeLevel: level, isLoading: false);
     navigateMode(level.typeStart, level.start);
@@ -106,6 +108,8 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
 
     final ilustrationIndex = currentConversation.ilustrationIndex;
 
+    game.setBackground(level.background[dialog.backgroundIndex]);
+
     await game.showCharacters(
       char1Img: level.character1Images[c1Reaction],
       char2Img: level.character2Images[c2Reaction],
@@ -140,6 +144,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
     final length = dialog.dialogs.length;
 
     if (nextIdx < length) {
+      game.setBackground(state.activeLevel!.background[dialog.backgroundIndex]);
       final currentConversation = dialog.dialogs[nextIdx];
       final charIdx = currentConversation.characterIndex;
       final charReact = currentConversation.reactionIndex;
