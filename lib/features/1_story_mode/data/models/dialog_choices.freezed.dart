@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DialogChoices {
 
- String get text; String get next; String get nextType;
+ String get text; String get next; String get nextType; Map<String, String>? get consequences;
 /// Create a copy of DialogChoices
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $DialogChoicesCopyWith<DialogChoices> get copyWith => _$DialogChoicesCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DialogChoices&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DialogChoices&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&const DeepCollectionEquality().equals(other.consequences, consequences));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,text,next,nextType);
+int get hashCode => Object.hash(runtimeType,text,next,nextType,const DeepCollectionEquality().hash(consequences));
 
 @override
 String toString() {
-  return 'DialogChoices(text: $text, next: $next, nextType: $nextType)';
+  return 'DialogChoices(text: $text, next: $next, nextType: $nextType, consequences: $consequences)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $DialogChoicesCopyWith<$Res>  {
   factory $DialogChoicesCopyWith(DialogChoices value, $Res Function(DialogChoices) _then) = _$DialogChoicesCopyWithImpl;
 @useResult
 $Res call({
- String text, String next, String nextType
+ String text, String next, String nextType, Map<String, String>? consequences
 });
 
 
@@ -65,12 +65,13 @@ class _$DialogChoicesCopyWithImpl<$Res>
 
 /// Create a copy of DialogChoices
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? next = null,Object? nextType = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? next = null,Object? nextType = null,Object? consequences = freezed,}) {
   return _then(_self.copyWith(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,next: null == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String,nextType: null == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
-as String,
+as String,consequences: freezed == consequences ? _self.consequences : consequences // ignore: cast_nullable_to_non_nullable
+as Map<String, String>?,
   ));
 }
 
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String text,  String next,  String nextType)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String text,  String next,  String nextType,  Map<String, String>? consequences)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DialogChoices() when $default != null:
-return $default(_that.text,_that.next,_that.nextType);case _:
+return $default(_that.text,_that.next,_that.nextType,_that.consequences);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.text,_that.next,_that.nextType);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String text,  String next,  String nextType)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String text,  String next,  String nextType,  Map<String, String>? consequences)  $default,) {final _that = this;
 switch (_that) {
 case _DialogChoices():
-return $default(_that.text,_that.next,_that.nextType);case _:
+return $default(_that.text,_that.next,_that.nextType,_that.consequences);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.text,_that.next,_that.nextType);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String text,  String next,  String nextType)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String text,  String next,  String nextType,  Map<String, String>? consequences)?  $default,) {final _that = this;
 switch (_that) {
 case _DialogChoices() when $default != null:
-return $default(_that.text,_that.next,_that.nextType);case _:
+return $default(_that.text,_that.next,_that.nextType,_that.consequences);case _:
   return null;
 
 }
@@ -211,12 +212,21 @@ return $default(_that.text,_that.next,_that.nextType);case _:
 @JsonSerializable()
 
 class _DialogChoices implements DialogChoices {
-  const _DialogChoices({required this.text, required this.next, required this.nextType});
+  const _DialogChoices({required this.text, required this.next, required this.nextType, required final  Map<String, String>? consequences}): _consequences = consequences;
   factory _DialogChoices.fromJson(Map<String, dynamic> json) => _$DialogChoicesFromJson(json);
 
 @override final  String text;
 @override final  String next;
 @override final  String nextType;
+ final  Map<String, String>? _consequences;
+@override Map<String, String>? get consequences {
+  final value = _consequences;
+  if (value == null) return null;
+  if (_consequences is EqualUnmodifiableMapView) return _consequences;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(value);
+}
+
 
 /// Create a copy of DialogChoices
 /// with the given fields replaced by the non-null parameter values.
@@ -231,16 +241,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DialogChoices&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DialogChoices&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&const DeepCollectionEquality().equals(other._consequences, _consequences));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,text,next,nextType);
+int get hashCode => Object.hash(runtimeType,text,next,nextType,const DeepCollectionEquality().hash(_consequences));
 
 @override
 String toString() {
-  return 'DialogChoices(text: $text, next: $next, nextType: $nextType)';
+  return 'DialogChoices(text: $text, next: $next, nextType: $nextType, consequences: $consequences)';
 }
 
 
@@ -251,7 +261,7 @@ abstract mixin class _$DialogChoicesCopyWith<$Res> implements $DialogChoicesCopy
   factory _$DialogChoicesCopyWith(_DialogChoices value, $Res Function(_DialogChoices) _then) = __$DialogChoicesCopyWithImpl;
 @override @useResult
 $Res call({
- String text, String next, String nextType
+ String text, String next, String nextType, Map<String, String>? consequences
 });
 
 
@@ -268,12 +278,13 @@ class __$DialogChoicesCopyWithImpl<$Res>
 
 /// Create a copy of DialogChoices
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? next = null,Object? nextType = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? next = null,Object? nextType = null,Object? consequences = freezed,}) {
   return _then(_DialogChoices(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,next: null == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String,nextType: null == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
-as String,
+as String,consequences: freezed == consequences ? _self._consequences : consequences // ignore: cast_nullable_to_non_nullable
+as Map<String, String>?,
   ));
 }
 

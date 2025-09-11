@@ -16,10 +16,10 @@ class HiveService {
     required this.challengeProgressBox,
   });
 
-  Future<void> storySaveConsequences(
-    Map<String, String> consequences,
+  Future<void> storySaveConsequences({
+    required Map<String, String> consequences,
     bool? isMinigameSuccess,
-  ) async {
+  }) async {
     Map<String, int> userConsequences = storyGetConsequences() ?? {};
     if (isMinigameSuccess != null) {
       if (isMinigameSuccess) {

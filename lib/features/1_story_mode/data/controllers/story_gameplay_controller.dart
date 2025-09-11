@@ -264,7 +264,16 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       game.hideCharacters();
       game.hideIlustration();
     }
-    initLevel(state.activeLevel!);
+    state = state.copyWith(
+      correctAnswer: 0,
+      wrongAnswer: 0,
+      falsePrevious: false,
+      preDialog: null,
+      currentDialog: null,
+      indexDialog: null,
+      currentQuestion: null,
+    );
+    navigateMode(state.activeLevel!.typeStart, state.activeLevel!.start);
   }
 
   void exitStory() {

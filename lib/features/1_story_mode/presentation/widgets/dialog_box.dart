@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:timetocode/app/data/services/hive_service.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/dialog_choices_box.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/typewriter_effect_box.dart';
@@ -226,6 +227,11 @@ class _DialogBoxState extends ConsumerState<DialogBox>
                                           .navigateMode(
                                             choice.nextType,
                                             choice.next,
+                                          );
+                                      ref
+                                          .read(hiveProvider)
+                                          .storySaveConsequences(
+                                            consequences: choice.consequences!,
                                           );
                                     },
                                   ),
