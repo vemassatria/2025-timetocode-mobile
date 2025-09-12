@@ -55,6 +55,9 @@
         "questions": [
             {
                 "id": "",
+                "conditions": {
+                    "key": ">=>==<<=value"
+                },
                 "text": "",
                 "code": "",
                 "choices": [
@@ -73,6 +76,9 @@
         "dragAndDrop": [
             {
                 "id": "",
+                "conditions": {
+                    "key": ">=>==<<=value"
+                },
                 "instruction": "",
                 "scaffoldCode": "",
                 "draggableOptions": [

@@ -8,6 +8,7 @@ part 'question_model.g.dart';
 abstract class QuestionModel with _$QuestionModel {
   const factory QuestionModel({
     required String id,
+    Map<String, String>? conditions,
     required String text,
     String? code,
     required List<ChoicesModel> choices,

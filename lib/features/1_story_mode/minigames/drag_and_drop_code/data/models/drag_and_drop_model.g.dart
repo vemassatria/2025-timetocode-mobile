@@ -9,6 +9,9 @@ part of 'drag_and_drop_model.dart';
 _DragAndDropModel _$DragAndDropModelFromJson(Map<String, dynamic> json) =>
     _DragAndDropModel(
       id: json['id'] as String,
+      conditions: (json['conditions'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
       instruction: json['instruction'] as String,
       scaffoldCode: json['scaffoldCode'] as String?,
       draggableOptions: (json['draggableOptions'] as List<dynamic>)
@@ -30,6 +33,7 @@ _DragAndDropModel _$DragAndDropModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$DragAndDropModelToJson(_DragAndDropModel instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'conditions': instance.conditions,
       'instruction': instance.instruction,
       'scaffoldCode': instance.scaffoldCode,
       'draggableOptions': instance.draggableOptions,
