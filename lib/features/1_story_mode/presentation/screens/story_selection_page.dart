@@ -23,16 +23,14 @@ class StorySelectionPage extends ConsumerWidget {
     final soundEffectService = ref.read(soundEffectServiceProvider.notifier);
 
     return storyAsync.when(
-      loading:
-          () => const Scaffold(
-            backgroundColor: AppColors.darkBackground,
-            body: Center(child: CircularProgressIndicator()),
-          ),
-      error:
-          (error, stack) => const Scaffold(
-            backgroundColor: AppColors.darkBackground,
-            body: Center(child: Text('Error loading levels')),
-          ),
+      loading: () => const Scaffold(
+        backgroundColor: AppColors.darkBackground,
+        body: Center(child: CircularProgressIndicator()),
+      ),
+      error: (error, stack) => const Scaffold(
+        backgroundColor: AppColors.darkBackground,
+        body: Center(child: Text('Error loading levels')),
+      ),
       data: (levels) {
         return Scaffold(
           backgroundColor: AppColors.darkBackground,
@@ -83,24 +81,22 @@ class StorySelectionPage extends ConsumerWidget {
                       if (isFirst) SizedBox(height: 16.h),
                       LevelCard(
                         image:
-                            'assets/images/background/${level.background}.webp',
+                            'assets/images/background/${level.background[0]}.webp',
                         title: level.title,
-                        status:
-                            isLocked
-                                ? CardStatus.locked
-                                : (index < completedLevel
-                                    ? CardStatus.completed
-                                    : CardStatus.unlocked),
-                        onStartPressed:
-                            isLocked
-                                ? null
-                                : () {
-                                  soundEffectService.playSelectClick();
-                                  ref
-                                      .read(storyControllerProvider.notifier)
-                                      .initLevel(level);
-                                  context.go('/pembelajaran/level');
-                                },
+                        status: isLocked
+                            ? CardStatus.locked
+                            : (index < completedLevel
+                                  ? CardStatus.completed
+                                  : CardStatus.unlocked),
+                        onStartPressed: isLocked
+                            ? null
+                            : () {
+                                soundEffectService.playSelectClick();
+                                ref
+                                    .read(storyControllerProvider.notifier)
+                                    .initLevel(level);
+                                context.go('/pembelajaran/level');
+                              },
                         onInfoPressed: () {
                           soundEffectService.playSelectClick();
                           showPopupOverlay(

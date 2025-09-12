@@ -211,6 +211,7 @@
         },
         {
           "id": "scene1_2",
+          "backgroundIndex": 1,
           "dialogs": [
             {
               "line": "Loh kok mas tau saya",
@@ -366,6 +367,7 @@
         },
         {
           "id": "salah1_1",
+          "backgroundIndex": 1,
           "dialogs": [
             {
               "line": "Waduh jawaban untuk tipe data kamu belum tepat.",
@@ -460,6 +462,7 @@
         },
         {
           "id": "materi1_2",
+          "backgroundIndex": 1,
           "dialogs": [
             {
               "line": "Wah jawabannya bener! Kamu udah mulai paham banget soal tipe data. Kacau, cepet banget pahamnya! Jadi, kalau ada program yang butuh nyimpen angka, tinggal pilih aja tipe datanya.",
@@ -507,6 +510,7 @@
         },
         {
           "id": "salah1_2",
+          "backgroundIndex": 1,
           "dialogs": [
             {
               "line": "Aduh aku kena virus kesalahan berpikir nih",
@@ -564,6 +568,7 @@
         },
         {
           "id": "materi1_3",
+          "backgroundIndex": 0,
           "dialogs": [
             {
               "line": "Beh Adrian mulai jago nih, takut banget kena bantai konsep pemrogaman deh",
@@ -651,6 +656,7 @@
         },
         {
           "id": "salah1_3",
+          "backgroundIndex": 1,
           "dialogs": [
             {
               "line": "Yaelah jawabanku salah",
@@ -673,6 +679,7 @@
         },
         {
           "id": "benar1_last",
+          "backgroundIndex": 0,
           "dialogs": [
             {
               "line": "Nahh, iya itu udah benar! Gampang kan? Kamu mulai paham sekarang, ya? Nih aku kasih summary tentang tipe data, variabel dan operator. kamu bisa baca rangkumannya untuk memerdalam pengetahuan kamu soal ini.",
@@ -689,218 +696,222 @@
           "nextType": ""
         }
       ],
-      "questions": [
-        {
-          "id": "soal1_1",
-          "text": "Bedasarkan data di bawah ini, manakah tipe data yang paling tepat untuk masing-masing data tersebut secara berurutan?",
-          "code": "* Nama: \"Andi\"\n* Usia: 20\n* Berat badan: 70.5\n* Nilai ujian: 85\n* Status lulus: true",
-          "choices": [
-            {
-              "text": "string - float - int - bool - char",
-              "next": "salah1_1",
-              "nextType": "dialog",
-              "isCorrect": false
-            },
-            {
-              "text": "string - int - float - int - bool",
-              "next": "materi1_2",
-              "nextType": "dialog",
-              "isCorrect": true
-            },
-            {
-              "text": "char - bool - string - float - int",
-              "next": "salah1_1",
-              "nextType": "dialog",
-              "isCorrect": false
-            },
-            {
-              "text": "int - float - string - bool - float",
-              "next": "salah1_1",
-              "nextType": "dialog",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "id": "soal1_2",
-          "text": "Kalau kamu mau buat variabel beratBadan untuk nyimpen data berat 55.5 kilogram, deklarasi yang BENAR adalah...",
-          "choices": [
-            {
-              "text": "int berat.Badan = 55.5;",
-              "next": "salah1_2",
-              "nextType": "dialog",
-              "isCorrect": false
-            },
-            {
-              "text": "float beratBadan = 55.5;",
-              "next": "materi1_3",
-              "nextType": "dialog",
-              "isCorrect": true
-            },
-            {
-              "text": "string beratBadan = 55.5;",
-              "next": "salah1_2",
-              "nextType": "dialog",
-              "isCorrect": false
-            },
-            {
-              "text": "bool beratBadan = \"true\";",
-              "next": "salah1_2",
-              "nextType": "dialog",
-              "isCorrect": false
-            }
-          ]
-        },
-        {
-          "id": "soal1_3",
-          "text": "Berapa output dari code di bawah ini?",
-          "code": "#include <stdio.h>\nint main() {\n    int a = 5;\n    a += 3 * 2;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
-          "choices": [
-            {
-              "text": "16",
-              "next": "salah1_3",
-              "nextType": "dialog",
-              "isCorrect": false
-            },
-            {
-              "text": "11",
-              "next": "benar1_last",
-              "nextType": "dialog",
-              "isCorrect": true
-            },
-            {
-              "text": "13",
-              "next": "salah1_3",
-              "nextType": "dialog",
-              "isCorrect": false
-            },
-            {
-              "text": "10",
-              "next": "salah1_3",
-              "nextType": "dialog",
-              "isCorrect": false
-            }
-          ]
-        }
-      ],
-      "dragAndDrop": [
-        {
-          "id": "dd-1.1",
-          "type": "dnd_code",
-          "instruction": "Seret dan susun potongan kode berikut agar membentuk deklarasi variabel bertipe int dan langsung diberi nilai 5",
-          "scaffoldCode": "int main() {\n\t[dz1][dz2],[dz3]\n\t[dz4][dz5]=[dz6][dz7]\n\t[dz8]\n}",
-          "draggableOptions": [
-            {
-              "id": "dnd-1",
-              "content": {
-                "type": "text",
-                "value": "a = 7"
-              }
-            },
-            {
-              "id": "dnd-2",
-              "content": {
-                "type": "text",
-                "value": "int"
-              }
-            },
-            {
-              "id": "dnd-3",
-              "content": {
-                "type": "text",
-                "value": "hasil"
-              }
-            },
-            {
-              "id": "dnd-4",
-              "content": {
-                "type": "text",
-                "value": "b = 2;"
-              }
-            },
-            {
-              "id": "dnd-5",
-              "content": {
-                "type": "text",
-                "value": "float"
-              }
-            },
-            {
-              "id": "dnd-6",
-              "content": {
-                "type": "text",
-                "value": "printf(\"Hasil: %.1f\",hasil);"
+      "minigame": {
+        "questions": [
+          {
+            "id": "soal1_1",
+            "text": "Bedasarkan data di bawah ini, manakah tipe data yang paling tepat untuk masing-masing data tersebut secara berurutan?",
+            "code": "* Nama: \"Andi\"\n* Usia: 20\n* Berat badan: 70.5\n* Nilai ujian: 85\n* Status lulus: true",
+            "choices": [
+              {
+                "text": "string - float - int - bool - char",
+                "next": "salah1_1",
+                "nextType": "dialog",
+                "isCorrect": false
               },
-              "info": "%.[jumlah_angka]f adalah Format Specifier / Penentu Format, sebuah 'kode perintah' di dalam printf yang mengatur bagaimana sebuah nilai akan ditampilkan. \nSecara default, mencetak angka desimal (float) bisa menghasilkan banyak angka di belakang koma (misal: 2.333333). Dengan penentu format, kita bisa memerintahkan bahasa pemrograman untuk membulatkan dan menampilkannya lebih rapi. \n\nContoh:\nJika nilai adalah 98.765, maka:\n%f akan mencetak 98.765000 (default, kurang rapi). \n%.1f akan mencetak 98.8 (dibulatkan ke 1 angka desimal). \n%.2f akan mencetak 98.77 (dibulatkan ke 2 angka desimal)."
-            },
-            {
-              "id": "dnd-7",
-              "content": {
-                "type": "text",
-                "value": "(float)"
+              {
+                "text": "string - int - float - int - bool",
+                "next": "materi1_2",
+                "nextType": "dialog",
+                "isCorrect": true
               },
-              "info": "ini adalah Type Casting, yaitu instruksi eksplisit dari programmer kepada compiler untuk mengubah tipe data dari sebuah nilai atau variabel menjadi tipe data lain.\ntanpa type casting, pembagian seperti  7/3 akan dianggap sebagai pembagian dua bilangan bulat (integer), yang hasilnya juga integer, yaitu 2. Sisa desimalnya (0.333...) akan dibuang. \n\nsintaks general: (tipe_data_tujuan) nilai_atau_variabel;"
-            },
-            {
-              "id": "dnd-8",
-              "content": {
-                "type": "text",
-                "value": "a / b;"
+              {
+                "text": "char - bool - string - float - int",
+                "next": "salah1_1",
+                "nextType": "dialog",
+                "isCorrect": false
+              },
+              {
+                "text": "int - float - string - bool - float",
+                "next": "salah1_1",
+                "nextType": "dialog",
+                "isCorrect": false
               }
+            ],
+            "consequences": {
+              "kepintaran": "5"
             }
-          ],
-          "dropZones": [
-            {
-              "id": "dz1",
-              "acceptedIds": null,
-              "content": null
-            },
-            {
-              "id": "dz2",
-              "acceptedIds": null,
-              "content": null
-            },
-            {
-              "id": "dz3",
-              "acceptedIds": null,
-              "content": null
-            },
-            {
-              "id": "dz4",
-              "acceptedIds": null,
-              "content": null
-            },
-            {
-              "id": "dz5",
-              "acceptedIds": null,
-              "content": null
-            },
-            {
-              "id": "dz6",
-              "acceptedIds": null,
-              "content": null
-            },
-            {
-              "id": "dz7",
-              "acceptedIds": null,
-              "content": null
-            },
-            {
-              "id": "dz8",
-              "acceptedIds": null,
-              "content": null
-            }
-          ],
-          "correctSequence": [
-            "dnd-2", "dnd-1", "dnd-4", "dnd-5", "dnd-3", "dnd-7", "dnd-8", "dnd-6"
-          ],
-          "next": "soal1_3",
-          "nextType": "soal",
-          "consequences": {
-            "kepintaran": 5
+          },
+          {
+            "id": "soal1_2",
+            "text": "Kalau kamu mau buat variabel beratBadan untuk nyimpen data berat 55.5 kilogram, deklarasi yang BENAR adalah...",
+            "choices": [
+              {
+                "text": "int berat.Badan = 55.5;",
+                "next": "salah1_2",
+                "nextType": "dialog",
+                "isCorrect": false
+              },
+              {
+                "text": "float beratBadan = 55.5;",
+                "next": "materi1_3",
+                "nextType": "dialog",
+                "isCorrect": true
+              },
+              {
+                "text": "string beratBadan = 55.5;",
+                "next": "salah1_2",
+                "nextType": "dialog",
+                "isCorrect": false
+              },
+              {
+                "text": "bool beratBadan = \"true\";",
+                "next": "salah1_2",
+                "nextType": "dialog",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": "soal1_3",
+            "text": "Berapa output dari code di bawah ini?",
+            "code": "#include <stdio.h>\nint main() {\n    int a = 5;\n    a += 3 * 2;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
+            "choices": [
+              {
+                "text": "16",
+                "next": "salah1_3",
+                "nextType": "dialog",
+                "isCorrect": false
+              },
+              {
+                "text": "11",
+                "next": "benar1_last",
+                "nextType": "dialog",
+                "isCorrect": true
+              },
+              {
+                "text": "13",
+                "next": "salah1_3",
+                "nextType": "dialog",
+                "isCorrect": false
+              },
+              {
+                "text": "10",
+                "next": "salah1_3",
+                "nextType": "dialog",
+                "isCorrect": false
+              }
+            ]
           }
-        }
-      ],
+        ],
+        "dragAndDrop": [
+          {
+            "id": "dd-1.1",
+            "instruction": "Seret dan susun potongan kode berikut agar membentuk deklarasi variabel bertipe int dan langsung diberi nilai 5",
+            "scaffoldCode": "int main() {\n\t[dz1][dz2],[dz3]\n\t[dz4][dz5]=[dz6][dz7]\n\t[dz8]\n}",
+            "draggableOptions": [
+              {
+                "id": "dnd-1",
+                "content": {
+                  "type": "text",
+                  "value": "a = 7"
+                }
+              },
+              {
+                "id": "dnd-2",
+                "content": {
+                  "type": "text",
+                  "value": "int"
+                }
+              },
+              {
+                "id": "dnd-3",
+                "content": {
+                  "type": "text",
+                  "value": "hasil"
+                }
+              },
+              {
+                "id": "dnd-4",
+                "content": {
+                  "type": "text",
+                  "value": "b = 2;"
+                }
+              },
+              {
+                "id": "dnd-5",
+                "content": {
+                  "type": "text",
+                  "value": "float"
+                }
+              },
+              {
+                "id": "dnd-6",
+                "content": {
+                  "type": "text",
+                  "value": "printf(\"Hasil: %.1f\",hasil);"
+                },
+                "info": "%.[jumlah_angka]f adalah Format Specifier / Penentu Format, sebuah 'kode perintah' di dalam printf yang mengatur bagaimana sebuah nilai akan ditampilkan. \nSecara default, mencetak angka desimal (float) bisa menghasilkan banyak angka di belakang koma (misal: 2.333333). Dengan penentu format, kita bisa memerintahkan bahasa pemrograman untuk membulatkan dan menampilkannya lebih rapi. \n\nContoh:\nJika nilai adalah 98.765, maka:\n%f akan mencetak 98.765000 (default, kurang rapi). \n%.1f akan mencetak 98.8 (dibulatkan ke 1 angka desimal). \n%.2f akan mencetak 98.77 (dibulatkan ke 2 angka desimal)."
+              },
+              {
+                "id": "dnd-7",
+                "content": {
+                  "type": "text",
+                  "value": "(float)"
+                },
+                "info": "ini adalah Type Casting, yaitu instruksi eksplisit dari programmer kepada compiler untuk mengubah tipe data dari sebuah nilai atau variabel menjadi tipe data lain.\ntanpa type casting, pembagian seperti  7/3 akan dianggap sebagai pembagian dua bilangan bulat (integer), yang hasilnya juga integer, yaitu 2. Sisa desimalnya (0.333...) akan dibuang. \n\nsintaks general: (tipe_data_tujuan) nilai_atau_variabel;"
+              },
+              {
+                "id": "dnd-8",
+                "content": {
+                  "type": "text",
+                  "value": "a / b;"
+                }
+              }
+            ],
+            "dropZones": [
+              {
+                "id": "dz1",
+                "acceptedIds": null,
+                "content": null
+              },
+              {
+                "id": "dz2",
+                "acceptedIds": null,
+                "content": null
+              },
+              {
+                "id": "dz3",
+                "acceptedIds": null,
+                "content": null
+              },
+              {
+                "id": "dz4",
+                "acceptedIds": null,
+                "content": null
+              },
+              {
+                "id": "dz5",
+                "acceptedIds": null,
+                "content": null
+              },
+              {
+                "id": "dz6",
+                "acceptedIds": null,
+                "content": null
+              },
+              {
+                "id": "dz7",
+                "acceptedIds": null,
+                "content": null
+              },
+              {
+                "id": "dz8",
+                "acceptedIds": null,
+                "content": null
+              }
+            ],
+            "correctSequence": [
+              "dnd-2", "dnd-1", "dnd-4", "dnd-5", "dnd-3", "dnd-7", "dnd-8", "dnd-6"
+            ],
+            "next": "soal1_3",
+            "nextType": "soal",
+            "consequences": {
+              "kepintaran": "5"
+            }
+          }
+        ]
+      },
       "summary": [
         "Tipe Data: Tipe data menentukan jenis nilai yang bisa disimpan dalam variabel, seperti int untuk angka bulat, float untuk angka pecahan, dan char untuk karakter.",
         "Variabel: Variabel adalah tempat menyimpan data yang nilainya bisa berubah selama program berjalan. Contohnya, int umur = 21; menyimpan nilai umur.",
