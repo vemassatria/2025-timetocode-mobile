@@ -7,7 +7,7 @@ import 'package:timetocode/features/1_story_mode/engine/core/game_engine.dart';
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/presentation/screens/drag_and_drop_question_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/dialog_box.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/intro.dart';
-import 'package:timetocode/features/1_story_mode/presentation/widgets/question_box_widget.dart';
+import 'package:timetocode/features/1_story_mode/minigames/quiz/presentation/widgets/question_box_widget.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/skip_button.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/story_menu.dart';
 import 'package:timetocode/features/1_story_mode/data/controllers/story_gameplay_controller.dart';

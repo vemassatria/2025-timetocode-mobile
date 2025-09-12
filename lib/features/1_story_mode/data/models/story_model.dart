@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:timetocode/features/1_story_mode/data/models/dialog_model.dart';
 import 'package:timetocode/features/1_story_mode/data/models/predialog_model.dart';
-import 'package:timetocode/features/1_story_mode/minigames/data/minigame_model.dart';
+import 'package:timetocode/features/1_story_mode/minigames/core/data/minigame_model.dart';
 
 part 'story_model.freezed.dart';
 part 'story_model.g.dart';

@@ -7,7 +7,7 @@ import 'package:timetocode/features/1_story_mode/data/controllers/story_gameplay
 import 'package:timetocode/features/0_core/models/choices_model.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
 import 'package:timetocode/app/widgets/popups/answer_popup.dart';
-import 'package:timetocode/features/1_story_mode/presentation/widgets/choices_box.dart';
+import 'package:timetocode/features/1_story_mode/minigames/quiz/presentation/widgets/choices_box.dart';
 
 class QuestionBoxWidget extends ConsumerWidget {
   const QuestionBoxWidget({super.key});
