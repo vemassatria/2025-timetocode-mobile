@@ -22,6 +22,7 @@ class DndController extends AutoDisposeNotifier<DndState> {
     DragAndDropModel dndModel = ref
         .read(storyControllerProvider)
         .activeLevel!
+        .minigame
         .dragAndDrop!
         .firstWhere((dnd) => dnd.id == id);
 

@@ -183,7 +183,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   }
 
   void showQuestion(String questionId) {
-    final question = state.activeLevel!.questions.firstWhere(
+    final question = state.activeLevel!.minigame.questions!.firstWhere(
       (q) => q.id == questionId,
     );
     state = state.copyWith(
