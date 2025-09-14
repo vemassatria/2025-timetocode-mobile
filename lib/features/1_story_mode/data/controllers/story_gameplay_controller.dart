@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:timetocode/app/data/services/hive_service.dart';
 import 'package:timetocode/app/data/services/music_service.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:timetocode/features/1_story_mode/data/states/story_state.dart';
@@ -73,18 +74,17 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   }
 
   void showPreDialog(String id) {
+    final preDialog = state.activeLevel!.preDialog!.firstWhere(
+      (preDialog) =>
+          preDialog.id == id && preDialog.conditions == null ||
+          (preDialog.conditions != null &&
+              ref
+                  .read(hiveProvider)
+                  .storyCheckConditions(preDialog.conditions!)),
+    );
     state = state.activeMode != 'preDialog'
-        ? state.copyWith(
-            preDialog: state.activeLevel!.preDialog!.firstWhere(
-              (preDialog) => preDialog.id == id,
-            ),
-            activeMode: 'preDialog',
-          )
-        : state.copyWith(
-            preDialog: state.activeLevel!.preDialog!.firstWhere(
-              (preDialog) => preDialog.id == id,
-            ),
-          );
+        ? state.copyWith(preDialog: preDialog, activeMode: 'preDialog')
+        : state.copyWith(preDialog: preDialog);
   }
 
   void nextPreDialog() {
@@ -97,7 +97,15 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
 
   Future<void> showDialog(String dialogId) async {
     final level = state.activeLevel!;
-    final dialog = level.dialogs.firstWhere((d) => d.id == dialogId);
+    final dialog = level.dialogs.firstWhere(
+      (dialog) =>
+          dialog.id == dialogId &&
+          (dialog.conditions == null ||
+              (dialog.conditions != null &&
+                  ref
+                      .read(hiveProvider)
+                      .storyCheckConditions(dialog.conditions!))),
+    );
     final currentConversation = dialog.dialogs[0];
 
     final firstIdx = currentConversation.characterIndex;
@@ -184,7 +192,13 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
 
   void showQuestion(String questionId) {
     final question = state.activeLevel!.minigame.questions!.firstWhere(
-      (q) => q.id == questionId,
+      (question) =>
+          question.id == questionId &&
+          (question.conditions == null ||
+              (question.conditions != null &&
+                  ref
+                      .read(hiveProvider)
+                      .storyCheckConditions(question.conditions!))),
     );
     state = state.copyWith(
       currentQuestion: question,
