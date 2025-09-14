@@ -4,6 +4,7 @@ import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/da
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/models/drop_zone_model.dart';
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/states/dnd_state.dart';
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/models/draggable_model.dart';
+import 'package:timetocode/app/data/services/hive_service.dart';
 
 final dndControllerProvider =
     NotifierProvider.autoDispose<DndController, DndState>(DndController.new);
@@ -24,7 +25,12 @@ class DndController extends AutoDisposeNotifier<DndState> {
         .activeLevel!
         .minigame
         .dragAndDrop!
-        .firstWhere((dnd) => dnd.id == id);
+        .firstWhere(
+          (dnd) =>
+              dnd.id == id && dnd.conditions == null ||
+              (dnd.conditions != null &&
+                  ref.read(hiveProvider).storyCheckConditions(dnd.conditions!)),
+        );
 
     state = DndState(
       currentDragAndDrop: dndModel,
