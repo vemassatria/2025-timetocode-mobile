@@ -23,7 +23,7 @@ class ChoicesBox extends ConsumerWidget {
         type: ButtonType.outline,
 
         onPressed: () {
-          ref.read(soundEffectServiceProvider.notifier).playSelectClick();
+          ref.read(soundEffectServiceProvider.notifier).playPopupAnswer();
           showPopupOverlay(
             context,
             ConfirmPopup(
@@ -54,7 +54,9 @@ class ChoicesBox extends ConsumerWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
         color: AppColors.backgroundTransparent,
-        border: Border(top: BorderSide(color: AppColors.white, width: 2.w)),
+        border: Border(
+          top: BorderSide(color: AppColors.white, width: 2.w),
+        ),
       ),
       child: SingleChildScrollView(
         child: Column(
