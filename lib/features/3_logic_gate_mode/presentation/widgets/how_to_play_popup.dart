@@ -40,9 +40,95 @@ class _HowToPlayPopupState extends ConsumerState<HowToPlayPopup> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 610.h,
       width: 300.w,
+      padding: EdgeInsets.all(32.w),
+      decoration: BoxDecoration(
+        color: AppColors.surfaceDark,
+        borderRadius: BorderRadius.circular(12.r),
+        border: Border.all(color: AppColors.white, width: 1.w),
+      ),
+      child: Column(
+        children: [
+          Text(
+            'Cara Bermain',
+            style: AppTypography.heading4(color: AppColors.white),
+          ),
+          Divider(color: AppColors.white, thickness: 3.w),
+          SizedBox(height: 32.h),
+          _buildContent(),
+          SizedBox(height: 32.h),
+          _buildPageIndicator(),
+          SizedBox(height: 32.h),
+          _buildCarouselControls(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPageIndicator() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(descriptions.length, (index) {
+        bool isActive = _currentIndex == index;
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          margin: EdgeInsets.symmetric(horizontal: 4.w),
+          height: 8.h,
+          width: isActive ? 24.w : 8.w,
+          decoration: BoxDecoration(
+            color: isActive ? AppColors.skyByte : AppColors.secondaryText,
+            borderRadius: BorderRadius.circular(8.r),
+          ),
+        );
+      }),
+    );
+  }
+
+  Widget _buildCarouselControls() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        CustomButton(
+          label: null,
+          icon: Icon(Icons.arrow_back, size: 24.w),
+          onPressed: _currentIndex > 0
+              ? () => _pageController.previousPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                )
+              : null,
+          type: ButtonType.icon,
+          isDisabled: _currentIndex == 0,
+          color: ButtonColor.purple,
+        ),
+        CustomButton(
+          label: "Tutup",
+          onPressed: () => closePopupOverlay(ref),
+          width: 120.w,
+          widthMode: ButtonWidthMode.fixed,
+        ),
+        CustomButton(
+          label: null,
+          icon: Icon(Icons.arrow_forward, size: 24.w),
+          onPressed: _currentIndex < descriptions.length - 1
+              ? () => _pageController.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                )
+              : null,
+          type: ButtonType.icon,
+          isDisabled: _currentIndex == descriptions.length - 1,
+          color: ButtonColor.purple,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildContent() {
+    return Expanded(
       child: PageView.builder(
         controller: _pageController,
         onPageChanged: (index) {
@@ -52,92 +138,20 @@ class _HowToPlayPopupState extends ConsumerState<HowToPlayPopup> {
         },
         itemCount: descriptions.length,
         itemBuilder: (context, index) {
-          return Container(
-            padding: EdgeInsets.all(32.w),
-            decoration: BoxDecoration(
-              color: AppColors.surfaceDark,
-              borderRadius: BorderRadius.circular(12.r),
-              border: Border.all(color: AppColors.white, width: 1.w),
-            ),
-            child: Column(
-              children: [
-                Text(
-                  'Cara Bermain',
-                  style: AppTypography.heading4(color: AppColors.white),
-                ),
-                Divider(color: AppColors.white, thickness: 3.w),
-                SizedBox(height: 32.h),
-                SvgPicture.asset(
-                  'assets/images/logic_gate/tutorial/how_to_play$index.svg',
-                  width: 265.w,
-                  height: 185.h,
-                  fit: BoxFit.cover,
-                ),
-                SizedBox(height: 24.h),
-                Text(
-                  descriptions[index],
-                  style: AppTypography.mediumBold(color: AppColors.white),
-                ),
-                SizedBox(height: 32.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(descriptions.length, (index) {
-                    bool isActive = _currentIndex == index;
-                    return AnimatedContainer(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                      margin: EdgeInsets.symmetric(horizontal: 4.w),
-                      height: 8.h,
-                      width: isActive ? 24.w : 8.w,
-                      decoration: BoxDecoration(
-                        color: isActive
-                            ? AppColors.skyByte
-                            : AppColors.secondaryText,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                    );
-                  }),
-                ),
-                SizedBox(height: 32.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustomButton(
-                      label: null,
-                      icon: Icon(Icons.arrow_back, size: 24.w),
-                      onPressed: _currentIndex > 0
-                          ? () => _pageController.previousPage(
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                            )
-                          : null,
-                      type: ButtonType.icon,
-                      isDisabled: _currentIndex == 0,
-                      color: ButtonColor.purple,
-                    ),
-                    CustomButton(
-                      label: "Tutup",
-                      onPressed: () => closePopupOverlay(ref),
-                      width: 120.w,
-                      widthMode: ButtonWidthMode.fixed,
-                    ),
-                    CustomButton(
-                      label: null,
-                      icon: Icon(Icons.arrow_forward, size: 24.w),
-                      onPressed: _currentIndex < descriptions.length - 1
-                          ? () => _pageController.nextPage(
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                            )
-                          : null,
-                      type: ButtonType.icon,
-                      isDisabled: _currentIndex == descriptions.length - 1,
-                      color: ButtonColor.purple,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          return Column(
+            children: [
+              SvgPicture.asset(
+                'assets/images/logic_gate/tutorial/how_to_play$index.svg',
+                width: 265.w,
+                height: 185.h,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 24.h),
+              Text(
+                descriptions[index],
+                style: AppTypography.mediumBold(color: AppColors.white),
+              ),
+            ],
           );
         },
       ),

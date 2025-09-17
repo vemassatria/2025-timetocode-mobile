@@ -80,7 +80,7 @@ class MainNavigation extends ConsumerWidget {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.backgroundTransparent,
         body: child,
         bottomNavigationBar: _buildBottomNavigationBar(
           context,
