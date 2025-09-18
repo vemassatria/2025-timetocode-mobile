@@ -1,0 +1,1157 @@
+{
+    "levels": [
+        {
+            "level": 1,
+            "description": "Kenalan dulu sama bahan dasar ngoding: tipe data, variabel, sama operator biar program kamu ngerti harus ngapain!",
+            "title": "Tipe Data, Variabel, dan Operator",
+            "background": [
+                "warung-kating",
+                "mc-rumah"
+            ],
+            "character1": "Adrian",
+            "character1Images": [
+                "adriankampus_biasa",
+                "adriankampus_marah",
+                "adriankampus_senang",
+                "adriankampus_kecewa",
+                "adriankampus_aksi"
+            ],
+            "character2": "Mas Mulyo",
+            "character2Images": [
+                "kating_biasa",
+                "kating_marah",
+                "kating_senang",
+                "kating_kecewa",
+                "kating_aksi"
+            ],
+            "ilustrations": [
+                "tipe-data",
+                "BOOLEAN"
+            ],
+            "start": "preDialog1",
+            "typeStart": "preDialog",
+            "preDialog": [
+                {
+                    "id": "preDialog1",
+                    "text": "Adrian adalah seorang mahasiswa baru Teknik Informatika yang baru saja memasuki dunia perkuliahan. Penuh rasa ingin tahu dan semangat belajar, Adrian bermimpi menjadi seorang programmer handal. Namun, perjalanannya tidak semudah itu. Ia kerap kali merasa tertinggal dan kesulitan memahami logika pemrograman yang rumit.",
+                    "next": "preDialog1_2",
+                    "nextType": "preDialog"
+                },
+                {
+                    "id": "preDialog1_2",
+                    "text": "Adrian baru saja menyelesaikan kelas pemrograman pertamanya. Kepalanya terasa pening, ia pun mampir ke kafe dekat kampus. Secangkir kopi, harapnya, bisa meredakan pusing akibat deretan kode yang masih belum ia pahami. Di tengah keriuhan obrolan pengunjung, Adrian menghela napas lirih. Lalu, dari sudut kafe, sesosok familiar mendekatinya.",
+                    "next": "intro1",
+                    "nextType": "dialog"
+                }
+            ],
+            "dialogs": [
+                {
+                    "id": "intro1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Masnya daritadi saya lihat ngedumel sendiri, aman kah?",
+                            "reactionIndex": 1,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "aduh mas, ini pemrogaman susah banget..",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Wah iya mas, memang susah pada awalnya karena kita ga familiar dengan mereka, tapi lama lama pasti bakal bisa kok mas.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh... iya ya, tapi aku masih bingung banget sama yang namanya tipe data sama variabel.",
+                            "reactionIndex": 3,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Eh, wajahmu kok kayak familiar ya? Anak PENS juga, kan?",
+                            "reactionIndex": 4,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "branch": {
+                        "timer": 6,
+                        "canon": "scene1_1",
+                        "choices": [
+                            {
+                                "text": "Betul mas aduh susah banget ini programming",
+                                "next": "scene1_1",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "kerendahanHati": "+1",
+                                    "kepercayaanMasMulyo": "+5"
+                                }
+                            },
+                            {
+                                "text": "Loh kok mas tau saya",
+                                "next": "scene1_2",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "kepercayaanMasMulyo": "+10",
+                                    "kerendahanHati": "+2"
+                                }
+                            },
+                            {
+                                "text": "Hah… Masnya siapa ya?",
+                                "next": "scene1_3",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "kepercayaanMasMulyo": "-5",
+                                    "kesombongan": "+1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "intro1",
+                    "conditions": {
+                        "kepercayaanMasMulyo": ">=0"
+                    },
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Masnya daritadi saya lihat ngedumel sendiri, aman kah?",
+                            "reactionIndex": 1,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "aduh mas, ini pemrogaman susah banget..",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Wah iya mas, memang susah pada awalnya karena kita ga familiar dengan mereka, tapi lama lama pasti bakal bisa kok mas.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh... iya ya, tapi aku masih bingung banget sama yang namanya tipe data sama variabel.",
+                            "reactionIndex": 3,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Eh, wajahmu kok kayak familiar ya? Anak PENS juga, kan?",
+                            "reactionIndex": 4,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "branch": {
+                        "timer": 6,
+                        "canon": "intro1",
+                        "choices": [
+                            {
+                                "text": "Betul mas aduh susah banget ini programming",
+                                "next": "scene1_1",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "kerendahanHati": "+1",
+                                    "kepercayaanMasMulyo": "+5"
+                                }
+                            },
+                            {
+                                "text": "Loh kok mas tau saya",
+                                "next": "scene1_2",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "kepercayaanMasMulyo": "+10",
+                                    "kerendahanHati": "+2"
+                                }
+                            },
+                            {
+                                "text": "Hah… Masnya siapa ya?",
+                                "next": "scene1_3",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "kepercayaanMasMulyo": "-5",
+                                    "kesombongan": "+1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "scene1_1",
+                    "conditions": {
+                        "kerendahanHati": "1"
+                    },
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Betul mas aduh susah banget ini programming",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Ah sesusah apa sih, palingan tinggal ngetik doang",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Tapi Mas… tipe data sama variabel bikin pusing banget.",
+                            "reactionIndex": 1,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Tenang, wajar kok. Variabel itu kotak, tipe data itu labelnya. Cocok masukin nilainya, aman; salah, bisa error.",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "materi1_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "scene1_2",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Loh kok mas tau saya",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "iya tau dong, aku yang waktu itu ngekader kamu kocak",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hah? Pas pengkaderan biru biru itu ya? yang serba biru di kampus itu?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya lah. Aku malah jadi komdis, bagian bacain PR waktu itu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }   
+                    ],
+                    "branch":{
+                        "timer": 6,
+                        "canon":"",
+                        "choices":[
+                            {
+                                "text": "Hah, beneran Mas komdis?",
+                                "next": "branchingA",
+                                "nextType": "dialog",
+                                "consequences":{
+                                    
+                                }
+                            },
+                            {
+                                "text": "Yang bener Mas?",
+                                "next": "branchingB",
+                                "nextType": "dialog",
+                                "consequences":{
+                                    
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "branchingA",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
+                    "backgroundIndex": 0,
+                    "dialogs":[
+                        {
+                            "line": "Hah, beneran Mas komdis?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "ya bro, serius! Aku yang tiap malam mondar-mandir liatin kalian satu-satu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Wah… makanya wajah Mas familiar, ya… ternyata itu Mas!",
+                            "reactionIndex": 3,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hahaha iya. Tapi tenang, di luar kaderisasi aku nggak se-strict itu. Aku juga paham kok kalau awalnya pusing sama materi.",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ah, jadi wajar ya kalau aku masih bingung sama tipe data sama variabel…",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Betul! Makanya ayo sini, aku jelasin pelan-pelan biar lebih gampang dimengerti.",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "branch": {
+                        "timer": 6,
+                        "canon": "",
+                        "choices": [
+                            {
+                                "text": "Wah, mantap Mas! Sikattt! Tolong ajarin aku, Mas. Soalnya otakku udah ngebul dari tadi",
+                                "next": "branchingA_1",
+                                "nextType": "dialog",
+                                "consequences": {
+
+                                }
+                            },
+                            {
+                                "text": "Tapi aku mau nyoba kerjain sendiri dulu aja deh mas",
+                                "next": "soalA1_1",
+                                "nextType": "soal",
+                                "consequences": {
+
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "branchingA_1",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Wah, mantap Mas! Sikattt! Tolong ajarin aku, Mas. Soalnya otakku udah ngebul dari tadi.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Oke siap! Santai aja, nggak usah tegang. Kita mulai dari yang paling dasar dulu",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "materi1_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "branchingB",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
+                    "backgroundIndex": 1,
+                    "dialogs":[
+                        {
+                            "line": "Yang bener Mas?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya dong, serius! Aku yang waktu itu ngekader kamu, tiap malam ngawasin satu-satu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Waduh… aku nggak nyangka! Jadi itu suara tegas yang aku inget dari jauh?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hahaha iya, suara itu aku. Tapi sekarang santai aja, nggak bakal dicoret-coret lagi kok.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hihi… makasih Mas, aku jadi lega. Tapi materi pemrograman ini masih bikin pusing, nih.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Tenang, wajar banget. Yuk, aku jelasin tipe data sama variabel step by step biar nggak bingung.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "branch": {
+                        "timer": 6,
+                        "canon": "",
+                        "choices": [
+                            {
+                                "text": "Aduh mas gausah deh, takut ngerepotin",
+                                "next": "branchingB_1",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "key": "+-value"
+                                }
+                            },
+                            {
+                                "text": "Ah kayanya gausah deh mas, aku bisa sendiri",
+                                "next": "soalA1_1",
+                                "nextType": "soal",
+                                "consequences": {
+                                    "key": "+-value"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "branchingB_1",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Aduh mas gausah deh, takut ngerepotin",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yaudah nih coba kerjain soal ini.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "materi1_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "scene1_3",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Hah… Masnya siapa ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hayoloh... gak inget ya? Aku yang jadi komdis pas kaderisasi. Yang suka mondar-mandir malem-malem, ngawasin kalian satu-satu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Serius? Wah, beneran Mas? Saya ingetnya cuma suara tegas dari kejauhan…",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Haha, ya itu suaraku. Kamu tuh yang waktu itu disuruh maju gara-gara... hmm, ketiduran kan?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Wah… kok masih inget aja mas",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Gapapa itu momen kocak, tenang, aku juga pernah jadi maba. Pusing, capek, ngantuk, tapi harus tetap jalanin semua. Gua paham kok rasanya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Sekarang juga pusing Mas… tugas pemrogramannya bikin kepala muter. Baru mulai belajar tipe data aja rasanya udah ribet banget.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, itu. Tadi gua liat kamu ngedumel. Makanya, ayo sini, kita bahas bareng. Gua jelasin pelan-pelan soal tipe data sama variabel. Gak ribet kok, asal ngerti logikanya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "branch": {
+                        "timer": 6,
+                        "canon": "",
+                        "choices": [
+                            {
+                                "text": "Gausah, gini mah gampang",
+                                "next": "branchingC_1",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    
+                                }
+                            },
+                            {
+                                "text": "Nah logikanya aja aku ga paham",
+                                "next": "branchingC_2",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "branchingC_1",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Gausah, gini mah gampang",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Halah coba ini kerjain",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA1_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "branchingC_2",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Nah logikanya aja aku ga paham",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yeuu kocak, yaudah sini aku jelasin",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "materi1_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "materi1_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Bayangin tipe data dan variabel itu seperti wadah dengan labelnya. Biar lebih jelas, coba lihat ilustrasi ember dan kardus ini.",
+                            "reactionIndex": 4,
+                            "characterIndex": 2,
+                            "ilustrationIndex": 0
+                        },
+                        {
+                            "line": "Nah, 'ember' itu ibarat variabel float, cocok untuk 'air' atau angka desimal seperti 55.5. Tapi kalau 'air' itu kamu tuang ke 'kardus', yang ibarat variabel int, ya bakal 'bocor', desimalnya hilang karena int hanya untuk bilangan bulat!",
+                            "reactionIndex": 4,
+                            "characterIndex": 2,
+                            "ilustrationIndex": 0
+                        },
+                        {
+                            "line": "Oh jadi tipe data itu penting supaya nilai yang kita masukin sesuai dan gak rusak ya, Mas?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Betul! Ibaratnya, label pada wadah memastikan isinya tepat. Kalau salah tipe data, program bisa error atau hasilnya gak sesuai harapan.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohh… aku mulai paham, Kak. Jadi intinya tipe data itu kayak ngasih tahu komputer jenis nilai apa yang disimpan, ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yap, bener banget! Misalnya kamu mau nyimpen umur, pakai int. Kalau nyimpen nama, pakai string. Gitu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Terus kalau variabel itu semacam wadahnya, kan? Jadi bisa aja satu variabel berisi tipe data int, satu lagi char, dan seterusnya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Persis! Variabel itu kayak label di botol. Botolnya bisa beda ukuran, isinya beda, tapi semua punya label biar gak ketuker.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke, jadi sekarang aku ngerti kalau tipe data itu penting banget buat bikin program yang bener.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, sekarang coba jawab soal ini ya, biar makin paham!",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA1_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salah1_1",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Waduh jawaban untuk tipe data kamu belum tepat.",
+                            "reactionIndex": 1,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Yah salah ya..",
+                            "reactionIndex": 1,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hmm sepertinya ada beberapa hal yang perlu kita perhatikan di sini. Ayo kita bahas satu per satu ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke Adrian mari kita bahas soal tipe data ini satu per satu. Pertama untuk Nama biasanya pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Kedua untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Usia itu kan angka bulat, jadi mungkin tipe data float?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hmm float biasanya digunakan untuk angka yang ada desimalnya, seperti berat badan atau pengukuran yang presisi. Kalau Usia hanya angka bulat jadi tipe data yang tepat adalah tipe data yang bisa menyimpan angka bulat saja.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh int ya?!",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Betul! int itu untuk angka bulat. Lanjut ketiga sekarang ke Berat badan. Berat badan itu biasanya ada angka desimalnya kan? Jadi kita butuh tipe data yang bisa menyimpan angka dengan desimal. Apa yang kamu pikirkan?",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ah kalau gitu float ya? Karena ada desimalnya.",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Betul sekali! float memang untuk angka desimal. Keempat untuk Nilai ujian, ini kan biasanya berupa angka bulat, ya? Jadi apa yang tepat untuk tipe data ini?",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Kalau begitu tipe data yang tepat untuk Nilai ujian adalah int.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Betul! Nilai ujian itu angka bulat jadi int memang cocok. Terakhir, Status lulus. Ini cuma punya dua kemungkinan, lulus atau tidak. Tipe data apa yang bisa mewakili dua pilihan seperti itu?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Kayaknya itu bool ya? Karena hanya ada dua nilai: benar atau salah.",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Tepat sekali! Boolean itu untuk dua kemungkinan itu. Biar lebih kebayang, bool itu seperti saklar lampu pada ilustrasi ini.",
+                            "reactionIndex": 4,
+                            "characterIndex": 2,
+                            "ilustrationIndex": 1
+                        },
+                        {
+                            "line": "Kalau lampu 'ON' atau menyala, itu TRUE atau benar. Kalau 'OFF' atau mati, itu FALSE atau salah. Komputer pakai ini untuk membuat keputusan.",
+                            "reactionIndex": 4,
+                            "characterIndex": 2,
+                            "ilustrationIndex": 1
+                        },
+                        {
+                            "line": "Nah, dengan pemahaman itu, coba sekarang kamu susun lagi tipe data yang benar untuk soal tadi.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA1_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "materi1_2",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Wah jawabannya bener! Kamu udah mulai paham banget soal tipe data. Kacau, cepet banget pahamnya! Jadi, kalau ada program yang butuh nyimpen angka, tinggal pilih aja tipe datanya.",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Wih mantep dah, udah siap banget buat nerima soal dari Pak Rongga nih.",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah sekarang kita lanjut ke variabel! Kalau kamu udah paham tipe data, variabel itu sebenarnya gampang banget. Variabel adalah tempat buat nyimpen data. Jadi bayangin aja kamu punya wadah atau kotak yang bisa berubah isinya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh jadi variabel itu kayak kotak buat nyimpen data gitu? Tapi apa bedanya sama tipe data?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya bener banget! Tipe data itu ngejelasin jenis datanya, misalnya angka, teks, atau logika.",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Nah variabel itu nama dari kotaknya. Jadi misalnya, kamu pengen nyimpen umur seseorang, kamu bikin variabel namanya umur, dan tipe datanya int karena umur itu angka bulat.",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohhhh pahammm!",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Ah paham-paham mulu, coba kamu jawab soal ini kalo emang paham.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soal1_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salah1_2",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Aduh aku kena virus kesalahan berpikir nih",
+                            "reactionIndex": 1,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Wahahahaha, gapapa kita kerjain bareng-bareng",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Aduhh kacauu sih",
+                            "reactionIndex": 1,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Aku jelasin ulang yaa, jadi, int itu biasanya dipakai buat angka bulat, kayak 10, 25, atau 100. Tapi kalau berat badan itu ada desimalnya, kayak 55.5, kira-kira cocok nggak kalau pakai tipe data buat angka bulat?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hmm... kurang cocok sih",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yap. Karena 55.5 itu ada koma-nya, harus cari tipe data yang bisa nampung angka pecahan.",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Kalau bool itu gimana ya, aku lupa peraturannya",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Bool itu tipe data yang isinya cuma dua kemungkinan: true atau false. Biasanya dipakai buat nyimpen status, bukan angka. Nah berat badan itu berupa angka, kan? Bukan status lulus atau tidak.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohh aku paham sekarang",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah coba cek lagi pilihan lain yang lebih cocok.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soal1_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "materi1_3",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Beh Adrian mulai jago nih, takut banget kena bantai konsep pemrogaman deh",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Kalau berat badan berarti pake float ya mas, kayak float beratBadan = 55.5; gitu kan?",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Wah bener banget, kamu udah mulai paham nih! Nah sekarang bayangin ya, kamu udah punya data berat badan itu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Terus kamu mau ngolah datanya, misal mau nambahin 5 kilo, atau mau bagi dua buat simulasi diet. Buat ngelakuin perubahan kayak gitu, kamu butuh yang namanya operator.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohhh... operator tuh kayak alat buat ngubah data gitu ya mas?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Operator itu alat buat ngelakuin operasi kayak tambah, kurang, kali, dan bagi. Misal, mau nambahin umur 5 tahun, tinggal pakai \"+\": int hasil = umur + 5;. Kalau ngurangin pakai \"-\", perkalian pakai \"*\", dan pembagian pakai \"/\".",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Operator ini penting banget buat semua operasi dasar di program.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oalaaah, jadi kayak alat buat ngatur angka-angka gitu ya mas! Pantesan semua contoh kodingan pasti ada operatornya.",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya, bener banget. Semua operasi matematika dasar pake operator itu. Dan, operator ini penting banget, karena tanpa operator, program kamu gak bisa ngelakuin perhitungan atau manipulasi data dengan bener.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh ya, buat ngambil input dari user atau nampilin hasil ke layar, kamu bisa pake operasi input output.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Misalnya, pake \"scanf\" buat ambil input, kayak \"scanf('%d', &umur);\" untuk nyimpen umur yang dimasukin. Terus, kamu bisa pake \"printf\" buat nampilinnya, kayak \"printf('Umur: %d', umur);\"",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh, jadi operator ini penting banget buat ngelakuin berbagai perhitungan, dan input output itu fungsinya buat ngambil input sama nampilin outputnya ke layar ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya banget! Operator itu bikin program bisa fleksibel dan ngelakuin tugas yang kamu inginkan.",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Selain itu, ada operator \"!=\" yang artinya tidak sama dengan. Terus, ada juga operator logika kayak \"&&\" yang artinya \"AND\", dan \"||\" yang artinya \"OR\" itu buat ngecek kondisi lebih dari satu. Paham kan?",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Paham! aku mulai ngerti. Variabel buat nyimpen data, operator buat ngitung, bandingin, dan ngelakuin logika, terus input output buat ngambil input dan nampilin output.",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, buat uji pemahaman kamu, aku kasih soal sederhana, kamu coba jawab deh!",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "dd-1.1",
+                    "nextType": "dragAndDrop"
+                },
+                {
+                    "id": "salah1_3",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Yaelah jawabanku salah",
+                            "reactionIndex": 1,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Oke, sebentar yaa. Jadi gini, di soal tadi ada operasi a += 3 * 2. Kita harus inget kalau di C itu ada aturan prioritas operator. Perkalian (*) dikerjain dulu sebelum penjumlahan (+). Jadi bukan langsung dijumlah dari kiri ke kanan ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Setelah hasil perkaliannya ketemu, baru deh ditambah ke a yang awalnya 5. Ini penting supaya nggak salah hitung. Coba kamu cek lagi deh pelan-pelan, mana yang dikerjain dulu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soal1_3",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benar1_last",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Nahh, iya itu udah benar! Gampang kan? Kamu mulai paham sekarang, ya? Nih aku kasih summary tentang tipe data, variabel dan operator. kamu bisa baca rangkumannya untuk memerdalam pengetahuan kamu soal ini.",
+                            "reactionIndex": 2,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Siap mas! Makasih, mas!",
+                            "reactionIndex": 2,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": null,
+                    "nextType": ""
+                }
+            ],
+            "minigame": {
+                "questions": [
+                    {
+                        "id": "soal1_1",
+                        "text": "Bedasarkan data di bawah ini, manakah tipe data yang paling tepat untuk masing-masing data tersebut secara berurutan?",
+                        "code": "* Nama: \"Andi\"\n* Usia: 20\n* Berat badan: 70.5\n* Nilai ujian: 85\n* Status lulus: true",
+                        "choices": [
+                            {
+                                "text": "string - float - int - bool - char",
+                                "next": "salah1_1",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "string - int - float - int - bool",
+                                "next": "materi1_2",
+                                "nextType": "dialog",
+                                "isCorrect": true
+                            },
+                            {
+                                "text": "char - bool - string - float - int",
+                                "next": "salah1_1",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "int - float - string - bool - float",
+                                "next": "salah1_1",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            }
+                        ],
+                        "consequences": {
+                            "kepintaran": "5"
+                        }
+                    },
+                    {
+                        "id": "soal1_2",
+                        "text": "Kalau kamu mau buat variabel beratBadan untuk nyimpen data berat 55.5 kilogram, deklarasi yang BENAR adalah...",
+                        "choices": [
+                            {
+                                "text": "int berat.Badan = 55.5;",
+                                "next": "salah1_2",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "float beratBadan = 55.5;",
+                                "next": "materi1_3",
+                                "nextType": "dialog",
+                                "isCorrect": true
+                            },
+                            {
+                                "text": "string beratBadan = 55.5;",
+                                "next": "salah1_2",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "bool beratBadan = \"true\";",
+                                "next": "salah1_2",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            }
+                        ]
+                    },
+                    {
+                        "id": "soal1_3",
+                        "text": "Berapa output dari code di bawah ini?",
+                        "code": "#include <stdio.h>\nint main() {\n    int a = 5;\n    a += 3 * 2;\n    printf(\"%d\\n\", a);\n    return 0;\n}",
+                        "choices": [
+                            {
+                                "text": "16",
+                                "next": "salah1_3",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "11",
+                                "next": "benar1_last",
+                                "nextType": "dialog",
+                                "isCorrect": true
+                            },
+                            {
+                                "text": "13",
+                                "next": "salah1_3",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "10",
+                                "next": "salah1_3",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            }
+                        ]
+                    }
+                ],
+                "dragAndDrop": [
+                    {
+                        "id": "dd-1.1",
+                        "instruction": "Seret dan susun potongan kode berikut agar membentuk deklarasi variabel bertipe int dan langsung diberi nilai 5",
+                        "scaffoldCode": "int main() {\n\t[dz1][dz2],[dz3]\n\t[dz4][dz5]=[dz6][dz7]\n\t[dz8]\n}",
+                        "draggableOptions": [
+                            {
+                                "id": "dnd-1",
+                                "content": {
+                                    "type": "text",
+                                    "value": "a = 7"
+                                }
+                            },
+                            {
+                                "id": "dnd-2",
+                                "content": {
+                                    "type": "text",
+                                    "value": "int"
+                                }
+                            },
+                            {
+                                "id": "dnd-3",
+                                "content": {
+                                    "type": "text",
+                                    "value": "hasil"
+                                }
+                            },
+                            {
+                                "id": "dnd-4",
+                                "content": {
+                                    "type": "text",
+                                    "value": "b = 2;"
+                                }
+                            },
+                            {
+                                "id": "dnd-5",
+                                "content": {
+                                    "type": "text",
+                                    "value": "float"
+                                }
+                            },
+                            {
+                                "id": "dnd-6",
+                                "content": {
+                                    "type": "text",
+                                    "value": "printf(\"Hasil: %.1f\",hasil);"
+                                },
+                                "info": "%.[jumlah_angka]f adalah Format Specifier / Penentu Format, sebuah 'kode perintah' di dalam printf yang mengatur bagaimana sebuah nilai akan ditampilkan. \nSecara default, mencetak angka desimal (float) bisa menghasilkan banyak angka di belakang koma (misal: 2.333333). Dengan penentu format, kita bisa memerintahkan bahasa pemrograman untuk membulatkan dan menampilkannya lebih rapi. \n\nContoh:\nJika nilai adalah 98.765, maka:\n%f akan mencetak 98.765000 (default, kurang rapi). \n%.1f akan mencetak 98.8 (dibulatkan ke 1 angka desimal). \n%.2f akan mencetak 98.77 (dibulatkan ke 2 angka desimal)."
+                            },
+                            {
+                                "id": "dnd-7",
+                                "content": {
+                                    "type": "text",
+                                    "value": "(float)"
+                                },
+                                "info": "ini adalah Type Casting, yaitu instruksi eksplisit dari programmer kepada compiler untuk mengubah tipe data dari sebuah nilai atau variabel menjadi tipe data lain.\ntanpa type casting, pembagian seperti  7/3 akan dianggap sebagai pembagian dua bilangan bulat (integer), yang hasilnya juga integer, yaitu 2. Sisa desimalnya (0.333...) akan dibuang. \n\nsintaks general: (tipe_data_tujuan) nilai_atau_variabel;"
+                            },
+                            {
+                                "id": "dnd-8",
+                                "content": {
+                                    "type": "text",
+                                    "value": "a / b;"
+                                }
+                            }
+                        ],
+                        "dropZones": [
+                            {
+                                "id": "dz1",
+                                "acceptedIds": null,
+                                "content": null
+                            },
+                            {
+                                "id": "dz2",
+                                "acceptedIds": null,
+                                "content": null
+                            },
+                            {
+                                "id": "dz3",
+                                "acceptedIds": null,
+                                "content": null
+                            },
+                            {
+                                "id": "dz4",
+                                "acceptedIds": null,
+                                "content": null
+                            },
+                            {
+                                "id": "dz5",
+                                "acceptedIds": null,
+                                "content": null
+                            },
+                            {
+                                "id": "dz6",
+                                "acceptedIds": null,
+                                "content": null
+                            },
+                            {
+                                "id": "dz7",
+                                "acceptedIds": null,
+                                "content": null
+                            },
+                            {
+                                "id": "dz8",
+                                "acceptedIds": null,
+                                "content": null
+                            }
+                        ],
+                        "correctSequence": [
+                            "dnd-2",
+                            "dnd-1",
+                            "dnd-4",
+                            "dnd-5",
+                            "dnd-3",
+                            "dnd-7",
+                            "dnd-8",
+                            "dnd-6"
+                        ],
+                        "next": "soal1_3",
+                        "nextType": "soal",
+                        "consequences": {
+                            "kepintaran": "5"
+                        }
+                    }
+                ]
+            },
+            "summary": [
+                "Tipe Data: Tipe data menentukan jenis nilai yang bisa disimpan dalam variabel, seperti int untuk angka bulat, float untuk angka pecahan, dan char untuk karakter.",
+                "Variabel: Variabel adalah tempat menyimpan data yang nilainya bisa berubah selama program berjalan. Contohnya, int umur = 21; menyimpan nilai umur.",
+                "Operator: Operator digunakan untuk melakukan operasi pada data, seperti:\nAritmatika: +, -, *, / untuk perhitungan.\nPembanding: ==, !=, >, < untuk membandingkan nilai.\nLogika: && (AND), || (OR) untuk menggabungkan kondisi.\nPenugasan: = untuk memberi nilai, +=, -= untuk operasi dan penugasan bersamaan.",
+                "I/O (Input/Output): Gunakan scanf untuk input data dari pengguna dan printf untuk menampilkan hasil ke layar."
+            ]
+        }
+    ]
+}
