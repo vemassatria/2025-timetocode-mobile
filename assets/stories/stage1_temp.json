@@ -47,6 +47,11 @@
             "dialogs": [
                 {
                     "id": "intro1",
+                    "conditions": {
+                        "trust_mulyo": 0,
+                        "knowledge": 0,
+                        "humility": 0
+                    },
                     "backgroundIndex": 0,
                     "dialogs": [
                         {
@@ -84,93 +89,20 @@
                                 "next": "scene1_1",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    "kerendahanHati": "+1",
-                                    "kepercayaanMasMulyo": "+5"
+                                    "humility": "+1"
                                 }
                             },
                             {
                                 "text": "Loh kok mas tau saya",
                                 "next": "scene1_2",
-                                "nextType": "dialog",
-                                "consequences": {
-                                    "kepercayaanMasMulyo": "+10",
-                                    "kerendahanHati": "+2"
-                                }
+                                "nextType": "dialog"
                             },
                             {
                                 "text": "Hah… Masnya siapa ya?",
                                 "next": "scene1_3",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    "kepercayaanMasMulyo": "-5",
-                                    "kesombongan": "+1"
-                                }
-                            }
-                        ]
-                    }
-                },
-                {
-                    "id": "intro1",
-                    "conditions": {
-                        "kepercayaanMasMulyo": ">=0"
-                    },
-                    "backgroundIndex": 0,
-                    "dialogs": [
-                        {
-                            "line": "Masnya daritadi saya lihat ngedumel sendiri, aman kah?",
-                            "reactionIndex": 1,
-                            "characterIndex": 2
-                        },
-                        {
-                            "line": "aduh mas, ini pemrogaman susah banget..",
-                            "reactionIndex": 0,
-                            "characterIndex": 1
-                        },
-                        {
-                            "line": "Wah iya mas, memang susah pada awalnya karena kita ga familiar dengan mereka, tapi lama lama pasti bakal bisa kok mas.",
-                            "reactionIndex": 0,
-                            "characterIndex": 2
-                        },
-                        {
-                            "line": "Oh... iya ya, tapi aku masih bingung banget sama yang namanya tipe data sama variabel.",
-                            "reactionIndex": 3,
-                            "characterIndex": 1
-                        },
-                        {
-                            "line": "Eh, wajahmu kok kayak familiar ya? Anak PENS juga, kan?",
-                            "reactionIndex": 4,
-                            "characterIndex": 2
-                        }
-                    ],
-                    "branch": {
-                        "timer": 6,
-                        "canon": "intro1",
-                        "choices": [
-                            {
-                                "text": "Betul mas aduh susah banget ini programming",
-                                "next": "scene1_1",
-                                "nextType": "dialog",
-                                "consequences": {
-                                    "kerendahanHati": "+1",
-                                    "kepercayaanMasMulyo": "+5"
-                                }
-                            },
-                            {
-                                "text": "Loh kok mas tau saya",
-                                "next": "scene1_2",
-                                "nextType": "dialog",
-                                "consequences": {
-                                    "kepercayaanMasMulyo": "+10",
-                                    "kerendahanHati": "+2"
-                                }
-                            },
-                            {
-                                "text": "Hah… Masnya siapa ya?",
-                                "next": "scene1_3",
-                                "nextType": "dialog",
-                                "consequences": {
-                                    "kepercayaanMasMulyo": "-5",
-                                    "kesombongan": "+1"
+                                    "trust_mulyo": "-1"
                                 }
                             }
                         ]
@@ -179,7 +111,7 @@
                 {
                     "id": "scene1_1",
                     "conditions": {
-                        "kerendahanHati": "1"
+                        "humility": "=1"
                     },
                     "backgroundIndex": 1,
                     "dialogs": [
@@ -209,9 +141,6 @@
                 },
                 {
                     "id": "scene1_2",
-                    "conditions": {
-                        "key": ">=>==<<=value"
-                    },
                     "backgroundIndex": 1,
                     "dialogs": [
                         {
@@ -242,27 +171,18 @@
                             {
                                 "text": "Hah, beneran Mas komdis?",
                                 "next": "branchingA",
-                                "nextType": "dialog",
-                                "consequences":{
-                                    
-                                }
+                                "nextType": "dialog"
                             },
                             {
                                 "text": "Yang bener Mas?",
                                 "next": "branchingB",
-                                "nextType": "dialog",
-                                "consequences":{
-                                    
-                                }
+                                "nextType": "dialog"
                             }
                         ]
                     }
                 },
                 {
                     "id": "branchingA",
-                    "conditions": {
-                        "key": ">=>==<<=value"
-                    },
                     "backgroundIndex": 0,
                     "dialogs":[
                         {
@@ -305,16 +225,14 @@
                                 "next": "branchingA_1",
                                 "nextType": "dialog",
                                 "consequences": {
-
+                                    "trust_mulyo": "+1",
+                                    "humility": "+1"
                                 }
                             },
                             {
                                 "text": "Tapi aku mau nyoba kerjain sendiri dulu aja deh mas",
                                 "next": "soalA1_1",
-                                "nextType": "soal",
-                                "consequences": {
-
-                                }
+                                "nextType": "soal"
                             }
                         ]
                     }
@@ -322,7 +240,8 @@
                 {
                     "id": "branchingA_1",
                     "conditions": {
-                        "key": ">=>==<<=value"
+                        "trust_mulyo": "=1",
+                        "humility": "=1"
                     },
                     "backgroundIndex": 1,
                     "dialogs": [
@@ -342,9 +261,6 @@
                 },
                 {
                     "id": "branchingB",
-                    "conditions": {
-                        "key": ">=>==<<=value"
-                    },
                     "backgroundIndex": 1,
                     "dialogs":[
                         {
@@ -387,7 +303,7 @@
                                 "next": "branchingB_1",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    "key": "+-value"
+                                    "humility": "+1"
                                 }
                             },
                             {
@@ -395,7 +311,7 @@
                                 "next": "soalA1_1",
                                 "nextType": "soal",
                                 "consequences": {
-                                    "key": "+-value"
+                                    "humility": "-1"
                                 }
                             }
                         ]
@@ -424,6 +340,9 @@
                 },
                 {
                     "id": "scene1_3",
+                    "conditions": {
+                        "trust_mulyo": "<0"
+                    },
                     "backgroundIndex": 1,
                     "dialogs": [
                         {
@@ -476,7 +395,7 @@
                                 "next": "branchingC_1",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    
+                                    "humility": "-2"
                                 }
                             },
                             {
@@ -484,7 +403,8 @@
                                 "next": "branchingC_2",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    
+                                    "humility": "+1",
+                                    "trust_mulyo": "+1"
                                 }
                             }
                         ]
@@ -534,6 +454,9 @@
                 },
                 {
                     "id": "materi1_1",
+                    "conditions": {
+                        "humility": "=1"
+                    },
                     "backgroundIndex": 0,
                     "dialogs": [
                         {
@@ -590,10 +513,13 @@
                         }
                     ],
                     "next": "soalA1_1",
-                    "nextType": "soal"
+                    "nextType": "soal",
+                    "consequences": {
+                        "knowledge": "+1"
+                    }
                 },
                 {
-                    "id": "salah1_1",
+                    "id": "salahA1_1",
                     "backgroundIndex": 1,
                     "dialogs": [
                         {
@@ -685,7 +611,185 @@
                         }
                     ],
                     "next": "soalA1_1",
-                    "nextType": "soal"
+                    "nextType": "soal",
+                    "consequences": {
+                        "knowledge": "-1"
+                    }
+                },
+                {
+                    "id": "BenarA1_1",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Mantap! Itu jawaban yang bener.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hehe iya mas, aku lagi inget pas dosen jelasin kemarin.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah bagus, berarti udah mulai nyantol materinya. Yuk kita latihan lagi biar makin paham.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Siap mas, gas lagi.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "soalB1_1",
+                    "nextType": "soal",
+                    "consequences": {
+                        "knowledge": "+1"
+                    }
+                },
+                {
+                    "id": "salahB1_1",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Yah soal kedua salah",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hmm, sayang banget soal terakhir salah",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh gitu ya mas, salahnya di mana ya kira-kira?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Coba cek lagi karakter datanya, mana yang angka bulat, mana yang desimal, mana yang teks. Itu kuncinya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke mas, bakal aku coba lagi",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "soalB1_2",
+                    "nextType": "soal",
+                    "consequences": {
+                        "knowledge": "-1"
+                    }
+                },
+                {
+                    "id": "BenarB1_1",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Boleh juga tuh.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "branch": {
+                        "timer": 6,
+                        "choices": [
+                            {
+                                "text": "Iya gampang banget mas. Awalnya ragu tapi ternyata akhirnya aku bisa ngerjain.",
+                                "next": "humble1_1",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "trust_mulyo": "+1",
+                                    "humility": "+1",
+                                    "knowledge": "+1"
+                                }
+                            },
+                            {
+                                "text": "Iyalah, aku kan jago",
+                                "next": "sombong1_1",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "trust_mulyo": "-1",
+                                    "humility": "-2",
+                                    "knowledge": "+1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "humble1_1",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Iya gampang banget mas. Awalnya ragu tapi ternyata akhirnya aku bisa ngerjain.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah makanya jangan ragu dulu, tapi niat dulu",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hehe oke mas, makasi yak!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "goodIntro1_2",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "sombong1_1",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Iyalah, aku kan jago",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Dih sombong banget",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ah masnya yang cupu kali",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hahaha jangan sombong dulu, nanti kena batunya!",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "badIntro1_2",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "humble1_1",
+                    "backgroundIndex": 1,
+                    "dialogs": [
+                        {
+                            "line": "Iya gampang banget mas. Awalnya ragu tapi ternyata akhirnya aku bisa ngerjain.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah makanya jangan ragu dulu, tapi niat dulu",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hehe oke mas, makasi yak!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ]
                 },
                 {
                     "id": "materi1_2",
@@ -926,7 +1030,7 @@
             "minigame": {
                 "questions": [
                     {
-                        "id": "soal1_1",
+                        "id": "soalA1_1",
                         "text": "Bedasarkan data di bawah ini, manakah tipe data yang paling tepat untuk masing-masing data tersebut secara berurutan?",
                         "code": "* Nama: \"Andi\"\n* Usia: 20\n* Berat badan: 70.5\n* Nilai ujian: 85\n* Status lulus: true",
                         "choices": [
@@ -954,10 +1058,11 @@
                                 "nextType": "dialog",
                                 "isCorrect": false
                             }
-                        ],
-                        "consequences": {
-                            "kepintaran": "5"
-                        }
+                        ]
+                    },
+                    {
+                        "id": "soalB1_1",
+                        "text": "Susunlah tipe data yang cocok untuk case dibawah ini dengan urut!"
                     },
                     {
                         "id": "soal1_2",
