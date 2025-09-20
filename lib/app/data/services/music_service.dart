@@ -1,19 +1,15 @@
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timetocode/app/data/providers/shared_preferences_provider.dart';
+import 'package:timetocode/app/data/services/hive_service.dart';
 
 final musicServiceProvider = NotifierProvider<MusicService, bool>(
   MusicService.new,
 );
 
 class MusicService extends Notifier<bool> {
-  late SharedPreferences _prefs;
-
   @override
   bool build() {
-    _prefs = ref.read(sharedPrefsProvider);
-    return _prefs.getBool('musikLatar') ?? true;
+    return ref.read(hiveProvider).getMusicSetting();
   }
 
   Future<void> initialize() async {
@@ -62,7 +58,7 @@ class MusicService extends Notifier<bool> {
   }
 
   Future<void> updateMusicSetting(bool isEnabled) async {
-    await _prefs.setBool('musikLatar', isEnabled);
+    await ref.read(hiveProvider).saveMusicSetting(isEnabled);
     state = isEnabled;
     if (isEnabled) {
       await playMainMenuMusic();

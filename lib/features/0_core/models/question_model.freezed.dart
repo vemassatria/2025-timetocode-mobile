@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$QuestionModel {
 
- String get id; String get text; String? get code; List<ChoicesModel> get choices; Map<String, String>? get consequences;
+ String get id; Map<String, String>? get conditions; String get text; String? get code; List<ChoicesModel> get choices; Map<String, String>? get consequences;
 /// Create a copy of QuestionModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $QuestionModelCopyWith<QuestionModel> get copyWith => _$QuestionModelCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is QuestionModel&&(identical(other.id, id) || other.id == id)&&(identical(other.text, text) || other.text == text)&&(identical(other.code, code) || other.code == code)&&const DeepCollectionEquality().equals(other.choices, choices)&&const DeepCollectionEquality().equals(other.consequences, consequences));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is QuestionModel&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.conditions, conditions)&&(identical(other.text, text) || other.text == text)&&(identical(other.code, code) || other.code == code)&&const DeepCollectionEquality().equals(other.choices, choices)&&const DeepCollectionEquality().equals(other.consequences, consequences));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,text,code,const DeepCollectionEquality().hash(choices),const DeepCollectionEquality().hash(consequences));
+int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(conditions),text,code,const DeepCollectionEquality().hash(choices),const DeepCollectionEquality().hash(consequences));
 
 @override
 String toString() {
-  return 'QuestionModel(id: $id, text: $text, code: $code, choices: $choices, consequences: $consequences)';
+  return 'QuestionModel(id: $id, conditions: $conditions, text: $text, code: $code, choices: $choices, consequences: $consequences)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $QuestionModelCopyWith<$Res>  {
   factory $QuestionModelCopyWith(QuestionModel value, $Res Function(QuestionModel) _then) = _$QuestionModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String text, String? code, List<ChoicesModel> choices, Map<String, String>? consequences
+ String id, Map<String, String>? conditions, String text, String? code, List<ChoicesModel> choices, Map<String, String>? consequences
 });
 
 
@@ -65,10 +65,11 @@ class _$QuestionModelCopyWithImpl<$Res>
 
 /// Create a copy of QuestionModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? text = null,Object? code = freezed,Object? choices = null,Object? consequences = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? conditions = freezed,Object? text = null,Object? code = freezed,Object? choices = null,Object? consequences = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as String,conditions: freezed == conditions ? _self.conditions : conditions // ignore: cast_nullable_to_non_nullable
+as Map<String, String>?,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String?,choices: null == choices ? _self.choices : choices // ignore: cast_nullable_to_non_nullable
 as List<ChoicesModel>,consequences: freezed == consequences ? _self.consequences : consequences // ignore: cast_nullable_to_non_nullable
@@ -157,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String text,  String? code,  List<ChoicesModel> choices,  Map<String, String>? consequences)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  Map<String, String>? conditions,  String text,  String? code,  List<ChoicesModel> choices,  Map<String, String>? consequences)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _QuestionModel() when $default != null:
-return $default(_that.id,_that.text,_that.code,_that.choices,_that.consequences);case _:
+return $default(_that.id,_that.conditions,_that.text,_that.code,_that.choices,_that.consequences);case _:
   return orElse();
 
 }
@@ -178,10 +179,10 @@ return $default(_that.id,_that.text,_that.code,_that.choices,_that.consequences)
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String text,  String? code,  List<ChoicesModel> choices,  Map<String, String>? consequences)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  Map<String, String>? conditions,  String text,  String? code,  List<ChoicesModel> choices,  Map<String, String>? consequences)  $default,) {final _that = this;
 switch (_that) {
 case _QuestionModel():
-return $default(_that.id,_that.text,_that.code,_that.choices,_that.consequences);case _:
+return $default(_that.id,_that.conditions,_that.text,_that.code,_that.choices,_that.consequences);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +199,10 @@ return $default(_that.id,_that.text,_that.code,_that.choices,_that.consequences)
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String text,  String? code,  List<ChoicesModel> choices,  Map<String, String>? consequences)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  Map<String, String>? conditions,  String text,  String? code,  List<ChoicesModel> choices,  Map<String, String>? consequences)?  $default,) {final _that = this;
 switch (_that) {
 case _QuestionModel() when $default != null:
-return $default(_that.id,_that.text,_that.code,_that.choices,_that.consequences);case _:
+return $default(_that.id,_that.conditions,_that.text,_that.code,_that.choices,_that.consequences);case _:
   return null;
 
 }
@@ -213,10 +214,19 @@ return $default(_that.id,_that.text,_that.code,_that.choices,_that.consequences)
 @JsonSerializable()
 
 class _QuestionModel implements QuestionModel {
-  const _QuestionModel({required this.id, required this.text, this.code, required final  List<ChoicesModel> choices, final  Map<String, String>? consequences}): _choices = choices,_consequences = consequences;
+  const _QuestionModel({required this.id, final  Map<String, String>? conditions, required this.text, this.code, required final  List<ChoicesModel> choices, final  Map<String, String>? consequences}): _conditions = conditions,_choices = choices,_consequences = consequences;
   factory _QuestionModel.fromJson(Map<String, dynamic> json) => _$QuestionModelFromJson(json);
 
 @override final  String id;
+ final  Map<String, String>? _conditions;
+@override Map<String, String>? get conditions {
+  final value = _conditions;
+  if (value == null) return null;
+  if (_conditions is EqualUnmodifiableMapView) return _conditions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(value);
+}
+
 @override final  String text;
 @override final  String? code;
  final  List<ChoicesModel> _choices;
@@ -249,16 +259,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _QuestionModel&&(identical(other.id, id) || other.id == id)&&(identical(other.text, text) || other.text == text)&&(identical(other.code, code) || other.code == code)&&const DeepCollectionEquality().equals(other._choices, _choices)&&const DeepCollectionEquality().equals(other._consequences, _consequences));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _QuestionModel&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other._conditions, _conditions)&&(identical(other.text, text) || other.text == text)&&(identical(other.code, code) || other.code == code)&&const DeepCollectionEquality().equals(other._choices, _choices)&&const DeepCollectionEquality().equals(other._consequences, _consequences));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,text,code,const DeepCollectionEquality().hash(_choices),const DeepCollectionEquality().hash(_consequences));
+int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(_conditions),text,code,const DeepCollectionEquality().hash(_choices),const DeepCollectionEquality().hash(_consequences));
 
 @override
 String toString() {
-  return 'QuestionModel(id: $id, text: $text, code: $code, choices: $choices, consequences: $consequences)';
+  return 'QuestionModel(id: $id, conditions: $conditions, text: $text, code: $code, choices: $choices, consequences: $consequences)';
 }
 
 
@@ -269,7 +279,7 @@ abstract mixin class _$QuestionModelCopyWith<$Res> implements $QuestionModelCopy
   factory _$QuestionModelCopyWith(_QuestionModel value, $Res Function(_QuestionModel) _then) = __$QuestionModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String text, String? code, List<ChoicesModel> choices, Map<String, String>? consequences
+ String id, Map<String, String>? conditions, String text, String? code, List<ChoicesModel> choices, Map<String, String>? consequences
 });
 
 
@@ -286,10 +296,11 @@ class __$QuestionModelCopyWithImpl<$Res>
 
 /// Create a copy of QuestionModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? text = null,Object? code = freezed,Object? choices = null,Object? consequences = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? conditions = freezed,Object? text = null,Object? code = freezed,Object? choices = null,Object? consequences = freezed,}) {
   return _then(_QuestionModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as String,conditions: freezed == conditions ? _self._conditions : conditions // ignore: cast_nullable_to_non_nullable
+as Map<String, String>?,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String?,choices: null == choices ? _self._choices : choices // ignore: cast_nullable_to_non_nullable
 as List<ChoicesModel>,consequences: freezed == consequences ? _self._consequences : consequences // ignore: cast_nullable_to_non_nullable

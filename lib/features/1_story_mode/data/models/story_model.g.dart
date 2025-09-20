@@ -30,12 +30,7 @@ _StoryModel _$StoryModelFromJson(Map<String, dynamic> json) => _StoryModel(
   dialogs: (json['dialogs'] as List<dynamic>)
       .map((e) => DialogModel.fromJson(e as Map<String, dynamic>))
       .toList(),
-  questions: (json['questions'] as List<dynamic>)
-      .map((e) => QuestionModel.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  dragAndDrop: (json['dragAndDrop'] as List<dynamic>?)
-      ?.map((e) => DragAndDropModel.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  minigame: MinigameModel.fromJson(json['minigame'] as Map<String, dynamic>),
   summary: (json['summary'] as List<dynamic>?)
       ?.map((e) => e as String)
       .toList(),
@@ -56,8 +51,7 @@ Map<String, dynamic> _$StoryModelToJson(_StoryModel instance) =>
       'ilustrations': instance.ilustrations,
       'preDialog': instance.preDialog,
       'dialogs': instance.dialogs,
-      'questions': instance.questions,
-      'dragAndDrop': instance.dragAndDrop,
+      'minigame': instance.minigame,
       'summary': instance.summary,
       'start': instance.start,
       'typeStart': instance.typeStart,

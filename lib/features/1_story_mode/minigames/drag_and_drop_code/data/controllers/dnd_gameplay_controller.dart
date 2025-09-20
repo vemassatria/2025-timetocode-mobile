@@ -4,6 +4,7 @@ import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/da
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/models/drop_zone_model.dart';
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/states/dnd_state.dart';
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/models/draggable_model.dart';
+import 'package:timetocode/app/data/services/hive_service.dart';
 
 final dndControllerProvider =
     NotifierProvider.autoDispose<DndController, DndState>(DndController.new);
@@ -22,8 +23,14 @@ class DndController extends AutoDisposeNotifier<DndState> {
     DragAndDropModel dndModel = ref
         .read(storyControllerProvider)
         .activeLevel!
+        .minigame
         .dragAndDrop!
-        .firstWhere((dnd) => dnd.id == id);
+        .firstWhere(
+          (dnd) =>
+              dnd.id == id && dnd.conditions == null ||
+              (dnd.conditions != null &&
+                  ref.read(hiveProvider).storyCheckConditions(dnd.conditions!)),
+        );
 
     state = DndState(
       currentDragAndDrop: dndModel,
@@ -90,10 +97,23 @@ class DndController extends AutoDisposeNotifier<DndState> {
     for (int i = 0; i < userSequence!.length; i++) {
       if (userSequence[i].contentDraggable?.id != correctSequence[i]) {
         wrongAnswer();
+        if (state.currentDragAndDrop?.consequences != null) {
+          ref.read(hiveProvider).storySaveConsequences(
+                consequences: state.currentDragAndDrop!.consequences!,
+                isMinigameSuccess: false,
+              );
+        }
         return false;
       }
     }
+    
     correctAnswer();
+    if (state.currentDragAndDrop?.consequences != null) {
+      ref.read(hiveProvider).storySaveConsequences(
+            consequences: state.currentDragAndDrop!.consequences!,
+            isMinigameSuccess: true,
+          );
+    }
     return true;
   }
 

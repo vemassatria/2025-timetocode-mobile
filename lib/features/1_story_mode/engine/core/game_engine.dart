@@ -26,11 +26,11 @@ class GameEngine extends FlameGame {
     super.onDispose();
   }
 
-  // @override
-  // void onGameResize(Vector2 size) {
-  //   super.onGameResize(size);
-  //   _background?.size = size;
-  // }
+  @override
+  void onGameResize(Vector2 size) {
+    super.onGameResize(size);
+    _background?.size = size;
+  }
 
   Future<void> showCharacters({
     String? char1Img,
@@ -108,7 +108,6 @@ class GameEngine extends FlameGame {
     } else {
       _background = SpriteComponent(sprite: newSprite);
       _background?.priority = -1;
-      _background?.size = size;
       await add(_background!);
     }
   }

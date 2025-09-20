@@ -1,8 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:timetocode/features/0_core/models/question_model.dart';
 import 'package:timetocode/features/1_story_mode/data/models/dialog_model.dart';
 import 'package:timetocode/features/1_story_mode/data/models/predialog_model.dart';
-import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/models/drag_and_drop_model.dart';
+import 'package:timetocode/features/1_story_mode/minigames/core/data/minigame_model.dart';
 
 part 'story_model.freezed.dart';
 part 'story_model.g.dart';
@@ -21,8 +20,7 @@ abstract class StoryModel with _$StoryModel {
     required List<String> ilustrations,
     List<PreDialogModel>? preDialog,
     required List<DialogModel> dialogs,
-    required List<QuestionModel> questions,
-    List<DragAndDropModel>? dragAndDrop,
+    required MinigameModel minigame,
     List<String>? summary,
     required String start,
     required String typeStart,

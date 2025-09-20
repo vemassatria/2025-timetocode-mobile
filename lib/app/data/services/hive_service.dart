@@ -9,12 +9,30 @@ class HiveService {
   final Box<Map<String, int>> consequencesBox;
   final Box<int> storyProgressBox;
   final Box<int> challengeProgressBox;
+  final Box<bool> settingsBox;
 
   HiveService({
     required this.consequencesBox,
     required this.storyProgressBox,
     required this.challengeProgressBox,
+    required this.settingsBox,
   });
+
+  bool getMusicSetting() {
+    return settingsBox.get('musikLatar', defaultValue: true) ?? true;
+  }
+
+  Future<void> saveMusicSetting(bool isEnabled) async {
+    await settingsBox.put('musikLatar', isEnabled);
+  }
+
+  bool getSoundEffectSetting() {
+    return settingsBox.get('musikEfek', defaultValue: true) ?? true;
+  }
+
+  Future<void> saveSoundEffectSetting(bool isEnabled) async {
+    await settingsBox.put('musikEfek', isEnabled);
+  }
 
   Future<void> storySaveConsequences({
     required Map<String, String> consequences,

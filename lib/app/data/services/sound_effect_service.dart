@@ -1,15 +1,12 @@
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timetocode/app/data/providers/shared_preferences_provider.dart';
+import 'package:timetocode/app/data/services/hive_service.dart';
 
 final soundEffectServiceProvider = NotifierProvider<SoundEffectService, bool>(
   SoundEffectService.new,
 );
 
 class SoundEffectService extends Notifier<bool> {
-  late SharedPreferences _prefs;
-
   late AudioPool _buttonClick1Pool;
   late AudioPool _buttonClick2Pool;
   late AudioPool _popClickPool;
@@ -27,8 +24,7 @@ class SoundEffectService extends Notifier<bool> {
 
   @override
   bool build() {
-    _prefs = ref.read(sharedPrefsProvider);
-    return _prefs.getBool('musikEfek') ?? true;
+    return ref.read(hiveProvider).getSoundEffectSetting();
   }
 
   Future<void> initialize() async {
@@ -176,7 +172,7 @@ class SoundEffectService extends Notifier<bool> {
   }
 
   void updateSoundEffectSetting(bool isEnabled) async {
-    await _prefs.setBool('musikEfek', isEnabled);
+    await ref.read(hiveProvider).saveSoundEffectSetting(isEnabled);
     state = isEnabled;
     if (!isEnabled) disposeTypingPlayer();
   }

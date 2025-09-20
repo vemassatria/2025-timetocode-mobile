@@ -9,6 +9,9 @@ part of 'question_model.dart';
 _QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) =>
     _QuestionModel(
       id: json['id'] as String,
+      conditions: (json['conditions'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
       text: json['text'] as String,
       code: json['code'] as String?,
       choices: (json['choices'] as List<dynamic>)
@@ -22,6 +25,7 @@ _QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$QuestionModelToJson(_QuestionModel instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'conditions': instance.conditions,
       'text': instance.text,
       'code': instance.code,
       'choices': instance.choices,

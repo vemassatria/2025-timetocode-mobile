@@ -2,7 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/features/1_story_mode/data/models/story_model.dart';
+
+final storyLoadServiceProvider = Provider.autoDispose<StoryLoadService>((ref) {
+  return StoryLoadService();
+});
 
 class StoryLoadService {
   Future<List<StoryModel>> loadAllLevels(String path) async {
