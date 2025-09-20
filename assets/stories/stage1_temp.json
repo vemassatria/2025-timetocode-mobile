@@ -170,19 +170,19 @@
                         "choices":[
                             {
                                 "text": "Hah, beneran Mas komdis?",
-                                "next": "branchingA",
+                                "next": "branchingA1_1",
                                 "nextType": "dialog"
                             },
                             {
                                 "text": "Yang bener Mas?",
-                                "next": "branchingB",
+                                "next": "branchingB1_1",
                                 "nextType": "dialog"
                             }
                         ]
                     }
                 },
                 {
-                    "id": "branchingA",
+                    "id": "branchingA1_1",
                     "backgroundIndex": 0,
                     "dialogs":[
                         {
@@ -222,7 +222,7 @@
                         "choices": [
                             {
                                 "text": "Wah, mantap Mas! Sikattt! Tolong ajarin aku, Mas. Soalnya otakku udah ngebul dari tadi",
-                                "next": "branchingA_1",
+                                "next": "branchingA1_1_1",
                                 "nextType": "dialog",
                                 "consequences": {
                                     "trust_mulyo": "+1",
@@ -238,7 +238,7 @@
                     }
                 },
                 {
-                    "id": "branchingA_1",
+                    "id": "branchingA_1_1_1",
                     "conditions": {
                         "trust_mulyo": "=1",
                         "humility": "=1"
@@ -260,7 +260,7 @@
                     "nextType": "dialog"
                 },
                 {
-                    "id": "branchingB",
+                    "id": "branchingB1_1",
                     "backgroundIndex": 1,
                     "dialogs":[
                         {
@@ -300,7 +300,7 @@
                         "choices": [
                             {
                                 "text": "Aduh mas gausah deh, takut ngerepotin",
-                                "next": "branchingB_1",
+                                "next": "branchingB1_1_1",
                                 "nextType": "dialog",
                                 "consequences": {
                                     "humility": "+1"
@@ -318,7 +318,7 @@
                     }
                 },
                 {
-                    "id": "branchingB_1",
+                    "id": "branchingB1_1_1",
                     "conditions": {
                         "key": ">=>==<<=value"
                     },
@@ -392,7 +392,7 @@
                         "choices": [
                             {
                                 "text": "Gausah, gini mah gampang",
-                                "next": "branchingC_1",
+                                "next": "branchingC1_1_1",
                                 "nextType": "dialog",
                                 "consequences": {
                                     "humility": "-2"
@@ -400,7 +400,7 @@
                             },
                             {
                                 "text": "Nah logikanya aja aku ga paham",
-                                "next": "branchingC_2",
+                                "next": "branchingC1_1_2",
                                 "nextType": "dialog",
                                 "consequences": {
                                     "humility": "+1",
@@ -411,7 +411,7 @@
                     }
                 },
                 {
-                    "id": "branchingC_1",
+                    "id": "branchingC1_1_1",
                     "conditions": {
                         "key": ">=>==<<=value"
                     },
@@ -432,7 +432,7 @@
                     "nextType": "soal"
                 },
                 {
-                    "id": "branchingC_2",
+                    "id": "branchingC1_1_2",
                     "conditions": {
                         "key": ">=>==<<=value"
                     },
@@ -826,50 +826,129 @@
                     "backgroundIndex": 1,
                     "dialogs": [
                         {
-                            "line": "Wah jawabannya bener! Kamu udah mulai paham banget soal tipe data. Kacau, cepet banget pahamnya! Jadi, kalau ada program yang butuh nyimpen angka, tinggal pilih aja tipe datanya.",
+                            "line": "Nah jadi variabel adalah tempat buat nyimpen data.",
                             "reactionIndex": 2,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Wih mantep dah, udah siap banget buat nerima soal dari Pak Rongga nih.",
+                            "line": "Oh, jadi variabel itu kayak kotak buat nyimpen data gitu? Tapi apa bedanya sama tipe data?",
                             "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
-                            "line": "Nah sekarang kita lanjut ke variabel! Kalau kamu udah paham tipe data, variabel itu sebenarnya gampang banget. Variabel adalah tempat buat nyimpen data. Jadi bayangin aja kamu punya wadah atau kotak yang bisa berubah isinya.",
+                            "line": "Iya, bener banget! Tipe data itu ngejelasin jenis datanya, misalnya angka, teks, atau logika. Nah, variabel itu nama dari kotaknya.",
                             "reactionIndex": 0,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Oh jadi variabel itu kayak kotak buat nyimpen data gitu? Tapi apa bedanya sama tipe data?",
+                            "line": "Ohh jadi kalau variabel itu semacam wadahnya, kan? Jadi bisa aja satu variabel berisi tipe data int, satu lagi char, dan seterusnya?",
                             "reactionIndex": 0,
                             "characterIndex": 1
                         },
                         {
-                            "line": "Iya bener banget! Tipe data itu ngejelasin jenis datanya, misalnya angka, teks, atau logika.",
+                            "line": "Hampir mirip! Variabel itu kayak label di botol. Botolnya bisa beda ukuran, isinya beda, tapi semua punya label biar gak ketuker.",
                             "reactionIndex": 2,
                             "characterIndex": 2
-                        },
+                        }
+                    ],
+                    "branch": {
+                        "timer": 6,
+                        "choices": [
+                            {
+                                "text": "Oh ternyata gitu doang toh.. Kalau masih awal gampang ini mah...",
+                                "next": "branchingA1_2_1",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "humility": "-1"
+                                }
+                            },
+                            {
+                                "text": "Oke, jadi sekarang aku ngerti kalau tipe data dan variabel itu landasan dasar yang penting banget buat bikin program yang bener.",
+                                "next": "branchingA1_2_2",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "humility": "+1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "branchingA1_2_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
                         {
-                            "line": "Nah variabel itu nama dari kotaknya. Jadi misalnya, kamu pengen nyimpen umur seseorang, kamu bikin variabel namanya umur, dan tipe datanya int karena umur itu angka bulat.",
-                            "reactionIndex": 2,
-                            "characterIndex": 2
-                        },
-                        {
-                            "line": "Ohhhh pahammm!",
-                            "reactionIndex": 2,
+                            "line": "Oh ternyata gitu doang toh.. Kalau masih awal gampang ini mah...",
+                            "reactionIndex": 0,
                             "characterIndex": 1
                         },
                         {
-                            "line": "Ah paham-paham mulu, coba kamu jawab soal ini kalo emang paham.",
+                            "line": "Hadeh, sombongnya kumat lagi",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Fakta bro, ini masalah belum belajar aja..",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Coba kalo cuma masalah belum belajar, kamu kerjain soal ini, harus bener!",
                             "reactionIndex": 0,
                             "characterIndex": 2
                         }
                     ],
-                    "next": "soal1_2",
-                    "nextType": "soal",
-                    "consequences": {
-                        "knowledge": "+1"
+                    "next": "soalA1_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "branchingA1_2_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Oke, jadi sekarang aku ngerti kalau tipe data dan variabel itu landasan dasar yang penting banget buat bikin program yang bener.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Bagus deh kalo gitu, coba kamu kerjain soal ini buat ngetes pemahaman mu",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA1_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarA1_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Mantap, jawabanmu bener.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "branch": {
+                        "timer": 6,
+                        "choices": [
+                            {
+                                "text": "Hehehe, makasih banyak Mas! Ini juga karena Mas tadi jelasin step by step, jadi lebih paham.",
+                                "next": "benarA1_2_good",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "key": "+-value"
+                                }
+                            },
+                            {
+                                "text": "Ya wajar aja bener, aku udah mikir dari awal juga.",
+                                "next": "benarA1_2_bad",
+                                "nextType": "dialog",
+                                "consequences": {
+                                    "key": "+-value"
+                                }
+                            }
+                        ]
                     }
                 },
                 {
