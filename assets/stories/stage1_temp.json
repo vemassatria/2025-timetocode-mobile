@@ -82,7 +82,7 @@
                     ],
                     "branch": {
                         "timer": 6,
-                        "canon": "scene1_1",
+                        "canon": "",
                         "choices": [
                             {
                                 "text": "Betul mas aduh susah banget ini programming",
@@ -460,24 +460,39 @@
                     "backgroundIndex": 0,
                     "dialogs": [
                         {
-                            "line": "Bayangin tipe data dan variabel itu seperti wadah dengan labelnya. Biar lebih jelas, coba lihat ilustrasi ember dan kardus ini.",
+                            "line": "Bayangin kamu punya dua wadah, satu ember buat nampung air, satu kardus buat barang kering. Nah, ember sama kardus itu kayak variabel di program, dan label wadah itu kayak tipe datanya.",
                             "reactionIndex": 4,
                             "characterIndex": 2,
                             "ilustrationIndex": 0
                         },
                         {
-                            "line": "Nah, 'ember' itu ibarat variabel float, cocok untuk 'air' atau angka desimal seperti 55.5. Tapi kalau 'air' itu kamu tuang ke 'kardus', yang ibarat variabel int, ya bakal 'bocor', desimalnya hilang karena int hanya untuk bilangan bulat!",
+                            "line": "Jadi kalau kamu masukin nilai kayak angka 55.5 ke variabel float, itu kayak tuang air ke ember, cocok banget.",
                             "reactionIndex": 4,
                             "characterIndex": 2,
                             "ilustrationIndex": 0
                         },
                         {
-                            "line": "Oh jadi tipe data itu penting supaya nilai yang kita masukin sesuai dan gak rusak ya, Mas?",
+                            "line": "Tapi kalau aku masukin nilai 30.5 itu ke variabel int gimana?",
                             "reactionIndex": 0,
                             "characterIndex": 1
                         },
                         {
-                            "line": "Betul! Ibaratnya, label pada wadah memastikan isinya tepat. Kalau salah tipe data, program bisa error atau hasilnya gak sesuai harapan.",
+                            "line": "Itu beda ceritanya. Kayak kamu tuang air ke kardus, bro. Airnya bocor, atau dalam kasus program, desimalnya hilang karena int cuma nampung bilangan bulat.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Jadi datanya gak pas dan bisa bikin error.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh jadi tipe data itu penting supaya nilai yang kita masukin sesuai dan gak rusak ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya. Kalau salah masukin tipe data, nanti programnya bisa ngga jalan sesuai harapan. Jadi label itu ngajarin variabel buat nyimpen data yang tepat.",
                             "reactionIndex": 0,
                             "characterIndex": 2
                         },
@@ -487,7 +502,7 @@
                             "characterIndex": 1
                         },
                         {
-                            "line": "Yap, bener banget! Misalnya kamu mau nyimpen umur, pakai int. Kalau nyimpen nama, pakai string. Gitu.",
+                            "line": "Yap, bener banget! Misalnya kamu mau nyimpen umur, kita bisa pakai integer. Kalau nyimpen nama, pakai string. Gitu.",
                             "reactionIndex": 0,
                             "characterIndex": 2
                         },
@@ -497,7 +512,7 @@
                             "characterIndex": 1
                         },
                         {
-                            "line": "Persis! Variabel itu kayak label di botol. Botolnya bisa beda ukuran, isinya beda, tapi semua punya label biar gak ketuker.",
+                            "line": "Hampir mirip! Variabel itu kayak label di botol. Botolnya bisa beda ukuran, isinya beda, tapi semua punya label biar gak ketuker.",
                             "reactionIndex": 0,
                             "characterIndex": 2
                         },
@@ -538,75 +553,38 @@
                             "characterIndex": 2
                         },
                         {
-                            "line": "Oke Adrian mari kita bahas soal tipe data ini satu per satu. Pertama untuk Nama biasanya pakai tipe data yang bisa menyimpan teks, seperti string. Jadi, itu sudah tepat.",
+                            "line": "Pertama, untuk Nama biasanya pakai tipe data string. Itu sudah tepat. Kedua, untuk Usia, kalau usia itu angka bulat maka cocoknya int.",
                             "reactionIndex": 0,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Kedua untuk Usia, pikirkan lagi. Kalau usia itu angka yang tidak memiliki angka desimal, apa kira-kira tipe data yang cocok?",
-                            "reactionIndex": 0,
-                            "characterIndex": 2
-                        },
-                        {
-                            "line": "Usia itu kan angka bulat, jadi mungkin tipe data float?",
+                            "line": "Oh, int ya?!",
                             "reactionIndex": 0,
                             "characterIndex": 1
                         },
                         {
-                            "line": "Hmm float biasanya digunakan untuk angka yang ada desimalnya, seperti berat badan atau pengukuran yang presisi. Kalau Usia hanya angka bulat jadi tipe data yang tepat adalah tipe data yang bisa menyimpan angka bulat saja.",
+                            "line": "Betul! Untuk berat badan biasanya ada desimal, jadi float.",
                             "reactionIndex": 0,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Oh int ya?!",
-                            "reactionIndex": 2,
-                            "characterIndex": 1
-                        },
-                        {
-                            "line": "Betul! int itu untuk angka bulat. Lanjut ketiga sekarang ke Berat badan. Berat badan itu biasanya ada angka desimalnya kan? Jadi kita butuh tipe data yang bisa menyimpan angka dengan desimal. Apa yang kamu pikirkan?",
-                            "reactionIndex": 2,
-                            "characterIndex": 2
-                        },
-                        {
-                            "line": "Ah kalau gitu float ya? Karena ada desimalnya.",
-                            "reactionIndex": 2,
-                            "characterIndex": 1
-                        },
-                        {
-                            "line": "Betul sekali! float memang untuk angka desimal. Keempat untuk Nilai ujian, ini kan biasanya berupa angka bulat, ya? Jadi apa yang tepat untuk tipe data ini?",
-                            "reactionIndex": 2,
-                            "characterIndex": 2
-                        },
-                        {
-                            "line": "Kalau begitu tipe data yang tepat untuk Nilai ujian adalah int.",
+                            "line": "Ah, kalau gitu float ya?",
                             "reactionIndex": 0,
                             "characterIndex": 1
                         },
                         {
-                            "line": "Betul! Nilai ujian itu angka bulat jadi int memang cocok. Terakhir, Status lulus. Ini cuma punya dua kemungkinan, lulus atau tidak. Tipe data apa yang bisa mewakili dua pilihan seperti itu?",
-                            "reactionIndex": 0,
+                            "line": "Betul sekali! Untuk nilai ujian biasanya int. Dan status lulus cocoknya bool.",
+                            "reactionIndex": 2,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Kayaknya itu bool ya? Karena hanya ada dua nilai: benar atau salah.",
+                            "line": "Kayaknya itu bool ya?",
                             "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
-                            "line": "Tepat sekali! Boolean itu untuk dua kemungkinan itu. Biar lebih kebayang, bool itu seperti saklar lampu pada ilustrasi ini.",
-                            "reactionIndex": 4,
-                            "characterIndex": 2,
-                            "ilustrationIndex": 1
-                        },
-                        {
-                            "line": "Kalau lampu 'ON' atau menyala, itu TRUE atau benar. Kalau 'OFF' atau mati, itu FALSE atau salah. Komputer pakai ini untuk membuat keputusan.",
-                            "reactionIndex": 4,
-                            "characterIndex": 2,
-                            "ilustrationIndex": 1
-                        },
-                        {
-                            "line": "Nah, dengan pemahaman itu, coba sekarang kamu susun lagi tipe data yang benar untuk soal tadi.",
-                            "reactionIndex": 0,
+                            "line": "Betul! Bool memang tepat. Nah, sekarang kamu coba pikirkan lagi.",
+                            "reactionIndex": 2,
                             "characterIndex": 2
                         }
                     ],
@@ -792,6 +770,58 @@
                     ]
                 },
                 {
+                    "id": "goodIntro1_2",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Sekarang kita lanjut ke variabel. Nah, kamu tau ga variabel itu apa?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hehe belum tau mas, emang variabel apa mas??",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "materi1_2",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "badIntro1_2",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Coba kalo kamu emang jago, sekarang kamu jelasin materi tentang variabel",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Variabel itu yang…",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah bingung kan, makanya jangan sombong dulu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Yaudah, emang variabel itu yang kaya gimana sih.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "materi1_2",
+                    "nextType": "dialog"
+                },
+                {
                     "id": "materi1_2",
                     "backgroundIndex": 1,
                     "dialogs": [
@@ -837,7 +867,10 @@
                         }
                     ],
                     "next": "soal1_2",
-                    "nextType": "soal"
+                    "nextType": "soal",
+                    "consequences": {
+                        "knowledge": "+1"
+                    }
                 },
                 {
                     "id": "salah1_2",
