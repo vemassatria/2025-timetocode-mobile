@@ -1,0 +1,134 @@
+{
+    "level": 1,
+    "description": "Looping time! Biar program kamu bisa ngulang-ngulang kerjaan tanpa capek",
+    "title": "For, While, Do While",
+    "background": [
+        "teman-cafe",
+        "warung-kating"
+    ],
+    "character1": "Adrian",
+    "character1Images": [
+        "adriankampus_biasa",
+        "adriankampus_marah",
+        "adriankampus_senang",
+        "adriankampus_kecewa",
+        "adriankampus_aksi"
+    ],
+    "character2": "Rusdi",
+    "character2Images": [
+        "rusdi_biasa",
+        "rusdi_marah",
+        "rusdi_senang",
+        "rusdi_kecewa",
+        "rusdi_aksi"
+    ],
+    "ilustrations": [
+        "LOOP-FOR-ISI",
+        "LOOP-WHILE-KERING",
+        "LOOP-WHILE-BASAH",
+        "DO-WHILE-1",
+        "DO-WHILE-2",
+        "DO-WHILE-3"
+    ],
+    "start": "preDialog3_1",
+    "typeStart": "preDialog",
+    "preDialog": [
+        {
+            "id": "preDialog3_1",
+            "text": "Mie ayam milik Mas Rusdi terletak di sudut gang kecil dekat kampus, selalu ramai oleh mahasiswa yang ingin cepat makan sebelum kuliah. Mas Rusdi, pria ramah yang sudah mengenal Adrian sejak awal kuliah, ternyata lulusan teknik juga. Namun, nasib membawanya membuka warung karena sulitnya mencari kerja di dunia IT.",
+            "next": "preDialog3_2",
+            "nextType": "preDialog"
+        },
+        {
+            "id": "preDialog3_2",
+            "text": "Persaingan yang ketat dan minimnya relasi membuat Rusdi tak lolos seleksi kerja berulang kali. Suatu hari, saat Adrian mengeluh soal konsep perulangan, Rusdi menjelaskan lewat kisah hidupnya sendiri — tentang usaha yang terus diulang meski hasilnya belum selalu sesuai harapan.",
+            "next": "intro3_1"
+        }
+    ],
+    "dialogs": [
+        {
+            "id": "intro3_1",
+            "conditions": {
+                "key": ">=>==<<=value"
+            },
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Permisi mas, pesen mie ayamnya 2. 1 bungkus, 1 makan sini ya.",
+                    "reactionIndex": 0,
+                    "characterIndex": 0
+                }
+            ],
+            "branch": {
+                "timer": 0,
+                "canon": "",
+                "choices": [
+                    {
+                        "text": "",
+                        "next": "",
+                        "nextType": "",
+                        "consequences": {
+                            "key": "+-value"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "minigame": {
+        "questions": [
+            {
+                "id": "",
+                "conditions": {
+                    "key": ">=>==<<=value"
+                },
+                "text": "",
+                "code": "",
+                "choices": [
+                    {
+                        "text": "",
+                        "next": "",
+                        "nextType": "",
+                        "isCorrect": true
+                    }
+                ],
+                "consequences": {
+                    "key": "value"
+                }
+            }
+        ],
+        "dragAndDrop": [
+            {
+                "id": "",
+                "conditions": {
+                    "key": ">=>==<<=value"
+                },
+                "instruction": "",
+                "scaffoldCode": "",
+                "draggableOptions": [
+                    {
+                        "id": "",
+                        "content": {
+                        "type": "text",
+                        "value": ""
+                        }
+                    }
+                ],
+                "dropZones": [
+                    {
+                        "id": "",
+                        "acceptedIds": null,
+                        "content": null
+                    }
+                ],
+                "correctSequence": [""],
+                "next": "",
+                "nextType": "",
+                "consequences": {
+                    "key": "value"
+                }
+            }
+        ]
+    },
+    "summary": [""]
+}
