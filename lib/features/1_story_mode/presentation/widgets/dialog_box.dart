@@ -65,10 +65,19 @@ class _DialogBoxState extends ConsumerState<DialogBox>
         _countdown = _countdown! - 1;
       } else {
         _stopTimerAndAnimation();
+
         final dialog = ref.read(storyControllerProvider).currentDialog;
+        final canon = dialog!.branch!.canon;
+        final canonConsequences = dialog.branch!.choices
+            .firstWhere((choice) => choice.next == canon)
+            .consequences;
+
+        ref
+            .read(hiveProvider)
+            .storySaveConsequences(consequences: canonConsequences!);
         ref
             .read(storyControllerProvider.notifier)
-            .navigateMode('dialog', dialog!.branch!.canon!);
+            .navigateMode('dialog', canon!);
       }
     });
   }
