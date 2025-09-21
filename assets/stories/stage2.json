@@ -1,0 +1,1158 @@
+{
+  "levels": [
+    {
+      "level": 2,
+      "description": "Pusing sama alur program? Pelajari cara mengontrolnya pakai if, else-if, dan switch biar kodemu bisa ambil keputusan sendiri!",
+      "title": "Percabangan (If, Else, Switch)",
+      "background": [
+        "mc-rumah"
+      ],
+      "character1": "Adrian",
+      "character1Images": [
+        "adrian_biasa",
+        "adrian_marah",
+        "adrian_senang",
+        "adrian_kecewa",
+        "adrian_aksi"
+      ],
+      "character2": "Mas Tino",
+      "character2Images": [
+        "tino_biasa",
+        "tino_marah",
+        "tino_senang",
+        "tino_kecewa",
+        "tino_aksi",
+        "tino_ngejek"
+      ],
+      "ilustrations": [],
+      "start": "preDialog2",
+      "typeStart": "preDialog",
+      "preDialog": [
+        {
+          "id": "preDialog2",
+          "text": "Adrian punya kakak bernama Tino, lulusan IT yang kini bekerja di bidang teknologi. Blak-blakan dan sering meremehkan, Tino kerap menyindir Adrian yang masih kesulitan memahami dasar pemrograman. Namun di balik kata-kata sinisnya, ia sebenarnya peduli dan diam-diam memperhatikan adiknya.",
+          "next": "preDialog2_2",
+          "nextType": "preDialog"
+        },
+        {
+          "id": "preDialog2_2",
+          "text": "Di kamar yang diterangi lampu meja redup, Adrian menatap laptop dengan kode pengecek nilai penuh error, berulang kali mencoba memperbaikinya.",
+          "next": "intro2",
+          "nextType": "dialog"
+        }
+      ],
+      "dialogs": [
+        {
+          "id": "intro2",
+          "backgroundIndex": 0,
+          "dialogs": [
+            {
+              "line": "Aduh, kenapa program pengecek nilainya error terus? Padahal aku benerin kode ini berkali-kali...",
+              "reactionIndex": 1,
+              "characterIndex": 1
+            },
+            {
+              "line": "Coba liat deh. Kayaknya kamu masih bingung cara pake if, else-if, sama switch.",
+              "reactionIndex": 0,
+              "characterIndex": 2
+            },
+            {
+              "line": "Aku udah coba pelajari, tapi masih bingung.",
+              "reactionIndex": 3,
+              "characterIndex": 1
+            },
+            {
+              "line": "Wkwk, baru materi dasar aja udah kewalahan. Gimana nanti kalau materi algoritma yang lebih naik level lagi? Bisa nangis kamu.",
+              "reactionIndex": 5,
+              "characterIndex": 2
+            }
+          ],
+          "branch": {
+            "choices": [
+              {
+                "text": "Yaudah iya, mas ngerti materi ini kan? Coba tolong jelasin versi gampangnya dong, aku udah pusing banget.",
+                "next": "scene2_1",
+                "nextType": "dialog",
+                "consequences": {
+                  "humility": "+1",
+                  "trust_tino": "+1"
+                }
+              },
+              {
+                "text": "Yeu kaya Mas Tino ga pernah jadi maba aja.",
+                "next": "scene2_2",
+                "nextType": "dialog",
+                "consequences": {}
+              },
+              {
+                "text": "Dasar tukang ngejek! Coba kasih materi gitu kek adeknya biar ga pusing.",
+                "next": "scene2_3",
+                "nextType": "dialog",
+                "consequences": {
+                  "humility": "-1",
+                  "trust_tino": "-1"
+                }
+              }
+            ]
+          }
+        },
+        {
+            "id": "scene2_1",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Mas ngerti materi ini kan? Tolong jelasin versi gampangnya dong, aku udah pusing banget.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Santai, yan. Aku juga dulu pernah stuck berhari-hari sebelum ngerti.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Iya, makanya aku minta tolong jelasin. Aku bener-bener bingung nih.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Oke, aku jelasin gampangnya.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "materi2_1",
+            "nextType": "dialog",
+            "consequences": {
+                "knowledge": "+1"
+            }
+        },
+        {
+            "id": "scene2_2",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Yeu kaya Mas Tino ga pernah jadi maba aja.",
+                    "reactionIndex": 4,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Woi santai aja, gak usah baper.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Hehe, ya maklum lah, baru belajar. Kadang rasanya pengen nyerah aja.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Nah, makanya aku di sini buat bantu. Yuk, kita lihat bareng-bareng bagian mana yang bikin kamu bingung.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "branch": {
+                "choices": [
+                    {
+                        "text": "Aku bingung, Mas. Dari nulis if, urutan else-if, sampai kapan pakai switch, semua campur aduk.",
+                        "next": "scene2_2_good",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "humility": "+1",
+                            "trust_tino": "+1"
+                        }
+                    },
+                    {
+                        "text": "Yaudah deh, ayo cepet ajarin, Mas. Soalnya makin aku liat, makin pengen banting laptop rasanya.",
+                        "next": "scene2_2_pendek",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "trust_tino": "+1"
+                        }
+                    },
+                    {
+                        "text": "Sebenernya ga sebingung itu, cuma kayanya aku mau coba soalnya dulu deh.",
+                        "next": "scene2_2_sombong",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "humility": "-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "scene2_2_good",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Aku bingung, Mas. Dari nulis if, urutan else-if, sampai kapan pakai switch, semua campur aduk.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Hehe, wajar kok. Banyak yang pertama kali belajar juga ketukar-tukar.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Tapi rasanya semakin aku baca, semakin nggak ngerti, Mas.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Yaudah sini aku jelasin pelan-pelan.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "materi2_1",
+            "nextType": "dialog",
+            "consequences": {
+                "knowledge": "+1"
+            }
+        },
+        {
+            "id": "scene2_2_pendek",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Yaudah deh, ayo cepet ajarin, Mas. Soalnya makin aku liat, makin pengen banting laptop rasanya.",
+                    "reactionIndex": 1,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Woi sabar, jangan banting laptop. Nih aku jelasin simplenya.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "materi2_1",
+            "nextType": "dialog",
+            "consequences": {
+                "knowledge": "+1"
+            }
+        },
+        {
+            "id": "scene2_2_sombong",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Sebenernya ga sebingung itu, cuma kayanya aku mau coba soalnya dulu deh.",
+                    "reactionIndex": 4,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Wihh gaya amat. Kalau gitu nih, coba kerjain soal ini. Biar tau kamu beneran paham atau engga.",
+                    "reactionIndex": 5,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "soalA2_1",
+            "nextType": "soal"
+        },
+        {
+            "id": "scene2_3",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Dasar tukang ngejek! Coba kasih materi gitu kek adeknya biar ga pusing.",
+                    "reactionIndex": 1,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Bocoran apaan. Belajar tuh, jangan kebanyakan ngeluh.",
+                    "reactionIndex": 1,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Heh, dibilangin susah ini…",
+                    "reactionIndex": 1,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Yaudah, daripada ngeluh terus, coba kerjain soal ini. Biar keliatan sampai mana pahamnya.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                }
+            ],
+            "branch": {
+                "choices": [
+                    {
+                        "text": "Heh, bukannya gak mau, tapi kepalaku udah mumet, Mas.",
+                        "next": "scene2_3_materi",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "humility": "+1"
+                        }
+                    },
+                    {
+                        "text": "Aduh, soal.. tapi okelah.",
+                        "next": "soalA2_1",
+                        "nextType": "soal",
+                        "consequences": {}
+                    }
+                ]
+            }
+        },
+        {
+            "id": "scene2_3_materi",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Heh, bukannya gak mau, tapi kepalaku udah mumet, Mas.",
+                    "reactionIndex": 1,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Belum materi kok udah mumet duluan.",
+                    "reactionIndex": 3,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Kasih understand materi dulu lah.",
+                    "reactionIndex": 4,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Yaudah materi, tapi abis dijelasin materi, jawab soalnya harus bener ya!",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Iya mas iya.",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                }
+            ],
+            "next": "materi2_1",
+            "nextType": "dialog",
+            "consequences": {
+                "knowledge": "+1"
+            }
+        },
+        {
+            "id": "materi2_1",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Misal kamu lagi di persimpangan jalan. Kalau kamu jawab mau ke pantai, petugas langsung suruh kamu ke pantai. Itu kayak 'if' doang, simpel.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Oke, masih awal masih gampang nih. Terus kalau ada lebih dari satu pilihan?",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Nah kalau di simpang empat, ada pilihan ke pegunungan, pantai, atau kota. Itu pakai 'else-if' buat ngecek kondisi lain. Kalau semua gak cocok, baru pakai 'else'.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Nah sekarang cobain dulu kamu jawab soal ini, ya.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "soalA2_1",
+            "nextType": "soal"
+        },
+        {
+            "id": "benarA2_1",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "YES! Jawabanku bener!!",
+                    "reactionIndex": 2,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Wih, mantap! Udah mulai keliatan hasil belajarnya nih.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "branch": {
+                "choices": [
+                    {
+                        "text": "Hehe, syukur deh. Tapi aku masih harus banyak latihan biar makin yakin, Mas.",
+                        "next": "dd-2.1",
+                        "nextType": "dragAndDrop",
+                        "consequences": {
+                            "humility": "+1",
+                            "trust_tino": "+1"
+                        }
+                    },
+                    {
+                        "text": "Padahal aku tadi ngasal jawabnya.",
+                        "next": "dd-2.1",
+                        "nextType": "dragAndDrop",
+                        "consequences": {
+                            "humility": "+1"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "salahA2_1",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Hah, salah lagi jawabanku… aku kira harus pakai else juga.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Hehe, gini lho. Jangan keburu mikir harus selalu lengkap ada if-else. Lihat dulu kebutuhan soalnya.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Ooh… jadi lebih penting ngerti logikanya dulu ya daripada hafal strukturnya?",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Exactly. Kalau ngerti konsepnya, kamu bakal lebih gampang nentuin. Coba deh, kerjain lagi soal yang tadi.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "soalA2_1",
+            "nextType": "soal"
+        },
+        {
+            "id": "benarB2_1",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Betul! 'Bilangan ganjil' adalah jawaban yang benar. Kamu paham kan kenapa?",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Paham, Mas. Jadi, kuncinya bukan di angkanya, tapi di sisa hasil baginya, ya?",
+                    "reactionIndex": 2,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Tepat sekali. Kamu sudah mulai bisa membaca alur program. Itu adalah modal yang bagus untuk belajar lebih jauh.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "branch": {
+                "choices": [
+                    {
+                        "text": "Ohh paham Mas. Tinggal liat sisanya aja, langsung ketahuan ganjil atau genap.",
+                        "next": "bingungIntro2_2",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "humility": "+1"
+                        }
+                    },
+                    {
+                        "text": "Ini sih gampang, tinggal liat sisanya aja bakal langsung ketahuan.",
+                        "next": "sombongIntro2_2",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "humility": "-2",
+                            "trust_tino": "-1"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "salahB2_1",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Hayo, inget lagi, % 2 itu ngecek sisa bagi, kan? Nah, 13 dibagi 2 sisanya 1, jadi programnya langsung masuk ke blok else.",
+                    "reactionIndex": 3,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Ah iya, jadi sisanya 1, masuk else. Oke, paham sekarang, Mas.",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Sip, bagus kalau udah paham. Nah, sekarang coba deh kita latihan lagi.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "dd-2.1",
+            "nextType": "dragAndDrop"
+        },
+        {
+            "id": "bingungIntro2_2",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Sekarang, bayangin kalau kita mau ngecek lebih dari dua kondisi. Kalau cuma pakai if dan else doang, bakal ribet, kan?",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Wah iya, Mas. Terus gimana caranya biar program bisa ngecek lebih dari dua kondisi?",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Nah, di sinilah else-if berguna. Dengan itu, kita bisa bikin beberapa kondisi sekaligus.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Wah, Mas… konsepnya kayak gimana sih?",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                }
+            ],
+            "next": "materi2_2",
+            "nextType": "dialog",
+            "consequences": {
+                "knowledge": "+1"
+            }
+        },
+        {
+            "id": "sombongIntro2_2",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Nih, coba bayangin soal ini: angka yang dimasukkan bisa ganjil, genap, atau kelipatan 3. Kalau cuma pakai if dan else, bakal ribet kan?",
+                    "reactionIndex": 5,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Wah, kayanya bakal susah sih…",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Lah, tadi katanya gampang. Ayo deh, coba dulu soalnya.",
+                    "reactionIndex": 5,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "dd-2.2",
+            "nextType": "dragAndDrop"
+        },
+        {
+            "id": "materi2_2",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Nah else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Misalnya, ngecek usia seseorang, apakah dia remaja, dewasa, atau lansia.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Tiap kategori usia, aksinya beda. Coba deh kamu tebak output dari kode ini.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "dd-2.2",
+            "nextType": "dragAndDrop"
+        },
+        {
+            "id": "benarA2_2",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Betul! Tepat sekali. Karena umur 25 masuk rentang 18 sampai 60, program langsung masuk ke blok else if. Mantap!",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Wah dah bener berarti logikaku.",
+                    "reactionIndex": 2,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Sip, mantap! Nah, sekarang ayo kita lanjut ke soal berikutnya.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "dd-2.3",
+            "nextType": "dragAndDrop"
+        },
+        {
+            "id": "salahA2_2_bingung",
+            "conditions": {
+                "humility": ">=0"
+            },
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Aduh Mas, aku salah lagi jawabnya...",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Gapapa… di soal tadi ada tanda &&, itu artinya 'dan', jadi dua syarat harus benar semua.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Kalau cuma satu syarat doang yang bener, berarti lompat ke else ya?",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Betul! Coba dibaca pelan-pelan lagi soalnya.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "dd-2.2",
+            "nextType": "dragAndDrop"
+        },
+        {
+            "id": "salahA2_2_sombong",
+            "conditions": {
+                "humility": "<0"
+            },
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Nahkan, makanya jangan sok dulu, jadi salah kan jawabnya.",
+                    "reactionIndex": 5,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Masa salah sih, kunci jawabannya salah nih.",
+                    "reactionIndex": 1,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Haduhhh, coba inget lagi, umur 25 itu masuk range 18 sampai 60, jadi aksi yang mana yang bakal dijalankan?",
+                    "reactionIndex": 3,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "OH! Aku kayanya mulai paham mas. Aku bakal coba lagi.",
+                    "reactionIndex": 4,
+                    "characterIndex": 1
+                }
+            ],
+            "next": "dd-2.2",
+            "nextType": "dragAndDrop"
+        },
+        {
+            "id": "benarB2_2",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Betul! Tepat sekali. Karena x itu 10, yang lebih besar dari 5, program masuk ke blok if. Mantap!",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "branch": {
+                "choices": [
+                    {
+                        "text": "Mas, kalau misal x bisa 1, 2, 3, atau 4, dan tiap nilai mau beda outputnya, pakai if-else terus bakal ribet kan?",
+                        "next": "santaiIntro2_3",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "trust_tino": "+1",
+                            "knowledge": "+1"
+                        }
+                    },
+                    {
+                        "text": "Ohh… jadi kalau banyak pilihan, if-else bisa dipakai, tapi bakal panjang ya, Mas?",
+                        "next": "konfirmasiIntro2_3",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "humility": "+1"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "salahB2_2",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Ingat, x itu 10, kan? Nah, 10 > 5, jadi program masuk ke blok if. Tapi nggak apa-apa, ini bagus buat latihan.",
+                    "reactionIndex": 3,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Ah iya… keliru, Mas. Terus harusnya aku ngecek nilainya dulu ya sebelum jawab.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Nah iya, bener. Coba lebih teliti lagi ngerjainnya.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "dd-2.3",
+            "nextType": "dragAndDrop"
+        },
+        {
+            "id": "santaiIntro2_3",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Eh, Mas… sebelumnya Mas sempet bilang kalau kondisi yang dicek ada banyak itu ada cara lain. Seingetku kaya ‘Nintendo’ gitu.",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Hampir bener. Bukan Nintendo, tapi switch. Tapi iya sih, namanya jadi gampang diinget.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Ohh iya iya, switch! Jadi itu semacam cara lain buat ngecek kondisi ya, Mas?",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Betul. Bedanya, if-else cek kondisi pakai logika, sedangkan switch dipakai buat ngecek nilai tertentu dari sebuah variabel.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "materi2_3",
+            "nextType": "dialog",
+            "consequences": {
+                "knowledge": "+1"
+            }
+        },
+        {
+            "id": "konfirmasiIntro2_3",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Oke Adrian, tadi kita udah bahas if-else dan else-if. Sekarang bayangin kalau kondisi yang harus dicek banyak banget… bakal panjang banget kan kodenya?",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Iya, Mas… kepala rasanya muter liat banyak else-if.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Nah, makanya ada cara yang lebih rapi, namanya switch. Fungsinya mirip if-else, tapi lebih simpel kalau pilihan banyak.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Wah, oke… jadi switch itu semacam shortcut biar kode nggak bertele-tele gitu ya?",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                }
+            ],
+            "next": "materi2_3",
+            "nextType": "dialog",
+            "consequences": {
+                "knowledge": "+1"
+            }
+        },
+        {
+            "id": "materi2_3",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Switch itu mirip else-if, tapi switch langsung cocokkan nilai dari sebuah variabel ke pilihan yang udah pasti.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Misalnya kamu pilih tujuan: pegunungan, pantai, atau kota. Kalau switch, langsung dicocokkan sama case yang ada.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Kayanya aku mulai paham dikit, Mas.",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Sip, mantap! Nah, biar nggak cuma paham di kepala, coba kerjain soal ini.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "soalA2_3",
+            "nextType": "soal"
+        },
+        {
+            "id": "benarA2_3",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Mantap! Tepat sekali. Karena nilai variabel tujuan adalah Pantai, program bakal masuk ke case ‘Pantai’.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Hehe, mulai kebayang nih, Mas. Jadi lebih rapi ketimbang else if panjang-panjang ya.",
+                    "reactionIndex": 2,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Betul. Makanya kalau ada banyak kemungkinan nilai, switch ini bikin kode kita lebih gampang dibaca. Siap buat soal berikutnya?",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Siap, Mas! Gas lagi.",
+                    "reactionIndex": 2,
+                    "characterIndex": 1
+                }
+            ],
+            "next": "soalB2_3",
+            "nextType": "soal"
+        },
+        {
+            "id": "salahA2_3",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Aduh, duh… salah lagi ya, Mas. Otakku panas nih!",
+                    "reactionIndex": 1,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Hehe, wajar kok kalau salah, itu bagian dari belajar. Jangan langsung nyerah.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Hmm… iya juga, Mas… tapi aku masih bingung gitu.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                }
+            ],
+            "branch": {
+                "choices": [
+                    {
+                        "text": "Ah, aku coba soal lagi deh, Mas! Kali ini harus bener nih.",
+                        "next": "soalA2_3",
+                        "nextType": "soal",
+                        "consequences": {}
+                    },
+                    {
+                        "text": "Hmm… kayaknya aku mau lihat materi lagi dulu, Mas, masih agak bingung.",
+                        "next": "materi2_3",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "humility": "+1",
+                            "knowledge": "+1"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "benarB2_3",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Pinter banget kamu. Sekarang udah ngerti kan cara kerja if, else if, dan switch.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Asik, semoga saat aku ketemu materi kondisi dalam konsep pemrograman ga bakal bingung lagi ya. Makasih banyak, Kak!",
+                    "reactionIndex": 2,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Iya, siap! Kalau ada yang bingung lagi, langsung tanya aja!",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "branch": {
+                "choices": [
+                    {
+                        "text": "Btw abis belajar laper nih mas?",
+                        "next": "goodEnding",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "trust_tino": "+1"
+                        }
+                    },
+                    {
+                        "text": "Halah, kayak bakal bingung aja, materi gampang ini mah.",
+                        "next": "badEnding",
+                        "nextType": "dialog",
+                        "consequences": {
+                            "trust_tino": "-1",
+                            "humility": "-2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "salahB2_3",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Hehe, nah itu dia. Switch-case itu cocok buat pilihan yang pasti-pasti aja.",
+                    "reactionIndex": 3,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Ooooh, jadi switch itu buat pilihan pasti, bukan buat bandingin nilai yang berubah-ubah ya.",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Betul! Kalau yang kompleks atau perbandingan, mending pakai if-else. Sip, abis ini aku coba ulang soal biar makin paham.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "soalB2_3",
+            "nextType": "soal"
+        },
+        {
+            "id": "goodEnding",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Btw abis belajar laper nih mas?",
+                    "reactionIndex": 4,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Terus?",
+                    "reactionIndex": 0,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Boleh kali traktir mie ayamnya Mas Rusdi.",
+                    "reactionIndex": 4,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Yaudah, tapi kamu yang pergi ya.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                }
+            ],
+            "next": null,
+            "nextType": ""
+        },
+        {
+            "id": "badEnding",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Halah, kayak bakal bingung aja, materi gampang ini mah.",
+                    "reactionIndex": 4,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Sok banget. Mending kamu beli mie ayam buat mas deh, laper nih.",
+                    "reactionIndex": 1,
+                    "characterIndex": 2
+                }
+            ],
+            "next": null,
+            "nextType": ""
+        }
+      ],
+      "minigame": {
+        "questions": [
+          {
+            "id": "soalA2_1",
+            "text": "Terdapat program buat cek apakah suhu ruangan lebih dari 30°C. Kalau iya, tampilkan \"Ruangan Panas\". Kalau enggak, program gak perlu ngapa-ngapain. Kira-kira struktur kondisi apa yang paling tepat buat program ini?",
+            "choices": [
+              {
+                "text": "if, karena cuma perlu ngecek satu kondisi aja.",
+                "next": "benarA2_1",
+                "nextType": "dialog",
+                "isCorrect": true,
+                "consequences": {"knowledge": "+1"}
+              },
+              {
+                "text": "else, karena cuma butuh dua kemungkinan.",
+                "next": "salahA2_1",
+                "nextType": "dialog",
+                "isCorrect": false,
+                "consequences": {"knowledge": "-1"}
+              },
+              {
+                "text": "if dan else, karena ada dua kondisi yang harus dipilih.",
+                "next": "salahA2_1",
+                "nextType": "dialog",
+                "isCorrect": false,
+                "consequences": {"knowledge": "-1"}
+              },
+              {
+                "text": "Tidak perlu kondisi, cukup tampilkan saja.",
+                "next": "salahA2_1",
+                "nextType": "dialog",
+                "isCorrect": false,
+                "consequences": {"knowledge": "-1"}
+              }
+            ]
+          },
+          {
+            "id": "soalA2_3",
+            "text": "Apa output dari program diatas?",
+            "code": "String tujuan = \"Pantai\";\n\nswitch(tujuan) {\n  case \"Pegunungan\":\n    System.out.println(\"Bawa jaket biar nggak kedinginan.\");\n    break;\n  case \"Pantai\":\n    System.out.println(\"Jangan lupa kacamata hitam.\");\n    break;\n  case \"Kota\":\n    System.out.println(\"Siapkan kamera untuk foto-foto.\");\n    break;\n  default:\n    System.out.println(\"Tujuan tidak dikenal.\");\n}",
+            "choices": [
+              {
+                "text": "Bawa jaket biar nggak kedinginan",
+                "next": "salahA2_3",
+                "nextType": "dialog",
+                "isCorrect": false,
+                "consequences": {"knowledge": "-1"}
+              },
+              {
+                "text": "Jangan lupa kacamata hitam",
+                "next": "benarA2_3",
+                "nextType": "dialog",
+                "isCorrect": true,
+                "consequences": {"knowledge": "+1"}
+              },
+              {
+                "text": "Siapkan kamera untuk foto-foto",
+                "next": "salahA2_3",
+                "nextType": "dialog",
+                "isCorrect": false,
+                "consequences": {"knowledge": "-1"}
+              },
+              {
+                "text": "Tujuan tidak dikenal",
+                "next": "salahA2_3",
+                "nextType": "dialog",
+                "isCorrect": false,
+                "consequences": {"knowledge": "-1"}
+              }
+            ]
+          },
+          {
+            "id": "soalB2_3",
+            "text": "Adrian memilih sebuah menu berdasarkan angka yang diberikan. Kira-kira menu apa yang akan muncul di layar?",
+            "code": "int pilihanMenu = 2;\nswitch (pilihanMenu) {\n  case 1:\n    printf(\"Pilihan menu: Nasi Goreng\");\n    break;\n  case 2:\n    printf(\"Pilihan menu: Mie Ayam\");\n    break;\n  case 3:\n    printf(\"Pilihan menu: Soto\");\n    break;\n  default:\n    printf(\"Pilihan menu tidak valid\");\n}",
+            "choices": [
+                {
+                    "text": "Pilihan menu: Nasi Goreng",
+                    "next": "salahB2_3",
+                    "nextType": "dialog",
+                    "isCorrect": false,
+                    "consequences": {"knowledge": "-1"}
+                },
+                {
+                    "text": "Pilihan menu: Soto",
+                    "next": "salahB2_3",
+                    "nextType": "dialog",
+                    "isCorrect": false,
+                    "consequences": {"knowledge": "-1"}
+                },
+                {
+                    "text": "Pilihan menu: Mie Ayam",
+                    "next": "benarB2_3",
+                    "nextType": "dialog",
+                    "isCorrect": true,
+                    "consequences": {"knowledge": "+1"}
+                },
+                {
+                    "text": "Pilihan menu tidak valid",
+                    "next": "salahB2_3",
+                    "nextType": "dialog",
+                    "isCorrect": false,
+                    "consequences": {"knowledge": "-1"}
+                }
+            ]
+          }
+        ],
+        "dragAndDrop": [
+          {
+            "id": "dd-2.1",
+            "instruction": "Susunlah potongan kode berikut untuk membuat program pengecek bilangan ganjil atau genap.",
+            "scaffoldCode": "#include <stdio.h>\n\nint main() {\n  int angka;\n  printf(\"Masukkan sebuah angka: \");\n  [dz1];\n\n  if ([dz2]) {\n    [dz3];\n  } else {\n    [dz4];\n  }\n\n  return 0;\n}",
+            "draggableOptions": [
+              {"id": "dnd-2.1.1", "content": {"type": "text", "value": "scanf(\"%d\", &angka)"}},
+              {"id": "dnd-2.1.2", "content": {"type": "text", "value": "angka % 2 == 0"}},
+              {"id": "dnd-2.1.3", "content": {"type": "text", "value": "printf(\"Bilangan genap\\n\")"}},
+              {"id": "dnd-2.1.4", "content": {"type": "text", "value": "printf(\"Bilangan ganjil\\n\")"}}
+            ],
+            "dropZones": [
+              {"id": "dz1", "content": null},
+              {"id": "dz2", "content": null},
+              {"id": "dz3", "content": null},
+              {"id": "dz4", "content": null}
+            ],
+            "correctSequence": ["dnd-2.1.1", "dnd-2.1.2", "dnd-2.1.3", "dnd-2.1.4"],
+            "next": "benarB2_1",
+            "nextType": "dialog",
+            "consequences": {
+                "knowledge": "+1"
+            }
+          },
+          {
+            "id": "dd-2.2",
+            "instruction": "Lengkapi kode berikut untuk memeriksa apakah seseorang termasuk kategori dewasa (usia 18-60 tahun).",
+            "scaffoldCode": "int umur = 25;\nif (umur < 18) {\n  printf(\"Kamu masih remaja\");\n} [dz1] (umur >= 18 [dz2] umur <= 60) {\n  printf(\"Kamu dewasa\");\n} [dz3] {\n  printf(\"Kamu lanjut usia\");\n}",
+            "draggableOptions": [
+              {"id": "dnd-2.2.1", "content": {"type": "text", "value": "else if"}},
+              {"id": "dnd-2.2.2", "content": {"type": "text", "value": "&&"}},
+              {"id": "dnd-2.2.3", "content": {"type": "text", "value": "else"}}
+            ],
+            "dropZones": [
+              {"id": "dz1", "content": null},
+              {"id": "dz2", "content": null},
+              {"id": "dz3", "content": null}
+            ],
+            "correctSequence": ["dnd-2.2.1", "dnd-2.2.2", "dnd-2.2.3"],
+            "next": "benarA2_2",
+            "nextType": "dialog",
+            "consequences": {
+                "knowledge": "+1"
+            }
+          },
+          {
+            "id": "dd-2.3",
+            "instruction": "Susunlah kode berikut untuk menampilkan 'Lebih besar dari 5' jika nilai x lebih dari 5.",
+            "scaffoldCode": "#include <stdio.h>\n\nint x = 10;\n[dz1] (x > 5)\n  [dz2];\n[dz3]\n  printf(\"Lebih kecil atau sama dengan 5\\n\");",
+            "draggableOptions": [
+              {"id": "dnd-2.3.1", "content": {"type": "text", "value": "if"}},
+              {"id": "dnd-2.3.2", "content": {"type": "text", "value": "printf(\"Lebih besar dari 5\\n\")"}},
+              {"id": "dnd-2.3.3", "content": {"type": "text", "value": "else"}}
+            ],
+            "dropZones": [
+              {"id": "dz1", "content": null},
+              {"id": "dz2", "content": null},
+              {"id": "dz3", "content": null}
+            ],
+            "correctSequence": ["dnd-2.3.1", "dnd-2.3.2", "dnd-2.3.3"],
+            "next": "benarB2_2",
+            "nextType": "dialog",
+            "consequences": {
+                "knowledge": "+1"
+            }
+          }
+        ]
+      },
+      "summary": [
+        "if digunakan untuk memeriksa satu kondisi. Jika kondisi benar, maka blok kode di dalamnya akan dijalankan.",
+        "else if digunakan untuk memeriksa beberapa kondisi secara berurutan. Jika kondisi if pertama salah, program akan mengecek kondisi di else if.",
+        "else adalah blok terakhir yang akan dijalankan jika semua kondisi if dan else if sebelumnya tidak terpenuhi (salah).",
+        "switch digunakan untuk memeriksa banyak kemungkinan nilai dari sebuah variabel. Ini adalah alternatif yang lebih rapi daripada menggunakan banyak blok else if untuk kondisi yang sederhana."
+      ]
+    }
+  ]
+}

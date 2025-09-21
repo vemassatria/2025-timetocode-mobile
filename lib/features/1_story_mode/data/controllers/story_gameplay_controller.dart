@@ -210,10 +210,19 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   }
 
   void checkAnswer(ChoicesModel selected) {
-    if (selected.isCorrect == true) {
+    bool isSuccess = selected.isCorrect == true;
+
+    if (isSuccess) {
       correctAnswer();
     } else {
       wrongAnswer();
+    }
+
+    if (state.currentQuestion?.consequences != null) {
+      ref.read(hiveProvider).storySaveConsequences(
+            consequences: state.currentQuestion!.consequences!,
+            isMinigameSuccess: isSuccess,
+          );
     }
 
     navigateMode(selected.nextType, selected.next);

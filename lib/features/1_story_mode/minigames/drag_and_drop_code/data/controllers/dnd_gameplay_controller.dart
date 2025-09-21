@@ -97,10 +97,23 @@ class DndController extends AutoDisposeNotifier<DndState> {
     for (int i = 0; i < userSequence!.length; i++) {
       if (userSequence[i].contentDraggable?.id != correctSequence[i]) {
         wrongAnswer();
+        if (state.currentDragAndDrop?.consequences != null) {
+          ref.read(hiveProvider).storySaveConsequences(
+                consequences: state.currentDragAndDrop!.consequences!,
+                isMinigameSuccess: false,
+              );
+        }
         return false;
       }
     }
+    
     correctAnswer();
+    if (state.currentDragAndDrop?.consequences != null) {
+      ref.read(hiveProvider).storySaveConsequences(
+            consequences: state.currentDragAndDrop!.consequences!,
+            isMinigameSuccess: true,
+          );
+    }
     return true;
   }
 
