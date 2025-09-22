@@ -6,7 +6,7 @@ final hiveProvider = Provider<HiveService>((ref) {
 });
 
 class HiveService {
-  final Box<Map<String, int>> consequencesBox;
+  final Box consequencesBox;
   final Box<int> storyProgressBox;
   final Box<int> challengeProgressBox;
   final Box<bool> settingsBox;
@@ -67,12 +67,19 @@ class HiveService {
   }
 
   Map<String, int>? storyGetConsequences() {
-    return consequencesBox.get('current_consequences');
+    final rawData = consequencesBox.get('current_consequences');
+    if (rawData == null) return null;
+
+    final Map<String, int> resultMap = {};
+    (rawData as Map).forEach((key, value) {
+      resultMap[key.toString()] = int.parse(value.toString());
+    });
+    return resultMap;
   }
 
   bool storyCheckConditions(Map<String, String> conditions) {
     Map<String, int>? userConsequences = storyGetConsequences();
-    if (userConsequences == null) return false;
+    if (userConsequences == null) return true;
 
     for (var entry in conditions.entries) {
       String key = entry.key;

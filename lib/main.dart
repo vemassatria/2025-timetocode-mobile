@@ -13,7 +13,7 @@ void main() async {
   await Hive.initFlutter();
 
   final futures = [
-    Hive.openBox<Map<String, int>>('consequences'),
+    Hive.openBox('consequences'),
     Hive.openBox<int>('story_progress'),
     Hive.openBox<int>('challenge_progress'),
     Hive.openBox<bool>('settings'),
@@ -25,7 +25,7 @@ void main() async {
     overrides: [
       hiveProvider.overrideWithValue(
         HiveService(
-          consequencesBox: results[0] as Box<Map<String, int>>,
+          consequencesBox: results[0],
           storyProgressBox: results[1] as Box<int>,
           challengeProgressBox: results[2] as Box<int>,
           settingsBox: results[3] as Box<bool>,
