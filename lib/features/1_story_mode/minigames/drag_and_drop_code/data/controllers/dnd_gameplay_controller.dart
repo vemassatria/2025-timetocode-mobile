@@ -98,7 +98,9 @@ class DndController extends AutoDisposeNotifier<DndState> {
       if (userSequence[i].contentDraggable?.id != correctSequence[i]) {
         wrongAnswer();
         if (state.currentDragAndDrop?.consequences != null) {
-          ref.read(hiveProvider).storySaveConsequences(
+          ref
+              .read(hiveProvider)
+              .storySaveConsequences(
                 consequences: state.currentDragAndDrop!.consequences!,
                 isMinigameSuccess: false,
               );
@@ -106,10 +108,12 @@ class DndController extends AutoDisposeNotifier<DndState> {
         return false;
       }
     }
-    
+
     correctAnswer();
     if (state.currentDragAndDrop?.consequences != null) {
-      ref.read(hiveProvider).storySaveConsequences(
+      ref
+          .read(hiveProvider)
+          .storySaveConsequences(
             consequences: state.currentDragAndDrop!.consequences!,
             isMinigameSuccess: true,
           );
@@ -117,15 +121,16 @@ class DndController extends AutoDisposeNotifier<DndState> {
     return true;
   }
 
-  void finalizeDragAndDrop() {
-    if (state.currentDragAndDrop!.nextType == 'dnd') {
-      initializeDragAndDrop(state.currentDragAndDrop!.id);
+  void finalizeDragAndDrop(bool isCorrect) {
+    final index = isCorrect ? 0 : 1;
+    if (state.currentDragAndDrop!.nextType[index] == 'dnd') {
+      initializeDragAndDrop(state.currentDragAndDrop!.next[index]);
     } else {
       ref
           .read(storyControllerProvider.notifier)
           .navigateMode(
-            state.currentDragAndDrop!.nextType,
-            state.currentDragAndDrop!.next,
+            state.currentDragAndDrop!.nextType[index],
+            state.currentDragAndDrop!.next[index],
           );
       releaseKeepAlive();
     }

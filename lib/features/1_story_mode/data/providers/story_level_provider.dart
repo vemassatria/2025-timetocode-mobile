@@ -5,5 +5,5 @@ import 'package:timetocode/features/1_story_mode/data/services/story_load_servic
 final storyLevelProvider = FutureProvider<List<StoryModel>>((ref) {
   return ref
       .read(storyLoadServiceProvider)
-      .loadAllLevels('assets/stories/stage1.json');
+      .loadAllLevels('assets/stories/level3.json');
 });

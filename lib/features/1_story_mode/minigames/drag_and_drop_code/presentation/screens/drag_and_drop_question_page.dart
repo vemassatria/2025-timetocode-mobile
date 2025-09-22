@@ -113,7 +113,7 @@ class DragAndDropQuestionPage extends ConsumerWidget {
                       isCorrect: isCorrect,
                       onPressed: () {
                         sfx.playPopupAnswer();
-                        dndNotifier.finalizeDragAndDrop();
+                        dndNotifier.finalizeDragAndDrop(isCorrect);
                         closePopupOverlay(ref);
                       },
                     ),

@@ -116,8 +116,6 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
 
     final ilustrationIndex = currentConversation.ilustrationIndex;
 
-    game.setBackground(level.background[dialog.backgroundIndex]);
-
     await game.showCharacters(
       char1Img: level.character1Images[c1Reaction],
       char2Img: level.character2Images[c2Reaction],
@@ -152,7 +150,6 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
     final length = dialog.dialogs.length;
 
     if (nextIdx < length) {
-      game.setBackground(state.activeLevel!.background[dialog.backgroundIndex]);
       final currentConversation = dialog.dialogs[nextIdx];
       final charIdx = currentConversation.characterIndex;
       final charReact = currentConversation.reactionIndex;
@@ -210,7 +207,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   }
 
   void checkAnswer(ChoicesModel selected) {
-    bool isSuccess = selected.isCorrect == true;
+    bool isSuccess = selected.isCorrect!;
 
     if (isSuccess) {
       correctAnswer();
@@ -219,7 +216,9 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
     }
 
     if (state.currentQuestion?.consequences != null) {
-      ref.read(hiveProvider).storySaveConsequences(
+      ref
+          .read(hiveProvider)
+          .storySaveConsequences(
             consequences: state.currentQuestion!.consequences!,
             isMinigameSuccess: isSuccess,
           );
