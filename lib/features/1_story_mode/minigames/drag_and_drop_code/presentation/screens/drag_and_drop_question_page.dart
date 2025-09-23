@@ -67,12 +67,11 @@ class DragAndDropQuestionPage extends ConsumerWidget {
                       return Container(
                         width: 1.sw,
                         constraints: BoxConstraints(minHeight: 100.h),
-                        padding: EdgeInsets.all(8.w),
+                        padding: EdgeInsets.all(16.w),
                         decoration: BoxDecoration(
-                          color: candidateData.isNotEmpty
-                              ? AppColors.surfaceDark
-                              : AppColors.skyByte,
+                          color: AppColors.surfaceDark,
                           borderRadius: BorderRadius.circular(8.r),
+                          border: Border.all(color: AppColors.white),
                         ),
                         child: Wrap(
                           spacing: 8.w,
