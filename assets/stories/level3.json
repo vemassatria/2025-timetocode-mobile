@@ -1680,7 +1680,12 @@
         "tino_marah",
         "tino_senang",
         "tino_kecewa",
-        "tino_aksi"
+        "tino_aksi",
+        "tino_kesal",
+        "tino_kesal2",
+        "tino_ngajarin",
+        "tino_sinis"
+        
       ],
       "ilustrations": ["IF-ELSE", "SWITCH"],
       "start": "preDialog2_1",
@@ -1821,8 +1826,7 @@
                     {
                         "text": "Yaudah deh, ayo cepet ajarin, Mas. Soalnya makin aku liat, makin pengen banting laptop rasanya.",
                         "next": "scene2_2_2",
-                        "nextType": "dialog",
-                        "consequences": {}
+                        "nextType": "dialog"
                     },
                     {
                         "text": "Sebenernya ga sebingung itu, cuma kayanya aku mau coba soalnya dulu deh.",
