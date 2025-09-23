@@ -4,7 +4,6 @@ import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/da
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/models/drop_zone_model.dart';
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/states/dnd_state.dart';
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/data/models/draggable_model.dart';
-import 'package:timetocode/app/data/services/hive_service.dart';
 
 final dndControllerProvider =
     NotifierProvider.autoDispose<DndController, DndState>(DndController.new);
@@ -29,7 +28,9 @@ class DndController extends AutoDisposeNotifier<DndState> {
           (dnd) =>
               dnd.id == id && dnd.conditions == null ||
               (dnd.conditions != null &&
-                  ref.read(hiveProvider).storyCheckConditions(dnd.conditions!)),
+                  ref
+                      .read(storyControllerProvider.notifier)
+                      .storyCheckConditions(dnd.conditions!)),
         );
 
     state = DndState(
@@ -96,28 +97,16 @@ class DndController extends AutoDisposeNotifier<DndState> {
 
     for (int i = 0; i < userSequence!.length; i++) {
       if (userSequence[i].contentDraggable?.id != correctSequence[i]) {
-        wrongAnswer();
-        if (state.currentDragAndDrop?.consequences != null) {
-          ref
-              .read(hiveProvider)
-              .storySaveConsequences(
-                consequences: state.currentDragAndDrop!.consequences!,
-                isMinigameSuccess: false,
-              );
-        }
+        ref
+            .read(storyControllerProvider.notifier)
+            .wrongAnswer(consequences: state.currentDragAndDrop!.consequences);
         return false;
       }
     }
 
-    correctAnswer();
-    if (state.currentDragAndDrop?.consequences != null) {
-      ref
-          .read(hiveProvider)
-          .storySaveConsequences(
-            consequences: state.currentDragAndDrop!.consequences!,
-            isMinigameSuccess: true,
-          );
-    }
+    ref
+        .read(storyControllerProvider.notifier)
+        .correctAnswer(consequences: state.currentDragAndDrop!.consequences);
     return true;
   }
 
@@ -134,14 +123,6 @@ class DndController extends AutoDisposeNotifier<DndState> {
           );
       releaseKeepAlive();
     }
-  }
-
-  void correctAnswer() {
-    ref.read(storyControllerProvider.notifier).correctAnswer();
-  }
-
-  void wrongAnswer() {
-    ref.read(storyControllerProvider.notifier).wrongAnswer();
   }
 
   void releaseKeepAlive() {

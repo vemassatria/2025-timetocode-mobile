@@ -45,7 +45,7 @@ class SkipButton extends ConsumerWidget {
                 ),
               );
             } else {
-              ref.read(storyControllerProvider.notifier).skipToNextSoal();
+              ref.read(storyControllerProvider.notifier).skipCurrentDialog();
             }
           },
           child: SafeArea(
