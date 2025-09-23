@@ -3459,8 +3459,8 @@
                         "characterIndex": 1
                     }
                 ],
-                "next": "soal3_1",
-                "nextType": "dialog"
+                "next": "soalA3_1",
+                "nextType": "dragAndDrop"
             },
             {
                 "id": "scene3_3",
