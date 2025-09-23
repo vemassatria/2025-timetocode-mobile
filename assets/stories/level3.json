@@ -1706,7 +1706,7 @@
           "dialogs": [
             {
               "line": "Aduh, kenapa program pengecek nilainya error terus? Padahal aku benerin kode ini berkali-kali...",
-              "reactionIndex": 1,
+              "reactionIndex": 3,
               "characterIndex": 1
             },
             {
@@ -1721,7 +1721,7 @@
             },
             {
               "line": "Wkwk, baru materi dasar aja udah kewalahan. Gimana nanti kalau materi algoritma yang lebih naik level lagi? Bisa nangis kamu.",
-              "reactionIndex": 4,
+              "reactionIndex": 2,
               "characterIndex": 2
             }
           ],
@@ -1759,23 +1759,23 @@
             "backgroundIndex": 0,
             "dialogs": [
                 {
-                    "line": "Mas ngerti materi ini kan? Tolong jelasin versi gampangnya dong, aku udah pusing banget.",
-                    "reactionIndex": 3,
+                    "line": "Yaudah iya, Mas ngerti materi ini kan? Tolong jelasin versi gampangnya dong, aku udah pusing banget.",
+                    "reactionIndex": 0,
                     "characterIndex": 1
                 },
                 {
                     "line": "Santai, yan. Aku juga dulu pernah stuck berhari-hari sebelum ngerti.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 0,
                     "characterIndex": 2
                 },
                 {
                     "line": "Iya, makanya aku minta tolong jelasin. Aku bener-bener bingung nih.",
-                    "reactionIndex": 3,
+                    "reactionIndex": 0,
                     "characterIndex": 1
                 },
                 {
                     "line": "Oke, aku jelasin gampangnya.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 0,
                     "characterIndex": 2
                 }
             ],
@@ -1788,22 +1788,22 @@
             "dialogs": [
                 {
                     "line": "Yeu kaya Mas Tino ga pernah jadi maba aja.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 1,
                     "characterIndex": 1
                 },
                 {
                     "line": "Woi santai aja, gak usah baper.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 6,
                     "characterIndex": 2
                 },
                 {
                     "line": "Hehe, ya maklum lah, baru belajar. Kadang rasanya pengen nyerah aja.",
-                    "reactionIndex": 3,
+                    "reactionIndex": 0,
                     "characterIndex": 1
                 },
                 {
                     "line": "Nah, makanya aku di sini buat bantu. Yuk, kita lihat bareng-bareng bagian mana yang bikin kamu bingung.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 0,
                     "characterIndex": 2
                 }
             ],
@@ -1811,7 +1811,7 @@
                 "choices": [
                     {
                         "text": "Aku bingung, Mas. Dari nulis if, urutan else-if, sampai kapan pakai switch, semua campur aduk.",
-                        "next": "materi2_1",
+                        "next": "scene2_2_1",
                         "nextType": "dialog",
                         "consequences": {
                             "humility": "+1",
@@ -1820,20 +1820,84 @@
                     },
                     {
                         "text": "Yaudah deh, ayo cepet ajarin, Mas. Soalnya makin aku liat, makin pengen banting laptop rasanya.",
-                        "next": "materi2_1",
+                        "next": "scene2_2_2",
                         "nextType": "dialog",
                         "consequences": {}
                     },
                     {
                         "text": "Sebenernya ga sebingung itu, cuma kayanya aku mau coba soalnya dulu deh.",
-                        "next": "soalA2_1",
-                        "nextType": "soal",
+                        "next": "scene2_2_3",
+                        "nextType": "dialog",
                         "consequences": {
-                            "humility": "-1"
+                            "humility": "-2"
                         }
                     }
                 ]
             }
+        },
+        {
+            "id": "scene2_2_1",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Aku bingung, Mas. Dari nulis if, urutan else-if, sampai kapan pakai switch, semua campur aduk.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Hehe, wajar kok. Banyak yang pertama kali belajar juga ketukar-tukar.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Tapi rasanya semakin aku baca, semakin nggak ngerti, Mas.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Yaudah sini aku jelasin pelan-pelan",
+                    "reactionIndex": 0,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "materi2_1",
+            "nextType": "dialog"
+        },
+        {
+            "id": "scene2_2_2",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Yaudah deh, ayo cepet ajarin, Mas. Soalnya makin aku liat, makin pengen banting laptop rasanya.",
+                    "reactionIndex": 1,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Woi sabar, jangan banting laptop. Nih aku jelasin simplenya",
+                    "reactionIndex": 6,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "materi2_1",
+            "nextType": "dialog"
+        },
+        {
+            "id": "scene2_2_3",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Sebenernya ga sebingung itu, cuma kayanya aku mau coba soalnya dulu deh",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Wihh gaya amat. Kalau gitu nih, coba kerjain soal ini. Biar tau kamu beneran paham atau engga.",
+                    "reactionIndex": 8,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "soalA2_1",
+            "nextType": "soal"
         },
         {
             "id": "scene2_3",
@@ -1864,7 +1928,7 @@
                 "choices": [
                     {
                         "text": "Heh, bukannya gak mau, tapi kepalaku udah mumet, Mas.",
-                        "next": "materi2_1",
+                        "next": "scene2_3_1",
                         "nextType": "dialog",
                         "consequences": {
                             "humility": "+1"
@@ -1879,40 +1943,73 @@
             }
         },
         {
+            "id": "scene2_3_1",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Heh, bukannya gak mau, tapi kepalaku udah mumet, Mas.",
+                    "reactionIndex": 3,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Belum materi kok udah mumet duluan.",
+                    "reactionIndex": 8,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Kasih understand materi dulu lah.",
+                    "reactionIndex": 1,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Yaudah materi, tapi abis dijelasin materi, jawab soalnya harus bener ya!",
+                    "reactionIndex": 8,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Iya mas iya",
+                    "reactionIndex": 0,
+                    "characterIndex": 1
+                }
+            ],
+            "next": "materi2_1",
+            "nextType": "dialog"
+        },
+        {
             "id": "materi2_1",
             "backgroundIndex": 0,
             "dialogs": [
                 {
                     "line": "Misal kamu lagi di persimpangan jalan, terus ada petugas yang nanya mau ke mana. Kalau kamu jawab pantai, si petugas langsung suruh kamu ke pantai. Itu kayak if doang, simpel. Kalau jawabannya bukan pantai, si petugas bakal ngarahin kamu ke jalan lain.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2,
                     "ilustrationIndex": 0
                 },
                 {
                     "line": "Oke, masih awal masih gampang nih. Terus kalau ada lebih dari satu pilihan?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
                     "line": "Nah itu kalau di simpang empat, ada petugas yang bisa arahkan ke pegunungan, pantai, atau kota. Jadi kalau kamu bilang pegunungan, dia suruh ke kiri. Kalau pantai, ke kanan. Kalau ‘kota’, jalan lurus. Kalau jawabannya nggak cocok sama ketiganya, dia kasih jalan lain.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2,
                     "ilustrationIndex": 1
                 },
                 {
                     "line": "Oh itu kayak pakai… aduh apa sih namanya…",
-                    "reactionIndex": 1,
+                    "reactionIndex": 4,
                     "characterIndex": 1,
                     "ilustrationIndex": 1
                 },
                 {
                     "line": "Itu pakai else-if. Jadi if pertama ngecek satu kondisi, else-if buat ngecek kondisi lain-lainnya. Kalau gak ada yang cocok, pakai else.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Nah sekarang cobain dulu kamu jawab soal ini, ya.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 0,
                     "characterIndex": 2
                 }
             ],
@@ -1938,8 +2035,8 @@
                 "choices": [
                     {
                         "text": "Hehe, syukur deh. Tapi aku masih harus banyak latihan biar makin yakin, Mas.",
-                        "next": "dd-2.1",
-                        "nextType": "dragAndDrop",
+                        "next": "benarA2_1_good",
+                        "nextType": "dialog",
                         "consequences": {
                             "humility": "+1",
                             "trust_tino": "+1"
@@ -1947,14 +2044,50 @@
                     },
                     {
                         "text": "Padahal aku tadi ngasal jawabnya.",
-                        "next": "dd-2.1",
-                        "nextType": "dragAndDrop",
+                        "next": "benarA2_1_bad",
+                        "nextType": "dialog",
                         "consequences": {
                             "humility": "+1"
                         }
                     }
                 ]
             }
+        },
+        {
+            "id": "benarA2_1_good",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Hehe, syukur deh. Tapi aku masih harus banyak latihan biar makin yakin, Mas.",
+                    "reactionIndex": 2,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Nah, bagus tuh. Yuk kita lanjut ke soal berikutnya.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "dd-2.1",
+            "nextType": "dragAndDrop"
+        },
+        {
+            "id": "benarA2_1_bad",
+            "backgroundIndex": 0,
+            "dialogs": [
+                {
+                    "line": "Padahal aku tadi ngasal jawabnya.",
+                    "reactionIndex": 2,
+                    "characterIndex": 1
+                },
+                {
+                    "line": "Hahaha, berarti instingmu udah jalan. Tapi jangan cuma ngandelin hoki, ayo buktiin lagi di soal berikutnya.",
+                    "reactionIndex": 2,
+                    "characterIndex": 2
+                }
+            ],
+            "next": "dd-2.1",
+            "nextType": "dragAndDrop"
         },
         {
             "id": "salahA2_1",
@@ -1967,22 +2100,22 @@
                 },
                 {
                     "line": "Hehe, gini lho. Jangan keburu mikir harus selalu lengkap ada if-else. Lihat dulu kebutuhan soalnya.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Maksudnya gimana?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
                     "line": "Kadang cukup satu kondisi aja yang dicek. Kalau kondisi itu benar, program jalan. Kalau nggak, yaudah, programnya diem. Nah, di situlah gunanya latihan, biar kamu bisa bedain kapan perlu tambahan else dan kapan enggak.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Ooh… jadi lebih penting ngerti logikanya dulu ya daripada hafal strukturnya?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
@@ -2005,17 +2138,17 @@
                 },
                 {
                     "line": "Karena 13 kalau dibagi 2 itu sisanya 1, jadi kondisi angka % 2 == 0 menjadi salah, dan program langsung lompat ke blok else. Nah, pemahaman logika seperti ini yang paling penting.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Paham, Mas. Jadi, kuncinya bukan di angkanya, tapi di sisa hasil baginya, ya?",
-                    "reactionIndex": 2,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                  {
                     "line": "Terus programnya akan milih jalur yang sesuai dengan sisa itu.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
@@ -2036,7 +2169,7 @@
             "dialogs": [
                  {
                     "line": "Ohh paham Mas. Tinggal liat sisanya aja, langsung ketahuan ganjil atau genap.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
@@ -2046,7 +2179,7 @@
                 },
                 {
                     "line": "Jadi % 2 itu selalu ngecek sisanya 0 atau bukan, nggak peduli angkanya berapa ya, Mas?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
@@ -2067,12 +2200,12 @@
             "dialogs": [
                 {
                     "line":"Ini sih gampang, tinggal liat sisanya aja bakal langsung ketahuan.",
-                    "reactionIndex": 4, 
+                    "reactionIndex": 2, 
                     "characterIndex": 1
                 },
                 {
                     "line": "Bagus deh kalo menurutmu gampang. Coba deh kita lanjut ke else if—di sana kamu bakal belajar bikin program yang bisa milih beberapa jalur, bukan cuma dua doang.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 5,
                     "characterIndex": 2
                 }
             ],
@@ -2085,17 +2218,17 @@
             "dialogs": [
                 {
                     "line": "Hayo, inget lagi, % 2 itu ngecek sisa bagi, kan? Nah, 13 dibagi 2 sisanya 1, jadi programnya langsung masuk ke blok else.",
-                    "reactionIndex": 3,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Ah iya, jadi sisanya 1, masuk else. Oke, paham sekarang, Mas.",
-                    "reactionIndex": 0,
+                    "reactionIndex": 2,
                     "characterIndex": 1
                 },
                 {
                     "line": "Sip, bagus kalau udah paham. Nah, sekarang coba deh kita latihan lagi.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 }
             ],
@@ -2111,22 +2244,22 @@
             "dialogs": [
                 {
                     "line": "Sekarang, bayangin kalau kita mau ngecek lebih dari dua kondisi.Misal, kita mau lihat angka itu ganjil, genap, atau kelipatan 3. Kalau cuma pakai if dan else doang, bakal ribet, kan?",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Wah iya, Mas. Terus gimana caranya biar program bisa ngecek lebih dari dua kondisi?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
                     "line": "Nah, di sinilah else-if berguna. Dengan itu, kita bisa bikin beberapa kondisi sekaligus , jadi lebih flesibel gituu.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Wah, Mas… konsepnya kayak gimana sih? Programnya bakal ngecek beberapa kondisi langsung gitu?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 }
             ],
@@ -2142,12 +2275,12 @@
             "dialogs": [
                 {
                     "line": "Nih, coba bayangin soal ini: angka yang dimasukkan bisa ganjil, genap, atau kelipatan 3. Kalau cuma pakai if dan else, bakal ribet kan?",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                  {
                     "line": "Nah, di sinilah else if bakal bantu kamu bikin program yang bisa milih beberapa jalur sekaligus",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
@@ -2157,7 +2290,7 @@
                 },
                 {
                     "line": "Lah, tadi katanya gampang. Gimanaa dahh, coba dulu aja ni soalnya.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 5,
                     "characterIndex": 2
                 }
             ],
@@ -2170,13 +2303,13 @@
             "dialogs": [
                 {
                     "line": "Nah else if tuh kalau kamu punya lebih dari satu kondisi yang harus dicek. Misalnya, ngecek usia seseorang, apakah dia remaja, dewasa, atau lansia.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2,
                     "ilustrationIndex": 1
                 },
                 {
                     "line": "Tiap kategori usia, aksinya beda. Coba deh kamu tebak output dari kode ini.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 }
             ],
@@ -2218,7 +2351,7 @@
             "dialogs": [
                 {
                     "line": "Nahkan, makanya jangan sok dulu, jadi salah kan jawabnya, aduuhhhh.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 5,
                     "characterIndex": 2
                 },
                 {
@@ -2228,22 +2361,22 @@
                 },
                 {
                     "line": "Haduhhh, coba inget lagi, umur 25 itu masuk range 18 sampai 60, jadi aksi yang mana yang bakal dijalankan?",
-                    "reactionIndex": 3,
+                    "reactionIndex": 6,
                     "characterIndex": 2
                 },
                 {
                     "line": "Jadi… masuk mana ya, aku lupa konsepnya.",
-                    "reactionIndex": 1,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
                     "line": "Nah, ini pas banget buat kita balik ke konsep else if. Ingat, else if itu ngecek kondisi secara berurutan: kalau umur kurang dari 18, aksi pertama jalan, kalau nggak, dicek lagi kondisi berikutnya. Umur 25 itu masuk range 18 sampai 60, jadi aksi yang mana yang bakal dijalankan?",
-                    "reactionIndex": 3,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "OH! Aku kayanya mulai paham mas. Aku bakal coba lagi.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 2,
                     "characterIndex": 1
                 }
             ],
@@ -2264,12 +2397,12 @@
                 },
                 {
                     "line": "Gapapa… di soal tadi ada tanda &&, itu artinya 'dan', jadi dua syarat harus benar semua.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Kalau cuma satu syarat doang yang bener, berarti lompat ke else ya?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
@@ -2318,12 +2451,12 @@
             "dialogs":[
                 {
                     "line": "Mas, kalau misal x bisa 1, 2, 3, atau 4, dan tiap nilai mau beda outputnya, pakai if-else terus bakal ribet kan?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
                     "line": "Iya bener, kalau pakai if-else terus buat banyak kondisi, kode cepat panjang dan ribet. Tapi untuk sekarang, cukup paham logika else if aja dulu. Nanti di materi berikutnya kita bakal lihat cara yang lebih rapi, namanya switch.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 }
             ],
@@ -2336,42 +2469,42 @@
             "dialogs":[
                 {
                     "line": "Ohh… jadi kalau banyak pilihan, if-else bisa dipakai, tapi bakal panjang ya, Mas?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
                     "line": "Iya, ribet banget, apalagi kalau kondisinya kompleks. Bisa cepat bikin kode jadi panjang dan susah dibaca.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
-                    "line": "Kalau kompleks gitu, terus gimana caranya biar lebih rapi, Mas?",
-                    "reactionIndex": 2,
+                    "line": "Kalau kompleks gitu, terus gimana caranya biar lebih rapi ya, Mas?",
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
                     "line": "Nah, itu nanti bakal kita bahas di materi berikutnya, namanya switch. Tapi untuk sekarang, fokus dulu pahami alur else if biar logikanya kuat",
-                    "reactionIndex": 2,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Oke Adrian, tadi kita udah bahas if-else dan else-if. Sekarang bayangin kalau kondisi yang harus dicek banyak banget… bakal panjang banget kan kodenya?",
-                    "reactionIndex": 2,
+                    "reactionIndex": 0,
                     "characterIndex": 2
                 },
                 {
                     "line": "Iya, Mas… kepala rasanya muter liat banyak else-if",
-                    "reactionIndex": 2,
+                    "reactionIndex": 3,
                     "characterIndex": 1
                 },
                 {
                     "line": "Nah, makanya ada cara yang lebih rapi buat banyak pilihan. Namanya switch. Fungsinya mirip if-else, tapi lebih simpel kalau pilihan banyak.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Wah, oke… jadi switch itu semacam shortcut biar kode nggak bertele-tele gitu ya?",
-                    "reactionIndex": 2,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 }
             ],
@@ -2384,17 +2517,17 @@
             "dialogs": [
                 {
                     "line": "Ingat, x itu 10, kan? Nah, 10 > 5, jadi program masuk ke blok if. Tapi nggak apa-apa, ini bagus buat latihan.",
-                    "reactionIndex": 3,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Ah iya… keliru, Mas. Terus harusnya aku ngecek nilainya dulu ya sebelum jawab.",
-                    "reactionIndex": 3,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
                     "line": "Nah iya, bener. Coba lebih teliti lagi ngerjainnya.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 0,
                     "characterIndex": 2
                 }
             ],
@@ -2410,7 +2543,7 @@
             "dialogs": [
                 {
                     "line": "Eh, Mas… sebelumnya Mas sempet bilang kalau kondisi yang dicek ada banyak itu ada cara lain. Seingetku kaya ‘Nintendo’ gitu.",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
@@ -2420,17 +2553,17 @@
                 },
                 {
                     "line": "Ohh iya iya, switch! Jadi itu semacam cara lain buat ngecek kondisi ya, Mas?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 2,
                     "characterIndex": 1
                 },
                 {
                     "line": "Betul. Bedanya, kalau if-else itu kita cek kondisi pakai logika perbandingan, sedangkan switch dipakai buat ngecek nilai tertentu dari sebuah variabel. Jadi kalau variabelnya punya banyak kemungkinan nilai, switch lebih rapi dan gampang dibaca.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Jadi bedanya switch sama if-else apa dong, Mas?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 }
             ],
@@ -2443,7 +2576,7 @@
             "dialogs": [
                 {
                     "line": "Oke Adrian, tadi kita udah bahas if-else dan else-if. Sekarang bayangin kalau kondisi yang harus dicek banyak banget… bakal panjang banget kan kodenya?",
-                    "reactionIndex": 4,
+                    "reactionIndex": 0,
                     "characterIndex": 2
                 },
                 {
@@ -2453,12 +2586,12 @@
                 },
                 {
                     "line": "Nah, makanya ada cara yang lebih rapi buat banyak pilihan. Namanya switch. Fungsinya mirip if-else, tapi lebih simpel kalau pilihan banyak.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 0,
                     "characterIndex": 2
                 },
                 {
                     "line": "Wah, oke… jadi switch itu semacam shortcut biar kode nggak bertele-tele gitu ya?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 2,
                     "characterIndex": 1
                 }
             ],
@@ -2471,7 +2604,7 @@
             "dialogs": [
                 {
                     "line": "Switch itu mirip else-if, tapi switch langsung cocokkan nilai dari sebuah variabel ke pilihan yang udah pasti.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
@@ -2481,30 +2614,30 @@
                 },
                 {
                     "line": "Misalnya kamu pilih tujuan: pegunungan, pantai, atau kota. Kalau switch, langsung dicocokkan sama case yang ada.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2,
                     "ilustrationIndex": 2
                 },
                 {
                     "line": "Hah gimana tuh, coba kasih gambaran Mas, masih bingung.",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
                     "line": "Misalnya kamu pilih tujuan: pegunungan, pantai, atau kota. Kalau pakai if-else, harus cek satu-satu: kalau pegunungan berarti siapin jaket, kalau pantai siapin kacamata hitam, kalau kota siapin kamera.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2,
                     "ilustrationIndex": 1
                 },
                 {
                     "line": "Sedangkan kalau switch, kamu cukup tulis sekali variabel pilihannya, lalu langsung dicocokkan sama case yang sesuai. Jadi lebih ringkas dan gampang dibaca.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 7,
                     "characterIndex": 2,
                     "ilustrationIndex": 2
                 },
                 {
                     "line": "Kayanya aku mulai paham dikit, Mas.",
-                    "reactionIndex": 0,
+                    "reactionIndex": 2,
                     "characterIndex": 1
                 },
                 {
@@ -2556,22 +2689,22 @@
             "dialogs": [
                 {
                     "line": "Aduh, duh… salah lagi ya, Mas. Otakku panas nih!",
-                    "reactionIndex": 1,
-                    "characterIndex": 1
-                },
-                {
-                    "line": "Hehe, wajar kok kalau salah, itu bagian dari belajar. Jangan langsung nyerah, karena justru dari kesalahan kita bisa belajar lebih banyak.",
-                    "reactionIndex": 2,
-                    "characterIndex": 2
-                },
-                {
-                    "line": "Hmm… iya juga, Mas… tapi aku masih bingung gitu.",
                     "reactionIndex": 3,
                     "characterIndex": 1
                 },
                 {
+                    "line": "Hehe, wajar kok kalau salah, itu bagian dari belajar. Jangan langsung nyerah, karena justru dari kesalahan kita bisa belajar lebih banyak.",
+                    "reactionIndex": 4,
+                    "characterIndex": 2
+                },
+                {
+                    "line": "Hmm… iya juga, Mas… tapi aku masih bingung gitu.",
+                    "reactionIndex": 4,
+                    "characterIndex": 1
+                },
+                {
                     "line": "Santai aja, wajar kok. Kadang belajar itu kayak main game, kadang kita harus coba beberapa kali baru bisa nyampe level berikutnya. Kalau soal ini masih bikin bingung, coba ulangi sekali lagi atau lihat lagi materi switch, nanti semuanya bakal lebih nyambung.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 4,
                     "characterIndex": 2
                 }
             ],
@@ -2607,7 +2740,7 @@
                     "characterIndex": 2
                 },
                 {
-                    "line": "Asik, semoga saat aku ketemu materi kondisi dalam konsep pemrograman ga bakal bingung lagi ya. Makasih banyak, Kak!",
+                    "line": "Asik, semoga pas aku ketemu materi kondisi dalam konsep pemrograman ga bakal bingung lagi ya. Makasih banyak, Mas!",
                     "reactionIndex": 2,
                     "characterIndex": 1
                 },
@@ -2645,22 +2778,22 @@
             "dialogs": [
                 {
                     "line": "Hehe, nah itu dia. Switch-case itu cocok buat pilihan yang pasti-pasti aja, bukan buat kondisi fleksibel kayak lebih besar atau lebih kecil.",
-                    "reactionIndex": 3,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Ahhh gitu… aku kira switch bisa kayak if-else buat ngecek kondisi gitu.",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
                     "line": "Kalau mau cek kondisi kayak itu, pakai if-else aja. Switch lebih enak buat ngecek daftar pilihan tetap, misal menu makanan: 1, 2, 3, gitu.",
-                    "reactionIndex": 2,
+                    "reactionIndex": 7,
                     "characterIndex": 2
                 },
                 {
                     "line": "Ooh… jadi switch itu buat pilihan yang udah pasti, bukan buat bandingin nilai yang berubah-ubah ya, Mas?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 4,
                     "characterIndex": 1
                 },
                 {
@@ -2670,7 +2803,7 @@
                 },
                 {
                     "line": "Sip, abis ini aku coba ulang soal biar makin paham.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 2,
                     "characterIndex": 1
                 }
             ],
@@ -2691,17 +2824,17 @@
                 },
                 {
                     "line": "Terus?",
-                    "reactionIndex": 0,
+                    "reactionIndex": 6,
                     "characterIndex": 2
                 },
                 {
                     "line": "Boleh kali traktir mie ayamnya Mas Rusdi.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 2,
                     "characterIndex": 1
                 },
                 {
                     "line": "Yaudah, tapi kamu yang pergi ya.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 5,
                     "characterIndex": 2
                 }
             ]
@@ -2712,12 +2845,12 @@
             "dialogs": [
                 {
                     "line": "Halah, kayak bakal bingung aja, materi gampang ini mah.",
-                    "reactionIndex": 4,
+                    "reactionIndex": 0,
                     "characterIndex": 1
                 },
                 {
                     "line": "Sok banget. Mending kamu beli mie ayam buat mas deh, laper nih.",
-                    "reactionIndex": 1,
+                    "reactionIndex": 5,
                     "characterIndex": 2
                 }
             ]
@@ -3077,9 +3210,6 @@
         "dialogs": [
             {
                 "id": "intro3_1",
-                "conditions": {
-                    "humility": ">= 5"
-                },
                 "backgroundIndex": 0,
                 "dialogs": [
                     {
@@ -3103,9 +3233,6 @@
             },
             {
                 "id": "intro3_1",
-                "conditions": {
-                    "humility": "< 5"
-                },
                 "backgroundIndex": 0,
                 "dialogs": [
                     {
@@ -3161,8 +3288,8 @@
                             "next": "scene3_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "+1",
-                                "trust_rusdi": "+1"
+                                "kerendahanHati": "+1",
+                                "kepercayaanMasMulyo": "+5"
                             }
                         },
                         {
@@ -3170,8 +3297,8 @@
                             "next": "scene3_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "+1",
-                                "trust_rusdi": "+1"
+                                "kepercayaanMasMulyo": "+10",
+                                "kerendahanHati": "+2"
                             }
                         },
                         {
@@ -3179,7 +3306,8 @@
                             "next": "scene3_3",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "-1"
+                                "kepercayaanMasMulyo": "-5",
+                                "kesombongan": "+1"
                             }
                         }
                     ]
@@ -3438,7 +3566,8 @@
                             "next": "salahA3_1_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "-2"
+                                "kerendahanHati": "+1",
+                                "kepercayaanMasMulyo": "+5"
                             }
                         },
                         {
@@ -3446,8 +3575,8 @@
                             "next": "salahA3_1_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "+1",
-                                "trust_rusdi": "+1"
+                                "kepercayaanMasMulyo": "+10",
+                                "kerendahanHati": "+2"
                             }
                         }
                     ]
@@ -3619,7 +3748,8 @@
                             "next": "salahB3_1_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "+1"
+                                "kerendahanHati": "+1",
+                                "kepercayaanMasMulyo": "+5"
                             }
                         },
                         {
@@ -3627,8 +3757,8 @@
                             "next": "salahB3_1_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "trust_rusdi": "+1",
-                                "humility": "+1"
+                                "kepercayaanMasMulyo": "+10",
+                                "kerendahanHati": "+2"
                             }
                         }
                     ]
@@ -3728,7 +3858,7 @@
                             "next": "intro3_2_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "+1"
+                                "key": "+-value"
                             }
                         },
                         {
@@ -3736,7 +3866,7 @@
                             "next": "intro3_2_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "-2"
+                                "key": "+-value"
                             }
                         }
                     ]
@@ -3884,7 +4014,7 @@
             {
                 "id": "salahA3_2",
                 "conditions": {
-                    "humility": "<5"
+                    "key": "need sombong"
                 },
                 "dialogs": [
                     {
@@ -3922,8 +4052,9 @@
                             "next": "salahA3_2_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "+2",
-                                "trust_rusdi": "+1"
+                                "kerendahanHati": "+2",
+                                "kesombongan": "-3",
+                                "kepercayaanMasMulyo": "+5"
                             }
                         },
                         {
@@ -3931,7 +4062,8 @@
                             "next": "salahA3_2_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "-1"
+                                "kesombongan": "+2",
+                                "kepercayaanMasMulyo": "-5"
                             }
                         }
                     ]
@@ -3940,7 +4072,7 @@
             {
                 "id": "salahA3_2",
                 "conditions": {
-                    "humility": ">=5"
+                    "key": "need baik"
                 },
                 "dialogs": [
                     {
@@ -3978,8 +4110,9 @@
                             "next": "salahA3_2_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "+2",
-                                "trust_rusdi": "+1"
+                                "kerendahanHati": "+2",
+                                "kesombongan": "-3",
+                                "kepercayaanMasMulyo": "+5"
                             }
                         },
                         {
@@ -3987,7 +4120,8 @@
                             "next": "salahA3_2_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "humility": "-1"
+                                "kesombongan": "+2",
+                                "kepercayaanMasMulyo": "-5"
                             }
                         }
                     ]
@@ -4224,6 +4358,9 @@
             "questions": [
                 {
                     "id": "soalB3_1",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
                     "text": "Pilihlah program yang mencetak angka kelipatan 5 dari 5 sampai 50 menggunakan for loop",
                     "choices": [
                         {
@@ -4252,11 +4389,14 @@
                         }
                     ],
                     "consequences": {
-                        "knowledge": "1"
+                        "key": "value"
                     }
                 },
                 {
                     "id": "soalB3_2",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
                     "text": "Perhatikan potongan kode berikut. Apa output yang dihasilkan?",
                     "code": "#include <stdio.h>\nint main() {\n\tint i = 1;\n\twhile (i <= 3)\n\t{\n\t\tprintf(\"C \");\n\t\ti++;\n\t}\n\treturn 0;\n}",
                     "choices": [
@@ -4286,13 +4426,16 @@
                         }
                     ],
                     "consequences": {
-                        "knowledge": "1"
+                        "key": "value"
                     }
                 }
             ],
             "dragAndDrop": [
                 {
                     "id": "soalA3_1",
+                    "conditions": {
+                        "key": ">=>==<<=value"
+                    },
                     "instruction": "Kamu diminta untuk membuat program yang mencetak angka dari 1 sampai 10. Bagaimana cara kamu menggunakan for loop untuk melakukan ini?",
                     "scaffoldCode": "#include <stdio.h> \n\nint main() { \n\tfor (int i = 1; [dz1]; i++) {\n\t\tprintf(\"%d \", i);\n\t}\n\n\treturn 0;}",
                     "draggableOptions": [
@@ -4330,11 +4473,12 @@
                         "dialog"
                     ],
                     "consequences": {
-                        "knowledge": "1"
+                        "key": "value"
                     }
                 },
                 {
                     "id": "soalA3_2",
+                    "conditions": null,
                     "instruction": "Kamu diminta untuk mengubah program yang mencetak \"Hai\" sebanyak 3 kali dengan menggunakan `while` loop. Lengkapi bagian yang kosong.",
                     "scaffoldCode": "#include <stdio.h>\n\nint main() {\n\tint i = 1;\n\twhile ([dz1]) {\n\t\t[dz2];\n\t\t[dz3];\n\t}\n\treturn 0;\n}",
                     "draggableOptions": [
@@ -4397,8 +4541,8 @@
                         "dnd-4"
                     ],
                     "next": [
-                        "salahA3_2",
-                        "benarA3_2"
+                        "salah_while_1",
+                        "benar_while_1"
                     ],
                     "nextType": [
                         "dialog",
