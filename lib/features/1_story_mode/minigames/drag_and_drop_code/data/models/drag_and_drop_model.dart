@@ -15,8 +15,8 @@ abstract class DragAndDropModel with _$DragAndDropModel {
     required List<DraggableModel> draggableOptions,
     required List<DropZoneModel> dropZones,
     required List<String> correctSequence,
-    String? next,
-    String? nextType,
+    required List<String> next,
+    required List<String> nextType,
     Map<String, String>? consequences,
   }) = _DragAndDropModel;
 

@@ -45,8 +45,18 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
         await game.setBackground(level.background[0]);
       }),
     ]);
-    state = StoryState(activeLevel: level, isLoading: false);
-    navigateMode(level.typeStart, level.start);
+
+    final consequences = ref
+        .read(hiveProvider)
+        .storySnapShotGetConsequences(level.level - 1);
+
+    state = StoryState(
+      activeLevel: level,
+      userConsequences: consequences,
+      isLoading: false,
+    );
+
+    state = state.copyWith(activeMode: 'adaptiveText');
   }
 
   void navigateMode(String? modeType, String? modeId) {
@@ -78,9 +88,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       (preDialog) =>
           preDialog.id == id && preDialog.conditions == null ||
           (preDialog.conditions != null &&
-              ref
-                  .read(hiveProvider)
-                  .storyCheckConditions(preDialog.conditions!)),
+              storyCheckConditions(preDialog.conditions!)),
     );
     state = state.activeMode != 'preDialog'
         ? state.copyWith(preDialog: preDialog, activeMode: 'preDialog')
@@ -102,9 +110,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
           dialog.id == dialogId &&
           (dialog.conditions == null ||
               (dialog.conditions != null &&
-                  ref
-                      .read(hiveProvider)
-                      .storyCheckConditions(dialog.conditions!))),
+                  storyCheckConditions(dialog.conditions!))),
     );
     final currentConversation = dialog.dialogs[0];
 
@@ -115,8 +121,6 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
     final c2Reaction = firstIdx == 2 ? firstReact : 0;
 
     final ilustrationIndex = currentConversation.ilustrationIndex;
-
-    game.setBackground(level.background[dialog.backgroundIndex]);
 
     await game.showCharacters(
       char1Img: level.character1Images[c1Reaction],
@@ -152,7 +156,6 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
     final length = dialog.dialogs.length;
 
     if (nextIdx < length) {
-      game.setBackground(state.activeLevel!.background[dialog.backgroundIndex]);
       final currentConversation = dialog.dialogs[nextIdx];
       final charIdx = currentConversation.characterIndex;
       final charReact = currentConversation.reactionIndex;
@@ -196,9 +199,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
           question.id == questionId &&
           (question.conditions == null ||
               (question.conditions != null &&
-                  ref
-                      .read(hiveProvider)
-                      .storyCheckConditions(question.conditions!))),
+                  storyCheckConditions(question.conditions!))),
     );
     state = state.copyWith(
       currentQuestion: question,
@@ -210,25 +211,18 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   }
 
   void checkAnswer(ChoicesModel selected) {
-    bool isSuccess = selected.isCorrect == true;
+    bool isSuccess = selected.isCorrect!;
 
     if (isSuccess) {
-      correctAnswer();
+      correctAnswer(consequences: state.currentQuestion?.consequences);
     } else {
-      wrongAnswer();
-    }
-
-    if (state.currentQuestion?.consequences != null) {
-      ref.read(hiveProvider).storySaveConsequences(
-            consequences: state.currentQuestion!.consequences!,
-            isMinigameSuccess: isSuccess,
-          );
+      wrongAnswer(consequences: state.currentQuestion?.consequences);
     }
 
     navigateMode(selected.nextType, selected.next);
   }
 
-  void skipToNextSoal() {
+  void skipCurrentDialog() {
     DialogModel? dialog = state.currentDialog;
     final visited = <String>{};
 
@@ -275,6 +269,12 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   Future<void> _saveProgress() async {
     final completedLevel = ref.read(storyProgressProvider);
     final currentLevel = state.activeLevel!;
+    ref
+        .read(hiveProvider)
+        .storySnapShotSaveConsequences(
+          currentLevel.level,
+          state.userConsequences,
+        );
     if (currentLevel.level > completedLevel) {
       await ref
           .read(storyProgressProvider.notifier)
@@ -287,9 +287,15 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       game.hideCharacters();
       game.hideIlustration();
     }
+
+    final consequences = ref
+        .read(hiveProvider)
+        .storySnapShotGetConsequences(state.activeLevel!.level - 1);
+
     state = state.copyWith(
       correctAnswer: 0,
       wrongAnswer: 0,
+      userConsequences: consequences,
       falsePrevious: false,
       preDialog: null,
       currentDialog: null,
@@ -304,16 +310,114 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
     ref.read(routerProvider).go('/pembelajaran');
   }
 
-  void correctAnswer() {
+  bool storyCheckConditions(Map<String, String> conditions) {
+    Map<String, int>? userConsequences = state.userConsequences;
+    if (userConsequences == null) return true;
+
+    for (var entry in conditions.entries) {
+      String key = entry.key;
+      String conditionValue = entry.value;
+
+      String operator = '==';
+      int requiredValue;
+
+      if (conditionValue.startsWith('>=')) {
+        operator = '>=';
+        requiredValue = int.parse(conditionValue.substring(2));
+      } else if (conditionValue.startsWith('<=')) {
+        operator = '<=';
+        requiredValue = int.parse(conditionValue.substring(2));
+      } else if (conditionValue.startsWith('>')) {
+        operator = '>';
+        requiredValue = int.parse(conditionValue.substring(1));
+      } else if (conditionValue.startsWith('<')) {
+        operator = '<';
+        requiredValue = int.parse(conditionValue.substring(1));
+      } else {
+        requiredValue = int.parse(conditionValue);
+      }
+
+      int userValue = userConsequences[key] ?? 0;
+      bool conditionMet = false;
+      switch (operator) {
+        case '>=':
+          conditionMet = userValue >= requiredValue;
+          break;
+        case '<=':
+          conditionMet = userValue <= requiredValue;
+          break;
+        case '>':
+          conditionMet = userValue > requiredValue;
+          break;
+        case '<':
+          conditionMet = userValue < requiredValue;
+          break;
+        case '==':
+          conditionMet = userValue == requiredValue;
+          break;
+      }
+      if (!conditionMet) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  Future<void> storySaveConsequences({
+    required Map<String, String> consequences,
+    bool? isMinigameSuccess,
+  }) async {
+    Map<String, int> userConsequences = state.userConsequences ?? {};
+    if (isMinigameSuccess != null) {
+      if (isMinigameSuccess) {
+        consequences.forEach((key, value) {
+          userConsequences[key] = (userConsequences.containsKey(key))
+              ? (userConsequences[key]! + int.parse(value))
+              : int.parse(value);
+        });
+      } else {
+        consequences.forEach((key, value) {
+          userConsequences[key] = (userConsequences.containsKey(key))
+              ? (userConsequences[key]! - int.parse(value))
+              : -int.parse(value);
+        });
+      }
+    } else {
+      consequences.forEach((key, value) {
+        if (userConsequences.containsKey(key)) {
+          userConsequences[key] = (userConsequences[key]! + int.parse(value));
+        } else {
+          userConsequences[key] = int.parse(value);
+        }
+      });
+    }
+
+    state = state.copyWith(userConsequences: userConsequences);
+  }
+
+  void correctAnswer({Map<String, String>? consequences}) {
     if (state.falsePrevious != true) {
+      if (consequences != null) {
+        storySaveConsequences(
+          consequences: consequences,
+          isMinigameSuccess: true,
+        );
+      }
       state = state.copyWith(correctAnswer: (state.correctAnswer ?? 0) + 1);
     } else {
       state = state.copyWith(falsePrevious: false);
     }
   }
 
-  void wrongAnswer() {
+  void wrongAnswer({Map<String, String>? consequences}) {
     if (state.falsePrevious != true) {
+      if (consequences != null) {
+        storySaveConsequences(
+          consequences: consequences,
+          isMinigameSuccess: false,
+        );
+      }
       state = state.copyWith(
         wrongAnswer: (state.wrongAnswer ?? 0) + 1,
         falsePrevious: true,

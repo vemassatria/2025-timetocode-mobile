@@ -19,6 +19,8 @@ abstract class StoryState with _$StoryState {
     bool? falsePrevious,
     String? activeMode,
 
+    Map<String, int>? userConsequences,
+
     bool? isLoading,
   }) = _StoryState;
 }

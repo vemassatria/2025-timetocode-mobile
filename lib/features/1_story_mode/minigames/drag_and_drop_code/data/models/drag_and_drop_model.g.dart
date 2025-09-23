@@ -23,8 +23,10 @@ _DragAndDropModel _$DragAndDropModelFromJson(Map<String, dynamic> json) =>
       correctSequence: (json['correctSequence'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      next: json['next'] as String?,
-      nextType: json['nextType'] as String?,
+      next: (json['next'] as List<dynamic>).map((e) => e as String).toList(),
+      nextType: (json['nextType'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       consequences: (json['consequences'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),

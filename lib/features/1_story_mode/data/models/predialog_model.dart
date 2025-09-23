@@ -11,6 +11,7 @@ abstract class PreDialogModel with _$PreDialogModel {
     required String next,
     required String nextType,
     Map<String, String>? conditions,
+    int? backgroundIndex,
   }) = _PreDialogModel;
 
   factory PreDialogModel.fromJson(Map<String, dynamic> json) =>

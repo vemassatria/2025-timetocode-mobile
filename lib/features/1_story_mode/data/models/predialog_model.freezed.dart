@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PreDialogModel {
 
- String get id; String get text; String get next; String get nextType; Map<String, String>? get conditions;
+ String get id; String get text; String get next; String get nextType; Map<String, String>? get conditions; int? get backgroundIndex;
 /// Create a copy of PreDialogModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $PreDialogModelCopyWith<PreDialogModel> get copyWith => _$PreDialogModelCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PreDialogModel&&(identical(other.id, id) || other.id == id)&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&const DeepCollectionEquality().equals(other.conditions, conditions));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PreDialogModel&&(identical(other.id, id) || other.id == id)&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&const DeepCollectionEquality().equals(other.conditions, conditions)&&(identical(other.backgroundIndex, backgroundIndex) || other.backgroundIndex == backgroundIndex));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,text,next,nextType,const DeepCollectionEquality().hash(conditions));
+int get hashCode => Object.hash(runtimeType,id,text,next,nextType,const DeepCollectionEquality().hash(conditions),backgroundIndex);
 
 @override
 String toString() {
-  return 'PreDialogModel(id: $id, text: $text, next: $next, nextType: $nextType, conditions: $conditions)';
+  return 'PreDialogModel(id: $id, text: $text, next: $next, nextType: $nextType, conditions: $conditions, backgroundIndex: $backgroundIndex)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $PreDialogModelCopyWith<$Res>  {
   factory $PreDialogModelCopyWith(PreDialogModel value, $Res Function(PreDialogModel) _then) = _$PreDialogModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String text, String next, String nextType, Map<String, String>? conditions
+ String id, String text, String next, String nextType, Map<String, String>? conditions, int? backgroundIndex
 });
 
 
@@ -65,14 +65,15 @@ class _$PreDialogModelCopyWithImpl<$Res>
 
 /// Create a copy of PreDialogModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? text = null,Object? next = null,Object? nextType = null,Object? conditions = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? text = null,Object? next = null,Object? nextType = null,Object? conditions = freezed,Object? backgroundIndex = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,next: null == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String,nextType: null == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
 as String,conditions: freezed == conditions ? _self.conditions : conditions // ignore: cast_nullable_to_non_nullable
-as Map<String, String>?,
+as Map<String, String>?,backgroundIndex: freezed == backgroundIndex ? _self.backgroundIndex : backgroundIndex // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 
@@ -157,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String text,  String next,  String nextType,  Map<String, String>? conditions)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String text,  String next,  String nextType,  Map<String, String>? conditions,  int? backgroundIndex)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PreDialogModel() when $default != null:
-return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions);case _:
+return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions,_that.backgroundIndex);case _:
   return orElse();
 
 }
@@ -178,10 +179,10 @@ return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions);
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String text,  String next,  String nextType,  Map<String, String>? conditions)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String text,  String next,  String nextType,  Map<String, String>? conditions,  int? backgroundIndex)  $default,) {final _that = this;
 switch (_that) {
 case _PreDialogModel():
-return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions);case _:
+return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions,_that.backgroundIndex);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +199,10 @@ return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions);
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String text,  String next,  String nextType,  Map<String, String>? conditions)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String text,  String next,  String nextType,  Map<String, String>? conditions,  int? backgroundIndex)?  $default,) {final _that = this;
 switch (_that) {
 case _PreDialogModel() when $default != null:
-return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions);case _:
+return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions,_that.backgroundIndex);case _:
   return null;
 
 }
@@ -213,7 +214,7 @@ return $default(_that.id,_that.text,_that.next,_that.nextType,_that.conditions);
 @JsonSerializable()
 
 class _PreDialogModel implements PreDialogModel {
-  const _PreDialogModel({required this.id, required this.text, required this.next, required this.nextType, final  Map<String, String>? conditions}): _conditions = conditions;
+  const _PreDialogModel({required this.id, required this.text, required this.next, required this.nextType, final  Map<String, String>? conditions, this.backgroundIndex}): _conditions = conditions;
   factory _PreDialogModel.fromJson(Map<String, dynamic> json) => _$PreDialogModelFromJson(json);
 
 @override final  String id;
@@ -229,6 +230,7 @@ class _PreDialogModel implements PreDialogModel {
   return EqualUnmodifiableMapView(value);
 }
 
+@override final  int? backgroundIndex;
 
 /// Create a copy of PreDialogModel
 /// with the given fields replaced by the non-null parameter values.
@@ -243,16 +245,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PreDialogModel&&(identical(other.id, id) || other.id == id)&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&const DeepCollectionEquality().equals(other._conditions, _conditions));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PreDialogModel&&(identical(other.id, id) || other.id == id)&&(identical(other.text, text) || other.text == text)&&(identical(other.next, next) || other.next == next)&&(identical(other.nextType, nextType) || other.nextType == nextType)&&const DeepCollectionEquality().equals(other._conditions, _conditions)&&(identical(other.backgroundIndex, backgroundIndex) || other.backgroundIndex == backgroundIndex));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,text,next,nextType,const DeepCollectionEquality().hash(_conditions));
+int get hashCode => Object.hash(runtimeType,id,text,next,nextType,const DeepCollectionEquality().hash(_conditions),backgroundIndex);
 
 @override
 String toString() {
-  return 'PreDialogModel(id: $id, text: $text, next: $next, nextType: $nextType, conditions: $conditions)';
+  return 'PreDialogModel(id: $id, text: $text, next: $next, nextType: $nextType, conditions: $conditions, backgroundIndex: $backgroundIndex)';
 }
 
 
@@ -263,7 +265,7 @@ abstract mixin class _$PreDialogModelCopyWith<$Res> implements $PreDialogModelCo
   factory _$PreDialogModelCopyWith(_PreDialogModel value, $Res Function(_PreDialogModel) _then) = __$PreDialogModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String text, String next, String nextType, Map<String, String>? conditions
+ String id, String text, String next, String nextType, Map<String, String>? conditions, int? backgroundIndex
 });
 
 
@@ -280,14 +282,15 @@ class __$PreDialogModelCopyWithImpl<$Res>
 
 /// Create a copy of PreDialogModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? text = null,Object? next = null,Object? nextType = null,Object? conditions = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? text = null,Object? next = null,Object? nextType = null,Object? conditions = freezed,Object? backgroundIndex = freezed,}) {
   return _then(_PreDialogModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,next: null == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String,nextType: null == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
 as String,conditions: freezed == conditions ? _self._conditions : conditions // ignore: cast_nullable_to_non_nullable
-as Map<String, String>?,
+as Map<String, String>?,backgroundIndex: freezed == backgroundIndex ? _self.backgroundIndex : backgroundIndex // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 

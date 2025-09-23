@@ -5,6 +5,7 @@ import 'package:timetocode/app/widgets/popups/menu_popup.dart';
 import 'package:timetocode/app/data/providers/popup_visibility_provider.dart';
 import 'package:timetocode/features/1_story_mode/engine/core/game_engine.dart';
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/presentation/screens/drag_and_drop_question_page.dart';
+import 'package:timetocode/features/1_story_mode/presentation/widgets/adaptive_text_widget.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/dialog_box.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/intro.dart';
 import 'package:timetocode/features/1_story_mode/minigames/quiz/presentation/widgets/question_box_widget.dart';
@@ -89,6 +90,8 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
 
   Widget _buildContentUI(String? activeMode) {
     switch (activeMode) {
+      case 'adaptiveText':
+        return const AdaptiveTextWidget();
       case 'preDialog':
         return const IntroBoxWidget();
       case 'dialog':

@@ -44,7 +44,7 @@ class IntroBoxWidget extends ConsumerWidget {
       behavior: HitTestBehavior.opaque,
       child: Center(
         child: Container(
-          height: 250.h,
+          height: 350.h,
           width: 328.w,
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           decoration: BoxDecoration(
