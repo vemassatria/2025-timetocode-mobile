@@ -2834,7 +2834,7 @@
             {
             "id": "dd-2.1",
             "instruction": "Susunlah potongan kode berikut untuk membuat program pengecek bilangan ganjil atau genap.",
-            "scaffoldCode": "#include <stdio.h>\n\nint main() {\n\t[dz1]\n\n\t[dz2][dz3]\n\t[dz4][dz5]\n\n\t[dz6]([dz7]) {\n\t\t[dz8];\n\t} [dz9] {\n\t\t[dz10];\n\t}\n\n\treturn 0;\n}",
+            "scaffoldCode": "#include <stdio.h>\n\nint main() {\n\t[dz1]\n\n\t[dz2][dz3]\n\t[dz4][dz5]\n\n\t[dz6]([dz7]) {\n\t\t[dz8];\n\t} [dz9] {\n\t\t[z10];\n\t}\n\n\treturn 0;\n}",
             "draggableOptions": [
                 {
                 "id": "dnd-2.1.1",
@@ -2917,7 +2917,7 @@
                 {"id": "dz7"},
                 {"id": "dz8"},
                 {"id": "dz9"},
-                {"id": "dz10"}
+                {"id": "z10"}
             ],
             "correctSequence": [
                 "dnd-2.1.6",
