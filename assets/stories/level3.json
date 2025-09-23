@@ -1682,7 +1682,7 @@
         "tino_kecewa",
         "tino_aksi"
       ],
-      "ilustrations": ["contoh-ilustrasi1", "IF-ELSE", "SWITCH"],
+      "ilustrations": ["IF-ELSE", "SWITCH"],
       "start": "preDialog2_1",
       "typeStart": "preDialog",
       "preDialog": [
@@ -1886,7 +1886,7 @@
                     "line": "Misal kamu lagi di persimpangan jalan, terus ada petugas yang nanya mau ke mana. Kalau kamu jawab pantai, si petugas langsung suruh kamu ke pantai. Itu kayak if doang, simpel. Kalau jawabannya bukan pantai, si petugas bakal ngarahin kamu ke jalan lain.",
                     "reactionIndex": 4,
                     "characterIndex": 2,
-                    "ilustrationIndex": 1
+                    "ilustrationIndex": 0
                 },
                 {
                     "line": "Oke, masih awal masih gampang nih. Terus kalau ada lebih dari satu pilihan?",
@@ -1897,12 +1897,13 @@
                     "line": "Nah itu kalau di simpang empat, ada petugas yang bisa arahkan ke pegunungan, pantai, atau kota. Jadi kalau kamu bilang pegunungan, dia suruh ke kiri. Kalau pantai, ke kanan. Kalau ‘kota’, jalan lurus. Kalau jawabannya nggak cocok sama ketiganya, dia kasih jalan lain.",
                     "reactionIndex": 4,
                     "characterIndex": 2,
-                    "ilustrationIndex": 2
+                    "ilustrationIndex": 1
                 },
                 {
                     "line": "Oh itu kayak pakai… aduh apa sih namanya…",
                     "reactionIndex": 1,
-                    "characterIndex": 1
+                    "characterIndex": 1,
+                    "ilustrationIndex": 1
                 },
                 {
                     "line": "Itu pakai else-if. Jadi if pertama ngecek satu kondisi, else-if buat ngecek kondisi lain-lainnya. Kalau gak ada yang cocok, pakai else.",
@@ -2102,7 +2103,7 @@
             "nextType": "dragAndDrop"
         },
         {
-            "id": "Intro2_2",
+            "id": "intro2_2",
             "conditions": {
                 "humility": ">=0"
             },
@@ -2133,7 +2134,7 @@
             "nextType": "dialog"
         },
         {
-            "id": "Intro2_2",
+            "id": "intro2_2",
             "conditions": {
                 "humility": "<=0"
             },
@@ -2294,7 +2295,7 @@
                 "choices": [
                     {
                         "text": "Mas, kalau misal x bisa 1, 2, 3, atau 4, dan tiap nilai mau beda outputnya, pakai if-else terus bakal ribet kan?",
-                        "next": "santaiBenar2_3",
+                        "next": "santaiBenar2_2",
                         "nextType": "dialog",
                         "consequences": {
                             "knowledge": "+1"
@@ -2302,7 +2303,7 @@
                     },
                     {
                         "text": "Ohh… jadi kalau banyak pilihan, if-else bisa dipakai, tapi bakal panjang ya, Mas?",
-                        "next": "konfirmasiBenar2_3",
+                        "next": "konfirmasiBenar2_2",
                         "nextType": "dialog",
                         "consequences": {
                             "humility": "+1"
@@ -2580,7 +2581,9 @@
                         "text": "Ah, aku coba soal lagi deh, Mas! Kali ini harus bener nih.",
                         "next": "soalA2_3",
                         "nextType": "soal",
-                        "consequences": {}
+                        "consequences": {
+                            "trust_tino": "+1"
+                        }
                     },
                     {
                         "text": "Hmm… kayaknya aku mau lihat materi lagi dulu, Mas, masih agak bingung.",
