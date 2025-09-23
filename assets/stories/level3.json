@@ -1590,7 +1590,7 @@
                     "choices": [
                         {
                             "text": "16",
-                            "next": "salah1_3",
+                            "next": "salahA1_3",
                             "nextType": "dialog",
                             "isCorrect": false,
                             "consequences": { "knowledge": "-1" }
@@ -1604,14 +1604,14 @@
                         },
                         {
                             "text": "13",
-                            "next": "salah1_3",
+                            "next": "salahA1_3",
                             "nextType": "dialog",
                             "isCorrect": false,
                             "consequences": { "knowledge": "-1" }
                         },
                         {
                             "text": "10",
-                            "next": "salah1_3",
+                            "next": "salahA1_3",
                             "nextType": "dialog",
                             "isCorrect": false,
                             "consequences": { "knowledge": "-1" }
@@ -2620,7 +2620,6 @@
                     "line": "Misalnya kamu pilih tujuan: pegunungan, pantai, atau kota. Kalau switch, langsung dicocokkan sama case yang ada.",
                     "reactionIndex": 7,
                     "characterIndex": 2,
-                    "ilustrationIndex": 2
                 },
                 {
                     "line": "Hah gimana tuh, coba kasih gambaran Mas, masih bingung.",
