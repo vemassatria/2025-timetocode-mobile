@@ -55,7 +55,8 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       userConsequences: consequences,
       isLoading: false,
     );
-    navigateMode(level.typeStart, level.start);
+
+    state = state.copyWith(activeMode: 'adaptiveText');
   }
 
   void navigateMode(String? modeType, String? modeId) {
