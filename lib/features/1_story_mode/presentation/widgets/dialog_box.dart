@@ -67,16 +67,20 @@ class _DialogBoxState extends ConsumerState<DialogBox>
 
         final dialog = ref.read(storyControllerProvider).currentDialog;
         final canon = dialog!.branch!.canon;
-        final canonConsequences = dialog.branch!.choices
-            .firstWhere((choice) => choice.next == canon)
-            .consequences;
+        final canonDialog = dialog.branch!.choices.firstWhere(
+          (choice) => choice.next == canon,
+        );
+        final canonConsequences = canonDialog.consequences;
+
+        if (canonConsequences != null) {
+          ref
+              .read(storyControllerProvider.notifier)
+              .storySaveConsequences(consequences: canonConsequences);
+        }
 
         ref
             .read(storyControllerProvider.notifier)
-            .storySaveConsequences(consequences: canonConsequences!);
-        ref
-            .read(storyControllerProvider.notifier)
-            .navigateMode('dialog', canon!);
+            .navigateMode(canonDialog.nextType, canon!);
       }
     });
   }

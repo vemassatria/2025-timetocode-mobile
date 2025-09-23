@@ -111,7 +111,7 @@ class DndController extends AutoDisposeNotifier<DndState> {
   }
 
   void finalizeDragAndDrop(bool isCorrect) {
-    final index = isCorrect ? 0 : 1;
+    final index = isCorrect ? 1 : 0;
     if (state.currentDragAndDrop!.nextType[index] == 'dnd') {
       initializeDragAndDrop(state.currentDragAndDrop!.next[index]);
     } else {
