@@ -3214,7 +3214,7 @@
             {
                 "id": "intro3_1",
                 "conditions": {
-                    "humility": ">= 5"
+                    "humility": ">=3"
                 },
                 "backgroundIndex": 0,
                 "dialogs": [
@@ -3240,7 +3240,7 @@
             {
                 "id": "intro3_1",
                 "conditions": {
-                    "humility": "<5"
+                    "humility": "<3"
                 },
                 "backgroundIndex": 0,
                 "dialogs": [
