@@ -3237,7 +3237,7 @@
             {
                 "id": "intro3_1",
                 "conditions": {
-                    "humility": "< 5"
+                    "humility": "<5"
                 },
                 "backgroundIndex": 0,
                 "dialogs": [
@@ -4534,8 +4534,7 @@
                     "nextType": [
                         "dialog",
                         "dialog"
-                    ],
-                    "consequences": null
+                    ]
                     }
             ]
         },
