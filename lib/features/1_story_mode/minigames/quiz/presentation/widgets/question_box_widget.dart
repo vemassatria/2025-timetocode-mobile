@@ -8,6 +8,7 @@ import 'package:timetocode/features/0_core/models/choices_model.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
 import 'package:timetocode/app/widgets/popups/answer_popup.dart';
 import 'package:timetocode/features/1_story_mode/minigames/quiz/presentation/widgets/choices_box.dart';
+import 'package:timetocode/app/data/services/sound_effect_service.dart';
 
 class QuestionBoxWidget extends ConsumerWidget {
   const QuestionBoxWidget({super.key});
@@ -59,10 +60,19 @@ class QuestionBoxWidget extends ConsumerWidget {
     WidgetRef ref,
     ChoicesModel selected,
   ) {
+    final bool isCorrect = selected.isCorrect!;
+    final soundNotifier = ref.read(soundEffectServiceProvider.notifier);
+
+    if (isCorrect) {
+      soundNotifier.playCorrect();
+    } else {
+      soundNotifier.playErrorClick();
+    }
+
     showPopupOverlay(
       context,
       AnswerPopup(
-        isCorrect: selected.isCorrect!,
+        isCorrect: isCorrect,
         onPressed: () {
           ref.read(storyControllerProvider.notifier).checkAnswer(selected);
           closePopupOverlay(ref);

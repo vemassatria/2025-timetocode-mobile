@@ -38,7 +38,7 @@ class SoundEffectService extends Notifier<bool> {
       FlameAudio.createPool(
         'sfx/button2-click.wav',
         minPlayers: 1,
-        maxPlayers: 2,
+        maxPlayers: 3,
       ),
       FlameAudio.createPool('sfx/pop-click.wav', minPlayers: 1, maxPlayers: 2),
       FlameAudio.createPool(
