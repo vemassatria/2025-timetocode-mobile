@@ -2349,7 +2349,7 @@
         {
             "id": "salahA2_2",
             "conditions": {
-                "humility": "<6"
+                "humility": "<1"
             },
             "backgroundIndex": 0,
             "dialogs": [
@@ -2390,7 +2390,7 @@
         {
             "id": "salahA2_2",
             "conditions": {
-                "humility": ">=6"
+                "humility": ">=1"
             },
             "backgroundIndex": 0,
             "dialogs": [
