@@ -3210,6 +3210,9 @@
         "dialogs": [
             {
                 "id": "intro3_1",
+                "conditions": {
+                    "humility": ">= 5"
+                },
                 "backgroundIndex": 0,
                 "dialogs": [
                     {
@@ -3233,6 +3236,9 @@
             },
             {
                 "id": "intro3_1",
+                "conditions": {
+                    "humility": "< 5"
+                },
                 "backgroundIndex": 0,
                 "dialogs": [
                     {
@@ -3288,8 +3294,8 @@
                             "next": "scene3_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "kerendahanHati": "+1",
-                                "kepercayaanMasMulyo": "+5"
+                                "humility": "+1",
+                                "trust_rusdi": "+1"
                             }
                         },
                         {
@@ -3297,8 +3303,8 @@
                             "next": "scene3_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "kepercayaanMasMulyo": "+10",
-                                "kerendahanHati": "+2"
+                                "humility": "+1",
+                                "trust_rusdi": "+1"
                             }
                         },
                         {
@@ -3306,8 +3312,7 @@
                             "next": "scene3_3",
                             "nextType": "dialog",
                             "consequences": {
-                                "kepercayaanMasMulyo": "-5",
-                                "kesombongan": "+1"
+                                "humility": "-1"
                             }
                         }
                     ]
@@ -3368,7 +3373,7 @@
                             "next": "scene3_2_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "key": "+-value"
+                                "humility": "+1"
                             }
                         },
                         {
@@ -3376,8 +3381,8 @@
                             "next": "scene3_2_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "kepercayaanMasMulyo": "-5",
-                                "kesombongan": "+1"
+                                "humility": "+1",
+                                "trust_rusdi": "+1"
                             }
                         }
                     ]
@@ -3566,8 +3571,7 @@
                             "next": "salahA3_1_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "kerendahanHati": "+1",
-                                "kepercayaanMasMulyo": "+5"
+                                "humility": "-2"
                             }
                         },
                         {
@@ -3575,8 +3579,8 @@
                             "next": "salahA3_1_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "kepercayaanMasMulyo": "+10",
-                                "kerendahanHati": "+2"
+                                "humility": "+1",
+                                "trust_rusdi": "+1"
                             }
                         }
                     ]
@@ -3748,8 +3752,7 @@
                             "next": "salahB3_1_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "kerendahanHati": "+1",
-                                "kepercayaanMasMulyo": "+5"
+                                "humility": "+1"
                             }
                         },
                         {
@@ -3757,8 +3760,8 @@
                             "next": "salahB3_1_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "kepercayaanMasMulyo": "+10",
-                                "kerendahanHati": "+2"
+                                "trust_rusdi": "+1",
+                                "humility": "+1"
                             }
                         }
                     ]
@@ -3858,7 +3861,7 @@
                             "next": "intro3_2_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "key": "+-value"
+                                "humility": "+1"
                             }
                         },
                         {
@@ -3866,7 +3869,7 @@
                             "next": "intro3_2_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "key": "+-value"
+                                "humility": "-2"
                             }
                         }
                     ]
@@ -4014,7 +4017,7 @@
             {
                 "id": "salahA3_2",
                 "conditions": {
-                    "key": "need sombong"
+                    "humility": "<5"
                 },
                 "dialogs": [
                     {
@@ -4052,9 +4055,8 @@
                             "next": "salahA3_2_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "kerendahanHati": "+2",
-                                "kesombongan": "-3",
-                                "kepercayaanMasMulyo": "+5"
+                                "humility": "+2",
+                                "trust_rusdi": "+1"
                             }
                         },
                         {
@@ -4062,8 +4064,7 @@
                             "next": "salahA3_2_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "kesombongan": "+2",
-                                "kepercayaanMasMulyo": "-5"
+                                "humility": "-1"
                             }
                         }
                     ]
@@ -4072,7 +4073,7 @@
             {
                 "id": "salahA3_2",
                 "conditions": {
-                    "key": "need baik"
+                    "humility": ">=5"
                 },
                 "dialogs": [
                     {
@@ -4110,9 +4111,8 @@
                             "next": "salahA3_2_1",
                             "nextType": "dialog",
                             "consequences": {
-                                "kerendahanHati": "+2",
-                                "kesombongan": "-3",
-                                "kepercayaanMasMulyo": "+5"
+                                "humility": "+2",
+                                "trust_rusdi": "+1"
                             }
                         },
                         {
@@ -4120,8 +4120,7 @@
                             "next": "salahA3_2_2",
                             "nextType": "dialog",
                             "consequences": {
-                                "kesombongan": "+2",
-                                "kepercayaanMasMulyo": "-5"
+                                "humility": "-1"
                             }
                         }
                     ]
@@ -4230,9 +4229,7 @@
                             "next": "SalahB3_2_bodoamat",
                             "nextType": "dialog",
                             "consequences": {
-                                "kerendahanHati": "+2",
-                                "kesombongan": "-3",
-                                "kepercayaanMasMulyo": "+5"
+                                "humility": "+1"
                             }
                         },
                         {
@@ -4240,8 +4237,8 @@
                             "next": "SalahB3_2_pantangmenyerah",
                             "nextType": "dialog",
                             "consequences": {
-                                "kesombongan": "+2",
-                                "kepercayaanMasMulyo": "-5"
+                                "humility": "+1",
+                                "trust_rusdi": "+1"
                             }
                         }
                     ]
@@ -4358,9 +4355,6 @@
             "questions": [
                 {
                     "id": "soalB3_1",
-                    "conditions": {
-                        "key": ">=>==<<=value"
-                    },
                     "text": "Pilihlah program yang mencetak angka kelipatan 5 dari 5 sampai 50 menggunakan for loop",
                     "choices": [
                         {
@@ -4389,14 +4383,11 @@
                         }
                     ],
                     "consequences": {
-                        "key": "value"
+                        "knowledge": "1"
                     }
                 },
                 {
                     "id": "soalB3_2",
-                    "conditions": {
-                        "key": ">=>==<<=value"
-                    },
                     "text": "Perhatikan potongan kode berikut. Apa output yang dihasilkan?",
                     "code": "#include <stdio.h>\nint main() {\n\tint i = 1;\n\twhile (i <= 3)\n\t{\n\t\tprintf(\"C \");\n\t\ti++;\n\t}\n\treturn 0;\n}",
                     "choices": [
@@ -4426,16 +4417,13 @@
                         }
                     ],
                     "consequences": {
-                        "key": "value"
+                        "knowledge": "1"
                     }
                 }
             ],
             "dragAndDrop": [
                 {
                     "id": "soalA3_1",
-                    "conditions": {
-                        "key": ">=>==<<=value"
-                    },
                     "instruction": "Kamu diminta untuk membuat program yang mencetak angka dari 1 sampai 10. Bagaimana cara kamu menggunakan for loop untuk melakukan ini?",
                     "scaffoldCode": "#include <stdio.h> \n\nint main() { \n\tfor (int i = 1; [dz1]; i++) {\n\t\tprintf(\"%d \", i);\n\t}\n\n\treturn 0;}",
                     "draggableOptions": [
@@ -4473,12 +4461,11 @@
                         "dialog"
                     ],
                     "consequences": {
-                        "key": "value"
+                        "knowledge": "1"
                     }
                 },
                 {
                     "id": "soalA3_2",
-                    "conditions": null,
                     "instruction": "Kamu diminta untuk mengubah program yang mencetak \"Hai\" sebanyak 3 kali dengan menggunakan `while` loop. Lengkapi bagian yang kosong.",
                     "scaffoldCode": "#include <stdio.h>\n\nint main() {\n\tint i = 1;\n\twhile ([dz1]) {\n\t\t[dz2];\n\t\t[dz3];\n\t}\n\treturn 0;\n}",
                     "draggableOptions": [
@@ -4541,8 +4528,8 @@
                         "dnd-4"
                     ],
                     "next": [
-                        "salah_while_1",
-                        "benar_while_1"
+                        "salahA3_2",
+                        "benarA3_2"
                     ],
                     "nextType": [
                         "dialog",
