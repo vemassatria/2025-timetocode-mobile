@@ -3214,7 +3214,7 @@
             {
                 "id": "intro3_1",
                 "conditions": {
-                    "humility": ">=2"
+                    "humility": ">=1"
                 },
                 "backgroundIndex": 0,
                 "dialogs": [
@@ -3240,7 +3240,7 @@
             {
                 "id": "intro3_1",
                 "conditions": {
-                    "humility": "<2"
+                    "humility": "<1"
                 },
                 "backgroundIndex": 0,
                 "dialogs": [
@@ -4020,7 +4020,7 @@
             {
                 "id": "salahA3_2",
                 "conditions": {
-                    "humility": "<5"
+                    "humility": "<2"
                 },
                 "dialogs": [
                     {
@@ -4310,7 +4310,9 @@
                         "reactionIndex": 2,
                         "characterIndex": 2
                     }
-                ]
+                ],
+                "next": "soalB3_2",
+                "nextType": "soal"
             },
             {
                 "id": "benarB3_2",
@@ -4416,7 +4418,7 @@
                             "text": "error",
                             "next": "SalahB3_2",
                             "nextType": "dialog",
-                            "isCorrect": true
+                            "isCorrect": false
                         }
                     ],
                     "consequences": {
