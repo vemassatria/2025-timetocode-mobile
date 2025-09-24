@@ -45,7 +45,7 @@ class _CardDetailCarouselPopupState
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(32.w),
-      height: 615.h,
+      height: 625.h,
       width: 300.w,
       decoration: BoxDecoration(
         color: AppColors.surfaceDark,

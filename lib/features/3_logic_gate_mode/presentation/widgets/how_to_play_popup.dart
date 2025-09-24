@@ -149,7 +149,7 @@ class _HowToPlayPopupState extends ConsumerState<HowToPlayPopup> {
               SizedBox(height: 24.h),
               Text(
                 descriptions[index],
-                style: AppTypography.mediumBold(color: AppColors.white),
+                style: AppTypography.smallNormalBold(color: AppColors.white),
               ),
             ],
           );
