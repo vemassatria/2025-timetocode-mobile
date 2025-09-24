@@ -57,7 +57,9 @@ class LogicGatePage extends ConsumerWidget {
                   width: 264.w,
                   child: Text(
                     'Ini adalah permainan strategi di mana kamu dan lawan bergantian memasang kartu gerbang logika (AND, OR, NAND, NOR, XOR) untuk mengubah-ubah deretan angka 0 dan 1. Setiap pemain punya target angka akhir yang berbeda, yang akan ditentukan di awal permainan. Raih targetmu dan kalahkan lawan!',
-                    style: AppTypography.mediumBold(color: AppColors.white),
+                    style: AppTypography.smallNormalBold(
+                      color: AppColors.white,
+                    ),
                   ),
                 ),
                 SizedBox(height: 64.h),

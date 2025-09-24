@@ -165,6 +165,6 @@ class GameEngine extends FlameGame {
   String _backgroundKey(String backgroundName) =>
       'background/$backgroundName.webp';
 
-  get characters => _characters;
-  get ilustration => _ilustration;
+  StoryCharactersComponent? get characters => _characters;
+  StoryIlustrationComponent? get ilustration => _ilustration;
 }

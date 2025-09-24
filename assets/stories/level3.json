@@ -2614,7 +2614,7 @@
                 {
                     "line": "Contohnya gimana, Mas?",
                     "reactionIndex": 4,
-                    "characterIndex": 2
+                    "characterIndex": 1
                 },
                 {
                     "line": "Misalnya kamu pilih tujuan: pegunungan, pantai, atau kota. Kalau switch, langsung dicocokkan sama case yang ada.",

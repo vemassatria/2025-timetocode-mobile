@@ -41,7 +41,7 @@ class InfoPopup extends ConsumerWidget {
             padding: EdgeInsets.zero,
             shrinkWrap: true,
             itemCount: summaryList!.length,
-            separatorBuilder: (_, __) => SizedBox(height: 16.h),
+            separatorBuilder: (_, _) => SizedBox(height: 16.h),
             itemBuilder: (context, index) {
               return Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
