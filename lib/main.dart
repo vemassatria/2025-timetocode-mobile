@@ -1,66 +1,72 @@
-import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timetocode/components/box/dialog_box.dart';
-import 'package:timetocode/components/cerita/intro.dart';
-import 'package:timetocode/components/skip_button.dart';
-import 'package:timetocode/games/backend/game_engine.dart';
-import 'package:timetocode/pages/challenge/end_game.dart';
-import 'package:timetocode/pages/challenge/quiz_page.dart';
-import 'package:timetocode/pages/main_tabs/end_game_page.dart';
-import 'package:timetocode/games/backend/providers/shared_preferences_provider.dart';
-import 'package:timetocode/pages/main_navigation.dart';
-import 'package:timetocode/components/cerita/story.dart';
-import 'package:timetocode/games/backend/providers/game_provider.dart';
-import 'package:timetocode/themes/app_themes.dart';
-import 'package:timetocode/components/cerita/question_box_widget.dart';
-import 'package:timetocode/games/backend/services/music_service.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:timetocode/app/data/services/hive_service.dart';
+import 'package:timetocode/app/data/services/music_service.dart';
+import 'package:timetocode/app/data/services/sound_effect_service.dart';
+import 'package:timetocode/app/config/routes/app_route.dart';
+import 'package:timetocode/app/config/theme/app_themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await MusicService.init();
-  final prefs = await SharedPreferences.getInstance();
-  runApp(
-    ProviderScope(
-      overrides: [sharedPrefsProvider.overrideWithValue(prefs)],
-      child: const MyApp(),
-    ),
+  await Hive.initFlutter();
+
+  final futures = [
+    Hive.openBox('consequences'),
+    Hive.openBox<int>('story_progress'),
+    Hive.openBox<int>('challenge_progress'),
+    Hive.openBox<bool>('settings'),
+  ];
+
+  final results = await Future.wait(futures);
+
+  final container = ProviderContainer(
+    overrides: [
+      hiveProvider.overrideWithValue(
+        HiveService(
+          consequencesBox: results[0],
+          storyProgressBox: results[1] as Box<int>,
+          challengeProgressBox: results[2] as Box<int>,
+          settingsBox: results[3] as Box<bool>,
+        ),
+      ),
+    ],
   );
+
+  await container.read(musicServiceProvider.notifier).initialize();
+  await container.read(soundEffectServiceProvider.notifier).initialize();
+
+  runApp(UncontrolledProviderScope(container: container, child: const MyApp()));
 }
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
-  static final gameWidgetKey =
-      GlobalKey<RiverpodAwareGameWidgetState<GameEngine>>();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final game = ref.read(gameEngineProvider);
-    return MaterialApp(
-      title: 'Time to Code',
-      darkTheme: AppThemes.darkTheme,
-      themeMode: ThemeMode.dark,
-      home: RiverpodAwareGameWidget<GameEngine>(
-        game: game,
-        key: gameWidgetKey,
-        overlayBuilderMap: {
-          // Overlays utama
-          'GameUI': (_, __) => MainNavigation(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 800),
+      minTextAdapt: false,
+      splitScreenMode: true,
+      builder: (context, child) {
+        final router = ref.watch(routerProvider);
 
-          // Story overlays
-          'StoryMenu': (_, __) => StoryPage(),
-          'StorySkip': (_, __) => SkipButton(),
-          'Intro': (_, __) => IntroBoxWidget(),
-          'Dialog': (_, __) => DialogBox(),
-          'Question': (_, __) => QuestionBoxWidget(),
-          'EndGame': (_, __) => EndGameScreen(),
-
-          // challenge overlays
-          'Challenge': (_, __) => QuizPage(),
-          'ChallengeEnd': (_, __) => EndGameChallenge(),
-        },
-        initialActiveOverlays: const ['GameUI'],
-      ),
+        return MaterialApp.router(
+          title: 'Time to Code',
+          darkTheme: AppThemes.darkTheme,
+          themeMode: ThemeMode.dark,
+          routerConfig: router,
+          builder: (context, widget) {
+            return MediaQuery(
+              data: MediaQuery.of(
+                context,
+              ).copyWith(textScaler: TextScaler.noScaling),
+              child: widget!,
+            );
+          },
+        );
+      },
     );
   }
 }

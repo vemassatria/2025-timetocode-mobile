@@ -1,7 +1,0 @@
-.git
-.idea
-/android/
-/ios/
-/build/
-*.key
-.env

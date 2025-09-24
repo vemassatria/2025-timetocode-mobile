@@ -1,0 +1,22 @@
+# File ini berisi daftar aturan linter yang akan dijalankan oleh analyzer.
+# Kunjungi https://dart.dev/lints untuk daftar lengkap.
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # --- ATURAN-ATURAN KUNCI UNTUK 'CONST' ---
+
+    # Sangat merekomendasikan penggunaan 'const' untuk constructor yang bisa dibuat const.
+    # Ini adalah aturan yang paling penting untuk kasus Anda.
+    - prefer_const_constructors
+
+    # Menganjurkan 'const' untuk deklarasi variabel top-level atau statis.
+    - prefer_const_declarations
+
+    # Menganjurkan penggunaan 'const' pada literal di dalam widget yang immutable.
+    # Contoh: `List<Widget>[const Text('Halo')]`
+    - prefer_const_literals_to_create_immutables
+
+    # Menghapus 'const' yang tidak perlu.
+    # Contoh: `const const Center(...)` -> `const Center(...)`
+    - unnecessary_const
