@@ -12,7 +12,7 @@ abstract class StoryModel with _$StoryModel {
     required int level,
     required String description,
     required String title,
-    required List<String> background,
+    required String background,
     required String character1,
     required String character2,
     required List<String> character1Images,

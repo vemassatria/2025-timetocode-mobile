@@ -5,5 +5,5 @@ import 'package:timetocode/features/2_challenge_mode/data/providers/challenge_lo
 final challengeLevelProvider = FutureProvider<ChallengeModel>((ref) {
   return ref
       .read(challengeLoadServiceProvider)
-      .loadChallenges('assets/stories/challenge.json');
+      .loadChallenges('assets/stories/tantangan.json');
 });

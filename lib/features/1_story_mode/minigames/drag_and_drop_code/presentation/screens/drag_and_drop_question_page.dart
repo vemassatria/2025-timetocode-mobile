@@ -48,15 +48,9 @@ class DragAndDropQuestionPage extends ConsumerWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.r),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (dndModel.scaffoldCode != null)
-                          CodeBox(
-                            code: dndModel.scaffoldCode!,
-                            isDragAndDrop: true,
-                          ),
-                      ],
+                    child: CodeBox(
+                      code: dndModel.scaffoldCode,
+                      isDragAndDrop: true,
                     ),
                   ),
                   SizedBox(height: 24.h),

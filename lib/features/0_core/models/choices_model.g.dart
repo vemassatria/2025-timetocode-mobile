@@ -11,7 +11,7 @@ _ChoicesModel _$ChoicesModelFromJson(Map<String, dynamic> json) =>
       text: json['text'] as String,
       next: json['next'] as String?,
       nextType: json['nextType'] as String?,
-      isCorrect: json['isCorrect'] as bool?,
+      isCorrect: json['isCorrect'] as bool,
     );
 
 Map<String, dynamic> _$ChoicesModelToJson(_ChoicesModel instance) =>

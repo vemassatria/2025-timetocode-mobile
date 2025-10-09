@@ -212,7 +212,7 @@ return $default(_that.text,_that.next,_that.nextType,_that.consequences);case _:
 @JsonSerializable()
 
 class _DialogChoices implements DialogChoices {
-  const _DialogChoices({required this.text, required this.next, required this.nextType, required final  Map<String, String>? consequences}): _consequences = consequences;
+  const _DialogChoices({required this.text, required this.next, required this.nextType, final  Map<String, String>? consequences}): _consequences = consequences;
   factory _DialogChoices.fromJson(Map<String, dynamic> json) => _$DialogChoicesFromJson(json);
 
 @override final  String text;

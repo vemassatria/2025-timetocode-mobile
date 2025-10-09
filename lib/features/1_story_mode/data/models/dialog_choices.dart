@@ -9,7 +9,7 @@ abstract class DialogChoices with _$DialogChoices {
     required String text,
     required String next,
     required String nextType,
-    required Map<String, String>? consequences,
+    Map<String, String>? consequences,
   }) = _DialogChoices;
 
   factory DialogChoices.fromJson(Map<String, dynamic> json) =>

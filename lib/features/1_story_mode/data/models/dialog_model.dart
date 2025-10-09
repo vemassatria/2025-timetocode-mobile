@@ -10,7 +10,6 @@ abstract class DialogModel with _$DialogModel {
   const factory DialogModel({
     required String id,
     Map<String, String>? conditions,
-    int? backgroundIndex,
     required List<TextDialogModel> dialogs,
     String? next,
     String? nextType,

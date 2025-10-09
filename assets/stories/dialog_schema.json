@@ -1,0 +1,508 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "storyModelSchema",
+    "title": "Story Model Schema",
+    "description": "Schema untuk validasi struktur data utama story Time to Code, termasuk properti, dialog, dan minigame per level.",
+    "type": "object",
+    "properties": {
+        "levels": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/StoryModel"
+            }
+        }
+    },
+    "$defs": {
+        "StoryModel": {
+            "type": "object",
+            "description": "Mewakili satu level dalam Story Mode.",
+            "properties": {
+                "level": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "background": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "character1": {
+                    "type": "string"
+                },
+                "character2": {
+                    "type": "string"
+                },
+                "character1Images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "character2Images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ilustrations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "start": {
+                    "type": "string"
+                },
+                "typeStart": {
+                    "type": "string",
+                    "enum": [
+                        "preDialog",
+                        "dialog",
+                        "soal",
+                        "dragAndDrop"
+                    ]
+                },
+                "preDialog": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/PreDialogModel"
+                    }
+                },
+                "dialogs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/DialogModel"
+                    }
+                },
+                "minigame": {
+                    "type": "object",
+                    "properties": {
+                        "questions": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/$defs/QuestionModel"
+                            }
+                        },
+                        "dragAndDrop": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/$defs/DragAndDropModel"
+                            }
+                        }
+                    }
+                },
+                "summary": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "level",
+                "description",
+                "background",
+                "title",
+                "character1",
+                "character2",
+                "character1Images",
+                "character2Images",
+                "ilustrations",
+                "dialogs",
+                "minigame",
+                "start",
+                "typeStart"
+            ],
+            "additionalProperties": false
+        },
+        "PreDialogModel": {
+            "type": "object",
+            "description": "Mewakili satu predialog dalam Story Mode.",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "next": {
+                    "type": "string"
+                },
+                "nextType": {
+                    "type": "string",
+                    "enum": [
+                        "dialog",
+                        "soal",
+                        "dragAndDrop",
+                        "preDialog"
+                    ]
+                },
+                "conditions": {
+                    "type": "object",
+                    "description": "Key-value pair untuk kondisi. Key adalah nama variabel, Value adalah kondisi (e.g., '>=5').",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "id",
+                "text",
+                "next",
+                "nextType"
+            ],
+            "additionalProperties": false
+        },
+        "DialogModel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "conditions": {
+                    "type": "object",
+                    "description": "Key-value pair untuk kondisi. Key adalah nama variabel, Value adalah kondisi (e.g., '>=5').",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "next": {
+                    "type": "string"
+                },
+                "nextType": {
+                    "type": "string",
+                    "enum": [
+                        "dialog",
+                        "soal",
+                        "dragAndDrop",
+                        "preDialog"
+                    ]
+                },
+                "branch": {
+                    "$ref": "#/$defs/BranchModel"
+                },
+                "dialogs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/TextDialogModel"
+                    }
+                }
+            },
+            "required": [
+                "id",
+                "dialogs"
+            ],
+            "additionalProperties": false
+        },
+        "BranchModel": {
+            "type": "object",
+            "properties": {
+                "timer": {
+                    "type": "integer"
+                },
+                "canon": {
+                    "type": "string"
+                },
+                "choices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/DialogChoices"
+                    }
+                }
+            },
+            "required": [
+                "choices"
+            ],
+            "additionalProperties": false
+        },
+        "TextDialogModel": {
+            "type": "object",
+            "properties": {
+                "line": {
+                    "type": "string"
+                },
+                "reactionIndex": {
+                    "type": "integer"
+                },
+                "characterIndex": {
+                    "type": "integer"
+                },
+                "ilustrationIndex": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "line",
+                "reactionIndex",
+                "characterIndex"
+            ],
+            "additionalProperties": false
+        },
+        "DialogChoices": {
+            "type": "object",
+            "properties": {
+                "text": {
+                    "type": "string"
+                },
+                "next": {
+                    "type": "string"
+                },
+                "nextType": {
+                    "type": "string",
+                    "enum": [
+                        "dialog",
+                        "soal",
+                        "dragAndDrop",
+                        "preDialog"
+                    ]
+                },
+                "consequences": {
+                    "type": "object",
+                    "description": "Key-value pair untuk konsekuensi. Key adalah nama variabel, Value adalah nilai konsekuensi (e.g., '+5').",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "text",
+                "next",
+                "nextType"
+            ],
+            "additionalProperties": false
+        },
+        "QuestionModel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "conditions": {
+                    "type": "object",
+                    "description": "Key-value pair untuk kondisi. Key adalah nama variabel, Value adalah kondisi (e.g., '>=5').",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "text": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "choices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/ChoicesModel"
+                    }
+                },
+                "consequences": {
+                    "type": "object",
+                    "description": "Key-value pair untuk konsekuensi. Key adalah nama variabel, Value adalah nilai konsekuensi (e.g., '5').",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "id",
+                "text",
+                "choices"
+            ],
+            "additionalProperties": false
+        },
+        "ChoicesModel": {
+            "type": "object",
+            "properties": {
+                "text": {
+                    "type": "string"
+                },
+                "next": {
+                    "type": "string"
+                },
+                "nextType": {
+                    "type": "string",
+                    "enum": [
+                        "dialog",
+                        "soal",
+                        "dragAndDrop",
+                        "preDialog"
+                    ]
+                },
+                "isCorrect": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "text",
+                "isCorrect"
+            ],
+            "additionalProperties": false
+        },
+        "DragAndDropModel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "conditions": {
+                    "type": "object",
+                    "description": "Key-value pair untuk kondisi. Key adalah nama variabel, Value adalah kondisi (e.g., '>=5').",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "instruction": {
+                    "type": "string"
+                },
+                "scaffoldCode": {
+                    "type": "string"
+                },
+                "draggableOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/DraggableModel"
+                    }
+                },
+                "dropZones": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/DropZoneModel"
+                    }
+                },
+                "correctSequence": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "next": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "nextType": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "dialog",
+                            "soal",
+                            "dragAndDrop",
+                            "preDialog"
+                        ]
+                    }
+                },
+                "consequences": {
+                    "type": "object",
+                    "description": "Key-value pair untuk konsekuensi. Key adalah nama variabel, Value adalah nilai konsekuensi (e.g., '5').",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "id",
+                "instruction",
+                "scaffoldCode",
+                "draggableOptions",
+                "dropZones",
+                "correctSequence",
+                "next",
+                "nextType"
+            ],
+            "additionalProperties": false
+        },
+        "DraggableModel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "object",
+                    "$ref": "#/$defs/ContentComponentModel"
+                },
+                "info": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "content"
+            ],
+            "additionalProperties": false
+        },
+        "ContentComponentModel": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "text",
+                        "image"
+                    ]
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "value"
+            ],
+            "additionalProperties": false
+        },
+        "DropZoneModel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "acceptedIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "content": {
+                    "type": "object",
+                    "$ref": "#/$defs/ContentComponentModel"
+                },
+                "contentDraggable": {
+                    "type": "object",
+                    "$ref": "#/$defs/DraggableModel"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "additionalProperties": false
+        }
+    }
+}

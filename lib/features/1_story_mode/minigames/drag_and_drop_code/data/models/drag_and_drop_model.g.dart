@@ -13,7 +13,7 @@ _DragAndDropModel _$DragAndDropModelFromJson(Map<String, dynamic> json) =>
         (k, e) => MapEntry(k, e as String),
       ),
       instruction: json['instruction'] as String,
-      scaffoldCode: json['scaffoldCode'] as String?,
+      scaffoldCode: json['scaffoldCode'] as String,
       draggableOptions: (json['draggableOptions'] as List<dynamic>)
           .map((e) => DraggableModel.fromJson(e as Map<String, dynamic>))
           .toList(),

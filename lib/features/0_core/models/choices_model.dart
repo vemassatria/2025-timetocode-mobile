@@ -7,9 +7,9 @@ part 'choices_model.g.dart';
 abstract class ChoicesModel with _$ChoicesModel {
   const factory ChoicesModel({
     required String text,
-    String? next,
-    String? nextType,
-    bool? isCorrect,
+    required String? next,
+    required String? nextType,
+    required bool isCorrect,
   }) = _ChoicesModel;
 
   factory ChoicesModel.fromJson(Map<String, dynamic> json) =>

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DragAndDropModel {
 
- String get id; Map<String, String>? get conditions; String get instruction; String? get scaffoldCode; List<DraggableModel> get draggableOptions; List<DropZoneModel> get dropZones; List<String> get correctSequence; List<String> get next; List<String> get nextType; Map<String, String>? get consequences;
+ String get id; Map<String, String>? get conditions; String get instruction; String get scaffoldCode; List<DraggableModel> get draggableOptions; List<DropZoneModel> get dropZones; List<String> get correctSequence; List<String> get next; List<String> get nextType; Map<String, String>? get consequences;
 /// Create a copy of DragAndDropModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $DragAndDropModelCopyWith<$Res>  {
   factory $DragAndDropModelCopyWith(DragAndDropModel value, $Res Function(DragAndDropModel) _then) = _$DragAndDropModelCopyWithImpl;
 @useResult
 $Res call({
- String id, Map<String, String>? conditions, String instruction, String? scaffoldCode, List<DraggableModel> draggableOptions, List<DropZoneModel> dropZones, List<String> correctSequence, List<String> next, List<String> nextType, Map<String, String>? consequences
+ String id, Map<String, String>? conditions, String instruction, String scaffoldCode, List<DraggableModel> draggableOptions, List<DropZoneModel> dropZones, List<String> correctSequence, List<String> next, List<String> nextType, Map<String, String>? consequences
 });
 
 
@@ -65,13 +65,13 @@ class _$DragAndDropModelCopyWithImpl<$Res>
 
 /// Create a copy of DragAndDropModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? conditions = freezed,Object? instruction = null,Object? scaffoldCode = freezed,Object? draggableOptions = null,Object? dropZones = null,Object? correctSequence = null,Object? next = null,Object? nextType = null,Object? consequences = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? conditions = freezed,Object? instruction = null,Object? scaffoldCode = null,Object? draggableOptions = null,Object? dropZones = null,Object? correctSequence = null,Object? next = null,Object? nextType = null,Object? consequences = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,conditions: freezed == conditions ? _self.conditions : conditions // ignore: cast_nullable_to_non_nullable
 as Map<String, String>?,instruction: null == instruction ? _self.instruction : instruction // ignore: cast_nullable_to_non_nullable
-as String,scaffoldCode: freezed == scaffoldCode ? _self.scaffoldCode : scaffoldCode // ignore: cast_nullable_to_non_nullable
-as String?,draggableOptions: null == draggableOptions ? _self.draggableOptions : draggableOptions // ignore: cast_nullable_to_non_nullable
+as String,scaffoldCode: null == scaffoldCode ? _self.scaffoldCode : scaffoldCode // ignore: cast_nullable_to_non_nullable
+as String,draggableOptions: null == draggableOptions ? _self.draggableOptions : draggableOptions // ignore: cast_nullable_to_non_nullable
 as List<DraggableModel>,dropZones: null == dropZones ? _self.dropZones : dropZones // ignore: cast_nullable_to_non_nullable
 as List<DropZoneModel>,correctSequence: null == correctSequence ? _self.correctSequence : correctSequence // ignore: cast_nullable_to_non_nullable
 as List<String>,next: null == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
@@ -162,7 +162,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  Map<String, String>? conditions,  String instruction,  String? scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  List<String> next,  List<String> nextType,  Map<String, String>? consequences)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  Map<String, String>? conditions,  String instruction,  String scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  List<String> next,  List<String> nextType,  Map<String, String>? consequences)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DragAndDropModel() when $default != null:
 return $default(_that.id,_that.conditions,_that.instruction,_that.scaffoldCode,_that.draggableOptions,_that.dropZones,_that.correctSequence,_that.next,_that.nextType,_that.consequences);case _:
@@ -183,7 +183,7 @@ return $default(_that.id,_that.conditions,_that.instruction,_that.scaffoldCode,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  Map<String, String>? conditions,  String instruction,  String? scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  List<String> next,  List<String> nextType,  Map<String, String>? consequences)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  Map<String, String>? conditions,  String instruction,  String scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  List<String> next,  List<String> nextType,  Map<String, String>? consequences)  $default,) {final _that = this;
 switch (_that) {
 case _DragAndDropModel():
 return $default(_that.id,_that.conditions,_that.instruction,_that.scaffoldCode,_that.draggableOptions,_that.dropZones,_that.correctSequence,_that.next,_that.nextType,_that.consequences);case _:
@@ -203,7 +203,7 @@ return $default(_that.id,_that.conditions,_that.instruction,_that.scaffoldCode,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  Map<String, String>? conditions,  String instruction,  String? scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  List<String> next,  List<String> nextType,  Map<String, String>? consequences)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  Map<String, String>? conditions,  String instruction,  String scaffoldCode,  List<DraggableModel> draggableOptions,  List<DropZoneModel> dropZones,  List<String> correctSequence,  List<String> next,  List<String> nextType,  Map<String, String>? consequences)?  $default,) {final _that = this;
 switch (_that) {
 case _DragAndDropModel() when $default != null:
 return $default(_that.id,_that.conditions,_that.instruction,_that.scaffoldCode,_that.draggableOptions,_that.dropZones,_that.correctSequence,_that.next,_that.nextType,_that.consequences);case _:
@@ -218,7 +218,7 @@ return $default(_that.id,_that.conditions,_that.instruction,_that.scaffoldCode,_
 @JsonSerializable()
 
 class _DragAndDropModel implements DragAndDropModel {
-  const _DragAndDropModel({required this.id, final  Map<String, String>? conditions, required this.instruction, this.scaffoldCode, required final  List<DraggableModel> draggableOptions, required final  List<DropZoneModel> dropZones, required final  List<String> correctSequence, required final  List<String> next, required final  List<String> nextType, final  Map<String, String>? consequences}): _conditions = conditions,_draggableOptions = draggableOptions,_dropZones = dropZones,_correctSequence = correctSequence,_next = next,_nextType = nextType,_consequences = consequences;
+  const _DragAndDropModel({required this.id, final  Map<String, String>? conditions, required this.instruction, required this.scaffoldCode, required final  List<DraggableModel> draggableOptions, required final  List<DropZoneModel> dropZones, required final  List<String> correctSequence, required final  List<String> next, required final  List<String> nextType, final  Map<String, String>? consequences}): _conditions = conditions,_draggableOptions = draggableOptions,_dropZones = dropZones,_correctSequence = correctSequence,_next = next,_nextType = nextType,_consequences = consequences;
   factory _DragAndDropModel.fromJson(Map<String, dynamic> json) => _$DragAndDropModelFromJson(json);
 
 @override final  String id;
@@ -232,7 +232,7 @@ class _DragAndDropModel implements DragAndDropModel {
 }
 
 @override final  String instruction;
-@override final  String? scaffoldCode;
+@override final  String scaffoldCode;
  final  List<DraggableModel> _draggableOptions;
 @override List<DraggableModel> get draggableOptions {
   if (_draggableOptions is EqualUnmodifiableListView) return _draggableOptions;
@@ -311,7 +311,7 @@ abstract mixin class _$DragAndDropModelCopyWith<$Res> implements $DragAndDropMod
   factory _$DragAndDropModelCopyWith(_DragAndDropModel value, $Res Function(_DragAndDropModel) _then) = __$DragAndDropModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, Map<String, String>? conditions, String instruction, String? scaffoldCode, List<DraggableModel> draggableOptions, List<DropZoneModel> dropZones, List<String> correctSequence, List<String> next, List<String> nextType, Map<String, String>? consequences
+ String id, Map<String, String>? conditions, String instruction, String scaffoldCode, List<DraggableModel> draggableOptions, List<DropZoneModel> dropZones, List<String> correctSequence, List<String> next, List<String> nextType, Map<String, String>? consequences
 });
 
 
@@ -328,13 +328,13 @@ class __$DragAndDropModelCopyWithImpl<$Res>
 
 /// Create a copy of DragAndDropModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? conditions = freezed,Object? instruction = null,Object? scaffoldCode = freezed,Object? draggableOptions = null,Object? dropZones = null,Object? correctSequence = null,Object? next = null,Object? nextType = null,Object? consequences = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? conditions = freezed,Object? instruction = null,Object? scaffoldCode = null,Object? draggableOptions = null,Object? dropZones = null,Object? correctSequence = null,Object? next = null,Object? nextType = null,Object? consequences = freezed,}) {
   return _then(_DragAndDropModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,conditions: freezed == conditions ? _self._conditions : conditions // ignore: cast_nullable_to_non_nullable
 as Map<String, String>?,instruction: null == instruction ? _self.instruction : instruction // ignore: cast_nullable_to_non_nullable
-as String,scaffoldCode: freezed == scaffoldCode ? _self.scaffoldCode : scaffoldCode // ignore: cast_nullable_to_non_nullable
-as String?,draggableOptions: null == draggableOptions ? _self._draggableOptions : draggableOptions // ignore: cast_nullable_to_non_nullable
+as String,scaffoldCode: null == scaffoldCode ? _self.scaffoldCode : scaffoldCode // ignore: cast_nullable_to_non_nullable
+as String,draggableOptions: null == draggableOptions ? _self._draggableOptions : draggableOptions // ignore: cast_nullable_to_non_nullable
 as List<DraggableModel>,dropZones: null == dropZones ? _self._dropZones : dropZones // ignore: cast_nullable_to_non_nullable
 as List<DropZoneModel>,correctSequence: null == correctSequence ? _self._correctSequence : correctSequence // ignore: cast_nullable_to_non_nullable
 as List<String>,next: null == next ? _self._next : next // ignore: cast_nullable_to_non_nullable

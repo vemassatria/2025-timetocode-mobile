@@ -81,7 +81,7 @@ class StorySelectionPage extends ConsumerWidget {
                       if (isFirst) SizedBox(height: 16.h),
                       LevelCard(
                         image:
-                            'assets/images/background/${level.background[0]}.webp',
+                            'assets/images/background/${level.background}.webp',
                         title: level.title,
                         status: isLocked
                             ? CardStatus.locked

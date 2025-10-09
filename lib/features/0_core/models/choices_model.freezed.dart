@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChoicesModel {
 
- String get text; String? get next; String? get nextType; bool? get isCorrect;
+ String get text; String? get next; String? get nextType; bool get isCorrect;
 /// Create a copy of ChoicesModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $ChoicesModelCopyWith<$Res>  {
   factory $ChoicesModelCopyWith(ChoicesModel value, $Res Function(ChoicesModel) _then) = _$ChoicesModelCopyWithImpl;
 @useResult
 $Res call({
- String text, String? next, String? nextType, bool? isCorrect
+ String text, String? next, String? nextType, bool isCorrect
 });
 
 
@@ -65,13 +65,13 @@ class _$ChoicesModelCopyWithImpl<$Res>
 
 /// Create a copy of ChoicesModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? next = freezed,Object? nextType = freezed,Object? isCorrect = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? next = freezed,Object? nextType = freezed,Object? isCorrect = null,}) {
   return _then(_self.copyWith(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,next: freezed == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String?,nextType: freezed == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
-as String?,isCorrect: freezed == isCorrect ? _self.isCorrect : isCorrect // ignore: cast_nullable_to_non_nullable
-as bool?,
+as String?,isCorrect: null == isCorrect ? _self.isCorrect : isCorrect // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -156,7 +156,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String text,  String? next,  String? nextType,  bool? isCorrect)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String text,  String? next,  String? nextType,  bool isCorrect)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChoicesModel() when $default != null:
 return $default(_that.text,_that.next,_that.nextType,_that.isCorrect);case _:
@@ -177,7 +177,7 @@ return $default(_that.text,_that.next,_that.nextType,_that.isCorrect);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String text,  String? next,  String? nextType,  bool? isCorrect)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String text,  String? next,  String? nextType,  bool isCorrect)  $default,) {final _that = this;
 switch (_that) {
 case _ChoicesModel():
 return $default(_that.text,_that.next,_that.nextType,_that.isCorrect);case _:
@@ -197,7 +197,7 @@ return $default(_that.text,_that.next,_that.nextType,_that.isCorrect);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String text,  String? next,  String? nextType,  bool? isCorrect)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String text,  String? next,  String? nextType,  bool isCorrect)?  $default,) {final _that = this;
 switch (_that) {
 case _ChoicesModel() when $default != null:
 return $default(_that.text,_that.next,_that.nextType,_that.isCorrect);case _:
@@ -212,13 +212,13 @@ return $default(_that.text,_that.next,_that.nextType,_that.isCorrect);case _:
 @JsonSerializable()
 
 class _ChoicesModel implements ChoicesModel {
-  const _ChoicesModel({required this.text, this.next, this.nextType, this.isCorrect});
+  const _ChoicesModel({required this.text, required this.next, required this.nextType, required this.isCorrect});
   factory _ChoicesModel.fromJson(Map<String, dynamic> json) => _$ChoicesModelFromJson(json);
 
 @override final  String text;
 @override final  String? next;
 @override final  String? nextType;
-@override final  bool? isCorrect;
+@override final  bool isCorrect;
 
 /// Create a copy of ChoicesModel
 /// with the given fields replaced by the non-null parameter values.
@@ -253,7 +253,7 @@ abstract mixin class _$ChoicesModelCopyWith<$Res> implements $ChoicesModelCopyWi
   factory _$ChoicesModelCopyWith(_ChoicesModel value, $Res Function(_ChoicesModel) _then) = __$ChoicesModelCopyWithImpl;
 @override @useResult
 $Res call({
- String text, String? next, String? nextType, bool? isCorrect
+ String text, String? next, String? nextType, bool isCorrect
 });
 
 
@@ -270,13 +270,13 @@ class __$ChoicesModelCopyWithImpl<$Res>
 
 /// Create a copy of ChoicesModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? next = freezed,Object? nextType = freezed,Object? isCorrect = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? next = freezed,Object? nextType = freezed,Object? isCorrect = null,}) {
   return _then(_ChoicesModel(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,next: freezed == next ? _self.next : next // ignore: cast_nullable_to_non_nullable
 as String?,nextType: freezed == nextType ? _self.nextType : nextType // ignore: cast_nullable_to_non_nullable
-as String?,isCorrect: freezed == isCorrect ? _self.isCorrect : isCorrect // ignore: cast_nullable_to_non_nullable
-as bool?,
+as String?,isCorrect: null == isCorrect ? _self.isCorrect : isCorrect // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

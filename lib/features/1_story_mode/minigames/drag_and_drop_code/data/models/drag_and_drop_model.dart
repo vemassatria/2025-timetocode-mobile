@@ -11,7 +11,7 @@ abstract class DragAndDropModel with _$DragAndDropModel {
     required String id,
     Map<String, String>? conditions,
     required String instruction,
-    String? scaffoldCode,
+    required String scaffoldCode,
     required List<DraggableModel> draggableOptions,
     required List<DropZoneModel> dropZones,
     required List<String> correctSequence,

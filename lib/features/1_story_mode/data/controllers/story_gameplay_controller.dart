@@ -41,9 +41,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       ref.read(musicServiceProvider.notifier).playLevelMusic(level.level),
       game.preloadCharacters(level.character1Images + level.character2Images),
       game.preloadIlustrations(level.ilustrations),
-      game.preloadBackgrounds(level.background)..then((_) async {
-        await game.setBackground(level.background[0]);
-      }),
+      game.setBackground(level.background),
     ]);
 
     final consequences = ref
@@ -211,7 +209,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
   }
 
   void checkAnswer(ChoicesModel selected) {
-    bool isSuccess = selected.isCorrect!;
+    bool isSuccess = selected.isCorrect;
 
     if (isSuccess) {
       correctAnswer(consequences: state.currentQuestion?.consequences);

@@ -80,7 +80,7 @@ class _ChallengeGameplayPageState extends ConsumerState<ChallengeGameplayPage> {
     showPopupOverlay(
       context,
       AnswerPopup(
-        isCorrect: selected.isCorrect!,
+        isCorrect: selected.isCorrect,
         onPressed: () {
           soundEffectService.playPopupAnswer();
           challengeController.checkAnswer(selected);
