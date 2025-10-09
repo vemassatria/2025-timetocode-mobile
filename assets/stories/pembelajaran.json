@@ -1,5 +1,5 @@
 {
-    "$schema": "./dialog_schema.json",
+    "$schema": "../../schemas/story_schema.json",
     "levels": [
         {
             "level": 1,

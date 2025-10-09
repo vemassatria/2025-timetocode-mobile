@@ -83,7 +83,7 @@
                         "questions": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/$defs/QuestionModel"
+                                "$ref": "./_shared/question_model_schema.json#/$defs/QuestionModel"
                             }
                         },
                         "dragAndDrop": {
@@ -280,80 +280,6 @@
                 "text",
                 "next",
                 "nextType"
-            ],
-            "additionalProperties": false
-        },
-        "QuestionModel": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "conditions": {
-                    "type": "object",
-                    "description": "Key-value pair untuk kondisi. Key adalah nama variabel, Value adalah kondisi (e.g., '>=5').",
-                    "patternProperties": {
-                        "^[a-zA-Z0-9_]+$": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "text": {
-                    "type": "string"
-                },
-                "code": {
-                    "type": "string"
-                },
-                "choices": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/ChoicesModel"
-                    }
-                },
-                "consequences": {
-                    "type": "object",
-                    "description": "Key-value pair untuk konsekuensi. Key adalah nama variabel, Value adalah nilai konsekuensi (e.g., '5').",
-                    "patternProperties": {
-                        "^[a-zA-Z0-9_]+$": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
-                }
-            },
-            "required": [
-                "id",
-                "text",
-                "choices"
-            ],
-            "additionalProperties": false
-        },
-        "ChoicesModel": {
-            "type": "object",
-            "properties": {
-                "text": {
-                    "type": "string"
-                },
-                "next": {
-                    "type": "string"
-                },
-                "nextType": {
-                    "type": "string",
-                    "enum": [
-                        "dialog",
-                        "soal",
-                        "dragAndDrop",
-                        "preDialog"
-                    ]
-                },
-                "isCorrect": {
-                    "type": "boolean"
-                }
-            },
-            "required": [
-                "text",
-                "isCorrect"
             ],
             "additionalProperties": false
         },
