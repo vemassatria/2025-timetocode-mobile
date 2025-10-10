@@ -60,7 +60,7 @@ class QuestionBoxWidget extends ConsumerWidget {
     WidgetRef ref,
     ChoicesModel selected,
   ) {
-    final bool isCorrect = selected.isCorrect!;
+    final bool isCorrect = selected.isCorrect;
     final soundNotifier = ref.read(soundEffectServiceProvider.notifier);
 
     if (isCorrect) {
