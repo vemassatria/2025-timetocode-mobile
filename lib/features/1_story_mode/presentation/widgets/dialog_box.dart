@@ -135,163 +135,172 @@ class _DialogBoxState extends ConsumerState<DialogBox>
       _startTimer(dialog.branch!.timer!);
     }
 
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          GestureDetector(
-            onTap: () => _handleTap(isLastLine, hasChoices),
-            behavior: HitTestBehavior.opaque,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(16.w, 36.h, 16.w, 16.h),
-              width: 1.sw,
-              height: 295.h,
-              decoration: BoxDecoration(
-                color: AppColors.backgroundTransparent,
-                border: Border(
-                  top: BorderSide(color: AppColors.white, width: 2.w),
+    return SafeArea(
+      top: false,
+      left: false,
+      right: false,
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            GestureDetector(
+              onTap: () => _handleTap(isLastLine, hasChoices),
+              behavior: HitTestBehavior.opaque,
+              child: Container(
+                padding: EdgeInsets.fromLTRB(16.w, 36.h, 16.w, 16.h),
+                width: 1.sw,
+                height: 295.h,
+                decoration: BoxDecoration(
+                  color: AppColors.backgroundTransparent,
+                  border: Border(
+                    top: BorderSide(color: AppColors.white, width: 2.w),
+                  ),
                 ),
-              ),
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  return SingleChildScrollView(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minHeight: constraints.maxHeight,
-                      ),
-                      child: IntrinsicHeight(
-                        child: Consumer(
-                          child:
-                              (isLastLine &&
-                                  hasChoices &&
-                                  dialog.branch?.timer != null)
-                              ? AnimatedBuilder(
-                                  animation: _animationController!,
-                                  builder: (context, child) {
-                                    return LinearProgressIndicator(
-                                      value: 1.0 - _animationController!.value,
-                                      backgroundColor: AppColors.gray1
-                                          .withValues(alpha: 0.5),
-                                      valueColor:
-                                          const AlwaysStoppedAnimation<Color>(
-                                            AppColors.dangerRed,
-                                          ),
-                                    );
-                                  },
-                                )
-                              : null,
-                          builder: (context, ref, child) {
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                if (child != null) ...{
-                                  child,
-                                  SizedBox(height: 12.h),
-                                },
-                                Expanded(
-                                  child:
-                                      ref.watch(
-                                        isDialogBoxTextAnimationCompleteProvider,
-                                      )
-                                      ? Text(text, style: textStyle)
-                                      : TypewriterEffectBox(
-                                          key: ValueKey(
-                                            "${dialog.id} + $indexDialog",
-                                          ),
-                                          text: text,
-                                          textStyle: textStyle,
-                                          onFinished: () {
-                                            if (mounted &&
-                                                !ref.watch(
-                                                  isDialogBoxTextAnimationCompleteProvider,
-                                                )) {
-                                              ref
-                                                      .read(
-                                                        isDialogBoxTextAnimationCompleteProvider
-                                                            .notifier,
-                                                      )
-                                                      .state =
-                                                  true;
-                                            }
-                                          },
-                                        ),
-                                ),
-                                SizedBox(height: 12.h),
-                                if (ref.watch(
-                                      isDialogBoxTextAnimationCompleteProvider,
-                                    ) &&
-                                    isLastLine &&
-                                    hasChoices)
-                                  DialogChoicesBox(
-                                    choices: dialog.branch!.choices,
-                                    onPressed: (choice) {
-                                      _stopTimerAndAnimation();
-                                      ref
-                                          .read(
-                                            soundEffectServiceProvider.notifier,
-                                          )
-                                          .playSelectClick();
-                                      ref
-                                          .read(
-                                            storyControllerProvider.notifier,
-                                          )
-                                          .navigateMode(
-                                            choice.nextType,
-                                            choice.next,
-                                          );
-                                      ref
-                                          .read(
-                                            storyControllerProvider.notifier,
-                                          )
-                                          .storySaveConsequences(
-                                            consequences: choice.consequences!,
-                                          );
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return SingleChildScrollView(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minHeight: constraints.maxHeight,
+                        ),
+                        child: IntrinsicHeight(
+                          child: Consumer(
+                            child:
+                                (isLastLine &&
+                                    hasChoices &&
+                                    dialog.branch?.timer != null)
+                                ? AnimatedBuilder(
+                                    animation: _animationController!,
+                                    builder: (context, child) {
+                                      return LinearProgressIndicator(
+                                        value:
+                                            1.0 - _animationController!.value,
+                                        backgroundColor: AppColors.gray1
+                                            .withValues(alpha: 0.5),
+                                        valueColor:
+                                            const AlwaysStoppedAnimation<Color>(
+                                              AppColors.dangerRed,
+                                            ),
+                                      );
                                     },
+                                  )
+                                : null,
+                            builder: (context, ref, child) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  if (child != null) ...{
+                                    child,
+                                    SizedBox(height: 12.h),
+                                  },
+                                  Expanded(
+                                    child:
+                                        ref.watch(
+                                          isDialogBoxTextAnimationCompleteProvider,
+                                        )
+                                        ? Text(text, style: textStyle)
+                                        : TypewriterEffectBox(
+                                            key: ValueKey(
+                                              "${dialog.id} + $indexDialog",
+                                            ),
+                                            text: text,
+                                            textStyle: textStyle,
+                                            onFinished: () {
+                                              if (mounted &&
+                                                  !ref.watch(
+                                                    isDialogBoxTextAnimationCompleteProvider,
+                                                  )) {
+                                                ref
+                                                        .read(
+                                                          isDialogBoxTextAnimationCompleteProvider
+                                                              .notifier,
+                                                        )
+                                                        .state =
+                                                    true;
+                                              }
+                                            },
+                                          ),
                                   ),
-                                if (ref.watch(
-                                      isDialogBoxTextAnimationCompleteProvider,
-                                    ) &&
-                                    (!isLastLine || !hasChoices))
-                                  Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: Icon(
-                                      Icons.keyboard_double_arrow_right_rounded,
-                                      size: 32.sp,
-                                      color: AppColors.primaryText,
+                                  SizedBox(height: 12.h),
+                                  if (ref.watch(
+                                        isDialogBoxTextAnimationCompleteProvider,
+                                      ) &&
+                                      isLastLine &&
+                                      hasChoices)
+                                    DialogChoicesBox(
+                                      choices: dialog.branch!.choices,
+                                      onPressed: (choice) {
+                                        _stopTimerAndAnimation();
+                                        ref
+                                            .read(
+                                              soundEffectServiceProvider
+                                                  .notifier,
+                                            )
+                                            .playSelectClick();
+                                        ref
+                                            .read(
+                                              storyControllerProvider.notifier,
+                                            )
+                                            .navigateMode(
+                                              choice.nextType,
+                                              choice.next,
+                                            );
+                                        ref
+                                            .read(
+                                              storyControllerProvider.notifier,
+                                            )
+                                            .storySaveConsequences(
+                                              consequences:
+                                                  choice.consequences!,
+                                            );
+                                      },
                                     ),
-                                  ),
-                              ],
-                            );
-                          },
+                                  if (ref.watch(
+                                        isDialogBoxTextAnimationCompleteProvider,
+                                      ) &&
+                                      (!isLastLine || !hasChoices))
+                                    Align(
+                                      alignment: Alignment.bottomRight,
+                                      child: Icon(
+                                        Icons
+                                            .keyboard_double_arrow_right_rounded,
+                                        size: 32.sp,
+                                        color: AppColors.primaryText,
+                                      ),
+                                    ),
+                                ],
+                              );
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-          Positioned(
-            top: -20,
-            left: 16,
-            child: Container(
-              width: 150.w,
-              padding: EdgeInsets.symmetric(vertical: 8.h),
-              decoration: BoxDecoration(
-                color: boxColor,
-                border: Border.all(color: AppColors.white, width: 2.w),
-              ),
-              child: Text(
-                name,
-                style: AppTypography.large().copyWith(
-                  decoration: TextDecoration.none,
+                    );
+                  },
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
-          ),
-        ],
+            Positioned(
+              top: -20,
+              left: 16,
+              child: Container(
+                width: 150.w,
+                padding: EdgeInsets.symmetric(vertical: 8.h),
+                decoration: BoxDecoration(
+                  color: boxColor,
+                  border: Border.all(color: AppColors.white, width: 2.w),
+                ),
+                child: Text(
+                  name,
+                  style: AppTypography.large().copyWith(
+                    decoration: TextDecoration.none,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -65,57 +65,55 @@ class StorySelectionPage extends ConsumerWidget {
               child: Container(height: 1, color: AppColors.black1),
             ),
           ),
-          body: SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: ListView.builder(
-                itemCount: levels.length,
-                itemBuilder: (context, index) {
-                  final level = levels[index];
-                  final isLocked = index > completedLevel;
-                  final isFirst = index == 0;
-                  final isLast = index == levels.length - 1;
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: ListView.builder(
+              itemCount: levels.length,
+              itemBuilder: (context, index) {
+                final level = levels[index];
+                final isLocked = index > completedLevel;
+                final isFirst = index == 0;
+                final isLast = index == levels.length - 1;
 
-                  return Column(
-                    children: [
-                      if (isFirst) SizedBox(height: 16.h),
-                      LevelCard(
-                        image:
-                            'assets/images/background/${level.background}.webp',
-                        title: level.title,
-                        status: isLocked
-                            ? CardStatus.locked
-                            : (index < completedLevel
-                                  ? CardStatus.completed
-                                  : CardStatus.unlocked),
-                        onStartPressed: isLocked
-                            ? null
-                            : () {
-                                soundEffectService.playSelectClick();
-                                ref
-                                    .read(storyControllerProvider.notifier)
-                                    .initLevel(level);
-                                context.go('/pembelajaran/level');
-                              },
-                        onInfoPressed: () {
-                          soundEffectService.playSelectClick();
-                          showPopupOverlay(
-                            context,
-                            InfoPopup(
-                              title: level.title,
-                              description: level.description,
-                              onClose: () => closePopupOverlay(ref),
-                            ),
-                            ref,
-                          );
-                        },
-                      ),
-                      SizedBox(height: 8.h),
-                      if (isLast) SizedBox(height: 16.h),
-                    ],
-                  );
-                },
-              ),
+                return Column(
+                  children: [
+                    if (isFirst) SizedBox(height: 16.h),
+                    LevelCard(
+                      image:
+                          'assets/images/background/${level.background}.webp',
+                      title: level.title,
+                      status: isLocked
+                          ? CardStatus.locked
+                          : (index < completedLevel
+                                ? CardStatus.completed
+                                : CardStatus.unlocked),
+                      onStartPressed: isLocked
+                          ? null
+                          : () {
+                              soundEffectService.playSelectClick();
+                              ref
+                                  .read(storyControllerProvider.notifier)
+                                  .initLevel(level);
+                              context.go('/pembelajaran/level');
+                            },
+                      onInfoPressed: () {
+                        soundEffectService.playSelectClick();
+                        showPopupOverlay(
+                          context,
+                          InfoPopup(
+                            title: level.title,
+                            description: level.description,
+                            onClose: () => closePopupOverlay(ref),
+                          ),
+                          ref,
+                        );
+                      },
+                    ),
+                    SizedBox(height: 8.h),
+                    if (isLast) SizedBox(height: 16.h),
+                  ],
+                );
+              },
             ),
           ),
         );

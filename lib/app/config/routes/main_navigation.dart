@@ -96,55 +96,60 @@ class MainNavigation extends ConsumerWidget {
     WidgetRef ref,
     int selectedIndex,
   ) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(color: AppColors.black1, width: 1.w),
+    return SafeArea(
+      top: false,
+      left: false,
+      right: false,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(color: AppColors.black1, width: 1.w),
+          ),
         ),
-      ),
-      child: SizedBox(
-        height: 56.h,
-        child: BottomNavigationBar(
-          elevation: 0,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: selectedIndex,
-          onTap: (index) {
-            ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
-            if (ref.read(popupVisibilityProvider)) {
-              closePopupOverlay(ref);
-            }
-            _onItemTapped(index, context);
-          },
-          selectedLabelStyle: AppTypography.verySmallBold(
-            color: AppColors.skyByte,
+        child: SizedBox(
+          height: 56.h,
+          child: BottomNavigationBar(
+            elevation: 0,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: selectedIndex,
+            onTap: (index) {
+              ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
+              if (ref.read(popupVisibilityProvider)) {
+                closePopupOverlay(ref);
+              }
+              _onItemTapped(index, context);
+            },
+            selectedLabelStyle: AppTypography.verySmallBold(
+              color: AppColors.skyByte,
+            ),
+            unselectedLabelStyle: AppTypography.verySmall(
+              color: AppColors.primaryText,
+            ),
+            selectedIconTheme: IconThemeData(size: 24.sp),
+            unselectedIconTheme: IconThemeData(size: 24.sp),
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.school_outlined),
+                activeIcon: Icon(Icons.school),
+                label: 'Pembelajaran',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.emoji_events_outlined),
+                activeIcon: Icon(Icons.emoji_events),
+                label: 'Tantangan',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.casino_outlined),
+                activeIcon: Icon(Icons.casino),
+                label: 'Gerbang Logika',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings_outlined),
+                activeIcon: Icon(Icons.settings),
+                label: 'Pengaturan',
+              ),
+            ],
           ),
-          unselectedLabelStyle: AppTypography.verySmall(
-            color: AppColors.primaryText,
-          ),
-          selectedIconTheme: IconThemeData(size: 24.sp),
-          unselectedIconTheme: IconThemeData(size: 24.sp),
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.school_outlined),
-              activeIcon: Icon(Icons.school),
-              label: 'Pembelajaran',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.emoji_events_outlined),
-              activeIcon: Icon(Icons.emoji_events),
-              label: 'Tantangan',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.casino_outlined),
-              activeIcon: Icon(Icons.casino),
-              label: 'Gerbang Logika',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              activeIcon: Icon(Icons.settings),
-              label: 'Pengaturan',
-            ),
-          ],
         ),
       ),
     );
