@@ -366,7 +366,7 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
     required Map<String, String> consequences,
     bool? isMinigameSuccess,
   }) async {
-    Map<String, int> userConsequences = state.userConsequences ?? {};
+    Map<String, int> userConsequences = Map.from(state.userConsequences ?? {});
     if (isMinigameSuccess != null) {
       if (isMinigameSuccess) {
         consequences.forEach((key, value) {
@@ -383,11 +383,9 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       }
     } else {
       consequences.forEach((key, value) {
-        if (userConsequences.containsKey(key)) {
-          userConsequences[key] = (userConsequences[key]! + int.parse(value));
-        } else {
-          userConsequences[key] = int.parse(value);
-        }
+        userConsequences[key] = (userConsequences.containsKey(key))
+            ? (userConsequences[key]! + int.parse(value))
+            : int.parse(value);
       });
     }
 

@@ -870,7 +870,7 @@
                                 "next": "benarA1_2_bad",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    "humility": "-2",
+                                    "humility": "-1",
                                     "trust_mulyo": "-1"
                                 }
                             }
@@ -1461,7 +1461,7 @@
                             }
                         ],
                         "consequences": {
-                            "knowledge": "-1"
+                            "knowledge": "1"
                         }
                     },
                     {
@@ -1494,7 +1494,7 @@
                             }
                         ],
                         "consequences": {
-                            "knowledge": "-1"
+                            "knowledge": "1"
                         }
                     },
                     {
@@ -1527,7 +1527,7 @@
                             }
                         ],
                         "consequences": {
-                            "knowledge": "-1"
+                            "knowledge": "1"
                         }
                     },
                     {
@@ -1561,7 +1561,7 @@
                             }
                         ],
                         "consequences": {
-                            "knowledge": "-1"
+                            "knowledge": "1"
                         }
                     },
                     {
@@ -1594,7 +1594,7 @@
                             }
                         ],
                         "consequences": {
-                            "knowledge": "-1"
+                            "knowledge": "1"
                         }
                     }
                 ]
@@ -1690,8 +1690,7 @@
                             {
                                 "text": "Yeu kaya Mas Tino ga pernah jadi maba aja.",
                                 "next": "scene2_2",
-                                "nextType": "dialog",
-                                "consequences": {}
+                                "nextType": "dialog"
                             },
                             {
                                 "text": "Dasar tukang ngejek! Coba kasih materi gitu kek adeknya biar ga pusing.",
@@ -1777,7 +1776,7 @@
                                 "next": "scene2_2_3",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    "humility": "-2"
+                                    "humility": "-1"
                                 }
                             }
                         ]
@@ -2671,7 +2670,7 @@
                                 "nextType": "dialog",
                                 "consequences": {
                                     "trust_tino": "-1",
-                                    "humility": "-2"
+                                    "humility": "-1"
                                 }
                             }
                         ]
@@ -2787,7 +2786,7 @@
                             }
                         ],
                         "consequences": {
-                            "knowledge": "-1"
+                            "knowledge": "1"
                         }
                     },
                     {
@@ -2821,7 +2820,7 @@
                             }
                         ],
                         "consequences": {
-                            "knowledge": "-1"
+                            "knowledge": "1"
                         }
                     },
                     {
@@ -2855,7 +2854,7 @@
                             }
                         ],
                         "consequences": {
-                            "knowledge": "-1"
+                            "knowledge": "1"
                         }
                     }
                 ],
@@ -2989,7 +2988,7 @@
                             "dialog"
                         ],
                         "consequences": {
-                            "knowledge": "+1"
+                            "knowledge": "1"
                         }
                     },
                     {
@@ -3044,7 +3043,7 @@
                             "dialog"
                         ],
                         "consequences": {
-                            "knowledge": "+1"
+                            "knowledge": "1"
                         }
                     },
                     {
@@ -3110,7 +3109,7 @@
                             "dialog"
                         ],
                         "consequences": {
-                            "knowledge": "+1"
+                            "knowledge": "1"
                         }
                     }
                 ]
@@ -3538,7 +3537,7 @@
                                 "next": "salahA3_1_1",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    "humility": "-2"
+                                    "humility": "-1"
                                 }
                             },
                             {
@@ -3829,7 +3828,7 @@
                                 "next": "intro3_2_2",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    "humility": "-2"
+                                    "humility": "-1"
                                 }
                             }
                         ]
@@ -4012,7 +4011,7 @@
                                 "next": "salahA3_2_1",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    "humility": "+2",
+                                    "humility": "+1",
                                     "trust_rusdi": "+1"
                                 }
                             },
@@ -4068,7 +4067,7 @@
                                 "next": "salahA3_2_1",
                                 "nextType": "dialog",
                                 "consequences": {
-                                    "humility": "+2",
+                                    "humility": "+1",
                                     "trust_rusdi": "+1"
                                 }
                             },
