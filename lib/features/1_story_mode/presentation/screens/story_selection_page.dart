@@ -3,15 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:timetocode/app/data/services/hive_service.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:timetocode/app/widgets/card/card.dart';
-import 'package:timetocode/app/widgets/popups/info_popup.dart';
+// import 'package:timetocode/app/widgets/popups/info_popup.dart';
 import 'package:timetocode/features/1_story_mode/data/controllers/story_progress_controller.dart';
 import 'package:timetocode/features/1_story_mode/data/controllers/story_gameplay_controller.dart';
 import 'package:timetocode/features/1_story_mode/data/providers/story_level_provider.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
+import 'package:timetocode/features/1_story_mode/presentation/widgets/consequences_analytics_popup.dart';
 
 class StorySelectionPage extends ConsumerWidget {
   const StorySelectionPage({super.key});
@@ -100,10 +102,16 @@ class StorySelectionPage extends ConsumerWidget {
                         soundEffectService.playSelectClick();
                         showPopupOverlay(
                           context,
-                          InfoPopup(
-                            title: level.title,
-                            description: level.description,
-                            onClose: () => closePopupOverlay(ref),
+                          // InfoPopup(
+                          //   title: level.title,
+                          //   description: level.description,
+                          //   onClose: () => closePopupOverlay(ref),
+                          // )
+                          ConsequencesAnalyticsPopup(
+                            statLevel: index + 1,
+                            consequences: ref
+                                .read(hiveProvider)
+                                .storySnapShotGetConsequences(index + 1),
                           ),
                           ref,
                         );

@@ -1,11 +1,13 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/app/widgets/popups/menu_popup.dart';
 import 'package:timetocode/app/data/providers/popup_visibility_provider.dart';
 import 'package:timetocode/features/1_story_mode/engine/core/game_engine.dart';
 import 'package:timetocode/features/1_story_mode/minigames/drag_and_drop_code/presentation/screens/drag_and_drop_question_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/adaptive_text_widget.dart';
+import 'package:timetocode/features/1_story_mode/presentation/widgets/consequences_analytics_popup.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/dialog_box.dart';
 import 'package:timetocode/features/1_story_mode/presentation/widgets/intro.dart';
 import 'package:timetocode/features/1_story_mode/minigames/quiz/presentation/widgets/question_box_widget.dart';
@@ -82,6 +84,35 @@ class _StoryGameplayPageState extends ConsumerState<StoryGameplayPage> {
                   const StoryMenu(),
 
                   const SkipButton(),
+
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 16.h, left: 16.w),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.lightbulb_outline,
+                          size: 32.sp,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          showPopupOverlay(
+                            context,
+                            ConsequencesAnalyticsPopup(
+                              statLevel: ref
+                                  .read(storyControllerProvider)
+                                  .activeLevel!
+                                  .level,
+                              consequences: ref
+                                  .watch(storyControllerProvider)
+                                  .userConsequences,
+                            ),
+                            ref,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
