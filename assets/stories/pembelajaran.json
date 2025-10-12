@@ -4499,6 +4499,1051 @@
                 "#include <stdio.h>\n\nint main() {\n    int i = 1;\n    do {\n        printf(\"Perulangan ke-%d\\n\", i);\n        i++;\n    } while (i <= 5);\n    return 0;\n}",
                 "Penjelasan:\ndo { ... } while (i <= 5): Program ini akan menjalankan perulangan minimal satu kali, meskipun i awalnya lebih besar dari 5 (karena kondisi diperiksa setelah perulangan)."
             ]
+        },
+        {
+            "level": 5,
+            "description": "Pahami fungsi, return, dan void untuk membuat kodemu lebih terstruktur dan efisien.",
+            "title": "Fungsi, Return & Void",
+            "background": "lab",
+            "character1": "Adrian",
+            "character1Images": [
+                "adriankampus_biasa",
+                "adriankampus_marah",
+                "adriankampus_senang",
+                "adriankampus_kecewa",
+                "adriankampus_aksi",
+                "adriankampus_fokus",
+                "adriankampus_penasaran",
+                "adriankampus_ngambek",
+                "adriankampus_ngambek2",
+                "adriankampus_sombong"
+            ],
+            "character2": "Pak Rongga",
+            "character2Images": [
+                "rongga_biasa",
+                "rongga_marah",
+                "rongga_senang",
+                "rongga_kecewa",
+                "rongga_aksi"
+            ],
+            "ilustrations": [
+                "FUNGSI-1",
+                "FUNGSI-2"
+            ],
+            "start": "preDialog5_1",
+            "typeStart": "preDialog",
+            "preDialog": [
+                {
+                    "id": "preDialog5_1",
+                    "text": "Keesokan harinya, Adrian duduk terpaku di bangkunya. Di depan kelas, Pak Rongga, dosen pemrograman yang terkenal tegas, berdiri dengan wajah serius.",
+                    "next": "preDialog5_2",
+                    "nextType": "preDialog"
+                },
+                {
+                    "id": "preDialog5_2",
+                    "text": "\"Buatlah program untuk menghitung nilai akhir mahasiswa, lengkap dengan tugas, kuis, UTS, dan UAS,\" ucapnya dengan suara berat.",
+                    "next": "preDialog5_3",
+                    "nextType": "preDialog"
+                },
+                {
+                    "id": "preDialog5_3",
+                    "text": "Jantung Adrian langsung berdegup kencang. la panik, teringat kode sebelumnya yang berantakan: variabel bertumpuk, logika acak, dan susah dipahami.",
+                    "next": "intro5_1",
+                    "nextType": "dialog"
+                }
+            ],
+            "dialogs": [
+                {
+                    "id": "intro5_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Jika selama ini kalian menulis kode yang panjang dan mengulang-ulang baris yang sama, hari ini saatnya belajar cara jadi programmer yang lebih rapi dan efisien." 
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Siap Pak." 
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Adrian coba saya mau tanya. Kamu sudah paham fungsi itu buat apa?" 
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Eh... untuk menyimpan potongan kode yang bisa dipakai ulang, Pak, supaya tidak menulis hal yang sama terus menerus." 
+                        }
+                    ],
+                    "next": "scene5_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "scene5_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Bagus. Coba lebih rinci. Misal kamu punya data nilai lima mahasiswa. Prosesnya dari input sampai cetak hasil, kamu bisa pisah jadi fungsi apa aja?"
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            { 
+                                "text": "Input nilai, terus hitung rata-rata, terus cetak hasil gitu ya, Pak?", 
+                                "next": "scene5_1_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Pak, saya mau tanya, apakah setiap fungsi itu hanya mengerjakan satu tugas saja ya?", 
+                                "next": "scene5_2", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Jadi tiga fungsi, mungkin ya... input, hitung rata-rata, sama cetak hasil?", 
+                                "next": "scene5_3", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Paham pak, itu materi gampang. Seinget saya, fungsi itu kan buat nyimpen kode biar nggak ribet...", 
+                                "next": "scene5_4", 
+                                "nextType": "dialog" 
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "scene5_1_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Input nilai, terus hitung rata-rata, terus cetak hasil gitu ya, Pak?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul. Bisa kamu pecah jadi tiga fungsi, inputNilai, hitungRata, dan tampilkanHasil."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ohh, jadi tiap fungsi punya tugasnya sendiri. Input buat ngambil data dari user, yang hitung rata-rata buat proses, terakhir yang cetak buat nampilin hasil."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Nah, itu udah tepat. Tapi coba pikir, gimana kalau user masukin nilai aneh, misalnya 200 atau minus 10? Hasilnya bakal berantakan, kan?"
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Waduh iya juga Pak, saya nggak kepikiran sampai ke situ."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Makanya perlu validasi input. Jadi programmu nggak asal jalan, tapi juga aman dipakai."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Oke Pak, sekarang mulai kebayang, Pak. Jadi tiap input harus dicek dulu biar nggak bikin hasilnya salah, tapi gimana caranya ya pak"
+                        }
+                    ],
+                    "next": "materi5_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "scene5_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Pak, saya mau tanya... tiap fungsi itu cuma buat satu tugas aja ya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "lya, kalau dicampur memang bisa jalan, tapi nanti kode susah diatur dan dimodifikasi. Lebih baik tiap fungsi fokus ke satu hal."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Oh, jadi tiap fungsi itu kayak bagian-bagian kecil yang masing-masing pegang satu tugas supaya gampang dipahami dan dipakai ulang."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul. Jadi kalau mau pakai fungsi itu di tempat lain, nggak perlu nulis ulang dari nol."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ah... saya mulai kebayang, Pak. Tapi kalau user masukin nilai aneh, kayak minus atau terlalu besar, itu gimana ya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Nah, itu yang namanya validasi input."},
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Validasi input? Bagaimana konsepnya ya pak?"
+                        }
+                    ],
+                    "next": "materi5_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "scene5_3",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Jadi tiga fungsi, mungkin ya... input, hitung rata-rata, sama cetak hasil?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "lya, itu udah tepat. Masing-masing fungsi punya tugas khusus."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Tapi, saya masih belum ngerti gimana cara panggil fungsi-fungsi itu supaya nggak bingung."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Kamu cukup panggil fungsi satu per satu sesuai urutan proses. Misalnya, input dulu, baru hitung, terus cetak hasil."},
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Kalau ada yang salah waktu input, gimana, Pak?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Kamu bisa tambahin validasi di fungsi input supaya minta ulang kalau inputnya salah."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Eh maksudnya gimana pak? Saya belum paham.."
+                        }
+                    ],
+                    "next": "materi5_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "scene5_4",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Paham pak, itu materi gampang."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Seinget saya, fungsi itu kan buat nyimpen kode biar nggak ribet..."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Oh gitu ya? Kalau menurutmu gampang, coba kerjain soal ini."
+                        }
+                    ],
+                    "next": "soalA5_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "materi5_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Oke, jadi gini. Kamu pasti pernah belanja online kan? Nah kurir bawa paket sesuai permintaan. Kadang dia bawa bilangan bulat, kadang bilangan desimal, atau bahkan karakter."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Jadi paket yang dibawa kurir itu apa maksudnya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Itu yang disebut nilai return. Jadi, isi paketnya itu nilai yang dikirim balik oleh fungsi. Kalau paketnya berisi bilangan bulat, berarti fungsi itu punya tipe return int. Kalau desimal, float. Kalau karakter, char."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Oh, berarti fungsi itu kayak kurir yang dikirim buat ngasih paket dengan jenis tertentu, ya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "lya, benar! Terus isi paketnya bisa berubah tergantung isi fungsi, atau kondisi yang kamu kasih ke fungsi itu."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Jadi kalau saya panggil fungsi, saya bakal dapet paket berupa nilai yang sesuai tipe return-nya, dan itu hasil dari proses di dalam fungsi?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "lya. Jadi fungsi itu tugas yang kamu minta, dan nilai return itu hasil yang dikirim balik sama fungsi ke kamu."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Wah, jadi sekarang saya mulai paham! Fungsi itu kayak kurir yang bawa paket, dan paketnya itu nilai return. Tergantung jenisnya, bisa int, float, char, dan lain-lain."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Bagus kalau kamu udah mulai paham. Sekarang, coba saya tes sedikit ya."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Boleh, Pak. Saya ready!"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Coba kamu jawab soal ini."
+                        }
+                    ],
+                    "next": "soalA5_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarA5_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Oh, itu fungsi dengan return integer, Pak."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul! Fungsi tambah ini mengembalikan nilai bertipe int, sesuai dengan deklarasinya."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Hehe, akhirnya bisa jawab bener, Pak."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Bagus, jangan kebanyakan gaya dulu. Kalau udah ngerti dasarnya, ayo kita lanjut ke soal berikutnya."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Siap, Pak. Saya udah lebih pede sekarang."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Nah, sekarang coba perhatikan, saya ada fungsi, coba kamu tebak termasuk jenis apa fungsi itu"
+                        }
+                    ],
+                    "next": "soalB5_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahA5_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Hayoo... coba perhatikan lagi. Di dalam fungsi itu ada sesuatu yang dikembalikan nggak?"
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Oiya, Pak. Saya lihat ada return-nya."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul. Kalau ada return, berarti fungsi ini pasti ngasih balik nilai. Kalau void, dia nggak bakal ngasih balik apa-apa. Nah, sekarang pikirkan baik-baik: nilai yang dikembalikan itu tipenya apa?"
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            { 
+                                "text": "Hmm… iya, saya mulai kepikiran arahnya, Pak.", 
+                                "next": "salahA5_1_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Aduh, Pak… maaf, saya masih belum paham.", 
+                                "next": "salahA5_1_2", 
+                                "nextType": "dialog" 
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "salahA5_1_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Hmm... iya, saya mulai kepikiran arahnya, Pak."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Nah bagus, sekarang coba jawab soalnya dengan teliti"
+                        }
+                    ],
+                    "next": "soalA5_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahA5_1_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Aduh, Pak... maaf, saya masih belum paham."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Gak apa-apa. Coba gini aja: lihat ekspresi a + b. Hasil dari penjumlahan itu tipenya apa? Nah, fungsi ini mengembalikan tipe yang sama dengan hasil penjumlahan itu."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ohhh, jadi maksudnya tipe data yang dikembalikan fungsi harus sesuai sama tipe data dari nilai yang di-return, ya Pak?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul sekali Adrian! Kuncinya adalah lihat apa yang dikembalikan fungsi, lalu cocokin tipe datanya."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Saya mulai paham, Pak! Saya akan coba lagi soalnya!"
+                        }
+                    ],
+                    "next": "soalA5_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahB5_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Aduh, bagian fungsi ini bikin pusing, Pak..."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Ah, itu wajar. Santai aja dulu. Coba lihat lagi cara fungsi ini menerima input dan menghasilkan output-itu kuncinya buat ngerti logikanya."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ohh... berarti bukan cuma logikanya, tapi liat alur datanya juga, ya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul! Sekarang perhatiin tiap parameter dan apa yang dikembalikan fungsi. Dari situ kamu bakal tahu bagian mana yang kurang jelas atau bikin salah."
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            { 
+                                "text": "Pak kok salah sih, logika saya tadi perasaan dah bener", 
+                                "next": "salahB5_1_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Aduh, Pak… saya masih agak bingung sama fungsi ini.", 
+                                "next": "salahB5_1_2", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Pak, kok hasilnya nggak sesuai ya? Saya kira fungsi ini cuma nambahin angka, tapi kok malah beda", 
+                                "next": "salahB5_1_3", 
+                                "nextType": "dialog" 
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "salahB5_1_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Pak kok salah sih, logika saya tadi perasaan dah bener"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Ya itu berarti logikamu kurang bener"
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Hmm berarti penjelasan bapak yang kurang jelas hehe"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Itumah logikamu yang macet di jalan. Coba pikir lagi: fungsi itu menerima input dan menghasilkan sesuatu. Nah, pertanyaannya, apa yang harus dikembalikan supaya bisa dipakai di luar fungsi?"
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ohh... berarti fokusnya ke nilai yang dikembalikan, ya, Pak?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul! Coba ikuti alurnya dari input sampai hasil keluar. Dari situ kamu bakal tahu bagian mana yang perlu diperbaiki."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ahh, paham sekarang, Pak. Oke deh, saya coba lagi."
+                        }
+                    ],
+                    "next": "soalB5_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahB5_1_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Aduh, Pak... saya masih agak bingung sama fungsi ini."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Tenang dulu, Adrian. Coba saya jelasin dikit ya. Fungsi kan menerima beberapa input, lalu memprosesnya dalam beberapa langkah sebelum menghasilkan sesuatu. Nah, coba pikir, apa yang dilakukan setiap langkah fungsi itu."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ohh... jadi saya harus teliti tiap langkah di dalam fungsi dulu, ya, Pak?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "lya, betul! Jangan fokus langsung ke hasil. Perhatikan dulu apa yang masuk, apa yang diproses, dan apa yang keluar. Dari situ, kamu bisa mulai melihat bagian mana yang bikin bingung."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ahh... sekarang mulai kebayang dikit, Pak. Oke, saya coba ulang lagi."
+                        }
+                    ],
+                    "next": "soalB5_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahB5_1_3",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Pak, kok hasilnya nggak sesuai ya? Saya kira fungsi ini cuma nambahin angka, tapi kok malah beda."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Hm, iya, sepertinya ada yang salah tangkep. Coba pikir lagi: fungsi ini menerima input dan memprosesnya langkah demi langkah. Apa yang dilakukan tiap langkah itu?"
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Oh... berarti bukan cuma nambahin langsung ya, Pak? Tapi ada proses lain di dalam fungsi."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul! Nah, coba perhatikan alur dari input sampai hasil akhir, dari situ kamu bakal tahu bagian mana yang bikin salah kaprah."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ahh, paham sekarang, Pak. Oke deh, saya coba lagi."
+                        }
+                    ],
+                    "next": "soalB5_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarB5_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul banget! Fungsi sapa() ini nggak mengembalikan nilai apapun, jadi termasuk fungsi tanpa return."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Nah, karena kamu udah ngerti konsep ini, sekarang kita bisa lanjut ke materi berikutnya: fungsi yang tidak mengembalikan nilai sama sekali, atau yang biasa disebut void. Ini sedikit beda dari fungsi sebelumnya yang punya return value."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ohh... jadi fungsi void cuma menjalankan perintah di dalamnya, tapi nggak ngasih balik hasil, ya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Nah, pertanyaanmu bagus banget! Cara kerjanya memang agak unik, tapi jawabannya nanti akan dibahas di materi selanjutnya. Jadi simak baik-baik ya, saya bakal tunjukkin contohnya langsung."
+                        }
+                    ],
+                    "next": "intro5_2",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "intro5_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Nah, karena kamu udah paham soal fungsi yang pakai return, sekarang kita bahas tipe yang sedikit beda, ya."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Beda gimana, Pak?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Kalau yang tadi hasilnya dikembalikan ke pemanggil, fungsi yang ini enggak. Dia hanya melakukan sesuatu terus selesai."
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            { 
+                                "text": "Lho, kalau gitu gunanya apa?", 
+                                "next": "intro5_2_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Oh iya, ini kayaknya udah pernah dibahas deh, Pak.", 
+                                "next": "intro5_2_2", 
+                                "nextType": "dialog" 
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "intro5_2_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Lho, kalau gitu gunanya apa?"
+                        }
+                    ],
+                    "next": "materi5_2",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "intro5_2_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Oh iya, ini kayaknya udah pernah dibahas deh, Pak."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "lya, materi ini pernah disinggung sebelumnya, tapi waktu itu cuma lewat aja, belum terlalu dalam."
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            { 
+                                "text": "Intinya udah pernah disinggung kan, pak?", 
+                                "next": "intro5_2_2_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "“Waduh, terus gimana tuh pak?", 
+                                "next": "intro5_2_2_2", 
+                                "nextType": "dialog" 
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "intro5_2_2_1",
+                    "dialogs": [
+                        { 
+                        "characterIndex": 1, 
+                        "line": "Intinya udah pernah disinggung kan pak?"
+                    },
+                        { 
+                        "characterIndex": 2, 
+                        "line": "Iya betul, terus kenapa kalau udah disinggung?"
+                    },
+                        { 
+                        "characterIndex": 1, 
+                        "line": "Lanjut ke soal aja lah, Pak. Biar ga kelamaan juga ini"
+                    }
+                    ],
+                    "next": "soalA5_2",
+                    "nextType": "dragAndDrop"
+                },
+                {
+                    "id": "intro5_2_2_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Waduh, terus gimana tuh pak?"
+                        }
+                    ],
+                    "next": "materi5_2",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "materi5_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Nah, pertama saya jelasin dulu, ya. Fungsi yang nggak mengembalikan nilai disebut void function."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Fungsinya tetap penting banget, karena dia bisa melakukan aksi, walaupun nggak ngasih hasil balik ke program utama."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Hmm... aksi kayak gimana maksudnya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Gini deh, biar gampang kebayang. Bayangin kamu ngirim pengumuman di grup kelas. Kamu ngetik, 'Besok kumpul jam 8 pagi!', lalu kirim."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Oke... Terus gimana tuh pak?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Begitu kamu kirim, tugasmu selesai. Kamu nggak dapet balasan angka, teks, atau hasil apa pun. Tapi pesannya tetap sampai, dan orang-orang jadi tahu informasinya."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ohh... jadi walau nggak ada 'hasil balik', aksinya tetap punya efek, ya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Tepat banget! Nah, fungsi void juga gitu. Dia cuma ngelakuin sesuatu tanpa ngasih nilai balik ke program."
+                        },
+                        {
+                             "characterIndex": 1, 
+                             "line": "Oke, mulai paham nih. Jadi kayak aksi langsung gitu ya, bukan proses perhitungan."
+                            },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Nah, betul! Biar makin paham, coba kamu kerjain soal ini deh."
+                        }
+                    ],
+                    "next": "soalA5_2",
+                    "nextType": "dragAndDrop"
+                },
+                {
+                    "id": "benarA5_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Mantap! Kamu berhasil menyusun fungsi void dengan benar. Sekarang program ini bisa membaca nama dan usia, menyapa pengguna, dan menampilkan pesan tambahan dengan sempurna."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Wih, ternyata kalau paham materinya, gampang juga ya nyusunnya."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "lya, bener banget. Intinya fungsi void itu ngebantu kita bikin program lebih rapi tanpa harus mikirin nilai balik. Kalau udah lancar, nanti bisa coba bikin fungsi yang lebih kompleks, misal ada beberapa parameter dan beberapa aksi di dalamnya."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Wah, contoh yang gimana, Pak? Aku pengen lihat langsung biar kebayang"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Oke deh, coba perhatikan contoh ini soal ini. "
+                        }
+                    ],
+                    "next": "soalB5_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahA5_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Hm... saya rasa jawaban saya belum tepat, Pak."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "lya, Adrian. Tapi santai dulu, yuk kita lihat lagi. Coba perhatikan bagian fungsi ini: tanda kurung () dan tipe datanya di depan. Itu bisa kasih petunjuk penting, lho."
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            { 
+                                "text": "Maaf Pak, saya masih bingung.", 
+                                "next": "salahA5_2_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Lah kok salah, Pak? Perasaan logikanya tadi sudah bener deh.", 
+                                "next": "salahA5_2_2", 
+                                "nextType": "dialog" 
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "salahA5_2_1",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Maaf Pak, saya masih bingung."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Gak apa-apa, Adrian. Tapi coba perhatikan baik-baik, ya. Fokus di dua hal: tipe data di depan fungsi dan tanda kurung (). Dua hal itu kuncinya buat tahu fungsi ini ngeluarin nilai atau enggak."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Coba dijelasin lagi, Pak. Otak saya masih belum nyambung.."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Oke, dengerin baik-baik. Kalau di depan fungsi tertulis int, float, atau char, berarti fungsi itu mengembalikan nilai."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Tapi kalau tertulis void, artinya fungsi itu nggak mengembalikan apa pun. Nah, tanda kurung () itu menunjukkan apakah fungsi punya parameter atau tidak. Jelas sampai sini?"
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Bisa kasih contoh nggak, Pak?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Misalnya int hitungLuas (). Nah, karena diawali int, berarti fungsi itu mengembalikan nilai bertipe int. Tapi kalau void sapa (), berarti fungsi itu nggak ngembaliin nilai apa pun."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ohh... jadi tanda kurung sama tipe data itu yang nentuin fungsi itu ngeluarin nilai atau enggak, ya Pak?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul banget! Sekarang coba lihat lagi soalnya, susun dengan teliti. Saya yakin kamu bisa bedain mana fungsi yang pakai return dan mana yang enggak."
+                        }
+                    ],
+                    "next": "soalA5_2",
+                    "nextType": "dragAndDrop"
+                },
+                {
+                    "id": "salahA5_2_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Lah kok salah, Pak? Perasaan logikanya tadi sudah bener deh."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Hm, mungkin ada beberapa hal yang terlewat. Coba lihat lagi tanda kurung () dan tipe datanya. itu petunjuk penting untuk input dan output fungsi."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Oh iya, Pak. Sekarang saya susun dengan lebih teliti."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Bagus, cluenya fokus di tipe data, lalu jawab ulang soalnya."
+                        }
+                    ],
+                    "next": "soalA5_2",
+                    "nextType": "dragAndDrop"
+                },
+                {
+                    "id": "SalahB5_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Wah, kayanya saya masih sedikit bingung pak."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Ngga masalah Adrian. Coba kita bahas sedikit. Fungsi itu bisa mengembalikan nilai atau tidak. Kalau mengembalikan nilai artinya fungsi memberikan hasil yang bisa digunakan kembali di bagian lain dari program."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Jadi kalau fungsi tidak mengembalikan nilai artinya apa pak?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Fungsi yang tidak mengembalikan nilai hanya melakukan tugas tertentu, seperti mencetak sesuatu ke layar tanpa memberikan hasil yang bisa dipakai di tempat lain."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Oh jadi tergantung apa yang dilakukan oleh fungsi itu ya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Yap betul sekali! Sekarang coba jawab soalnya dengan teliti ya."
+                        }
+                    ],
+                    "next": "soalB5_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarB5_2",
+                    "dialogs": [
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Pak... jadi maksudnya fungsi itu memanggil dirinya sendiri ya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Iya, Adrian. Tapi coba pikir, kenapa kita bisa pakai cara ini? Kenapa nggak pakai cara biasa?"
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Mungkin... karena masalahnya bisa dipecah dulu jadi bagian-bagian kecil, terus diselesaikan satu per satu?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Persis! Nah, itu inti rekursif: pecah masalah besar jadi potongan kecil, lalu gabungkan hasilnya. Nggak cuma untuk coding, tapi juga cara berpikir yang efisien."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Ahh... baru nyambung sekarang. Yang awalnya ribet jadi lebih gampang dibayangkan."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Betul. Nah, insight ini bisa kamu pakai juga buat masalah lain, bukan cuma kode."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "lya, Pak. Jadi intinya bukan cuma soal hasilnya, tapi juga cara berpikirnya, ya?"
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Tepat. Oke, sebelum kamu pulang, saya mau kamu buat laporan singkat tentang contoh penerapan rekursif. Nggak usah panjang, tapi pastikan kamu paham konsepnya."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Baik, Pak. Saya kerjain malam ini aja biar masih hangat di kepala."
+                        },
+                        { 
+                            "characterIndex": 2, 
+                            "line": "Bagus. Kadang ide muncul pas suasana tenang, jadi cari tempat yang bikin kamu fokus."
+                        },
+                        { 
+                            "characterIndex": 1, 
+                            "line": "Siap, Pak. Kayanya saya bakal ngerjain laporannya di café aja, biar lebih fokus."
+                        }
+                    ]
+                }
+            ],
+            "minigame": {
+                "questions": [
+                    {
+                        "id": "soalA5_1",
+                        "text": "Coba lihat kode ini. Nah, tipe fungsi 'tambah' ini termasuk kategori apa ya?",
+                        "code": "#include <stdio.h>\nint tambah(int a, int b) {\n    return a + b;\n}\nint main() {\n    int hasil = tambah(4, 5);\n    printf(\"Hasil: %d\\n\", hasil);\n    return 0;\n}",
+                        "choices": [
+                            { 
+                                "text": "Fungsi dengan return integer", 
+                                "isCorrect": true, 
+                                "next": "benarA5_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Fungsi dengan no return(void)", 
+                                "isCorrect": false, 
+                                "next": "salahA5_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Fungsi dengan return float", 
+                                "isCorrect": false, 
+                                "next": "salahA5_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "Fungsi dengan return char", 
+                                "isCorrect": false, 
+                                "next": "salahA5_1", 
+                                "nextType": "dialog" 
+                            }
+                        ]
+                    },
+                    {
+                        "id": "soalB5_1",
+                        "text": "Perhatikan potongan kode berikut. Termasuk jenis fungsi apakah potongan kode tersebut?",
+                        "code": "#include <stdio.h>\nvoid sapa() {\n    printf(\"Halo!\\n\");\n}",
+                        "choices": [
+                            { 
+                                "text": "fungsi tanpa parameter dan tanpa nilai balik", 
+                                "isCorrect": true, 
+                                "next": "benarB5_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "fungsi dengan parameter dan tanpa nilai balik", 
+                                "isCorrect": false, 
+                                "next": "salahB5_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "fungsi tanpa parameter dan dengan nilai balik", 
+                                "isCorrect": false, 
+                                "next": "salahB5_1", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "fungsi dengan parameter dan dengan nilai balik", 
+                                "isCorrect": false, 
+                                "next": "salahB5_1", 
+                                "nextType": "dialog" 
+                            }
+                        ]
+                    },
+                    {
+                        "id": "soalB5_2",
+                        "text": "Perhatikan potongan kode berikut. Termasuk jenis fungsi apakah potongan kode tersebut?",
+                        "code": "#include <stdio.h>\nint faktorial(int n) {\n    if (n==0) return 1;\n    return n * faktorial(n-1);\n}",
+                        "choices": [
+                            { 
+                                "text": "fungsi iteratif", 
+                                "isCorrect": false,
+                                "next": "SalahB5_2", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "fungsi tanpa parameter dan tanpa nilai balik", 
+                                "isCorrect": false, 
+                                "next": "SalahB5_2", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "fungsi rekursif", 
+                                "isCorrect": true, 
+                                "next": "benarB5_2", 
+                                "nextType": "dialog" 
+                            },
+                            { 
+                                "text": "fungsi prosedural", 
+                                "isCorrect": false, 
+                                "next": "SalahB5_2", 
+                                "nextType": "dialog" 
+                            }
+                        ]
+                    }
+                ],
+                "dragAndDrop": [
+                    {
+                        "id": "soalA5_2",
+                        "instruction": "Drag potongan kode yang tersedia ke kotak kosong untuk melengkapi program C. Program ini menggunakan fungsi void untuk menampilkan pesan sambutan dan pesan tambahan. Pastikan semua kotak diisi dengan urutan yang benar agar program berjalan sesuai tujuan.",
+                        "scaffoldCode": "#include <stdio.h>\n\nint main(){\n\tchar nama[30];\n\tint usia;\n\tprintf(\"Masukkan nama:\");\n\t[dz1]\n\tprintf(\"Masukkan usia:\");\n\t[dz2]\n\t[dz3]\n\t[dz4]\n\treturn 0;\n}\n\n[dz5]\n\t[dz6]\n\n[dz7]",
+                        "draggableOptions": [
+                            { 
+                                "id": "a", 
+                                "content": { "type": "text", "value": "sapa(nama, usia);" }
+                            },
+                            { 
+                                "id": "b", 
+                                "content": { "type": "text", "value": "scanf(\"%s\", nama);" } 
+                            },
+                            { 
+                                "id": "c", 
+                                "content": { "type": "text", "value": "scanf(\"%d\", &usia);" } 
+                            },
+                            { 
+                                "id": "d", 
+                                "content": { "type": "text", "value": "pesanTambahan();" } 
+                            },
+                            {
+                                "id": "e",
+                                "content": { "type": "text", "value": "void sapa(char n[], int u)"}
+                            },
+                            {
+                                "id": "f",
+                                "content": { "type": "text", "value": "void pesanTambahan() { printf(\"Semoga harimu menyenangkan!\\n\"); }"}
+                            },
+                            {
+                                "id": "g",
+                                "content": { "type": "text", "value": "{ printf(\"Halo, %s! Kamu berusia %d tahun.\n\", n, u); }"}
+                            }
+                        ],
+                        "dropZones": [
+                            { "id": "dz1" },
+                            { "id": "dz2" },
+                            { "id": "dz3" },
+                            { "id": "dz4" },
+                            { "id": "dz5" },
+                            { "id": "dz6" },
+                            { "id": "dz7" }
+                        ],
+                        "correctSequence": ["b", "c", "a", "d", "e", "g", "f"],
+                        "next": [
+                            "salahA5_2",
+                            "benarA5_2"],
+                        "nextType": [
+                            "dialog",
+                            "dialog"
+                        ]
+                    }
+                ]
+            },
+            "summary": [
+                "Fungsi dengan Return Value: Mengembalikan nilai setelah dieksekusi. Nilai tersebut bisa disimpan dalam variabel dan digunakan di bagian lain dalam program.",
+                "Contoh fungsi dengan return value:\n#include <stdio.h>\n// Fungsi yang mengembalikan hasil penjumlahan dua angka\nint tambah(int a, int b) {\n    return a + b; // Mengembalikan hasil penjumlahan\n}\nint main() {\n    int hasil = tambah (3, 4); // Memanggil fungsi dan menyimpan hasilnya\n    printf(\"Hasil penjumlahan: %d\\n\", hasil); // Menampilkan hasil\n    return 0;\n}\nOutput dari program: Hasil penjumlahan: 7",
+                "Fungsi Void: Tidak mengembalikan nilai apapun. Biasanya untuk melakukan aksi, seperti menampilkan pesan atau mengubah data.",
+                "Contoh fungsi void:\n#include <stdio.h>\n// Fungsi void yang hanya mencetak pesan\nvoid cetakPesan() {\n    printf(\"Ini adalah pesan dari fungsi void.\\n\");\n}\nint main() {\n    cetakPesan(); // Memanggil fungsi void\n    return 0;\n}\nOutput dari program: Ini adalah pesan dari fungsi void.",
+                "Perbedaan utama: Fungsi dengan return value mengembalikan hasil, sedangkan fungsi void hanya melakukan aksi tanpa memberikan hasil.",
+                "inti cerita: Adrian merasa cemas dengan tugas besar membuat program untuk menghitung nilai akhir mahasiswa, namun Pak Rongga mengajarkan pentingnya menggunakan fungsi untuk memecah program menjadi bagian kecil yang mudah dipahami dan digunakan kembali. Setelah berdiskusi, Adrian mulai paham bahwa fungsi bisa mengembalikan nilai (return) atau hanya melakukan aksi (void), dan setiap fungsi harus memiliki tugas spesifik. Dengan pemahaman ini, Adrian lebih percaya diri menyelesaikan tugas besar dan membuat program yang lebih rapi dan efisien."
+            ]
         }
     ]
 }
