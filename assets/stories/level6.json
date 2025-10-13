@@ -1,0 +1,645 @@
+{
+    "levels":[
+        {
+            "level": 6,
+            "description": "",
+            "title": "",
+            "background": [""],
+            "character1": "Jennie",
+            "character1Images": [
+                ""
+            ],
+            "character2": "Adrian",
+            "character2Images": [
+                ""
+            ],
+            "ilustrations": [""],
+            "start": "preDialog1",
+            "typeStart": "preDialog",
+            "preDialog": [
+                {
+                    "id": "preDialog1",
+                    "text": "Sepulang dari kampus, Adrian memutuskan mampir ke café favoritnya. Ia duduk di sudut ruangan sambil membuka laptop dan menyesap kopi hangat. Laporan dari Pak Rongga masih terbuka di layar, tapi pikirannya terasa sedikit buntu. Suasana café cukup ramai, tapi tetap nyaman. Sampai akhirnya, dari balik pintu, seseorang yang tak asing masuk dengan langkah santai…",
+                    "next": "preDialog2",
+                    "nextType": "preDialog"
+                },
+                {
+                    "id": "preDialog2",
+                    "text": "(Suara lonceng kecil di pintu café terdengar. Adrian yang sedang mengetik sebentar menoleh. Dari arah pintu, seseorang yang tak asing muncul — Jennie, teman sekelasnya.)",
+                    "next": "intro6_1",
+                    "nextType": "dialog"
+                }
+            ],
+            "dialogs": [
+                {
+                    "id": "intro6_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Eh... Adrian? Wah, nggak nyangka ketemu kamu di sini. Sering ke café ini, ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Oh, Jennie? Iya, ini tempat andalan buat ngoding. Lagi nyari suasana biar lebih fokus aja. Kamu sendiri, kok bisa ke sini?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hehe, iseng aja mampir. Katanya tempatnya enak buat nugas. Eh... sekalian deh, pas banget ketemu kamu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Tumben kamu ramah. Lagi kesambet apa nih?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hehe, ketahuan ya. Gini... aku lagi ngerjain tugas proyek akhir, dan jujur aja... aku bener-bener blank soal array, struct, sama file.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Bisa bantuin aku nggak? Aku takut salah konsep dari awal.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hahaha, pantes aja. Ya udah, sini duduk. Kita liat bareng-bareng, mana yang bikin kamu bingung.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            {
+                                "text": "Santai aja, aku juga lagi belajar kok. Yuk, kita cari bareng solusinya.",
+                                "next": "scene6_1",
+                                "nextType": "dialog"
+                            },
+                            {
+                                "text": "Sini deh duduk sebelahku, aku jelasin pelan-pelan aja, ya.",
+                                "next": "scene6_2",
+                                "nextType": "dialog"
+                            },
+                            {
+                                "text": "Hmm... gimana kalau aku bantuin, tapi kamu traktir aku es teh? Deal?",
+                                "next": "scene6_3",
+                                "nextType": "dialog"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "Scene6_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Santai aja, aku juga lagi belajar kok. Yuk, kita cari bareng solusinya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hehe, semoga aku nggak bikin ribet aja ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Enggak ribet, apasih yang enggak buat kamu, Jen…",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hah, kamu mah bisa aja! Cepetan jelasin tentang variabel!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Oke, oke… variabel itu ada banyak jenisnya. Pertama, aku jelasin soal variabel global dulu ya. Variabel global itu kayak kotak catatan yang bisa diakses semua orang di program. Jadi semua bagian program bisa pakai isinya kapan pun. Tapi tetap harus hati-hati, karena kalau salah pakai, bisa bikin kacau.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Heem… mulai kebayang sih… tapi masih agak bingung. Coba pake analogi biar otakku nyambung",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "materi6_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "Scene6_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Sini deh duduk sebelahku, aku jelasin pelan-pelan aja, ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hmm… boleh aku tanya dulu nggak? Aku agak bingung waktu Pak Rongga jelasin variabel, aku mau tanya soal variabel global dulu deh.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            {
+                                "text": "Oke aku jelasin pelan-pelan",
+                                "next": "scene6_2_1",
+                                "nextType": "dialog"
+                            },
+                            {
+                                "text": "Hmm… daripada aku jelasin langsung, coba tebak dulu, ya.",
+                                "next": "scene6_2_2",
+                                "nextType": "dialog"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "scene6_2_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Oke aku jelasin pelan-pelan",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Variabel global itu variabel yang bisa diakses dari seluruh bagian program. Semua bagian program bisa membaca atau mengubah nilainya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Heem… jadi semua bagian bisa pakai variabel itu ya? Tapi kalau salah pakai, bisa bermasalah gitu?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya, betul. Makanya kita harus hati-hati pakainya. Tapi jangan khawatir, nanti aku tunjukin contohnya biar lebih gampang kebayang.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Iya, kasih contoh analogi biar otakku cepet nyambung!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "materi6_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "scene6_2_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Hmm… daripada aku jelasin langsung, coba tebak dulu, ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Kalau kita bikin variabel global, kira-kira siapa aja yang bisa mengaksesnya dalam program?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Eh… hmm… cuma bisa dipakai di satu fungsi aja, kan?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hmm… enggak, itu sebenarnya salah, Jen. Variabel global bisa diakses di semua bagian program, bukan cuma satu fungsi. Tapi harus hati-hati, kalau salah pakai, bisa bikin error atau data nggak sesuai yang diinginkan.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Heem… aku mulai ngerti dikit… tapi masih agak bingung. Bisa nggak kasih contoh analoginya biar lebih kebayang?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "materi6_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "Scene6_3",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Hmm… gimana kalau aku bantuin, tapi kamu traktir aku es teh? Deal?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hehe… ya udah, deal! Tapi jangan kira aku gampang dikibulin, ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Waduh, padahal niatku tulus loh. Tapi yaudah, demi keadilan, bantuannya harus sebanding sama effort minumanku.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Haha, dasar modus. Tapi ya udah, terserah kamu deh, yang penting aku bisa paham.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            {
+                                "text": "Oke, aku jelasin pelan-pelan aja, ya.",
+                                "next": "scene6_3_1",
+                                "nextType": "dialog"
+                            },
+                            {
+                                "text": "Bentar, kamu mau matcha latte gratis nggak?",
+                                "next": "scene6_3_2",
+                                "nextType": "dialog"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "scene6_3_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Oke, aku jelasin pelan-pelan aja, ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Siap, aku dengerin. Tapi jangan ngebut ya, otakku rasanya lemot banget nangkepnya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Haha, tenang aja. Aku cuma mau pastiin dulu… tadi kamu sempat bingung soal variabel kan?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Iya… aku masih agak muter di kepala gimana semuanya nyambung.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Ah, aku ngerti. Sebenarnya semua itu berawal dari variabel. Variabel itu kayak kotak kecil di meja kerja kamu. Di situ kamu bisa naro pensil, notes, atau barang kecil lainnya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Selama kamu lagi kerja, semuanya ada di kotak itu. Tapi begitu kamu pergi, kalau nggak disimpan di tempat khusus, semuanya bisa hilang.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh… aku mulai kebayang sih… tapi variabel global itu maksudnya gimana? Kenapa bisa dipakai semua orang di program?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "materi6_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "scene6_3_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Bentar, kamu mau matcha latte gratis nggak?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "YA MAU BANGET LAH! Emang lagi ada promo?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Promo… alias aku bayarin kalau kamu langsung jawab soal ini dengan bener.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Lah, orang lagi bingung malah disuruh ngerjain soal…",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yaudah sih, kalau nggak mau juga gapapa. Padahal matcha di sini tuh best seller banget.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Iya iya, mau! Tapi spill dikit dong materinya, biar nggak buta arah.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Oke, dikit aja ya. Jadi gini, variabel tuh ada banyak jenisnya. Nah, kali ini kita bahas variabel global dulu, variabel yang bisa diakses dari mana aja dalam program. Dah tuh, udah aku spill. cluenya bisa diakses di banyak program",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "CLUENYA GITU DOANG?! Mana bisa jawab kalo gitu doang",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Bisa bisa jen, coba dulu. Aku bantuin",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA6_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "Materi6_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Oke jen, jadi gini, bayangin variabel global itu kayak Wi-Fi café ini, Jen. Selama seseorang tahu password-nya, siapa pun bisa pakai — entah aku, kamu, atau orang di meja sebelah. Semua terhubung ke jaringan yang sama, dan bisa akses internet bareng tanpa batas ruang.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohh, jadi maksudnya semua bagian program bisa ‘terhubung’ ke variabel yang sama gitu, ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yup, tepat banget. Tapi di balik kemudahannya, ada risikonya juga. Kalau ada satu orang yang salah setting atau koneksinya bermasalah, efeknya bisa dirasain semua pengguna Wi-Fi itu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Nah, di program juga sama. Kalau satu bagian kode salah ubah nilai variabel global, bagian lain yang pakai variabel itu bisa ikut error atau berperilaku aneh.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Jadi intinya, variabel global itu praktis karena bisa diakses dari mana aja, tapi juga berisiko kalau ga hati-hati, ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Betul banget. Dipakai boleh, tapi harus tahu kapan dan gimana cara pakainya biar nggak bikin kekacauan di seluruh program.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke kayanya otakku mulai nyambung kaya wifi, kamu ada contoh soal nya ga?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Ada, ini coba kamu kerjain yang bener ya. Kalau bener nanti dapet matcha gratis deh",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA6_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarA6_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Yes jawabanku bener! Mana matcha gratisnya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Aduh kok bener sih, abis dah uangku buat beliin kamu",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Kan kamu tadi bilang, kalau aku jawab benar, dapet matcha gratis. Sekarang aku jawabnya udah bener tuh",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Gini deh, kali ini kalau kamu jawab soal kedua dengan benar, aku bakal ke kasir langsung buat order matcha gratis",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Aduh penipu dah, males. Bener lho ya, kali ini harus matcha ril pokonya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya-iya, jawab dulu pokoknya. Semoga jawabnya salah biar aku ga beliin kamu",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalB6_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahA6_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Yes, salah! ga jadi matcha deh",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Yahh… my matcha gratis… please jelasin dikit lagi dong",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Aduh, pake acara plas plis segala. Yaudah deh, aku jelasin ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Jadi gini, variabel global itu variabel yang ditulis di luar semua fungsi, dan bisa diakses dari mana aja di dalam program. Tapi karena bisa diakses banyak bagian, kadang rawan error atau bentrok kalau nggak hati-hati.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh gitu… jadi dia bisa ‘dipanggil’ dari mana aja ya, bukan cuma di satu fungsi doang.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, bener banget! Udah ngerti sekarang?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Udah dong. Boleh ya aku coba lagi, tapi coba dong kasih analogi yang masuk akal?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hmm, analoginya gini deh, coba bayangin kamu naro catatan penting di papan tulis kelas. Semua orang bisa lihat dan pakai informasinya, tapi kalau ada yang salah hapus atau ubah, semua orang bisa kena dampaknya juga. Nah, itu kayak variabel global.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke otakku mulai connect. Aku boleh coba lagi ga, siapa tahu kali ini dapet matcha beneran",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hehe, boleh banget. Coba lagi, semoga kali ini matcha-nya nggak zonk",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA6_1",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarB6_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Yah, kok jawabnya benar sih… huh, niatku buat nggak beliin matcha gagal deh",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "YES! MATCHA YEY YEY YEY! Akhirnyaaaa, my matcha gratis!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hadeh, jangan seneng dulu, Jen. Abis ini masih ada jenis variabel lain yang harus kamu pahami, masih panjang jalannya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Iya gapapaaa… variabel lain boleh nunggu, yang penting matcha gratis dulu lah. Kan aku udah capek mikir",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hahaha, yaudah deh. Aku siapin matchamu nih, tapi siap-siap ya, setelah ini masih ada latihan variabel lain",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "preDialog6_2",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "salahB6_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Yes, jawabannya salah. Matcha gratismu batal dulu ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Yah… my matcha gratis…",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya, soal ini nggak bisa diulang sekarang, tapi jangan khawatir. Aku jelasin lagi dikit soal variabel global biar kamu paham kesalahannya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ingat soal drag-and-drop barusan? Variabel global itu ditulis di luar semua fungsi, bisa diakses dan diubah dari mana aja. Kalau salah taruh, yang diubah bukan variabel globalnya, makanya hasilnya bisa beda.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Iya aku paham, tapi matcha gratisku..",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hadeh, yaudah, kesempatan kedua bakal ada di materi selanjutnya. Kalau jawabnya bener, kamu boleh coba lagi sampe dapet matchanya",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Woi! Jangan hina my matcha cintaku gitu… Tapi gapapa deh, yang penting nanti kalo aku bener, kamu traktir aku matcha beneran!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "introNoMatcha6_2",
+                    "nextType": "dialog"
+                }
+
+
+            ],
+            "minigame": {
+                "questions": [
+                    {
+                        "id": "",
+                        "conditions": {
+                            "key": ">=>==<<=value"
+                        },
+                        "text": "",
+                        "code": "",
+                        "choices": [
+                            {
+                                "text": "",
+                                "next": "",
+                                "nextType": "",
+                                "isCorrect": true
+                            }
+                        ],
+                        "consequences": {
+                            "key": "value"
+                        }
+                    }
+                ],
+                "dragAndDrop": [
+                    {
+                        "id": "",
+                        "conditions": {
+                            "key": ">=>==<<=value"
+                        },
+                        "instruction": "",
+                        "scaffoldCode": "",
+                        "draggableOptions": [
+                            {
+                                "id": "",
+                                "content": {
+                                "type": "text",
+                                "value": ""
+                                }
+                            }
+                        ],
+                        "dropZones": [
+                            {
+                                "id": "",
+                                "acceptedIds": null,
+                                "content": null
+                            }
+                        ],
+                        "correctSequence": [""],
+                        "next": "",
+                        "nextType": "",
+                        "consequences": {
+                            "key": "value"
+                        }
+                    }
+                ]
+            },
+            "summary": [""]
+        }
+    ]
+}
