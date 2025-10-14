@@ -11,6 +11,7 @@ import 'package:timetocode/features/3_logic_gate_mode/presentation/screens/logic
 import 'package:timetocode/features/3_logic_gate_mode/presentation/screens/logic_gate_page.dart';
 import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
+import 'package:timetocode/features/5_module_selection/presentation/screens/module_selection_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -71,6 +72,13 @@ final routerProvider = Provider<GoRouter>((ref) {
                 parentNavigatorKey: _rootNavigatorKey,
                 builder: (context, state) => const LogicGateGameplay(),
               ),
+            ],
+          ),
+          GoRoute(
+            path: '/modules',
+            builder: (context, state) => const ModuleSelectionScreen(),
+            routes: [
+              // Add any sub-routes for the modules section here
             ],
           ),
           GoRoute(
