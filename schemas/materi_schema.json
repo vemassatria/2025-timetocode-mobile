@@ -32,7 +32,20 @@
                     "type": "array",
                     "description": "Kumpulan blok konten yang membentuk materi.",
                     "items": {
-                        "$ref": "#/$defs/ContentBlockModel"
+                        "oneOf": [
+                            {
+                                "$ref": "#/$defs/HeadingBlock"
+                            },
+                            {
+                                "$ref": "#/$defs/TextBlock"
+                            },
+                            {
+                                "$ref": "#/$defs/ImageBlock"
+                            },
+                            {
+                                "$ref": "#/$defs/TableBlock"
+                            }
+                        ]
                     }
                 }
             },
@@ -40,22 +53,6 @@
                 "level",
                 "title",
                 "content"
-            ]
-        },
-        "ContentBlockModel": {
-            "oneOf": [
-                {
-                    "$ref": "#/$defs/HeadingBlock"
-                },
-                {
-                    "$ref": "#/$defs/TextBlock"
-                },
-                {
-                    "$ref": "#/$defs/ImageBlock"
-                },
-                {
-                    "$ref": "#/$defs/TableBlock"
-                }
             ]
         },
         "HeadingBlock": {
@@ -69,10 +66,22 @@
                     "properties": {
                         "text": {
                             "type": "string"
+                        },
+                        "headingType": {
+                            "type": "string",
+                            "enum": [
+                                "h1",
+                                "h2",
+                                "h3",
+                                "h4",
+                                "h5",
+                                "h6"
+                            ]
                         }
                     },
                     "required": [
-                        "text"
+                        "text",
+                        "headingType"
                     ]
                 }
             },
