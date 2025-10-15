@@ -7,40 +7,61 @@ class ModuleCard extends StatelessWidget {
   final String title;
   final String description;
   final bool isCompleted;
+  final VoidCallback? onTap;
 
   const ModuleCard({
     super.key,
     required this.title,
     required this.description,
     required this.isCompleted,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 16.h),
-      decoration: BoxDecoration(
-        color: AppColors.black2,
-        borderRadius: BorderRadius.circular(8.r),
-      ),
-      child: ListTile(
-        contentPadding: EdgeInsets.all(16.w),
-        title: Text(
-          title,
-          style: AppTypography.small(color: AppColors.primaryText),
+    return GestureDetector(
+      onTap: () {
+        print('Card tapped: $title');
+        if (onTap != null) {
+          onTap!();
+        }
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 16.h),
+        decoration: BoxDecoration(
+          color: AppColors.black2,
+          borderRadius: BorderRadius.circular(8.r),
         ),
-        subtitle: Text(
-          description,
-          style: AppTypography.verySmall(color: AppColors.secondaryText),
+        child: Padding(
+          padding: EdgeInsets.all(16.w),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: AppTypography.small(color: AppColors.primaryText),
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      description,
+                      style: AppTypography.verySmall(
+                        color: AppColors.secondaryText,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(
+                isCompleted ? Icons.check_circle : Icons.arrow_forward_ios,
+                color: isCompleted ? AppColors.skyByte : AppColors.primaryText,
+                size: 24.sp,
+              ),
+            ],
+          ),
         ),
-        trailing: Icon(
-          isCompleted ? Icons.check_circle : Icons.arrow_forward_ios,
-          color: isCompleted ? AppColors.skyByte : AppColors.primaryText,
-          size: 24.sp,
-        ),
-        onTap: () {
-          // Handle navigation to module detail
-        },
       ),
     );
   }
