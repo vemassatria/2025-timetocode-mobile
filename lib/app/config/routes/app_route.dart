@@ -11,6 +11,7 @@ import 'package:timetocode/features/3_logic_gate_mode/presentation/screens/logic
 import 'package:timetocode/features/3_logic_gate_mode/presentation/screens/logic_gate_page.dart';
 import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
+import 'package:timetocode/features/5_matriks/presentation/screens/matrix_pointer_page.dart'; 
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -72,6 +73,11 @@ final routerProvider = Provider<GoRouter>((ref) {
                 builder: (context, state) => const LogicGateGameplay(),
               ),
             ],
+          ),
+          GoRoute(
+            path: '/matriks',
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: MatrixPointerPage()),
           ),
           GoRoute(
             path: '/pengaturan',
