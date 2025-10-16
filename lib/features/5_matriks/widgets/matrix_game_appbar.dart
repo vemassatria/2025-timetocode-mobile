@@ -6,11 +6,13 @@ import 'package:timetocode/app/config/theme/typography.dart';
 class MatrixGameAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String progress;
   final int score;
+  final VoidCallback onMenuPressed;
 
   const MatrixGameAppBar({
     super.key,
     required this.progress,
     required this.score,
+    required this.onMenuPressed,
   });
 
   @override
@@ -20,9 +22,7 @@ class MatrixGameAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: IconButton(
         icon: const Icon(Icons.menu, color: AppColors.primaryText),
-        onPressed: () {
-          // Aksi untuk tombol menu
-        },
+        onPressed: onMenuPressed,
       ),
       actions: [
         Row(

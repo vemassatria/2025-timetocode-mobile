@@ -2,24 +2,28 @@
   "levels": [
     {
       "levelId": 1,
-      "code": "for i in range(3):\n  right()\n\nfor i in range(2):\n  down()\n\nleft()",
+      "code": "for i in range(3):\n  go right\nfor j in range(2):\n  go down\ngo left",
       "initialPointerPosition": 0,
-      "targetPointerPosition": 7,
+      "targetPointerPosition": 8,
       "commands": [
-        { "type": "loop", "count": 3, "action": "right" },
-        { "type": "loop", "count": 2, "action": "down" },
+        { "type": "action", "action": "right" },
+        { "type": "action", "action": "right" },
+        { "type": "action", "action": "right" },
+        { "type": "action", "action": "down" },
+        { "type": "action", "action": "down" },
         { "type": "action", "action": "left" }
       ]
     },
     {
       "levelId": 2,
-      "code": "up()\nup()\n\nfor i in range(9):\n  right()",
+      "code": "up()\nup()\n\nfor i in range(2):\n  right()",
       "initialPointerPosition": 7,
-      "targetPointerPosition": 1,
+      "targetPointerPosition": 2,
       "commands": [
         { "type": "action", "action": "up" },
         { "type": "action", "action": "up" },
-        { "type": "loop", "count": 9, "action": "right" }
+        { "type": "action", "action": "right" },
+        { "type": "action", "action": "right" }
       ]
     }
   ]

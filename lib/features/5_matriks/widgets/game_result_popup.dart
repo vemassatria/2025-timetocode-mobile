@@ -9,12 +9,14 @@ class GameResultPopup extends StatelessWidget {
   final bool isCorrect;
   final VoidCallback onPrimaryAction;
   final VoidCallback? onSecondaryAction;
+  final bool isGameOver; // <-- Parameter baru ditambahkan
 
   const GameResultPopup({
     super.key,
     required this.isCorrect,
     required this.onPrimaryAction,
     this.onSecondaryAction,
+    this.isGameOver = false, // <-- Defaultnya false
   });
 
   @override
@@ -41,6 +43,7 @@ class GameResultPopup extends StatelessWidget {
             ],
           ),
           SizedBox(height: 32.h),
+          // --- LOGIKA TAMPILAN TOMBOL DIPERBARUI DI SINI ---
           if (isCorrect)
             CustomButton(
               label: "Lanjut",
@@ -48,7 +51,14 @@ class GameResultPopup extends StatelessWidget {
               color: ButtonColor.green,
               widthMode: ButtonWidthMode.fill,
             )
-          else
+          else if (isGameOver) // Jika game over (nyawa habis)
+            CustomButton(
+              label: "Lanjut", // Hanya tampilkan tombol "Lanjut"
+              onPressed: onPrimaryAction,
+              color: ButtonColor.red,
+              widthMode: ButtonWidthMode.fill,
+            )
+          else // Jika hanya salah biasa (masih ada nyawa)
             Row(
               children: [
                 Expanded(

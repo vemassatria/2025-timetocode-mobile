@@ -3,14 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/features/5_matriks/data/controllers/matrix_game_controller.dart';
+import 'package:timetocode/features/5_matriks/data/models/matrix_level_model.dart';
 
 class PointerGrid extends ConsumerWidget {
-  const PointerGrid({super.key});
+  final MatrixLevelModel level; 
+
+  const PointerGrid({super.key, required this.level}); 
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final gameState = ref.watch(matrixGameControllerProvider);
-    final gameController = ref.read(matrixGameControllerProvider.notifier);
+    final gameState = ref.watch(matrixGameControllerProvider(level));
+    final gameController = ref.read(matrixGameControllerProvider(level).notifier);
     const minSwipeVelocity = 100;
 
     return GestureDetector(
