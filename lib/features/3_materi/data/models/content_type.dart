@@ -9,4 +9,6 @@ enum ContentType {
   image,
   @JsonValue('table')
   table,
+  @JsonValue('list')
+  list,
 }

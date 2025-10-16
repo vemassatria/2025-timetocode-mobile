@@ -44,6 +44,9 @@
                             },
                             {
                                 "$ref": "#/$defs/TableBlock"
+                            },
+                            {
+                                "$ref": "#/$defs/ListBlock"
                             }
                         ]
                     }
@@ -169,6 +172,44 @@
                     "required": [
                         "headers",
                         "rows"
+                    ]
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "ListBlock": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "const": "list"
+                },
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "head": {
+                            "type": "string"
+                        },
+                        "listType": {
+                            "type": "string",
+                            "enum": [
+                                "ordered",
+                                "unordered"
+                            ]
+                        },
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": [
+                        "head",
+                        "listType",
+                        "items"
                     ]
                 }
             },

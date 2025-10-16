@@ -31,6 +31,10 @@ ContentBlockData _$ContentBlockDataFromJson(
           return TableData.fromJson(
             json
           );
+                case 'list':
+          return ListData.fromJson(
+            json
+          );
         
           default:
             throw CheckedFromJsonException(
@@ -89,14 +93,15 @@ extension ContentBlockDataPatterns on ContentBlockData {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( HeadingData value)?  heading,TResult Function( TextData value)?  text,TResult Function( ImageData value)?  image,TResult Function( TableData value)?  table,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( HeadingData value)?  heading,TResult Function( TextData value)?  text,TResult Function( ImageData value)?  image,TResult Function( TableData value)?  table,TResult Function( ListData value)?  list,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case HeadingData() when heading != null:
 return heading(_that);case TextData() when text != null:
 return text(_that);case ImageData() when image != null:
 return image(_that);case TableData() when table != null:
-return table(_that);case _:
+return table(_that);case ListData() when list != null:
+return list(_that);case _:
   return orElse();
 
 }
@@ -114,14 +119,15 @@ return table(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( HeadingData value)  heading,required TResult Function( TextData value)  text,required TResult Function( ImageData value)  image,required TResult Function( TableData value)  table,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( HeadingData value)  heading,required TResult Function( TextData value)  text,required TResult Function( ImageData value)  image,required TResult Function( TableData value)  table,required TResult Function( ListData value)  list,}){
 final _that = this;
 switch (_that) {
 case HeadingData():
 return heading(_that);case TextData():
 return text(_that);case ImageData():
 return image(_that);case TableData():
-return table(_that);case _:
+return table(_that);case ListData():
+return list(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -138,14 +144,15 @@ return table(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( HeadingData value)?  heading,TResult? Function( TextData value)?  text,TResult? Function( ImageData value)?  image,TResult? Function( TableData value)?  table,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( HeadingData value)?  heading,TResult? Function( TextData value)?  text,TResult? Function( ImageData value)?  image,TResult? Function( TableData value)?  table,TResult? Function( ListData value)?  list,}){
 final _that = this;
 switch (_that) {
 case HeadingData() when heading != null:
 return heading(_that);case TextData() when text != null:
 return text(_that);case ImageData() when image != null:
 return image(_that);case TableData() when table != null:
-return table(_that);case _:
+return table(_that);case ListData() when list != null:
+return list(_that);case _:
   return null;
 
 }
@@ -162,13 +169,14 @@ return table(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String text,  HeadingType headingType)?  heading,TResult Function( String text)?  text,TResult Function( String url,  String? caption)?  image,TResult Function( List<List<String>> headers,  List<List<String>> rows)?  table,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String text,  HeadingType headingType)?  heading,TResult Function( String text)?  text,TResult Function( String url,  String? caption)?  image,TResult Function( List<List<String>> headers,  List<List<String>> rows)?  table,TResult Function( String head,  ListType listType,  List<String> items)?  list,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case HeadingData() when heading != null:
 return heading(_that.text,_that.headingType);case TextData() when text != null:
 return text(_that.text);case ImageData() when image != null:
 return image(_that.url,_that.caption);case TableData() when table != null:
-return table(_that.headers,_that.rows);case _:
+return table(_that.headers,_that.rows);case ListData() when list != null:
+return list(_that.head,_that.listType,_that.items);case _:
   return orElse();
 
 }
@@ -186,13 +194,14 @@ return table(_that.headers,_that.rows);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String text,  HeadingType headingType)  heading,required TResult Function( String text)  text,required TResult Function( String url,  String? caption)  image,required TResult Function( List<List<String>> headers,  List<List<String>> rows)  table,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String text,  HeadingType headingType)  heading,required TResult Function( String text)  text,required TResult Function( String url,  String? caption)  image,required TResult Function( List<List<String>> headers,  List<List<String>> rows)  table,required TResult Function( String head,  ListType listType,  List<String> items)  list,}) {final _that = this;
 switch (_that) {
 case HeadingData():
 return heading(_that.text,_that.headingType);case TextData():
 return text(_that.text);case ImageData():
 return image(_that.url,_that.caption);case TableData():
-return table(_that.headers,_that.rows);case _:
+return table(_that.headers,_that.rows);case ListData():
+return list(_that.head,_that.listType,_that.items);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -209,13 +218,14 @@ return table(_that.headers,_that.rows);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String text,  HeadingType headingType)?  heading,TResult? Function( String text)?  text,TResult? Function( String url,  String? caption)?  image,TResult? Function( List<List<String>> headers,  List<List<String>> rows)?  table,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String text,  HeadingType headingType)?  heading,TResult? Function( String text)?  text,TResult? Function( String url,  String? caption)?  image,TResult? Function( List<List<String>> headers,  List<List<String>> rows)?  table,TResult? Function( String head,  ListType listType,  List<String> items)?  list,}) {final _that = this;
 switch (_that) {
 case HeadingData() when heading != null:
 return heading(_that.text,_that.headingType);case TextData() when text != null:
 return text(_that.text);case ImageData() when image != null:
 return image(_that.url,_that.caption);case TableData() when table != null:
-return table(_that.headers,_that.rows);case _:
+return table(_that.headers,_that.rows);case ListData() when list != null:
+return list(_that.head,_that.listType,_that.items);case _:
   return null;
 
 }
@@ -527,6 +537,89 @@ class _$TableDataCopyWithImpl<$Res>
 headers: null == headers ? _self._headers : headers // ignore: cast_nullable_to_non_nullable
 as List<List<String>>,rows: null == rows ? _self._rows : rows // ignore: cast_nullable_to_non_nullable
 as List<List<String>>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class ListData implements ContentBlockData {
+  const ListData({required this.head, required this.listType, required final  List<String> items, final  String? $type}): _items = items,$type = $type ?? 'list';
+  factory ListData.fromJson(Map<String, dynamic> json) => _$ListDataFromJson(json);
+
+ final  String head;
+ final  ListType listType;
+ final  List<String> _items;
+ List<String> get items {
+  if (_items is EqualUnmodifiableListView) return _items;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_items);
+}
+
+
+@JsonKey(name: 'type')
+final String $type;
+
+
+/// Create a copy of ContentBlockData
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ListDataCopyWith<ListData> get copyWith => _$ListDataCopyWithImpl<ListData>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$ListDataToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ListData&&(identical(other.head, head) || other.head == head)&&(identical(other.listType, listType) || other.listType == listType)&&const DeepCollectionEquality().equals(other._items, _items));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,head,listType,const DeepCollectionEquality().hash(_items));
+
+@override
+String toString() {
+  return 'ContentBlockData.list(head: $head, listType: $listType, items: $items)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ListDataCopyWith<$Res> implements $ContentBlockDataCopyWith<$Res> {
+  factory $ListDataCopyWith(ListData value, $Res Function(ListData) _then) = _$ListDataCopyWithImpl;
+@useResult
+$Res call({
+ String head, ListType listType, List<String> items
+});
+
+
+
+
+}
+/// @nodoc
+class _$ListDataCopyWithImpl<$Res>
+    implements $ListDataCopyWith<$Res> {
+  _$ListDataCopyWithImpl(this._self, this._then);
+
+  final ListData _self;
+  final $Res Function(ListData) _then;
+
+/// Create a copy of ContentBlockData
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? head = null,Object? listType = null,Object? items = null,}) {
+  return _then(ListData(
+head: null == head ? _self.head : head // ignore: cast_nullable_to_non_nullable
+as String,listType: null == listType ? _self.listType : listType // ignore: cast_nullable_to_non_nullable
+as ListType,items: null == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
+as List<String>,
   ));
 }
 

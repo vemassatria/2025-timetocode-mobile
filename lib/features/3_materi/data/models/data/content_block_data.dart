@@ -18,6 +18,13 @@ enum HeadingType {
   h6,
 }
 
+enum ListType {
+  @JsonValue('ordered')
+  ordered,
+  @JsonValue('unordered')
+  unordered,
+}
+
 @Freezed(unionKey: 'type')
 abstract class ContentBlockData with _$ContentBlockData {
   @FreezedUnionValue('heading')
@@ -38,6 +45,13 @@ abstract class ContentBlockData with _$ContentBlockData {
     required List<List<String>> headers,
     required List<List<String>> rows,
   }) = TableData;
+
+  @FreezedUnionValue('list')
+  const factory ContentBlockData.list({
+    required String head,
+    required ListType listType,
+    required List<String> items,
+  }) = ListData;
 
   factory ContentBlockData.fromJson(Map<String, dynamic> json) =>
       _$ContentBlockDataFromJson(json);

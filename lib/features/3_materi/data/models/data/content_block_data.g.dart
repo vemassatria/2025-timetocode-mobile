@@ -63,3 +63,22 @@ Map<String, dynamic> _$TableDataToJson(TableData instance) => <String, dynamic>{
   'rows': instance.rows,
   'type': instance.$type,
 };
+
+ListData _$ListDataFromJson(Map<String, dynamic> json) => ListData(
+  head: json['head'] as String,
+  listType: $enumDecode(_$ListTypeEnumMap, json['listType']),
+  items: (json['items'] as List<dynamic>).map((e) => e as String).toList(),
+  $type: json['type'] as String?,
+);
+
+Map<String, dynamic> _$ListDataToJson(ListData instance) => <String, dynamic>{
+  'head': instance.head,
+  'listType': _$ListTypeEnumMap[instance.listType]!,
+  'items': instance.items,
+  'type': instance.$type,
+};
+
+const _$ListTypeEnumMap = {
+  ListType.ordered: 'ordered',
+  ListType.unordered: 'unordered',
+};
