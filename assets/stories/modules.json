@@ -1,0 +1,27 @@
+{
+  "modules": [
+    {
+      "id": "module1",
+      "title": "If, Else, Switch",
+      "description": "Pelajari penggunaan untuk pembuatan logika bercabang",
+      "isCompleted": false,
+      "content": {
+        "sections": [
+          {
+            "title": "Pengenalan",
+            "content": "..."
+          }
+        ]
+      }
+    },
+    {
+      "id": "module2",
+      "title": "For, While, Do-while",
+      "description": "Pelajari penggunaan untuk pembuatan logika berulang",
+      "isCompleted": false,
+      "content": {
+        "sections": []
+      }
+    }
+  ]
+}
