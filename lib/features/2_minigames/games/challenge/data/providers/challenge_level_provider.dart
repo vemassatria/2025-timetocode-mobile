@@ -1,9 +1,0 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:timetocode/features/2_minigames/games/challenge/data/models/challenge_model.dart';
-import 'package:timetocode/features/2_minigames/games/challenge/data/providers/challenge_load_service_provider.dart';
-
-final challengeLevelProvider = FutureProvider<ChallengeModel>((ref) {
-  return ref
-      .read(challengeLoadServiceProvider)
-      .loadChallenges('assets/stories/tantangan.json');
-});
