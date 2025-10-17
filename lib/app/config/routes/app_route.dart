@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -11,8 +12,8 @@ import 'package:timetocode/features/3_logic_gate_mode/presentation/screens/logic
 import 'package:timetocode/features/3_logic_gate_mode/presentation/screens/logic_gate_page.dart';
 import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
-import 'package:timetocode/features/5_module_selection/presentation/screens/module_selection_screen.dart';
-import 'package:timetocode/features/5_module_selection/presentation/screens/module_detail_screen.dart';
+import 'package:timetocode/features/5_materi/presentation/screens/materi_detailed_screen.dart';
+import 'package:timetocode/features/5_materi/presentation/screens/materi_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -75,23 +76,35 @@ final routerProvider = Provider<GoRouter>((ref) {
             ],
           ),
           GoRoute(
-            path: '/modules',
-            builder: (context, state) => const ModuleSelectionScreen(),
-            routes: [
-              GoRoute(
-                path: ':moduleId',
-                builder: (context, state) => ModuleDetailScreen(
-                  moduleId: state.pathParameters['moduleId']!,
-                ),
-              ),
-            ],
+            path: '/materi',
+            builder: (context, state) => const MateriScreen(),
           ),
+
           GoRoute(
             path: '/pengaturan',
             pageBuilder: (context, state) =>
                 const NoTransitionPage(child: PengaturanPage()),
           ),
         ],
+      ),
+      GoRoute(
+        path: '/materi/detail',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) {
+          // was: final args = state.extra as Map<String, String>?;
+          final args = state.extra as Map<String, String?>?; // << ini kuncinya
+          if (args == null) {
+            return const Scaffold(
+              body: Center(child: Text('Data materi tidak ditemukan')),
+            );
+          }
+          return MateriDetailedScreen(
+            title: args['title'] ?? 'Materi',
+            imageUrl: args['imageUrl'] ?? '',
+            description: args['description'] ?? '',
+            videoUrl: args['videoUrl'], // boleh null, screen kamu sudah handle
+          );
+        },
       ),
     ],
   );

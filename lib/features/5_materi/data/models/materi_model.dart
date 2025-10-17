@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:timetocode/features/3_materi/data/models/content_block_model.dart';
+import 'package:timetocode/features/5_materi/data/models/content_block_model.dart';
 
 part 'materi_model.freezed.dart';
 part 'materi_model.g.dart';
