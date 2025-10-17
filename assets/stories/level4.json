@@ -417,31 +417,33 @@
                 "backgroundIndex": 0,
                 "dialogs": [
                     {
-                        "line": "",
+                        "line": "Jawabanmu bener banget yan. Perhatikan polanya ya. Baris pertama ada satu bintang, baris kedua juga satu bintang, baris ketiga baru ada tiga bintang, dan baris keempat ada lima bintang.",
                         "reactionIndex": 0,
-                        "characterIndex": 0
+                        "characterIndex": 2
                     },
                     {
-                        "line": "",
+                        "line": "Iya, mas. Saya tadi mikir jumlah bintangnya makin bertambah sesuai dengan barisnya.",
                         "reactionIndex": 0,
-                        "characterIndex": 0
+                        "characterIndex": 1
                     },
                     {
-                        "line": "",
+                        "line": "Betul sekali. Makanya loop luar dipakai untuk baris, sedangkan loop dalam dipakai untuk bintang. Jadi jumlah bintang akan mengikuti nilai baris.",
                         "reactionIndex": 0,
-                        "characterIndex": 0
+                        "characterIndex": 2
                     },
                     {
-                        "line": "",
+                        "line": "Jadi yang paling pas for (int i = 1; i <= 4; i++) buat baris, lalu for (int j = 1; j <= i; j++) buat bintang, ya Mas?",
                         "reactionIndex": 0,
-                        "characterIndex": 0
+                        "characterIndex": 1
                     },
                     {
-                        "line": "",
+                        "line": "Tepat. Karena j akan berhenti di angka i, jumlah bintang otomatis mengikuti barisnya. Sekarang kita coba lanjut ke soal berikutnya ya",
                         "reactionIndex": 0,
-                        "characterIndex": 0
+                        "characterIndex": 2
                     }
-                ]
+                ],
+                "next": "soalB4_1",
+                "nextType": "soal"
             },
             {
                 "id": "salahA4_1",
