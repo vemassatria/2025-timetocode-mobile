@@ -40,6 +40,18 @@
                     "text": "Beberapa menit kemudian, ia kembali dengan secangkir matcha hangat yang mengepul. Dengan hati-hati, ia menaruh gelas itu di depan Jennie dan duduk kembali. Jennie menatap matcha itu dengan mata berbinar, siap melanjutkan latihan variabel berikutnya, sementara Adrian menarik napas lega.",
                     "next": "intro6_2",
                     "nextType": "dialog"
+                },
+                {
+                    "id": "preDialog6_3_1",
+                    "text": " Jennie berdiri dari kursinya dan melangkah menuju kasir. Ia terlihat sibuk memilih camilan, matanya menelusuri rak kue dengan hati-hati, hingga akhirnya tangannya memegang dua kue tiramisu.",
+                    "next": "preDialog6_3_2",
+                    "nextType": "preDialog"
+                },
+                {
+                    "id": "preDialog6_3_2",
+                    "text": "Beberapa menit kemudian, Jennie kembali ke mejanya, membawa kue tiramisu itu dengan hati-hati. Adrian menatapnya sebentar, tersenyum tipis, sebelum mereka berdua bersiap melanjutkan latihan variabel berikutnya",
+                    "next": "intro6_3",
+                    "nextType": "dialog"
                 }
             ],
             "dialogs": [
@@ -812,7 +824,458 @@
                     ],
                     "next": "soalB6_2",
                     "nextType": "soal"
+                },
+                {
+                    "id": "benarB6_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Wih mantep nih bener, matcha part 2 ga nih?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "GAK GAK! LANGSUNG KERING DOMPETKU NTAR.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hehehe… yaudah deh. Lanjut aja materinya. Masih banyak nggak sih jenis variabelnya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Udah udah, jangan nanya dulu. Ntar juga kamu tahu sendiri, sabar aja dulu.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Aku cuma takut kemaleman… yaudah aku ke kasir dulu buat beli camilan. Kamu mau kue tiramisu nggak?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Engga kalo kemaleman, dikit lagi kelar kok. Hah? Tiramisu? Makanan apa lagi tuh sekarang?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Yaelah, kamu mah kebanyakan gatau...Aku beli dua deh, nanti kamu coba juga ya!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "preDialog6_3_1",
+                    "nextType": "preDialog"
+                },
+                {
+                    "id": "salahB6_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Yah, salah tuh… kebanyakan minum jus rumput kali ya",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Eh enggak ya, kayanya otakku agak ngeblank deh",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yaudah, tenang. Aku jelasin dikit aja ya biar nggak bingung. Ingat kan tadi variabel lokal cuma berlaku di fungsi tempat dia dibuat? Jadi kalau kamu kira yang di dalam ubah() itu sama dengan yang global, itu yang bikin bingung.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Coba pikir lagi, bedain mana yang cuma ada di fungsi, mana yang bisa diakses di seluruh program.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Iya ini aku coba lagi:",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "soalB6_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "intro6_3",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Wih… tiramisunya enak juga ya, lembut, rasanya kaya campuran coklat dan vanilla gitu. Aku kasih rating 9/10 deh.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Kok cuma 9/10? Katanya enak.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yang 10/10 mah kamu",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hahaha… MULAI DEH! Udah sekarang, lanjut ke jenis variabel lainnya!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            {
+                                "text": "Oke, lanjut ke variabel statis nih. Jadi variabel statis itu beda sama lokal atau global biasa.",
+                                "next": "intro6_3_1",
+                                "nextType": "dialog"
+                            },
+                            {
+                                "text": "Bayangin nih, variabel statis tuh kaya topping tiramisu yang tetep sama tiap sendok. Jadi, meskipun kamu ngambil sendok baru, toppingnya nggak berubah.",
+                                "next": "intro6_3_2",
+                                "nextType": "dialog"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "intro6_3_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Oke, lanjut ke variabel statis nih. Jadi variabel statis itu beda sama lokal atau global biasa.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hah? Maksudnya gimana? Statis itu… gitu-gitu aja? Tetap gitu?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, kurang lebih gitu. Variabel statis itu nilainya tetap ada di memori meski fungsi yang memakainya udah selesai. Jadi dia nggak hilang seperti variabel lokal biasa.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ooo… jadi meskipun fungsi selesai, nilainya masih tersimpan di memori ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Bener banget! Jadi intinya, variabel statis itu nilainya nggak hilang setelah fungsi selesai, tetap tersimpan di memori. Makanya praktis dipakai kalau kita mau data di fungsi tetap ada setiap kali fungsi dipanggil lagi.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke kamu bisa jelasin lebih detailnya ga?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "materi6_3",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "intro6_3_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Bayangin nih, variabel statis tuh kaya topping tiramisu yang tetep sama tiap sendok. Jadi, meskipun kamu ngambil sendok baru, toppingnya nggak berubah.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohhh… jadi nggak bakal ilang gitu ya, tetep ada tiap kali dipakai?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Bener banget! Makanya variabel statis sering dipakai kalau kita mau nyimpen data di fungsi tapi tetap dipertahankan nilainya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Kalau analogi tiramisu makanan gitu nyambung, coba jelasin definisinya dong",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "materi6_3",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "materi6_3",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Oke Jen, aku jelasin dulu ya definisi tentang variabel statis.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke, aku dengerin.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Jadi, variabel statis itu mirip kayak variabel lokal, tapi bedanya nilainya nggak hilang walau fungsi udah selesai dipanggil. Jadi pas fungsi itu dijalankan lagi, nilainya masih inget dari sebelumnya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oh, jadi kayak nyimpen data sementara tapi nggak reset gitu ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yap, bener banget. Kalau diibaratin Wi-Fi, sebelumnya kan variabel global itu bisa diakses semua orang, variabel lokal cuma kamu yang bisa akses. Nah, variabel statis itu kayak Wi-Fi pribadimu yang walau dimatiin sebentar, pas nyala lagi langsung otomatis nyambung karena masih inget password dan datanya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ooo… gitu! Tapi bentar, kok kayanya mirip banget sama variabel lokal ya? bedanya apa?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya, mirip, kuncinya itu variabel lokal bakal ‘lupa’ setiap kali fungsi selesai, sedangkan variabel statis tetep inget nilai sebelumnya. Jadi hasilnya bisa terus berubah dari data yang lama, bukan mulai dari nol lagi.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke oke, mulai kebayang bedanya. Jadi kayak memori jangka panjang gitu ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, betul banget. Biar ga bingung, coba kamu kerjain soal ini deh.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA6_3",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarA6_3",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Nah itu dia bedanya variabel lokal dan variabel statis!",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohh jadi karena 'x'-nya statis, dia inget nilainya tiap kali fungsi ‘hitung()’ dipanggil, ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yup! Kalau 'x'-nya lokal biasa, hasilnya bakal 1 1 1 karena selalu mulai dari nol lagi. Tapi karena statis, dia lanjut dari nilai terakhir.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Wah, pantes tadi nilainya naik terus. Sekarang makin jelas bedanya",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Oke, karena udah ngerti, coba soal yang lebih susah ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalB6_3",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahA6_3",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Hmm, hampir bener! Tapi coba pikir lagi deh. Variabel x-nya kan statis, artinya dia ga lupa nilai terakhirnya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oooh… jadi harusnya nilainya lanjut terus ya, bukan mulai dari nol tiap kali fungsi dipanggil?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yap, bener banget. Kalau x-nya lokal biasa, baru deh nilainya bakal balik ke nol terus.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke, paham! Jadi karena dia statis, hasilnya bakal naik terus tiap fungsi dipanggil, karena dia inget nilai sebelumnya ya?.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, sip, pinter! Sekarang coba jawab dengan teliti yaa",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA6_3",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarB6_3",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Nah itu dia bedanya variabel lokal dan statis!",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohh jadi karena ‘total’-nya statis, dia nyimpen hasil tambah dari sebelumnya, ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yup! Kalau ‘temp’-nya kan lokal biasa, jadi tiap kali fungsi jalan, nilainya balik ke nol lagi.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Wahh iya! Pantes ‘temp’-nya cuma nambah sesuai angka terakhir, tapi ‘total’-nya akumulatif.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, itu yang sering bikin salah paham di awal — kelihatannya dua-duanya diubah, padahal cara simpen nilainya beda jauh.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Yan ini kurang berapa lagi? kalo kurang banyak kayanya dilanjut besok aja deh.. takut kemaleman",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Aman jen ini kurang satu lagi kok.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "preDialog6_4",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "salahB6_3",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Hmm, hampir bener sih… tapi coba pikir lagi deh. Salah satunya ‘pelupa’, satunya ‘pengingat’.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Pelupa? Maksudnya gimana tuh?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hehe, coba inget lagi deh. Kira-kira variabel jenis apa yang inget nilainya terus-menerus?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "branch": {
+                        "choices": [
+                            {
+                                "text": "Variabel statis?",
+                                "next": "salahB6_3_1",
+                                "nextType": "dialog"
+                            },
+                            {
+                                "text": "Variabel lokal?",
+                                "next": "salahB6_3_2",
+                                "nextType": "dialog"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "salahB6_3_1",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Variabel statis?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, bener! Variabel statis itu bakal inget terus nilai yang udah dia bawa sebelumnya. Jadi, meskipun fungsi dipanggil berkali-kali, nilainya nggak balik ke awal.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Nah, kamu teliti soalnya pelan-pelan, kamu cek mana variabel lokal dan mana variabel statis biar ga keliru",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ooo gitu, jadi yang ‘pengingat’ itu si statis ya. Oke, aku coba ulang soalnya deh, biar makin paham.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "soalB6_3",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahB6_3_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Variabel lokal?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hehe, bukan itu, Jen. Justru variabel lokal itu yang ‘pelupa’. Tiap kali fungsi dipanggil, nilainya balik lagi ke awal.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohh… berarti yang inget terus tuh variabel statis ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yup! Variabel statis disimpen di memori, jadi nilainya tetep inget walau fungsinya dipanggil terus-menerus.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ooo… jadi dia nggak reset kayak variabel lokal ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, tepat banget! Makanya hasilnya bisa terus nambah tiap kali fungsi dijalankan.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke deh, aku coba ulang soalnya biar makin paham.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "soalB6_3",
+                    "nextType": "soal"
                 }
+
 
 
             ],
