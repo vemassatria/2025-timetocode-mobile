@@ -7,11 +7,20 @@
             "background": [""],
             "character1": "Jennie",
             "character1Images": [
-                ""
+                "0crush_aksi",
+                "1crush_biasa",
+                "2crush_kecewa",
+                "3crush_marah",
+                "4crush_senang"
             ],
             "character2": "Adrian",
             "character2Images": [
-                ""
+                "0adriancafe_aksi",
+                "1adriancafe_biasa",
+                "2adriancafe_kecewa",
+                "3adriancafe_marah",
+                "4adriancafe_ngajarin",
+                "5adriancafe_senang"
             ],
             "ilustrations": [""],
             "start": "preDialog6_1_1",
@@ -67,38 +76,33 @@
                     "dialogs": [
                         {
                             "line": "Eh... Adrian? Wah, nggak nyangka ketemu kamu di sini. Sering ke café ini, ya?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Oh, Jennie? Iya, ini tempat andalan buat ngoding. Lagi nyari suasana biar lebih fokus aja. Kamu sendiri, kok bisa ke sini?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Hehe, iseng aja mampir. Katanya tempatnya enak buat nugas. Eh... sekalian deh, pas banget ketemu kamu.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Tumben kamu ramah. Lagi kesambet apa nih?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Hehe, ketahuan ya. Gini... aku lagi ngerjain tugas proyek akhir, dan jujur aja... aku bener-bener blank soal array, struct, sama file.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Bisa bantuin aku nggak? Aku takut salah konsep dari awal.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
-                        },
-                        {
-                            "line": "Hahaha, pantes aja. Ya udah, sini duduk. Kita liat bareng-bareng, mana yang bikin kamu bingung.",
-                            "reactionIndex": 0,
-                            "characterIndex": 2
                         }
                     ],
                     "branch": {
@@ -127,27 +131,27 @@
                     "dialogs": [
                         {
                             "line": "Santai aja, aku juga lagi belajar kok. Yuk, kita cari bareng solusinya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Hehe, semoga aku nggak bikin ribet aja ya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Enggak ribet, apasih yang enggak buat kamu, Jen…",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Hah, kamu mah bisa aja! Cepetan jelasin tentang variabel!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Oke, oke… variabel itu ada banyak jenisnya. Pertama, aku jelasin soal variabel global dulu ya. Variabel global itu kayak kotak catatan yang bisa diakses semua orang di program. Jadi semua bagian program bisa pakai isinya kapan pun. Tapi tetap harus hati-hati, karena kalau salah pakai, bisa bikin kacau.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -164,8 +168,8 @@
                     "backgroundIndex": 0,
                     "dialogs": [
                         {
-                            "line": "Sini deh duduk sebelahku, aku jelasin pelan-pelan aja, ya.",
-                            "reactionIndex": 0,
+                            "line": "Hahaha, pantes aja. Ya udah, sini duduk. Kita liat bareng-bareng, mana yang bikin kamu bingung.",
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
@@ -195,27 +199,27 @@
                     "dialogs": [
                         {
                             "line": "Oke aku jelasin pelan-pelan",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Variabel global itu variabel yang bisa diakses dari seluruh bagian program. Semua bagian program bisa membaca atau mengubah nilainya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Heem… jadi semua bagian bisa pakai variabel itu ya? Tapi kalau salah pakai, bisa bermasalah gitu?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Iya, betul. Makanya kita harus hati-hati pakainya. Tapi jangan khawatir, nanti aku tunjukin contohnya biar lebih gampang kebayang.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Iya, kasih contoh analogi biar otakku cepet nyambung!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         }
                     ],
@@ -228,27 +232,27 @@
                     "dialogs": [
                         {
                             "line": "Hmm… daripada aku jelasin langsung, coba tebak dulu, ya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Kalau kita bikin variabel global, kira-kira siapa aja yang bisa mengaksesnya dalam program?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Eh… hmm… cuma bisa dipakai di satu fungsi aja, kan?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hmm… enggak, itu sebenarnya salah, Jen. Variabel global bisa diakses di semua bagian program, bukan cuma satu fungsi. Tapi harus hati-hati, kalau salah pakai, bisa bikin error atau data nggak sesuai yang diinginkan.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Heem… aku mulai ngerti dikit… tapi masih agak bingung. Bisa nggak kasih contoh analoginya biar lebih kebayang?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         }
                     ],
@@ -261,7 +265,7 @@
                     "dialogs": [
                         {
                             "line": "Hmm… gimana kalau aku bantuin, tapi kamu traktir aku es teh? Deal?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
@@ -271,12 +275,12 @@
                         },
                         {
                             "line": "Waduh, padahal niatku tulus loh. Tapi yaudah, demi keadilan, bantuannya harus sebanding sama effort minumanku.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Haha, dasar modus. Tapi ya udah, terserah kamu deh, yang penting aku bisa paham.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         }
                     ],
@@ -301,17 +305,17 @@
                     "dialogs": [
                         {
                             "line": "Oke, aku jelasin pelan-pelan aja, ya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Siap, aku dengerin. Tapi jangan ngebut ya, otakku rasanya lemot banget nangkepnya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Haha, tenang aja. Aku cuma mau pastiin dulu… tadi kamu sempat bingung soal variabel kan?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
@@ -321,17 +325,17 @@
                         },
                         {
                             "line": "Ah, aku ngerti. Sebenarnya semua itu berawal dari variabel. Variabel itu kayak kotak kecil di meja kerja kamu. Di situ kamu bisa naro pensil, notes, atau barang kecil lainnya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Selama kamu lagi kerja, semuanya ada di kotak itu. Tapi begitu kamu pergi, kalau nggak disimpan di tempat khusus, semuanya bisa hilang.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Oh… aku mulai kebayang sih… tapi variabel global itu maksudnya gimana? Kenapa bisa dipakai semua orang di program?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         }
                     ],
@@ -344,47 +348,47 @@
                     "dialogs": [
                         {
                             "line": "Bentar, kamu mau matcha latte gratis nggak?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "YA MAU BANGET LAH! Emang lagi ada promo?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Promo… alias aku bayarin kalau kamu langsung jawab soal ini dengan bener.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Lah, orang lagi bingung malah disuruh ngerjain soal…",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
                             "line": "Yaudah sih, kalau nggak mau juga gapapa. Padahal matcha di sini tuh best seller banget.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Iya iya, mau! Tapi spill dikit dong materinya, biar nggak buta arah.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Oke, dikit aja ya. Jadi gini, variabel tuh ada banyak jenisnya. Nah, kali ini kita bahas variabel global dulu, variabel yang bisa diakses dari mana aja dalam program. Dah tuh, udah aku spill. cluenya bisa diakses di banyak program",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "CLUENYA GITU DOANG?! Mana bisa jawab kalo gitu doang",
-                            "reactionIndex": 0,
+                            "reactionIndex": 3,
                             "characterIndex": 1
                         },
                         {
                             "line": "Bisa bisa jen, coba dulu. Aku bantuin",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         }
                     ],
@@ -397,22 +401,22 @@
                     "dialogs": [
                         {
                             "line": "Oke jen, jadi gini, bayangin variabel global itu kayak Wi-Fi café ini, Jen. Selama seseorang tahu password-nya, siapa pun bisa pakai — entah aku, kamu, atau orang di meja sebelah. Semua terhubung ke jaringan yang sama, dan bisa akses internet bareng tanpa batas ruang.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Ohh, jadi maksudnya semua bagian program bisa ‘terhubung’ ke variabel yang sama gitu, ya?",
+                            "line": "Ohh, jadi maksudnya semua bagian program bisa 'terhubung' ke variabel yang sama gitu, ya?",
                             "reactionIndex": 0,
                             "characterIndex": 1
                         },
                         {
                             "line": "Yup, tepat banget. Tapi di balik kemudahannya, ada risikonya juga. Kalau ada satu orang yang salah setting atau koneksinya bermasalah, efeknya bisa dirasain semua pengguna Wi-Fi itu.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Nah, di program juga sama. Kalau satu bagian kode salah ubah nilai variabel global, bagian lain yang pakai variabel itu bisa ikut error atau berperilaku aneh.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -422,17 +426,17 @@
                         },
                         {
                             "line": "Betul banget. Dipakai boleh, tapi harus tahu kapan dan gimana cara pakainya biar nggak bikin kekacauan di seluruh program.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Oke kayanya otakku mulai nyambung kaya wifi, kamu ada contoh soal nya ga?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Ada, ini coba kamu kerjain yang bener ya. Kalau bener nanti dapet matcha gratis deh",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         }
                     ],
@@ -445,32 +449,32 @@
                     "dialogs": [
                         {
                             "line": "Yes jawabanku bener! Mana matcha gratisnya?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Aduh kok bener sih, abis dah uangku buat beliin kamu",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Kan kamu tadi bilang, kalau aku jawab benar, dapet matcha gratis. Sekarang aku jawabnya udah bener tuh",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
                             "line": "Gini deh, kali ini kalau kamu jawab soal kedua dengan benar, aku bakal ke kasir langsung buat order matcha gratis",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Aduh penipu dah, males. Bener lho ya, kali ini harus matcha ril pokonya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 3,
                             "characterIndex": 1
                         },
                         {
                             "line": "Iya-iya, jawab dulu pokoknya. Semoga jawabnya salah biar aku ga beliin kamu",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         }
                     ],
@@ -483,52 +487,52 @@
                     "dialogs": [
                         {
                             "line": "Yes, salah! ga jadi matcha deh",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Yahh… my matcha gratis… please jelasin dikit lagi dong",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
                             "line": "Aduh, pake acara plas plis segala. Yaudah deh, aku jelasin ya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Jadi gini, variabel global itu variabel yang ditulis di luar semua fungsi, dan bisa diakses dari mana aja di dalam program. Tapi karena bisa diakses banyak bagian, kadang rawan error atau bentrok kalau nggak hati-hati.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Oh gitu… jadi dia bisa ‘dipanggil’ dari mana aja ya, bukan cuma di satu fungsi doang.",
+                            "line": "Oh gitu… jadi dia bisa 'dipanggil' dari mana aja ya, bukan cuma di satu fungsi doang.",
                             "reactionIndex": 0,
                             "characterIndex": 1
                         },
                         {
                             "line": "Nah, bener banget! Udah ngerti sekarang?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Udah dong. Boleh ya aku coba lagi, tapi coba dong kasih analogi yang masuk akal?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hmm, analoginya gini deh, coba bayangin kamu naro catatan penting di papan tulis kelas. Semua orang bisa lihat dan pakai informasinya, tapi kalau ada yang salah hapus atau ubah, semua orang bisa kena dampaknya juga. Nah, itu kayak variabel global.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Oke otakku mulai connect. Aku boleh coba lagi ga, siapa tahu kali ini dapet matcha beneran",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hehe, boleh banget. Coba lagi, semoga kali ini matcha-nya nggak zonk",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         }
                     ],
@@ -541,27 +545,27 @@
                     "dialogs": [
                         {
                             "line": "Yah, kok jawabnya benar sih… huh, niatku buat nggak beliin matcha gagal deh",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "YES! MATCHA YEY YEY YEY! Akhirnyaaaa, my matcha gratis!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hadeh, jangan seneng dulu, Jen. Abis ini masih ada jenis variabel lain yang harus kamu pahami, masih panjang jalannya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Iya gapapaaa… variabel lain boleh nunggu, yang penting matcha gratis dulu lah. Kan aku udah capek mikir",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hahaha, yaudah deh. Aku siapin matchamu nih, tapi siap-siap ya, setelah ini masih ada latihan variabel lain",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         }
                     ],
@@ -574,37 +578,37 @@
                     "dialogs": [
                         {
                             "line": "Yes, jawabannya salah. Matcha gratismu batal dulu ya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Yah… my matcha gratis…",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
                             "line": "Iya, soal ini nggak bisa diulang sekarang, tapi jangan khawatir. Aku jelasin lagi dikit soal variabel global biar kamu paham kesalahannya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Ingat soal drag-and-drop barusan? Variabel global itu ditulis di luar semua fungsi, bisa diakses dan diubah dari mana aja. Kalau salah taruh, yang diubah bukan variabel globalnya, makanya hasilnya bisa beda.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Iya aku paham, tapi matcha gratisku..",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hadeh, yaudah, kesempatan kedua bakal ada di materi selanjutnya. Kalau jawabnya bener, kamu boleh coba lagi sampe dapet matchanya",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Woi! Jangan hina my matcha cintaku gitu… Tapi gapapa deh, yang penting nanti kalo aku bener, kamu traktir aku matcha beneran!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 3,
                             "characterIndex": 1
                         }
                     ],
@@ -617,22 +621,22 @@
                     "dialogs": [
                         {
                             "line": "YEY! MATCHA GRATIS",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hadeh… duitku abis buat traktir kamu, akhir bulan langsung makan mie dah",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 2
                         },
                         {
                             "line": "HAHAHAHAHA, dasar, makasih ya matcha gratisnya",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Iya, sama-sama.. sekarang kita lanjut ke variabel jenis lain, yaitu variabel lokal. Menurutmu, variabel lokal itu apa, Jen?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
@@ -642,12 +646,12 @@
                         },
                         {
                             "line": "Hampir bener! Lebih tepatnya, variabel lokal cuma bisa diakses di fungsi atau blok tempat dia dibuat. Keluar dari situ, dia nggak kelihatan sama sekali.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Ooo… oke, mulai ngerti dikit. Coba dong, kasih analogi Wi-Fi tapi kali ini buat variabel lokal",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         }
                     ],
@@ -660,22 +664,22 @@
                     "dialogs": [
                         {
                             "line": "Oke Jen, karena kamu sebelumnya salah, sekarang kamu harus jawab bener biar dapet matcha kesukaanmu itu",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Iya deh, aku bakal jawab bener kali ini! Aku gamau matcha gratis ilang gitu aja",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hahaha, sip! Jadi gini, Jen… sebelumnya kita bahas variabel global, kan? Yang bisa diakses dari semua fungsi di program.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Nah, variabel lokal beda banget. Variabel lokal cuma bisa dipakai di dalam fungsi tempat dia dibuat. Fungsi lain nggak bisa sembarangan akses atau ubah nilainya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -684,18 +688,18 @@
                             "characterIndex": 1
                         },
                         {
-                            "line": "Bener banget, Jen! Variabel lokal cuma bisa dipakai di fungsi tempat dia dibuat. Jadi kalo kamu coba akses dari fungsi lain, program bakal bilang ‘eh, gak ada variabel ini’.",
-                            "reactionIndex": 0,
+                            "line": "Bener banget, Jen! Variabel lokal cuma bisa dipakai di fungsi tempat dia dibuat. Jadi kalo kamu coba akses dari fungsi lain, program bakal bilang 'eh, gak ada variabel ini'.",
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Selain itu, variabel lokal juga bakal hilang begitu fungsi selesai dijalankan. Jadi memori program tetap rapi, gak kebanjiran variabel yang udah gak kepakai.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Ooo… mulai ngerti sekarang! Coba dong, kasih analogi Wi-Fi tapi kali ini buat variabel lokal, biar makin kebayang",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         }
                     ],
@@ -708,7 +712,7 @@
                     "dialogs": [
                         {
                             "line": "Nah, gampangnya gini deh Jen. Variabel lokal itu kayak hotspot-ku sendiri.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -718,32 +722,32 @@
                         },
                         {
                             "line": "Jadi, cuma aku yang tahu password-nya dan cuma kamu yang bisa aku kasih akses. Orang lain di kafe ini gak bisa nyambung sembarangan.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Ohh… jadi kayak jaringan pribadi gitu ya? Gak bisa diakses semua orang kayak Wi-Fi kafe.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Tepat banget. Sama kayak variabel lokal — cuma bisa dipakai di fungsi tempat dia dibuat. Begitu keluar dari fungsi itu, koneksinya otomatis putus.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Haha, oke, sekarang aku kebayang! Jadi kalo hotspot-nya mati, ya datanya ikut ilang juga ya?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Nah, bener banget. Kamu siap jawab soal sekarang?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Boleh, yuk!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         }
                     ],
@@ -756,12 +760,12 @@
                     "dialogs": [
                         {
                             "line": "Mantep, mulai jago nih aku.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Wih, keren tuh kalo mulai paham. Sekarang kita coba ke soal lainnya ya, kita lihat, kamu masih bisa jawab bener ga?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         }
                     ],
@@ -774,42 +778,42 @@
                     "dialogs": [
                         {
                             "line": "YEY MATCHAKUU!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Kamu keliatan seneng banget kalo soal matcha, perasaan rasanya kaya rumput diperes dah",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Enak banget. Kamu nyobain matcha yang ngolahnya ga bener kali ah, masa kaya rumput",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Heh, tetep aja rasanya kayak rumput taman. Udah deh, aku mau ke kasir dulu buat beli matcha.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Oke, aku tunggu sini ya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Nih matchanya, eh, padahal harus cabut rumput dulu biar bisa meres airnya, tapi ini aku bikin cepet deh, biar kamu nggak kelamaan nunggu",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "APAAN SI RASA RUMPUT DARIMANA ORANG ENAK GINI KOK!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 3,
                             "characterIndex": 1
                         },
                         {
                             "line": "Iya iya, terserah deh. Sekarang, sebelum matcha kamu keburu habis, kita lanjut latihan soal lagi ya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
@@ -819,12 +823,12 @@
                         },
                         {
                             "line": "Iya dong, sekalian biar kamu makin paham. Siap belum?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "SIAPP! Matcha udah jadi bahan bakar otakku nih!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         }
                     ],
@@ -837,17 +841,17 @@
                     "dialogs": [
                         {
                             "line": "Wih mantep nih bener, matcha part 2 ga nih?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "GAK GAK! LANGSUNG KERING DOMPETKU NTAR.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 2
                         },
                         {
                             "line": "Hehehe… yaudah deh. Lanjut aja materinya. Masih banyak nggak sih jenis variabelnya?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
@@ -857,17 +861,17 @@
                         },
                         {
                             "line": "Aku cuma takut kemaleman… yaudah aku ke kasir dulu buat beli camilan. Kamu mau kue tiramisu nggak?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Engga kalo kemaleman, dikit lagi kelar kok. Hah? Tiramisu? Makanan apa lagi tuh sekarang?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Yaelah, kamu mah kebanyakan gatau...Aku beli dua deh, nanti kamu coba juga ya!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         }
                     ],
@@ -880,22 +884,22 @@
                     "dialogs": [
                         {
                             "line": "Yah, salah tuh… kebanyakan minum jus rumput kali ya",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 2
                         },
                         {
                             "line": "Eh enggak ya, kayanya otakku agak ngeblank deh",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
                             "line": "Yaudah, tenang. Aku jelasin dikit aja ya biar nggak bingung. Ingat kan tadi variabel lokal cuma berlaku di fungsi tempat dia dibuat? Jadi kalau kamu kira yang di dalam ubah() itu sama dengan yang global, itu yang bikin bingung.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Coba pikir lagi, bedain mana yang cuma ada di fungsi, mana yang bisa diakses di seluruh program.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -913,22 +917,22 @@
                     "dialogs": [
                         {
                             "line": "Wih… tiramisunya enak juga ya, lembut, rasanya kaya campuran coklat dan vanilla gitu. Aku kasih rating 9/10 deh.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Kok cuma 9/10? Katanya enak.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
                             "line": "Yang 10/10 mah kamu",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Hahaha… MULAI DEH! Udah sekarang, lanjut ke jenis variabel lainnya!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         }
                     ],
@@ -953,7 +957,7 @@
                     "dialogs": [
                         {
                             "line": "Oke, lanjut ke variabel statis nih. Jadi variabel statis itu beda sama lokal atau global biasa.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -963,7 +967,7 @@
                         },
                         {
                             "line": "Nah, kurang lebih gitu. Variabel statis itu nilainya tetap ada di memori meski fungsi yang memakainya udah selesai. Jadi dia nggak hilang seperti variabel lokal biasa.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -973,7 +977,7 @@
                         },
                         {
                             "line": "Bener banget! Jadi intinya, variabel statis itu nilainya nggak hilang setelah fungsi selesai, tetap tersimpan di memori. Makanya praktis dipakai kalau kita mau data di fungsi tetap ada setiap kali fungsi dipanggil lagi.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
@@ -991,7 +995,7 @@
                     "dialogs": [
                         {
                             "line": "Bayangin nih, variabel statis tuh kaya topping tiramisu yang tetep sama tiap sendok. Jadi, meskipun kamu ngambil sendok baru, toppingnya nggak berubah.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -1001,7 +1005,7 @@
                         },
                         {
                             "line": "Bener banget! Makanya variabel statis sering dipakai kalau kita mau nyimpen data di fungsi tapi tetap dipertahankan nilainya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
@@ -1019,17 +1023,17 @@
                     "dialogs": [
                         {
                             "line": "Oke Jen, aku jelasin dulu ya definisi tentang variabel statis.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Oke, aku dengerin.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Jadi, variabel statis itu mirip kayak variabel lokal, tapi bedanya nilainya nggak hilang walau fungsi udah selesai dipanggil. Jadi pas fungsi itu dijalankan lagi, nilainya masih inget dari sebelumnya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -1039,7 +1043,7 @@
                         },
                         {
                             "line": "Yap, bener banget. Kalau diibaratin Wi-Fi, sebelumnya kan variabel global itu bisa diakses semua orang, variabel lokal cuma kamu yang bisa akses. Nah, variabel statis itu kayak Wi-Fi pribadimu yang walau dimatiin sebentar, pas nyala lagi langsung otomatis nyambung karena masih inget password dan datanya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
@@ -1048,18 +1052,18 @@
                             "characterIndex": 1
                         },
                         {
-                            "line": "Iya, mirip, kuncinya itu variabel lokal bakal ‘lupa’ setiap kali fungsi selesai, sedangkan variabel statis tetep inget nilai sebelumnya. Jadi hasilnya bisa terus berubah dari data yang lama, bukan mulai dari nol lagi.",
-                            "reactionIndex": 0,
+                            "line": "Iya, mirip, kuncinya itu variabel lokal bakal ‘lupa' setiap kali fungsi selesai, sedangkan variabel statis tetep inget nilai sebelumnya. Jadi hasilnya bisa terus berubah dari data yang lama, bukan mulai dari nol lagi.",
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Oke oke, mulai kebayang bedanya. Jadi kayak memori jangka panjang gitu ya?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Nah, betul banget. Biar ga bingung, coba kamu kerjain soal ini deh.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         }
                     ],
@@ -1072,27 +1076,27 @@
                     "dialogs": [
                         {
                             "line": "Nah itu dia bedanya variabel lokal dan variabel statis!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Ohh jadi karena 'x'-nya statis, dia inget nilainya tiap kali fungsi ‘hitung()’ dipanggil, ya?",
-                            "reactionIndex": 0,
+                            "line": "Ohh jadi karena 'x'-nya statis, dia inget nilainya tiap kali fungsi 'hitung()' dipanggil, ya?",
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Yup! Kalau 'x'-nya lokal biasa, hasilnya bakal 1 1 1 karena selalu mulai dari nol lagi. Tapi karena statis, dia lanjut dari nilai terakhir.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Wah, pantes tadi nilainya naik terus. Sekarang makin jelas bedanya",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Oke, karena udah ngerti, coba soal yang lebih susah ya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         }
                     ],
@@ -1115,17 +1119,17 @@
                         },
                         {
                             "line": "Yap, bener banget. Kalau x-nya lokal biasa, baru deh nilainya bakal balik ke nol terus.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Oke, paham! Jadi karena dia statis, hasilnya bakal naik terus tiap fungsi dipanggil, karena dia inget nilai sebelumnya ya?.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Nah, sip, pinter! Sekarang coba jawab dengan teliti yaa",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         }
                     ],
@@ -1138,37 +1142,37 @@
                     "dialogs": [
                         {
                             "line": "Nah itu dia bedanya variabel lokal dan statis!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Ohh jadi karena ‘total’-nya statis, dia nyimpen hasil tambah dari sebelumnya, ya?",
+                            "line": "Ohh jadi karena 'total'-nya statis, dia nyimpen hasil tambah dari sebelumnya, ya?",
                             "reactionIndex": 0,
                             "characterIndex": 1
                         },
                         {
-                            "line": "Yup! Kalau ‘temp’-nya kan lokal biasa, jadi tiap kali fungsi jalan, nilainya balik ke nol lagi.",
-                            "reactionIndex": 0,
+                            "line": "Yup! Kalau 'temp'-nya kan lokal biasa, jadi tiap kali fungsi jalan, nilainya balik ke nol lagi.",
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Wahh iya! Pantes ‘temp’-nya cuma nambah sesuai angka terakhir, tapi ‘total’-nya akumulatif.",
-                            "reactionIndex": 0,
+                            "line": "Wahh iya! Pantes 'temp'-nya cuma nambah sesuai angka terakhir, tapi 'total'-nya akumulatif.",
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Nah, itu yang sering bikin salah paham di awal — kelihatannya dua-duanya diubah, padahal cara simpen nilainya beda jauh.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Yan ini kurang berapa lagi? kalo kurang banyak kayanya dilanjut besok aja deh.. takut kemaleman",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
                             "line": "Aman jen ini kurang satu lagi kok.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         }
                     ],
@@ -1180,18 +1184,18 @@
                     "backgroundIndex": 0,
                     "dialogs": [
                         {
-                            "line": "Hmm, hampir bener sih… tapi coba pikir lagi deh. Salah satunya ‘pelupa’, satunya ‘pengingat’.",
-                            "reactionIndex": 0,
+                            "line": "Hmm, hampir bener sih… tapi coba pikir lagi deh. Salah satunya 'pelupa', satunya 'pengingat'.",
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Pelupa? Maksudnya gimana tuh?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hehe, coba inget lagi deh. Kira-kira variabel jenis apa yang inget nilainya terus-menerus?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         }
                     ],
@@ -1221,17 +1225,17 @@
                         },
                         {
                             "line": "Nah, bener! Variabel statis itu bakal inget terus nilai yang udah dia bawa sebelumnya. Jadi, meskipun fungsi dipanggil berkali-kali, nilainya nggak balik ke awal.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Nah, kamu teliti soalnya pelan-pelan, kamu cek mana variabel lokal dan mana variabel statis biar ga keliru",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
-                            "line": "Ooo gitu, jadi yang ‘pengingat’ itu si statis ya. Oke, aku coba ulang soalnya deh, biar makin paham.",
-                            "reactionIndex": 0,
+                            "line": "Ooo gitu, jadi yang 'pengingat' itu si statis ya. Oke, aku coba ulang soalnya deh, biar makin paham.",
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         }
                     ],
@@ -1248,8 +1252,8 @@
                             "characterIndex": 1
                         },
                         {
-                            "line": "Hehe, bukan itu, Jen. Justru variabel lokal itu yang ‘pelupa’. Tiap kali fungsi dipanggil, nilainya balik lagi ke awal.",
-                            "reactionIndex": 0,
+                            "line": "Hehe, bukan itu, Jen. Justru variabel lokal itu yang 'pelupa'. Tiap kali fungsi dipanggil, nilainya balik lagi ke awal.",
+                            "reactionIndex": 2,
                             "characterIndex": 2
                         },
                         {
@@ -1259,7 +1263,7 @@
                         },
                         {
                             "line": "Yup! Variabel statis disimpen di memori, jadi nilainya tetep inget walau fungsinya dipanggil terus-menerus.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -1269,12 +1273,12 @@
                         },
                         {
                             "line": "Nah, tepat banget! Makanya hasilnya bisa terus nambah tiap kali fungsi dijalankan.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Oke deh, aku coba ulang soalnya biar makin paham.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         }
                     ],
@@ -1287,27 +1291,27 @@
                     "dialogs": [
                         {
                             "line": "Eh, Jen… tadi kamu ke sini naik apa, toh?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Ah… aku naik ojol, makanya agak buru-buru tadi. Aku juga kalo kemaleman takut ga dapet driver",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hahaha, iya iya, sekarang ngerti deh. Nanti kalo udah selesai materi, mau balik sama aku ga? Biar kamu bisa fokus dulu sama materinya, mukamu keliatan khawatir soalnya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Gapapa ya?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Gapapa kok, Jen. Sekarang, mari kita lanjut materi berikutnya sebelum gelap beneran.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         }
                     ],
@@ -1320,17 +1324,17 @@
                     "dialogs": [
                         {
                             "line": "Oke Jen, sekarang aku jelasin tentang variabel register dari awal ya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Sip, aku siap dengerin.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Jadi, biasanya variabel di C itu disimpen di memori utama (RAM). Semua variabel global, lokal, atau statis biasanya disimpan di sana. Nah, akses ke memori utama itu lebih lambat dibandingkan akses langsung ke CPU.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -1340,17 +1344,17 @@
                         },
                         {
                             "line": "Nah, disini variabel register masuk. Kalau kita deklarasi variabel pakai keyword register, kita kasih tahu compiler supaya nyimpen nilainya langsung di CPU register, bukan di RAM. Jadi aksesnya lebih cepet.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Wih, enak dong pake variabel register, bisa cepet",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Iya, ibaratnya gini deh. Variabel biasa itu kayak kamu nulis catatan di buku, kalau mau liat, harus buka dulu bukunya, agak lama. Tapi kalau variabel register itu kayak catatan di kepala kamu sendiri. Langsung inget, langsung akses, cepet banget.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
@@ -1360,22 +1364,22 @@
                         },
                         {
                             "line": "Nah, bener banget! Karena disimpen di CPU, kamu nggak bisa ambil alamatnya kayak variabel biasa. Jumlah register juga terbatas, jadi nggak semua variabel bisa disimpen di sana.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Oke paham paham. Jadi kalau dipaksa ambil alamat, nggak bisa, karena dia nggak di memori biasa ya?",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Bener banget, Jen! Jadi intinya variabel register itu cepat karena langsung di CPU, tapi ada batasnya dan nggak bisa diambil alamatnya.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Nah, yaudah deh. Aku tau kamu kepikiran mau balik cepet kan? Sekarang coba kerjain soal ini dulu",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         }
                     ],
@@ -1388,12 +1392,12 @@
                     "dialogs": [
                         {
                             "line": "Sip bener. Biar ga kemaleman, langsung aja kita lanjut ke soal berikutnya yaa.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Oke deh, gas.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         }
                     ],
@@ -1405,13 +1409,13 @@
                     "backgroundIndex": 0,
                     "dialogs": [
                         {
-                            "line": "Hmmm, hampir bener sih… tapi inget ya, variabel register itu cuma ada sementara di CPU tiap kali fungsi dipakai. Jadi dia nggak ‘ingat’ nilai dari pemanggilan sebelumnya, beda sama variabel statis.",
-                            "reactionIndex": 0,
+                            "line": "Hmmm, hampir bener sih… tapi inget ya, variabel register itu cuma ada sementara di CPU tiap kali fungsi dipakai. Jadi dia nggak 'ingat' nilai dari pemanggilan sebelumnya, beda sama variabel statis.",
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Ooh… iya ya, berarti aku keliru. Oke deh, aku coba lagi!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         }
                     ],
@@ -1423,18 +1427,18 @@
                     "backgroundIndex": 0,
                     "dialogs": [
                         {
-                            "line": "Hmmm… bukan gitu, Jen. Ingat, register itu cuma sebentar ada di CPU tiap pemanggilan fungsi. Kalau totalnya statis, dia tetap ‘ingat’ nilai sebelumnya tiap kali fungsi dipanggil.",
-                            "reactionIndex": 0,
+                            "line": "Hmmm… bukan gitu, Jen. Ingat, register itu cuma sebentar ada di CPU tiap pemanggilan fungsi. Kalau totalnya statis, dia tetap 'ingat' nilai sebelumnya tiap kali fungsi dipanggil.",
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         },
                         {
                             "line": "Ahh… iya, aku lupa kalau statis itu bisa nyimpen nilai terus. Oke deh, aku coba ulang lagi.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 2,
                             "characterIndex": 1
                         },
                         {
                             "line": "Sip, coba pikirin pelan-pelan, gausah buru-buru.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 2
                         }
                     ],
@@ -1447,27 +1451,27 @@
                     "dialogs": [
                         {
                             "line": "Yeay! Akhirnya bener juga! Pulang-pulang!",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         },
                         {
                             "line": "Hehe, sabar dulu, Jen! Aku jelasin ulang ya, variabel yang statis itu nilainya tetap inget tiap kali fungsi dipanggil, makanya hasilnya naik terus. Sedangkan i yang register cuma ada sementara di CPU tiap loop, jadi nilainya nggak disimpen setelah loop selesai. Makanya tiap kali fungsi dipanggil lagi, register mulai dari awal lagi.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 2
                         },
                         {
                             "line": "Wih… pantesan tadi aku liat nilainya naik terus. Oke, sekarang beresin semua barang dulu deh, takut kemaleman.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 1,
                             "characterIndex": 1
                         },
                         {
                             "line": "Iya, bener. Yuk, kita beresin meja sama barang-barangmu, biar cepet dan nggak kemaleman.",
-                            "reactionIndex": 0,
+                            "reactionIndex": 5,
                             "characterIndex": 2
                         },
                         {
                             "line": "Yap, ayo...",
-                            "reactionIndex": 0,
+                            "reactionIndex": 4,
                             "characterIndex": 1
                         }
                     ],
@@ -1527,8 +1531,14 @@
                             },
                             {
                                 "text": "Karena x adalah variabel lokal di fungsiA() dan tidak bisa diakses dari main()",
-                                "next": "benarA6_2",
-                                "nextType": "dialog",
+                                "next": [
+                                    "benarA6_2",
+                                    "benarMatcha6_2"
+                                ],
+                                "nextType": [
+                                    "dialog",
+                                    "dialog"
+                                ],
                                 "isCorrect": true
                             },
                             {
@@ -1699,7 +1709,7 @@
                     {
                         "id": "soalB6_1",
                         "instruction": "Bantu Jennie menyusun potongan kode berikut agar program bisa menampilkan nilai variabel global dengan benar! Susunlah potongan kode di bawah ini dengan urutan yang tepat.",
-                        "scaffoldCode": "#include <stdio.h>\n\n_____ \n\nvoid ubahNilai() {\n    _____\n}\n\nint main() {\n    ubahNilai();\n    _____\n    return 0;\n}",
+                        "scaffoldCode": "#include <stdio.h>\n\n [dz1] \n\nvoid ubahNilai() {\n    [dz2] \n}\n\nint main() {\n    ubahNilai();\n    [dz3] \n    return 0;\n}",
                         "draggableOptions": [
                             {
                                 "id": "dnd-B6_1-1",

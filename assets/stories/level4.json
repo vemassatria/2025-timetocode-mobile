@@ -314,7 +314,7 @@
                     "characterIndex": 2
                 },
                 {
-                    "line": "Misalnya, kalau loop luar bilang ‘buat satu baris’, loop dalam bakal jalan beberapa kali sesuai jumlah yang mau dicetak di baris itu.",
+                    "line": "Misalnya, kalau loop luar bilang 'buat satu baris', loop dalam bakal jalan beberapa kali sesuai jumlah yang mau dicetak di baris itu.",
                     "reactionIndex": 6,
                     "characterIndex": 2
                 },
@@ -357,7 +357,7 @@
                     "characterIndex": 2
                 },
                 {
-                    "line": "Misalnya, loop luar bilang ‘buat satu baris’, loop dalam jalan dua kali buat cetak angka atau simbol. Baris berikutnya, loop luar jalan lagi, loop dalam juga jalan lagi. Jadi keduanya saling kerja sama membentuk pola.",
+                    "line": "Misalnya, loop luar bilang 'buat satu baris', loop dalam jalan dua kali buat cetak angka atau simbol. Baris berikutnya, loop luar jalan lagi, loop dalam juga jalan lagi. Jadi keduanya saling kerja sama membentuk pola.",
                     "reactionIndex": 6,
                     "characterIndex": 2
                 },
