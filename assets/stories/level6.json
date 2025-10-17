@@ -52,6 +52,12 @@
                     "text": "Beberapa menit kemudian, Jennie kembali ke mejanya, membawa kue tiramisu itu dengan hati-hati. Adrian menatapnya sebentar, tersenyum tipis, sebelum mereka berdua bersiap melanjutkan latihan variabel berikutnya",
                     "next": "intro6_3",
                     "nextType": "dialog"
+                },
+                {
+                    "id": "preDialog6_4",
+                    "text": "Suasana kafe mulai sepi. Lampu gantung di atas meja mereka memantulkan cahaya hangat ke permukaan meja, sementara di luar jendela, langit udah berubah jadi gelap. Jennie melirik jam di HP-nya beberapa kali",
+                    "next": "intro6_4",
+                    "nextType": "dialog"
                 }
             ],
             "dialogs": [
@@ -1167,7 +1173,7 @@
                         }
                     ],
                     "next": "preDialog6_4",
-                    "nextType": "dialog"
+                    "nextType": "preDialog"
                 },
                 {
                     "id": "salahB6_3",
@@ -1274,10 +1280,200 @@
                     ],
                     "next": "soalB6_3",
                     "nextType": "soal"
+                },
+                {
+                    "id": "intro6_4",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Eh, Jen… tadi kamu ke sini naik apa, toh?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ah… aku naik ojol, makanya agak buru-buru tadi. Aku juga kalo kemaleman takut ga dapet driver",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hahaha, iya iya, sekarang ngerti deh. Nanti kalo udah selesai materi, mau balik sama aku ga? Biar kamu bisa fokus dulu sama materinya, mukamu keliatan khawatir soalnya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Gapapa ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Gapapa kok, Jen. Sekarang, mari kita lanjut materi berikutnya sebelum gelap beneran.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "materi6_4",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "materi6_4",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Oke Jen, sekarang aku jelasin tentang variabel register dari awal ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Sip, aku siap dengerin.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Jadi, biasanya variabel di C itu disimpen di memori utama (RAM). Semua variabel global, lokal, atau statis biasanya disimpan di sana. Nah, akses ke memori utama itu lebih lambat dibandingkan akses langsung ke CPU.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ooo… jadi kalau mau cepet, harus gimana dong?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, disini variabel register masuk. Kalau kita deklarasi variabel pakai keyword register, kita kasih tahu compiler supaya nyimpen nilainya langsung di CPU register, bukan di RAM. Jadi aksesnya lebih cepet.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Wih, enak dong pake variabel register, bisa cepet",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya, ibaratnya gini deh. Variabel biasa itu kayak kamu nulis catatan di buku, kalau mau liat, harus buka dulu bukunya, agak lama. Tapi kalau variabel register itu kayak catatan di kepala kamu sendiri. Langsung inget, langsung akses, cepet banget.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ooo gitu! Tapi berarti kalau di kepala, orang lain nggak bisa liat catatannya ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, bener banget! Karena disimpen di CPU, kamu nggak bisa ambil alamatnya kayak variabel biasa. Jumlah register juga terbatas, jadi nggak semua variabel bisa disimpen di sana.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke paham paham. Jadi kalau dipaksa ambil alamat, nggak bisa, karena dia nggak di memori biasa ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Bener banget, Jen! Jadi intinya variabel register itu cepat karena langsung di CPU, tapi ada batasnya dan nggak bisa diambil alamatnya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Nah, yaudah deh. Aku tau kamu kepikiran mau balik cepet kan? Sekarang coba kerjain soal ini dulu",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA6_4",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarA6_4",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Sip bener. Biar ga kemaleman, langsung aja kita lanjut ke soal berikutnya yaa.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke deh, gas.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "soalB6_4",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahA6_4",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Hmmm, hampir bener sih… tapi inget ya, variabel register itu cuma ada sementara di CPU tiap kali fungsi dipakai. Jadi dia nggak ‘ingat’ nilai dari pemanggilan sebelumnya, beda sama variabel statis.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ooh… iya ya, berarti aku keliru. Oke deh, aku coba lagi!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "soalA6_4",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahB6_4",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Hmmm… bukan gitu, Jen. Ingat, register itu cuma sebentar ada di CPU tiap pemanggilan fungsi. Kalau totalnya statis, dia tetap ‘ingat’ nilai sebelumnya tiap kali fungsi dipanggil.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ahh… iya, aku lupa kalau statis itu bisa nyimpen nilai terus. Oke deh, aku coba ulang lagi.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Sip, coba pikirin pelan-pelan, gausah buru-buru.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalB6_4",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarB6_4",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Yeay! Akhirnya bener juga! Pulang-pulang!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hehe, sabar dulu, Jen! Aku jelasin ulang ya, variabel yang statis itu nilainya tetap inget tiap kali fungsi dipanggil, makanya hasilnya naik terus. Sedangkan i yang register cuma ada sementara di CPU tiap loop, jadi nilainya nggak disimpen setelah loop selesai. Makanya tiap kali fungsi dipanggil lagi, register mulai dari awal lagi.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Wih… pantesan tadi aku liat nilainya naik terus. Oke, sekarang beresin semua barang dulu deh, takut kemaleman.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya, bener. Yuk, kita beresin meja sama barang-barangmu, biar cepet dan nggak kemaleman.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Yap, ayo...",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": null,
+                    "nextType": null
                 }
-
-
-
             ],
             "minigame": {
                 "questions": [
