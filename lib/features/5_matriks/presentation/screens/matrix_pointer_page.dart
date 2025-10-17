@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
+import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
 import 'package:timetocode/app/widgets/popups/menu_popup.dart';
 import 'package:timetocode/features/0_core/widgets/code_box.dart';
@@ -81,6 +82,8 @@ class MatrixPointerPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            _buildInstruction(),
+            SizedBox(height: 24.h),
             CodeBox(code: gameState.level.code),
             SizedBox(height: 24.h),
             PointerGrid(level: level),
@@ -90,4 +93,29 @@ class MatrixPointerPage extends ConsumerWidget {
       ),
     );
   }
+
+  Widget _buildInstruction() {
+    return RichText(
+      textAlign: TextAlign.left,
+      text: TextSpan(
+        style: AppTypography.normal(),
+        children: [
+          const TextSpan(text: 'Arahkan pointer '),
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: Container(
+              width: 16.sp,
+              height: 16.sp,
+              decoration: const BoxDecoration(
+                color: AppColors.rewardYellow,
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          const TextSpan(text: ' sesuai dengan loop yang ada!'),
+        ],
+      ),
+    );
+  }
+
 }
