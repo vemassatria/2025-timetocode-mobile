@@ -1,15 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:timetocode/features/2_challenge_mode/presentation/screens/end_game_page.dart';
+import 'package:timetocode/features/2_minigames/games/challenge/presentation/screens/end_game_page.dart';
 import 'package:timetocode/app/config/routes/main_navigation.dart';
-import 'package:timetocode/features/2_challenge_mode/presentation/screens/challenge_gameplay_page.dart';
-import 'package:timetocode/features/2_challenge_mode/presentation/screens/challenge_selection_page.dart';
+import 'package:timetocode/features/2_minigames/games/challenge/presentation/screens/challenge_gameplay_page.dart';
+import 'package:timetocode/features/2_minigames/games/challenge/presentation/screens/challenge_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_selection_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/end_game_page.dart';
-import 'package:timetocode/features/3_logic_gate_mode/presentation/screens/logic_gate_gameplay.dart';
-import 'package:timetocode/features/3_logic_gate_mode/presentation/screens/logic_gate_page.dart';
-import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
+import 'package:timetocode/features/2_minigames/games/logic_gate/presentation/screens/logic_gate_gameplay.dart';
+import 'package:timetocode/features/2_minigames/games/logic_gate/presentation/screens/logic_gate_page.dart';
+import 'package:timetocode/features/3_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
