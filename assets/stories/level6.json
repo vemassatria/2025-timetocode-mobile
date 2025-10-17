@@ -1478,55 +1478,296 @@
             "minigame": {
                 "questions": [
                     {
-                        "id": "",
-                        "conditions": {
-                            "key": ">=>==<<=value"
-                        },
-                        "text": "",
-                        "code": "",
+                        "id": "soalA6_1",
+                        "text": "Bantu Jennie menyelesaikan latihan berikut. Perhatikan potongan kode di bawah ini:",
+                        "code": "#include <stdio.h>\n\nint a = 1;\nchar charku = 'c';\nfloat floatku = 29.2;\n\nvoid contoh()\n{\n    printf(\"Nilai a: %d\n\", a);\n}",
                         "choices": [
                             {
-                                "text": "",
-                                "next": "",
-                                "nextType": "",
+                                "text": "Hanya 'a'",
+                                "next": "salahA6_1",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "'a', charku, dan floatku",
+                                "next": "benarA6_1",
+                                "nextType": "dialog",
+                                "isCorrect": true
+                            },
+                            {
+                                "text": "Tidak ada yang bisa diakses dari fungsi contoh()",
+                                "next": "salahA6_1",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "Hanya floatku",
+                                "next": "salahA6_1",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            }
+                        ]
+                    },
+                    {
+                        "id": "soalA6_2",
+                        "text": "Perhatikan kode berikut:",
+                        "code": "\n#include <stdio.h>\n\nvoid fungsiA() {\n    int x = 10;\n    printf(\"%d\n\", x);\n}\n\nint main() {\n    fungsiA();\n    // printf(\"%d\n\", x); // baris ini jika dibuka akan error\n    return 0;\n}",
+                        "choices": [
+                            {
+                                "text": "Karena x belum dideklarasikan di main()",
+                                "next": "salahA6_2",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "Karena x adalah variabel global, tapi salah penulisan",
+                                "next": "salahA6_2",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "Karena x adalah variabel lokal di fungsiA() dan tidak bisa diakses dari main()",
+                                "next": "benarA6_2",
+                                "nextType": "dialog",
+                                "isCorrect": true
+                            },
+                            {
+                                "text": "Karena x belum diinisialisasi",
+                                "next": "salahA6_2",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            }
+                        ]
+                    },
+                    {
+                        "id": "soalB6_2",
+                        "text": "Bantu Jennie menjawab soal ini!. Perhatikan Program berikut :",
+                        "code": "#include <stdio.h>\n\nint nilai = 10;  // (1)\n\nvoid ubah() {\n    int nilai = 5;   // (2)\n    nilai += 3;\n    printf(\"Nilai di dalam ubah(): %d\n\", nilai);\n}\n\nint main() {\n    ubah();\n    printf(\"Nilai di dalam main(): %d\n\", nilai);\n    return 0;\n}",
+                        "choices": [
+                            {
+                                "text": "Kedua variabel nilai adalah global, karena nama dan tipenya sama.",
+                                "next": "salahB6_2",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "nilai di (1) adalah global, sedangkan nilai di (2) adalah lokal yang hanya berlaku di fungsi ubah().",
+                                "next": "benarB6_2",
+                                "nextType": "dialog",
+                                "isCorrect": true
+                            },
+                            {
+                                "text": "nilai di (2) otomatis menggantikan nilai di (1), jadi yang global akan berubah juga.",
+                                "next": "salahB6_2",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "Tidak ada variabel global dalam kode tersebut, semuanya lokal.",
+                                "next": "salahB6_2",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            }
+                        ]
+                    },
+                    {
+                        "id": "soalA6_3",
+                        "text": "Bantu jennie menyelesaikan soal yang diberikan Adrian!",
+                        "code": "#include <stdio.h>\n\nvoid hitung() {\n    static int x = 0;\n    x++;\n    printf(\"%d \", x);\n}\n\nint main() {\n    hitung();\n    hitung();\n    hitung();\n    return 0;\n}",
+                        "choices": [
+                            {
+                                "text": "1 1 1",
+                                "next": "salahA6_3",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "1 2 3",
+                                "next": "benarA6_3",
+                                "nextType": "dialog",
+                                "isCorrect": true
+                            },
+                            {
+                                "text": "3 2 1",
+                                "next": "salahA6_3",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "0 1 2",
+                                "next": "salahA6_3",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            }
+                        ]
+                    },
+                    {
+                        "id": "soalB6_3",
+                        "text": "Coba perhatikan program di bawah ini!",
+                        "code": "#include <stdio.h>\n\nvoid tambah(int n) {\n    static int total = 0;\n    int temp = 0;\n\n    total += n;\n    temp += n;\n\n    printf(\"%d %d\n\", total, temp);\n}\n\nint main() {\n    tambah(2);\n    tambah(3);\n    tambah(5);\n    return 0;\n}",
+                        "choices": [
+                            {
+                                "text": "2 2\n5 5\n10 10",
+                                "next": "salahB6_3",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "2 2\n3 3\n5 5",
+                                "next": "salahB6_3",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "2 2\n3 3\n5 5",
+                                "next": "salahB6_3",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "2 2\n5 3\n10 5",
+                                "next": "benarB6_3",
+                                "nextType": "dialog",
                                 "isCorrect": true
                             }
-                        ],
-                        "consequences": {
-                            "key": "value"
-                        }
+                        ]
+                    },
+                    {
+                        "id": "soalA6_4",
+                        "text": "Perhatikan potongan kode berikut. Dalam program di atas, mana yang merupakan variabel register dan variabel statis?",
+                        "code": "#include <stdio.h>\n\nvoid contoh() {\n    static int angka = 5; \n    register int i;\n    for (i = 0; i < 3; i++) {\n      angka++;\n        printf(\"Angka: %d, i: %d\n\", angka, i);\n  }\n}\n\nint main() {\n    contoh();\n    contoh();\n    return 0;\n}",
+                        "choices": [
+                            {
+                                "text": "angka adalah variabel register, i adalah variabel statis.",
+                                "next": "salahA6_4",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "angka dan i keduanya variabel register.",
+                                "next": "salahA6_4",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "angka adalah variabel statis, i adalah variabel register.",
+                                "next": "benarA6_4",
+                                "nextType": "dialog",
+                                "isCorrect": true
+                            },
+                            {
+                                "text": "angka dan i keduanya variabel statis.",
+                                "next": "salahA6_4",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            }
+                        ]
+                    },
+                    {
+                        "id": "soalB6_4",
+                        "text": "Manakah pernyataan yang benar tentang variabel total dan temp?",
+                        "code": "#include <stdio.h>\n\nvoid hitung() {\n    static int total = 0;\n    register int temp;\n    temp = 1;\n    total += temp;\n    printf(\"Total: %d, Temp: %d\n\", total, temp);\n}\n\nint main() {\n    hitung();\n    hitung();\n    hitung();\n    return 0;\n}",
+                        "choices": [
+                            {
+                                "text": "total adalah statis, temp adalah register",
+                                "next": "benarB6_4",
+                                "nextType": "dialog",
+                                "isCorrect": true
+                            },
+                            {
+                                "text": "total adalah register, temp adalah statis",
+                                "next": "salahB6_4",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "Kedua-duanya register",
+                                "next": "salahB6_4",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            },
+                            {
+                                "text": "Kedua-duanya statis",
+                                "next": "salahB6_4",
+                                "nextType": "dialog",
+                                "isCorrect": false
+                            }
+                        ]
                     }
                 ],
                 "dragAndDrop": [
                     {
-                        "id": "",
-                        "conditions": {
-                            "key": ">=>==<<=value"
-                        },
-                        "instruction": "",
-                        "scaffoldCode": "",
+                        "id": "soalB6_1",
+                        "instruction": "Bantu Jennie menyusun potongan kode berikut agar program bisa menampilkan nilai variabel global dengan benar! Susunlah potongan kode di bawah ini dengan urutan yang tepat.",
+                        "scaffoldCode": "#include <stdio.h>\n\n_____ \n\nvoid ubahNilai() {\n    _____\n}\n\nint main() {\n    ubahNilai();\n    _____\n    return 0;\n}",
                         "draggableOptions": [
                             {
-                                "id": "",
+                                "id": "dnd-B6_1-1",
                                 "content": {
-                                "type": "text",
-                                "value": ""
+                                    "type": "text",
+                                    "value": "int nilai = 5;"
+                                }
+                            },
+                            {
+                                "id": "dnd-B6_1-2",
+                                "content": {
+                                    "type": "text",
+                                    "value": "printf(\"Nilai sekarang: %d\\n\", nilai);"
+                                }
+                            },
+                            {
+                                "id": "dnd-B6_1-3",
+                                "content": {
+                                    "type": "text",
+                                    "value": "nilai = 20;"
+                                }
+                            },
+                            {
+                                "id": "dnd-B6_1-4",
+                                "content": {
+                                    "type": "text",
+                                    "value": "int ubahNilai = 10;"
+                                }
+                            },
+                            {
+                                "id": "dnd-B6_1-5",
+                                "content": {
+                                    "type": "text",
+                                    "value": "printf(\"Nilai global: %d\", ubahNilai);"
+                                }
+                            },
+                            {
+                                "id": "dnd-B6_1-6",
+                                "content": {
+                                    "type": "text",
+                                    "value": "float nilai = 3.14;"
                                 }
                             }
                         ],
                         "dropZones": [
                             {
-                                "id": "",
-                                "acceptedIds": null,
-                                "content": null
+                                "id": "dz1"
+                            },
+                            {
+                                "id": "dz2"
+                            },
+                            {
+                                "id": "dz3"
                             }
                         ],
-                        "correctSequence": [""],
-                        "next": "",
-                        "nextType": "",
-                        "consequences": {
-                            "key": "value"
-                        }
+                        "correctSequence": [
+                            "dnd-B6_1-1",
+                            "dnd-B6_1-3",
+                            "dnd-B6_1-2"
+                        ],
+                        "next": [
+                            "salahB6_1",
+                            "benarB6_1"
+                        ],
+                        "nextType": [
+                            "dialog",
+                            "dialog"
+                        ]
                     }
                 ]
             },
