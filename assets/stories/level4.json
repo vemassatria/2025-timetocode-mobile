@@ -1,0 +1,1459 @@
+{
+  "levels": [
+    {
+        "level": 4,
+        "description": "",
+        "title": "",
+        "background": [
+            "",
+            ""
+        ],
+        "character1": "Adrian",
+        "character1Images": [
+            "0adriancafe_aksi",
+            "1adriancafe_biasa",
+            "2adriancafe_kecewa",
+            "3adriancafe_marah",
+            "4adriancafe_senang"
+        ],
+        "character2": "Rusdi",
+        "character2Images": [
+            "0rusdi_aksi",
+            "1rusdi_biasa",
+            "2rusdi_kecewa",
+            "3rusdi_kesal",
+            "4rusdi_marah",
+            "5rusdi_ngajarin",
+            "6rusdi_ngajarin2",
+            "7rusdi_ngajarin3",
+            "8rusdi_senang",
+            "9rusdi_terkejut"
+        ],
+        "ilustrations": [
+            ""
+        ],
+        "start": "preDialog4",
+        "typeStart": "preDialog",
+        "preDialog": [
+            {
+                "id": "preDialog4",
+                "text": "Warung mi ayam sore hari terasa tenang. Adrian menyandarkan tubuh di kursi plastik, menyeruput sisa kuah hangat dari mie ayam, sementara Rusdi beres-beres sambil melirik ke arahnya.",
+                "next": "intro4",
+                "nextType": "dialog"
+            }
+        ],
+        "dialogs": [
+            {
+                "id": "intro4",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Seperti biasa, mie ayam Mas Rusdi gak pernah gagal. Mantap!",
+                        "reactionIndex": 4,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Makasi yak! Btw ngomongin soal belajar, anak saya sekarang lagi belajar bikin pola angka. Seru juga, mirip-mirip logika yang dipakai pas ngoding.",
+                        "reactionIndex": 8,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Eh, belajar angka gimana tuh, Mas?",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Jadi ceritanya anak saya disuruh bikin pola angka gitu, biar lebih seru pas belajar berhitung. Gurunya minta dibikin kreatif, gak cuma 1 tambah 1.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Wah, Kayak pola-pola gitu ya, Mas? Saya tadi di kelas juga sempat belajar bikin pola pakai loop, tapi belum paham banget.",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Nah, pas banget. Saya kepikiran beberapa bentuk pola angka kaya pola segitiga.Iseng aja sih, sambil nostalgia masa kuliah.",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    }
+                    
+                ],
+                "branch": {
+                    "choices": [
+                        {
+                            "text": "Wah, seru nih! Aku coba bikin pola segitiga dulu deh, pakai bintang biar gampang.",
+                            "next": "scene4_1",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Sebenernya kepikiran bikin segitiga, tapi logikanya masih mumet di kepala.",
+                            "next": "scene4_2",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "“Ih, ribet banget. Rasanya mending nambah mie ayam lagi daripada bikin pola segitiga begini.",
+                            "next": "scene4_3",
+                            "nextType": "dialog"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "scene4_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Wah, seru nih! Aku coba bikin pola segitiga dulu deh, pakai bintang biar gampang.",
+                        "reactionIndex": 4,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Wih ide bagus tuh, coba gimana konsepnya?",
+                        "reactionIndex": 8,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Jadi baris pertama satu angka, makin ke bawah makin banyak. Kalau tiga baris jadinya bertingkat gitu",
+                        "reactionIndex": 4,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Bagus tuh! Anak kecil suka bentuk naik gitu, kayak gunung kecil. Nah, coba terusin…",
+                        "reactionIndex": 8,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Eh, tapi bingung deh. Cara nambah angkanya tiap baris gimana ya?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Gini, bayangin segitiga kecil. Baris pertama kamu isi satu angka, misalnya 1, jadi puncaknya.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Masuk ke baris kedua, kamu taruh dua angka di bawahnya: 2 sama 3. Terus baris ketiga ada tiga angka: 4, 5, 6. Kalau dilihat dari samping, bentuknya kayak segitiga angka yang makin melebar ke bawah.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Nah, itu kamu butuh dua loop. Yang luar buat barisnya, yang dalam buat ngatur berapa angka yang ditulis per baris. Misalnya, baris ke-3, berarti kamu cetak tiga angka.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Hah? Gimana tuh maksudnya? Dua loop… jadi loop di dalam loop gitu, ya?” (kasih ekspresi adrian kecewa)",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Iya, santai aja mukanya. Jangan panik gitu.",
+                        "reactionIndex": 8,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Tapi serius, Mas… aku malah makin mumet. Ada nggak perumpamaan gampangnya biar aku lebih kebayang?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "materi4_1",
+                "nextType": "dialog"
+            },
+            {
+                "id": "scene4_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Sebenernya kepikiran bikin segitiga, tapi logikanya masih mumet di kepala.",
+                        "reactionIndex": 2,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Wah, keren tuh pendekatannya! Jadi kamu cetak angka urut dulu, baru dibikin format segitiga, ya?",
+                        "reactionIndex": 9,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Iya, misalnya mulai dari 1, terus 2, 3… lalu 4, 5, 6, 7, dan seterusnya. Tapi... bentar… gimana caranya nentuin jumlah angka di tiap barisnya ya?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Begini, Adrian. Baris pertama satu angka, baris kedua dua angka, baris ketiga tiga angka... kamu tinggal pakai dua loop, satu buat baris, satu buat angka di tiap baris.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    }
+                ],
+                "branch": {
+                    "choices": [
+                        {
+                            "text": "Hmm… ngerti sih, tapi masih agak ngeblank gimana cara nulis loop-nya. Bisa kasih contoh yang lebih gampang nggak, Mas?",
+                            "next": "materi4_1",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Oke, mulai kebayang nih. Sekarang waktunya ngetes pake soal.",
+                            "next": "scene4_2_2",
+                            "nextType": "dialog"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "scene4_2_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Oke, mulai kebayang nih. Sekarang waktunya ngetes pake soal.",
+                        "reactionIndex": 4,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Mantap, Adrian. Karena udah kebayang, coba kamu uji coba pake soal ini.",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "soalA4_1",
+                "nextType": "soal"
+            },
+            {
+                "id": "scene4_3",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Ih, ribet banget. Rasanya mending nambah mie ayam lagi daripada bikin pola segitiga begini.",
+                        "reactionIndex": 3,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Haha, boleh aja nambah mie, tapi sayang ilmunya kalau ditinggal. Loop itu memang suka bikin pusing, apalagi pas ngatur angka naik-turun.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Iya sih, cuma aku masih bingung gimana caranya biar angkanya pas muncul sesuai yang aku mau. Kadang malah nyelip atau kurang.",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Itu biasanya karena urutan loop atau variabel penghitungnya belum pas. Tapi tenang, nanti lama-lama terbiasa kok.",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Wah, kok kayaknya makin pusing ya... Aku ngerti konsepnya, tapi pas dipraktikkan malah acak-acakan. Hmm, harus coba lagi deh... tapi gimana ya caranya biar gak salah terus?",
+                        "reactionIndex": 2,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Itu wajar kok, Yan. Semua orang pasti berantakan di awal. Kuncinya rajin coba, nanti pola loop itu otomatis kebentuk di kepala.",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    }
+                ],
+                "branch": {
+                    "choices": [
+                        {
+                            "text": "Daripada mikir lama, coba aku liat soalnya dulu aja kali ya. Siapa tau sambil ngerjain jadi lebih kebayang.",
+                            "next": "materi4_1",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Hmm… aku masih belum kebayang, Mas. Bisa dijelasin dikit lagi nggak?",
+                            "next": "materi4_1",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Kayaknya makin pusing deh… Aku ngerti konsepnya, tapi pas dipraktikkan malah acak-acakan. Gimana ya biar nggak salah terus?",
+                            "next": "materi4_1",
+                            "nextType": "dialog"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "scene4_3_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Daripada mikir lama, coba aku liat soalnya dulu aja kali ya. Siapa tau sambil ngerjain jadi lebih kebayang.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "jangan buru-buru langsung ke soal dulu, Yan. Ini aku jelasin dikit analognya, bentar aja kok, biar nanti pas ngerjain kamu langsung nyambung.",
+                        "reactionIndex": 9,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Okedeh mas",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "materi4_1",
+                "nextType": "dialog"
+            },
+            {
+                "id": "scene4_3_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Hmm… aku masih belum kebayang, Mas. Bisa dijelasin dikit lagi nggak?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Oke, jadi intinya loop luar itu yang ngatur barisnya, sementara loop dalam yang ngatur isi tiap baris. Jadi tiap kali loop luar jalan, loop dalam jalan untuk ngisi isinya.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Misalnya, kalau loop luar bilang ‘buat satu baris’, loop dalam bakal jalan beberapa kali sesuai jumlah yang mau dicetak di baris itu.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Begitu baris berikutnya, loop luar jalan lagi, loop dalam juga jalan lagi. Jadi keduanya saling kerja sama.",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Hmm… jadi ada yang ngatur baris, ada yang ngatur isi tiap baris. Coba kasih contoh biar lebih gampang kebayang, Mas.",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "materi4_1",
+                "nextType": "dialog"
+            },
+            {
+                "id": "scene4_3_3",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Kayaknya makin pusing deh… Aku ngerti konsepnya, tapi pas dipraktikkan malah acak-acakan. Gimana ya biar nggak salah terus?",
+                        "reactionIndex": 2,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Hehe, santai aja Yan. Dari salah itu kamu bisa makin paham. Anggep aja kayak main game, kalah dulu nggak apa-apa, yang penting tau trik buat menang.",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Bener juga sih.. Oke deh, coba deh kasih materinya.",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Oke, inti dari dua loop itu, loop luar ngatur baris, loop dalam ngatur isi tiap baris. Setiap kali loop luar jalan, loop dalam jalan beberapa kali sesuai jumlah yang mau dicetak.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Misalnya, loop luar bilang ‘buat satu baris’, loop dalam jalan dua kali buat cetak angka atau simbol. Baris berikutnya, loop luar jalan lagi, loop dalam juga jalan lagi. Jadi keduanya saling kerja sama membentuk pola.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Bisa kasih contoh yang gampang ga mas?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "materi4_1",
+                "nextType": "dialog"
+            },
+            {
+                "id": "materi4_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Oke, misal kamu nonton turnamen panahan. Ada 3 pemain dalam satu tim, tiap pemain punya giliran satu-satu. Nah, tiap pemain dapat kesempatan nembak 5 anak panah.",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Jadi, loop luar itu buat pemain, dan loop dalam buat tembakan anak panah, ya?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Iya, bener banget! Itu yang namanya nested loop, loop di dalam loop. Jadi, setiap pemain (loop luar) akan punya 5 tembakan (loop dalam).",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Ohhh, paham! Jadi, loop luar itu buat pemain, dan loop dalam buat tembakan anak panah, ya?",
+                        "reactionIndex": 4,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Yesss, bener banget tuh. Itu namanya nested loop, loop di dalam loop. Jadi tiap pemain (loop luar) bakal punya 5 kali tembakan (loop dalam).",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Nah, coba kalo paham aku tes yaa! Coba kamu jawab ini deh.",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "soalA4_1",
+                "nextType": "soal"
+            },
+            {
+                "id": "benarA4_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    }
+                ]
+            },
+            {
+                "id": "salahA4_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Hmm… jawabannya belum tepat nih",
+                        "reactionIndex": 1,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Yah, kenapa ya? Aku pikir udah bener…",
+                        "reactionIndex": 2,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Hehe, wajar kok bingung di awal. Aku suka semangatmu nyoba.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Tapi , bagian baris sama bintang…",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Iya, itu memang sering bikin orang salah. Tapi santai aja, kita coba lihat bareng-bareng. Jangan buru-buru, fokus satu per satu.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    }
+                ],
+                "branch": {
+                    "choices": [
+                        {
+                            "text": "Ah, udahlah… aku nyerah, mas.",
+                            "next": "salahA4_1_1",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Mas, jujur, aku masih belum paham tentang loopnya. Boleh jelasin secara inti ga, mas?",
+                            "next": "salahA4_1_2",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Jujur, aku masih belum nangkep maksud dari soal. Jadi mulai dari baris dulu atau bintang dulu, mas?",
+                            "next": "salahA4_1_3",
+                            "nextType": "dialog"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "salahA4_1_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Ah, udahlah… aku nyerah, mas.",
+                        "reactionIndex": 3,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Lah, baru satu soal langsung nyerah? Yan, serius?",
+                        "reactionIndex": 9,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Aku bener-bener nggak ngerti, mas. Rasanya tiap kali nyoba, aku malah tambah bingung.",
+                        "reactionIndex": 2,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Hehe, wajar kok bingung di awal. Semua orang pasti pernah kayak gini. Yang penting kamu nggak berhenti nyoba.",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Mas, boleh jelasin sedikit lagi? Aku mau bener-bener ngerti.",
+                        "reactionIndex": 2,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Oke, singkatnya gini: loop luar itu untuk baris, loop dalam itu untuk bintang di tiap baris. Jadi loop luar ngatur berapa banyak baris yang dicetak, loop dalam ngatur berapa banyak bintang di baris itu.",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Oh, jadi loop luar itu kayak kerangka tiap baris, dan loop dalam isi bintangnya ya?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Betul! Sekarang coba lihat polanya lagi, dan tentukan loop mana yang paling tepat buat baris dan bintang.",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "salahA4_1",
+                "nextType": "dialog"
+            },
+            {
+                "id": "salahA4_1_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Mas, jujur, aku masih belum paham tentang loopnya. Boleh jelasin secara inti ga, mas?",
+                        "reactionIndex": 2,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Aman aja yan, coba kita lihat pelan-pelan. Loop luar itu buat baris, loop dalam buat bintang. Jadi loop luar ngatur berapa baris yang dicetak, loop dalam ngatur berapa banyak bintang di tiap baris.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Oh… jadi setiap baris itu punya jumlah bintang yang berbeda-beda ya?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Betul banget! Nah, sekarang coba bayangin polanya, dan pilih loop mana yang cocok buat baris dan bintang.",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "salahA4_1",
+                "nextType": "dialog"
+            },
+            {
+                "id": "salahA4_1_3",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Jujur, aku masih belum nangkep maksud dari soal. Jadi mulai dari baris dulu atau bintang dulu, mas?",
+                        "reactionIndex": 2,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Mulainya dari baris dulu, Di. Jadi loop luar itu buat baris, terus di dalamnya ada loop bintang. Nah, tiap kali pindah baris, loop dalam jalan lagi buat nambah bintang.",
+                        "reactionIndex":5,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Ooh… jadi baris dulu yang jadi patokan, baru isi bintangnya nyusul, ya?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Iya, betul! Misalnya gini, waktu baris pertama, loop bintangnya cuma sekali. Begitu masuk baris kedua, loop bintangnya jalan dua kali. Baris ketiga, tiga kali… gitu terus.",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "mengangguk pelan “Ahh, aku mulai kebayang sekarang, mas.",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Sip! Nah, sekarang coba lihat lagi opsi kodenya. Menurutmu, loop mana yang cocok buat pola itu?",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "salahA4_1",
+                "nextType": "dialog"
+            },
+            {
+                "id": "benarB4_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Nah tu kamu jawabnya udah bener, berarti kamu sudah paham. Oke lanjut...",
+                        "reactionIndex": 8,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Eh bentar tadi kalau misalnya ada pemain yang nyerah sebelum tembakan selesai gimana?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Kalau itu masuk ke materi selanjutnya",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    }
+                ],
+                    "branch": {
+                    "choices": [
+                        {
+                            "text": "Padahal aku tadi cuma jawab ngasal, ternyata bener. Orang jago emang ga diraguin lagi",
+                            "next": "benarB4_1_1",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Yes! Akhirnya ngerti juga.",
+                            "next": "benarB4_1_2",
+                            "nextType": "dialog"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "benarB4_1_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Padahal aku tadi cuma jawab ngasal, ternyata bener. Orang jago emang ga diraguin lagi",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Ngasal kok bangga. Serius dikit napa, Di. Belajar tuh buat paham, bukan buat gaya.",
+                        "reactionIndex": 2,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Yaelah, yang penting kan bener. Mas juga repot amat sih.",
+                        "reactionIndex": 3,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Repot gimana? Aku jelasin biar kamu ngerti, malah dipandang enteng. Jangan nyebelin gitu deh.",
+                        "reactionIndex": 3,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Eh bentar… tadi mas bilang tiap pemain pasti dapet 5 tembakan, kan? Nah, kalau misalnya ada pemain yang udah keburu nyerah sebelum semua tembakannya habis, gimana?",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Nah, itu dia! Udah sok jago, ujung-ujungnya masih nanya juga. Itu sebenernya ada di materi selanjutnya: cara berhenti di tengah loop. Tapi sumpah, kalau belum paham atau masi nanya tu jangan sombong dulu, ngeseiln banget itu",
+                        "reactionIndex": 4,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "negatifIntro4_2",
+                "nextType": "dialog"
+            },
+            {
+                "id": "benarB4_1_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Yes! Akhirnya ngerti juga.",
+                        "reactionIndex": 4,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Iya, bagus. Kamu udah mulai paham dasarnya nih.",
+                        "reactionIndex": 8,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Jadi memang loop luar buat baris, loop dalam buat bintang ya, mas.",
+                        "reactionIndex": 4,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Betul banget. Mantap, berarti konsep nested loop-nya udah nyantol.",
+                        "reactionIndex": 8,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Wah, aku pengen lanjut belajar materi berikutnya nih. Tapi bingung mulai dari mana, mas.",
+                        "reactionIndex": 4,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Oke, coba inget lagi penjelasan soal tembakan bareng tadi. Misal tiap pemain dapat 5 tembakan. Nah, gimana kalau ada pemain yang nyerah sebelum semua tembakannya habis?",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Lah iya ya, gimana tuh mas berarti? tembakannya dibuang kali ya?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Engga langsung dibuang gitu aja, ada cara berhentiinnya, hayo coba tebak gimana?",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "positifIntro4_2",
+                "nextType": "dialog"
+            },
+            {
+                "id": "salahB4_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Hmm… perasaan aku nyusun loop-nya udah bener deh, tapi hasilnya kenapa salah ya?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Kayaknya urutan blok kodenya ada yang ga sesuai. Coba dicek lagi deh urutannya.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    }
+                ],
+                "branch": {
+                    "choices": [
+                        {
+                            "text": "Ah, aku buru-buru nih..",
+                            "next": "salahB4_1_1",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Aduh, aku pusing kalau harus ngecek sendiri.",
+                            "next": "salahB4_1_1",
+                            "nextType": "dialog"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "salahB4_1_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Ah, aku buru-buru nih..",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Tapi kamu masih salah nih yan, gamau dibenerin dulu?",
+                        "reactionIndex": 2,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Males ngecek ulang, mending langsung aja kita lanjut ke materi lain.",
+                        "reactionIndex": 3,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Hadeh, ini mah males berkedok buru-buru. Tapi inget ya, inti nested loop itu gini: loop luar ngatur giliran (atau baris), loop dalam ngatur isi tiap giliran, dan printf harus ada di dalam loop dalam biar hasilnya sesuai.",
+                        "reactionIndex": 3,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Oke, coba inget lagi penjelasan soal tembakan bareng tadi. Misal tiap pemain dapat 5 tembakan. Nah, gimana kalau ada pemain yang nyerah sebelum semua tembakannya habis?",
+                        "reactionIndex": 2,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Lah iya ya, gimana tuh mas? Berarti sisa tembakannya dibuang kali ya?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Udah lah, kamu buru-buru kan, yuk langsung aja lanjut ke materi berikutnya.",
+                        "reactionIndex": 4,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "negatifIntro4_2",
+                "nextType": "dialog"
+            },
+            {
+                "id": "salahB4_1_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Aduh, aku pusing kalau harus ngecek sendiri.",
+                        "reactionIndex": 2,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Namanya belajar, pasti ada susahnya dulu, nanti lama-lama paham kok.",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Jelasin ulang dikit aja deh, biar cepet nyambung.",
+                        "reactionIndex": 2,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Oke, singkatnya gini: loop luar itu ngatur baris atau giliran, loop dalam ngatur isi tiap baris, dan printf harus ada di dalam loop dalam biar hasilnya sesuai. Kalau salah taro, output pasti kacau.",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Ooh gitu ya, jadi kuncinya di posisi printf sama urutan loop-nya.",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Nah, bener. Coba susun lagi deh.”",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "soalB4_1",
+                "nextType": "soal"
+            },
+            {
+                "id": "negatifIntro4_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Aduh Adrian… jujur nih ya, kamu tuh ngeselin banget. Gayanya kayak udah jago, padahal masih belum paham bener.",
+                        "reactionIndex": 4,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Hehe, ya gimana dong mas. Emang aura jagoan susah disembunyiin.",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Yaelah, malah ketawa. Oke deh, karena kamu sok jago, aku kasih hukuman langsung kerjain soal nested loop break ini",
+                        "reactionIndex": 4,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Lah oke aja aku mah, gasin",
+                        "reactionIndex": 3,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "soalA4_2",
+                "nextType": "soal"
+            },
+            {
+                "id": "positifIntro4_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Nah, tadi kamu sempet nanya kalau ada pemain yang nyerah sebelum semua tembakannya habis, itu bakal gimana, gitu kan?",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "ya, soalnya kan tadi aturannya tiap pemain dapet 5 tembakan. Kalau udah nyerah duluan tu jadi gimana dong?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Nah, disinilah kita pakai sesuatu yang namanya break. Jadi loop-nya bisa dihentikan lebih cepat, walaupun sebenernya jatahnya masih ada.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Oh jadi kayak… meski for loop udah diset 5 kali, bisa diberhentiin di tengah jalan?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Betul banget! Itu inti dari for loop break. Jadi kita punya kontrol buat keluar dari loop sebelum selesai.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Asik juga ya, berarti lebih fleksibel.",
+                        "reactionIndex": 4,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Bener banget, dia bisa menyesuaikan situasi kondisi. Gimana, udah paham belum?",
+                        "reactionIndex": 5,
+                        "characterIndex": 2
+                    }
+                ],
+                "branch": {
+                    "choices": [
+                        {
+                            "text": "Hehe, mulai ngerti juga nih mas.",
+                            "next": "positifIntro4_2_1",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Hmm… jujur aku masih agak bingung, mas. Bisa dijelasin lagi gak pakai contoh lain?",
+                            "next": "positifIntro4_2_2",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Materinya gampang gini mas",
+                            "next": "positifIntro4_2_3",
+                            "nextType": "dialog"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "positifIntro4_2_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    }
+                ],
+                "next": "soalA4_2",
+                "nextType": "soal"
+            },
+            {
+                "id": "positifIntro4_2_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    }
+                ],
+                "next": "materi4_2",
+                "nextType": "dialog"
+            },
+            {
+                "id": "positifIntro4_2_3",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    },
+                    {
+                        "line": "",
+                        "reactionIndex": 0,
+                        "characterIndex": 0
+                    }
+                ],
+                "next": "soalA4_2",
+                "nextType": "soal"
+            },
+            {
+                "id": "materi4_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Oke, gampang. Kamu sebelumnya kan nanya gimana kalau ada pemain yang nyerah sebelum tembakan selesai. Nah, kalau misalnya pemain itu nyerah pas tembakan ke-2, kita bisa pakai break buat langsung hentikan loop dalam. Jadi berhenti di tembakan itu, lalu lanjut ke pemain berikutnya.",
+                        "reactionIndex": 2,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Oh, jadi break itu buat keluar dari loop saat kondisi tertentu terpenuhi, tapi cuma untuk loop yang sekarang jalan, ya?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Betul. Nah, ada juga yang namanya continue. Misal, tembakan ke-3 gak sah dan gak dihitung, tapi pemain tetap lanjut tembakan ke-4 dan 5. Jadi pas tembakan ke-3, kita pakai continue buat langsung loncat ke tembakan berikutnya tanpa ngejalanin kode di bawahnya.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Wah, jadi continue itu buat lewati satu iterasi loop tertentu, tapi loopnya tetap lanjut terus?",
+                        "reactionIndex": 1,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Iya, itu dia! Jadi break itu berhenti total loop, continue itu lewati sekali aja, terus lanjut.",
+                        "reactionIndex": 6,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Nice! Jadi nested loop itu loop di dalam loop, break buat berhentiin loop saat kondisi, dan continue buat lewatin iterasi tertentu.",
+                        "reactionIndex": 4,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Mantap, cepet paham juga kamu, Bro! Yuk sekarang kita coba tes pemahaman.",
+                        "reactionIndex": 7,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "soalA4_2",
+                "nextType": "soal"
+            },
+            {
+                "id": "benarA4_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Nah, itu baru bener. Urutannya tepat: continue, break, exit.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Hehe, mantap. Dari tadi udah kepikiran gitu sih, tapi ya syukur juga bener.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Iya, yang penting hasilnya pas. Kalau gini kan enak, bisa langsung lanjut ke soal berikutnya.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Gas mas!",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "soalB4_2",
+                "nextType": "soal"
+            },
+            {
+                "id": "generalSalahA4_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Hayoo, urutannya masih keliru tuh. Padahal tadi konsepnya udah nyantol, tinggal urutin aja.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Aduh, bener juga mas… tadi keburu pede jawabnya. Oke deh, aku coba pelan-pelan lagi biar nggak kebalik.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Nah gitu dong. Ingat, continue itu buat lewatin satu, break buat stop loop, dan exit ya udah, stop semuanya.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Oke aku bakal coba ulang ngurutin soalnya",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "soalA4_2",
+                "nextType": "soal"
+            },
+            {
+                "id": "sombongSalah4_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Nah kan, sok jago tapi salah juga. Nih makanya tadi gue males jelasin, udah pasti ngaco jawabnya.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Hehe… yaudah mas, sekalian deh, kasih tau yang bener biar aku makin sakti.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Sakti apaan, dengerin dulu. Jadi gini: continue itu buat skip satu langkah, break itu buat keluar dari loop, dan exit itu buat langsung nutup program. Simpel banget.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Ooh… ternyata gitu toh, aku tadi juga mikir kaya gitu cuma takut salah aja… gampang banget ini mah..",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Iya gampang, tapi kamu masih salah. Udah lah, kerjain ulang soalnya, jangan cuma modal gaya.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Hah..kerjain ulang?",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Iyalah, biar kamu paham, dasar orang sombong.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    }
+                ],
+                "branch": {
+                    "choices": [
+                        {
+                            "text": "Sebenernya aku jujur aja deh mas",
+                            "next": "sombongSalahA4_2_1",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Iya deh mas… jangan galak-galak dong",
+                            "next": "sombongSalahA4_2_2",
+                            "nextType": "dialog"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "sombongSalahA4_2_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Sebenernya aku jujur aja deh mas",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Aku tadi nggak paham sepenuhnya. Gayanya aja sok pede.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Yaelah, akhirnya ngaku juga. Dari tadi omongannya tinggi, ternyata masih gelap.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Wkwk iya mas… aku ngaku kalah deh. Coba jelasin lagi biar bener-bener nyantol.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "materi4_2",
+                "nextType": "dialog"
+            },
+            {
+                "id": "sombongSalahA4_2_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Iya deh mas… jangan galak-galak dong",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Ini aku kerjain ulang soalnya",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Bagus. Biar kamu bener-bener ngerti, bukan cuma gegayaan omongan gede doang.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    }
+                ],
+                "next": "soalA4_2",
+                "nextType": "soal"
+            },
+            {
+                "id": "benarB4_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Nahh, jawabanmu kali ini pas banget. Output-nya memang 12.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Asikk, akhirnya bener juga, Mas!",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Mantap, berarti kamu udah ngerti konsep break.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    }
+                ],
+                "branch": {
+                    "choices": [
+                        {
+                            "text": "Makasih banyak mas udah sabar jelasin.",
+                            "next": "benarB4_2_1",
+                            "nextType": "dialog"
+                        },
+                        {
+                            "text": "Yaudah lah, gampang banget. Pantes tadi aku langsung yakin jawabannya 12.",
+                            "next": "benarB4_2_2",
+                            "nextType": "dialog"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "benarB4_2_1",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Makasih banyak mas udah sabar jelasin.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Jadi intinya kalau ketemu 3, langsung stop loop, makanya keluar cuma 1 sama 2. Sekarang aku lebih paham.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Sip, yang penting jangan cepat puas. Tetap latihan biar makin jago.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Hehe siap mas. Eh, tapi aku baru inget ada tugas besar pemrograman buat besok. Aduh, harus cepet cabut, kalau nggak bisa-bisa aku kemaleman belajarnya.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "benarLast4_2",
+                "nextType": "dialog"
+            },
+            {
+                "id": "benarB4_2_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Yaudah lah, gampang banget. Pantes tadi aku langsung yakin jawabannya 12.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Iya, iya. Jangan terlalu sombong juga. Baru satu soal bener.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Hehe santai mas. Eh buset, aku baru inget ada tugas besar pemrograman buat besok. Aduh harus buru-buru cabut sekarang juga.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "benarLast4_2",
+                "nextType": "dialog"
+            },
+            {
+                "id": "SalahB4_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Eh Mas Adrian jawabannya tadi belum tepat nih.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Waduh aku salahnya di mana ya?",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Gini, coba inget dulu... Kalau mau melewati suatu angka tapi tetep lanjut ke angka berikutnya, itu perlu keyword apa? Terus kalau mau berhenti dari loop aja, bukan dari program, itu keyword-nya beda lagi.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Nah kalau mau berhenti total sampai programnya bener-bener selesai, ada keyword lain lagi.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Jadi beda-beda ya tergantung mau ngapain?",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    },
+                    {
+                        "line": "Betul banget! Jadi fokus dulu: kamu mau lewatin angka, keluar dari loop, atau keluar dari program? Coba baca lagi materinya tentang perbedaan tiga keyword itu.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Oke, aku cek lagi deh pelan-pelan.",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": "soalB4_2",
+                "nextType": "soal"
+            },
+            {
+                "id": "benarLast4_2",
+                "backgroundIndex": 0,
+                "dialogs": [
+                    {
+                        "line": "Halah, main kabur aja tu anak. Yaudah sana belajar yang bener, jangan sampe keteteran.",
+                        "reactionIndex": 0,
+                        "characterIndex": 2
+                    },
+                    {
+                        "line": "Siap mas, makasih banyak. Lanjut besok lagi aja ya!",
+                        "reactionIndex": 0,
+                        "characterIndex": 1
+                    }
+                ],
+                "next": null,
+                "nextType": null
+            }
+        ],
+        "minigame": {
+            "questions": [
+                {
+                    "id": "soalA4_1",
+                    "text": "Perhatikan pola berikut. Loop mana yang paling tepat dipakai untuk baris (luar) dan bintang (dalam)?",
+                    "code": "*\n*\n***\n*****",
+                    "choices": [
+                        {
+                            "text": "for (int i = 1; i <= 4; i++) // Loop baris\nfor (int j = 1; j <= i; j++) // Loop bintang",
+                            "next": "benarA4_1",
+                            "nextType": "dialog",
+                            "isCorrect": true
+                        },
+                        {
+                            "text": "for (int i = 1; i <= 4; i++) // Loop bintang\nfor (int j = 1; j <= i; j++) // Loop baris",
+                            "next": "salahA4_1",
+                            "nextType": "dialog",
+                            "isCorrect": false
+                        },
+                        {
+                            "text": "for (int i = 1; i <= 4; i++) // Loop baris\nfor (int j = 4; j >= i; j--) // Loop bintang",
+                            "next": "salahA4_1",
+                            "nextType": "dialog",
+                            "isCorrect": false
+                        },
+                        {
+                            "text": "for (int i = 4; i >= 1; i--) // Loop baris\nfor (int j = 1; j <= i; j++) // Loop bintang",
+                            "next": "salahA4_1",
+                            "nextType": "dialog",
+                            "isCorrect": false
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+  ]
+}
