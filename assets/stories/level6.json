@@ -14,19 +14,31 @@
                 ""
             ],
             "ilustrations": [""],
-            "start": "preDialog1",
+            "start": "preDialog6_1_1",
             "typeStart": "preDialog",
             "preDialog": [
                 {
-                    "id": "preDialog1",
+                    "id": "preDialog6_1_1",
                     "text": "Sepulang dari kampus, Adrian memutuskan mampir ke café favoritnya. Ia duduk di sudut ruangan sambil membuka laptop dan menyesap kopi hangat. Laporan dari Pak Rongga masih terbuka di layar, tapi pikirannya terasa sedikit buntu. Suasana café cukup ramai, tapi tetap nyaman. Sampai akhirnya, dari balik pintu, seseorang yang tak asing masuk dengan langkah santai…",
-                    "next": "preDialog2",
+                    "next": "preDialog6_1_2",
                     "nextType": "preDialog"
                 },
                 {
-                    "id": "preDialog2",
+                    "id": "preDialog6_1_2",
                     "text": "(Suara lonceng kecil di pintu café terdengar. Adrian yang sedang mengetik sebentar menoleh. Dari arah pintu, seseorang yang tak asing muncul — Jennie, teman sekelasnya.)",
                     "next": "intro6_1",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "preDialog6_2_1",
+                    "text": "Adrian berdiri dari kursinya, menenteng dompet dan ponsel, dan menyusuri café yang masih ramai. Aroma kopi dan manisnya pastry menyelimuti udara, tapi pikirannya fokus pada satu tujuan: menebus janji matcha gratis untuk Jennie.",
+                    "next": "preDialog6_2_2",
+                    "nextType": "preDialog"
+                },
+                {
+                    "id": "preDialog6_2_2",
+                    "text": "Beberapa menit kemudian, ia kembali dengan secangkir matcha hangat yang mengepul. Dengan hati-hati, ia menaruh gelas itu di depan Jennie dan duduk kembali. Jennie menatap matcha itu dengan mata berbinar, siap melanjutkan latihan variabel berikutnya, sementara Adrian menarik napas lega.",
+                    "next": "intro6_2",
                     "nextType": "dialog"
                 }
             ],
@@ -535,8 +547,8 @@
                             "characterIndex": 2
                         }
                     ],
-                    "next": "preDialog6_2",
-                    "nextType": "dialog"
+                    "next": "preDialog6_2_1",
+                    "nextType": "preDialog"
                 },
                 {
                     "id": "salahB6_1",
@@ -580,6 +592,226 @@
                     ],
                     "next": "introNoMatcha6_2",
                     "nextType": "dialog"
+                },
+                {
+                    "id": "intro6_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "YEY! MATCHA GRATIS",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hadeh… duitku abis buat traktir kamu, akhir bulan langsung makan mie dah",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "HAHAHAHAHA, dasar, makasih ya matcha gratisnya",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya, sama-sama.. sekarang kita lanjut ke variabel jenis lain, yaitu variabel lokal. Menurutmu, variabel lokal itu apa, Jen?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hmm… variabel yang cuma bisa dipakai di satu bagian doang, kan?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hampir bener! Lebih tepatnya, variabel lokal cuma bisa diakses di fungsi atau blok tempat dia dibuat. Keluar dari situ, dia nggak kelihatan sama sekali.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ooo… oke, mulai ngerti dikit. Coba dong, kasih analogi Wi-Fi tapi kali ini buat variabel lokal",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "materi6_2",
+                    "nextType": "dialog"
+                },
+                {
+                    "id": "introNoMatcha6_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Oke Jen, karena kamu sebelumnya salah, sekarang kamu harus jawab bener biar dapet matcha kesukaanmu itu",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Iya deh, aku bakal jawab bener kali ini! Aku gamau matcha gratis ilang gitu aja",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hahaha, sip! Jadi gini, Jen… sebelumnya kita bahas variabel global, kan? Yang bisa diakses dari semua fungsi di program.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Nah, variabel lokal beda banget. Variabel lokal cuma bisa dipakai di dalam fungsi tempat dia dibuat. Fungsi lain nggak bisa sembarangan akses atau ubah nilainya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohh… jadi cuma bisa dipakai di satu fungsi doang ya? Kalau di luar fungsi nggak bisa dipanggil sama sekali?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Bener banget, Jen! Variabel lokal cuma bisa dipakai di fungsi tempat dia dibuat. Jadi kalo kamu coba akses dari fungsi lain, program bakal bilang ‘eh, gak ada variabel ini’.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Selain itu, variabel lokal juga bakal hilang begitu fungsi selesai dijalankan. Jadi memori program tetap rapi, gak kebanjiran variabel yang udah gak kepakai.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ooo… mulai ngerti sekarang! Coba dong, kasih analogi Wi-Fi tapi kali ini buat variabel lokal, biar makin kebayang",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "soalA6_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "materi6_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Nah, gampangnya gini deh Jen. Variabel lokal itu kayak hotspot-ku sendiri.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hotspot? Maksudnya gimana?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Jadi, cuma aku yang tahu password-nya dan cuma kamu yang bisa aku kasih akses. Orang lain di kafe ini gak bisa nyambung sembarangan.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohh… jadi kayak jaringan pribadi gitu ya? Gak bisa diakses semua orang kayak Wi-Fi kafe.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Tepat banget. Sama kayak variabel lokal — cuma bisa dipakai di fungsi tempat dia dibuat. Begitu keluar dari fungsi itu, koneksinya otomatis putus.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Haha, oke, sekarang aku kebayang! Jadi kalo hotspot-nya mati, ya datanya ikut ilang juga ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nah, bener banget. Kamu siap jawab soal sekarang?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Boleh, yuk!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "soalA6_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarA6_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Mantep, mulai jago nih aku.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Wih, keren tuh kalo mulai paham. Sekarang kita coba ke soal lainnya ya, kita lihat, kamu masih bisa jawab bener ga?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalB6_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "benarMatcha6_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "YEY MATCHAKUU!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Kamu keliatan seneng banget kalo soal matcha, perasaan rasanya kaya rumput diperes dah",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Enak banget. Kamu nyobain matcha yang ngolahnya ga bener kali ah, masa kaya rumput",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Heh, tetep aja rasanya kayak rumput taman. Udah deh, aku mau ke kasir dulu buat beli matcha.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke, aku tunggu sini ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Nih matchanya, eh, padahal harus cabut rumput dulu biar bisa meres airnya, tapi ini aku bikin cepet deh, biar kamu nggak kelamaan nunggu",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "APAAN SI RASA RUMPUT DARIMANA ORANG ENAK GINI KOK!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya iya, terserah deh. Sekarang, sebelum matcha kamu keburu habis, kita lanjut latihan soal lagi ya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Masih variabel lokal juga?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya dong, sekalian biar kamu makin paham. Siap belum?",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "SIAPP! Matcha udah jadi bahan bakar otakku nih!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        }
+                    ],
+                    "next": "soalB6_2",
+                    "nextType": "soal"
                 }
 
 
