@@ -6,9 +6,9 @@ import 'package:timetocode/features/5_matriks/data/controllers/matrix_game_contr
 import 'package:timetocode/features/5_matriks/data/models/matrix_level_model.dart';
 
 class PointerGrid extends ConsumerWidget {
-  final MatrixLevelModel level; 
+  final MatrixLevelModel level;
 
-  const PointerGrid({super.key, required this.level}); 
+  const PointerGrid({super.key, required this.level});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,7 +39,7 @@ class PointerGrid extends ConsumerWidget {
           border: Border.all(
             color: gameState.status == GameStatus.incorrectMove
                 ? AppColors.dangerRed
-                : Colors.transparent,
+                : AppColors.white,
             width: 2.w,
           ),
         ),
@@ -54,23 +54,34 @@ class PointerGrid extends ConsumerWidget {
           itemCount: 9,
           itemBuilder: (context, index) {
             final bool isActive = index == gameState.pointerPosition;
-            Color circleColor;
+
+            Color outerColor = AppColors.technoBlue;
+            Color innerColor = Colors.transparent;
+            double innerPadding = 8.w;
 
             if (isActive) {
-              circleColor = gameState.status == GameStatus.incorrectMove
+              outerColor = AppColors.deepAzure;
+              innerColor = gameState.status == GameStatus.incorrectMove
                   ? AppColors.dangerRed
                   : AppColors.rewardYellow;
-            } else {
-              circleColor = gameState.status == GameStatus.levelWon
-                  ? AppColors.xpGreen
-                  : AppColors.technoBlue;
+            } else if (gameState.status == GameStatus.levelWon) {
+              outerColor = AppColors.xpGreen;
             }
 
-            return AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
+            return Container(
               decoration: BoxDecoration(
-                color: circleColor,
+                color: outerColor,
                 shape: BoxShape.circle,
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(innerPadding),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  decoration: BoxDecoration(
+                    color: innerColor,
+                    shape: BoxShape.circle,
+                  ),
+                ),
               ),
             );
           },

@@ -31,7 +31,7 @@ class MatrixGameAppBar extends StatelessWidget implements PreferredSizeWidget {
             SizedBox(width: 4.w),
             Text(progress, style: AppTypography.normal()),
             SizedBox(width: 16.w),
-            const Icon(Icons.check, color: AppColors.primaryText),
+            const Icon(Icons.check, color: AppColors.rewardYellow),
             SizedBox(width: 4.w),
             Text(score.toString(), style: AppTypography.normal()),
             SizedBox(width: 16.w),
