@@ -12,6 +12,9 @@ import 'package:timetocode/features/2_minigames_selection/games/logic_gate/prese
 import 'package:timetocode/features/2_minigames_selection/presentation/screens/minigames_selection_page.dart';
 import 'package:timetocode/features/3_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
+import 'package:timetocode/features/2_minigames_selection/games/matriks/data/models/matrix_level_model.dart';
+import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_level_selection_page.dart';
+import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_pointer_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -20,7 +23,6 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: '/pembelajaran',
-
     routes: [
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
@@ -89,6 +91,22 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: 'gameplay',
             parentNavigatorKey: _rootNavigatorKey,
             builder: (context, state) => const LogicGateGameplay(),
+          ),
+        ],
+      ),
+
+      GoRoute(
+        path: '/minigames/matriks',
+        pageBuilder: (context, state) =>
+            const NoTransitionPage(child: MatrixLevelSelectionPage()),
+        routes: [
+          GoRoute(
+            path: 'level',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) {
+              final level = state.extra as MatrixLevelModel;
+              return MatrixPointerPage(level: level);
+            },
           ),
         ],
       ),
