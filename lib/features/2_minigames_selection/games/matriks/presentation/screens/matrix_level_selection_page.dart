@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
+import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/data/providers/matrix_level_provider.dart';
 
 class MatrixLevelSelectionPage extends ConsumerWidget {
@@ -20,6 +21,17 @@ class MatrixLevelSelectionPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text('Matriks Kode - Looping', style: AppTypography.heading6()),
         backgroundColor: AppColors.surfaceDark,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            ref.read(soundEffectServiceProvider.notifier).playButtonClick1();
+            if (GoRouter.of(context).canPop()) {
+              context.pop();
+            } else {
+              context.go('/minigames');
+            }
+          },
+        ),
         centerTitle: true,
       ),
       body: levelsAsync.when(

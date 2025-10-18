@@ -19,6 +19,11 @@ class MinigamesController {
       image: "assets/images/minigames/logic-gate.svg",
       route: "/minigames/logic-gate",
     ),
+    MinigamesModel(
+      title: "Matriks Kode - Looping",
+      image: "assets/images/minigames/matriks.svg",
+      route: "/minigames/matriks",
+    ),
   ];
 
   void onSelect(BuildContext context, String route) {
