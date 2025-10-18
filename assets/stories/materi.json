@@ -130,7 +130,7 @@
                 {
                     "type": "text",
                     "data": {
-                        "text": "Jika char adalah satu biji manik-manik, maka String adalah kalung yang sudah jadi, yaitu rangkaian dari banyak manik-manik huruf (char) yang membentuk sebuah kata atau kalimat.\n\nString bukanlah tipe data fundamental seperti yang lain, melainkan sebuah urutan atau kumpulan dari karakter (char). String digunakan untuk menyimpan data berupa teks. Nilainya bisa diapit oleh kutip tunggal (') atau ganda (\"), tergantung bahasa pemrogramannya."
+                        "text": "Jika char adalah satu biji manik-manik, maka String adalah kalung yang sudah jadi, yaitu rangkaian dari banyak manik-manik huruf (char) yang membentuk sebuah kata atau kalimat.\n\nString bukanlah tipe data fundamental seperti yang lain, melainkan sebuah urutan atau kumpulan dari karakter (char). String digunakan untuk menyimpan data berupa teks. Nilainya bisa diapit oleh kutip tunggal (') atau ganda (\"), tergantung bahasa pemrogramannya"
                     }
                 },
                 {
@@ -139,9 +139,148 @@
                         "listType": "unordered",
                         "head": "Kegunaan: ",
                         "items": [
-                            "Menyimpan nama orang: nama = \"Mulyono\".",
+                            "Menyimpan nama orang: nama = \"Mulyono\"",
                             "Menyimpan alamat: alamat = \"Jalan Teknologi No. 1, Surabaya\"",
                             "Menyimpan teks apa pun: teks= \"Halo! Selamat datang di dunia pemrograman.\""
+                        ]
+                    }
+                },
+                {
+                    "type": "heading",
+                    "data": {
+                        "text": "Variabel",
+                        "headingType": "h1"
+                    }
+                },
+                {
+                    "type": "list",
+                    "data": {
+                        "head": "Variabel untuk nama",
+                        "listType": "unordered",
+                        "items": [
+                            "Membutuhkan tipe data String",
+                            "Contoh: nama_siswa = \"Adrian\""
+                        ]
+                    }
+                },
+                {
+                    "type": "list",
+                    "data": {
+                        "head": "Variabel untuk nilai",
+                        "listType": "unordered",
+                        "items": [
+                            "Membutuhkan tipe data Integer atau Float",
+                            "Contoh: nilai_matematika = 95"
+                        ]
+                    }
+                },
+                {
+                    "type": "list",
+                    "data": {
+                        "head": "Variabel untuk status ",
+                        "listType": "unordered",
+                        "items": [
+                            "Membutuhkan tipe data Boolean",
+                            "Contoh: is_lulus = True"
+                        ]
+                    }
+                },
+                {
+                    "type": "heading",
+                    "data": {
+                        "text": "Operator",
+                        "headingType": "h1"
+                    }
+                },
+                {
+                    "type": "list",
+                    "data": {
+                        "head": "Operator Aritmatika",
+                        "listType": "unordered",
+                        "items": [
+                            "Melakukan perhitungan matematis dasar"
+                        ]
+                    }
+                },
+                {
+                    "type": "table",
+                    "data": {
+                        "headers": ["Operator", "Nama Operasi", "Contoh"],
+                        "rows": [
+                            ["+", "Penjumlahan", "5 + 3"],
+                            ["-", "Pengurangan", "10 - 4"],
+                            ["*", "Perkalian", "2 * 6"],
+                            ["/", "Pembagian", "10 / 3"],
+                            ["//", "Pembagian Bulat", "10 // 3 → 3\n(hanya mengambil bilangan bulat, tanpa desimal)"],
+                            ["%", "Modulo", "10 % 3 → 1\n(hanya mengambil sisa bagi)"]
+                        ]
+                    }
+                },
+                {
+                    "type": "list",
+                    "data": {
+                        "head": "Operator Penugasan",
+                        "listType": "unordered",
+                        "items": [
+                            "Memberikan nilai pada variabel"
+                        ]
+                    }
+                },
+                {
+                    "type": "table",
+                    "data": {
+                        "headers": ["Operator", "Deskripsi", "Contoh", "Arti"],
+                        "rows": [
+                            ["=", "Menetapkan nilai", "x = 5", "nilai x yaitu 5"],
+                            ["+=", "Penjumlahan dan penugasan", "x += 2", "x = x + 2"],
+                            ["-=", "Pengurangan dan penugasan", "x -= 1", "x = x - 1"],
+                            ["*=", "Perkalian dan penugasan", "x *= 3", "x = x * 3"],
+                            ["/=", "Pembagian dan penugasan", "x /= 4", "x = x / 4"]
+                        ]
+                    }
+                },
+                {
+                    "type": "list",
+                    "data": {
+                        "head": "Operator Perbandingan",
+                        "listType": "unordered",
+                        "items": [
+                            "Membandingkan dua operan. Hasil dari operator perbandingan selalu berupa nilai Boolean (True atau False)"
+                        ]
+                    }
+                },
+                {
+                    "type": "table",
+                    "data": {
+                        "headers": ["Operator", "Deskripsi", "Contoh"],
+                        "rows": [
+                            ["==", "sama dengan", "a == b"],
+                            ["!=", "tidak sama dengan", "a != b"],
+                            [">", "lebih besar dari", "a > b"],
+                            ["<", "lebih kecil dari", "a < b"],
+                            [">=", "lebih besar atau sama dengan", "a >= 5"],
+                            ["<=", "lebih kecil atau sama dengan", "a <= 5"]
+                        ]
+                    }
+                },
+                {
+                    "type": "list",
+                    "data": {
+                        "head": "Operator Logika",
+                        "listType": "unordered",
+                        "items": [
+                            "Menggabungkan atau membalik kondisi Boolean (hasil dari operator perbandingan)"
+                        ]
+                    }
+                },
+                {
+                    "type": "table",
+                    "data": {
+                        "headers": ["Operator", "Logika", "Deskripsi"],
+                        "rows": [
+                            ["AND", "Konjungsi", "Hasilnya True jika kedua kondisi True"],
+                            ["OR", "Disjungsi", "Hasilnya True jika salah satu (atau keduanya) kondisi True"],
+                            ["NOT", "Negasi", "Membalik nilai Boolean (True menjadi False, dan False menjadi True)"]
                         ]
                     }
                 }
