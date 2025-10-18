@@ -38,6 +38,9 @@ class ChallengeSelectionPage extends ConsumerWidget {
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
+                ref
+                    .read(soundEffectServiceProvider.notifier)
+                    .playButtonClick1();
                 if (GoRouter.of(context).canPop()) {
                   context.pop();
                 } else {

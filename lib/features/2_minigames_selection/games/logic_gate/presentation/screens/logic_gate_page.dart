@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
+import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
 import 'package:timetocode/app/widgets/buttons/bordered_button.dart';
 import 'package:timetocode/app/widgets/buttons/custom_button.dart';
@@ -26,6 +27,7 @@ class LogicGatePage extends ConsumerWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
+            ref.read(soundEffectServiceProvider.notifier).playButtonClick1();
             if (GoRouter.of(context).canPop()) {
               context.pop();
             } else {
