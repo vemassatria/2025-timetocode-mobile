@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../../../../app/config/theme/colors.dart';
 import '../../../../../../app/config/theme/typography.dart';
 
@@ -34,7 +35,9 @@ class MinigamesSelectionCard extends StatelessWidget {
             SizedBox(
               height: 124.h,
               width: double.infinity,
-              child: Image.asset(image, fit: BoxFit.contain),
+              child: image.endsWith('.svg')
+                  ? SvgPicture.asset(image, fit: BoxFit.contain)
+                  : Image.asset(image, fit: BoxFit.contain),
             ),
 
             SizedBox(height: 16.h),
