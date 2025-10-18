@@ -34,7 +34,7 @@ class ContentBlockCard extends StatelessWidget {
 
       case TableData:
         final d = data as TableData;
-        return TableBlock(headers: d.headers, rows: d.rows);
+        return TableBlock(headers: [d.headers], rows: d.rows);
 
       default:
         return Padding(

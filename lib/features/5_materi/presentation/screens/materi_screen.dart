@@ -19,12 +19,8 @@ class _MateriScreenState extends State<MateriScreen> {
 
   // palet yang mirip figma (navy, kartu gelap, aksen biru & hijau)
   static const _bgNavy = Color(0xFF131C33);
-  static const _cardDark = Color(0xFF212C46);
-  static const _cardStroke = Color(0x33121A30); // 20% opacity
   static const _titleColor = Colors.white;
   static const _subtitleColor = Color(0xFFB8C2D8);
-  static const _accentBlue = Color(0xFF66A6FF);
-  static const _accentGreen = Color(0xFF4CD964);
 
   @override
   void initState() {
@@ -86,12 +82,6 @@ class _MateriScreenState extends State<MateriScreen> {
                   subtitle: MateriHelpers.firstParagraph(m) ?? '',
                   completed: completed,
                   enabled: enabled,
-                  background: _cardDark,
-                  borderColor: _cardStroke,
-                  titleColor: _titleColor,
-                  subtitleColor: _subtitleColor,
-                  accentBlue: _accentBlue,
-                  accentGreen: _accentGreen,
                   onTap: () => context.push('/materi/detail', extra: m),
                 );
               },

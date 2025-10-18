@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:timetocode/app/config/theme/colors.dart';
+import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/features/5_materi/data/models/data/content_block_data.dart';
 
 class ListBlock extends StatelessWidget {
@@ -7,8 +9,6 @@ class ListBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).textTheme;
-
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
@@ -17,10 +17,7 @@ class ListBlock extends StatelessWidget {
           if (data.head.isNotEmpty)
             Text(
               data.head,
-              style: theme.titleSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+              style: AppTypography.normalBold(color: AppColors.white),
             ),
           const SizedBox(height: 4),
           ...List.generate(data.items.length, (index) {
@@ -31,10 +28,7 @@ class ListBlock extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 4),
               child: Text(
                 '$marker ${data.items[index]}',
-                style: theme.bodyMedium?.copyWith(
-                  fontSize: 15,
-                  color: Colors.white70,
-                ),
+                style: AppTypography.normal(color: AppColors.white),
               ),
             );
           }),

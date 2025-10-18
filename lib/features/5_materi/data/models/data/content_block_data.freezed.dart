@@ -169,7 +169,7 @@ return list(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String text,  HeadingType headingType)?  heading,TResult Function( String text)?  text,TResult Function( String url,  String? caption)?  image,TResult Function( List<List<String>> headers,  List<List<String>> rows)?  table,TResult Function( String head,  ListType listType,  List<String> items)?  list,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String text,  HeadingType headingType)?  heading,TResult Function( String text)?  text,TResult Function( String url,  String? caption)?  image,TResult Function(@JsonKey(readValue: _readHeaders)  List<String> headers, @JsonKey(readValue: _readRows)  List<List<String>> rows)?  table,TResult Function( String head,  ListType listType,  List<String> items)?  list,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case HeadingData() when heading != null:
 return heading(_that.text,_that.headingType);case TextData() when text != null:
@@ -194,7 +194,7 @@ return list(_that.head,_that.listType,_that.items);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String text,  HeadingType headingType)  heading,required TResult Function( String text)  text,required TResult Function( String url,  String? caption)  image,required TResult Function( List<List<String>> headers,  List<List<String>> rows)  table,required TResult Function( String head,  ListType listType,  List<String> items)  list,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String text,  HeadingType headingType)  heading,required TResult Function( String text)  text,required TResult Function( String url,  String? caption)  image,required TResult Function(@JsonKey(readValue: _readHeaders)  List<String> headers, @JsonKey(readValue: _readRows)  List<List<String>> rows)  table,required TResult Function( String head,  ListType listType,  List<String> items)  list,}) {final _that = this;
 switch (_that) {
 case HeadingData():
 return heading(_that.text,_that.headingType);case TextData():
@@ -218,7 +218,7 @@ return list(_that.head,_that.listType,_that.items);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String text,  HeadingType headingType)?  heading,TResult? Function( String text)?  text,TResult? Function( String url,  String? caption)?  image,TResult? Function( List<List<String>> headers,  List<List<String>> rows)?  table,TResult? Function( String head,  ListType listType,  List<String> items)?  list,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String text,  HeadingType headingType)?  heading,TResult? Function( String text)?  text,TResult? Function( String url,  String? caption)?  image,TResult? Function(@JsonKey(readValue: _readHeaders)  List<String> headers, @JsonKey(readValue: _readRows)  List<List<String>> rows)?  table,TResult? Function( String head,  ListType listType,  List<String> items)?  list,}) {final _that = this;
 switch (_that) {
 case HeadingData() when heading != null:
 return heading(_that.text,_that.headingType);case TextData() when text != null:
@@ -460,18 +460,18 @@ as String?,
 @JsonSerializable()
 
 class TableData implements ContentBlockData {
-  const TableData({required final  List<List<String>> headers, required final  List<List<String>> rows, final  String? $type}): _headers = headers,_rows = rows,$type = $type ?? 'table';
+  const TableData({@JsonKey(readValue: _readHeaders) required final  List<String> headers, @JsonKey(readValue: _readRows) required final  List<List<String>> rows, final  String? $type}): _headers = headers,_rows = rows,$type = $type ?? 'table';
   factory TableData.fromJson(Map<String, dynamic> json) => _$TableDataFromJson(json);
 
- final  List<List<String>> _headers;
- List<List<String>> get headers {
+ final  List<String> _headers;
+@JsonKey(readValue: _readHeaders) List<String> get headers {
   if (_headers is EqualUnmodifiableListView) return _headers;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_headers);
 }
 
  final  List<List<String>> _rows;
- List<List<String>> get rows {
+@JsonKey(readValue: _readRows) List<List<String>> get rows {
   if (_rows is EqualUnmodifiableListView) return _rows;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_rows);
@@ -515,7 +515,7 @@ abstract mixin class $TableDataCopyWith<$Res> implements $ContentBlockDataCopyWi
   factory $TableDataCopyWith(TableData value, $Res Function(TableData) _then) = _$TableDataCopyWithImpl;
 @useResult
 $Res call({
- List<List<String>> headers, List<List<String>> rows
+@JsonKey(readValue: _readHeaders) List<String> headers,@JsonKey(readValue: _readRows) List<List<String>> rows
 });
 
 
@@ -535,7 +535,7 @@ class _$TableDataCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? headers = null,Object? rows = null,}) {
   return _then(TableData(
 headers: null == headers ? _self._headers : headers // ignore: cast_nullable_to_non_nullable
-as List<List<String>>,rows: null == rows ? _self._rows : rows // ignore: cast_nullable_to_non_nullable
+as List<String>,rows: null == rows ? _self._rows : rows // ignore: cast_nullable_to_non_nullable
 as List<List<String>>,
   ));
 }

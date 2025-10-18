@@ -34,7 +34,6 @@ class MateriDetailedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const bgNavy = AppColors.darkBackground;
 
-    // ⬇️ cari link youtube dari konten (pakai helper yang sudah ada)
     final String? youtubeUrl = MateriHelpers.firstYouTubeLink(materi);
 
     return Scaffold(
