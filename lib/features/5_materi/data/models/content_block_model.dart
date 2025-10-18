@@ -11,4 +11,10 @@ abstract class ContentBlockModel with _$ContentBlockModel {
 
   factory ContentBlockModel.fromJson(Map<String, dynamic> json) =>
       _$ContentBlockModelFromJson(json);
+
+  // Private constructor biar bisa punya method/getter konkret
+  const ContentBlockModel._();
+
+  // Getter yang konkret
+  String get type => data.runtimeType.toString();
 }

@@ -2,21 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:timetocode/features/5_materi/data/models/data/content_block_data.dart';
 
 class HeadingBlock extends StatelessWidget {
-  const HeadingBlock({super.key, required this.head, required this.type});
-  final String head;
-  final HeadingType type;
+  const HeadingBlock({super.key, required this.data});
+  final HeadingData data;
 
   @override
   Widget build(BuildContext context) {
-    final t = Theme.of(context).textTheme;
-    final style = switch (type) {
-      HeadingType.h1 => t.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
-      HeadingType.h2 => t.titleLarge?.copyWith(fontWeight: FontWeight.w800),
-      HeadingType.h3 => t.titleMedium?.copyWith(fontWeight: FontWeight.w800),
-      HeadingType.h4 => t.titleSmall?.copyWith(fontWeight: FontWeight.w800),
-      HeadingType.h5 => t.bodyLarge?.copyWith(fontWeight: FontWeight.w800),
-      HeadingType.h6 => t.bodyMedium?.copyWith(fontWeight: FontWeight.w800),
+    final theme = Theme.of(context).textTheme;
+
+    final style = switch (data.headingType) {
+      HeadingType.h1 => theme.headlineSmall?.copyWith(
+        fontWeight: FontWeight.w800,
+        color: Colors.white,
+      ),
+      HeadingType.h2 => theme.titleLarge?.copyWith(
+        fontWeight: FontWeight.w700,
+        color: Colors.white,
+      ),
+      HeadingType.h3 => theme.titleMedium?.copyWith(
+        fontWeight: FontWeight.w600,
+        color: Colors.white70,
+      ),
+      _ => theme.bodyLarge?.copyWith(
+        fontWeight: FontWeight.w600,
+        color: Colors.white70,
+      ),
     };
-    return Text(head, style: style);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Text(data.text, style: style),
+    );
   }
 }

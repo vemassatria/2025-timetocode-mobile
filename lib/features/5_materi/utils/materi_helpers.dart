@@ -43,14 +43,22 @@ class MateriHelpers {
 
   /// (Opsional) cari link YouTube dari blok teks yang mengandung URL
   static String? firstYouTubeLink(MateriModel m) {
-    final urlRegex = RegExp(
-      r'https?://(www\\.)?(youtube\\.com|youtu\\.be)/[^\\s)]+',
+    // Cocokkan https://youtu.be/... atau https://www.youtube.com/...
+    final re = RegExp(
+      r'(https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\/[^\s)]+)',
+      caseSensitive: false,
     );
+
     for (final b in m.content) {
       final text = b.data.maybeWhen(text: (body) => body, orElse: () => null);
-      if (text != null) {
-        final match = urlRegex.firstMatch(text);
-        if (match != null) return match.group(0);
+      if (text == null) continue;
+
+      final match = re.firstMatch(text);
+      if (match != null) {
+        // bersihkan tanda baca penutup yang sering nempel
+        var url = match.group(1)!;
+        url = url.replaceAll(RegExp(r'[)\].,;!?]+$'), '');
+        return url;
       }
     }
     return null;

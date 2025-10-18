@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ⬇️ tambah ini
+import 'package:timetocode/features/5_materi/utils/materi_helpers.dart';
+
+import '../../data/models/materi_model.dart';
+import '../widgets/content_block_card.dart';
+import 'package:timetocode/app/config/theme/colors.dart';
+
 class MateriDetailedScreen extends StatelessWidget {
-  const MateriDetailedScreen({
-    super.key,
-    required this.title,
-    required this.imageUrl,
-    required this.description,
-    this.videoUrl,
-  });
+  const MateriDetailedScreen({super.key, required this.materi});
+  final MateriModel materi;
 
-  final String title;
-  final String imageUrl;
-  final String description;
-  final String? videoUrl;
-
-  // fungsi buka link YouTube
-  Future<void> _openYouTube(BuildContext context) async {
-    final urlStr = videoUrl;
-    if (urlStr == null || urlStr.trim().isEmpty) {
+  Future<void> _openYouTube(BuildContext context, String urlStr) async {
+    if (urlStr.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Link video tidak tersedia')),
       );
       return;
     }
-    final Uri url = Uri.parse(urlStr);
-    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+    final ok = await launchUrl(
+      Uri.parse(urlStr),
+      mode: LaunchMode.externalApplication,
+    );
+    if (!ok) {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Gagal membuka link video')));
@@ -34,60 +32,68 @@ class MateriDetailedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
+    const bgNavy = AppColors.darkBackground;
+
+    // ⬇️ cari link youtube dari konten (pakai helper yang sudah ada)
+    final String? youtubeUrl = MateriHelpers.firstYouTubeLink(materi);
 
     return Scaffold(
-      backgroundColor: colorScheme.surface,
-      appBar: AppBar(title: Text(title), centerTitle: true, elevation: 0),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // ... image + description
-              if (videoUrl != null && videoUrl!.trim().isNotEmpty)
-                SizedBox(
-                  width: double.infinity,
-                  child: FilledButton(
-                    // ...
-                    onPressed: () => _openYouTube(context),
-                    child: const Text('Tonton Video Penjelasan'),
-                  ),
-                ),
-              const SizedBox(height: 20),
-
-              // --- Deskripsi panjang ---
-              Text(
-                description,
-                style: textTheme.bodyLarge?.copyWith(height: 1.6),
-                textAlign: TextAlign.justify,
-              ),
-              const SizedBox(height: 40),
-
-              // --- Tombol ke video YouTube ---
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton(
-                  style: FilledButton.styleFrom(
-                    backgroundColor: Colors.deepPurpleAccent,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: () => _openYouTube(context),
-                  child: const Text(
-                    'Tonton Video Penjelasan',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ],
+      backgroundColor: bgNavy,
+      appBar: AppBar(
+        backgroundColor: bgNavy,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).maybePop(),
+        ),
+        title: Text(
+          materi.title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w800,
+            fontSize: 22,
+            letterSpacing: .2,
           ),
         ),
+        centerTitle: true,
       ),
+      body: SafeArea(
+        child: ListView.separated(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+          itemCount: materi.content.length,
+          itemBuilder: (_, i) => ContentBlockCard(block: materi.content[i]),
+          separatorBuilder: (_, __) => const SizedBox(height: 16),
+        ),
+      ),
+
+      // ⬇️ tombol ungu ala figma, hanya tampil jika link ditemukan
+      bottomNavigationBar: youtubeUrl == null
+          ? null
+          : SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: const Color(0xFF7B61FF), // ungu lembut
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onPressed: () => _openYouTube(context, youtubeUrl),
+                    child: const Text(
+                      'Tonton Video Penjelasan',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
+            ),
     );
   }
 }

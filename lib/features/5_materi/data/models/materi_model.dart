@@ -10,8 +10,11 @@ abstract class MateriModel with _$MateriModel {
     required int level,
     required String title,
     required List<ContentBlockModel> content,
+    String? videoUrl,
   }) = _MateriModel;
 
   factory MateriModel.fromJson(Map<String, dynamic> json) =>
       _$MateriModelFromJson(json);
+
+  const MateriModel._();
 }

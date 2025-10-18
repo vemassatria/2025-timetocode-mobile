@@ -2,43 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:timetocode/features/5_materi/data/models/data/content_block_data.dart';
 
 class ListBlock extends StatelessWidget {
-  const ListBlock({
-    super.key,
-    required this.head,
-    required this.listType,
-    required this.items,
-  });
-  final String head;
-  final ListType listType;
-  final List<String> items;
+  const ListBlock({super.key, required this.data});
+  final ListData data;
 
   @override
   Widget build(BuildContext context) {
-    final titleStyle = Theme.of(
-      context,
-    ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (head.trim().isNotEmpty) ...[
-          Text(head, style: titleStyle),
-          const SizedBox(height: 8),
-        ],
-        ...List.generate(items.length, (i) {
-          final marker = listType == ListType.ordered ? '${i + 1}.' : '•';
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(width: 24, child: Text(marker)),
-                const SizedBox(width: 8),
-                Expanded(child: Text(items[i])),
-              ],
+    final theme = Theme.of(context).textTheme;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (data.head.isNotEmpty)
+            Text(
+              data.head,
+              style: theme.titleSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
-          );
-        }),
-      ],
+          const SizedBox(height: 4),
+          ...List.generate(data.items.length, (index) {
+            final marker = data.listType == ListType.ordered
+                ? '${index + 1}.'
+                : '•';
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Text(
+                '$marker ${data.items[index]}',
+                style: theme.bodyMedium?.copyWith(
+                  fontSize: 15,
+                  color: Colors.white70,
+                ),
+              ),
+            );
+          }),
+        ],
+      ),
     );
   }
 }

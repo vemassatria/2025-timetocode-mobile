@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class TableBlock extends StatelessWidget {
   const TableBlock({super.key, required this.headers, required this.rows});
+
   final List<List<String>> headers;
   final List<List<String>> rows;
 

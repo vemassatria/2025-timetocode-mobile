@@ -217,8 +217,8 @@ return $default(_that.data);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _ContentBlockModel implements ContentBlockModel {
-  const _ContentBlockModel({required this.data});
+class _ContentBlockModel extends ContentBlockModel {
+  const _ContentBlockModel({required this.data}): super._();
   factory _ContentBlockModel.fromJson(Map<String, dynamic> json) => _$ContentBlockModelFromJson(json);
 
 @override final  ContentBlockData data;
