@@ -14,6 +14,9 @@ import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_p
 import 'package:timetocode/features/5_materi/presentation/screens/materi_detailed_screen.dart';
 import 'package:timetocode/features/5_materi/presentation/screens/materi_screen.dart';
 import 'package:timetocode/features/5_materi/data/models/materi_model.dart'; // ⬅️ tambahkan ini
+import 'package:timetocode/features/5_matriks/data/models/matrix_level_model.dart';
+import 'package:timetocode/features/5_matriks/presentation/screens/matrix_level_selection_page.dart';
+import 'package:timetocode/features/5_matriks/presentation/screens/matrix_pointer_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -81,6 +84,21 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
 
           // ⚙️ Pengaturan
+          GoRoute(
+            path: '/matriks',
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: MatrixLevelSelectionPage()),
+            routes: [
+              GoRoute(
+                path: 'level',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) {
+                  final level = state.extra as MatrixLevelModel;
+                  return MatrixPointerPage(level: level);
+                },
+              ),
+            ],
+          ),
           GoRoute(
             path: '/pengaturan',
             pageBuilder: (context, state) =>

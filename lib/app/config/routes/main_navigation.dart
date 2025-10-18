@@ -15,27 +15,21 @@ class MainNavigation extends ConsumerWidget {
 
   const MainNavigation({required this.child, super.key});
 
+  /// Tentukan tab terpilih berdasarkan route saat ini.
   int _calculateSelectedIndex(BuildContext context) {
-    final String location = GoRouterState.of(context).matchedLocation;
-    if (location.startsWith('/pembelajaran')) {
-      return 0;
-    }
-    if (location.startsWith('/tantangan')) {
-      return 1;
-    }
-    if (location.startsWith('/logic-gate')) {
-      return 2;
-    }
-    if (location.startsWith('/materi')) {
-      return 3;
-    }
-    if (location.startsWith('/pengaturan')) {
-      return 4;
-    }
+    final location = GoRouterState.of(context).matchedLocation;
+
+    if (location.startsWith('/pembelajaran')) return 0;
+    if (location.startsWith('/tantangan')) return 1;
+    if (location.startsWith('/logic-gate')) return 2;
+    if (location.startsWith('/matriks')) return 3;
+    if (location.startsWith('/materi')) return 4;
+    if (location.startsWith('/pengaturan')) return 5;
 
     return 0;
   }
 
+  /// Aksi ketika tab bottom bar ditekan.
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
@@ -48,9 +42,14 @@ class MainNavigation extends ConsumerWidget {
         context.go('/logic-gate');
         break;
       case 3:
-        context.go('/materi');
+        context.go(
+          '/matriks',
+        ); // pastikan route ini ada; jika belum, arahkan sementara ke '/materi'
         break;
       case 4:
+        context.go('/materi');
+        break;
+      case 5:
         context.go('/pengaturan');
         break;
     }
@@ -149,6 +148,11 @@ class MainNavigation extends ConsumerWidget {
                 icon: Icon(Icons.casino_outlined),
                 activeIcon: Icon(Icons.casino),
                 label: 'Gerbang Logika',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.apps_outlined),
+                activeIcon: Icon(Icons.apps),
+                label: 'Matriks',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.library_books),
