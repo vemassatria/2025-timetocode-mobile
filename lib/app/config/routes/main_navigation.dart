@@ -26,8 +26,11 @@ class MainNavigation extends ConsumerWidget {
     if (location.startsWith('/logic-gate')) {
       return 2;
     }
-    if (location.startsWith('/pengaturan')) {
+    if (location.startsWith('/matriks')) { 
       return 3;
+    }
+    if (location.startsWith('/pengaturan')) { 
+      return 4;
     }
     return 0;
   }
@@ -43,7 +46,10 @@ class MainNavigation extends ConsumerWidget {
       case 2:
         context.go('/logic-gate');
         break;
-      case 3:
+      case 3: 
+        context.go('/matriks');
+        break;
+      case 4: 
         context.go('/pengaturan');
         break;
     }
@@ -142,6 +148,12 @@ class MainNavigation extends ConsumerWidget {
                 icon: Icon(Icons.casino_outlined),
                 activeIcon: Icon(Icons.casino),
                 label: 'Gerbang Logika',
+              ),
+              // <-- Tambahkan Item Baru di Sini
+              BottomNavigationBarItem(
+                icon: Icon(Icons.apps_outlined),
+                activeIcon: Icon(Icons.apps),
+                label: 'Matriks',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings_outlined),

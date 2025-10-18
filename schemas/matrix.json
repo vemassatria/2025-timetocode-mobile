@@ -1,0 +1,84 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "matrixCodeSchema",
+    "title": "Matrix Code Schema",
+    "description": "Schema untuk validasi struktur data level Matriks Kode.",
+    "type": "object",
+    "properties": {
+        "levels": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/MatrixLevelModel"
+            }
+        }
+    },
+    "$defs": {
+        "MatrixLevelModel": {
+            "type": "object",
+            "description": "Mewakili satu level dalam Matriks Kode.",
+            "properties": {
+                "levelId": {
+                    "type": "integer",
+                    "description": "ID unik untuk level."
+                },
+                "code": {
+                    "type": "string",
+                    "description": "Kode soal yang ditampilkan ke pemain."
+                },
+                "initialPointerPosition": {
+                    "type": "integer",
+                    "description": "Posisi awal pointer (indeks 0-8)."
+                },
+                "targetPointerPosition": {
+                    "type": "integer",
+                    "description": "Posisi akhir yang harus dicapai."
+                },
+                "commands": {
+                    "type": "array",
+                    "description": "Urutan aksi yang benar untuk menyelesaikan level.",
+                    "items": {
+                        "$ref": "#/$defs/MatrixCommandModel"
+                    }
+                }
+            },
+            "required": [
+                "levelId",
+                "code",
+                "initialPointerPosition",
+                "targetPointerPosition",
+                "commands"
+            ],
+            "additionalProperties": false
+        },
+        "MatrixCommandModel": {
+            "type": "object",
+            "description": "Mewakili satu perintah aksi dalam Matriks Kode.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Jenis perintah, saat ini hanya 'action'.",
+                    "enum": ["action"]
+                },
+                "count": {
+                    "type": "integer",
+                    "description": "(Tidak digunakan saat ini) Jumlah perulangan jika tipe 'loop'."
+                },
+                "action": {
+                    "type": "string",
+                    "description": "Aksi gerakan pointer.",
+                    "enum": [
+                        "up",
+                        "down",
+                        "left",
+                        "right"
+                    ]
+                }
+            },
+            "required": [
+                "type",
+                "action"
+            ],
+            "additionalProperties": false
+        }
+    }
+}
