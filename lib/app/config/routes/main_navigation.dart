@@ -26,7 +26,7 @@ class MainNavigation extends ConsumerWidget {
     if (location.startsWith('/logic-gate')) {
       return 2;
     }
-    if (location.startsWith('/modules')) {
+    if (location.startsWith('/materi')) {
       return 3;
     }
     if (location.startsWith('/pengaturan')) {
@@ -48,7 +48,7 @@ class MainNavigation extends ConsumerWidget {
         context.go('/logic-gate');
         break;
       case 3:
-        context.go('/modules');
+        context.go('/materi');
         break;
       case 4:
         context.go('/pengaturan');
@@ -152,7 +152,7 @@ class MainNavigation extends ConsumerWidget {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.library_books),
-                label: 'Modules',
+                label: 'Materi',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings_outlined),

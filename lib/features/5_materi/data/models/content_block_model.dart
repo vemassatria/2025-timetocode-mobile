@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:timetocode/features/3_materi/data/models/data/content_block_data.dart';
+import 'package:timetocode/features/5_materi/data/models/data/content_block_data.dart';
 
 part 'content_block_model.freezed.dart';
 part 'content_block_model.g.dart';
@@ -11,4 +11,10 @@ abstract class ContentBlockModel with _$ContentBlockModel {
 
   factory ContentBlockModel.fromJson(Map<String, dynamic> json) =>
       _$ContentBlockModelFromJson(json);
+
+  // Private constructor biar bisa punya method/getter konkret
+  const ContentBlockModel._();
+
+  // Getter yang konkret
+  String get type => data.runtimeType.toString();
 }

@@ -12,6 +12,7 @@ _MateriModel _$MateriModelFromJson(Map<String, dynamic> json) => _MateriModel(
   content: (json['content'] as List<dynamic>)
       .map((e) => ContentBlockModel.fromJson(e as Map<String, dynamic>))
       .toList(),
+  videoUrl: json['videoUrl'] as String?,
 );
 
 Map<String, dynamic> _$MateriModelToJson(_MateriModel instance) =>
@@ -19,4 +20,5 @@ Map<String, dynamic> _$MateriModelToJson(_MateriModel instance) =>
       'level': instance.level,
       'title': instance.title,
       'content': instance.content,
+      'videoUrl': instance.videoUrl,
     };

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MateriModel {
 
- int get level; String get title; List<ContentBlockModel> get content;
+ int get level; String get title; List<ContentBlockModel> get content; String? get videoUrl;
 /// Create a copy of MateriModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $MateriModelCopyWith<MateriModel> get copyWith => _$MateriModelCopyWithImpl<Mate
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MateriModel&&(identical(other.level, level) || other.level == level)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.content, content));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MateriModel&&(identical(other.level, level) || other.level == level)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.content, content)&&(identical(other.videoUrl, videoUrl) || other.videoUrl == videoUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,level,title,const DeepCollectionEquality().hash(content));
+int get hashCode => Object.hash(runtimeType,level,title,const DeepCollectionEquality().hash(content),videoUrl);
 
 @override
 String toString() {
-  return 'MateriModel(level: $level, title: $title, content: $content)';
+  return 'MateriModel(level: $level, title: $title, content: $content, videoUrl: $videoUrl)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $MateriModelCopyWith<$Res>  {
   factory $MateriModelCopyWith(MateriModel value, $Res Function(MateriModel) _then) = _$MateriModelCopyWithImpl;
 @useResult
 $Res call({
- int level, String title, List<ContentBlockModel> content
+ int level, String title, List<ContentBlockModel> content, String? videoUrl
 });
 
 
@@ -65,12 +65,13 @@ class _$MateriModelCopyWithImpl<$Res>
 
 /// Create a copy of MateriModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? level = null,Object? title = null,Object? content = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? level = null,Object? title = null,Object? content = null,Object? videoUrl = freezed,}) {
   return _then(_self.copyWith(
 level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
 as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,content: null == content ? _self.content : content // ignore: cast_nullable_to_non_nullable
-as List<ContentBlockModel>,
+as List<ContentBlockModel>,videoUrl: freezed == videoUrl ? _self.videoUrl : videoUrl // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int level,  String title,  List<ContentBlockModel> content)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int level,  String title,  List<ContentBlockModel> content,  String? videoUrl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MateriModel() when $default != null:
-return $default(_that.level,_that.title,_that.content);case _:
+return $default(_that.level,_that.title,_that.content,_that.videoUrl);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.level,_that.title,_that.content);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int level,  String title,  List<ContentBlockModel> content)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int level,  String title,  List<ContentBlockModel> content,  String? videoUrl)  $default,) {final _that = this;
 switch (_that) {
 case _MateriModel():
-return $default(_that.level,_that.title,_that.content);case _:
+return $default(_that.level,_that.title,_that.content,_that.videoUrl);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.level,_that.title,_that.content);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int level,  String title,  List<ContentBlockModel> content)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int level,  String title,  List<ContentBlockModel> content,  String? videoUrl)?  $default,) {final _that = this;
 switch (_that) {
 case _MateriModel() when $default != null:
-return $default(_that.level,_that.title,_that.content);case _:
+return $default(_that.level,_that.title,_that.content,_that.videoUrl);case _:
   return null;
 
 }
@@ -210,8 +211,8 @@ return $default(_that.level,_that.title,_that.content);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _MateriModel implements MateriModel {
-  const _MateriModel({required this.level, required this.title, required final  List<ContentBlockModel> content}): _content = content;
+class _MateriModel extends MateriModel {
+  const _MateriModel({required this.level, required this.title, required final  List<ContentBlockModel> content, this.videoUrl}): _content = content,super._();
   factory _MateriModel.fromJson(Map<String, dynamic> json) => _$MateriModelFromJson(json);
 
 @override final  int level;
@@ -223,6 +224,7 @@ class _MateriModel implements MateriModel {
   return EqualUnmodifiableListView(_content);
 }
 
+@override final  String? videoUrl;
 
 /// Create a copy of MateriModel
 /// with the given fields replaced by the non-null parameter values.
@@ -237,16 +239,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MateriModel&&(identical(other.level, level) || other.level == level)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._content, _content));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MateriModel&&(identical(other.level, level) || other.level == level)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._content, _content)&&(identical(other.videoUrl, videoUrl) || other.videoUrl == videoUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,level,title,const DeepCollectionEquality().hash(_content));
+int get hashCode => Object.hash(runtimeType,level,title,const DeepCollectionEquality().hash(_content),videoUrl);
 
 @override
 String toString() {
-  return 'MateriModel(level: $level, title: $title, content: $content)';
+  return 'MateriModel(level: $level, title: $title, content: $content, videoUrl: $videoUrl)';
 }
 
 
@@ -257,7 +259,7 @@ abstract mixin class _$MateriModelCopyWith<$Res> implements $MateriModelCopyWith
   factory _$MateriModelCopyWith(_MateriModel value, $Res Function(_MateriModel) _then) = __$MateriModelCopyWithImpl;
 @override @useResult
 $Res call({
- int level, String title, List<ContentBlockModel> content
+ int level, String title, List<ContentBlockModel> content, String? videoUrl
 });
 
 
@@ -274,12 +276,13 @@ class __$MateriModelCopyWithImpl<$Res>
 
 /// Create a copy of MateriModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? level = null,Object? title = null,Object? content = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? level = null,Object? title = null,Object? content = null,Object? videoUrl = freezed,}) {
   return _then(_MateriModel(
 level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
 as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,content: null == content ? _self._content : content // ignore: cast_nullable_to_non_nullable
-as List<ContentBlockModel>,
+as List<ContentBlockModel>,videoUrl: freezed == videoUrl ? _self.videoUrl : videoUrl // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
