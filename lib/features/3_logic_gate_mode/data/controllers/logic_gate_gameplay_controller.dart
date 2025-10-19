@@ -128,7 +128,7 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
       return slot;
     }).toList();
 
-    final nextPlayerId = state.currentPlayerId == 1 ? 0 : 1;
+    final nextPlayerId = isPlayerTurn ? 0 : 1;
 
     state = slotId == 10
         ? state.copyWith(
