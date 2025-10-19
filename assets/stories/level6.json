@@ -817,6 +817,102 @@
                     "nextType": "soal"
                 },
                 {
+                    "id": "salahA6_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "Eh… kok salah sih? Padahal aku yakin bener barusan!",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hehehe, kebanyakan matcha tuh, jadi ga fokus.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ih, jangan salahin matcha dong! Soalnya aja yang tricky.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Haha, iya-iya. Tapi inget lagi ya, variabel x itu cuma hidup di dalam fungsiA(). Begitu keluar dari situ, dia udah ‘hilang’, makanya di main() nggak bisa dipanggil.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohh… jadi karena dia dibuat di dalam fungsi, jadi cuma bisa dipakai di sana aja, gitu?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Bener banget. Itu namanya variabel lokal, dia cuma berlaku di wilayah tempat dia dideklarasi.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Oke paham aku coba soalnya lagi deh, kali aja matcha part 2 hehehe",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "GAK GAK GAK ADA",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA6_2",
+                    "nextType": "soal"
+                },
+                {
+                    "id": "salahNoMatchaA6_2",
+                    "backgroundIndex": 0,
+                    "dialogs": [
+                        {
+                            "line": "HAH? Salah lagi? Udah gak dapet matcha, salah pula…",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Hehehe, sabar-sabar, Jen. Emang belajar coding itu kadang kayak debugging, salah dikit langsung error.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ih, perasaan aku udah bener loh ngerjainnya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Iya, tapi lihat deh... kayanya kamu salah naruh bagian deklarasi variabelnya. Makanya programnya nggak bisa baca nilainya dengan benar.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Ohh jadi gitu... harusnya variabelnya ditulis dulu di luar fungsi ya?",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Yap, biar dia bisa diakses dari mana aja. Tapi gapapa, ini proses. Yang penting kamu udah ngerti logikanya.",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        },
+                        {
+                            "line": "Hehe iya, tapi tetep aja... my matcha masih belum kesampaian nih.",
+                            "reactionIndex": 0,
+                            "characterIndex": 1
+                        },
+                        {
+                            "line": "Kali ini aku kasih kamu kesempatan buat ngulang soal deh",
+                            "reactionIndex": 0,
+                            "characterIndex": 2
+                        }
+                    ],
+                    "next": "soalA6_2",
+                    "nextType": "soal"
+                },
+                {
                     "id": "benarB6_2",
                     "dialogs": [
                         {
