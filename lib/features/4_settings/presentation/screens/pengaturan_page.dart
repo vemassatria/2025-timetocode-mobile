@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/app/data/services/music_service.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
-import 'package:timetocode/features/3_settings/presentation/widgets/setting_item.dart';
+import 'package:timetocode/features/4_settings/presentation/widgets/setting_item.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 

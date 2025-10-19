@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:timetocode/features/5_materi/data/datasources/materi_local_datasource.dart';
-import 'package:timetocode/features/5_materi/data/models/materi_model.dart';
-import 'package:timetocode/features/5_materi/data/repositories/materi_repository_implementation.dart';
-import 'package:timetocode/features/5_materi/domain/usecases/get_all_materi_usecase.dart';
-import 'package:timetocode/features/5_materi/presentation/widgets/materi_list_item.dart';
-import 'package:timetocode/features/5_materi/utils/materi_helpers.dart';
+import 'package:timetocode/features/3_material/data/datasources/materi_local_datasource.dart';
+import 'package:timetocode/features/3_material/data/models/materi_model.dart';
+import 'package:timetocode/features/3_material/data/repositories/materi_repository_implementation.dart';
+import 'package:timetocode/features/3_material/domain/usecases/get_all_materi_usecase.dart';
+import 'package:timetocode/features/3_material/presentation/widgets/materi_list_item.dart';
+import 'package:timetocode/features/3_material/utils/materi_helpers.dart';
 
 class MateriScreen extends StatefulWidget {
   const MateriScreen({super.key});

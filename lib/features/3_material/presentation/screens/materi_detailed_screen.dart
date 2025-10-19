@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:timetocode/features/5_materi/utils/materi_helpers.dart';
+import 'package:timetocode/features/3_material/utils/materi_helpers.dart';
 import '../../data/models/materi_model.dart';
 import '../widgets/content_block_card.dart';
 import 'package:timetocode/app/config/theme/colors.dart';

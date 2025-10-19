@@ -10,14 +10,14 @@ import 'package:timetocode/features/1_story_mode/presentation/screens/end_game_p
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/presentation/screens/logic_gate_gameplay.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/presentation/screens/logic_gate_page.dart';
 import 'package:timetocode/features/2_minigames_selection/presentation/screens/minigames_selection_page.dart';
-import 'package:timetocode/features/3_settings/presentation/screens/pengaturan_page.dart';
+import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/data/models/matrix_level_model.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_level_selection_page.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_pointer_page.dart';
-import 'package:timetocode/features/5_materi/data/models/materi_model.dart';
-import 'package:timetocode/features/5_materi/presentation/screens/materi_detailed_screen.dart';
-import 'package:timetocode/features/5_materi/presentation/screens/materi_screen.dart';
+import 'package:timetocode/features/3_material/data/models/materi_model.dart';
+import 'package:timetocode/features/3_material/presentation/screens/materi_detailed_screen.dart';
+import 'package:timetocode/features/3_material/presentation/screens/materi_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();

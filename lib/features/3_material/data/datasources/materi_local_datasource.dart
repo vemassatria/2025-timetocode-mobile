@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:timetocode/features/5_materi/data/models/materi_model.dart';
+import 'package:timetocode/features/3_material/data/models/materi_model.dart';
 
 abstract class MateriLocalDataSource {
   Future<MateriModel> loadOneMateriFromAssets(String path);

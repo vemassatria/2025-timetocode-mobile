@@ -1,5 +1,5 @@
-import 'package:timetocode/features/5_materi/data/models/materi_model.dart';
-import 'package:timetocode/features/5_materi/data/models/data/content_block_data.dart';
+import 'package:timetocode/features/3_material/data/models/materi_model.dart';
+import 'package:timetocode/features/3_material/data/models/data/content_block_data.dart';
 
 class MateriHelpers {
   /// Ambil URL gambar pertama dari content blocks

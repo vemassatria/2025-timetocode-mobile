@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
-import 'package:timetocode/features/5_materi/data/models/data/content_block_data.dart';
+import 'package:timetocode/features/3_material/data/models/data/content_block_data.dart';
 
 class ListBlock extends StatelessWidget {
   const ListBlock({super.key, required this.data});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:timetocode/features/5_materi/data/models/content_block_model.dart';
-import 'package:timetocode/features/5_materi/data/models/data/content_block_data.dart';
+import 'package:timetocode/features/3_material/data/models/content_block_model.dart';
+import 'package:timetocode/features/3_material/data/models/data/content_block_data.dart';
 import 'heading_block.dart';
 import 'paragraph_block.dart';
 import 'list_block.dart';
