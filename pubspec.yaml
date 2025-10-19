@@ -77,6 +77,7 @@ flutter:
     - assets/images/logic_gate/icons/
     - assets/images/logic_gate/tables/
     - assets/images/logic_gate/tutorial/
+    - assets/images/minigames/
     - assets/ml/
   fonts:
     - family: Comic Neue
