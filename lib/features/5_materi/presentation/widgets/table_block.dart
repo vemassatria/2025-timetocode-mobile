@@ -3,28 +3,23 @@ import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 
 class TableBlock extends StatelessWidget {
-  const TableBlock({super.key, required this.headers, required this.rows});
-
-  /// Expect: [["Col1","Col2",...]]
   final List<List<String>> headers;
-
-  /// Expect: [["r1c1","r1c2",...], ["r2c1","r2c2",...], ...]
   final List<List<String>> rows;
+
+  const TableBlock({super.key, required this.headers, required this.rows});
 
   @override
   Widget build(BuildContext context) {
-    // ambil baris header pertama sebagai daftar kolom
     final List<String> cols = headers.isNotEmpty
         ? headers.first
         : const <String>[];
 
-    // style khusus pakai AppTypography + AppColors
     final headerStyle = AppTypography.smallNormalBold(
       color: AppColors.primaryText,
     );
     final cellStyle = AppTypography.small(color: AppColors.white);
-    final borderColor = AppColors.white.withOpacity(.12);
-    final headerBgColor = AppColors.blueTransparent.withOpacity(.18);
+    final borderColor = AppColors.white.withValues(alpha: 0.12);
+    final headerBgColor = AppColors.blueTransparent.withValues(alpha: 0.18);
 
     return Scrollbar(
       thumbVisibility: true,
@@ -36,7 +31,7 @@ class TableBlock extends StatelessWidget {
             dataTextStyle: cellStyle,
             headingRowColor: WidgetStatePropertyAll(headerBgColor),
             dataRowColor: WidgetStatePropertyAll(
-              AppColors.white.withOpacity(.05),
+              AppColors.white.withValues(alpha: 0.05),
             ),
             dividerThickness: 0.0,
           ),

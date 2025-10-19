@@ -25,7 +25,7 @@ class _MateriScreenState extends State<MateriScreen> {
   @override
   void initState() {
     super.initState();
-    final repo = MateriRepositoryImpl(MateriLocalDataSourceImpl());
+    final repo = MateriRepositoryImpl(const MateriLocalDataSourceImpl());
     _futureMateri = GetAllMateriUseCase(repo)();
   }
 
@@ -70,7 +70,7 @@ class _MateriScreenState extends State<MateriScreen> {
             return ListView.separated(
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
               itemCount: list.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 12),
+              separatorBuilder: (_, _) => const SizedBox(height: 12),
               itemBuilder: (_, i) {
                 final m = list[i];
 

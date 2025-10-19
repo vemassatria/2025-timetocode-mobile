@@ -18,21 +18,20 @@ class ContentBlockCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final data = block.data;
 
-    // Cek tipe data-nya untuk menentukan widget yang digunakan
     switch (data.runtimeType) {
-      case HeadingData:
+      case const (HeadingData):
         return HeadingBlock(data: data as HeadingData);
 
-      case TextData:
+      case const (TextData):
         return ParagraphBlock(data: data as TextData);
 
-      case ListData:
+      case const (ListData):
         return ListBlock(data: data as ListData);
 
-      case ImageData:
+      case const (ImageData):
         return ImageBlock(data: data as ImageData);
 
-      case TableData:
+      case const (TableData):
         final d = data as TableData;
         return TableBlock(headers: [d.headers], rows: d.rows);
 

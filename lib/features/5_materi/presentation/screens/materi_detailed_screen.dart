@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-// ⬇️ tambah ini
 import 'package:timetocode/features/5_materi/utils/materi_helpers.dart';
-
 import '../../data/models/materi_model.dart';
 import '../widgets/content_block_card.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 
 class MateriDetailedScreen extends StatelessWidget {
-  const MateriDetailedScreen({super.key, required this.materi});
   final MateriModel materi;
+
+  const MateriDetailedScreen({super.key, required this.materi});
 
   Future<void> _openYouTube(BuildContext context, String urlStr) async {
     if (urlStr.trim().isEmpty) {
@@ -24,6 +24,7 @@ class MateriDetailedScreen extends StatelessWidget {
       mode: LaunchMode.externalApplication,
     );
     if (!ok) {
+      if (!context.mounted) return;
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Gagal membuka link video')));
@@ -32,29 +33,19 @@ class MateriDetailedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const bgNavy = AppColors.darkBackground;
-
     final String? youtubeUrl = MateriHelpers.firstYouTubeLink(materi);
 
     return Scaffold(
-      backgroundColor: bgNavy,
+      backgroundColor: AppColors.darkBackground,
       appBar: AppBar(
-        backgroundColor: bgNavy,
-        elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).maybePop(),
         ),
         title: Text(
-          materi.title,
+          "Materi",
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w800,
-            fontSize: 22,
-            letterSpacing: .2,
-          ),
+          style: AppTypography.heading6(color: Colors.white),
         ),
         centerTitle: true,
       ),
@@ -63,11 +54,10 @@ class MateriDetailedScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
           itemCount: materi.content.length,
           itemBuilder: (_, i) => ContentBlockCard(block: materi.content[i]),
-          separatorBuilder: (_, __) => const SizedBox(height: 16),
+          separatorBuilder: (_, _) => SizedBox(height: 16.h),
         ),
       ),
 
-      // ⬇️ tombol ungu ala figma, hanya tampil jika link ditemukan
       bottomNavigationBar: youtubeUrl == null
           ? null
           : SafeArea(
@@ -78,7 +68,7 @@ class MateriDetailedScreen extends StatelessWidget {
                   width: double.infinity,
                   child: FilledButton(
                     style: FilledButton.styleFrom(
-                      backgroundColor: const Color(0xFF7B61FF), // ungu lembut
+                      backgroundColor: AppColors.cyberPurple,
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),

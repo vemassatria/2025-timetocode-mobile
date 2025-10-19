@@ -25,13 +25,12 @@ class MateriCard extends StatelessWidget {
           color: cs.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: Theme.of(context).dividerColor.withOpacity(.3),
+            color: Theme.of(context).dividerColor.withValues(alpha: 0.3),
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // thumbnail
             ClipRRect(
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(12),
@@ -42,7 +41,7 @@ class MateriCard extends StatelessWidget {
                     ? Image.network(
                         thumbnailUrl!,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => Container(
+                        errorBuilder: (_, _, _) => Container(
                           color: cs.surface,
                           alignment: Alignment.center,
                           child: const Icon(Icons.image_not_supported_outlined),
@@ -55,7 +54,6 @@ class MateriCard extends StatelessWidget {
                       ),
               ),
             ),
-            // title + snippet
             Padding(
               padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
               child: Column(

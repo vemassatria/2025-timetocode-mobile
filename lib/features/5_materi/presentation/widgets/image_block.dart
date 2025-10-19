@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:timetocode/app/config/theme/colors.dart';
+import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/features/5_materi/data/models/data/content_block_data.dart';
 
 class ImageBlock extends StatelessWidget {
@@ -41,7 +43,7 @@ class ImageBlock extends StatelessWidget {
         raw,
         width: double.infinity,
         fit: BoxFit.cover,
-        errorBuilder: (_, __, ___) =>
+        errorBuilder: (_, _, _) =>
             _errorBox(context, 'Gagal memuat URL:\n$raw'),
       );
     } else {
@@ -86,11 +88,11 @@ class ImageBlock extends StatelessWidget {
     width: double.infinity,
     padding: const EdgeInsets.all(12),
     decoration: BoxDecoration(
-      color: Colors.red.withOpacity(.12),
+      color: AppColors.dangerRed.withValues(alpha: 0.12),
       borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: Colors.red.withOpacity(.35)),
+      border: Border.all(color: AppColors.dangerRed.withValues(alpha: 35)),
     ),
-    child: Text(msg, style: const TextStyle(color: Colors.redAccent)),
+    child: Text(msg, style: AppTypography.normal(color: AppColors.dangerRed)),
   );
 
   Widget _skeleton(BuildContext context) => Container(

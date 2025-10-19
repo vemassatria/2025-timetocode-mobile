@@ -23,7 +23,7 @@ class MateriListItem extends StatelessWidget {
     const radius = 14.0;
     final cs = Theme.of(context).colorScheme;
 
-    final border = cs.outlineVariant.withOpacity(.5);
+    final border = cs.outlineVariant.withValues(alpha: 0.5);
 
     final titleStyle = AppTypography.normalBold(color: AppColors.primaryText);
     final subtitleStyle = AppTypography.small(color: AppColors.secondaryText);
@@ -40,7 +40,7 @@ class MateriListItem extends StatelessWidget {
             border: Border.all(color: border, width: 1),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(.35),
+                color: AppColors.black1.withValues(alpha: 0.35),
                 blurRadius: 10,
                 offset: const Offset(0, 6),
               ),
