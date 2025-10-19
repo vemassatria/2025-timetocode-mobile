@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "shared/choices_model_schema.json",
+    "title": "Shared Choices Model Schema",
+    "description": "Definisi umum untuk struktur pilihan (choices) yang bisa digunakan di berbagai fitur.",
+    "$defs": {
+        "ChoicesModel": {
+            "type": "object",
+            "properties": {
+                "text": {
+                    "type": "string"
+                },
+                "next": {
+                    "type": "string"
+                },
+                "nextType": {
+                    "type": "string",
+                    "enum": [
+                        "dialog",
+                        "soal",
+                        "dragAndDrop",
+                        "preDialog"
+                    ]
+                },
+                "isCorrect": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "text",
+                "isCorrect"
+            ],
+            "additionalProperties": false
+        }
+    }
+}
