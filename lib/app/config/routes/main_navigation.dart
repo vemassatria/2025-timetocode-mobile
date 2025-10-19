@@ -23,8 +23,11 @@ class MainNavigation extends ConsumerWidget {
     if (location.startsWith('/minigames')) {
       return 1;
     }
-    if (location.startsWith('/pengaturan')) {
+    if (location.startsWith('/materi')) {
       return 2;
+    }
+    if (location.startsWith('/pengaturan')) {
+      return 3;
     }
     return 0;
   }
@@ -38,6 +41,9 @@ class MainNavigation extends ConsumerWidget {
         context.go('/minigames');
         break;
       case 2:
+        context.go('/materi');
+        break;
+      case 3:
         context.go('/pengaturan');
         break;
     }
@@ -131,6 +137,11 @@ class MainNavigation extends ConsumerWidget {
                 icon: Icon(Icons.emoji_events_outlined),
                 activeIcon: Icon(Icons.emoji_events),
                 label: 'Permainan',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.menu_book_outlined),
+                activeIcon: Icon(Icons.menu_book),
+                label: 'Materi',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings_outlined),

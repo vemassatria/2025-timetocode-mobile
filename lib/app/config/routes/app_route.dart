@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -15,6 +16,9 @@ import 'package:timetocode/features/1_story_mode/presentation/screens/story_game
 import 'package:timetocode/features/2_minigames_selection/games/matriks/data/models/matrix_level_model.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_level_selection_page.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_pointer_page.dart';
+import 'package:timetocode/features/5_materi/data/models/materi_model.dart';
+import 'package:timetocode/features/5_materi/presentation/screens/materi_detailed_screen.dart';
+import 'package:timetocode/features/5_materi/presentation/screens/materi_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -52,6 +56,12 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: '/minigames',
             pageBuilder: (context, state) =>
                 const NoTransitionPage(child: MinigamesSelectionPage()),
+          ),
+
+          GoRoute(
+            path: '/materi',
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: MateriScreen()),
           ),
 
           GoRoute(
@@ -109,6 +119,20 @@ final routerProvider = Provider<GoRouter>((ref) {
             },
           ),
         ],
+      ),
+
+      GoRoute(
+        path: '/materi/detail',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) {
+          final materi = state.extra;
+          if (materi is! MateriModel) {
+            return const Scaffold(
+              body: Center(child: Text('Data materi tidak ditemukan')),
+            );
+          }
+          return MateriDetailedScreen(materi: materi);
+        },
       ),
     ],
   );
