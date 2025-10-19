@@ -15,41 +15,35 @@ class MainNavigation extends ConsumerWidget {
 
   const MainNavigation({required this.child, super.key});
 
-  /// Tentukan tab terpilih berdasarkan route saat ini.
   int _calculateSelectedIndex(BuildContext context) {
-    final location = GoRouterState.of(context).matchedLocation;
-
-    if (location.startsWith('/pembelajaran')) return 0;
-    if (location.startsWith('/tantangan')) return 1;
-    if (location.startsWith('/logic-gate')) return 2;
-    if (location.startsWith('/matriks')) return 3;
-    if (location.startsWith('/materi')) return 4;
-    if (location.startsWith('/pengaturan')) return 5;
-
+    final String location = GoRouterState.of(context).matchedLocation;
+    if (location.startsWith('/pembelajaran')) {
+      return 0;
+    }
+    if (location.startsWith('/minigames')) {
+      return 1;
+    }
+    if (location.startsWith('/materi')) {
+      return 2;
+    }
+    if (location.startsWith('/pengaturan')) {
+      return 3;
+    }
     return 0;
   }
 
-  /// Aksi ketika tab bottom bar ditekan.
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
         context.go('/pembelajaran');
         break;
       case 1:
-        context.go('/tantangan');
+        context.go('/minigames');
         break;
       case 2:
-        context.go('/logic-gate');
-        break;
-      case 3:
-        context.go(
-          '/matriks',
-        ); // pastikan route ini ada; jika belum, arahkan sementara ke '/materi'
-        break;
-      case 4:
         context.go('/materi');
         break;
-      case 5:
+      case 3:
         context.go('/pengaturan');
         break;
     }
@@ -142,20 +136,11 @@ class MainNavigation extends ConsumerWidget {
               BottomNavigationBarItem(
                 icon: Icon(Icons.emoji_events_outlined),
                 activeIcon: Icon(Icons.emoji_events),
-                label: 'Tantangan',
+                label: 'Permainan',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.casino_outlined),
-                activeIcon: Icon(Icons.casino),
-                label: 'Gerbang Logika',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.apps_outlined),
-                activeIcon: Icon(Icons.apps),
-                label: 'Matriks',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.library_books),
+                icon: Icon(Icons.menu_book_outlined),
+                activeIcon: Icon(Icons.menu_book),
                 label: 'Materi',
               ),
               BottomNavigationBarItem(
