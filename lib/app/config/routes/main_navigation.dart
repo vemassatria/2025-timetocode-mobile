@@ -20,19 +20,15 @@ class MainNavigation extends ConsumerWidget {
     if (location.startsWith('/pembelajaran')) {
       return 0;
     }
-    if (location.startsWith('/tantangan')) {
+    if (location.startsWith('/minigames')) {
       return 1;
     }
-    if (location.startsWith('/logic-gate')) {
+    if (location.startsWith('/materi')) {
       return 2;
     }
-    if (location.startsWith('/modules')) {
+    if (location.startsWith('/pengaturan')) {
       return 3;
     }
-    if (location.startsWith('/pengaturan')) {
-      return 4;
-    }
-
     return 0;
   }
 
@@ -42,15 +38,12 @@ class MainNavigation extends ConsumerWidget {
         context.go('/pembelajaran');
         break;
       case 1:
-        context.go('/tantangan');
+        context.go('/minigames');
         break;
       case 2:
-        context.go('/logic-gate');
+        context.go('/materi');
         break;
       case 3:
-        context.go('/modules');
-        break;
-      case 4:
         context.go('/pengaturan');
         break;
     }
@@ -143,16 +136,12 @@ class MainNavigation extends ConsumerWidget {
               BottomNavigationBarItem(
                 icon: Icon(Icons.emoji_events_outlined),
                 activeIcon: Icon(Icons.emoji_events),
-                label: 'Tantangan',
+                label: 'Permainan',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.casino_outlined),
-                activeIcon: Icon(Icons.casino),
-                label: 'Gerbang Logika',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.library_books),
-                label: 'Modules',
+                icon: Icon(Icons.menu_book_outlined),
+                activeIcon: Icon(Icons.menu_book),
+                label: 'Materi',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings_outlined),
