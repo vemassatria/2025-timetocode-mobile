@@ -20,12 +20,9 @@ Map<String, dynamic> _$HeadingDataToJson(HeadingData instance) =>
     };
 
 const _$HeadingTypeEnumMap = {
-  HeadingType.h1: 'h1',
-  HeadingType.h2: 'h2',
-  HeadingType.h3: 'h3',
-  HeadingType.h4: 'h4',
-  HeadingType.h5: 'h5',
-  HeadingType.h6: 'h6',
+  HeadingType.mainTitle: 'mainTitle',
+  HeadingType.topicTitle: 'topicTitle',
+  HeadingType.subTopicTitle: 'subTopicTitle',
 };
 
 TextData _$TextDataFromJson(Map<String, dynamic> json) =>

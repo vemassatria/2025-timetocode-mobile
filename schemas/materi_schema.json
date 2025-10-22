@@ -1,222 +1,177 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "materiModelSchema",
-    "title": "Materi Model Schema",
-    "description": "Schema untuk validasi data materi pembelajaran per level, yang mendukung berbagai jenis konten seperti teks, gambar, dan tabel.",
-    "type": "object",
-    "properties": {
-        "materi": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/MateriModel"
-            }
-        }
-    },
-    "required": [
-        "materi"
-    ],
-    "$defs": {
-        "MateriModel": {
-            "type": "object",
-            "description": "Mewakili satu set materi pembelajaran untuk level tertentu.",
-            "properties": {
-                "level": {
-                    "type": "integer",
-                    "description": "ID level yang berelasi dengan materi ini."
-                },
-                "title": {
-                    "type": "string",
-                    "description": "Judul utama dari materi."
-                },
-                "content": {
-                    "type": "array",
-                    "description": "Kumpulan blok konten yang membentuk materi.",
-                    "items": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/$defs/HeadingBlock"
-                            },
-                            {
-                                "$ref": "#/$defs/TextBlock"
-                            },
-                            {
-                                "$ref": "#/$defs/ImageBlock"
-                            },
-                            {
-                                "$ref": "#/$defs/TableBlock"
-                            },
-                            {
-                                "$ref": "#/$defs/ListBlock"
-                            }
-                        ]
-                    }
-                }
-            },
-            "required": [
-                "level",
-                "title",
-                "content"
-            ]
-        },
-        "HeadingBlock": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "const": "heading"
-                },
-                "data": {
-                    "type": "object",
-                    "properties": {
-                        "text": {
-                            "type": "string"
-                        },
-                        "headingType": {
-                            "type": "string",
-                            "enum": [
-                                "h1",
-                                "h2",
-                                "h3",
-                                "h4",
-                                "h5",
-                                "h6"
-                            ]
-                        }
-                    },
-                    "required": [
-                        "text",
-                        "headingType"
-                    ]
-                }
-            },
-            "required": [
-                "type",
-                "data"
-            ]
-        },
-        "TextBlock": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "const": "text"
-                },
-                "data": {
-                    "type": "object",
-                    "properties": {
-                        "text": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "text"
-                    ]
-                }
-            },
-            "required": [
-                "type",
-                "data"
-            ]
-        },
-        "ImageBlock": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "const": "image"
-                },
-                "data": {
-                    "type": "object",
-                    "properties": {
-                        "url": {
-                            "type": "string",
-                            "description": "Path atau URL ke file gambar."
-                        },
-                        "caption": {
-                            "type": "string",
-                            "description": "Teks caption opsional untuk gambar."
-                        }
-                    },
-                    "required": [
-                        "url"
-                    ]
-                }
-            },
-            "required": [
-                "type",
-                "data"
-            ]
-        },
-        "TableBlock": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "const": "table"
-                },
-                "data": {
-                    "type": "object",
-                    "properties": {
-                        "headers": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "rows": {
-                            "type": "array",
-                            "items": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "required": [
-                        "headers",
-                        "rows"
-                    ]
-                }
-            },
-            "required": [
-                "type",
-                "data"
-            ]
-        },
-        "ListBlock": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "const": "list"
-                },
-                "data": {
-                    "type": "object",
-                    "properties": {
-                        "head": {
-                            "type": "string"
-                        },
-                        "listType": {
-                            "type": "string",
-                            "enum": [
-                                "ordered",
-                                "unordered"
-                            ]
-                        },
-                        "items": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    },
-                    "required": [
-                        "head",
-                        "listType",
-                        "items"
-                    ]
-                }
-            },
-            "required": [
-                "type",
-                "data"
-            ]
-        }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "materiModelSchema",
+  "title": "Materi Model Schema",
+  "description": "Schema untuk validasi data materi pembelajaran per level, yang mendukung berbagai jenis konten seperti teks, gambar, dan tabel.",
+  "type": "object",
+  "properties": {
+    "materi": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/MateriModel"
+      }
     }
+  },
+  "required": ["materi"],
+  "$defs": {
+    "MateriModel": {
+      "type": "object",
+      "description": "Mewakili satu set materi pembelajaran untuk level tertentu.",
+      "properties": {
+        "level": {
+          "type": "integer",
+          "description": "ID level yang berelasi dengan materi ini."
+        },
+        "title": {
+          "type": "string",
+          "description": "Judul utama dari materi."
+        },
+        "content": {
+          "type": "array",
+          "description": "Kumpulan blok konten yang membentuk materi.",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/HeadingBlock"
+              },
+              {
+                "$ref": "#/$defs/TextBlock"
+              },
+              {
+                "$ref": "#/$defs/ImageBlock"
+              },
+              {
+                "$ref": "#/$defs/TableBlock"
+              },
+              {
+                "$ref": "#/$defs/ListBlock"
+              }
+            ]
+          }
+        }
+      },
+      "required": ["level", "title", "content"]
+    },
+    "HeadingBlock": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "heading"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "headingType": {
+              "type": "string",
+              "enum": ["mainTitle", "topicTitle", "subTopicTitle"]
+            }
+          },
+          "required": ["text", "headingType"]
+        }
+      },
+      "required": ["type", "data"]
+    },
+    "TextBlock": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "text"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": ["text"]
+        }
+      },
+      "required": ["type", "data"]
+    },
+    "ImageBlock": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "image"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "Path atau URL ke file gambar."
+            },
+            "caption": {
+              "type": "string",
+              "description": "Teks caption opsional untuk gambar."
+            }
+          },
+          "required": ["url"]
+        }
+      },
+      "required": ["type", "data"]
+    },
+    "TableBlock": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "table"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "headers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "rows": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": ["headers", "rows"]
+        }
+      },
+      "required": ["type", "data"]
+    },
+    "ListBlock": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "list"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "head": {
+              "type": "string"
+            },
+            "listType": {
+              "type": "string",
+              "enum": ["ordered", "unordered"]
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": ["head", "listType", "items"]
+        }
+      },
+      "required": ["type", "data"]
+    }
+  }
 }

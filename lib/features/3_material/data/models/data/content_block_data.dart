@@ -4,18 +4,12 @@ part 'content_block_data.freezed.dart';
 part 'content_block_data.g.dart';
 
 enum HeadingType {
-  @JsonValue('h1')
-  h1,
-  @JsonValue('h2')
-  h2,
-  @JsonValue('h3')
-  h3,
-  @JsonValue('h4')
-  h4,
-  @JsonValue('h5')
-  h5,
-  @JsonValue('h6')
-  h6,
+  @JsonValue('mainTitle')
+  mainTitle,
+  @JsonValue('topicTitle')
+  topicTitle,
+  @JsonValue('subTopicTitle')
+  subTopicTitle,
 }
 
 enum ListType {

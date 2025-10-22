@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/features/3_material/data/models/content_block_model.dart';
 import 'package:timetocode/features/3_material/data/models/data/content_block_data.dart';
 import 'heading_block.dart';
@@ -37,7 +38,7 @@ class ContentBlockCard extends StatelessWidget {
 
       default:
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.symmetric(vertical: 8.h),
           child: Text(
             '⚠️ Tidak dapat menampilkan tipe blok: ${block.type}',
             style: const TextStyle(color: Colors.redAccent),

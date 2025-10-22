@@ -7,15 +7,21 @@
       "content": [
         {
           "type": "heading",
-          "data": { "text": "Tipe Data", "headingType": "h1" }
+          "data": { "text": "Tipe Data", "headingType": "mainTitle" }
         },
         {
           "type": "heading",
-          "data": { "text": "Integer(bilangan bulat)", "headingType": "h4" }
+          "data": {
+            "text": "Integer(bilangan bulat)",
+            "headingType": "topicTitle"
+          }
         },
         {
           "type": "image",
-          "data": { "url": "assets/images/ilustration/BOOLEAN.webp", "caption": "Gambar kelereng utuh" }
+          "data": {
+            "url": "assets/images/ilustration/BOOLEAN.webp",
+            "caption": "Gambar kelereng utuh"
+          }
         },
         {
           "type": "text",
@@ -38,7 +44,10 @@
         },
         {
           "type": "heading",
-          "data": { "text": "Floating Point(Desimal) - float & double", "headingType": "h4" }
+          "data": {
+            "text": "Floating Point(Desimal) - float & double",
+            "headingType": "topicTitle"
+          }
         },
         {
           "type": "text",
@@ -48,7 +57,10 @@
         },
         {
           "type": "heading",
-          "data": { "text": "Perbedaan utama float & double:", "headingType": "h6" }
+          "data": {
+            "text": "Perbedaan utama float & double:",
+            "headingType": "subTopicTitle"
+          }
         },
         {
           "type": "list",
@@ -76,7 +88,10 @@
         },
         {
           "type": "heading",
-          "data": { "headingType": "h4", "text": "Boolean (bool) - benar salah" }
+          "data": {
+            "headingType": "topicTitle",
+            "text": "Boolean (bool) - benar salah"
+          }
         },
         {
           "type": "text",
@@ -98,7 +113,10 @@
         },
         {
           "type": "heading",
-          "data": { "headingType": "h4", "text": "Character(char) - 1 karakter tunggal" }
+          "data": {
+            "headingType": "topicTitle",
+            "text": "Character(char) - 1 karakter tunggal"
+          }
         },
         {
           "type": "text",
@@ -108,7 +126,10 @@
         },
         {
           "type": "heading",
-          "data": { "headingType": "h4", "text": "String - kumpulan karakter" }
+          "data": {
+            "headingType": "topicTitle",
+            "text": "String - kumpulan karakter"
+          }
         },
         {
           "type": "text",
@@ -136,7 +157,7 @@
         },
         {
           "type": "heading",
-          "data": { "text": "Variabel", "headingType": "h1" }
+          "data": { "text": "Variabel", "headingType": "mainTitle" }
         },
         {
           "type": "list",
@@ -173,7 +194,7 @@
         },
         {
           "type": "heading",
-          "data": { "text": "Operator", "headingType": "h1" }
+          "data": { "text": "Operator", "headingType": "mainTitle" }
         },
         {
           "type": "list",
@@ -192,7 +213,11 @@
               ["-", "Pengurangan", "10 - 4"],
               ["*", "Perkalian", "2 * 6"],
               ["/", "Pembagian", "10 / 3"],
-              ["//", "Pembagian Bulat", "10 // 3 → 3\n(hanya mengambil bilangan bulat, tanpa desimal)"],
+              [
+                "//",
+                "Pembagian Bulat",
+                "10 // 3 → 3\n(hanya mengambil bilangan bulat, tanpa desimal)"
+              ],
               ["%", "Modulo", "10 % 3 → 1\n(hanya mengambil sisa bagi)"]
             ]
           }
@@ -258,8 +283,16 @@
             "headers": ["Operator", "Logika", "Deskripsi"],
             "rows": [
               ["AND", "Konjungsi", "Hasilnya True jika kedua kondisi True"],
-              ["OR", "Disjungsi", "Hasilnya True jika salah satu (atau keduanya) kondisi True"],
-              ["NOT", "Negasi", "Membalik nilai Boolean (True menjadi False, dan False menjadi True)"]
+              [
+                "OR",
+                "Disjungsi",
+                "Hasilnya True jika salah satu (atau keduanya) kondisi True"
+              ],
+              [
+                "NOT",
+                "Negasi",
+                "Membalik nilai Boolean (True menjadi False, dan False menjadi True)"
+              ]
             ]
           }
         }
@@ -271,15 +304,21 @@
       "content": [
         {
           "type": "heading",
-          "data": { "text": "Tipe Data", "headingType": "h1" }
+          "data": { "text": "Variabel", "headingType": "mainTitle" }
         },
         {
           "type": "heading",
-          "data": { "text": "Integer(bilangan bulat)", "headingType": "h4" }
+          "data": {
+            "text": "Integer(bilangan bulat)",
+            "headingType": "topicTitle"
+          }
         },
         {
           "type": "image",
-          "data": { "url": "assets/images/ilustration/BOOLEAN.webp", "caption": "Gambar kelereng utuh" }
+          "data": {
+            "url": "assets/images/ilustration/BOOLEAN.webp",
+            "caption": "Gambar kelereng utuh"
+          }
         },
         {
           "type": "text",
@@ -302,7 +341,10 @@
         },
         {
           "type": "heading",
-          "data": { "text": "Floating Point(Desimal) - float & double", "headingType": "h4" }
+          "data": {
+            "text": "Floating Point(Desimal) - float & double",
+            "headingType": "topicTitle"
+          }
         },
         {
           "type": "text",
@@ -312,7 +354,10 @@
         },
         {
           "type": "heading",
-          "data": { "text": "Perbedaan utama float & double:", "headingType": "h6" }
+          "data": {
+            "text": "Perbedaan utama float & double:",
+            "headingType": "subTopicTitle"
+          }
         },
         {
           "type": "list",
@@ -340,7 +385,10 @@
         },
         {
           "type": "heading",
-          "data": { "headingType": "h4", "text": "Boolean (bool) - benar salah" }
+          "data": {
+            "headingType": "topicTitle",
+            "text": "Boolean (bool) - benar salah"
+          }
         },
         {
           "type": "text",
@@ -362,7 +410,10 @@
         },
         {
           "type": "heading",
-          "data": { "headingType": "h4", "text": "Character(char) - 1 karakter tunggal" }
+          "data": {
+            "headingType": "topicTitle",
+            "text": "Character(char) - 1 karakter tunggal"
+          }
         },
         {
           "type": "text",
@@ -372,7 +423,10 @@
         },
         {
           "type": "heading",
-          "data": { "headingType": "h4", "text": "String - kumpulan karakter" }
+          "data": {
+            "headingType": "topicTitle",
+            "text": "String - kumpulan karakter"
+          }
         },
         {
           "type": "text",
@@ -394,7 +448,7 @@
         },
         {
           "type": "heading",
-          "data": { "text": "Variabel", "headingType": "h1" }
+          "data": { "text": "Variabel", "headingType": "mainTitle" }
         },
         {
           "type": "list",
@@ -431,7 +485,7 @@
         },
         {
           "type": "heading",
-          "data": { "text": "Operator", "headingType": "h1" }
+          "data": { "text": "Operator", "headingType": "mainTitle" }
         },
         {
           "type": "list",
@@ -450,7 +504,11 @@
               ["-", "Pengurangan", "10 - 4"],
               ["*", "Perkalian", "2 * 6"],
               ["/", "Pembagian", "10 / 3"],
-              ["//", "Pembagian Bulat", "10 // 3 → 3\n(hanya mengambil bilangan bulat, tanpa desimal)"],
+              [
+                "//",
+                "Pembagian Bulat",
+                "10 // 3 → 3\n(hanya mengambil bilangan bulat, tanpa desimal)"
+              ],
               ["%", "Modulo", "10 % 3 → 1\n(hanya mengambil sisa bagi)"]
             ]
           }
@@ -516,8 +574,16 @@
             "headers": ["Operator", "Logika", "Deskripsi"],
             "rows": [
               ["AND", "Konjungsi", "Hasilnya True jika kedua kondisi True"],
-              ["OR", "Disjungsi", "Hasilnya True jika salah satu (atau keduanya) kondisi True"],
-              ["NOT", "Negasi", "Membalik nilai Boolean (True menjadi False, dan False menjadi True)"]
+              [
+                "OR",
+                "Disjungsi",
+                "Hasilnya True jika salah satu (atau keduanya) kondisi True"
+              ],
+              [
+                "NOT",
+                "Negasi",
+                "Membalik nilai Boolean (True menjadi False, dan False menjadi True)"
+              ]
             ]
           }
         }
