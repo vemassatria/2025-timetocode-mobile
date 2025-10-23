@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/features/3_material/data/models/data/content_block_data.dart';
 
@@ -29,9 +28,7 @@ class ParagraphBlock extends StatelessWidget {
     return Text(
       display,
       textAlign: TextAlign.justify,
-      style: (textStyle ?? AppTypography.normal()).copyWith(
-        color: AppColors.white,
-      ),
+      style: textStyle ?? AppTypography.normal(),
     );
   }
 }
