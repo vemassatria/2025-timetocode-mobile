@@ -1,84 +1,84 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "matrixCodeSchema",
-    "title": "Matrix Code Schema",
-    "description": "Schema untuk validasi struktur data level Matriks Kode.",
-    "type": "object",
-    "properties": {
-        "levels": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/MatrixLevelModel"
-            }
-        }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MatrixQuestionBank",
+  "type": "object",
+  "properties": {
+    "level1": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/MatrixQuestion" }
     },
-    "$defs": {
-        "MatrixLevelModel": {
-            "type": "object",
-            "description": "Mewakili satu level dalam Matriks Kode.",
-            "properties": {
-                "levelId": {
-                    "type": "integer",
-                    "description": "ID unik untuk level."
-                },
-                "code": {
-                    "type": "string",
-                    "description": "Kode soal yang ditampilkan ke pemain."
-                },
-                "initialPointerPosition": {
-                    "type": "integer",
-                    "description": "Posisi awal pointer (indeks 0-8)."
-                },
-                "targetPointerPosition": {
-                    "type": "integer",
-                    "description": "Posisi akhir yang harus dicapai."
-                },
-                "commands": {
-                    "type": "array",
-                    "description": "Urutan aksi yang benar untuk menyelesaikan level.",
-                    "items": {
-                        "$ref": "#/$defs/MatrixCommandModel"
-                    }
-                }
-            },
-            "required": [
-                "levelId",
-                "code",
-                "initialPointerPosition",
-                "targetPointerPosition",
-                "commands"
-            ],
-            "additionalProperties": false
-        },
-        "MatrixCommandModel": {
-            "type": "object",
-            "description": "Mewakili satu perintah aksi dalam Matriks Kode.",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "description": "Jenis perintah, saat ini hanya 'action'.",
-                    "enum": ["action"]
-                },
-                "count": {
-                    "type": "integer",
-                    "description": "(Tidak digunakan saat ini) Jumlah perulangan jika tipe 'loop'."
-                },
-                "action": {
-                    "type": "string",
-                    "description": "Aksi gerakan pointer.",
-                    "enum": [
-                        "up",
-                        "down",
-                        "left",
-                        "right"
-                    ]
-                }
-            },
-            "required": [
-                "type",
-                "action"
-            ],
-            "additionalProperties": false
-        }
+    "level2": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/MatrixQuestion" }
+    },
+    "level3": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/MatrixQuestion" }
+    },
+    "level4": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/MatrixQuestion" }
+    },
+    "level5": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/MatrixQuestion" }
     }
+  },
+  "required": ["level1", "level2", "level3", "level4", "level5"],
+  "definitions": {
+    "MatrixQuestion": {
+      "type": "object",
+      "properties": {
+        "levelId": {
+          "type": "integer",
+          "description": "ID unik untuk soal ini."
+        },
+        "questionCode": {
+          "type": "string",
+          "description": "Kode (soal) yang dilihat oleh user."
+        },
+        "initialMatrix": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "goalMatrix": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "commands": {
+          "type": "array",
+          "description": "Solusi tersembunyi yang digunakan engine (berdasarkan matrix_command_model.dart)",
+          "items": { "$ref": "#/definitions/Command" }
+        }
+      },
+      "required": ["levelId", "questionCode", "initialMatrix", "goalMatrix", "commands"]
+    },
+    "Command": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string",
+          "enum": ["UP", "DOWN", "LEFT", "RIGHT"]
+        },
+        "value": {
+          "type": "integer"
+        }
+      },
+      "required": ["command", "value"]
+    }
+  }
 }

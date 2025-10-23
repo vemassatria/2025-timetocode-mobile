@@ -1,29 +1,519 @@
-{
-  "levels": [
+{ "schema": "../../schemas/matrix.json",
+  "level1": [
     {
-      "levelId": 1,
-      "code": "for i in range(3):\n  go right\nfor j in range(2):\n  go down\ngo left",
-      "initialPointerPosition": 0,
-      "targetPointerPosition": 8,
+      "levelId": 101,
+      "questionCode": "for i in range(1):\n  down()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [1, 0, 0], [0, 0, 0]],
+      "commands": [ { "command": "DOWN", "value": 1 } ]
+    },
+    {
+      "levelId": 102,
+      "questionCode": "for i in range(1):\n  right()",
+      "initialMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "commands": [ { "command": "RIGHT", "value": 1 } ]
+    },
+    {
+      "levelId": 103,
+      "questionCode": "for i in range(1):\n  up()",
+      "initialMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [ { "command": "UP", "value": 1 } ]
+    },
+    {
+      "levelId": 104,
+      "questionCode": "for i in range(1):\n  left()",
+      "initialMatrix": [[0, 0, 0], [1, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 1], [0, 0, 0]],
+      "commands": [ { "command": "LEFT", "value": 1 } ]
+    },
+    {
+      "levelId": 105,
+      "questionCode": "for i in range(2):\n  right()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "commands": [ { "command": "RIGHT", "value": 2 } ]
+    },
+    {
+      "levelId": 106,
+      "questionCode": "for i in range(3):\n  down()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 1], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 1], [0, 0, 0]],
+      "commands": [ { "command": "DOWN", "value": 3 } ]
+    },
+    {
+      "levelId": 107,
+      "questionCode": "for i in range(4):\n  right()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [ { "command": "RIGHT", "value": 4 } ]
+    },
+    {
+      "levelId": 108,
+      "questionCode": "for i in range(4):\n  down()",
+      "initialMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [ { "command": "DOWN", "value": 4 } ]
+    },
+    {
+      "levelId": 109,
+      "questionCode": "for i in range(2):\n  up()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [1, 0, 0]],
+      "goalMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [ { "command": "UP", "value": 2 } ]
+    },
+    {
+      "levelId": 110,
+      "questionCode": "for i in range(2):\n  left()",
+      "initialMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [ { "command": "LEFT", "value": 2 } ]
+    }
+  ],
+  "level2": [
+    {
+      "levelId": 201,
+      "questionCode": "for i in range(1):\n  down()\n\nfor j in range(1):\n  right()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
       "commands": [
-        { "type": "action", "action": "right" },
-        { "type": "action", "action": "right" },
-        { "type": "action", "action": "right" },
-        { "type": "action", "action": "down" },
-        { "type": "action", "action": "down" },
-        { "type": "action", "action": "left" }
+        { "command": "DOWN", "value": 1 },
+        { "command": "RIGHT", "value": 1 }
       ]
     },
     {
-      "levelId": 2,
-      "code": "up()\nup()\n\nfor i in range(2):\n  right()",
-      "initialPointerPosition": 7,
-      "targetPointerPosition": 2,
+      "levelId": 202,
+      "questionCode": "for i in range(2):\n  up()\n\nfor j in range(1):\n  left()",
+      "initialMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 0], [1, 0, 0]],
       "commands": [
-        { "type": "action", "action": "up" },
-        { "type": "action", "action": "up" },
-        { "type": "action", "action": "right" },
-        { "type": "action", "action": "right" }
+        { "command": "UP", "value": 2 },
+        { "command": "LEFT", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 203,
+      "questionCode": "for i in range(4):\n  right()\n\nfor j in range(4):\n  down()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "RIGHT", "value": 4 },
+        { "command": "DOWN", "value": 4 }
+      ]
+    },
+    {
+      "levelId": 204,
+      "questionCode": "for i in range(2):\n  left()\n\nfor j in range(1):\n  up()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [0, 0, 1]],
+      "goalMatrix": [[0, 0, 0], [1, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "LEFT", "value": 2 },
+        { "command": "UP", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 205,
+      "questionCode": "for i in range(1):\n  up()\n\nfor j in range(5):\n  right()",
+      "initialMatrix": [[0, 0, 0], [1, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "UP", "value": 1 },
+        { "command": "RIGHT", "value": 5 }
+      ]
+    },
+    {
+      "levelId": 206,
+      "questionCode": "for i in range(2):\n  down()\n\nfor j in range(3):\n  left()",
+      "initialMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 0], [0, 0, 1]],
+      "commands": [
+        { "command": "DOWN", "value": 2 },
+        { "command": "LEFT", "value": 3 }
+      ]
+    },
+    {
+      "levelId": 207,
+      "questionCode": "for i in range(5):\n  down()\n\nfor j in range(5):\n  right()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 0], [0, 0, 1]],
+      "commands": [
+        { "command": "DOWN", "value": 5 },
+        { "command": "RIGHT", "value": 5 }
+      ]
+    },
+    {
+      "levelId": 208,
+      "questionCode": "for i in range(1):\n  left()\n\nfor j in range(1):\n  up()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 1], [0, 0, 0]],
+      "goalMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "LEFT", "value": 1 },
+        { "command": "UP", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 209,
+      "questionCode": "for i in range(2):\n  right()\n\nfor j in range(2):\n  up()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [0, 1, 0]],
+      "goalMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "RIGHT", "value": 2 },
+        { "command": "UP", "value": 2 }
+      ]
+    },
+    {
+      "levelId": 210,
+      "questionCode": "for i in range(3):\n  down()\n\nfor j in range(3):\n  right()",
+      "initialMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "DOWN", "value": 3 },
+        { "command": "RIGHT", "value": 3 }
+      ]
+    }
+  ],
+  "level3": [
+    {
+      "levelId": 301,
+      "questionCode": "for i in range(1):\n  right()\n\nfor j in range(1):\n  down()\n\nfor k in range(1):\n  right()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 1], [0, 0, 0]],
+      "commands": [
+        { "command": "RIGHT", "value": 1 },
+        { "command": "DOWN", "value": 1 },
+        { "command": "RIGHT", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 302,
+      "questionCode": "for i in range(1):\n  up()\n\nfor j in range(1):\n  left()\n\nfor k in range(2):\n  down()",
+      "initialMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 0], [1, 0, 0]],
+      "commands": [
+        { "command": "UP", "value": 1 },
+        { "command": "LEFT", "value": 1 },
+        { "command": "DOWN", "value": 2 }
+      ]
+    },
+    {
+      "levelId": 303,
+      "questionCode": "for i in range(2):\n  left()\n\nfor j in range(2):\n  up()\n\nfor k in range(1):\n  right()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [0, 0, 1]],
+      "goalMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "LEFT", "value": 2 },
+        { "command": "UP", "value": 2 },
+        { "command": "RIGHT", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 304,
+      "questionCode": "for i in range(4):\n  down()\n\nfor j in range(4):\n  right()\n\nfor k in range(1):\n  up()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "DOWN", "value": 4 },
+        { "command": "RIGHT", "value": 4 },
+        { "command": "UP", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 305,
+      "questionCode": "for i in range(5):\n  left()\n\nfor j in range(2):\n  up()\n\nfor k in range(1):\n  right()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 1], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 0], [0, 1, 0]],
+      "commands": [
+        { "command": "LEFT", "value": 5 },
+        { "command": "UP", "value": 2 },
+        { "command": "RIGHT", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 306,
+      "questionCode": "for i in range(1):\n  right()\n\nfor j in range(1):\n  right()\n\nfor k in range(1):\n  right()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "RIGHT", "value": 1 },
+        { "command": "RIGHT", "value": 1 },
+        { "command": "RIGHT", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 307,
+      "questionCode": "for i in range(1):\n  up()\n\nfor j in range(1):\n  up()\n\nfor k in range(1):\n  left()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [1, 0, 0]],
+      "goalMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "UP", "value": 1 },
+        { "command": "UP", "value": 1 },
+        { "command": "LEFT", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 308,
+      "questionCode": "for i in range(2):\n  down()\n\nfor j in range(2):\n  left()\n\nfor k in range(1):\n  down()",
+      "initialMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 1], [0, 0, 0]],
+      "commands": [
+        { "command": "DOWN", "value": 2 },
+        { "command": "LEFT", "value": 2 },
+        { "command": "DOWN", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 309,
+      "questionCode": "for i in range(1):\n  down()\n\nfor j in range(1):\n  right()\n\nfor k in range(1):\n  up()",
+      "initialMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "DOWN", "value": 1 },
+        { "command": "RIGHT", "value": 1 },
+        { "command": "UP", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 310,
+      "questionCode": "for i in range(5):\n  right()\n\nfor j in range(5):\n  down()\n\nfor k in range(5):\n  left()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 0], [1, 0, 0]],
+      "commands": [
+        { "command": "RIGHT", "value": 5 },
+        { "command": "DOWN", "value": 5 },
+        { "command": "LEFT", "value": 5 }
+      ]
+    }
+  ],
+  "level4": [
+    {
+      "levelId": 401,
+      "questionCode": "for i in range(10):\n  down()\n\nfor j in range(10):\n  right()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "DOWN", "value": 10 },
+        { "command": "RIGHT", "value": 10 }
+      ]
+    },
+    {
+      "levelId": 402,
+      "questionCode": "for i in range(7):\n  up()\n\nfor j in range(8):\n  left()",
+      "initialMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "UP", "value": 7 },
+        { "command": "LEFT", "value": 8 }
+      ]
+    },
+    {
+      "levelId": 403,
+      "questionCode": "for i in range(11):\n  right()\n\nfor j in range(11):\n  up()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [0, 0, 1]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "RIGHT", "value": 11 },
+        { "command": "UP", "value": 11 }
+      ]
+    },
+    {
+      "levelId": 404,
+      "questionCode": "for i in range(1):\n  down()\n\nfor j in range(4):\n  left()\n\nfor k in range(2):\n  up()",
+      "initialMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 0], [1, 0, 0]],
+      "commands": [
+        { "command": "DOWN", "value": 1 },
+        { "command": "LEFT", "value": 4 },
+        { "command": "UP", "value": 2 }
+      ]
+    },
+    {
+      "levelId": 405,
+      "questionCode": "for i in range(10):\n  up()\n\nfor j in range(10):\n  right()\n\nfor k in range(10):\n  down()",
+      "initialMatrix": [[0, 0, 0], [1, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "UP", "value": 10 },
+        { "command": "RIGHT", "value": 10 },
+        { "command": "DOWN", "value": 10 }
+      ]
+    },
+    {
+      "levelId": 406,
+      "questionCode": "for i in range(5):\n  left()\n\nfor j in range(1):\n  down()\n\nfor k in range(7):\n  right()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [0, 0, 1]],
+      "goalMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "LEFT", "value": 5 },
+        { "command": "DOWN", "value": 1 },
+        { "command": "RIGHT", "value": 7 }
+      ]
+    },
+    {
+      "levelId": 407,
+      "questionCode": "for i in range(1):\n  right()\n\nfor j in range(1):\n  down()\n\nfor k in range(1):\n  right()\n\nfor l in range(1):\n  down()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 0], [0, 0, 1]],
+      "commands": [
+        { "command": "RIGHT", "value": 1 },
+        { "command": "DOWN", "value": 1 },
+        { "command": "RIGHT", "value": 1 },
+        { "command": "DOWN", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 408,
+      "questionCode": "for i in range(2):\n  up()\n\nfor j in range(2):\n  right()\n\nfor k in range(1):\n  down()",
+      "initialMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "goalMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "UP", "value": 2 },
+        { "command": "RIGHT", "value": 2 },
+        { "command": "DOWN", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 409,
+      "questionCode": "for i in range(4):\n  down()\n\nfor j in range(4):\n  left()\n\nfor k in range(4):\n  up()",
+      "initialMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "DOWN", "value": 4 },
+        { "command": "LEFT", "value": 4 },
+        { "command": "UP", "value": 4 }
+      ]
+    },
+    {
+      "levelId": 410,
+      "questionCode": "for i in range(8):\n  right()\n\nfor j in range(8):\n  up()\n\nfor k in range(8):\n  left()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [1, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "RIGHT", "value": 8 },
+        { "command": "UP", "value": 8 },
+        { "command": "LEFT", "value": 8 }
+      ]
+    }
+  ],
+  "level5": [
+    {
+      "levelId": 501,
+      "questionCode": "for i in range(1):\n  right()\n\nfor j in range(2):\n  down()\n\nfor k in range(3):\n  left()\n\nfor l in range(4):\n  up()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "RIGHT", "value": 1 },
+        { "command": "DOWN", "value": 2 },
+        { "command": "LEFT", "value": 3 },
+        { "command": "UP", "value": 4 }
+      ]
+    },
+    {
+      "levelId": 502,
+      "questionCode": "for i in range(5):\n  up()\n\nfor j in range(5):\n  left()\n\nfor k in range(5):\n  down()\n\nfor l in range(5):\n  right()",
+      "initialMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "UP", "value": 5 },
+        { "command": "LEFT", "value": 5 },
+        { "command": "DOWN", "value": 5 },
+        { "command": "RIGHT", "value": 5 }
+      ]
+    },
+    {
+      "levelId": 503,
+      "questionCode": "for i in range(7):\n  down()\n\nfor j in range(8):\n  right()\n\nfor k in range(9):\n  up()\n\nfor l in range(10):\n  left()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "DOWN", "value": 7 },
+        { "command": "RIGHT", "value": 8 },
+        { "command": "UP", "value": 9 },
+        { "command": "LEFT", "value": 10 }
+      ]
+    },
+    {
+      "levelId": 504,
+      "questionCode": "for i in range(10):\n  left()\n\nfor j in range(10):\n  up()\n\nfor k in range(10):\n  right()\n\nfor l in range(10):\n  down()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [0, 0, 1]],
+      "goalMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "LEFT", "value": 10 },
+        { "command": "UP", "value": 10 },
+        { "command": "RIGHT", "value": 10 },
+        { "command": "DOWN", "value": 10 }
+      ]
+    },
+    {
+      "levelId": 505,
+      "questionCode": "for i in range(3):\n  down()\n\nfor j in range(3):\n  right()\n\nfor k in range(3):\n  up()\n\nfor l in range(3):\n  left()",
+      "initialMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 1, 0], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "DOWN", "value": 3 },
+        { "command": "RIGHT", "value": 3 },
+        { "command": "UP", "value": 3 },
+        { "command": "LEFT", "value": 3 }
+      ]
+    },
+    {
+      "levelId": 506,
+      "questionCode": "for i in range(2):\n  right()\n\nfor j in range(2):\n  down()\n\nfor k in range(1):\n  left()\n\nfor l in range(4):\n  right()",
+      "initialMatrix": [[0, 0, 0], [1, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 0], [0, 0, 1]],
+      "commands": [
+        { "command": "RIGHT", "value": 2 },
+        { "command": "DOWN", "value": 2 },
+        { "command": "LEFT", "value": 1 },
+        { "command": "RIGHT", "value": 4 }
+      ]
+    },
+    {
+      "levelId": 507,
+      "questionCode": "for i in range(1):\n  up()\n\nfor j in range(2):\n  left()\n\nfor k in range(3):\n  down()\n\nfor l in range(5):\n  up()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [0, 1, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 0, 0], [1, 0, 0]],
+      "commands": [
+        { "command": "UP", "value": 1 },
+        { "command": "LEFT", "value": 2 },
+        { "command": "DOWN", "value": 3 },
+        { "command": "UP", "value": 5 }
+      ]
+    },
+    {
+      "levelId": 508,
+      "questionCode": "for i in range(9):\n  right()\n\nfor j in range(9):\n  down()\n\nfor k in range(8):\n  right()\n\nfor l in range(1):\n  left()",
+      "initialMatrix": [[1, 0, 0], [0, 0, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "RIGHT", "value": 9 },
+        { "command": "DOWN", "value": 9 },
+        { "command": "RIGHT", "value": 8 },
+        { "command": "LEFT", "value": 1 }
+      ]
+    },
+    {
+      "levelId": 509,
+      "questionCode": "for i in range(1):\n  up()\n\nfor j in range(2):\n  down()\n\nfor k in range(4):\n  right()\n\nfor l in range(5):\n  up()",
+      "initialMatrix": [[0, 0, 0], [0, 1, 0], [0, 0, 0]],
+      "goalMatrix": [[0, 0, 1], [0, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "UP", "value": 1 },
+        { "command": "DOWN", "value": 2 },
+        { "command": "RIGHT", "value": 4 },
+        { "command": "UP", "value": 5 }
+      ]
+    },
+    {
+      "levelId": 510,
+      "questionCode": "for i in range(100):\n  up()\n\nfor j in range(100):\n  left()\n\nfor k in range(100):\n  right()\n\nfor l in range(1):\n  left()",
+      "initialMatrix": [[0, 0, 0], [0, 0, 0], [0, 0, 1]],
+      "goalMatrix": [[0, 0, 0], [1, 0, 0], [0, 0, 0]],
+      "commands": [
+        { "command": "UP", "value": 100 },
+        { "command": "LEFT", "value": 100 },
+        { "command": "RIGHT", "value": 100 },
+        { "command": "LEFT", "value": 1 }
       ]
     }
   ]

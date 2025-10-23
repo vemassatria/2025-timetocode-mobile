@@ -7,31 +7,43 @@ import 'package:timetocode/app/utils/overlay_utils.dart';
 import 'package:timetocode/app/widgets/popups/menu_popup.dart';
 import 'package:timetocode/features/0_core/widgets/code_box.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/data/controllers/matrix_game_controller.dart';
-import 'package:timetocode/features/2_minigames_selection/games/matriks/data/models/matrix_level_model.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/data/providers/matrix_level_provider.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/widgets/game_result_popup.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/widgets/matrix_game_appbar.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/widgets/pointer_grid.dart';
 
 class MatrixPointerPage extends ConsumerWidget {
-  final MatrixLevelModel level;
+  final int levelNumber;
 
-  const MatrixPointerPage({super.key, required this.level});
+  const MatrixPointerPage({super.key, required this.levelNumber});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final gameController = ref.read(
-      matrixGameControllerProvider(level).notifier,
+      matrixGameControllerProvider(levelNumber).notifier,
     );
-    final gameState = ref.watch(matrixGameControllerProvider(level));
+    final gameState = ref.watch(matrixGameControllerProvider(levelNumber));
 
-    ref.listen<MatrixGameState>(matrixGameControllerProvider(level), (
+    ref.listen<MatrixGameState>(matrixGameControllerProvider(levelNumber), (
       previous,
       next,
     ) {
       if (previous?.status == next.status) return;
 
       switch (next.status) {
+        case GameStatus.questionWon:
+          showPopupOverlay(
+            context,
+            GameResultPopup(
+              isCorrect: true,
+              onPrimaryAction: () {
+                closePopupOverlay(ref);
+                gameController.nextQuestion();
+              },
+            ),
+            ref,
+          );
+          break;
         case GameStatus.levelWon:
           showPopupOverlay(
             context,
@@ -39,7 +51,7 @@ class MatrixPointerPage extends ConsumerWidget {
               isCorrect: true,
               onPrimaryAction: () {
                 closePopupOverlay(ref);
-                gameController.nextLevel();
+                gameController.exitGame();
               },
             ),
             ref,
@@ -52,16 +64,31 @@ class MatrixPointerPage extends ConsumerWidget {
               isCorrect: false,
               onPrimaryAction: () {
                 closePopupOverlay(ref);
-                gameController.retryLevelAfterMistake();
+                gameController.retryCurrentQuestion();
               },
               onSecondaryAction: () {
                 closePopupOverlay(ref);
-                gameController.nextLevel();
+                gameController.exitGame();
               },
             ),
             ref,
           );
           break;
+        case GameStatus.questionFailed:
+          showPopupOverlay(
+            context,
+            GameResultPopup(
+              isCorrect: false,
+              isGameOver: true,
+              onPrimaryAction: () {
+                closePopupOverlay(ref);
+                gameController.skipQuestion();
+              },
+            ),
+            ref,
+          );
+          break;
+
         case GameStatus.levelLost:
           showPopupOverlay(
             context,
@@ -70,7 +97,7 @@ class MatrixPointerPage extends ConsumerWidget {
               isGameOver: true,
               onPrimaryAction: () {
                 closePopupOverlay(ref);
-                gameController.nextLevel();
+                gameController.exitGame();
               },
             ),
             ref,
@@ -81,19 +108,28 @@ class MatrixPointerPage extends ConsumerWidget {
       }
     });
 
+    if (gameState.status == GameStatus.loading ||
+        gameState.currentQuestion == null) {
+      return const Scaffold(
+        backgroundColor: AppColors.darkBackground,
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
     return Scaffold(
       backgroundColor: AppColors.darkBackground,
       appBar: MatrixGameAppBar(
         progress:
-            '${gameState.level.levelId}/${ref.watch(matrixLevelsProvider).asData?.value.length ?? ''}',
-        score: 0,
+            'Soal ${gameState.currentQuestionIndex + 1}/${gameState.questions.length}',
+        score: ref.watch(matrixScoreProvider),
         onMenuPressed: () {
           showPopupOverlay(
             context,
             MenuPopup(
               onRestart: () {
                 closePopupOverlay(ref);
-                gameController.restartLevel();
+                ref.invalidate(matrixScoreProvider);
+                ref.invalidate(matrixGameControllerProvider(levelNumber));
               },
               onExit: () {
                 closePopupOverlay(ref);
@@ -113,9 +149,12 @@ class MatrixPointerPage extends ConsumerWidget {
           children: [
             _buildInstruction(),
             SizedBox(height: 24.h),
-            CodeBox(code: gameState.level.code),
+            CodeBox(code: gameState.currentQuestion!.questionCode),
             SizedBox(height: 24.h),
-            PointerGrid(level: level),
+            PointerGrid(
+              level: gameState.currentQuestion!,
+              levelNumber: levelNumber,
+            ),
             const Spacer(),
           ],
         ),

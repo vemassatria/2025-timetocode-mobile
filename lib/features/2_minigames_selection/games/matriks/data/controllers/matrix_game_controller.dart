@@ -4,24 +4,78 @@ import 'package:timetocode/features/2_minigames_selection/games/matriks/data/mod
 import 'package:timetocode/features/2_minigames_selection/games/matriks/data/providers/matrix_level_provider.dart';
 
 final matrixGameControllerProvider = StateNotifierProvider.autoDispose
-    .family<MatrixGameController, MatrixGameState, MatrixLevelModel>((
-      ref,
-      level,
-    ) {
-      return MatrixGameController(ref, level);
-    });
+    .family<MatrixGameController, MatrixGameState, int>((
+  ref,
+  levelNumber,
+) {
+  final bankAsyncValue = ref.watch(matrixQuestionBankProvider);
 
-enum GameStatus { playing, levelWon, levelLost, incorrectMove }
+  if (bankAsyncValue is! AsyncData) {
+    return MatrixGameController(ref, [], levelNumber);
+  }
+
+  final bank = bankAsyncValue.value!;
+  List<MatrixLevelModel> levelQuestions;
+
+  switch (levelNumber) {
+    case 1: levelQuestions = bank.level1; break;
+    case 2: levelQuestions = bank.level2; break;
+    case 3: levelQuestions = bank.level3; break;
+    case 4: levelQuestions = bank.level4; break;
+    case 5: levelQuestions = bank.level5; break;
+    default: levelQuestions = bank.level1;
+  }
+
+  final shuffled = List<MatrixLevelModel>.from(levelQuestions)..shuffle();
+  final selectedQuestions = shuffled.take(3).toList();
+
+  return MatrixGameController(ref, selectedQuestions, levelNumber);
+});
+
+List<String> _expandCommands(MatrixLevelModel question) {
+  final List<String> steps = [];
+  for (final commandModel in question.commands) {
+    for (int i = 0; i < commandModel.value; i++) {
+      steps.add(commandModel.command.toUpperCase());
+    }
+  }
+  return steps;
+}
+
+enum GameStatus {
+  loading,
+  playing,
+  questionWon,
+  questionFailed,
+  levelWon,
+  levelLost,
+  incorrectMove
+}
 
 class MatrixGameState {
-  final MatrixLevelModel level;
+  final List<MatrixLevelModel> questions;
+  final int levelNumber;
+  final int currentQuestionIndex;
+  
+  final List<String> expandedCommands;
+
   final int pointerPosition;
   final int currentStepIndex;
   final int lives;
   final GameStatus status;
 
+  MatrixLevelModel? get currentQuestion {
+    if (questions.isEmpty || currentQuestionIndex >= questions.length) {
+      return null;
+    }
+    return questions[currentQuestionIndex];
+  }
+
   MatrixGameState({
-    required this.level,
+    required this.questions,
+    required this.levelNumber,
+    required this.currentQuestionIndex,
+    required this.expandedCommands,
     required this.pointerPosition,
     required this.currentStepIndex,
     required this.lives,
@@ -29,13 +83,19 @@ class MatrixGameState {
   });
 
   MatrixGameState copyWith({
+    List<MatrixLevelModel>? questions,
+    int? currentQuestionIndex,
+    List<String>? expandedCommands,
     int? pointerPosition,
     int? currentStepIndex,
     int? lives,
     GameStatus? status,
   }) {
     return MatrixGameState(
-      level: level,
+      questions: questions ?? this.questions,
+      levelNumber: levelNumber,
+      currentQuestionIndex: currentQuestionIndex ?? this.currentQuestionIndex,
+      expandedCommands: expandedCommands ?? this.expandedCommands,
       pointerPosition: pointerPosition ?? this.pointerPosition,
       currentStepIndex: currentStepIndex ?? this.currentStepIndex,
       lives: lives ?? this.lives,
@@ -47,80 +107,115 @@ class MatrixGameState {
 class MatrixGameController extends StateNotifier<MatrixGameState> {
   final Ref _ref;
 
-  MatrixGameController(this._ref, MatrixLevelModel initialLevel)
-    : super(
-        MatrixGameState(
-          level: initialLevel,
-          pointerPosition: initialLevel.initialPointerPosition,
-          currentStepIndex: 0,
-          lives: 3,
-          status: GameStatus.playing,
-        ),
-      );
+  static int _findInitialPointerPosition(MatrixLevelModel level) {
+    for (int i = 0; i < level.initialMatrix.length; i++) {
+      for (int j = 0; j < level.initialMatrix[i].length; j++) {
+        if (level.initialMatrix[i][j] == 1) {
+          return i * 3 + j;
+        }
+      }
+    }
+    return 0;
+  }
+
+  MatrixGameController(this._ref, List<MatrixLevelModel> initialQuestions, int levelNumber)
+      : super(
+          initialQuestions.isEmpty
+              ? MatrixGameState(
+                  questions: [],
+                  levelNumber: levelNumber,
+                  currentQuestionIndex: 0,
+                  expandedCommands: [],
+                  pointerPosition: 0,
+                  currentStepIndex: 0,
+                  lives: 3,
+                  status: GameStatus.loading,
+                )
+              : MatrixGameState(
+                  questions: initialQuestions,
+                  levelNumber: levelNumber,
+                  currentQuestionIndex: 0,
+                  expandedCommands: _expandCommands(initialQuestions[0]),
+                  pointerPosition: _findInitialPointerPosition(initialQuestions[0]),
+                  currentStepIndex: 0,
+                  lives: 3,
+                  status: GameStatus.playing,
+                ),
+        );
 
   void attemptMove(String action) {
-    if (state.status != GameStatus.playing) return;
+    if (state.status != GameStatus.playing || state.currentQuestion == null) return;
 
-    final expectedAction = state.level.commands[state.currentStepIndex].action;
+    final currentCommands = state.expandedCommands;
+    if (state.currentStepIndex >= currentCommands.length) return;
 
-    if (action == expectedAction) {
+    final expectedAction = currentCommands[state.currentStepIndex];
+
+    if (action.toUpperCase() == expectedAction.toUpperCase()) {
       _movePointer(action);
       final nextStep = state.currentStepIndex + 1;
-      if (nextStep >= state.level.commands.length) {
-        _ref.read(matrixScoreProvider.notifier).state++;
-        state = state.copyWith(
-          currentStepIndex: nextStep,
-          status: GameStatus.levelWon,
-        );
+
+      if (nextStep >= currentCommands.length) {
+        if (state.currentQuestionIndex >= state.questions.length - 1) {
+          state = state.copyWith(status: GameStatus.levelWon);
+        } else {
+          state = state.copyWith(status: GameStatus.questionWon);
+        }
       } else {
         state = state.copyWith(currentStepIndex: nextStep);
       }
     } else {
       final newLives = state.lives - 1;
-      state = state.copyWith(status: GameStatus.incorrectMove, lives: newLives);
+      
       if (newLives <= 0) {
-        Future.delayed(const Duration(milliseconds: 500), () {
-          state = state.copyWith(status: GameStatus.levelLost);
-        });
+        if (state.currentQuestionIndex >= state.questions.length - 1) {
+          state = state.copyWith(lives: 0, status: GameStatus.levelLost);
+        } else {
+          state = state.copyWith(lives: 0, status: GameStatus.questionFailed);
+        }
+      } else {
+        state = state.copyWith(lives: newLives, status: GameStatus.incorrectMove);
       }
     }
   }
 
-  void retryLevelAfterMistake() {
+  void retryCurrentQuestion() {
+    if (state.currentQuestion == null) return;
     state = state.copyWith(
-      pointerPosition: state.level.initialPointerPosition,
+      pointerPosition: _findInitialPointerPosition(state.currentQuestion!),
       currentStepIndex: 0,
       status: GameStatus.playing,
     );
   }
 
-  void nextLevel() {
-    final allLevels = _ref.read(matrixLevelsProvider).asData!.value;
-    final currentIndex = allLevels.indexWhere(
-      (l) => l.levelId == state.level.levelId,
-    );
-    final nextIndex = currentIndex + 1;
+  void _moveToNextQuestion() {
+    final nextQuestionIndex = state.currentQuestionIndex + 1;
+    if (nextQuestionIndex < state.questions.length) {
+      final newLevel = state.questions[nextQuestionIndex];
+      final newExpandedCommands = _expandCommands(newLevel);
 
-    if (nextIndex < allLevels.length) {
-      final newLevel = allLevels[nextIndex];
-      _ref
-          .read(routerProvider)
-          .pushReplacement('/minigames/matriks/level', extra: newLevel);
+      state = state.copyWith(
+        currentQuestionIndex: nextQuestionIndex,
+        expandedCommands: newExpandedCommands,
+        pointerPosition: _findInitialPointerPosition(newLevel),
+        currentStepIndex: 0,
+        status: GameStatus.playing,
+        lives: 3,
+      );
     } else {
       exitGame();
     }
   }
 
-  void restartLevel() {
-    final currentLevel = state.level;
-    state = MatrixGameState(
-      level: currentLevel,
-      pointerPosition: currentLevel.initialPointerPosition,
-      currentStepIndex: 0,
-      lives: 3,
-      status: GameStatus.playing,
-    );
+  void nextQuestion() {
+    _ref.read(matrixScoreProvider.notifier).state++;
+    _moveToNextQuestion();
   }
+
+  void skipQuestion() {
+    _moveToNextQuestion();
+  }
+
 
   void exitGame() {
     _ref.read(routerProvider).go('/minigames/matriks');
@@ -130,20 +225,14 @@ class MatrixGameController extends StateNotifier<MatrixGameState> {
     int currentPos = state.pointerPosition;
     int row = currentPos ~/ 3;
     int col = currentPos % 3;
-    switch (action) {
-      case "up":
-        row = (row - 1 + 3) % 3;
-        break;
-      case "down":
-        row = (row + 1) % 3;
-        break;
-      case "left":
-        col = (col - 1 + 3) % 3;
-        break;
-      case "right":
-        col = (col + 1) % 3;
-        break;
+    
+    switch (action.toLowerCase()) {
+      case "up": row = (row - 1 + 3) % 3; break;
+      case "down": row = (row + 1) % 3; break;
+      case "left": col = (col - 1 + 3) % 3; break;
+      case "right": col = (col + 1) % 3; break;
     }
+    
     state = state.copyWith(pointerPosition: row * 3 + col);
   }
 }

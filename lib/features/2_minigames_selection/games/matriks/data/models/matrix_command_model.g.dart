@@ -8,14 +8,9 @@ part of 'matrix_command_model.dart';
 
 _MatrixCommandModel _$MatrixCommandModelFromJson(Map<String, dynamic> json) =>
     _MatrixCommandModel(
-      type: json['type'] as String,
-      count: (json['count'] as num?)?.toInt(),
-      action: json['action'] as String,
+      command: json['command'] as String,
+      value: (json['value'] as num).toInt(),
     );
 
 Map<String, dynamic> _$MatrixCommandModelToJson(_MatrixCommandModel instance) =>
-    <String, dynamic>{
-      'type': instance.type,
-      'count': instance.count,
-      'action': instance.action,
-    };
+    <String, dynamic>{'command': instance.command, 'value': instance.value};

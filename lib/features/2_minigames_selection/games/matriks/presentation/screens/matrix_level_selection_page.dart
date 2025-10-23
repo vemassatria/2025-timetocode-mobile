@@ -14,7 +14,7 @@ class MatrixLevelSelectionPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     Future.microtask(() => ref.invalidate(matrixScoreProvider));
 
-    final levelsAsync = ref.watch(matrixLevelsProvider);
+    final bankAsync = ref.watch(matrixQuestionBankProvider);
 
     return Scaffold(
       backgroundColor: AppColors.darkBackground,
@@ -34,10 +34,10 @@ class MatrixLevelSelectionPage extends ConsumerWidget {
         ),
         centerTitle: true,
       ),
-      body: levelsAsync.when(
+      body: bankAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, stack) => Center(child: Text('Error: $err')),
-        data: (levels) {
+        data: (bankSoal) {
           return GridView.builder(
             padding: EdgeInsets.all(16.w),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -45,12 +45,16 @@ class MatrixLevelSelectionPage extends ConsumerWidget {
               crossAxisSpacing: 16.w,
               mainAxisSpacing: 16.h,
             ),
-            itemCount: levels.length,
+            itemCount: 5,
             itemBuilder: (context, index) {
-              final level = levels[index];
+              final levelNumber = index + 1;
+
               return GestureDetector(
                 onTap: () {
-                  context.push('/minigames/matriks/level', extra: level);
+                  context.push(
+                    '/minigames/matriks/level',
+                    extra: levelNumber,
+                  );
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -60,7 +64,7 @@ class MatrixLevelSelectionPage extends ConsumerWidget {
                   ),
                   child: Center(
                     child: Text(
-                      level.levelId.toString(),
+                      levelNumber.toString(),
                       style: AppTypography.heading4(),
                     ),
                   ),

@@ -12,7 +12,6 @@ import 'package:timetocode/features/2_minigames_selection/games/logic_gate/prese
 import 'package:timetocode/features/2_minigames_selection/presentation/screens/minigames_selection_page.dart';
 import 'package:timetocode/features/3_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
-import 'package:timetocode/features/2_minigames_selection/games/matriks/data/models/matrix_level_model.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_level_selection_page.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_pointer_page.dart';
 import 'package:timetocode/features/5_materi/data/models/materi_model.dart';
@@ -113,8 +112,8 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: 'level',
             parentNavigatorKey: _rootNavigatorKey,
             builder: (context, state) {
-              final level = state.extra as MatrixLevelModel;
-              return MatrixPointerPage(level: level);
+              final levelNumber = state.extra as int;
+              return MatrixPointerPage(levelNumber: levelNumber);
             },
           ),
         ],
