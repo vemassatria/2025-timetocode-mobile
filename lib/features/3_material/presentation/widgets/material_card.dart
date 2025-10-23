@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 
-class MateriListItem extends StatelessWidget {
+class MaterialCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final bool isCompleted;
   final VoidCallback? onTap;
 
-  const MateriListItem({
+  const MaterialCard({
     super.key,
     required this.title,
     required this.subtitle,
