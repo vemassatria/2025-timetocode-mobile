@@ -17,6 +17,7 @@ import 'package:timetocode/features/2_minigames_selection/games/matriks/presenta
 import 'package:timetocode/features/5_materi/data/models/materi_model.dart';
 import 'package:timetocode/features/5_materi/presentation/screens/materi_detailed_screen.dart';
 import 'package:timetocode/features/5_materi/presentation/screens/materi_screen.dart';
+import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_end_game_level_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -114,6 +115,22 @@ final routerProvider = Provider<GoRouter>((ref) {
             builder: (context, state) {
               final levelNumber = state.extra as int;
               return MatrixPointerPage(levelNumber: levelNumber);
+            },
+          ),
+          GoRoute(
+            path: 'end/:levelNumber/:correctAnswers',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) {
+              final levelNumber = int.tryParse(
+                state.pathParameters['levelNumber'] ?? '1',
+              )!;
+              final correctAnswers = int.tryParse(
+                state.pathParameters['correctAnswers'] ?? '0',
+              )!;
+              return MatrixEndLevelPage(
+                levelNumber: levelNumber,
+                correctAnswers: correctAnswers,
+              );
             },
           ),
         ],

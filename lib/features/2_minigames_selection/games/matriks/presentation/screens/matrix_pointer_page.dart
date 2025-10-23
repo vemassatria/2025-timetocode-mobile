@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
@@ -44,19 +45,24 @@ class MatrixPointerPage extends ConsumerWidget {
             ref,
           );
           break;
+
         case GameStatus.levelWon:
+          final finalScore = ref.read(matrixScoreProvider);
           showPopupOverlay(
             context,
             GameResultPopup(
               isCorrect: true,
               onPrimaryAction: () {
                 closePopupOverlay(ref);
-                gameController.exitGame();
+                context.pushReplacement(
+                  '/minigames/matriks/end/$levelNumber/$finalScore',
+                );
               },
             ),
             ref,
           );
           break;
+
         case GameStatus.incorrectMove:
           showPopupOverlay(
             context,
@@ -68,7 +74,7 @@ class MatrixPointerPage extends ConsumerWidget {
               },
               onSecondaryAction: () {
                 closePopupOverlay(ref);
-                gameController.exitGame();
+                gameController.skipQuestion();
               },
             ),
             ref,
@@ -88,7 +94,6 @@ class MatrixPointerPage extends ConsumerWidget {
             ref,
           );
           break;
-
         case GameStatus.levelLost:
           showPopupOverlay(
             context,
@@ -97,7 +102,10 @@ class MatrixPointerPage extends ConsumerWidget {
               isGameOver: true,
               onPrimaryAction: () {
                 closePopupOverlay(ref);
-                gameController.exitGame();
+                final finalScore = ref.read(matrixScoreProvider);
+                context.pushReplacement(
+                  '/minigames/matriks/end/$levelNumber/$finalScore',
+                );
               },
             ),
             ref,
@@ -112,7 +120,9 @@ class MatrixPointerPage extends ConsumerWidget {
         gameState.currentQuestion == null) {
       return const Scaffold(
         backgroundColor: AppColors.darkBackground,
-        body: Center(child: CircularProgressIndicator()),
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
       );
     }
 
