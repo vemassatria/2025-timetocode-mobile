@@ -49,10 +49,8 @@ Map<String, dynamic> _$ImageDataToJson(ImageData instance) => <String, dynamic>{
 };
 
 TableData _$TableDataFromJson(Map<String, dynamic> json) => TableData(
-  headers: (_readHeaders(json, 'headers') as List<dynamic>)
-      .map((e) => e as String)
-      .toList(),
-  rows: (_readRows(json, 'rows') as List<dynamic>)
+  headers: (json['headers'] as List<dynamic>).map((e) => e as String).toList(),
+  rows: (json['rows'] as List<dynamic>)
       .map((e) => (e as List<dynamic>).map((e) => e as String).toList())
       .toList(),
   $type: json['type'] as String?,
