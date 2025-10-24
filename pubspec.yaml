@@ -72,6 +72,8 @@ flutter:
     - assets/audio/music/
     - assets/audio/sfx/
     - assets/images/ilustration/
+    - assets/images/illustrationStory/
+    - assets/images/illustrationLesson/
     - assets/logo/Logo.png
     - assets/images/logic_gate/cards/
     - assets/images/logic_gate/screen/

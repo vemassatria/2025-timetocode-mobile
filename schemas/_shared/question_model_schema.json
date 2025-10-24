@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "shared/question_model_schema.json",
+    "title": "Shared question Model Schema",
+    "description": "Definisi umum untuk struktur pertanyaan yang bisa digunakan di berbagai fitur.",
+    "$defs": {
+        "QuestionModel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "conditions": {
+                    "type": "object",
+                    "description": "Key-value pair untuk kondisi. Key adalah nama variabel, Value adalah kondisi (e.g., '>=5').",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "text": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "choices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "choices_model_schema.json#/$defs/ChoicesModel"
+                    }
+                },
+                "consequences": {
+                    "type": "object",
+                    "description": "Key-value pair untuk konsekuensi. Key adalah nama variabel, Value adalah nilai konsekuensi (e.g., '5').",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "id",
+                "text",
+                "choices"
+            ],
+            "additionalProperties": false
+        }
+    }
+}
