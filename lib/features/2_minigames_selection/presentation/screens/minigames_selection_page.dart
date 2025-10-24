@@ -21,29 +21,40 @@ class MinigamesSelectionPage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.darkBackground,
       appBar: AppBar(
-        backgroundColor: AppColors.surfaceDark,
-        elevation: 0,
-        title: Text('Pilihan Permainan', style: AppTypography.heading6()),
         centerTitle: true,
+        title: Text('Pilihan Permainan', style: AppTypography.heading6()),
+        toolbarHeight: 56.h,
+        backgroundColor: AppColors.surfaceDark,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(height: 1, color: AppColors.black1),
+        ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
-        child: GridView.builder(
-          itemCount: minigames.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 16.w,
-            mainAxisSpacing: 24.h,
-            childAspectRatio: childAspectRatio,
-          ),
-          itemBuilder: (context, index) {
-            final item = minigames[index];
-            return MinigamesSelectionCard(
-              title: item.title,
-              image: item.image,
-              onTap: () => controller.onSelect(context, item.route),
-            );
-          },
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
+        child: Column(
+          children: [
+            SizedBox(height: 24.h),
+            Expanded(
+              child: GridView.builder(
+                itemCount: minigames.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16.w,
+                  mainAxisSpacing: 24.h,
+                  childAspectRatio: childAspectRatio,
+                ),
+                itemBuilder: (context, index) {
+                  final item = minigames[index];
+                  return MinigamesSelectionCard(
+                    title: item.title,
+                    image: item.image,
+                    onTap: () => controller.onSelect(context, item.route),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
