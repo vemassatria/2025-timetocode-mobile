@@ -331,6 +331,9 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
       } else if (conditionValue.startsWith('<')) {
         operator = '<';
         requiredValue = int.parse(conditionValue.substring(1));
+      } else if (conditionValue.startsWith('!=')) {
+        operator = '!=';
+        requiredValue = int.parse(conditionValue.substring(2));
       } else {
         requiredValue = int.parse(conditionValue);
       }
@@ -353,6 +356,8 @@ class StoryController extends AutoDisposeNotifier<StoryState> {
         case '==':
           conditionMet = userValue == requiredValue;
           break;
+        case '!=':
+          conditionMet = userValue != requiredValue;
       }
       if (!conditionMet) {
         return false;

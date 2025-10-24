@@ -238,6 +238,17 @@ class _DialogBoxState extends ConsumerState<DialogBox>
                                                   .notifier,
                                             )
                                             .playSelectClick();
+                                        if (choice.consequences != null) {
+                                          ref
+                                              .read(
+                                                storyControllerProvider
+                                                    .notifier,
+                                              )
+                                              .storySaveConsequences(
+                                                consequences:
+                                                    choice.consequences!,
+                                              );
+                                        }
                                         ref
                                             .read(
                                               storyControllerProvider.notifier,
@@ -245,14 +256,6 @@ class _DialogBoxState extends ConsumerState<DialogBox>
                                             .navigateMode(
                                               choice.nextType,
                                               choice.next,
-                                            );
-                                        ref
-                                            .read(
-                                              storyControllerProvider.notifier,
-                                            )
-                                            .storySaveConsequences(
-                                              consequences:
-                                                  choice.consequences!,
                                             );
                                       },
                                     ),
