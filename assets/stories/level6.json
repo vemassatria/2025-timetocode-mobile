@@ -23,6 +23,7 @@
         "adriancafe_ngajarin",
         "adriancafe_senang"
       ],
+      "ilustrations": ["variabel_global(6_1)", "variabel_lokal(6_2)","variabel_statis(6_3)", "variabel_statis(6_4)"],
       "start": "preDialog6_1_1",
       "typeStart": "preDialog",
       "preDialog": [
@@ -393,7 +394,8 @@
             {
               "line": "Oke jen, jadi gini, bayangin variabel global itu kayak Wi-Fi café ini, Jen. Selama seseorang tahu password-nya, siapa pun bisa pakai — entah aku, kamu, atau orang di meja sebelah. Semua terhubung ke jaringan yang sama, dan bisa akses internet bareng tanpa batas ruang.",
               "reactionIndex": 4,
-              "characterIndex": 2
+              "characterIndex": 2,
+              "ilustrationIndex": 0
             },
             {
               "line": "Ohh, jadi maksudnya semua bagian program bisa 'terhubung' ke variabel yang sama gitu, ya?",
@@ -712,12 +714,14 @@
             {
               "line": "Ohh… jadi kayak jaringan pribadi gitu ya? Gak bisa diakses semua orang kayak Wi-Fi kafe.",
               "reactionIndex": 1,
-              "characterIndex": 1
+              "characterIndex": 1,
+              "ilustrationIndex": 1
             },
             {
               "line": "Tepat banget. Sama kayak variabel lokal — cuma bisa dipakai di fungsi tempat dia dibuat. Begitu keluar dari fungsi itu, koneksinya otomatis putus.",
               "reactionIndex": 5,
-              "characterIndex": 2
+              "characterIndex": 2,
+              "ilustrationIndex": 1
             },
             {
               "line": "Haha, oke, sekarang aku kebayang! Jadi kalo hotspot-nya mati, ya datanya ikut ilang juga ya?",
@@ -819,7 +823,6 @@
         },
         {
           "id": "salahA6_2",
-          "backgroundIndex": 0,
           "dialogs": [
             {
               "line": "Eh… kok salah sih? Padahal aku yakin bener barusan!",
@@ -867,7 +870,6 @@
         },
         {
           "id": "salahNoMatchaA6_2",
-          "backgroundIndex": 0,
           "dialogs": [
             {
               "line": "HAH? Salah lagi? Udah gak dapet matcha, salah pula…",
@@ -1116,7 +1118,8 @@
             {
               "line": "Yap, bener banget. Kalau diibaratin Wi-Fi, sebelumnya kan variabel global itu bisa diakses semua orang, variabel lokal cuma kamu yang bisa akses. Nah, variabel statis itu kayak Wi-Fi pribadimu yang walau dimatiin sebentar, pas nyala lagi langsung otomatis nyambung karena masih inget password dan datanya.",
               "reactionIndex": 5,
-              "characterIndex": 2
+              "characterIndex": 2,
+              "ilustrationIndex": 2
             },
             {
               "line": "Ooo… gitu! Tapi bentar, kok kayanya mirip banget sama variabel lokal ya? bedanya apa?",
@@ -1124,9 +1127,10 @@
               "characterIndex": 1
             },
             {
-              "line": "Iya, mirip, kuncinya itu variabel lokal bakal ‘lupa' setiap kali fungsi selesai, sedangkan variabel statis tetep inget nilai sebelumnya. Jadi hasilnya bisa terus berubah dari data yang lama, bukan mulai dari nol lagi.",
+              "line": "Iya, mirip, kuncinya itu variabel lokal bakal 'lupa' setiap kali fungsi selesai, sedangkan variabel statis tetep inget nilai sebelumnya. Jadi hasilnya bisa terus berubah dari data yang lama, bukan mulai dari nol lagi.",
               "reactionIndex": 4,
-              "characterIndex": 2
+              "characterIndex": 2,
+              "ilustrationIndex": 2
             },
             {
               "line": "Oke oke, mulai kebayang bedanya. Jadi kayak memori jangka panjang gitu ya?",
@@ -1419,7 +1423,8 @@
             {
               "line": "Iya, ibaratnya gini deh. Variabel biasa itu kayak kamu nulis catatan di buku, kalau mau liat, harus buka dulu bukunya, agak lama. Tapi kalau variabel register itu kayak catatan di kepala kamu sendiri. Langsung inget, langsung akses, cepet banget.",
               "reactionIndex": 4,
-              "characterIndex": 2
+              "characterIndex": 2,
+              "ilustrationIndex": 3
             },
             {
               "line": "Ooo gitu! Tapi berarti kalau di kepala, orang lain nggak bisa liat catatannya ya?",
@@ -1534,9 +1539,7 @@
               "reactionIndex": 4,
               "characterIndex": 1
             }
-          ],
-          "next": null,
-          "nextType": null
+          ]
         }
       ],
       "minigame": {
@@ -1591,8 +1594,8 @@
               },
               {
                 "text": "Karena x adalah variabel lokal di fungsiA() dan tidak bisa diakses dari main()",
-                "next": ["benarA6_2", "benarMatcha6_2"],
-                "nextType": ["dialog", "dialog"],
+                "next": "benarMatcha6_2",
+                "nextType": "dialog",
                 "isCorrect": true
               },
               {
