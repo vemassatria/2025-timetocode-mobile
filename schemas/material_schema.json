@@ -1,20 +1,20 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "materiModelSchema",
-  "title": "Materi Model Schema",
+  "$id": "materialModelSchema",
+  "title": "Material Model Schema",
   "description": "Schema untuk validasi data materi pembelajaran per level, yang mendukung berbagai jenis konten seperti teks, gambar, dan tabel.",
   "type": "object",
   "properties": {
-    "materi": {
+    "material": {
       "type": "array",
       "items": {
-        "$ref": "#/$defs/MateriModel"
+        "$ref": "#/$defs/MaterialModel"
       }
     }
   },
-  "required": ["materi"],
+  "required": ["material"],
   "$defs": {
-    "MateriModel": {
+    "MaterialModel": {
       "type": "object",
       "description": "Mewakili satu set materi pembelajaran untuk level tertentu.",
       "properties": {

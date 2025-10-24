@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'materi_model.dart';
+part of 'material_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,22 +13,22 @@ part of 'materi_model.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$MateriModel {
+mixin _$MaterialModel {
 
  int get level; String get title; List<ContentBlockModel> get content; String? get videoUrl;
-/// Create a copy of MateriModel
+/// Create a copy of MaterialModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$MateriModelCopyWith<MateriModel> get copyWith => _$MateriModelCopyWithImpl<MateriModel>(this as MateriModel, _$identity);
+$MaterialModelCopyWith<MaterialModel> get copyWith => _$MaterialModelCopyWithImpl<MaterialModel>(this as MaterialModel, _$identity);
 
-  /// Serializes this MateriModel to a JSON map.
+  /// Serializes this MaterialModel to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MateriModel&&(identical(other.level, level) || other.level == level)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.content, content)&&(identical(other.videoUrl, videoUrl) || other.videoUrl == videoUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MaterialModel&&(identical(other.level, level) || other.level == level)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other.content, content)&&(identical(other.videoUrl, videoUrl) || other.videoUrl == videoUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -37,15 +37,15 @@ int get hashCode => Object.hash(runtimeType,level,title,const DeepCollectionEqua
 
 @override
 String toString() {
-  return 'MateriModel(level: $level, title: $title, content: $content, videoUrl: $videoUrl)';
+  return 'MaterialModel(level: $level, title: $title, content: $content, videoUrl: $videoUrl)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $MateriModelCopyWith<$Res>  {
-  factory $MateriModelCopyWith(MateriModel value, $Res Function(MateriModel) _then) = _$MateriModelCopyWithImpl;
+abstract mixin class $MaterialModelCopyWith<$Res>  {
+  factory $MaterialModelCopyWith(MaterialModel value, $Res Function(MaterialModel) _then) = _$MaterialModelCopyWithImpl;
 @useResult
 $Res call({
  int level, String title, List<ContentBlockModel> content, String? videoUrl
@@ -56,14 +56,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$MateriModelCopyWithImpl<$Res>
-    implements $MateriModelCopyWith<$Res> {
-  _$MateriModelCopyWithImpl(this._self, this._then);
+class _$MaterialModelCopyWithImpl<$Res>
+    implements $MaterialModelCopyWith<$Res> {
+  _$MaterialModelCopyWithImpl(this._self, this._then);
 
-  final MateriModel _self;
-  final $Res Function(MateriModel) _then;
+  final MaterialModel _self;
+  final $Res Function(MaterialModel) _then;
 
-/// Create a copy of MateriModel
+/// Create a copy of MaterialModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? level = null,Object? title = null,Object? content = null,Object? videoUrl = freezed,}) {
   return _then(_self.copyWith(
@@ -78,8 +78,8 @@ as String?,
 }
 
 
-/// Adds pattern-matching-related methods to [MateriModel].
-extension MateriModelPatterns on MateriModel {
+/// Adds pattern-matching-related methods to [MaterialModel].
+extension MaterialModelPatterns on MaterialModel {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -92,10 +92,10 @@ extension MateriModelPatterns on MateriModel {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MateriModel value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MaterialModel value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _MateriModel() when $default != null:
+case _MaterialModel() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -114,10 +114,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MateriModel value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MaterialModel value)  $default,){
 final _that = this;
 switch (_that) {
-case _MateriModel():
+case _MaterialModel():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -135,10 +135,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MateriModel value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MaterialModel value)?  $default,){
 final _that = this;
 switch (_that) {
-case _MateriModel() when $default != null:
+case _MaterialModel() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -158,7 +158,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int level,  String title,  List<ContentBlockModel> content,  String? videoUrl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _MateriModel() when $default != null:
+case _MaterialModel() when $default != null:
 return $default(_that.level,_that.title,_that.content,_that.videoUrl);case _:
   return orElse();
 
@@ -179,7 +179,7 @@ return $default(_that.level,_that.title,_that.content,_that.videoUrl);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int level,  String title,  List<ContentBlockModel> content,  String? videoUrl)  $default,) {final _that = this;
 switch (_that) {
-case _MateriModel():
+case _MaterialModel():
 return $default(_that.level,_that.title,_that.content,_that.videoUrl);case _:
   throw StateError('Unexpected subclass');
 
@@ -199,7 +199,7 @@ return $default(_that.level,_that.title,_that.content,_that.videoUrl);case _:
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int level,  String title,  List<ContentBlockModel> content,  String? videoUrl)?  $default,) {final _that = this;
 switch (_that) {
-case _MateriModel() when $default != null:
+case _MaterialModel() when $default != null:
 return $default(_that.level,_that.title,_that.content,_that.videoUrl);case _:
   return null;
 
@@ -211,9 +211,9 @@ return $default(_that.level,_that.title,_that.content,_that.videoUrl);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _MateriModel extends MateriModel {
-  const _MateriModel({required this.level, required this.title, required final  List<ContentBlockModel> content, this.videoUrl}): _content = content,super._();
-  factory _MateriModel.fromJson(Map<String, dynamic> json) => _$MateriModelFromJson(json);
+class _MaterialModel extends MaterialModel {
+  const _MaterialModel({required this.level, required this.title, required final  List<ContentBlockModel> content, this.videoUrl}): _content = content,super._();
+  factory _MaterialModel.fromJson(Map<String, dynamic> json) => _$MaterialModelFromJson(json);
 
 @override final  int level;
 @override final  String title;
@@ -226,20 +226,20 @@ class _MateriModel extends MateriModel {
 
 @override final  String? videoUrl;
 
-/// Create a copy of MateriModel
+/// Create a copy of MaterialModel
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$MateriModelCopyWith<_MateriModel> get copyWith => __$MateriModelCopyWithImpl<_MateriModel>(this, _$identity);
+_$MaterialModelCopyWith<_MaterialModel> get copyWith => __$MaterialModelCopyWithImpl<_MaterialModel>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$MateriModelToJson(this, );
+  return _$MaterialModelToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MateriModel&&(identical(other.level, level) || other.level == level)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._content, _content)&&(identical(other.videoUrl, videoUrl) || other.videoUrl == videoUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MaterialModel&&(identical(other.level, level) || other.level == level)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._content, _content)&&(identical(other.videoUrl, videoUrl) || other.videoUrl == videoUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -248,15 +248,15 @@ int get hashCode => Object.hash(runtimeType,level,title,const DeepCollectionEqua
 
 @override
 String toString() {
-  return 'MateriModel(level: $level, title: $title, content: $content, videoUrl: $videoUrl)';
+  return 'MaterialModel(level: $level, title: $title, content: $content, videoUrl: $videoUrl)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$MateriModelCopyWith<$Res> implements $MateriModelCopyWith<$Res> {
-  factory _$MateriModelCopyWith(_MateriModel value, $Res Function(_MateriModel) _then) = __$MateriModelCopyWithImpl;
+abstract mixin class _$MaterialModelCopyWith<$Res> implements $MaterialModelCopyWith<$Res> {
+  factory _$MaterialModelCopyWith(_MaterialModel value, $Res Function(_MaterialModel) _then) = __$MaterialModelCopyWithImpl;
 @override @useResult
 $Res call({
  int level, String title, List<ContentBlockModel> content, String? videoUrl
@@ -267,17 +267,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$MateriModelCopyWithImpl<$Res>
-    implements _$MateriModelCopyWith<$Res> {
-  __$MateriModelCopyWithImpl(this._self, this._then);
+class __$MaterialModelCopyWithImpl<$Res>
+    implements _$MaterialModelCopyWith<$Res> {
+  __$MaterialModelCopyWithImpl(this._self, this._then);
 
-  final _MateriModel _self;
-  final $Res Function(_MateriModel) _then;
+  final _MaterialModel _self;
+  final $Res Function(_MaterialModel) _then;
 
-/// Create a copy of MateriModel
+/// Create a copy of MaterialModel
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? level = null,Object? title = null,Object? content = null,Object? videoUrl = freezed,}) {
-  return _then(_MateriModel(
+  return _then(_MaterialModel(
 level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
 as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,content: null == content ? _self._content : content // ignore: cast_nullable_to_non_nullable

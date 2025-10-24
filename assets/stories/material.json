@@ -1,6 +1,6 @@
 {
-  "$schema": "../../schemas/materi_schema.json",
-  "materi": [
+  "$schema": "../../schemas/material_schema.json",
+  "material": [
     {
       "level": 1,
       "title": "Tipe Data",

@@ -4,20 +4,20 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/widgets/buttons/custom_button.dart';
-import 'package:timetocode/features/3_material/utils/materi_helpers.dart';
-import '../../data/models/materi_model.dart';
+import 'package:timetocode/features/3_material/utils/material_helpers.dart';
+import '../../data/models/material_model.dart';
 import '../widgets/content_block_card.dart';
 
-class MateriDetailedScreen extends StatefulWidget {
-  final MateriModel materi;
+class MaterialDetailedScreen extends StatefulWidget {
+  final MaterialModel material;
 
-  const MateriDetailedScreen({super.key, required this.materi});
+  const MaterialDetailedScreen({super.key, required this.material});
 
   @override
-  State<MateriDetailedScreen> createState() => _MateriDetailedScreenState();
+  State<MaterialDetailedScreen> createState() => _MateriDetailedScreenState();
 }
 
-class _MateriDetailedScreenState extends State<MateriDetailedScreen> {
+class _MateriDetailedScreenState extends State<MaterialDetailedScreen> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -46,7 +46,7 @@ class _MateriDetailedScreenState extends State<MateriDetailedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final youtubeUrl = MateriHelpers.firstYouTubeLink(widget.materi);
+    final youtubeUrl = MaterialHelpers.firstYouTubeLink(widget.material);
 
     return Scaffold(
       backgroundColor: AppColors.darkBackground,
@@ -73,9 +73,9 @@ class _MateriDetailedScreenState extends State<MateriDetailedScreen> {
           child: ListView.separated(
             controller: _scrollController,
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
-            itemCount: widget.materi.content.length,
+            itemCount: widget.material.content.length,
             itemBuilder: (_, i) =>
-                ContentBlockCard(block: widget.materi.content[i]),
+                ContentBlockCard(block: widget.material.content[i]),
             separatorBuilder: (_, _) => SizedBox(height: 24.h),
           ),
         ),

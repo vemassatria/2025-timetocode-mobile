@@ -1,9 +1,9 @@
-import 'package:timetocode/features/3_material/data/models/materi_model.dart';
+import 'package:timetocode/features/3_material/data/models/material_model.dart';
 import 'package:timetocode/features/3_material/data/models/data/content_block_data.dart';
 
-class MateriHelpers {
+class MaterialHelpers {
   /// Ambil URL gambar pertama dari content blocks
-  static String? firstImageUrl(MateriModel m) {
+  static String? firstImageUrl(MaterialModel m) {
     for (final b in m.content) {
       final url = b.data.maybeWhen(
         image: (url, caption) => url,
@@ -15,7 +15,7 @@ class MateriHelpers {
   }
 
   /// Ambil paragraf/text pertama
-  static String? firstParagraph(MateriModel m) {
+  static String? firstParagraph(MaterialModel m) {
     for (final b in m.content) {
       final text = b.data.maybeWhen(text: (body) => body, orElse: () => null);
       if (text != null && text.trim().isNotEmpty) return text.trim();
@@ -24,7 +24,7 @@ class MateriHelpers {
   }
 
   /// Gabungkan beberapa paragraf menjadi deskripsi panjang
-  static String longDescription(MateriModel m, {int maxChars = 1000}) {
+  static String longDescription(MaterialModel m, {int maxChars = 1000}) {
     final buf = StringBuffer();
     for (final b in m.content) {
       final piece = b.data.maybeWhen(
@@ -42,7 +42,7 @@ class MateriHelpers {
   }
 
   /// (Opsional) cari link YouTube dari blok teks yang mengandung URL
-  static String? firstYouTubeLink(MateriModel m) {
+  static String? firstYouTubeLink(MaterialModel m) {
     // Cocokkan https://youtu.be/... atau https://www.youtube.com/...
     final re = RegExp(
       r'(https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\/[^\s)]+)',

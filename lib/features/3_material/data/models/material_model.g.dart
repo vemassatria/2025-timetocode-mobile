@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'materi_model.dart';
+part of 'material_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_MateriModel _$MateriModelFromJson(Map<String, dynamic> json) => _MateriModel(
+_MaterialModel _$MaterialModelFromJson(Map<String, dynamic> json) => _MaterialModel(
   level: (json['level'] as num).toInt(),
   title: json['title'] as String,
   content: (json['content'] as List<dynamic>)
@@ -15,7 +15,7 @@ _MateriModel _$MateriModelFromJson(Map<String, dynamic> json) => _MateriModel(
   videoUrl: json['videoUrl'] as String?,
 );
 
-Map<String, dynamic> _$MateriModelToJson(_MateriModel instance) =>
+Map<String, dynamic> _$MaterialModelToJson(_MaterialModel instance) =>
     <String, dynamic>{
       'level': instance.level,
       'title': instance.title,

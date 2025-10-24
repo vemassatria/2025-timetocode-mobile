@@ -5,22 +5,22 @@ import 'package:go_router/go_router.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
-import 'package:timetocode/features/3_material/data/datasources/materi_local_datasource.dart';
-import 'package:timetocode/features/3_material/data/models/materi_model.dart';
-import 'package:timetocode/features/3_material/data/repositories/materi_repository_implementation.dart';
-import 'package:timetocode/features/3_material/domain/usecases/get_all_materi_usecase.dart';
+import 'package:timetocode/features/3_material/data/datasources/material_local_datasource.dart';
+import 'package:timetocode/features/3_material/data/models/material_model.dart';
+import 'package:timetocode/features/3_material/data/repositories/material_repository_implementation.dart';
+import 'package:timetocode/features/3_material/domain/usecases/get_all_material_usecase.dart';
 import 'package:timetocode/features/3_material/presentation/widgets/material_card.dart';
-import 'package:timetocode/features/3_material/utils/materi_helpers.dart';
+import 'package:timetocode/features/3_material/utils/material_helpers.dart';
 
-class MateriScreen extends StatefulWidget {
-  const MateriScreen({super.key});
+class MaterialScreen extends StatefulWidget {
+  const MaterialScreen({super.key});
 
   @override
-  State<MateriScreen> createState() => _MateriScreenState();
+  State<MaterialScreen> createState() => _MateriScreenState();
 }
 
-class _MateriScreenState extends State<MateriScreen> {
-  late final Future<List<MateriModel>> _futureMateri;
+class _MateriScreenState extends State<MaterialScreen> {
+  late final Future<List<MaterialModel>> _futureMateri;
 
   @override
   void initState() {
@@ -28,9 +28,9 @@ class _MateriScreenState extends State<MateriScreen> {
     _futureMateri = _loadMateri();
   }
 
-  Future<List<MateriModel>> _loadMateri() async {
-    final repo = MateriRepositoryImpl(const MateriLocalDataSourceImpl());
-    final usecase = GetAllMateriUseCase(repo);
+  Future<List<MaterialModel>> _loadMateri() async {
+    final repo = MaterialRepositoryImpl(const MaterialLocalDataSourceImpl());
+    final usecase = GetAllMaterialUseCase(repo);
     return usecase();
   }
 
@@ -48,7 +48,7 @@ class _MateriScreenState extends State<MateriScreen> {
         ),
       ),
       body: SafeArea(
-        child: FutureBuilder<List<MateriModel>>(
+        child: FutureBuilder<List<MaterialModel>>(
           future: _futureMateri,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -76,7 +76,7 @@ class _MateriScreenState extends State<MateriScreen> {
 class _MateriListView extends ConsumerWidget {
   const _MateriListView({required this.materiList});
 
-  final List<MateriModel> materiList;
+  final List<MaterialModel> materiList;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -90,11 +90,11 @@ class _MateriListView extends ConsumerWidget {
 
         return MaterialCard(
           title: materi.title,
-          subtitle: MateriHelpers.firstParagraph(materi) ?? '',
+          subtitle: MaterialHelpers.firstParagraph(materi) ?? '',
           isCompleted: isCompleted,
           onTap: () {
             ref.read(soundEffectServiceProvider.notifier).playSelectClick();
-            context.push('/materi/detail', extra: materi);
+            context.push('/material/detail', extra: materi);
           },
         );
       },
