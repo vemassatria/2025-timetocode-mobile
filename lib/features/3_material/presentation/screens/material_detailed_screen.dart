@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart'; // <--- tambahkan ini
+import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
@@ -8,16 +10,18 @@ import 'package:timetocode/features/3_material/utils/material_helpers.dart';
 import '../../data/models/material_model.dart';
 import '../widgets/content_block_card.dart';
 
-class MaterialDetailedScreen extends StatefulWidget {
+class MaterialDetailedScreen extends ConsumerStatefulWidget {
   final MaterialModel material;
 
   const MaterialDetailedScreen({super.key, required this.material});
 
   @override
-  State<MaterialDetailedScreen> createState() => _MateriDetailedScreenState();
+  ConsumerState<MaterialDetailedScreen> createState() =>
+      _MaterialDetailedScreenState();
 }
 
-class _MateriDetailedScreenState extends State<MaterialDetailedScreen> {
+class _MaterialDetailedScreenState
+    extends ConsumerState<MaterialDetailedScreen> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -54,8 +58,11 @@ class _MateriDetailedScreenState extends State<MaterialDetailedScreen> {
         centerTitle: true,
         title: Text("Detail Materi", style: AppTypography.heading6()),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.maybePop(context),
+          icon: const Icon(Icons.arrow_back, color: AppColors.primaryText),
+          onPressed: () {
+            ref.read(soundEffectServiceProvider.notifier).playButtonClick1();
+            Navigator.maybePop(context);
+          },
         ),
         toolbarHeight: 56.h,
         backgroundColor: AppColors.surfaceDark,
