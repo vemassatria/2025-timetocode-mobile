@@ -23,7 +23,7 @@ class MainNavigation extends ConsumerWidget {
     if (location.startsWith('/minigames')) {
       return 1;
     }
-    if (location.startsWith('/materi')) {
+    if (location.startsWith('/material')) {
       return 2;
     }
     if (location.startsWith('/pengaturan')) {
@@ -41,7 +41,7 @@ class MainNavigation extends ConsumerWidget {
         context.go('/minigames');
         break;
       case 2:
-        context.go('/materi');
+        context.go('/material');
         break;
       case 3:
         context.go('/pengaturan');

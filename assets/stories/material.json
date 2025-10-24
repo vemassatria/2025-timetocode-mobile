@@ -1,0 +1,593 @@
+{
+  "$schema": "../../schemas/material_schema.json",
+  "material": [
+    {
+      "level": 1,
+      "title": "Tipe Data",
+      "content": [
+        {
+          "type": "heading",
+          "data": { "text": "Tipe Data", "headingType": "mainTitle" }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "text": "Integer(bilangan bulat)",
+            "headingType": "topicTitle"
+          }
+        },
+        {
+          "type": "image",
+          "data": {
+            "url": "assets/images/ilustration/BOOLEAN.webp",
+            "caption": "Gambar kelereng utuh"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Bayangkan kamu mempunyai sekotak kelereng. Kamu bisa menghitung jumlah kelerengnya: 10 kelereng, 55 kelereng, atau bahkan jika Anda berutang setelah kalah sama teman, -5 kelereng. Yang pasti, Kamu tidak akan pernah punya 10,5 kelereng karena kelereng itu selalu utuh.\n\nInteger (disingkat int) adalah tipe data untuk menyimpan bilangan bulat. Bilangan ini tidak memiliki komponen desimal atau pecahan. Tipe data ini sangat baik untuk operasi matematika dasar seperti penjumlahan, pengurangan, dan perkalian yang tidak memerlukan presisi desimal."
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Contoh penggunaan tipe data integer dalam pemrograman:",
+            "listType": "unordered",
+            "items": [
+              "Menghitung jumlah item (misalnya: 150 siswa dalam kelas).",
+              "Menyimpan umur seseorang (misalnya: 21 tahun).",
+              "Nomor urut atau indeks (misalnya: item ke-1, ke-2, ke-3).",
+              "Tahun (misalnya: 2025)."
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "text": "Floating Point(Desimal) - float & double",
+            "headingType": "topicTitle"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Sekarang, bayangkan Kamu punya kotak untuk menyimpan Air. kamu bisa mengukurnya dengan sangat presisi, seperti: 1.5 liter air. Pengukuran ini sering kali menghasilkan angka desimal. Inilah fungsi float dan double.\n\nTipe data ini digunakan untuk angka-angka yang memiliki bagian desimal (bilangan real). Keduanya sangat penting untuk perhitungan yang membutuhkan presisi, seperti dalam sains, keuangan, atau grafis."
+          }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "text": "Perbedaan utama float & double:",
+            "headingType": "subTopicTitle"
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Float(Presisi tunggal)",
+            "listType": "unordered",
+            "items": [
+              "Analogi: Ini seperti kaca pembesar standar. Kamu bisa melihat detail kecil, tapi ada batasnya.",
+              "Deskripsi: float menyimpan angka desimal dengan tingkat presisi yang \"cukup\". Ia menggunakan lebih sedikit ruang memori dibandingkan double. Cocok untuk situasi di mana presisi hingga 6-7 angka di belakang koma sudah memadai.",
+              "Contoh: nilaiUjian = 85.5, beratBadan = 65.7f (huruf 'f' kadang digunakan dalam beberapa bahasa untuk menandakan float)."
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Double (Presisi Ganda)",
+            "listType": "unordered",
+            "items": [
+              "Analogi: Ini seperti mikroskop atau kaca yang lebih canggih. Kamu bisa melihat detail yang jauh lebih kecil dan lebih akurat.",
+              "Deskripsi: double menyimpan angka desimal dengan tingkat presisi yang jauh lebih tinggi (kira-kira dua kali lipat dari float, sekitar 15-16 angka di belakang koma). Karena lebih presisi, ia memakan lebih banyak ruang memori. Ini adalah pilihan utama untuk perhitungan ilmiah, keuangan, dan situasi lain yang tidak boleh ada kesalahan pembulatan sekecil apa pun.",
+              "Contoh: pi = 3.141592653589793"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "headingType": "topicTitle",
+            "text": "Boolean (bool) - benar salah"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Bayangkan sebuah saklar lampu. Hanya ada dua kemungkinan kondisi: NYALA (On) atau MATI (Off). Tidak ada kondisi \"agak nyala\" atau \"setengah mati\".\n\nBoolean (disingkat bool) adalah tipe data paling mendasar. Nilainya hanya bisa True (benar) atau False (salah). Tipe data ini adalah tulang punggung dari pengambilan keputusan dalam kode. Komputer menggunakan logika boolean untuk menjawab pertanyaan \"ya atau tidak\" dan menentukan alur program selanjutnya."
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Contoh penggunaan tipe data boolean dalam pemrograman:",
+            "listType": "unordered",
+            "items": [
+              "Memeriksa apakah seorang pengguna sudah masuk (isLoggedIn = True/False).",
+              "Menentukan apakah sebuah kondisi terpenuhi (isAdult = True jika umur >= 18).",
+              "Mengontrol alur program (if isRaining then bawaPayung())."
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "headingType": "topicTitle",
+            "text": "Character(char) - 1 karakter tunggal"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Pikirkan tentang mainan manik-manik huruf yang dirangkai menjadi gelang nama. Satu biji manik-manik dengan huruf 'A' di atasnya adalah sebuah char\n\n(disingkat char) digunakan untuk menyimpan satu karakter tunggal. Karakter ini bisa berupa huruf, angka, simbol, atau bahkan spasi. Biasanya, nilainya diapit oleh tanda kutip tunggal (').\n\nContoh: 'B', '7', '#', ' ' (spasi juga karakter)."
+          }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "headingType": "topicTitle",
+            "text": "String - kumpulan karakter"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Jika char adalah satu biji manik-manik, maka String adalah kalung yang sudah jadi, yaitu rangkaian dari banyak manik-manik huruf (char) yang membentuk sebuah kata atau kalimat.\n\nString bukanlah tipe data fundamental seperti yang lain, melainkan sebuah urutan atau kumpulan dari karakter (char). String digunakan untuk menyimpan data berupa teks. Nilainya bisa diapit oleh kutip tunggal (') atau ganda (\"), tergantung bahasa pemrogramannya"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "https://youtu.be/dQw4w9WgXcQ?t=60"
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "listType": "unordered",
+            "head": "Kegunaan: ",
+            "items": [
+              "Menyimpan nama orang: nama = \"Mulyono\"",
+              "Menyimpan alamat: alamat = \"Jalan Teknologi No. 1, Surabaya\"",
+              "Menyimpan teks apa pun: teks= \"Halo! Selamat datang di dunia pemrograman.\""
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "data": { "text": "Variabel", "headingType": "mainTitle" }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Variabel untuk nama",
+            "listType": "unordered",
+            "items": [
+              "Membutuhkan tipe data String",
+              "Contoh: nama_siswa = \"Adrian\""
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Variabel untuk nilai",
+            "listType": "unordered",
+            "items": [
+              "Membutuhkan tipe data Integer atau Float",
+              "Contoh: nilai_matematika = 95"
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Variabel untuk status ",
+            "listType": "unordered",
+            "items": [
+              "Membutuhkan tipe data Boolean",
+              "Contoh: is_lulus = True"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "data": { "text": "Operator", "headingType": "mainTitle" }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Operator Aritmatika",
+            "listType": "unordered",
+            "items": ["Melakukan perhitungan matematis dasar"]
+          }
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Operator", "Nama Operasi", "Contoh"],
+            "rows": [
+              ["+", "Penjumlahan", "5 + 3"],
+              ["-", "Pengurangan", "10 - 4"],
+              ["*", "Perkalian", "2 * 6"],
+              ["/", "Pembagian", "10 / 3"],
+              [
+                "//",
+                "Pembagian Bulat",
+                "10 // 3 → 3\n(hanya mengambil bilangan bulat, tanpa desimal)"
+              ],
+              ["%", "Modulo", "10 % 3 → 1\n(hanya mengambil sisa bagi)"]
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Operator Penugasan",
+            "listType": "unordered",
+            "items": ["Memberikan nilai pada variabel"]
+          }
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Operator", "Deskripsi", "Contoh", "Arti"],
+            "rows": [
+              ["=", "Menetapkan nilai", "x = 5", "nilai x yaitu 5"],
+              ["+=", "Penjumlahan dan penugasan", "x += 2", "x = x + 2"],
+              ["-=", "Pengurangan dan penugasan", "x -= 1", "x = x - 1"],
+              ["*=", "Perkalian dan penugasan", "x *= 3", "x = x * 3"],
+              ["/=", "Pembagian dan penugasan", "x /= 4", "x = x / 4"]
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Operator Perbandingan",
+            "listType": "unordered",
+            "items": [
+              "Membandingkan dua operan. Hasil dari operator perbandingan selalu berupa nilai Boolean (True atau False)"
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Operator", "Deskripsi", "Contoh"],
+            "rows": [
+              ["==", "sama dengan", "a == b"],
+              ["!=", "tidak sama dengan", "a != b"],
+              [">", "lebih besar dari", "a > b"],
+              ["<", "lebih kecil dari", "a < b"],
+              [">=", "lebih besar atau sama dengan", "a >= 5"],
+              ["<=", "lebih kecil atau sama dengan", "a <= 5"]
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Operator Logika",
+            "listType": "unordered",
+            "items": [
+              "Menggabungkan atau membalik kondisi Boolean (hasil dari operator perbandingan)"
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Operator", "Logika", "Deskripsi"],
+            "rows": [
+              ["AND", "Konjungsi", "Hasilnya True jika kedua kondisi True"],
+              [
+                "OR",
+                "Disjungsi",
+                "Hasilnya True jika salah satu (atau keduanya) kondisi True"
+              ],
+              [
+                "NOT",
+                "Negasi",
+                "Membalik nilai Boolean (True menjadi False, dan False menjadi True)"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "Variabel",
+      "content": [
+        {
+          "type": "heading",
+          "data": { "text": "Variabel", "headingType": "mainTitle" }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "text": "Integer(bilangan bulat)",
+            "headingType": "topicTitle"
+          }
+        },
+        {
+          "type": "image",
+          "data": {
+            "url": "assets/images/ilustration/BOOLEAN.webp",
+            "caption": "Gambar kelereng utuh"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Bayangkan kamu mempunyai sekotak kelereng. Kamu bisa menghitung jumlah kelerengnya: 10 kelereng, 55 kelereng, atau bahkan jika Anda berutang setelah kalah sama teman, -5 kelereng. Yang pasti, Kamu tidak akan pernah punya 10,5 kelereng karena kelereng itu selalu utuh.\n\nInteger (disingkat int) adalah tipe data untuk menyimpan bilangan bulat. Bilangan ini tidak memiliki komponen desimal atau pecahan. Tipe data ini sangat baik untuk operasi matematika dasar seperti penjumlahan, pengurangan, dan perkalian yang tidak memerlukan presisi desimal."
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Contoh penggunaan tipe data integer dalam pemrograman:",
+            "listType": "unordered",
+            "items": [
+              "Menghitung jumlah item (misalnya: 150 siswa dalam kelas).",
+              "Menyimpan umur seseorang (misalnya: 21 tahun).",
+              "Nomor urut atau indeks (misalnya: item ke-1, ke-2, ke-3).",
+              "Tahun (misalnya: 2025)."
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "text": "Floating Point(Desimal) - float & double",
+            "headingType": "topicTitle"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Sekarang, bayangkan Kamu punya kotak untuk menyimpan Air. kamu bisa mengukurnya dengan sangat presisi, seperti: 1.5 liter air. Pengukuran ini sering kali menghasilkan angka desimal. Inilah fungsi float dan double.\n\nTipe data ini digunakan untuk angka-angka yang memiliki bagian desimal (bilangan real). Keduanya sangat penting untuk perhitungan yang membutuhkan presisi, seperti dalam sains, keuangan, atau grafis."
+          }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "text": "Perbedaan utama float & double:",
+            "headingType": "subTopicTitle"
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Float(Presisi tunggal)",
+            "listType": "unordered",
+            "items": [
+              "Analogi: Ini seperti kaca pembesar standar. Kamu bisa melihat detail kecil, tapi ada batasnya.",
+              "Deskripsi: float menyimpan angka desimal dengan tingkat presisi yang \"cukup\". Ia menggunakan lebih sedikit ruang memori dibandingkan double. Cocok untuk situasi di mana presisi hingga 6-7 angka di belakang koma sudah memadai.",
+              "Contoh: nilaiUjian = 85.5, beratBadan = 65.7f (huruf 'f' kadang digunakan dalam beberapa bahasa untuk menandakan float)."
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Double (Presisi Ganda)",
+            "listType": "unordered",
+            "items": [
+              "Analogi: Ini seperti mikroskop atau kaca yang lebih canggih. Kamu bisa melihat detail yang jauh lebih kecil dan lebih akurat.",
+              "Deskripsi: double menyimpan angka desimal dengan tingkat presisi yang jauh lebih tinggi (kira-kira dua kali lipat dari float, sekitar 15-16 angka di belakang koma). Karena lebih presisi, ia memakan lebih banyak ruang memori. Ini adalah pilihan utama untuk perhitungan ilmiah, keuangan, dan situasi lain yang tidak boleh ada kesalahan pembulatan sekecil apa pun.",
+              "Contoh: pi = 3.141592653589793"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "headingType": "topicTitle",
+            "text": "Boolean (bool) - benar salah"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Bayangkan sebuah saklar lampu. Hanya ada dua kemungkinan kondisi: NYALA (On) atau MATI (Off). Tidak ada kondisi \"agak nyala\" atau \"setengah mati\".\n\nBoolean (disingkat bool) adalah tipe data paling mendasar. Nilainya hanya bisa True (benar) atau False (salah). Tipe data ini adalah tulang punggung dari pengambilan keputusan dalam kode. Komputer menggunakan logika boolean untuk menjawab pertanyaan \"ya atau tidak\" dan menentukan alur program selanjutnya."
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Contoh penggunaan tipe data boolean dalam pemrograman:",
+            "listType": "unordered",
+            "items": [
+              "Memeriksa apakah seorang pengguna sudah masuk (isLoggedIn = True/False).",
+              "Menentukan apakah sebuah kondisi terpenuhi (isAdult = True jika umur >= 18).",
+              "Mengontrol alur program (if isRaining then bawaPayung())."
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "headingType": "topicTitle",
+            "text": "Character(char) - 1 karakter tunggal"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Pikirkan tentang mainan manik-manik huruf yang dirangkai menjadi gelang nama. Satu biji manik-manik dengan huruf 'A' di atasnya adalah sebuah char\n\n(disingkat char) digunakan untuk menyimpan satu karakter tunggal. Karakter ini bisa berupa huruf, angka, simbol, atau bahkan spasi. Biasanya, nilainya diapit oleh tanda kutip tunggal (').\n\nContoh: 'B', '7', '#', ' ' (spasi juga karakter)."
+          }
+        },
+        {
+          "type": "heading",
+          "data": {
+            "headingType": "topicTitle",
+            "text": "String - kumpulan karakter"
+          }
+        },
+        {
+          "type": "text",
+          "data": {
+            "text": "Jika char adalah satu biji manik-manik, maka String adalah kalung yang sudah jadi, yaitu rangkaian dari banyak manik-manik huruf (char) yang membentuk sebuah kata atau kalimat.\n\nString bukanlah tipe data fundamental seperti yang lain, melainkan sebuah urutan atau kumpulan dari karakter (char). String digunakan untuk menyimpan data berupa teks. Nilainya bisa diapit oleh kutip tunggal (') atau ganda (\"), tergantung bahasa pemrogramannya"
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "listType": "unordered",
+            "head": "Kegunaan: ",
+            "items": [
+              "Menyimpan nama orang: nama = \"Mulyono\"",
+              "Menyimpan alamat: alamat = \"Jalan Teknologi No. 1, Surabaya\"",
+              "Menyimpan teks apa pun: teks= \"Halo! Selamat datang di dunia pemrograman.\""
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "data": { "text": "Variabel", "headingType": "mainTitle" }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Variabel untuk nama",
+            "listType": "unordered",
+            "items": [
+              "Membutuhkan tipe data String",
+              "Contoh: nama_siswa = \"Adrian\""
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Variabel untuk nilai",
+            "listType": "unordered",
+            "items": [
+              "Membutuhkan tipe data Integer atau Float",
+              "Contoh: nilai_matematika = 95"
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Variabel untuk status ",
+            "listType": "unordered",
+            "items": [
+              "Membutuhkan tipe data Boolean",
+              "Contoh: is_lulus = True"
+            ]
+          }
+        },
+        {
+          "type": "heading",
+          "data": { "text": "Operator", "headingType": "mainTitle" }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Operator Aritmatika",
+            "listType": "unordered",
+            "items": ["Melakukan perhitungan matematis dasar"]
+          }
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Operator", "Nama Operasi", "Contoh"],
+            "rows": [
+              ["+", "Penjumlahan", "5 + 3"],
+              ["-", "Pengurangan", "10 - 4"],
+              ["*", "Perkalian", "2 * 6"],
+              ["/", "Pembagian", "10 / 3"],
+              [
+                "//",
+                "Pembagian Bulat",
+                "10 // 3 → 3\n(hanya mengambil bilangan bulat, tanpa desimal)"
+              ],
+              ["%", "Modulo", "10 % 3 → 1\n(hanya mengambil sisa bagi)"]
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Operator Penugasan",
+            "listType": "unordered",
+            "items": ["Memberikan nilai pada variabel"]
+          }
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Operator", "Deskripsi", "Contoh", "Arti"],
+            "rows": [
+              ["=", "Menetapkan nilai", "x = 5", "nilai x yaitu 5"],
+              ["+=", "Penjumlahan dan penugasan", "x += 2", "x = x + 2"],
+              ["-=", "Pengurangan dan penugasan", "x -= 1", "x = x - 1"],
+              ["*=", "Perkalian dan penugasan", "x *= 3", "x = x * 3"],
+              ["/=", "Pembagian dan penugasan", "x /= 4", "x = x / 4"]
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Operator Perbandingan",
+            "listType": "unordered",
+            "items": [
+              "Membandingkan dua operan. Hasil dari operator perbandingan selalu berupa nilai Boolean (True atau False)"
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Operator", "Deskripsi", "Contoh"],
+            "rows": [
+              ["==", "sama dengan", "a == b"],
+              ["!=", "tidak sama dengan", "a != b"],
+              [">", "lebih besar dari", "a > b"],
+              ["<", "lebih kecil dari", "a < b"],
+              [">=", "lebih besar atau sama dengan", "a >= 5"],
+              ["<=", "lebih kecil atau sama dengan", "a <= 5"]
+            ]
+          }
+        },
+        {
+          "type": "list",
+          "data": {
+            "head": "Operator Logika",
+            "listType": "unordered",
+            "items": [
+              "Menggabungkan atau membalik kondisi Boolean (hasil dari operator perbandingan)"
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "data": {
+            "headers": ["Operator", "Logika", "Deskripsi"],
+            "rows": [
+              ["AND", "Konjungsi", "Hasilnya True jika kedua kondisi True"],
+              [
+                "OR",
+                "Disjungsi",
+                "Hasilnya True jika salah satu (atau keduanya) kondisi True"
+              ],
+              [
+                "NOT",
+                "Negasi",
+                "Membalik nilai Boolean (True menjadi False, dan False menjadi True)"
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
