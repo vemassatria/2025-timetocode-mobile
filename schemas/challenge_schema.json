@@ -1,0 +1,210 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "challengeModelSchema",
+  "title": "Challenge Model Schema",
+  "description": "Schema untuk validasi data tantangan pembelajaran dengan berbagai jenis konten seperti multipleChoice dan dragAndDrop.",
+  "type": "object",
+  "properties": {
+    "challenges": {
+      "type": "array",
+      "description": "Daftar tantangan pembelajaran.",
+      "items": {
+        "$ref": "#/$defs/Challenge"
+      }
+    }
+  },
+  "required": [
+    "challenges"
+  ],
+  "$defs": {
+    "Challenge": {
+      "type": "object",
+      "properties": {
+        "challengeId": {
+          "type": "integer",
+          "description": "ID unik untuk tantangan."
+        },
+        "title": {
+          "type": "string",
+          "description": "Judul dari tantangan pembelajaran."
+        },
+        "levels": {
+          "type": "array",
+          "description": "Daftar level yang ada dalam tantangan.",
+          "items": {
+            "$ref": "#/$defs/Level"
+          }
+        }
+      },
+      "required": [
+        "challengeId",
+        "title",
+        "levels"
+      ]
+    },
+    "Level": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "ID unik untuk level."
+        },
+        "levelName": {
+          "type": "string",
+          "description": "Nama dari level."
+        },
+        "content": {
+          "type": "array",
+          "description": "Konten yang terdapat pada level.",
+          "items": {
+            "$ref": "#/$defs/Content"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "levelName",
+        "content"
+      ]
+    },
+    "Content": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "multipleChoice",
+            "dragAndDrop"
+          ],
+          "description": "Jenis konten, bisa berupa 'multipleChoice' atau 'dragAndDrop'."
+        },
+        "data": {
+          "type": "object",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/MultipleChoiceData"
+            },
+            {
+              "$ref": "#/$defs/DragAndDropData"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "data"
+      ]
+    },
+    "MultipleChoiceData": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Teks soal untuk tipe 'multipleChoice'."
+        },
+        "code": {
+          "type": "string",
+          "description": "Teks kode untuk soal 'multipleChoice'."
+        },
+        "choices": {
+          "type": "array",
+          "description": "Pilihan jawaban untuk soal multiple choice.",
+          "items": {
+            "$ref": "#/$defs/Choice"
+          }
+        }
+      },
+      "required": [
+        "text",
+        "choices"
+      ]
+    },
+    "DragAndDropData": {
+      "type": "object",
+      "properties": {
+        "instruction": {
+          "type": "string",
+          "description": "Instruksi untuk soal tipe 'dragAndDrop'."
+        },
+        "scaffoldCode": {
+          "type": "string",
+          "description": "Kode scaffold untuk tipe 'dragAndDrop'."
+        },
+        "draggableOptions": {
+          "type": "array",
+          "description": "Pilihan yang dapat diseret untuk soal tipe 'dragAndDrop'.",
+          "items": {
+            "$ref": "#/$defs/DraggableOption"
+          }
+        },
+        "dropZones": {
+          "type": "array",
+          "description": "Zona tempat pilihan diseret pada soal tipe 'dragAndDrop'.",
+          "items": {
+            "$ref": "#/$defs/DropZone"
+          }
+        },
+        "correctSequence": {
+          "type": "array",
+          "description": "Urutan yang benar untuk soal tipe 'dragAndDrop'.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "instruction",
+        "scaffoldCode",
+        "draggableOptions",
+        "dropZones",
+        "correctSequence"
+      ]
+    },
+    "Choice": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Teks pilihan dalam soal multiple choice."
+        },
+        "isCorrect": {
+          "type": "boolean",
+          "description": "Menunjukkan apakah pilihan ini adalah jawaban yang benar."
+        }
+      },
+      "required": [
+        "text",
+        "isCorrect"
+      ]
+    },
+    "DraggableOption": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID unik untuk pilihan seret."
+        },
+        "content": {
+          "type": "string",
+          "description": "Isi dari pilihan seret."
+        }
+      },
+      "required": [
+        "id",
+        "content"
+      ]
+    },
+    "DropZone": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID unik untuk zona tempat pilihan diseret."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+}
