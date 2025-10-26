@@ -17,6 +17,7 @@ void main() async {
     Hive.openBox<int>('story_progress'),
     Hive.openBox<int>('challenge_progress'),
     Hive.openBox<bool>('settings'),
+    Hive.openBox<int>('matrix_progress'), 
   ];
 
   final results = await Future.wait(futures);
@@ -29,6 +30,7 @@ void main() async {
           storyProgressBox: results[1] as Box<int>,
           challengeProgressBox: results[2] as Box<int>,
           settingsBox: results[3] as Box<bool>,
+          matrixProgressBox: results[4] as Box<int>, 
         ),
       ),
     ],

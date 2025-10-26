@@ -6,9 +6,8 @@ part 'matrix_command_model.g.dart';
 @freezed
 abstract class MatrixCommandModel with _$MatrixCommandModel {
   const factory MatrixCommandModel({
-    required String type, // "loop" or "action"
-    int? count,           // Only for "loop"
-    required String action, // "up", "down", "left", "right"
+    required String command, // "UP", "DOWN", "LEFT", "RIGHT"
+    required int value,     // 1, 2, 5, 10, dll.
   }) = _MatrixCommandModel;
 
   factory MatrixCommandModel.fromJson(Map<String, dynamic> json) =>

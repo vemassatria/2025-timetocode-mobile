@@ -12,9 +12,9 @@ import 'package:timetocode/features/2_minigames_selection/games/logic_gate/prese
 import 'package:timetocode/features/2_minigames_selection/presentation/screens/minigames_selection_page.dart';
 import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
-import 'package:timetocode/features/2_minigames_selection/games/matriks/data/models/matrix_level_model.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_level_selection_page.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_pointer_page.dart';
+import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_end_game_level_page.dart';
 import 'package:timetocode/features/3_material/data/models/material_model.dart';
 import 'package:timetocode/features/3_material/presentation/screens/material_detailed_screen.dart';
 import 'package:timetocode/features/3_material/presentation/screens/material_screen.dart';
@@ -113,8 +113,24 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: 'level',
             parentNavigatorKey: _rootNavigatorKey,
             builder: (context, state) {
-              final level = state.extra as MatrixLevelModel;
-              return MatrixPointerPage(level: level);
+              final levelNumber = state.extra as int;
+              return MatrixPointerPage(levelNumber: levelNumber);
+            },
+          ),
+          GoRoute(
+            path: 'end/:levelNumber/:correctAnswers',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) {
+              final levelNumber = int.tryParse(
+                state.pathParameters['levelNumber'] ?? '1',
+              )!;
+              final correctAnswers = int.tryParse(
+                state.pathParameters['correctAnswers'] ?? '0',
+              )!;
+              return MatrixEndLevelPage(
+                levelNumber: levelNumber,
+                correctAnswers: correctAnswers,
+              );
             },
           ),
         ],

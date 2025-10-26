@@ -6,11 +6,11 @@ part 'matrix_level_model.g.dart';
 
 @freezed
 abstract class MatrixLevelModel with _$MatrixLevelModel {
-  const factory MatrixLevelModel({
+  factory MatrixLevelModel({
     required int levelId,
-    required String code,
-    required int initialPointerPosition,
-    required int targetPointerPosition,
+    required String questionCode,
+    required List<List<int>> initialMatrix,
+    required List<List<int>> goalMatrix,
     required List<MatrixCommandModel> commands,
   }) = _MatrixLevelModel;
 
