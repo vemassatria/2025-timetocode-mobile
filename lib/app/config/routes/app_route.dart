@@ -10,14 +10,14 @@ import 'package:timetocode/features/1_story_mode/presentation/screens/end_game_p
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/presentation/screens/logic_gate_gameplay.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/presentation/screens/logic_gate_page.dart';
 import 'package:timetocode/features/2_minigames_selection/presentation/screens/minigames_selection_page.dart';
-import 'package:timetocode/features/3_settings/presentation/screens/pengaturan_page.dart';
+import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
 import 'package:timetocode/features/1_story_mode/presentation/screens/story_gameplay_page.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_level_selection_page.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_pointer_page.dart';
-import 'package:timetocode/features/5_materi/data/models/materi_model.dart';
-import 'package:timetocode/features/5_materi/presentation/screens/materi_detailed_screen.dart';
-import 'package:timetocode/features/5_materi/presentation/screens/materi_screen.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/presentation/screens/matrix_end_game_level_page.dart';
+import 'package:timetocode/features/3_material/data/models/material_model.dart';
+import 'package:timetocode/features/3_material/presentation/screens/material_detailed_screen.dart';
+import 'package:timetocode/features/3_material/presentation/screens/material_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -58,9 +58,9 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
 
           GoRoute(
-            path: '/materi',
+            path: '/material',
             pageBuilder: (context, state) =>
-                const NoTransitionPage(child: MateriScreen()),
+                const NoTransitionPage(child: MaterialScreen()),
           ),
 
           GoRoute(
@@ -137,16 +137,16 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
 
       GoRoute(
-        path: '/materi/detail',
+        path: '/material/detail',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
           final materi = state.extra;
-          if (materi is! MateriModel) {
+          if (materi is! MaterialModel) {
             return const Scaffold(
               body: Center(child: Text('Data materi tidak ditemukan')),
             );
           }
-          return MateriDetailedScreen(materi: materi);
+          return MaterialDetailedScreen(material: materi);
         },
       ),
     ],
