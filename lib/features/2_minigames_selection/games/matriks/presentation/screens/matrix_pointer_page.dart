@@ -6,6 +6,8 @@ import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
 import 'package:timetocode/app/widgets/popups/menu_popup.dart';
+import 'package:timetocode/app/data/providers/popup_visibility_provider.dart';
+import 'package:timetocode/app/data/services/sound_effect_service.dart';
 import 'package:timetocode/features/0_core/widgets/code_box.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/data/controllers/matrix_game_controller.dart';
 import 'package:timetocode/features/2_minigames_selection/games/matriks/data/providers/matrix_level_provider.dart';
@@ -17,6 +19,34 @@ class MatrixPointerPage extends ConsumerWidget {
   final int levelNumber;
 
   const MatrixPointerPage({super.key, required this.levelNumber});
+
+  void _showMenuPopup(BuildContext context, WidgetRef ref) {
+    final gameController = ref.read(
+      matrixGameControllerProvider(levelNumber).notifier,
+    );
+    ref.read(soundEffectServiceProvider.notifier).playButtonClick2();
+
+    showPopupOverlay(
+      context,
+      MenuPopup(
+        onRestart: () {
+          closePopupOverlay(ref);
+          ref.invalidate(matrixScoreProvider); 
+          ref.invalidate(matrixGameControllerProvider(levelNumber));
+        },
+        onExit: () {
+          closePopupOverlay(ref);
+          gameController.exitGame(); 
+        },
+        onClose: () => closePopupOverlay(ref), 
+        onGoBack: () => goBackToPreviousOverlay(
+          context,
+          ref,
+        ), 
+      ),
+      ref,
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -120,53 +150,45 @@ class MatrixPointerPage extends ConsumerWidget {
         gameState.currentQuestion == null) {
       return const Scaffold(
         backgroundColor: AppColors.darkBackground,
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
+        body: Center(child: CircularProgressIndicator()),
       );
     }
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (bool didPop, dynamic result) {
+        if (didPop) return;
 
-    return Scaffold(
-      backgroundColor: AppColors.darkBackground,
-      appBar: MatrixGameAppBar(
-        progress:
-            'Soal ${gameState.currentQuestionIndex + 1}/${gameState.questions.length}',
-        score: ref.watch(matrixScoreProvider),
-        onMenuPressed: () {
-          showPopupOverlay(
-            context,
-            MenuPopup(
-              onRestart: () {
-                closePopupOverlay(ref);
-                ref.invalidate(matrixScoreProvider);
-                ref.invalidate(matrixGameControllerProvider(levelNumber));
-              },
-              onExit: () {
-                closePopupOverlay(ref);
-                gameController.exitGame();
-              },
-              onClose: () => closePopupOverlay(ref),
-              onGoBack: () => goBackToPreviousOverlay(context, ref),
-            ),
-            ref,
-          );
-        },
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _buildInstruction(),
-            SizedBox(height: 24.h),
-            CodeBox(code: gameState.currentQuestion!.questionCode),
-            SizedBox(height: 24.h),
-            PointerGrid(
-              level: gameState.currentQuestion!,
-              levelNumber: levelNumber,
-            ),
-            const Spacer(),
-          ],
+        final isPopupVisible = ref.read(popupVisibilityProvider);
+        if (isPopupVisible) {
+          closePopupOverlay(ref);
+        } else {
+          _showMenuPopup(context, ref);
+        }
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.darkBackground,
+        appBar: MatrixGameAppBar(
+          progress:
+              'Soal ${gameState.currentQuestionIndex + 1}/${gameState.questions.length}',
+          score: ref.watch(matrixScoreProvider),
+          onMenuPressed: () => _showMenuPopup(context, ref),
+        ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _buildInstruction(),
+              SizedBox(height: 24.h),
+              CodeBox(code: gameState.currentQuestion!.questionCode),
+              SizedBox(height: 24.h),
+              PointerGrid(
+                level: gameState.currentQuestion!,
+                levelNumber: levelNumber,
+              ),
+              const Spacer(),
+            ],
+          ),
         ),
       ),
     );

@@ -10,12 +10,14 @@ class HiveService {
   final Box<int> storyProgressBox;
   final Box<int> challengeProgressBox;
   final Box<bool> settingsBox;
+  final Box<int> matrixProgressBox;
 
   HiveService({
     required this.consequencesBox,
     required this.storyProgressBox,
     required this.challengeProgressBox,
     required this.settingsBox,
+    required this.matrixProgressBox,
   });
 
   bool getMusicSetting() {
@@ -68,5 +70,13 @@ class HiveService {
 
   Map<int, int> challengeGetProgress() {
     return Map<int, int>.from(challengeProgressBox.toMap());
+  }
+
+  Future<void> matrixSaveProgress(int level, int stars) async {
+    await matrixProgressBox.put(level, stars);
+  }
+
+  Map<int, int> matrixGetProgress() {
+    return Map<int, int>.from(matrixProgressBox.toMap());
   }
 }

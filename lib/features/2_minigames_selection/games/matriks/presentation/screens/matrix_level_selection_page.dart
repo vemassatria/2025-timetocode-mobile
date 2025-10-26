@@ -5,16 +5,18 @@ import 'package:go_router/go_router.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
-import 'package:timetocode/features/2_minigames_selection/games/matriks/data/providers/matrix_level_provider.dart';
+import '../../data/controllers/matrix_progress_controller.dart';
+import '../../data/providers/matrix_level_provider.dart';
+import '../widgets/matrix_level_card.dart';
 
 class MatrixLevelSelectionPage extends ConsumerWidget {
   const MatrixLevelSelectionPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Future.microtask(() => ref.invalidate(matrixScoreProvider));
+    final Map<int, int> progressData = ref.watch(matrixProgressProvider);
 
-    final bankAsync = ref.watch(matrixQuestionBankProvider);
+    const totalLevels = 5; 
 
     return Scaffold(
       backgroundColor: AppColors.darkBackground,
@@ -33,47 +35,55 @@ class MatrixLevelSelectionPage extends ConsumerWidget {
           },
         ),
         centerTitle: true,
+        bottom: PreferredSize( 
+          preferredSize: const Size.fromHeight(1),
+          child: Container(height: 1, color: AppColors.black1),
+        ),
       ),
-      body: bankAsync.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, stack) => Center(child: Text('Error: $err')),
-        data: (bankSoal) {
-          return GridView.builder(
-            padding: EdgeInsets.all(16.w),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              crossAxisSpacing: 16.w,
-              mainAxisSpacing: 16.h,
-            ),
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              final levelNumber = index + 1;
+      body: GridView.builder(
+          padding: EdgeInsets.all(16.w),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, 
+            crossAxisSpacing: 16.w,
+            mainAxisSpacing: 16.h,
+            childAspectRatio: 1.0, 
+          ),
+          itemCount: totalLevels,
+          itemBuilder: (context, index) {
+            final levelNumber = index + 1;
 
-              return GestureDetector(
-                onTap: () {
+            bool isUnlocked;
+            if (levelNumber == 1) {
+              isUnlocked = true;
+            } else {
+              final previousLevelStars = progressData[levelNumber - 1] ?? 0;
+              isUnlocked = previousLevelStars >= 2;
+            }
+
+            final int starCount = progressData[levelNumber] ?? 0;
+
+            return MatrixLevelCard(
+              levelNumber: levelNumber,
+              starCount: starCount,
+              isUnlocked: isUnlocked, 
+              onTap: () {
+                if (isUnlocked) {
+                  ref.read(soundEffectServiceProvider.notifier).playSelectClick();
+                  ref.invalidate(matrixScoreProvider);
                   context.push(
                     '/minigames/matriks/level',
                     extra: levelNumber,
                   );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.surfaceDark,
-                    borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(color: AppColors.technoBlue),
-                  ),
-                  child: Center(
-                    child: Text(
-                      levelNumber.toString(),
-                      style: AppTypography.heading4(),
-                    ),
-                  ),
-                ),
-              );
-            },
-          );
-        },
-      ),
+                } else {
+                  ref.read(soundEffectServiceProvider.notifier).playErrorClick();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Dapatkan minimal 2 bintang di level sebelumnya!"), duration: Duration(seconds: 1),)
+                  );
+                }
+              },
+            );
+          },
+        )
     );
   }
 }
