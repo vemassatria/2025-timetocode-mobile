@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MatrixLevelModel {
 
- int get levelId; String get code; int get initialPointerPosition; int get targetPointerPosition; List<MatrixCommandModel> get commands;
+ int get levelId; String get questionCode; List<List<int>> get initialMatrix; List<List<int>> get goalMatrix; List<MatrixCommandModel> get commands;
 /// Create a copy of MatrixLevelModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $MatrixLevelModelCopyWith<MatrixLevelModel> get copyWith => _$MatrixLevelModelCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MatrixLevelModel&&(identical(other.levelId, levelId) || other.levelId == levelId)&&(identical(other.code, code) || other.code == code)&&(identical(other.initialPointerPosition, initialPointerPosition) || other.initialPointerPosition == initialPointerPosition)&&(identical(other.targetPointerPosition, targetPointerPosition) || other.targetPointerPosition == targetPointerPosition)&&const DeepCollectionEquality().equals(other.commands, commands));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MatrixLevelModel&&(identical(other.levelId, levelId) || other.levelId == levelId)&&(identical(other.questionCode, questionCode) || other.questionCode == questionCode)&&const DeepCollectionEquality().equals(other.initialMatrix, initialMatrix)&&const DeepCollectionEquality().equals(other.goalMatrix, goalMatrix)&&const DeepCollectionEquality().equals(other.commands, commands));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,levelId,code,initialPointerPosition,targetPointerPosition,const DeepCollectionEquality().hash(commands));
+int get hashCode => Object.hash(runtimeType,levelId,questionCode,const DeepCollectionEquality().hash(initialMatrix),const DeepCollectionEquality().hash(goalMatrix),const DeepCollectionEquality().hash(commands));
 
 @override
 String toString() {
-  return 'MatrixLevelModel(levelId: $levelId, code: $code, initialPointerPosition: $initialPointerPosition, targetPointerPosition: $targetPointerPosition, commands: $commands)';
+  return 'MatrixLevelModel(levelId: $levelId, questionCode: $questionCode, initialMatrix: $initialMatrix, goalMatrix: $goalMatrix, commands: $commands)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $MatrixLevelModelCopyWith<$Res>  {
   factory $MatrixLevelModelCopyWith(MatrixLevelModel value, $Res Function(MatrixLevelModel) _then) = _$MatrixLevelModelCopyWithImpl;
 @useResult
 $Res call({
- int levelId, String code, int initialPointerPosition, int targetPointerPosition, List<MatrixCommandModel> commands
+ int levelId, String questionCode, List<List<int>> initialMatrix, List<List<int>> goalMatrix, List<MatrixCommandModel> commands
 });
 
 
@@ -65,13 +65,13 @@ class _$MatrixLevelModelCopyWithImpl<$Res>
 
 /// Create a copy of MatrixLevelModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? levelId = null,Object? code = null,Object? initialPointerPosition = null,Object? targetPointerPosition = null,Object? commands = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? levelId = null,Object? questionCode = null,Object? initialMatrix = null,Object? goalMatrix = null,Object? commands = null,}) {
   return _then(_self.copyWith(
 levelId: null == levelId ? _self.levelId : levelId // ignore: cast_nullable_to_non_nullable
-as int,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
-as String,initialPointerPosition: null == initialPointerPosition ? _self.initialPointerPosition : initialPointerPosition // ignore: cast_nullable_to_non_nullable
-as int,targetPointerPosition: null == targetPointerPosition ? _self.targetPointerPosition : targetPointerPosition // ignore: cast_nullable_to_non_nullable
-as int,commands: null == commands ? _self.commands : commands // ignore: cast_nullable_to_non_nullable
+as int,questionCode: null == questionCode ? _self.questionCode : questionCode // ignore: cast_nullable_to_non_nullable
+as String,initialMatrix: null == initialMatrix ? _self.initialMatrix : initialMatrix // ignore: cast_nullable_to_non_nullable
+as List<List<int>>,goalMatrix: null == goalMatrix ? _self.goalMatrix : goalMatrix // ignore: cast_nullable_to_non_nullable
+as List<List<int>>,commands: null == commands ? _self.commands : commands // ignore: cast_nullable_to_non_nullable
 as List<MatrixCommandModel>,
   ));
 }
@@ -157,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int levelId,  String code,  int initialPointerPosition,  int targetPointerPosition,  List<MatrixCommandModel> commands)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int levelId,  String questionCode,  List<List<int>> initialMatrix,  List<List<int>> goalMatrix,  List<MatrixCommandModel> commands)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MatrixLevelModel() when $default != null:
-return $default(_that.levelId,_that.code,_that.initialPointerPosition,_that.targetPointerPosition,_that.commands);case _:
+return $default(_that.levelId,_that.questionCode,_that.initialMatrix,_that.goalMatrix,_that.commands);case _:
   return orElse();
 
 }
@@ -178,10 +178,10 @@ return $default(_that.levelId,_that.code,_that.initialPointerPosition,_that.targ
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int levelId,  String code,  int initialPointerPosition,  int targetPointerPosition,  List<MatrixCommandModel> commands)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int levelId,  String questionCode,  List<List<int>> initialMatrix,  List<List<int>> goalMatrix,  List<MatrixCommandModel> commands)  $default,) {final _that = this;
 switch (_that) {
 case _MatrixLevelModel():
-return $default(_that.levelId,_that.code,_that.initialPointerPosition,_that.targetPointerPosition,_that.commands);case _:
+return $default(_that.levelId,_that.questionCode,_that.initialMatrix,_that.goalMatrix,_that.commands);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +198,10 @@ return $default(_that.levelId,_that.code,_that.initialPointerPosition,_that.targ
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int levelId,  String code,  int initialPointerPosition,  int targetPointerPosition,  List<MatrixCommandModel> commands)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int levelId,  String questionCode,  List<List<int>> initialMatrix,  List<List<int>> goalMatrix,  List<MatrixCommandModel> commands)?  $default,) {final _that = this;
 switch (_that) {
 case _MatrixLevelModel() when $default != null:
-return $default(_that.levelId,_that.code,_that.initialPointerPosition,_that.targetPointerPosition,_that.commands);case _:
+return $default(_that.levelId,_that.questionCode,_that.initialMatrix,_that.goalMatrix,_that.commands);case _:
   return null;
 
 }
@@ -213,13 +213,25 @@ return $default(_that.levelId,_that.code,_that.initialPointerPosition,_that.targ
 @JsonSerializable()
 
 class _MatrixLevelModel implements MatrixLevelModel {
-  const _MatrixLevelModel({required this.levelId, required this.code, required this.initialPointerPosition, required this.targetPointerPosition, required final  List<MatrixCommandModel> commands}): _commands = commands;
+   _MatrixLevelModel({required this.levelId, required this.questionCode, required final  List<List<int>> initialMatrix, required final  List<List<int>> goalMatrix, required final  List<MatrixCommandModel> commands}): _initialMatrix = initialMatrix,_goalMatrix = goalMatrix,_commands = commands;
   factory _MatrixLevelModel.fromJson(Map<String, dynamic> json) => _$MatrixLevelModelFromJson(json);
 
 @override final  int levelId;
-@override final  String code;
-@override final  int initialPointerPosition;
-@override final  int targetPointerPosition;
+@override final  String questionCode;
+ final  List<List<int>> _initialMatrix;
+@override List<List<int>> get initialMatrix {
+  if (_initialMatrix is EqualUnmodifiableListView) return _initialMatrix;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_initialMatrix);
+}
+
+ final  List<List<int>> _goalMatrix;
+@override List<List<int>> get goalMatrix {
+  if (_goalMatrix is EqualUnmodifiableListView) return _goalMatrix;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_goalMatrix);
+}
+
  final  List<MatrixCommandModel> _commands;
 @override List<MatrixCommandModel> get commands {
   if (_commands is EqualUnmodifiableListView) return _commands;
@@ -241,16 +253,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MatrixLevelModel&&(identical(other.levelId, levelId) || other.levelId == levelId)&&(identical(other.code, code) || other.code == code)&&(identical(other.initialPointerPosition, initialPointerPosition) || other.initialPointerPosition == initialPointerPosition)&&(identical(other.targetPointerPosition, targetPointerPosition) || other.targetPointerPosition == targetPointerPosition)&&const DeepCollectionEquality().equals(other._commands, _commands));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MatrixLevelModel&&(identical(other.levelId, levelId) || other.levelId == levelId)&&(identical(other.questionCode, questionCode) || other.questionCode == questionCode)&&const DeepCollectionEquality().equals(other._initialMatrix, _initialMatrix)&&const DeepCollectionEquality().equals(other._goalMatrix, _goalMatrix)&&const DeepCollectionEquality().equals(other._commands, _commands));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,levelId,code,initialPointerPosition,targetPointerPosition,const DeepCollectionEquality().hash(_commands));
+int get hashCode => Object.hash(runtimeType,levelId,questionCode,const DeepCollectionEquality().hash(_initialMatrix),const DeepCollectionEquality().hash(_goalMatrix),const DeepCollectionEquality().hash(_commands));
 
 @override
 String toString() {
-  return 'MatrixLevelModel(levelId: $levelId, code: $code, initialPointerPosition: $initialPointerPosition, targetPointerPosition: $targetPointerPosition, commands: $commands)';
+  return 'MatrixLevelModel(levelId: $levelId, questionCode: $questionCode, initialMatrix: $initialMatrix, goalMatrix: $goalMatrix, commands: $commands)';
 }
 
 
@@ -261,7 +273,7 @@ abstract mixin class _$MatrixLevelModelCopyWith<$Res> implements $MatrixLevelMod
   factory _$MatrixLevelModelCopyWith(_MatrixLevelModel value, $Res Function(_MatrixLevelModel) _then) = __$MatrixLevelModelCopyWithImpl;
 @override @useResult
 $Res call({
- int levelId, String code, int initialPointerPosition, int targetPointerPosition, List<MatrixCommandModel> commands
+ int levelId, String questionCode, List<List<int>> initialMatrix, List<List<int>> goalMatrix, List<MatrixCommandModel> commands
 });
 
 
@@ -278,13 +290,13 @@ class __$MatrixLevelModelCopyWithImpl<$Res>
 
 /// Create a copy of MatrixLevelModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? levelId = null,Object? code = null,Object? initialPointerPosition = null,Object? targetPointerPosition = null,Object? commands = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? levelId = null,Object? questionCode = null,Object? initialMatrix = null,Object? goalMatrix = null,Object? commands = null,}) {
   return _then(_MatrixLevelModel(
 levelId: null == levelId ? _self.levelId : levelId // ignore: cast_nullable_to_non_nullable
-as int,code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
-as String,initialPointerPosition: null == initialPointerPosition ? _self.initialPointerPosition : initialPointerPosition // ignore: cast_nullable_to_non_nullable
-as int,targetPointerPosition: null == targetPointerPosition ? _self.targetPointerPosition : targetPointerPosition // ignore: cast_nullable_to_non_nullable
-as int,commands: null == commands ? _self._commands : commands // ignore: cast_nullable_to_non_nullable
+as int,questionCode: null == questionCode ? _self.questionCode : questionCode // ignore: cast_nullable_to_non_nullable
+as String,initialMatrix: null == initialMatrix ? _self._initialMatrix : initialMatrix // ignore: cast_nullable_to_non_nullable
+as List<List<int>>,goalMatrix: null == goalMatrix ? _self._goalMatrix : goalMatrix // ignore: cast_nullable_to_non_nullable
+as List<List<int>>,commands: null == commands ? _self._commands : commands // ignore: cast_nullable_to_non_nullable
 as List<MatrixCommandModel>,
   ));
 }

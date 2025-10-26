@@ -1,18 +1,17 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:timetocode/features/2_minigames_selection/games/matriks/data/models/matrix_level_model.dart';
+import 'package:timetocode/features/2_minigames_selection/games/matriks/data/models/matrix_question_bank_model.dart';
 
 class MatrixLoadService {
-  Future<List<MatrixLevelModel>> loadAllLevels(String path) async {
+  Future<MatrixQuestionBankModel> loadQuestionBank(String path) async {
     final jsonString = await rootBundle.loadString(path);
-    return compute(_parseLevels, jsonString);
+    return compute(_parseBank, jsonString);
   }
 
-  static List<MatrixLevelModel> _parseLevels(String jsonString) {
-    final List<dynamic> jsonList = json.decode(jsonString)['levels'];
-    return jsonList
-        .map((levelJson) => MatrixLevelModel.fromJson(levelJson as Map<String, dynamic>))
-        .toList();
+  static MatrixQuestionBankModel _parseBank(String jsonString) {
+    final Map<String, dynamic> jsonMap = json.decode(jsonString);
+    
+    return MatrixQuestionBankModel.fromJson(jsonMap);
   }
 }
