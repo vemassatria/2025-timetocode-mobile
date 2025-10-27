@@ -204,8 +204,8 @@ class MatrixPointerPage extends ConsumerWidget {
           WidgetSpan(
             alignment: PlaceholderAlignment.middle,
             child: Container(
-              width: 16.sp,
-              height: 16.sp,
+              width: 16.r,
+              height: 16.r,
               decoration: const BoxDecoration(
                 color: AppColors.rewardYellow,
                 shape: BoxShape.circle,

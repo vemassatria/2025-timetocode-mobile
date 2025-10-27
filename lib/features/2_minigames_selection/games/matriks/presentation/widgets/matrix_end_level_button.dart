@@ -49,7 +49,7 @@ class MatrixEndLevelButton extends StatelessWidget {
         child: Icon(
           icon,
           color: iconColor,
-          size: 32.sp,
+          size: 32.r,
         ),
       ),
     );

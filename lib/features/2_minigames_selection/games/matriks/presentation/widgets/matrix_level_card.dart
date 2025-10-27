@@ -52,7 +52,7 @@ class MatrixLevelCard extends StatelessWidget {
               SizedBox(height: 8.h),
                 StarDisplay(
                     starCount: starCount,
-                    size: 18.sp, 
+                    size: 18.r, 
                   ),
             ] else
               _buildLockIcon(), 
@@ -63,7 +63,7 @@ class MatrixLevelCard extends StatelessWidget {
   }
 
   Widget _buildLockIcon() {
-    final iconSize = 60.sp;
+    final iconSize = 60.r;
     return Stack(
       alignment: Alignment.center,
       children: [

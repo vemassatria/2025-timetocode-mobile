@@ -36,7 +36,7 @@ class MatrixScoreBox extends StatelessWidget {
               Icon(
                 Icons.track_changes_outlined,
                 color: textColor,
-                size: 40.sp,
+                size: 40.r,
               ),
               SizedBox(width: 16.w),
               Text(

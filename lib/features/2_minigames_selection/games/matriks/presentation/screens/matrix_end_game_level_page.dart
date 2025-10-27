@@ -98,7 +98,7 @@ class _MatrixEndLevelPageState extends ConsumerState<MatrixEndLevelPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Spacer(flex: 1),
-              StarDisplay(starCount: stars, size: 50.sp, isCentered: true),
+              StarDisplay(starCount: stars, size: 50.r, isCentered: true),
               SizedBox(height: 18.h),
               MatrixLevelBanner(
                 levelNumber: widget.levelNumber, 
