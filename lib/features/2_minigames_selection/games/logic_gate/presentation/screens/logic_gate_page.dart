@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:timetocode/app/config/theme/colors.dart';
 import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
@@ -11,9 +12,11 @@ import 'package:timetocode/app/widgets/buttons/bordered_button.dart';
 import 'package:timetocode/app/widgets/buttons/custom_button.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/controllers/logic_gate_gameplay_controller.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/models/logic_gate_type.dart';
+import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/providers/internet_status.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/presentation/widgets/ai_difficulty_popup.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/presentation/widgets/card_detail_carousel_popup.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/presentation/widgets/how_to_play_popup.dart';
+import 'package:timetocode/features/2_minigames_selection/games/logic_gate/presentation/widgets/online_room_popup.dart';
 
 class LogicGatePage extends ConsumerWidget {
   const LogicGatePage({super.key});
@@ -90,13 +93,9 @@ class LogicGatePage extends ConsumerWidget {
                 ),
                 SizedBox(height: 16.h),
                 CustomButton(
-                  icon: SvgPicture.asset(
-                    'assets/images/logic_gate/icons/peoples.svg',
-                    width: 26.w,
-                    height: 26.h,
-                  ),
+                  icon: Icon(Icons.style, size: 26.r),
                   type: ButtonType.iconLabel,
-                  label: "Mainkan Berdua",
+                  label: "Mainkan Langsung",
                   onPressed: () {
                     ref
                         .read(logicGateControllerProvider.notifier)
@@ -105,6 +104,24 @@ class LogicGatePage extends ConsumerWidget {
                   },
                   widthMode: ButtonWidthMode.fill,
                   color: ButtonColor.purple,
+                ),
+                SizedBox(height: 16.h),
+                CustomButton(
+                  icon: SvgPicture.asset(
+                    'assets/images/logic_gate/icons/peoples.svg',
+                    width: 26.w,
+                    height: 26.h,
+                  ),
+                  type: ButtonType.iconLabel,
+                  label: "Mainkan Online",
+                  onPressed: () =>
+                      showPopupOverlay(context, const OnlineRoomPopup(), ref),
+                  widthMode: ButtonWidthMode.fill,
+                  color: ButtonColor.purple,
+                  isDisabled:
+                      ref.read(internetStatusProvider).hasValue &&
+                      ref.read(internetStatusProvider).value ==
+                          InternetConnectionStatus.disconnected,
                 ),
                 SizedBox(height: 16.h),
                 Row(

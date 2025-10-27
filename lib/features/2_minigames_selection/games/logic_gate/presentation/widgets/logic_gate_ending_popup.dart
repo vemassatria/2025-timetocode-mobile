@@ -8,10 +8,19 @@ import 'package:timetocode/app/widgets/buttons/custom_button.dart';
 import 'package:timetocode/app/widgets/popups/base_popup.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/controllers/logic_gate_gameplay_controller.dart';
 
-class LogicGateEndGamePopup extends ConsumerWidget {
-  final int? winnerBinary;
+enum EndGameType { victory, defeat }
 
-  const LogicGateEndGamePopup({super.key, required this.winnerBinary});
+class LogicGateEndGamePopup extends ConsumerWidget {
+  final EndGameType endGameType;
+  final int winnerBinary;
+  final bool isOnline;
+
+  const LogicGateEndGamePopup({
+    super.key,
+    required this.winnerBinary,
+    required this.endGameType,
+    this.isOnline = false,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,12 +28,13 @@ class LogicGateEndGamePopup extends ConsumerWidget {
     String title;
     String description;
 
-    if (winnerBinary == 1) {
+    if (endGameType == EndGameType.victory) {
       title = "Kamu Menang!";
-      description = "Selamat! Kamu berhasil mencapai target nilai: ";
+      description =
+          "Selamat! Kamu berhasil mengalahkan lawan dengan target nilai: ";
     } else {
       title = "Kamu Kalah!";
-      description = "Yahh.. Lawan berhasil mencapai target nilai: ";
+      description = "Yahh.. Lawan berhasil mengalahkanmu dengan target nilai: ";
     }
 
     return BasePopup(
@@ -79,34 +89,47 @@ class LogicGateEndGamePopup extends ConsumerWidget {
             color: ButtonColor.green,
           ),
           SizedBox(height: 12.h),
-          Row(
-            children: [
-              Expanded(
-                child: CustomButton(
-                  label: "Mulai Ulang",
-                  onPressed: () {
-                    logicGateController.restart();
-                    closePopupOverlay(ref);
-                  },
-                  widthMode: ButtonWidthMode.fill,
-                  color: ButtonColor.blue,
+          if (!isOnline) ...[
+            Row(
+              children: [
+                Expanded(
+                  child: CustomButton(
+                    label: "Mulai Ulang",
+                    onPressed: () {
+                      logicGateController.restart();
+                      closePopupOverlay(ref);
+                    },
+                    widthMode: ButtonWidthMode.fill,
+                    color: ButtonColor.blue,
+                  ),
                 ),
-              ),
-              SizedBox(width: 16.w),
-              Expanded(
-                child: CustomButton(
-                  label: "Keluar",
-                  onPressed: () {
-                    logicGateController.exit();
-                    closePopupOverlay(ref);
-                  },
-                  widthMode: ButtonWidthMode.fill,
-                  type: ButtonType.outline,
-                  color: ButtonColor.none,
+                SizedBox(width: 16.w),
+                Expanded(
+                  child: CustomButton(
+                    label: "Keluar",
+                    onPressed: () {
+                      logicGateController.exit();
+                      closePopupOverlay(ref);
+                    },
+                    widthMode: ButtonWidthMode.fill,
+                    type: ButtonType.outline,
+                    color: ButtonColor.none,
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          ] else ...[
+            CustomButton(
+              label: "Keluar",
+              onPressed: () {
+                logicGateController.exit();
+                closePopupOverlay(ref);
+              },
+              widthMode: ButtonWidthMode.fill,
+              type: ButtonType.outline,
+              color: ButtonColor.none,
+            ),
+          ],
         ],
       ),
     );

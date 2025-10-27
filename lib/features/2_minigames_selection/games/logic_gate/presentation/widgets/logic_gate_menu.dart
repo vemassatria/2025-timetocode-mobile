@@ -13,7 +13,9 @@ class LogicGateMenu extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final logicGateNotifier = ref.read(logicGateControllerProvider.notifier);
     final isEndGame = ref.watch(
-      logicGateControllerProvider.select((state) => state.outputBinary != null),
+      logicGateControllerProvider.select(
+        (state) => state.winnerPlayerId != null,
+      ),
     );
     return Align(
       alignment: Alignment.bottomRight,
@@ -24,10 +26,12 @@ class LogicGateMenu extends ConsumerWidget {
                 showPopupOverlay(
                   context,
                   MenuPopup(
-                    onRestart: () {
-                      logicGateNotifier.restart();
-                      closePopupOverlay(ref);
-                    },
+                    onRestart: ref.read(logicGateControllerProvider).isOnline
+                        ? null
+                        : () {
+                            logicGateNotifier.restart();
+                            closePopupOverlay(ref);
+                          },
                     onExit: () {
                       logicGateNotifier.exit();
                       closePopupOverlay(ref);

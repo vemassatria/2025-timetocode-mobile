@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timetocode/app/config/routes/app_route.dart';
+import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/controllers/logic_gate_websocket_controller.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/models/binary_slot_model.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/models/card_slot_model.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/models/logic_gate_card_model.dart';
@@ -9,6 +10,7 @@ import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/services/ai_service.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/states/ai_game_state.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/states/logic_gate_state.dart';
+import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/states/logic_gate_websocket_state.dart';
 
 final logicGateControllerProvider =
     NotifierProvider.autoDispose<LogicGateGameplayController, LogicGateState>(
@@ -29,12 +31,13 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
   }
 
   void initializeLogicGateGame({
-    bool vsAI = false,
+    bool isVsAI = false,
+    bool isOnline = false,
     AiDifficulty difficulty = AiDifficulty.medium,
   }) async {
     _keepAliveLink ??= ref.keepAlive();
 
-    if (vsAI) {
+    if (isVsAI) {
       _aiService = AiService();
       await _aiService!.loadModel();
     }
@@ -44,9 +47,27 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
       cardSlots: _initializeCardSlots(10),
       player: PlayerModel(id: 1, hand: _getAvailableCards(1), targetValue: 1),
       opponent: PlayerModel(id: 0, hand: _getAvailableCards(2), targetValue: 0),
-      vsAI: vsAI,
+      vsAI: isVsAI,
+      isOnline: isOnline,
       difficulty: difficulty,
     );
+
+    if (isOnline) {
+      ref.listen<LogicGateWebsocketState>(
+        logicGateWebsocketControllerProvider,
+        (previous, next) {
+          if (next.gameState != null && next.gameState != previous?.gameState) {
+            state = next.gameState!.copyWith(isOnline: true);
+          }
+        },
+      );
+      final initialWebsocketState = ref.read(
+        logicGateWebsocketControllerProvider,
+      );
+      if (initialWebsocketState.gameState != null) {
+        state = initialWebsocketState.gameState!.copyWith(isOnline: true);
+      }
+    }
   }
 
   void updateLineConnection(VoidCallback callback) {
@@ -83,6 +104,13 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
   }
 
   void dropCard(int slotId, int cardId) {
+    if (state.isOnline) {
+      ref
+          .read(logicGateWebsocketControllerProvider.notifier)
+          .sendPlayerMove(slotId, cardId);
+      return;
+    }
+
     final isPlayerTurn = state.currentPlayerId == 1;
     final user = isPlayerTurn ? state.player! : state.opponent!;
     final binarySlot = state.binarySlots!;
@@ -137,7 +165,7 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
             player: isPlayerTurn ? updatedUser : state.player,
             opponent: !isPlayerTurn ? updatedUser : state.opponent,
             lastUpdatedCardSlotId: slotId,
-            outputBinary: resultValue,
+            winnerPlayerId: resultValue == 1 ? 1 : 2,
           )
         : state.copyWith(
             cardSlots: newCardSlots,
@@ -200,12 +228,15 @@ class LogicGateGameplayController extends AutoDisposeNotifier<LogicGateState> {
   }
 
   void exit() {
+    if (state.isOnline) {
+      ref.read(logicGateWebsocketControllerProvider.notifier).leaveRoom();
+    }
     _releaseKeepAlive();
     ref.read(routerProvider).pop();
   }
 
   void restart() {
     _updateLineConnection!();
-    initializeLogicGateGame(vsAI: state.vsAI, difficulty: state.difficulty);
+    initializeLogicGateGame(isVsAI: state.vsAI, difficulty: state.difficulty);
   }
 }

@@ -10,14 +10,14 @@ import 'package:timetocode/app/config/theme/typography.dart';
 import 'package:timetocode/app/utils/overlay_utils.dart';
 
 class MenuPopup extends ConsumerWidget {
-  final VoidCallback onRestart;
+  final VoidCallback? onRestart;
   final VoidCallback onExit;
   final VoidCallback onClose;
   final VoidCallback onGoBack;
 
   const MenuPopup({
     super.key,
-    required this.onRestart,
+    this.onRestart,
     required this.onExit,
     required this.onClose,
     required this.onGoBack,
@@ -44,29 +44,30 @@ class MenuPopup extends ConsumerWidget {
           widthMode: ButtonWidthMode.fill,
         ),
         SizedBox(height: 8.h),
-        CustomButton(
-          label: "Mulai Ulang",
-          onPressed: () {
-            audioService.playSelectClick();
-            showPopupOverlay(
-              context,
-              ConfirmPopup(
-                title: "Mulai Ulang?",
-                description:
-                    "Progress permainan hilang dan permainan dimulai dari awal sekarang.",
-                confirmLabel: "Mulai Ulang",
-                onPrimaryButtonPressed: () {
-                  onRestart();
-                },
-                onGoBack: () {
-                  onGoBack();
-                },
-              ),
-              ref,
-            );
-          },
-          widthMode: ButtonWidthMode.fill,
-        ),
+        if (onRestart != null)
+          CustomButton(
+            label: "Mulai Ulang",
+            onPressed: () {
+              audioService.playSelectClick();
+              showPopupOverlay(
+                context,
+                ConfirmPopup(
+                  title: "Mulai Ulang?",
+                  description:
+                      "Progress permainan hilang dan permainan dimulai dari awal sekarang.",
+                  confirmLabel: "Mulai Ulang",
+                  onPrimaryButtonPressed: () {
+                    onRestart!();
+                  },
+                  onGoBack: () {
+                    onGoBack();
+                  },
+                ),
+                ref,
+              );
+            },
+            widthMode: ButtonWidthMode.fill,
+          ),
         SizedBox(height: 8.h),
         CustomButton(
           label: "Pengaturan",

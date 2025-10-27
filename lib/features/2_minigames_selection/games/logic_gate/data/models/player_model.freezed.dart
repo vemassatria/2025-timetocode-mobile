@@ -11,6 +11,7 @@ part of 'player_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$PlayerModel {
 
@@ -21,6 +22,8 @@ mixin _$PlayerModel {
 @pragma('vm:prefer-inline')
 $PlayerModelCopyWith<PlayerModel> get copyWith => _$PlayerModelCopyWithImpl<PlayerModel>(this as PlayerModel, _$identity);
 
+  /// Serializes this PlayerModel to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -28,7 +31,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is PlayerModel&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other.hand, hand)&&(identical(other.targetValue, targetValue) || other.targetValue == targetValue));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(hand),targetValue);
 
@@ -205,11 +208,11 @@ return $default(_that.id,_that.hand,_that.targetValue);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _PlayerModel implements PlayerModel {
   const _PlayerModel({required this.id, required final  List<LogicGateCardModel> hand, required this.targetValue}): _hand = hand;
-  
+  factory _PlayerModel.fromJson(Map<String, dynamic> json) => _$PlayerModelFromJson(json);
 
 @override final  int id;
  final  List<LogicGateCardModel> _hand;
@@ -227,14 +230,17 @@ class _PlayerModel implements PlayerModel {
 @pragma('vm:prefer-inline')
 _$PlayerModelCopyWith<_PlayerModel> get copyWith => __$PlayerModelCopyWithImpl<_PlayerModel>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$PlayerModelToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _PlayerModel&&(identical(other.id, id) || other.id == id)&&const DeepCollectionEquality().equals(other._hand, _hand)&&(identical(other.targetValue, targetValue) || other.targetValue == targetValue));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,const DeepCollectionEquality().hash(_hand),targetValue);
 

@@ -9,13 +9,18 @@ enum LogicGateWebsocketStatus {
   connected,
   disconnected,
   error,
+  opponentDisconnected,
+  opponentReconnecting,
+  waitingForOpponent,
 }
 
 @freezed
 abstract class LogicGateWebsocketState with _$LogicGateWebsocketState {
   const factory LogicGateWebsocketState({
+    final String? roomId,
+    final int? playerId,
+    final LogicGateState? gameState,
     required final LogicGateWebsocketStatus status,
     final String? errorMessage,
-    final LogicGateState? gameState,
   }) = _LogicGateWebsocketState;
 }

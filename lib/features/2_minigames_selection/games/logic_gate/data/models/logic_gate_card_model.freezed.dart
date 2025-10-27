@@ -11,6 +11,7 @@ part of 'logic_gate_card_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$LogicGateCardModel {
 
@@ -21,6 +22,8 @@ mixin _$LogicGateCardModel {
 @pragma('vm:prefer-inline')
 $LogicGateCardModelCopyWith<LogicGateCardModel> get copyWith => _$LogicGateCardModelCopyWithImpl<LogicGateCardModel>(this as LogicGateCardModel, _$identity);
 
+  /// Serializes this LogicGateCardModel to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -28,7 +31,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is LogicGateCardModel&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,type);
 
@@ -204,11 +207,11 @@ return $default(_that.id,_that.type);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _LogicGateCardModel implements LogicGateCardModel {
   const _LogicGateCardModel({required this.id, required this.type});
-  
+  factory _LogicGateCardModel.fromJson(Map<String, dynamic> json) => _$LogicGateCardModelFromJson(json);
 
 @override final  int id;
 @override final  LogicGateType type;
@@ -219,14 +222,17 @@ class _LogicGateCardModel implements LogicGateCardModel {
 @pragma('vm:prefer-inline')
 _$LogicGateCardModelCopyWith<_LogicGateCardModel> get copyWith => __$LogicGateCardModelCopyWithImpl<_LogicGateCardModel>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$LogicGateCardModelToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _LogicGateCardModel&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,type);
 

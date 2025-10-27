@@ -11,6 +11,7 @@ part of 'card_slot_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$CardSlotModel {
 
@@ -21,6 +22,8 @@ mixin _$CardSlotModel {
 @pragma('vm:prefer-inline')
 $CardSlotModelCopyWith<CardSlotModel> get copyWith => _$CardSlotModelCopyWithImpl<CardSlotModel>(this as CardSlotModel, _$identity);
 
+  /// Serializes this CardSlotModel to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -28,7 +31,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is CardSlotModel&&(identical(other.id, id) || other.id == id)&&(identical(other.placedCard, placedCard) || other.placedCard == placedCard));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,placedCard);
 
@@ -216,11 +219,11 @@ return $default(_that.id,_that.placedCard);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _CardSlotModel implements CardSlotModel {
   const _CardSlotModel({required this.id, this.placedCard});
-  
+  factory _CardSlotModel.fromJson(Map<String, dynamic> json) => _$CardSlotModelFromJson(json);
 
 @override final  int id;
 @override final  LogicGateCardModel? placedCard;
@@ -231,14 +234,17 @@ class _CardSlotModel implements CardSlotModel {
 @pragma('vm:prefer-inline')
 _$CardSlotModelCopyWith<_CardSlotModel> get copyWith => __$CardSlotModelCopyWithImpl<_CardSlotModel>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$CardSlotModelToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _CardSlotModel&&(identical(other.id, id) || other.id == id)&&(identical(other.placedCard, placedCard) || other.placedCard == placedCard));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,placedCard);
 

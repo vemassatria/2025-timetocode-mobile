@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:timetocode/features/2_minigames_selection/games/logic_gate/data/models/logic_gate_card_model.dart';
 
 part 'player_model.freezed.dart';
+part 'player_model.g.dart';
 
 @freezed
 abstract class PlayerModel with _$PlayerModel {
@@ -10,4 +11,7 @@ abstract class PlayerModel with _$PlayerModel {
     required List<LogicGateCardModel> hand,
     required int targetValue,
   }) = _PlayerModel;
+
+  factory PlayerModel.fromJson(Map<String, dynamic> json) =>
+      _$PlayerModelFromJson(json);
 }

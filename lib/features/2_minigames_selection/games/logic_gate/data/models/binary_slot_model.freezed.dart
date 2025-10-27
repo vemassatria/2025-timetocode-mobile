@@ -11,6 +11,7 @@ part of 'binary_slot_model.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$BinarySlotModel {
 
@@ -21,6 +22,8 @@ mixin _$BinarySlotModel {
 @pragma('vm:prefer-inline')
 $BinarySlotModelCopyWith<BinarySlotModel> get copyWith => _$BinarySlotModelCopyWithImpl<BinarySlotModel>(this as BinarySlotModel, _$identity);
 
+  /// Serializes this BinarySlotModel to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -28,7 +31,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is BinarySlotModel&&(identical(other.id, id) || other.id == id)&&(identical(other.value, value) || other.value == value));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,value);
 
@@ -204,11 +207,11 @@ return $default(_that.id,_that.value);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _BinarySlotModel implements BinarySlotModel {
   const _BinarySlotModel({required this.id, this.value});
-  
+  factory _BinarySlotModel.fromJson(Map<String, dynamic> json) => _$BinarySlotModelFromJson(json);
 
 @override final  int id;
 @override final  int? value;
@@ -219,14 +222,17 @@ class _BinarySlotModel implements BinarySlotModel {
 @pragma('vm:prefer-inline')
 _$BinarySlotModelCopyWith<_BinarySlotModel> get copyWith => __$BinarySlotModelCopyWithImpl<_BinarySlotModel>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$BinarySlotModelToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _BinarySlotModel&&(identical(other.id, id) || other.id == id)&&(identical(other.value, value) || other.value == value));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,value);
 

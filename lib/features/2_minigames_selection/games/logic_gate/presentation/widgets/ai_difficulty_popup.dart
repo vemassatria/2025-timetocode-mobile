@@ -19,7 +19,7 @@ class DifficultyPopup extends ConsumerWidget {
   ) {
     ref
         .read(logicGateControllerProvider.notifier)
-        .initializeLogicGateGame(vsAI: true, difficulty: difficulty);
+        .initializeLogicGateGame(isVsAI: true, difficulty: difficulty);
     context.go('/minigames/logic-gate/gameplay');
     closePopupOverlay(ref);
   }
