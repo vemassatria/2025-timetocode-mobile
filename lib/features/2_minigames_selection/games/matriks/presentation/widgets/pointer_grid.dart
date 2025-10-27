@@ -7,14 +7,15 @@ import 'package:timetocode/features/2_minigames_selection/games/matriks/data/mod
 
 class PointerGrid extends ConsumerWidget {
   final MatrixLevelModel level;
+  final int levelNumber;
 
-  const PointerGrid({super.key, required this.level});
+  const PointerGrid({super.key, required this.level, required this.levelNumber});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final gameState = ref.watch(matrixGameControllerProvider(level));
+    final gameState = ref.watch(matrixGameControllerProvider(levelNumber));
     final gameController = ref.read(
-      matrixGameControllerProvider(level).notifier,
+      matrixGameControllerProvider(levelNumber).notifier,
     );
     const minSwipeVelocity = 100;
 
@@ -66,7 +67,7 @@ class PointerGrid extends ConsumerWidget {
               innerColor = gameState.status == GameStatus.incorrectMove
                   ? AppColors.dangerRed
                   : AppColors.rewardYellow;
-            } else if (gameState.status == GameStatus.levelWon) {
+            } else if (gameState.status == GameStatus.questionWon || gameState.status == GameStatus.levelWon) {
               outerColor = AppColors.xpGreen;
             }
 

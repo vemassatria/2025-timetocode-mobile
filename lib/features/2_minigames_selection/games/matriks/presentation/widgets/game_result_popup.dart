@@ -32,7 +32,7 @@ class GameResultPopup extends StatelessWidget {
               Icon(
                 isCorrect ? Icons.check_circle : Icons.cancel,
                 color: isCorrect ? AppColors.xpGreen : AppColors.dangerRed,
-                size: 32.sp,
+                size: 32.r,
               ),
               SizedBox(width: 12.w),
               Text(

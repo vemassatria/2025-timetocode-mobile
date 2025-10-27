@@ -15,9 +15,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MatrixCommandModel {
 
- String get type;// "loop" or "action"
- int? get count;// Only for "loop"
- String get action;
+ String get command;// "UP", "DOWN", "LEFT", "RIGHT"
+ int get value;
 /// Create a copy of MatrixCommandModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,16 +29,16 @@ $MatrixCommandModelCopyWith<MatrixCommandModel> get copyWith => _$MatrixCommandM
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MatrixCommandModel&&(identical(other.type, type) || other.type == type)&&(identical(other.count, count) || other.count == count)&&(identical(other.action, action) || other.action == action));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MatrixCommandModel&&(identical(other.command, command) || other.command == command)&&(identical(other.value, value) || other.value == value));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,count,action);
+int get hashCode => Object.hash(runtimeType,command,value);
 
 @override
 String toString() {
-  return 'MatrixCommandModel(type: $type, count: $count, action: $action)';
+  return 'MatrixCommandModel(command: $command, value: $value)';
 }
 
 
@@ -50,7 +49,7 @@ abstract mixin class $MatrixCommandModelCopyWith<$Res>  {
   factory $MatrixCommandModelCopyWith(MatrixCommandModel value, $Res Function(MatrixCommandModel) _then) = _$MatrixCommandModelCopyWithImpl;
 @useResult
 $Res call({
- String type, int? count, String action
+ String command, int value
 });
 
 
@@ -67,12 +66,11 @@ class _$MatrixCommandModelCopyWithImpl<$Res>
 
 /// Create a copy of MatrixCommandModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? count = freezed,Object? action = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? command = null,Object? value = null,}) {
   return _then(_self.copyWith(
-type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String,count: freezed == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
-as int?,action: null == action ? _self.action : action // ignore: cast_nullable_to_non_nullable
-as String,
+command: null == command ? _self.command : command // ignore: cast_nullable_to_non_nullable
+as String,value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 
@@ -157,10 +155,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String type,  int? count,  String action)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String command,  int value)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MatrixCommandModel() when $default != null:
-return $default(_that.type,_that.count,_that.action);case _:
+return $default(_that.command,_that.value);case _:
   return orElse();
 
 }
@@ -178,10 +176,10 @@ return $default(_that.type,_that.count,_that.action);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String type,  int? count,  String action)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String command,  int value)  $default,) {final _that = this;
 switch (_that) {
 case _MatrixCommandModel():
-return $default(_that.type,_that.count,_that.action);case _:
+return $default(_that.command,_that.value);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +196,10 @@ return $default(_that.type,_that.count,_that.action);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String type,  int? count,  String action)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String command,  int value)?  $default,) {final _that = this;
 switch (_that) {
 case _MatrixCommandModel() when $default != null:
-return $default(_that.type,_that.count,_that.action);case _:
+return $default(_that.command,_that.value);case _:
   return null;
 
 }
@@ -213,14 +211,12 @@ return $default(_that.type,_that.count,_that.action);case _:
 @JsonSerializable()
 
 class _MatrixCommandModel implements MatrixCommandModel {
-  const _MatrixCommandModel({required this.type, this.count, required this.action});
+  const _MatrixCommandModel({required this.command, required this.value});
   factory _MatrixCommandModel.fromJson(Map<String, dynamic> json) => _$MatrixCommandModelFromJson(json);
 
-@override final  String type;
-// "loop" or "action"
-@override final  int? count;
-// Only for "loop"
-@override final  String action;
+@override final  String command;
+// "UP", "DOWN", "LEFT", "RIGHT"
+@override final  int value;
 
 /// Create a copy of MatrixCommandModel
 /// with the given fields replaced by the non-null parameter values.
@@ -235,16 +231,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MatrixCommandModel&&(identical(other.type, type) || other.type == type)&&(identical(other.count, count) || other.count == count)&&(identical(other.action, action) || other.action == action));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MatrixCommandModel&&(identical(other.command, command) || other.command == command)&&(identical(other.value, value) || other.value == value));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,count,action);
+int get hashCode => Object.hash(runtimeType,command,value);
 
 @override
 String toString() {
-  return 'MatrixCommandModel(type: $type, count: $count, action: $action)';
+  return 'MatrixCommandModel(command: $command, value: $value)';
 }
 
 
@@ -255,7 +251,7 @@ abstract mixin class _$MatrixCommandModelCopyWith<$Res> implements $MatrixComman
   factory _$MatrixCommandModelCopyWith(_MatrixCommandModel value, $Res Function(_MatrixCommandModel) _then) = __$MatrixCommandModelCopyWithImpl;
 @override @useResult
 $Res call({
- String type, int? count, String action
+ String command, int value
 });
 
 
@@ -272,12 +268,11 @@ class __$MatrixCommandModelCopyWithImpl<$Res>
 
 /// Create a copy of MatrixCommandModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? type = null,Object? count = freezed,Object? action = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? command = null,Object? value = null,}) {
   return _then(_MatrixCommandModel(
-type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String,count: freezed == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
-as int?,action: null == action ? _self.action : action // ignore: cast_nullable_to_non_nullable
-as String,
+command: null == command ? _self.command : command // ignore: cast_nullable_to_non_nullable
+as String,value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 

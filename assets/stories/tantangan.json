@@ -1,633 +1,1414 @@
 {
-  "challenges": [
-    {
-      "challengeId": 1,
-      "title": "Konsep Pemrograman",
-      "levels": [
-        {
-          "id": 1,
-          "levelName": "1",
-          "questions": {
-            "mudah": [
-              {
-                "id": "soal1_1",
-                "text": "Manakah dari berikut ini yang merupakan tipe data untuk menyimpan angka desimal di C?\n",
-                "choices": [
-                  {
-                    "text": "int",
-                    "next": "soal1_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "float",
-                    "next": "soal1_2",
-                    "nextType": "sedang",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "string",
-                    "next": "soal1_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "char",
-                    "next": "soal1_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "sedang": [
-              {
-                "id": "soal1_2",
-                "text": "Apa nilai c setelah eksekusi?",
-                "code": "int a = 6;  \nint b = 2;  \nfloat c = a / b;  \n",
-                "choices": [
-                  {
-                    "text": "2.5",
-                    "next": "soal1_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "2.0",
-                    "next": "soal1_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "0",
-                    "next": "soal1_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "3.0",
-                    "next": "soal1_3",
-                    "nextType": "susah",
-                    "isCorrect": true
-                  }
-                ]
-              }
-            ],
-            "susah": [
-              {
-                "id": "soal1_3",
-                "text": "Nilai z setelah eksekusi adalah?",
-                "code": "int x = 5;  \nint y = 10;  \nint z = ++x * y--;  \n",
-                "choices": [
-                  {
-                    "text": "55",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "60 ",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "50",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "45",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": 2,
-          "levelName": "2",
-          "questions": {
-            "mudah": [
-              {
-                "id": "soal2_1",
-                "text": "Apa hasil output dari program berikut?",
-                "code": "int x = 10;  \nif (x > 5) {  \n    printf(\"A\");  \n} else {  \n    printf(\"B\");  \n}\n",
-                "choices": [
-                  {
-                    "text": "A",
-                    "next": "soal2_2",
-                    "nextType": "sedang",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "B",
-                    "next": "soal2_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Tidak ada output",
-                    "next": "soal2_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Error",
-                    "next": "soal2_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "sedang": [
-              {
-                "id": "soal2_2",
-                "text": "Manakah pernyataan yang benar mengenai switch di C?",
-                "choices": [
-                  {
-                    "text": "switch hanya bisa mengecek nilai string",
-                    "next": "soal2_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "switch hanya bisa mengecek tipe data integer atau karakter",
-                    "next": "soal2_3",
-                    "nextType": "susah",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "switch bisa menggunakan ekspresi boolean",
-                    "next": "soal2_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "switch tidak memerlukan break",
-                    "next": "soal2_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "susah": [
-              {
-                "id": "soal2_3",
-                "text": "Kode berikut akan mencetak apa?",
-                "code": "int x = 2;  \nswitch (x) {  \n    case 1:  \n        printf(\"One\");  \n    case 2:  \n        printf(\"Two\");  \n    case 3:  \n        printf(\"Three\");  \n        break;  \n    default:  \n        printf(\"Default\");  \n}\n",
-                "choices": [
-                  {
-                    "text": "TwoThree",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "TwoThreeDefault",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Three",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "OneTwoThree",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": 3,
-          "levelName": "3",
-          "questions": {
-            "mudah": [
-              {
-                "id": "soal3_1",
-                "text": "Berapa kali loop berikut akan berjalan?\n",
-                "code": "for (int i = 0; i < 5; i++) {  \n   …\n}\n",
-                "choices": [
-                  {
-                    "text": "4 kali",
-                    "next": "soal3_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "5 kali",
-                    "next": "soal3_2",
-                    "nextType": "sedang",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "6 kali",
-                    "next": "soal3_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Infinity",
-                    "next": "soal3_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "sedang": [
-              {
-                "id": "soal3_2",
-                "text": "Apa perbedaan utama antara while dan do while?",
-                "choices": [
-                  {
-                    "text": "while selalu menjalankan minimal satu kali, do while tidak",
-                    "next": "soal3_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "do while selalu menjalankan minimal satu kali, while bisa nol kali",
-                    "next": "soal3_3",
-                    "nextType": "susah",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "tidak ada perbedaan",
-                    "next": "soal3_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "while tidak menggunakan kondisi",
-                    "next": "soal3_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "susah": [
-              {
-                "id": "soal3_3",
-                "text": "Berapa nilai variabel sum setelah loop ini selesai?",
-                "code": "int i = 1, sum = 0;  \nwhile (i <= 5) {  \n    sum += i;  \n    i += 2;  \n}\n",
-                "choices": [
-                  {
-                    "text": "15",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "9",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "12",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "10",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": 4,
-          "levelName": "4",
-          "questions": {
-            "mudah": [
-              {
-                "id": "soal4_1",
-                "text": "Apa fungsi dari statement break dalam loop?\n",
-                "choices": [
-                  {
-                    "text": "Melanjutkan iterasi berikutnya",
-                    "next": "soal4_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": " Menghentikan seluruh program",
-                    "next": "soal4_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Menghentikan loop saat ini dan keluar dari loop",
-                    "next": "soal4_2",
-                    "nextType": "sedang",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "Melewati perulangan saat ini",
-                    "next": "soal4_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "sedang": [
-              {
-                "id": "soal4_2",
-                "text": "Berapa output dari kode berikut?",
-                "code": "for (int i=1; i<=3; i++) {  \n    for (int j=1; j<=3; j++) {  \n        if (j == 2) break;  \n        printf(\"%d%d \", i, j);  \n    }  \n}\n",
-                "choices": [
-                  {
-                    "text": "11 12 13 21 22 23 31 32 33\n",
-                    "next": "soal4_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "11 21 31 ",
-                    "next": "soal4_3",
-                    "nextType": "susah",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "11 12 21 22 31 32\n",
-                    "next": "soal4_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "11 21 22 31 32 33\n",
-                    "next": "soal4_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "susah": [
-              {
-                "id": "soal4_3",
-                "text": "Pada bahasa C, fungsi exit() menerima argumen integer yang merepresentasikan status keluar program. Manakah pernyataan yang benar terkait penggunaan exit(0) dan exit(1)?",
-                "choices": [
-                  {
-                    "text": "exit(0) dan exit(1) keduanya menandakan program berhenti dengan sukses\n",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "exit(0) menandakan program berhenti dengan sukses, sedangkan exit(1) menandakan terjadi kesalahan",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "exit(0) menandakan program berhenti dengan kesalahan, sedangkan exit(1) menandakan sukses\n",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "exit(0) dan exit(1) tidak memiliki makna khusus dan dianggap sama",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": 5,
-          "levelName": "5",
-          "questions": {
-            "mudah": [
-              {
-                "id": "soal5_1",
-                "text": "Fungsi berikut ini memiliki tipe return apa?",
-                "code": "void greet() {  \n    printf(\"Hello!\");  \n}\n",
-                "choices": [
-                  {
-                    "text": "int",
-                    "next": "soal5_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "void",
-                    "next": "soal5_2",
-                    "nextType": "sedang",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "char",
-                    "next": "soal5_2",
-                    "nextType": "sedang",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "float",
-                    "next": "soal5_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "sedang": [
-              {
-                "id": "soal5_2",
-                "text": "Apa yang terjadi jika fungsi bertipe int tidak mengembalikan nilai dengan return?",
-                "code": "int malano(int a, int b) {\n    int result = a * b;\n}\n\nint main() {\n    int x = malano(3, 4);\n    printf(\"%d\\n\", x);\n    return 0;\n}\n",
-                "choices": [
-                  {
-                    "text": "Program akan mencetak 12",
-                    "next": "soal5_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Program akan mencetak 0",
-                    "next": "soal5_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Program menghasilkan undefined behavior karena fungsi malano tidak mengembalikan nilai",
-                    "next": "soal5_3",
-                    "nextType": "susah",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "Program error saat kompilasi karena fungsi malano tidak mengembalikan nilai",
-                    "next": "soal5_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "susah": [
-              {
-                "id": "soal5_3",
-                "text": "Manakah pernyataan yang benar mengenai output dan perilaku program dibawah?\n",
-                "code": "for (int i = 0; i < 5; i++) {\n    for (int j = 0; j < 5; j++) {\n        if (i * j > 6) {\n            break;\n        }\n        if (i == 3) {\n            continue;\n        }\n        printf(\"%d,%d\\n\", i, j);\n    }\n}\nexit(0);\n",
-                "choices": [
-                  {
-                    "text": "Program mencetak semua pasangan (i, j) hingga i*j > 6 lalu keluar dari kedua loop dan berhenti dengan status sukses",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Ketika i == 3, inner loop melewati iterasi tersebut tanpa mencetak apapun, tapi loop tetap berjalan sampai selesai, dan program berhenti normal",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "continue menyebabkan inner loop berhenti total ketika i == 3, dan program tidak mencetak apa pun untuk i == 3 serta langsung keluar dari program dengan status error",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Fungsi exit(0) menyebabkan loop luar berhenti secara prematur sebelum selesai iterasi i sampai 4",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": 6,
-          "levelName": "6",
-          "questions": {
-            "mudah": [
-              {
-                "id": "soal6_1",
-                "text": "Variabel yang hanya dikenal dan digunakan di dalam suatu fungsi disebut?\n",
-                "choices": [
-                  {
-                    "text": "Variabel global",
-                    "next": "soal6_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Variabel lokal",
-                    "next": "soal6_2",
-                    "nextType": "sedang",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "Variabel statis",
-                    "next": "soal6_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Variabel register",
-                    "next": "soal6_2",
-                    "nextType": "sedang",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "sedang": [
-              {
-                "id": "soal6_2",
-                "text": "Manakah pernyataan yang benar tentang variabel static di C?\n",
-                "choices": [
-                  {
-                    "text": "Variabel statis hanya ada selama fungsi dijalankan",
-                    "next": "soal6_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Variabel statis mempertahankan nilainya antara pemanggilan fungsi",
-                    "next": "soal6_3",
-                    "nextType": "susah",
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "Variabel statis hanya dapat diakses dari luar fungsi\n",
-                    "next": "soal6_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "Variabel statis selalu disimpan di register CPU",
-                    "next": "soal6_3",
-                    "nextType": "susah",
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ],
-            "susah": [
-              {
-                "id": "soal6_3",
-                "text": "Apa output dari kode dibawah?",
-                "code": "#include <stdio.h>\n\nvoid func();\nint main() {\n    func();\n    func();\n\n    return 0;\n}\n\nvoid func() {\n    static int counter = 0;\n    counter++;\n    printf(\"%d \", counter);\n}",
-                "choices": [
-                  {
-                    "text": "1 1",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "2 1",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  },
-                  {
-                    "text": "1 2",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": true
-                  },
-                  {
-                    "text": "0 0",
-                    "next": null,
-                    "nextType": null,
-                    "isCorrect": false
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ]
+ "$schema": "../../schemas/challenge_schema.json",
+ "challenges": [
+   {
+     "challengeId": 1,
+     "title": "Tipe Data, Variabel, Operator",
+     "levels": [
+       {
+         "id": 1,
+         "levelName": "Level 1",
+         "content": [
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Manakah dari berikut ini yang merupakan tipe data untuk menyimpan angka desimal di C?\n",
+               "choices": [
+                 {
+                   "text": "int",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "float",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "string",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "char",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Nilai z setelah eksekusi adalah?",
+               "code": "int x = 5;  \nint y = 10;  \nint z = ++x * y--;  \n",
+               "choices": [
+                 {
+                   "text": "55",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "60 ",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "50",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "45",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa nilai c setelah eksekusi?",
+               "code": "int a = 6;  \nint b = 2;  \nfloat c = a / b;  \n",
+               "choices": [
+                 {
+                   "text": "2.5",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "2.0",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "0",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "3.0",
+                   "isCorrect": true
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut",
+               "scaffoldCode": "#include <stdio.h>\n\n[dz1] {\n    int a = 8, [dz2] = 12;\n    int hasil;\n    \n    hasil = [dz3] + b;\n    \n    printf(\"Hasil penjumlahan %d dan %d adalah [dz4]\n\", a, b, hasil);\n    return 0;\n}",
+               "draggableOptions": [
+                 {
+                   "id": "dd-1",
+                   "content": "%d"
+                 },
+                 {
+                   "id": "dd-2",
+                   "content": "b"
+                 },
+                 {
+                   "id": "dd-3",
+                   "content": "a"
+                 },
+                 {
+                   "id": "dd-4",
+                   "content": "int main()"
+                 }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" },  { "id": "dz3" }, { "id": "dz4" }
+               ],
+               "correctSequence": ["dd-4", "dd-2", "dd-3", "dd-1"]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut",
+               "scaffoldCode": "#include <stdio.h>\n\nint main() {\n    float jariJari = 7.5;\n    float keliling, luas;\n    float pi = 3.14;\n\n    keliling = 2 * pi * [dz1];\n    luas = [dz2] * jariJari * jariJari;\n\n    printf(\"Keliling lingkaran dengan jari-jari %.2f adalah %.2f\n\", jariJari, [dz3]);\n    printf(\"Luas lingkaran dengan jari-jari %.2f adalah %.2f\n\", jariJari, [dz4]);\n\n    return 0;\n}",
+               "draggableOptions": [
+                 {
+                   "id": "dd-1",
+                   "content": "luas"
+                 },
+                 {
+                   "id": "dd-2",
+                   "content": "pi"
+                 },
+                 {
+                   "id": "dd-3",
+                   "content": "jariJari"
+                 },
+                 {
+                   "id": "dd-4",
+                   "content": "keliling"
+                 }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }
+               ],
+               "correctSequence": ["dd-3", "dd-2", "dd-4", "dd-1"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa hasil dari kode berikut ini?",
+               "code": "#include <stdio.h>\n\nint main() {\n    int a = 17;\n    int b = 5;\n    int hasil = a % b;\n    \n    printf(\"Hasil: %d\n\", hasil);\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "17",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "5",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "2",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "3",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa hasil dari kode berikut ini?",
+               "code": "#include <stdio.h>\n\nint main() {\n    char a = 'A';\n    char b = '11';\n    \n    printf(\"Hasil: %c dan %c\n\", a, b);\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "Hasil: A dan 0",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Hasil: A dan B",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Error",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Hasil: A dan 11",
+                   "isCorrect": true
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar mendapatkan Hasil : 63",
+               "scaffoldCode": "#include <stdio.h>\n\nint main() {\n    int x = 15, y = 4, z = 3;\n    int hasil, modulo;\n\n    [dz1] = [dz2]\n    [dz3] = [dz4] + modulo;\n\n    printf(\"Hasil: %d\n\"[dz5]);\n    return 0;\n}",
+               "draggableOptions": [
+                 {
+                   "id": "dd-1",
+                   "content": ", hasil"
+                 },
+                 {
+                   "id": "dd-2",
+                   "content": "x * y"
+                 },
+                 {
+                   "id": "dd-3",
+                   "content": "modulo"
+                 },
+                 {
+                   "id": "dd-4",
+                   "content": "z % y;"
+                 },
+                 {
+                   "id": "dd-5",
+                   "content": "hasil"
+                 }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }, { "id": "dz5" }
+               ],
+               "correctSequence": ["dd-3", "dd-4", "dd-5", "dd-2", "dd-1"]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar mendapatkan hasil a = 10, b = 5",
+               "scaffoldCode": "#include <stdio.h>\n\nint main() {\n    int a = 5, b = 10, temp;\n    \n    [dz1] = a;\n    [dz2] = b;\n    [dz3] = temp;\n\n    printf(\"a = %d, b = %d\n\", a, b);\n    \n    return 0;\n}",
+               "draggableOptions": [
+                 {
+                   "id": "dd-1",
+                   "content": "b"
+                 },
+                 {
+                   "id": "dd-2",
+                   "content": "a"
+                 },
+                 {
+                   "id": "dd-3",
+                   "content": "temp"
+                 }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }
+               ],
+               "correctSequence": ["dd-3", "dd-2", "dd-1"]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susunlah blok kode program berikut untuk mendapatkan hasil sesuai pada comment di kode programnya",
+               "scaffoldCode": "#include <stdio.h>\n\nint main() {\n    int a = [dz1], b = [dz2], c = [dz3], hasilA;\n    \n    float x = [dz4], y = 2.5, hasilB;\n    \n    char c1 = [dz5];\n    \n    //Hasil: 4\n    hasilA = ([dz6] + [dz7]) * c / a;      \n    printf(\"Int: = %d\n\", hasilA);\n    \n    //Hasil : 7,50\n    hasilB = [dz8] * y ;   \n    printf(\"Float: = %.2f\n\", hasilB);\n    \n    //hasil : 2\n    printf(\"Char: = %c\n\", c1);\n    \n    return 0;\n}",
+               "draggableOptions": [
+                 {
+                   "id": "dd-1",
+                   "content": "y"
+                 },
+                 {
+                   "id": "dd-2",
+                   "content": "3"
+                 },
+                 {
+                   "id": "dd-3",
+                   "content": "x"
+                 },
+                 {
+                   "id": "dd-4",
+                   "content": "10"
+                 },
+                 {
+                   "id": "dd-5",
+                   "content": "b"
+                 },
+                 {
+                   "id": "dd-6",
+                   "content": "2"
+                 },
+                 {
+                   "id": "dd-7",
+                   "content": "5"
+                 },
+                 {
+                   "id": "dd-8",
+                   "content": "'2'"
+                 },
+                 {
+                   "id": "dd-9",
+                   "content": "5.5"
+                 }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }, { "id": "dz5" }, { "id": "dz6" }, { "id": "dz7" }, { "id": "dz8" }, { "id": "dz9" }
+               ],
+               "correctSequence": ["dd-4", "dd-2", "dd-7", "dd-9","dd-8", "dd-3", "dd-1", "dd-5"]
+             }
+           }
+         ]
+       }
+     ]
+   },
+   {
+     "challengeId": 2,
+     "title": "if, else if, switch",
+     "levels": [
+       {
+         "id": 2,
+         "levelName": "Level 2",
+         "content": [
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa yang dicetak dari program berikut?",
+               "code": "int a = 10, b = 5;\n\nif (a > 5)\n    if (b < 3)\n        printf(\"X\");\n    else\n        printf(\"Y\");",
+               "choices": [
+                 {
+                   "text": "X",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Y",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Tidak mencetak",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Error",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Kamu diminta menulis program untuk menampilkan “Lulus” jika nilai lebih besar dari 60. Nilai diinput dalam variabel nilai.\nSusun potongan kode berikut agar program berjalan dengan baik",
+               "scaffoldCode": "#include <stdio.h>\n\n[dz1]\n{\n    [dz2]\n    [dz3]\n    return 0;\n}",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "if (nilai >= 60)" },
+                 { "id": "dd-2", "content": "int nilai = 75;" },
+                 { "id": "dd-3", "content": "printf(\"Lulus\");" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }
+               ],
+               "correctSequence": ["dd-2", "dd-1", "dd-3"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa output dari program berikut?",
+               "code": "int hari = 2;\nswitch(hari) {\n    case 1:\n        printf(\"Senin\");\n        break;\n    case 2:\n        printf(\"Selasa\");\n        break;\n    default:\n        printf(\"Hari lain\");\n}",
+               "choices": [
+                 {
+                   "text": "Senin",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Selasa",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Hari lain",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Error",
+                   "isCorrect": true
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Seorang pengguna memasukkan usia. Program harus mencetak \"Remaja\" jika usia di bawah 18 tahun, \"Anak-anak\" jika di bawah 13 tahun, dan \"Dewasa\" untuk usia 18 ke atas.\nSusun potongan kode berikut agar logika kategori usia dijalankan dengan benar",
+               "scaffoldCode": "#include <stdio.h>\n\n[dz1]\n{\n    [dz2]\n    [dz3]\n    [dz4]\n    [dz5]\n    [dz6]\n    [dz7]\n    return 0;\n}",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "printf(\"Anak-anak\");" },
+                 { "id": "dd-2", "content": "int umur = 16;" },
+                 { "id": "dd-3", "content": "printf(\"Remaja\");" },
+                 { "id": "dd-4", "content": "else if (umur < 18)" },
+                 { "id": "dd-5", "content": "else" },
+                 { "id": "dd-6", "content": "if (umur < 13)" },
+                 { "id": "dd-7", "content": "printf(\"Dewasa\");" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }, { "id": "dz5" }, { "id": "dz6" }, { "id": "dz7" }
+               ],
+               "correctSequence": ["dd-2", "dd-6", "dd-1", "dd-4", "dd-3", "dd-5", "dd-7"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Manakah pernyataan yang benar mengenai switch di bahasa pemrograman C?",
+               "choices": [
+                 {
+                   "text": "switch hanya bisa mengecek nilai string",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "switch hanya bisa mengecek tipe data integer atau karakter",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "switch bisa menggunakan ekspresi boolean",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "switch tidak memerlukan break",
+                   "isCorrect": true
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode agar status baterai ditampilkan sesuai nilainya.",
+               "scaffoldCode": "#include <stdio.h>\n\n[dz1]\n{\n    int baterai = 75;\n    [dz2]\n    [dz3]\n    [dz4]\n    [dz5]\n    [dz6]\n    [dz7]\n    [dz8]\n    return 0;\n}",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "100)" },
+                 { "id": "dd-2", "content": "else" },
+                 { "id": "dd-3", "content": "if (baterai ==" },
+                 { "id": "dd-4", "content": "printf(\"Cukup\");" },
+                 { "id": "dd-5", "content": "else if (baterai >=" },
+                 { "id": "dd-6", "content": "printf(\"Low Battery\");" },
+                 { "id": "dd-7", "content": "30)" },
+                 { "id": "dd-8", "content": "printf(\"Full\");" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }, { "id": "dz5" }, { "id": "dz6" }, { "id": "dz7" }, { "id": "dz8" }
+               ],
+               "correctSequence": ["dd-3", "dd-1", "dd-8", "dd-5", "dd-7", "dd-4", "dd-2", "dd-6"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Perhatikan kode berikut. Apa kesalahan dalam struktur else if ini?",
+               "code": "int nilai = 90;\nif (nilai >= 80)\n    printf(\"Bagus\");\nelse (nilai >= 60)\n    printf(\"Cukup\");",
+               "choices": [
+                 {
+                   "text": "Kurang break",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "else tidak boleh pakai kondisi",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Harusnya pakai switch",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Nilai tidak bisa dibandingkan dalam if",
+                   "isCorrect": true
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Kode berikut akan mencetak apa?",
+               "code": "int x = 2;  \nswitch (x) {  \n    case 1:  \n        printf(\"One\");  \n    case 2:  \n        printf(\"Two\");  \n    case 3:  \n        printf(\"Three\");  \n        break;  \n    default:  \n        printf(\"Default\");  \n}",
+               "choices": [
+                 {
+                   "text": "TwoThree",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "TwoThreeDefault",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Three",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "OneTwoThree",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Dalam sebuah aplikasi e-commerce, pengguna akan mendapatkan promo tertentu berdasarkan kode yang dimasukkan.\nJika kodenya adalah 999, maka tampilkan \"Promo Spesial\".\nJika kodenya antara 500–998, tampilkan \"Promo Reguler\".\nJika kodenya di bawah 500, tampilkan \"Tidak Ada Promo\". Susun kode berikut agar promo ditampilkan sesuai kondisi",
+               "scaffoldCode": "#include <stdio.h>\n\n[dz1]\n{\n    int kode = 700;\n    [dz2]\n    [dz3]\n    [dz4]\n    [dz5]\n    [dz6]\n    [dz7]\n    [dz8]\n    return 0;\n}",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "500)" },
+                 { "id": "dd-2", "content": "printf(\"Promo Reguler\");" },
+                 { "id": "dd-3", "content": "printf(\"Promo Spesial\");" },
+                 { "id": "dd-4", "content": "else" },
+                 { "id": "dd-5", "content": "999)" },
+                 { "id": "dd-6", "content": "if (kode ==" },
+                 { "id": "dd-7", "content": "printf(\"Tidak Ada Promo\");" },
+                 { "id": "dd-8", "content": "else if (kode >=" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }, { "id": "dz5" }, { "id": "dz6" }, { "id": "dz7" }, { "id": "dz8" }
+               ],
+               "correctSequence": ["dd-6", "dd-5", "dd-3", "dd-8", "dd-1", "dd-2", "dd-4", "dd-7"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa yang sebenarnya terjadi jika program dijalankan?",
+               "code": "int level = 1;\n\nswitch(level) {\n    case 1:\n        printf(\"Pemula\\n\");\n    case 2:\n        printf(\"Menengah\\n\");\n        break;\n    case 3:\n        printf(\"Mahir\\n\");\n}",
+               "choices": [
+                 {
+                   "text": "Mencetak hanya \"Pemula\"",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Mencetak \"Pemula\" dan \"Menengah\"",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Error karena tidak ada break di case 1",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Tidak mencetak apa-apa",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           }
+         ]
+       }
+     ]
+   },
+   {
+     "challengeId": 3,
+     "title": "for, while, do-while",
+     "levels": [
+       {
+         "id": 3,
+         "levelName": "Level 3",
+         "content": [
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Berapa kali loop berikut akan berjalan?",
+               "code": "for (int i = 0; i < 5; i++) {  \n   …\n}",
+               "choices": [
+                 {
+                   "text": "4 kali",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "5 kali",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "6 kali",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Tak terbatas",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Buatlah program untuk mencetak angka 1 sampai 3 menggunakan for. Susun potongan kode berikut agar program bekerja dengan benar",
+               "scaffoldCode": "#include <stdio.h>\n\nint main() {\n    [dz1] [dz2] [dz3]\n        [dz4];\n    return 0;\n}",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "for (int i = 1;" },
+                 { "id": "dd-2", "content": "i <= 3;" },
+                 { "id": "dd-3", "content": "i++)" },
+                 { "id": "dd-4", "content": "printf(\"%d \", i)" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3", "dd-4"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa perbedaan utama antara while dan do while?",
+               "choices": [
+                 {
+                   "text": "while selalu menjalankan minimal satu kali, do while tidak",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "do while selalu menjalankan minimal satu kali, while bisa sama sekali tidak dijalankan",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "while selalu menjalankan minimal satu kali, do while bisa tidak dijalankan",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "while tidak menggunakan kondisi",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar program mencetak angka setidaknya satu kali meskipun kondisi awal langsung salah.",
+               "scaffoldCode": "#include <stdio.h>\n\nint main() {\n    [dz1]\n    [dz2]\n        [dz3];\n    [dz4];\n}",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "int i = 0;" },
+                 { "id": "dd-2", "content": "do {" },
+                 { "id": "dd-3", "content": "printf(\"%d\", i)" },
+                 { "id": "dd-4", "content": "} while (i > 0);" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3", "dd-4"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Berapa nilai variabel sum setelah loop ini selesai?",
+               "code": "int i = 1, sum = 0;  \nwhile (i <= 5) {  \n    sum += i;  \n    i += 2;  \n}",
+               "choices": [
+                 {
+                   "text": "15",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "9",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "12",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "10",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Buatlah program untuk mencetak kata 'C' sebanyak 2 kali menggunakan while. Susun kode berikut dengan urutan yang tepat.",
+               "scaffoldCode": "#include <stdio.h>\n\nint main() {\n    [dz1]\n    [dz2]\n        [dz3];\n        [dz4];\n}",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "int i = 0;" },
+                 { "id": "dd-2", "content": "while (i < 2)" },
+                 { "id": "dd-3", "content": "printf(\"C \");" },
+                 { "id": "dd-4", "content": "i++;" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3", "dd-4"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa output dari program ini?",
+               "code": "int i = 1;\nwhile (i <= 3) {\n    printf(\"%d \", i);\n    i++;\n}",
+               "choices": [
+                 {
+                   "text": "1 2 3",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "0 1 2",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "1 2",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "2 3 4",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar program menjumlahkan semua angka kelipatan 3 dari 1 sampai 15.",
+               "scaffoldCode": "#include <stdio.h>\n\nint main() {\n    [dz1]\n    [dz2] [dz3] [dz4]\n        [dz5]\n            [dz6];\n    return 0;\n}",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "int total = 0;" },
+                 { "id": "dd-2", "content": "for (int i =" },
+                 { "id": "dd-3", "content": "1; i <= 15;" },
+                 { "id": "dd-4", "content": "i++)" },
+                 { "id": "dd-5", "content": "if (i % 3 == 0)" },
+                 { "id": "dd-6", "content": "total += i;" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }, { "id": "dz5" }, { "id": "dz6" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3", "dd-4", "dd-5", "dd-6"]
+             }
+           }
+         ]
+       }
+     ]
+   },
+   {
+     "challengeId": 4,
+     "title": "nested loop, break, continue, exit",
+     "levels": [
+       {
+         "id": 4,
+         "levelName": "Level 4",
+         "content": [
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa fungsi dari statement break dalam loop?",
+               "choices": [
+                 {
+                   "text": "Melanjutkan iterasi berikutnya",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Menghentikan seluruh program",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Menghentikan loop saat ini dan keluar dari loop",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Melewati perulangan saat ini",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa output dari program berikut?",
+               "code": "int main() {\n    for (int i = 5; i >= 1; i--) {\n        if (i < 3) break;\n        printf(\"%d \", i);\n    }\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "5 4 3",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "3 2 1",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "5 4 3 2 1",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "5 4",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar program mencetak angka dari 1 hingga 3.",
+               "scaffoldCode": "#include <stdio.h>\n\n[dz1]\n[dz2]\n{\n    [dz3]\n}",
+               "draggableOptions": [
+                 {"id": "dd-1", "content": "printf(\"%d \", i);"},
+                 {"id": "dd-2", "content": "int i;"},
+                 {"id": "dd-3", "content": "for (i = 1; i <= 3; i++)"}
+               ],
+               "dropZones": [
+                 {"id": "dz1"}, {"id": "dz2"}, {"id": "dz3"}
+               ],
+               "correctSequence": ["dd-2", "dd-3", "dd-1"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa output dari program berikut?",
+               "code": "int main() {\n    printf(\"Start \");\n    exit(0);\n    printf(\"End\");\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "Start End",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "End",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Start",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Tidak ada output",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun kode berikut agar mencetak angka 0 sampai 2 menggunakan while.",
+               "scaffoldCode": "#include <stdio.h>\n\n[dz1]\n[dz2]\n{\n    [dz3]\n    [dz4]\n}",
+               "draggableOptions": [
+                 {"id": "dd-1", "content": "i++;"},
+                 {"id": "dd-2", "content": "int i = 0;"},
+                 {"id": "dd-3", "content": "while (i < 3)"},
+                 {"id": "dd-4", "content": "printf(\"%d \", i);"}
+               ],
+               "dropZones": [
+                 {"id": "dz1"}, {"id": "dz2"}, {"id": "dz3"}, {"id": "dz4"}
+               ],
+               "correctSequence": ["dd-2", "dd-3", "dd-4", "dd-1"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa kesalahan pada program berikut?",
+               "code": "#include <stdio.h>\nint main() {\n    int i = 1;\n    while (i <= 5)\n        printf(\"%d\\n\", i);\n        i++;\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "Tidak ada kesalahan",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "while tidak bisa digunakan dengan int",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Increment i++ tidak masuk dalam blok while karena tidak diberi kurung kurawal {}",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "i++ harus ditaruh sebelum printf",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun bagian isi loop berikut agar program mencetak 2 4 6.",
+               "scaffoldCode": "#include <stdio.h>\n\nint i = 1;\nwhile (i <= 3) {\n    [dz1]\n    [dz2]\n}",
+               "draggableOptions": [
+                 {"id": "dd-1", "content": "printf(\"%d \", i * 2);"},
+                 {"id": "dd-2", "content": "i++;"}
+               ],
+               "dropZones": [
+                 {"id": "dz1"}, {"id": "dz2"}
+               ],
+               "correctSequence": ["dd-1", "dd-2"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Pada bahasa pemrograman C, fungsi exit() menerima argumen integer yang merepresentasikan status keluar program. Manakah pernyataan yang benar?",
+               "choices": [
+                 {
+                   "text": "exit(0) dan exit(1) keduanya menandakan program berhenti dengan sukses",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "exit(0) menandakan program berhenti dengan sukses, sedangkan exit(1) menandakan terjadi kesalahan",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "exit(0) menandakan program berhenti dengan kesalahan",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "exit(0) dan exit(1) dianggap sama",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar program mencetak total dari angka 1 hingga 5.",
+               "scaffoldCode": "#include <stdio.h>\n\n[dz1]\n[dz2]\n[dz3]\n{\n    [dz4]\n    [dz5]\n}\n[dz6]",
+               "draggableOptions": [
+                 {"id": "dd-1", "content": "i++;"},
+                 {"id": "dd-2", "content": "int total = 0;"},
+                 {"id": "dd-3", "content": "printf(\"Total: %d\", total);"},
+                 {"id": "dd-4", "content": "int i = 1;"},
+                 {"id": "dd-5", "content": "total += i;"},
+                 {"id": "dd-6", "content": "while (i <= 5)"}
+               ],
+               "dropZones": [
+                 {"id": "dz1"}, {"id": "dz2"}, {"id": "dz3"}, {"id": "dz4"}, {"id": "dz5"}, {"id": "dz6"}
+               ],
+               "correctSequence": ["dd-2", "dd-4", "dd-6", "dd-5", "dd-1", "dd-3"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa output dari program berikut?",
+               "code": "int main() {\n    int i = 0;\n    while (i < 4) {\n        i++;\n        if (i == 2)\n            continue;\n        printf(\"%d \", i);\n    }\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "1 2 3 4",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "1 3 4",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "0 1 2 3",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "1 2 3",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           }
+         ]
+       }
+     ]
+   },
+   {
+     "challengeId": 5,
+     "title": "fungsi",
+     "levels": [
+       {
+         "id": 5,
+         "levelName": "Level 5",
+         "content": [
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa output dari program berikut?",
+               "code": "#include <stdio.h>\n\nint tambah(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int x = 2, y = 3;\n    printf(\"%d\\n\", tambah(x, y + 1));\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "5",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "6",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "4",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "3",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Berikut ini adalah bagian dari definisi fungsi dalam bahasa C, kecuali...",
+               "choices": [
+                 {
+                   "text": "Tipe data nilai kembalian",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Nama fungsi",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Tanda kurung dan parameter",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Tanda #define",
+                   "isCorrect": true
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa output dari program di bawah?",
+               "code": "#include <stdio.h>\n\nvoid tampil() {\n    printf(\"Hello world!\\n\");\n}\n\nint main() {\n    tampil();\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "Error karena tidak ada return dalam fungsi tampil()",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Menampilkan tulisan “Hello world!”",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Tidak menampilkan apa-apa",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Menampilkan angka 0",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar menjadi program C lengkap yang mencetak hasil penjumlahan 2 + 3 menggunakan fungsi.",
+               "scaffoldCode": "[dz1]\n\n[dz2]\n\n[dz3]\n\n[dz4]\n\n[dz5]",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "#include <stdio.h>" },
+                 { "id": "dd-2", "content": "int tambah(int a, int b) {" },
+                 { "id": "dd-3", "content": "return a + b;" },
+                 { "id": "dd-4", "content": "int main() {" },
+                 { "id": "dd-5", "content": "int hasil = tambah(2, 3);\nprintf(\"%d\\n\", hasil);\nreturn 0;\n}" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }, { "id": "dz5" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3", "dd-4", "dd-5"]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar menjadi program C lengkap yang mencetak hasil perkalian 4 × 2 menggunakan fungsi.",
+               "scaffoldCode": "[dz1]\n\n[dz2]\n\n[dz3]\n\n[dz4]\n\n[dz5]",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "#include <stdio.h>" },
+                 { "id": "dd-2", "content": "int kali(int a, int b) {" },
+                 { "id": "dd-3", "content": "return a * b;" },
+                 { "id": "dd-4", "content": "int main() {" },
+                 { "id": "dd-5", "content": "int hasil = kali(4, 2);\nprintf(\"%d\\n\", hasil);\nreturn 0;\n}" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }, { "id": "dz5" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3", "dd-4", "dd-5"]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Lengkapi program berikut supaya menghasilkan output bilangan ganjil dari 1 hingga 7 yang ditambahkan ke total. Semua angka tetap dicetak.",
+               "scaffoldCode": "void hitung() {\n    int i = 1, total = 0;\n    while (i <= 7) {\n        [dz1]\n        [dz2]\n        [dz3]\n    }\n}",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "if (i % 2 != 0)\n    total += i;" },
+                 { "id": "dd-2", "content": "printf(\"%d \", i);" },
+                 { "id": "dd-3", "content": "i++;" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa output dari program berikut?",
+               "code": "int hitung(int x) {\n    if (x == 0) return 0;\n    else return x + hitung(x - 1);\n}\n\nint main() {\n    printf(\"%d\\n\", hitung(3));\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "3",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "6",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "0",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "9",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa yang akan ditampilkan oleh program berikut?",
+               "code": "void tampil(int x) {\n    x = x + 5;\n    printf(\"Di dalam fungsi: %d\\n\", x);\n}\n\nint main() {\n    int a = 10;\n    tampil(a);\n    printf(\"Di luar fungsi: %d\\n\", a);\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "Di dalam fungsi: 15\nDi luar fungsi: 15",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Di dalam fungsi: 15\nDi luar fungsi: 10",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Di dalam fungsi: 10\nDi luar fungsi: 10",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Program error",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Perhatikan kode berikut. Berapa nilai yang dicetak?",
+               "code": "int misteri(int n) {\n    if (n <= 1) return 1;\n    return n * misteri(n - 1);\n}\n\nint main() {\n    printf(\"%d\\n\", misteri(4));\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "4",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "10",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "24",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "12",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa kesalahan pada program di bawah?",
+               "code": "#include <stdio.h>\n\nint jumlah(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int hasil = jml(2, 3);\n    printf(\"%d\\n\", hasil);\n    return 0;\n}",
+               "choices": [
+                 {
+                   "text": "Fungsi jumlah harus bertipe void",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Fungsi jml belum didefinisikan, padahal yang ada adalah jumlah",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Tidak boleh menggunakan angka dalam nama variabel",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "printf tidak boleh dipakai di main()",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           }
+         ]
+       }
+     ]
+   },
+   {
+     "challengeId": 6,
+     "title": "Penggolongan variabel berdasarkan kelas penyimpanan",
+     "levels": [
+       {
+         "id": 6,
+         "levelName": "Level 6",
+         "content": [
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Variabel yang hanya dikenal dan digunakan di dalam suatu fungsi disebut?",
+               "choices": [
+                 {
+                   "text": "Variabel global",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Variabel lokal",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Variabel statis",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Variabel register",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Manakah dari keyword berikut yang memungkinkan variabel disimpan secara permanen meskipun fungsi selesai dieksekusi?",
+               "choices": [
+                 {
+                   "text": "auto",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "extern",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "static",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "register",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Apa tujuan penggunaan register dalam deklarasi variabel?",
+               "choices": [
+                 {
+                   "text": "Agar variabel bisa digunakan oleh semua fungsi",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Agar variabel disimpan di stack memory",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Untuk menyarankan penyimpanan variabel di register CPU",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Untuk mengatur nilai konstan dalam variabel",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar fungsi mencetak angka 1, 2, 3 setiap kali dipanggil berturut-turut.",
+               "scaffoldCode": "[dz1]\n[dz2]\n[dz3]",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "static int counter = 0;" },
+                 { "id": "dd-2", "content": "counter++;" },
+                 { "id": "dd-3", "content": "printf(\"%d\\n\", counter);" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3"]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar menjadi program C lengkap yang mendeklarasikan variabel dengan storage class register dan mencetak nilainya.",
+               "scaffoldCode": "[dz1]\n[dz2]\n[dz3]",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "int main() {" },
+                 { "id": "dd-2", "content": "register int nilai = 10;" },
+                 { "id": "dd-3", "content": "printf(\"%d\", nilai);\n}" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3"]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar mencetak nilai yang terus bertambah setiap kali fungsi dipanggil karena variabel disimpan menggunakan static.",
+               "scaffoldCode": "[dz1]\n[dz2]\n[dz3]",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "static int hitung = 0;" },
+                 { "id": "dd-2", "content": "hitung++;" },
+                 { "id": "dd-3", "content": "printf(\"%d\\n\", hitung);" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3"]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Manakah pernyataan yang benar tentang variabel static di C?",
+               "choices": [
+                 {
+                   "text": "Variabel statis hanya ada selama fungsi dijalankan",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Variabel statis mempertahankan nilainya antara pemanggilan fungsi",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Variabel statis hanya dapat diakses dari luar fungsi",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Variabel statis selalu disimpan di register CPU",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Jika fungsi hitung() berikut dipanggil tiga kali secara berurutan maka apa outputnya?",
+               "code": "void hitung() {\n    static int counter = 0;\n    counter++;\n    printf(\"%d\\n\", counter);\n}",
+               "choices": [
+                 {
+                   "text": "1 1 1",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "1 2 3",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "3 2 1",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "0 1 2",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "multipleChoice",
+             "data": {
+               "text": "Jika sebuah variabel dideklarasikan dengan keyword static di luar semua fungsi, maka...",
+               "choices": [
+                 {
+                   "text": "Variabel tersebut hanya dapat diakses oleh file tempat ia dideklarasikan",
+                   "isCorrect": true
+                 },
+                 {
+                   "text": "Variabel tersebut dapat digunakan di semua file menggunakan extern",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Variabel akan dihapus setelah program selesai dijalankan",
+                   "isCorrect": false
+                 },
+                 {
+                   "text": "Variabel hanya berlaku dalam fungsi main()",
+                   "isCorrect": false
+                 }
+               ]
+             }
+           },
+           {
+             "type": "dragAndDrop",
+             "data": {
+               "instruction": "Susun potongan kode berikut agar menghasilkan output bertambah setiap kali fungsi dipanggil karena menggunakan static. Fungsi naikkan() dipanggil dari main() sebanyak 3 kali.",
+               "scaffoldCode": "[dz1]\n[dz2]\n[dz3]\n[dz4]\n[dz5]",
+               "draggableOptions": [
+                 { "id": "dd-1", "content": "static int counter = 0;" },
+                 { "id": "dd-2", "content": "void naikkan() {" },
+                 { "id": "dd-3", "content": "counter++;\nprintf(\"%d\\n\", counter);\n}" },
+                 { "id": "dd-4", "content": "int main() {" },
+                 { "id": "dd-5", "content": "naikkan();\nnaikkan();\nnaikkan();\nreturn 0;\n}" }
+               ],
+               "dropZones": [
+                 { "id": "dz1" }, { "id": "dz2" }, { "id": "dz3" }, { "id": "dz4" }, { "id": "dz5" }
+               ],
+               "correctSequence": ["dd-1", "dd-2", "dd-3", "dd-4", "dd-5"]
+             }
+           }
+         ]
+       }
+     ]
+   }
+ ]
 }
