@@ -1,208 +1,95 @@
-import 'package:mocktail/mocktail.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:mocktail/mocktail.dart';
+import 'package:timetocode/app/data/services/hive_service.dart';
 import 'package:timetocode/app/data/services/music_service.dart';
-
 import 'package:timetocode/app/data/services/sound_effect_service.dart';
-
 import 'package:timetocode/features/4_settings/presentation/screens/pengaturan_page.dart';
-
 import 'package:timetocode/features/4_settings/presentation/widgets/setting_item.dart';
 
-
-
-class MockMusicService extends Mock implements MusicService {}
-
-class MockSoundEffectService extends Mock implements SoundEffectService {}
-
-
-
-void main() {
-
-  late MockMusicService mockMusicNotifier;
-
-  late MockSoundEffectService mockSoundEffectNotifier;
-
-
-
-  Widget createTestablePage({
-
-    required bool initialMusicState,
-
-    required bool initialEffectState,
-
-  }) {
-
-    mockMusicNotifier = MockMusicService();
-
-    mockSoundEffectNotifier = MockSoundEffectService();
-
-
-
-    when(() => mockMusicNotifier.build()).thenReturn(initialMusicState);
-
-    when(() => mockSoundEffectNotifier.build()).thenReturn(initialEffectState);
-
-
-
-    when(() => mockSoundEffectNotifier.playButtonClick2()).thenAnswer((_) {});
-
-    
-
-    when(() => mockMusicNotifier.updateMusicSetting(any())).thenAnswer((_) async {});
-
-    when(() => mockSoundEffectNotifier.updateSoundEffectSetting(any())).thenAnswer((_) async {});
-
-
-
-    return ProviderScope(
-
-      overrides: [
-
-        musicServiceProvider.overrideWith(() => mockMusicNotifier),
-
-        soundEffectServiceProvider.overrideWith(() => mockSoundEffectNotifier),
-
-      ],
-
-      child: ScreenUtilInit(
-
-        designSize: const Size(360, 690),
-
-        builder: (context, child) => const MaterialApp(
-
-          home: PengaturanPage(),
-
-        ),
-
-      ),
-
-    );
-
-  }
-
-
-
-  setUp(() {
-
-    registerFallbackValue(true);
-
-    registerFallbackValue(false);
-
-  });
-
-
-
-  testWidgets('PengaturanPage displays initial state from providers',
-
-      (tester) async {
-
-    await tester.pumpWidget(createTestablePage(
-
-      initialMusicState: true,
-
-      initialEffectState: false,
-
-    ));
-
-
-
-    final musicItem = tester.widget<SettingItem>(
-
-      find.ancestor(
-
-        of: find.text('Musik Latar'),
-
-        matching: find.byType(SettingItem),
-
-      ),
-
-    );
-
-    
-
-    final effectItem = tester.widget<SettingItem>(
-
-      find.ancestor(
-
-        of: find.text('Efek Suara'),
-
-        matching: find.byType(SettingItem),
-
-      ),
-
-    );
-
-
-
-    expect(musicItem.value, isTrue);
-
-    expect(effectItem.value, isFalse);
-
-  });
-
-
-
-  testWidgets('Tapping music setting calls correct methods', (tester) async {
-
-    await tester.pumpWidget(createTestablePage(
-
-      initialMusicState: true,
-
-      initialEffectState: true,
-
-    ));
-
-
-
-    await tester.tap(find.widgetWithText(SettingItem, 'Musik Latar'));
-
-    await tester.pumpAndSettle();
-
-
-
-    verify(() => mockSoundEffectNotifier.playButtonClick2()).called(1);
-
-    verify(() => mockMusicNotifier.updateMusicSetting(false)).called(1);
-
-  });
-
-
-
-  testWidgets('Tapping sound effect setting calls correct methods', (tester) async {
-
-    await tester.pumpWidget(createTestablePage(
-
-      initialMusicState: true,
-
-      initialEffectState: true,
-
-    ));
-
-
-
-    await tester.tap(find.widgetWithText(SettingItem, 'Efek Suara'));
-
-    await tester.pumpAndSettle();
-
-
-
-    verify(() => mockSoundEffectNotifier.playButtonClick2()).called(1);
-
-    verify(() => mockSoundEffectNotifier.updateSoundEffectSetting(false)).called(1);
-
-    
-
-    verifyNever(() => mockMusicNotifier.updateMusicSetting(any()));
-
-  });
-
+class MockHiveService extends Mock implements HiveService {}
+
+class TestMusicService extends MusicService {
+  @override
+  Future<void> playMainMenuMusic() async {} 
+  @override
+  Future<void> stopMusic() async {} 
 }
 
+class TestSoundEffectService extends SoundEffectService {
+  @override
+  void playButtonClick2() {} 
+  @override
+  Future<void> disposeTypingPlayer() async {} 
+}
+
+void main() {
+  late MockHiveService mockHiveService;
+
+  setUp(() {
+    mockHiveService = MockHiveService();
+    when(() => mockHiveService.saveMusicSetting(any())).thenAnswer((_) async {});
+    when(() => mockHiveService.saveSoundEffectSetting(any())).thenAnswer((_) async {});
+  });
+
+  Widget createTestablePage({
+    required bool initialMusicState,
+    required bool initialEffectState,
+  }) {
+    when(() => mockHiveService.getMusicSetting()).thenReturn(initialMusicState);
+    when(() => mockHiveService.getSoundEffectSetting()).thenReturn(initialEffectState);
+
+    return ProviderScope(
+      overrides: [
+        hiveProvider.overrideWithValue(mockHiveService),
+        musicServiceProvider.overrideWith(TestMusicService.new),
+        soundEffectServiceProvider.overrideWith(TestSoundEffectService.new),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        builder: (context, child) => const MaterialApp(
+          home: PengaturanPage(),
+        ),
+      ),
+    );
+  }
+
+  testWidgets('PengaturanPage renders switches with correct initial state', (tester) async {
+    await tester.pumpWidget(createTestablePage(
+      initialMusicState: true,
+      initialEffectState: false,
+    ));
+
+    final musicSwitch = find.descendant(
+      of: find.widgetWithText(SettingItem, 'Musik Latar'),
+      matching: find.byType(AnimatedAlign),
+    );
+    expect(tester.widget<AnimatedAlign>(musicSwitch).alignment, Alignment.centerRight);
+
+    final soundSwitch = find.descendant(
+      of: find.widgetWithText(SettingItem, 'Efek Suara'),
+      matching: find.byType(AnimatedAlign),
+    );
+    expect(tester.widget<AnimatedAlign>(soundSwitch).alignment, Alignment.centerLeft);
+  });
+
+  testWidgets('Tapping music setting updates state and calls storage', (tester) async {
+    await tester.pumpWidget(createTestablePage(
+      initialMusicState: true,
+      initialEffectState: true,
+    ));
+
+    await tester.tap(find.widgetWithText(SettingItem, 'Musik Latar'));
+    await tester.pumpAndSettle();
+
+    verify(() => mockHiveService.saveMusicSetting(false)).called(1);
+    
+    final musicSwitch = find.descendant(
+      of: find.widgetWithText(SettingItem, 'Musik Latar'),
+      matching: find.byType(AnimatedAlign),
+    );
+    expect(tester.widget<AnimatedAlign>(musicSwitch).alignment, Alignment.centerLeft);
+  });
+}

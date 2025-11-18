@@ -13,8 +13,8 @@ class LessonRepositoryImpl implements LessonRepository {
 
   @override
   Future<LessonModel?> getLesson(int level) async {
-    final all = await _local.getAll();
     try {
+      final all = await _local.getAll();
       return all.firstWhere((e) => e.level == level);
     } catch (_) {
       return null;
